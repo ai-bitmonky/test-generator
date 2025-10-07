@@ -1,12 +1,24 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase } from '@/lib/supabase'
+import { createClient } from '@supabase/supabase-js'
 import './styles.css'
 
 export const dynamic = 'force-dynamic'
 
 export default function TestGenerator() {
+  // Initialize Supabase client
+  const [supabase] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+      const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      console.log('Creating Supabase client with URL:', url)
+      console.log('Key length:', key?.length)
+      return createClient(url, key)
+    }
+    return null
+  })
+
   // Auth state
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
