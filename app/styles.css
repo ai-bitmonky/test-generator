@@ -919,3 +919,75 @@ sup, sub {
 .solution-box br {
   line-height: 1.8;
 }
+
+/* Exam Selection Screens */
+.exam-selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.exam-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 15px;
+  padding: 40px 30px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.exam-card:hover:not(.disabled) {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.exam-card h2 {
+  margin: 0 0 15px 0;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.exam-card p {
+  margin: 0;
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+.exam-card.disabled {
+  background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.exam-card .badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .exam-selection {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .exam-card {
+    padding: 30px 20px;
+  }
+
+  .exam-card h2 {
+    font-size: 1.5em;
+  }
+}

@@ -29,6 +29,11 @@ export default function TestGenerator() {
   const [authError, setAuthError] = useState('')
   const [authLoading, setAuthLoading] = useState(true)
 
+  // Exam selection state
+  const [selectedExam, setSelectedExam] = useState(null) // 'IIT-JEE'
+  const [selectedLevel, setSelectedLevel] = useState(null) // 'Advance'
+  const [selectedSubject, setSelectedSubject] = useState(null) // 'Maths'
+
   // Test state
   const [questionsDB, setQuestionsDB] = useState({})
   const [questionsLoading, setQuestionsLoading] = useState(false)
@@ -575,6 +580,117 @@ export default function TestGenerator() {
         <div className="header">
           <h1>JEE Advanced Test Generator</h1>
           <p>Loading questions from database...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Exam selection screen
+  if (!selectedExam) {
+    return (
+      <div className="container">
+        <div className="header">
+          <h1>Select Exam</h1>
+          <p>Welcome, {user?.email}</p>
+          <button className="btn btn-secondary btn-small" onClick={handleLogout} style={{ position: 'absolute', top: '20px', right: '20px' }}>
+            Logout
+          </button>
+        </div>
+        <div className="content">
+          <div className="exam-selection">
+            <button
+              className="exam-card"
+              onClick={() => setSelectedExam('IIT-JEE')}
+            >
+              <h2>IIT-JEE</h2>
+              <p>Indian Institutes of Technology Joint Entrance Examination</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Level selection screen
+  if (!selectedLevel) {
+    return (
+      <div className="container">
+        <div className="header">
+          <h1>Select Level - {selectedExam}</h1>
+          <p>Welcome, {user?.email}</p>
+          <button className="btn btn-secondary btn-small" onClick={() => setSelectedExam(null)} style={{ position: 'absolute', top: '20px', left: '20px' }}>
+            Back
+          </button>
+          <button className="btn btn-secondary btn-small" onClick={handleLogout} style={{ position: 'absolute', top: '20px', right: '20px' }}>
+            Logout
+          </button>
+        </div>
+        <div className="content">
+          <div className="exam-selection">
+            <button
+              className="exam-card disabled"
+              disabled
+              title="Coming soon"
+            >
+              <h2>Mains</h2>
+              <p>For admission to NITs, IIITs, and other CFTIs</p>
+              <span className="badge">Coming Soon</span>
+            </button>
+            <button
+              className="exam-card"
+              onClick={() => setSelectedLevel('Advance')}
+            >
+              <h2>Advance</h2>
+              <p>For admission to IITs</p>
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // Subject selection screen
+  if (!selectedSubject) {
+    return (
+      <div className="container">
+        <div className="header">
+          <h1>Select Subject - {selectedExam} {selectedLevel}</h1>
+          <p>Welcome, {user?.email}</p>
+          <button className="btn btn-secondary btn-small" onClick={() => setSelectedLevel(null)} style={{ position: 'absolute', top: '20px', left: '20px' }}>
+            Back
+          </button>
+          <button className="btn btn-secondary btn-small" onClick={handleLogout} style={{ position: 'absolute', top: '20px', right: '20px' }}>
+            Logout
+          </button>
+        </div>
+        <div className="content">
+          <div className="exam-selection">
+            <button
+              className="exam-card"
+              onClick={() => setSelectedSubject('Maths')}
+            >
+              <h2>Mathematics</h2>
+              <p>89 questions available</p>
+            </button>
+            <button
+              className="exam-card disabled"
+              disabled
+              title="Coming soon"
+            >
+              <h2>Physics</h2>
+              <p>Questions coming soon</p>
+              <span className="badge">Coming Soon</span>
+            </button>
+            <button
+              className="exam-card disabled"
+              disabled
+              title="Coming soon"
+            >
+              <h2>Chemistry</h2>
+              <p>Questions coming soon</p>
+              <span className="badge">Coming Soon</span>
+            </button>
+          </div>
         </div>
       </div>
     )
