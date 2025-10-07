@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { supabase } from '@/lib/supabase'
 import './styles.css'
 
 export default function TestGenerator() {
@@ -12,9 +13,11 @@ export default function TestGenerator() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [authError, setAuthError] = useState('')
+  const [authLoading, setAuthLoading] = useState(true)
 
   // Test state
   const [questionsDB, setQuestionsDB] = useState({})
+  const [questionsLoading, setQuestionsLoading] = useState(false)
   const [selectedTopics, setSelectedTopics] = useState([])
   const [numQuestions, setNumQuestions] = useState(10)
   const [distribution, setDistribution] = useState('random')
@@ -35,28 +38,110 @@ export default function TestGenerator() {
   const [showDashboard, setShowDashboard] = useState(false)
   const [testHistory, setTestHistory] = useState([])
 
-  // Check for saved token on mount
+  // Check for existing Supabase session on mount
   useEffect(() => {
-    const savedToken = localStorage.getItem('token')
-    const savedUser = localStorage.getItem('user')
-    if (savedToken && savedUser) {
-      setToken(savedToken)
-      setUser(JSON.parse(savedUser))
-      setIsAuthenticated(true)
+    const checkSession = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (session) {
+          setToken(session.access_token)
+          setUser(session.user)
+          setIsAuthenticated(true)
+        }
+      } catch (error) {
+        console.error('Error checking session:', error)
+      } finally {
+        setAuthLoading(false)
+      }
     }
+
+    checkSession()
+
+    // Listen to auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        setToken(session.access_token)
+        setUser(session.user)
+        setIsAuthenticated(true)
+      } else {
+        setToken(null)
+        setUser(null)
+        setIsAuthenticated(false)
+      }
+    })
+
+    return () => subscription.unsubscribe()
   }, [])
 
-  // Load questions
+  // Load questions from Supabase database
   useEffect(() => {
-    if (isAuthenticated) {
-      fetch('/data/questions.json')
-        .then(res => res.json())
-        .then(data => {
-          setQuestionsDB(data)
-          setSelectedTopics(Object.keys(data))
-        })
-        .catch(err => console.error('Error loading questions:', err))
+    const loadQuestions = async () => {
+      if (isAuthenticated) {
+        setQuestionsLoading(true)
+        try {
+          const { data: questions, error } = await supabase
+            .from('questions')
+            .select('*')
+
+          if (error) {
+            console.error('Error loading questions:', error)
+            setAuthError('Failed to load questions from database')
+            return
+          }
+
+          // Group questions by topic
+          const grouped = {}
+          questions.forEach(q => {
+            if (!grouped[q.topic]) {
+              grouped[q.topic] = []
+            }
+
+            // Helper function to decode HTML entities
+            const decodeHTML = (html) => {
+              const txt = document.createElement('textarea')
+              txt.innerHTML = html
+              return txt.value
+            }
+
+            // Parse options if string
+            const optionsObj = typeof q.options === 'string' ? JSON.parse(q.options) : q.options
+
+            // Convert options object {a: "text", b: "text"} to array format and decode HTML entities
+            const optionsArray = Object.entries(optionsObj).map(([letter, value]) => {
+              const decodedValue = decodeHTML(value).replace(/\s*✓\s*$/g, '').trim()
+              return {
+                letter: letter,
+                value: decodedValue,
+                text: decodedValue
+              }
+            })
+
+            // Transform database format to match the expected format
+            grouped[q.topic].push({
+              id: q.external_id || q.id,
+              topic: q.topic,
+              difficulty: q.difficulty,
+              concepts: q.concepts || [],
+              question_html: q.question,
+              options: optionsArray,
+              correct_answer: q.correct_answer,
+              solution_html: q.solution_html || q.solution_text,
+              solution_text: q.solution_text
+            })
+          })
+
+          setQuestionsDB(grouped)
+          setSelectedTopics(Object.keys(grouped))
+        } catch (err) {
+          console.error('Error loading questions:', err)
+          setAuthError('Failed to load questions')
+        } finally {
+          setQuestionsLoading(false)
+        }
+      }
     }
+
+    loadQuestions()
   }, [isAuthenticated])
 
   // Instruction countdown
@@ -76,48 +161,50 @@ export default function TestGenerator() {
     setAuthError('')
 
     try {
-      const endpoint = authMode === 'login' ? '/api/auth/login' : '/api/auth/register'
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        setAuthError(data.error || 'Authentication failed')
-        return
-      }
-
       if (authMode === 'register') {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password
+        })
+
+        if (error) {
+          setAuthError(error.message)
+          return
+        }
+
         setAuthMode('login')
         setPassword('')
         setAuthError('Registration successful! Please login.')
         return
-      }
+      } else {
+        // Login
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        })
 
-      // Login successful
-      localStorage.setItem('token', data.token)
-      localStorage.setItem('user', JSON.stringify(data.user))
-      setToken(data.token)
-      setUser(data.user)
-      setIsAuthenticated(true)
-      setEmail('')
-      setPassword('')
+        if (error) {
+          setAuthError(error.message)
+          return
+        }
+
+        // Session is automatically handled by onAuthStateChange
+        setEmail('')
+        setPassword('')
+      }
     } catch (error) {
       setAuthError('Network error. Please try again.')
     }
   }
 
-  const handleLogout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
-    setToken(null)
-    setUser(null)
-    setIsAuthenticated(false)
-    setShowTest(false)
-    setShowDashboard(false)
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut()
+      setShowTest(false)
+      setShowDashboard(false)
+    } catch (error) {
+      console.error('Error logging out:', error)
+    }
   }
 
   const loadTestHistory = async () => {
@@ -185,7 +272,7 @@ export default function TestGenerator() {
 
   const generateTest = () => {
     if (selectedTopics.length === 0) {
-      alert('⚠️ Please select at least one topic')
+      alert('Please select at least one topic')
       return
     }
 
@@ -377,6 +464,9 @@ export default function TestGenerator() {
   }
 
   const formatTime = (seconds) => {
+    if (seconds < 60) {
+      return `${Math.floor(seconds)}s`
+    }
     const mins = Math.floor(seconds / 60)
     const secs = Math.floor(seconds % 60)
     return `${mins}:${secs.toString().padStart(2, '0')}`
@@ -388,12 +478,24 @@ export default function TestGenerator() {
   const answeredCount = Object.keys(userAnswers).length
   const progressPercentage = currentTest.length > 0 ? (answeredCount / currentTest.length) * 100 : 0
 
+  // Loading state
+  if (authLoading) {
+    return (
+      <div className="container">
+        <div className="header">
+          <h1>JEE Advanced Test Generator</h1>
+          <p>Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
   // Auth UI
   if (!isAuthenticated) {
     return (
       <div className="container">
         <div className="header">
-          <h1>🎓 JEE Advanced Test Generator</h1>
+          <h1>JEE Advanced Test Generator</h1>
           <p>Login to start practicing</p>
         </div>
         <div className="content">
@@ -443,25 +545,37 @@ export default function TestGenerator() {
     )
   }
 
+  // Questions loading state
+  if (questionsLoading) {
+    return (
+      <div className="container">
+        <div className="header">
+          <h1>JEE Advanced Test Generator</h1>
+          <p>Loading questions from database...</p>
+        </div>
+      </div>
+    )
+  }
+
   // Dashboard UI
   if (showDashboard) {
     return (
       <div className="container">
         {replacementNotice && (
           <div className="replacement-notice visible">
-            ✅ Question replaced successfully!
+            Question replaced successfully!
           </div>
         )}
 
         <div className="header">
-          <h1>📊 My Dashboard</h1>
+          <h1>My Dashboard</h1>
           <p>Welcome, {user?.email}</p>
         </div>
 
         <div className="content">
           <div className="dashboard-header">
             <button className="btn" onClick={() => setShowDashboard(false)}>
-              ← Back to Tests
+              Back to Tests
             </button>
             <button className="btn btn-secondary" onClick={handleLogout}>
               Logout
@@ -566,21 +680,21 @@ export default function TestGenerator() {
       <div className="container">
         <div className="instructions-screen">
           <div className="instructions-content">
-            <h1>📋 Test Instructions</h1>
+            <h1>Test Instructions</h1>
             <div className="countdown-timer">
               Starting in {instructionCountdown} seconds...
             </div>
             <div className="instructions-list">
               <h3>Please read carefully:</h3>
               <ul>
-                <li>✅ This test contains {currentTest.length} questions from selected topics</li>
-                <li>⏱️ Your time will be tracked for each question</li>
-                <li>✏️ Click on an option to select your answer</li>
-                <li>🚩 You can flag difficult questions for review</li>
-                <li>🔄 You can replace a question with another from the same topic</li>
-                <li>📊 Results will be shown immediately after submission</li>
-                <li>💾 Your performance will be saved to your dashboard</li>
-                <li>⚠️ Once submitted, you cannot change your answers</li>
+                <li>This test contains {currentTest.length} questions from selected topics</li>
+                <li>Your time will be tracked for each question</li>
+                <li>Click on an option to select your answer</li>
+                <li>You can flag difficult questions for review</li>
+                <li>You can replace a question with another from the same topic</li>
+                <li>Results will be shown immediately after submission</li>
+                <li>Your performance will be saved to your dashboard</li>
+                <li>Once submitted, you cannot change your answers</li>
               </ul>
             </div>
             <p className="instructions-footer">
@@ -597,16 +711,16 @@ export default function TestGenerator() {
     <div className="container">
       {replacementNotice && (
         <div className="replacement-notice visible">
-          ✅ Question replaced successfully!
+          Question replaced successfully!
         </div>
       )}
 
       <div className="header">
-        <h1>🎓 JEE Advanced Interactive Test</h1>
+        <h1>JEE Advanced Interactive Test</h1>
         <p>Welcome, {user?.email}</p>
         <div className="header-actions">
           <button className="btn btn-small" onClick={loadTestHistory}>
-            📊 Dashboard
+            Dashboard
           </button>
           <button className="btn btn-secondary btn-small" onClick={handleLogout}>
             Logout
@@ -632,7 +746,7 @@ export default function TestGenerator() {
 
             <div className="controls">
               <div className="control-group">
-                <label htmlFor="numQuestions">📝 Number of Questions:</label>
+                <label htmlFor="numQuestions">Number of Questions:</label>
                 <input
                   type="number"
                   id="numQuestions"
@@ -643,7 +757,7 @@ export default function TestGenerator() {
                 />
               </div>
               <div className="control-group">
-                <label htmlFor="distribution">🎲 Selection Strategy:</label>
+                <label htmlFor="distribution">Selection Strategy:</label>
                 <select
                   id="distribution"
                   value={distribution}
@@ -657,7 +771,7 @@ export default function TestGenerator() {
             </div>
 
             <div className="topic-selector">
-              <h3>✓ Select Topics</h3>
+              <h3>Select Topics</h3>
               <div className="button-group">
                 <button className="btn btn-secondary" onClick={selectAllTopics}>Select All</button>
                 <button className="btn btn-secondary" onClick={deselectAllTopics}>Deselect All</button>
@@ -683,7 +797,7 @@ export default function TestGenerator() {
 
             <div className="button-group">
               <button className="btn" onClick={generateTest}>
-                🎯 Generate Test Paper
+                Generate Test Paper
               </button>
             </div>
           </>
@@ -694,10 +808,10 @@ export default function TestGenerator() {
             <h2>Test Ready!</h2>
             <p>{currentTest.length} questions selected</p>
             <button className="btn btn-large" onClick={startTest}>
-              🚀 Start Test
+              Start Test
             </button>
             <button className="btn btn-secondary" onClick={backToSettings}>
-              ← Back to Settings
+              Back to Settings
             </button>
           </div>
         )}
@@ -720,12 +834,12 @@ export default function TestGenerator() {
             </div>
 
             <div className="flagged-info">
-              <strong>ℹ️ Tip:</strong> You can flag questions you find confusing and replace them with new ones from the same topic!
+              <strong>Tip:</strong> You can flag questions you find confusing and replace them with new ones from the same topic!
             </div>
 
             {showResults && (
               <div className="results-summary visible" id="resultsSummary">
-                <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>📊 Test Results</h3>
+                <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>Test Results</h3>
                 <div className="results-grid">
                   <div className="result-card">
                     <div className="result-value correct">{results.correct}</div>
@@ -768,7 +882,7 @@ export default function TestGenerator() {
                           disabled={testSubmitted}
                           title="Flag this question"
                         >
-                          {isFlagged ? '🚩 Flagged' : '🚩 Flag'}
+                          {isFlagged ? 'Flagged' : 'Flag'}
                         </button>
                         <button
                           className="replace-btn"
@@ -776,11 +890,11 @@ export default function TestGenerator() {
                           disabled={testSubmitted}
                           title="Replace with another question"
                         >
-                          🔄 Replace
+                          Replace
                         </button>
                         {testSubmitted && (
                           <span className={`question-status ${isCorrect ? 'correct' : isIncorrect ? 'incorrect' : ''}`}>
-                            {!userAnswer ? 'Not Attempted' : isCorrect ? '✓ Correct' : '✗ Incorrect'}
+                            {!userAnswer ? 'Not Attempted' : isCorrect ? 'Correct' : 'Incorrect'}
                           </span>
                         )}
                       </div>
@@ -814,11 +928,15 @@ export default function TestGenerator() {
                     </div>
                     {testSubmitted && question.correct_answer && (
                       <div className="solution-box visible">
-                        <h4>💡 Solution</h4>
+                        <h4>Solution</h4>
                         <p>
                           <strong>Correct Answer:</strong> ({question.correct_answer}) {question.options.find(o => o.letter === question.correct_answer)?.value}
                         </p>
-                        <p>{question.solution || 'Solution not available for this question.'}</p>
+                        {question.solution_html ? (
+                          <div dangerouslySetInnerHTML={{ __html: question.solution_html }} />
+                        ) : (
+                          <p>{question.solution_text || 'Solution not available for this question.'}</p>
+                        )}
                         {questionTimings[idx] && (
                           <p><strong>Time taken:</strong> {formatTime(questionTimings[idx])}</p>
                         )}
@@ -840,10 +958,10 @@ export default function TestGenerator() {
                 onClick={submitTest}
                 disabled={testSubmitted}
               >
-                {testSubmitted ? '✅ Test Submitted' : '✅ Submit Test'}
+                {testSubmitted ? 'Test Submitted' : 'Submit Test'}
               </button>
               <button className="btn btn-secondary" onClick={backToSettings}>
-                ⚙️ Back to Settings
+                Back to Settings
               </button>
             </div>
           </div>

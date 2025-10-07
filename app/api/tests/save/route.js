@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
-import { v4 as uuidv4 } from 'uuid';
-import { createTest } from '@/lib/db';
+import { createClient } from '@supabase/supabase-js';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 export async function POST(request) {
   try {
@@ -18,11 +17,19 @@ export async function POST(request) {
 
     const token = authHeader.substring(7);
 
-    // Verify token
-    let decoded;
-    try {
-      decoded = jwt.verify(token, JWT_SECRET);
-    } catch (err) {
+    // Create Supabase client with the user's token for RLS
+    const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+      global: {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    });
+
+    // Verify token with Supabase
+    const { data: { user }, error: authError } = await supabase.auth.getUser(token);
+
+    if (authError || !user) {
       return NextResponse.json(
         { error: 'Invalid token' },
         { status: 401 }
@@ -39,27 +46,35 @@ export async function POST(request) {
       skippedCount
     } = await request.json();
 
-    // Create test record
-    const test = {
-      id: uuidv4(),
-      userId: decoded.userId,
-      totalQuestions: questions.length,
-      answeredQuestions: Object.keys(answers).length,
-      correctCount,
-      incorrectCount,
-      skippedCount,
-      totalTime, // in seconds
-      questionTimings, // array of {questionId, timeTaken}
-      answers,
-      questions: questions.map(q => ({
-        id: q.id,
-        topic: q.topic,
-        difficulty: q.difficulty
-      })),
-      createdAt: new Date().toISOString(),
-    };
+    // Insert test record into Supabase
+    const { data: test, error: insertError } = await supabase
+      .from('tests')
+      .insert({
+        user_id: user.id,
+        total_questions: questions.length,
+        answered_questions: Object.keys(answers).length,
+        correct_count: correctCount,
+        incorrect_count: incorrectCount,
+        skipped_count: skippedCount,
+        total_time: Math.round(totalTime), // Convert to integer
+        question_timings: questionTimings,
+        answers: answers,
+        questions: questions.map(q => ({
+          id: q.id,
+          topic: q.topic,
+          difficulty: q.difficulty
+        }))
+      })
+      .select()
+      .single();
 
-    createTest(test);
+    if (insertError) {
+      console.error('Insert error:', insertError);
+      return NextResponse.json(
+        { error: 'Failed to save test' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,

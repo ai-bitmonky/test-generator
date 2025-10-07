@@ -869,3 +869,53 @@ sup, sub {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Solution HTML Formatting */
+.solution-box .solution h3 {
+  color: #856404;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.solution-box .step {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.solution-box .step-number {
+  font-weight: bold;
+  color: #0d47a1;
+  margin-right: 5px;
+}
+
+.solution-box .formula {
+  background-color: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 3px solid #ffc107;
+  font-family: 'Courier New', monospace;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.solution-box ul,
+.solution-box ol {
+  margin: 10px 0;
+  padding-left: 25px;
+}
+
+.solution-box li {
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.solution-box strong {
+  color: #856404;
+}
+
+.solution-box br {
+  line-height: 1.8;
+}
