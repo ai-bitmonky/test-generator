@@ -37,13 +37,16 @@ export default function TestGenerator() {
   // Test state
   const [questionsDB, setQuestionsDB] = useState({})
   const [questionsLoading, setQuestionsLoading] = useState(false)
+  const [excludedQuestions, setExcludedQuestions] = useState(new Set())
   const [selectedTopics, setSelectedTopics] = useState([])
   const [numQuestions, setNumQuestions] = useState(10)
   const [distribution, setDistribution] = useState('balanced')
   const [currentTest, setCurrentTest] = useState([])
+  const [currentTestId, setCurrentTestId] = useState(null)
   const [userAnswers, setUserAnswers] = useState({})
   const [questionTimings, setQuestionTimings] = useState({})
   const [flaggedQuestions, setFlaggedQuestions] = useState(new Set())
+  const [replacedQuestions, setReplacedQuestions] = useState(new Set())
   const [usedQuestionIds, setUsedQuestionIds] = useState(new Set())
   const [testSubmitted, setTestSubmitted] = useState(false)
   const [showTest, setShowTest] = useState(false)
@@ -164,7 +167,26 @@ export default function TestGenerator() {
     }
 
     loadQuestions()
-  }, [isAuthenticated])
+
+    // Load question history
+    const loadQuestionHistory = async () => {
+      if (isAuthenticated && token) {
+        try {
+          const response = await fetch('/api/questions/history', {
+            headers: { 'Authorization': `Bearer ${token}` }
+          })
+          const data = await response.json()
+          if (data.success) {
+            setExcludedQuestions(new Set(data.excludedQuestions))
+          }
+        } catch (error) {
+          console.error('Error loading question history:', error)
+        }
+      }
+    }
+
+    loadQuestionHistory()
+  }, [isAuthenticated, token])
 
   // Instruction countdown
   useEffect(() => {
@@ -289,9 +311,16 @@ export default function TestGenerator() {
   const selectQuestions = (topics, count, strategy) => {
     let questions = []
 
+    // Filter function to exclude already solved, flagged, or replaced questions
+    const isAllowedQuestion = (q) => !excludedQuestions.has(q.id)
+
     if (strategy === 'random') {
       topics.forEach(topic => {
-        questionsDB[topic]?.forEach(q => questions.push({ ...q, topic }))
+        questionsDB[topic]?.forEach(q => {
+          if (isAllowedQuestion(q)) {
+            questions.push({ ...q, topic })
+          }
+        })
       })
       questions.sort(() => Math.random() - 0.5)
       return questions.slice(0, Math.min(count, questions.length))
@@ -299,7 +328,7 @@ export default function TestGenerator() {
       const perTopic = Math.floor(count / topics.length)
       const remainder = count % topics.length
       topics.forEach((topic, idx) => {
-        const topicQuestions = questionsDB[topic] || []
+        const topicQuestions = (questionsDB[topic] || []).filter(isAllowedQuestion)
         const take = Math.min(perTopic + (idx < remainder ? 1 : 0), topicQuestions.length)
         const shuffled = [...topicQuestions].sort(() => Math.random() - 0.5)
         for (let i = 0; i < take; i++) {
@@ -310,8 +339,10 @@ export default function TestGenerator() {
     } else {
       for (let topic of topics) {
         for (let q of (questionsDB[topic] || [])) {
-          questions.push({ ...q, topic })
-          if (questions.length >= count) return questions
+          if (isAllowedQuestion(q)) {
+            questions.push({ ...q, topic })
+            if (questions.length >= count) return questions
+          }
         }
       }
       return questions
@@ -414,6 +445,11 @@ export default function TestGenerator() {
     newFlagged.delete(questionIdx)
     setFlaggedQuestions(newFlagged)
 
+    // Track replaced question
+    const newReplaced = new Set(replacedQuestions)
+    newReplaced.add(questionIdx)
+    setReplacedQuestions(newReplaced)
+
     setReplacementNotice(true)
     setTimeout(() => setReplacementNotice(false), 2000)
   }
@@ -468,7 +504,76 @@ export default function TestGenerator() {
         })
       })
 
-      if (!response.ok) {
+      const testData = await response.json()
+      if (response.ok && testData.testId) {
+        setCurrentTestId(testData.testId)
+
+        // Record question history for each question
+        currentTest.forEach((question, idx) => {
+          const userAnswer = userAnswers[idx]
+          let status = 'skipped'
+
+          if (userAnswer) {
+            if (question.correct_answer && userAnswer === question.correct_answer) {
+              status = 'solved'
+            } else {
+              status = 'incorrect'
+            }
+          }
+
+          // Record each question's history
+          fetch('/api/questions/history', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              questionId: question.id,
+              status: status,
+              testId: testData.testId
+            })
+          }).catch(err => console.error('Error recording question history:', err))
+        })
+
+        // Record flagged questions
+        flaggedQuestions.forEach(idx => {
+          const question = currentTest[idx]
+          if (question) {
+            fetch('/api/questions/history', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify({
+                questionId: question.id,
+                status: 'flagged',
+                testId: testData.testId
+              })
+            }).catch(err => console.error('Error recording flagged history:', err))
+          }
+        })
+
+        // Record replaced questions
+        replacedQuestions.forEach(idx => {
+          const question = currentTest[idx]
+          if (question) {
+            fetch('/api/questions/history', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify({
+                questionId: question.id,
+                status: 'replaced',
+                testId: testData.testId
+              })
+            }).catch(err => console.error('Error recording replaced history:', err))
+          }
+        })
+      } else {
         console.error('Failed to save test')
       }
     } catch (error) {
