@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import './styles.css'
 
+export const dynamic = 'force-dynamic'
+
 export default function TestGenerator() {
   // Auth state
   const [isAuthenticated, setIsAuthenticated] = useState(false)
