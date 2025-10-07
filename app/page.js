@@ -39,7 +39,7 @@ export default function TestGenerator() {
   const [questionsLoading, setQuestionsLoading] = useState(false)
   const [selectedTopics, setSelectedTopics] = useState([])
   const [numQuestions, setNumQuestions] = useState(10)
-  const [distribution, setDistribution] = useState('random')
+  const [distribution, setDistribution] = useState('balanced')
   const [currentTest, setCurrentTest] = useState([])
   const [userAnswers, setUserAnswers] = useState({})
   const [questionTimings, setQuestionTimings] = useState({})
