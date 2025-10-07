@@ -53,6 +53,8 @@ export default function TestGenerator() {
   const [testStartTime, setTestStartTime] = useState(null)
   const [currentQuestionStartTime, setCurrentQuestionStartTime] = useState(null)
   const [currentQuestionTimer, setCurrentQuestionTimer] = useState(0)
+  const [totalElapsedTime, setTotalElapsedTime] = useState(0)
+  const [showStopwatch, setShowStopwatch] = useState(true)
   const [showResults, setShowResults] = useState(false)
   const [replacementNotice, setReplacementNotice] = useState(false)
   const [showDashboard, setShowDashboard] = useState(false)
@@ -176,16 +178,22 @@ export default function TestGenerator() {
     }
   }, [showInstructions, instructionCountdown])
 
-  // Current question timer
+  // Current question timer and total elapsed time
   useEffect(() => {
-    if (testStarted && !testSubmitted && currentQuestionStartTime) {
+    if (testStarted && !testSubmitted) {
       const interval = setInterval(() => {
-        const elapsed = (Date.now() - currentQuestionStartTime) / 1000
-        setCurrentQuestionTimer(elapsed)
+        if (currentQuestionStartTime) {
+          const elapsed = (Date.now() - currentQuestionStartTime) / 1000
+          setCurrentQuestionTimer(elapsed)
+        }
+        if (testStartTime) {
+          const totalElapsed = (Date.now() - testStartTime) / 1000
+          setTotalElapsedTime(totalElapsed)
+        }
       }, 100) // Update every 100ms for smooth display
       return () => clearInterval(interval)
     }
-  }, [testStarted, testSubmitted, currentQuestionStartTime])
+  }, [testStarted, testSubmitted, currentQuestionStartTime, testStartTime])
 
   const handleAuth = async (e) => {
     e.preventDefault()
@@ -988,13 +996,33 @@ export default function TestGenerator() {
               <strong>Tip:</strong> You can flag questions you find confusing and replace them with new ones from the same topic!
             </div>
 
-            {!testSubmitted && (
+            {!testSubmitted && showStopwatch && (
               <div className="stopwatch-container">
+                <button
+                  className="stopwatch-hide-btn"
+                  onClick={() => setShowStopwatch(false)}
+                  title="Hide stopwatch"
+                >
+                  ✕
+                </button>
                 <div className="stopwatch">
                   <div className="stopwatch-label">Current Question</div>
                   <div className="stopwatch-time">{Math.floor(currentQuestionTimer)}s</div>
+                  <div className="stopwatch-total">
+                    Total: {Math.floor(totalElapsedTime / 60)}:{String(Math.floor(totalElapsedTime % 60)).padStart(2, '0')}
+                  </div>
                 </div>
               </div>
+            )}
+
+            {!testSubmitted && !showStopwatch && (
+              <button
+                className="stopwatch-show-btn"
+                onClick={() => setShowStopwatch(true)}
+                title="Show stopwatch"
+              >
+                ⏱
+              </button>
             )}
 
             {showResults && (

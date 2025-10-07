@@ -1004,7 +1004,7 @@ sup, sub {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   padding: 15px 25px;
-  border-radius: 50px;
+  border-radius: 20px;
   box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
   text-align: center;
   min-width: 150px;
@@ -1024,6 +1024,63 @@ sup, sub {
   font-family: 'Courier New', monospace;
 }
 
+.stopwatch-total {
+  font-size: 0.75em;
+  opacity: 0.8;
+  margin-top: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.stopwatch-hide-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #764ba2;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.stopwatch-hide-btn:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.stopwatch-show-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+}
+
+.stopwatch-show-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+}
+
 @media (max-width: 768px) {
   .stopwatch-container {
     top: 10px;
@@ -1041,5 +1098,17 @@ sup, sub {
 
   .stopwatch-time {
     font-size: 1.5em;
+  }
+
+  .stopwatch-total {
+    font-size: 0.65em;
+  }
+
+  .stopwatch-show-btn {
+    top: 10px;
+    right: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
   }
 }
