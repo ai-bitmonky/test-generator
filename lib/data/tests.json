@@ -1,0 +1,109 @@
+[
+  {
+    "id": "3cd5401d-e96d-43ac-917f-a570a52fa3a9",
+    "userId": "8788e346-765d-45ff-88b9-870731457c18",
+    "totalQuestions": 10,
+    "answeredQuestions": 8,
+    "correctCount": 0,
+    "incorrectCount": 8,
+    "skippedCount": 2,
+    "totalTime": 45.111,
+    "questionTimings": [
+      {
+        "questionId": "JEE Advanced Differentiation Problems (1)_11",
+        "timeTaken": 20.453
+      },
+      {
+        "questionId": "JEE Advanced Applications of Derivatives Problems (2)_4",
+        "timeTaken": 5.576
+      },
+      {
+        "questionId": "JEE Advanced Circles Problems (4)_9",
+        "timeTaken": 4.374
+      },
+      {
+        "questionId": "JEE Advanced Circles Selected Problems (1)_9",
+        "timeTaken": 3.328
+      },
+      {
+        "questionId": "JEE Advanced Binomial Problems (1)_19",
+        "timeTaken": 2.247
+      },
+      {
+        "questionId": "JEE Advanced Binomial Theorem Problems (2)_12",
+        "timeTaken": 2.122
+      },
+      {
+        "questionId": "JEE Advanced Applications of Derivatives Problems (2)_2",
+        "timeTaken": 2.207
+      },
+      {
+        "questionId": "JEE Advanced Circles Problems (3)_17",
+        "timeTaken": 2.396
+      }
+    ],
+    "answers": {
+      "0": "b",
+      "2": "a",
+      "4": "b",
+      "5": "b",
+      "6": "c",
+      "7": "b",
+      "8": "b",
+      "9": "b"
+    },
+    "questions": [
+      {
+        "id": "JEE Advanced Differentiation Problems (1)_11",
+        "topic": "JEE Advanced Differentiation Problems (1)",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "jee advanced trigonometry problems_8",
+        "topic": "jee advanced trigonometry problems",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "JEE Advanced Applications of Derivatives Problems (2)_4",
+        "topic": "JEE Advanced Applications of Derivatives Problems (2)",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "JEE Advanced Definite Integrals (3)_16",
+        "topic": "JEE Advanced Definite Integrals (3)",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "JEE Advanced Circles Problems (4)_9",
+        "topic": "JEE Advanced Circles Problems (4)",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "JEE Advanced Circles Selected Problems (1)_9",
+        "topic": "JEE Advanced Circles Selected Problems (1)",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "JEE Advanced Binomial Problems (1)_19",
+        "topic": "JEE Advanced Binomial Problems (1)",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "JEE Advanced Binomial Theorem Problems (2)_12",
+        "topic": "JEE Advanced Binomial Theorem Problems (2)",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "JEE Advanced Applications of Derivatives Problems (2)_2",
+        "topic": "JEE Advanced Applications of Derivatives Problems (2)",
+        "difficulty": "ADVANCED"
+      },
+      {
+        "id": "JEE Advanced Circles Problems (3)_17",
+        "topic": "JEE Advanced Circles Problems (3)",
+        "difficulty": "ADVANCED"
+      }
+    ],
+    "createdAt": "2025-10-07T09:00:05.531Z"
+  }
+]
