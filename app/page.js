@@ -52,6 +52,7 @@ export default function TestGenerator() {
   const [testStarted, setTestStarted] = useState(false)
   const [testStartTime, setTestStartTime] = useState(null)
   const [currentQuestionStartTime, setCurrentQuestionStartTime] = useState(null)
+  const [currentQuestionTimer, setCurrentQuestionTimer] = useState(0)
   const [showResults, setShowResults] = useState(false)
   const [replacementNotice, setReplacementNotice] = useState(false)
   const [showDashboard, setShowDashboard] = useState(false)
@@ -174,6 +175,17 @@ export default function TestGenerator() {
       startTestAfterInstructions()
     }
   }, [showInstructions, instructionCountdown])
+
+  // Current question timer
+  useEffect(() => {
+    if (testStarted && !testSubmitted && currentQuestionStartTime) {
+      const interval = setInterval(() => {
+        const elapsed = (Date.now() - currentQuestionStartTime) / 1000
+        setCurrentQuestionTimer(elapsed)
+      }, 100) // Update every 100ms for smooth display
+      return () => clearInterval(interval)
+    }
+  }, [testStarted, testSubmitted, currentQuestionStartTime])
 
   const handleAuth = async (e) => {
     e.preventDefault()
@@ -975,6 +987,15 @@ export default function TestGenerator() {
             <div className="flagged-info">
               <strong>Tip:</strong> You can flag questions you find confusing and replace them with new ones from the same topic!
             </div>
+
+            {!testSubmitted && (
+              <div className="stopwatch-container">
+                <div className="stopwatch">
+                  <div className="stopwatch-label">Current Question</div>
+                  <div className="stopwatch-time">{Math.floor(currentQuestionTimer)}s</div>
+                </div>
+              </div>
+            )}
 
             {showResults && (
               <div className="results-summary visible" id="resultsSummary">
