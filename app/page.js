@@ -162,13 +162,17 @@ export default function TestGenerator() {
 
     try {
       if (authMode === 'register') {
+        console.log('Attempting registration with:', email)
         const { data, error } = await supabase.auth.signUp({
           email,
           password
         })
 
+        console.log('Registration response:', { data, error })
+
         if (error) {
-          setAuthError(error.message)
+          console.error('Registration error:', error)
+          setAuthError(error.message || 'Registration failed')
           return
         }
 
@@ -178,13 +182,17 @@ export default function TestGenerator() {
         return
       } else {
         // Login
+        console.log('Attempting login with:', email)
         const { data, error } = await supabase.auth.signInWithPassword({
           email,
           password
         })
 
+        console.log('Login response:', { data, error })
+
         if (error) {
-          setAuthError(error.message)
+          console.error('Login error:', error)
+          setAuthError(error.message || 'Login failed')
           return
         }
 
@@ -193,7 +201,8 @@ export default function TestGenerator() {
         setPassword('')
       }
     } catch (error) {
-      setAuthError('Network error. Please try again.')
+      console.error('Auth exception:', error)
+      setAuthError(error.message || 'Network error. Please try again.')
     }
   }
 
