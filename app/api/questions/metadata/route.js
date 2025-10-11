@@ -81,7 +81,7 @@ export async function GET(request) {
       // Count questions by chapter
       const chapterMap = {};
       chapterData.forEach(record => {
-        const ch = record.chapter || record.topic || 'General';
+        const ch = record.chapter || 'Unknown';
         chapterMap[ch] = (chapterMap[ch] || 0) + 1;
       });
 

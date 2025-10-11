@@ -150,23 +150,25 @@ export default function TestGenerator() {
       if (isAuthenticated && selectedSubject && selectedChapters.length > 0) {
         setQuestionsLoading(true)
         try {
-          let query = supabase
+          // Get all questions for the subject first, then filter in JavaScript
+          const { data: questions, error } = await supabase
             .from('questions')
             .select('*')
             .eq('subject', selectedSubject)
-
-          // Filter by selected chapters
-          if (selectedChapters.length > 0) {
-            query = query.in('chapter', selectedChapters)
-          }
-
-          const { data: questions, error } = await query
 
           if (error) {
             console.error('Error loading questions:', error)
             setAuthError('Failed to load questions from database')
             return
           }
+
+          // Filter by selected chapters (client-side filtering)
+          const filteredQuestions = questions.filter(q => {
+            const questionChapter = q.chapter || 'Unknown';
+            return selectedChapters.includes(questionChapter);
+          });
+
+          console.log(`Loaded ${questions.length} questions, filtered to ${filteredQuestions.length} based on chapters:`, selectedChapters);
 
           // Helper function to decode HTML entities
           const decodeHTML = (html) => {
@@ -177,7 +179,7 @@ export default function TestGenerator() {
 
           // Group questions by topic
           const grouped = {}
-          questions.forEach(q => {
+          filteredQuestions.forEach(q => {
             if (!grouped[q.topic]) {
               grouped[q.topic] = []
             }
@@ -229,8 +231,10 @@ export default function TestGenerator() {
     }
 
     loadQuestions()
+  }, [isAuthenticated, selectedSubject, selectedChapters])
 
-    // Load question history
+  // Load question history
+  useEffect(() => {
     const loadQuestionHistory = async () => {
       if (isAuthenticated && token) {
         try {
