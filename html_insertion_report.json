@@ -1,0 +1,18 @@
+{
+  "Mathematics": {
+    "inserted": 32,
+    "updated": 0,
+    "deleted": 0,
+    "failed": 0,
+    "missingAnswer": 6,
+    "errors": []
+  },
+  "Physics": {
+    "inserted": 10,
+    "updated": 0,
+    "deleted": 0,
+    "failed": 0,
+    "missingAnswer": 2,
+    "errors": []
+  }
+}

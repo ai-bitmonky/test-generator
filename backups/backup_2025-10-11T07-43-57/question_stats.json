@@ -1,0 +1,42 @@
+[
+  {
+    "topic": "Areas Integration",
+    "difficulty": "MEDIUM",
+    "question_count": 13
+  },
+  {
+    "topic": "Circles",
+    "difficulty": "ADVANCED",
+    "question_count": 24
+  },
+  {
+    "topic": "Derivatives",
+    "difficulty": "MEDIUM",
+    "question_count": 20
+  },
+  {
+    "topic": "Differential Equations",
+    "difficulty": "MEDIUM",
+    "question_count": 19
+  },
+  {
+    "topic": "Integration",
+    "difficulty": "ADVANCED",
+    "question_count": 17
+  },
+  {
+    "topic": "Inverse Trig",
+    "difficulty": "MEDIUM",
+    "question_count": 20
+  },
+  {
+    "topic": "jee advanced differentiability solutions",
+    "difficulty": "MEDIUM",
+    "question_count": 14
+  },
+  {
+    "topic": "Matrices",
+    "difficulty": "ADVANCED",
+    "question_count": 15
+  }
+]

@@ -1,4 +1,9 @@
-// Migration script to upload questions to Supabase
+#!/usr/bin/env node
+/**
+ * Migration script to upload Physics questions to Supabase
+ * Handles additional metadata: chapter, subtopic, tags, strategy, expert_insight, key_facts
+ */
+
 const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const path = require('path');
@@ -16,14 +21,14 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-async function migrateQuestions() {
-  console.log('🚀 Starting question migration...\n');
+async function migratePhysicsQuestions() {
+  console.log('🔬 Starting Physics question migration...\n');
 
   // Read questions from JSON file
-  const questionsPath = path.join(__dirname, 'mcq_questions_with_solutions.json');
+  const questionsPath = path.join(__dirname, 'physics_questions_with_solutions.json');
   const questionsData = JSON.parse(fs.readFileSync(questionsPath, 'utf-8'));
 
-  console.log(`📚 Found ${questionsData.length} questions in file\n`);
+  console.log(`📚 Found ${questionsData.length} physics questions in file\n`);
 
   // Fetch existing question IDs from database
   console.log('🔍 Checking for existing questions...');
@@ -46,18 +51,31 @@ async function migrateQuestions() {
         console.log(`⏭️  Skipping duplicate: ${q.id}`);
         return false;
       }
+      if (!q.correct_answer) {
+        console.log(`⏭️  Skipping question without answer: ${q.id}`);
+        return false;
+      }
       return true;
     })
     .map(q => ({
       external_id: q.id,
-      topic: q.topic,
-      difficulty: q.difficulty,
-      concepts: q.concepts || [],
+      subject: q.subject || 'Physics',
+      chapter: q.chapter || '',
+      topic: q.topic || '',
+      subtopic: q.subtopic || '',
+      difficulty: q.difficulty || 'MEDIUM',
+      tags: q.tags || [],
+      question_type: q.type || 'Multiple Choice Single Answer',
+      concepts: [],  // Empty for now, can be populated later
       question: q.question,
+      question_html: q.question_html || '',
       options: q.options,
-      correct_answer: q.correctAnswer,
-      solution_html: q.solutionHtml || '',
-      solution_text: q.solutionText || ''
+      correct_answer: q.correct_answer,
+      strategy: q.strategy || '',
+      expert_insight: q.expert_insight || '',
+      key_facts: q.key_facts || '',
+      solution_html: q.solution_html || '',
+      solution_text: q.solution_text || ''
     }));
 
   console.log(`\n📝 ${questionsToInsert.length} new questions to insert\n`);
@@ -104,15 +122,36 @@ async function migrateQuestions() {
 
   if (!statsError && stats) {
     console.log('\n📈 Question Statistics:');
-    console.log('Topic\t\t\tDifficulty\tCount');
-    console.log('─'.repeat(60));
+    console.log('Subject\t\tChapter/Topic\t\t\tDifficulty\tCount');
+    console.log('─'.repeat(80));
     stats.forEach(s => {
-      console.log(`${s.topic.padEnd(24)}\t${s.difficulty.padEnd(8)}\t${s.question_count}`);
+      const subject = (s.subject || 'N/A').padEnd(12);
+      const chapter = (s.chapter_or_topic || s.topic || 'N/A').padEnd(24);
+      const difficulty = (s.difficulty || 'N/A').padEnd(8);
+      console.log(`${subject}\t${chapter}\t${difficulty}\t${s.question_count}`);
+    });
+  }
+
+  // Show subject breakdown
+  const { data: subjectCounts, error: subjectError } = await supabase
+    .from('questions')
+    .select('subject');
+
+  if (!subjectError && subjectCounts) {
+    const subjects = {};
+    subjectCounts.forEach(q => {
+      const subject = q.subject || 'Unknown';
+      subjects[subject] = (subjects[subject] || 0) + 1;
+    });
+
+    console.log('\n📚 Questions by Subject:');
+    Object.entries(subjects).forEach(([subject, count]) => {
+      console.log(`  • ${subject}: ${count} questions`);
     });
   }
 }
 
-migrateQuestions().catch(error => {
+migratePhysicsQuestions().catch(error => {
   console.error('❌ Migration failed:', error);
   process.exit(1);
 });

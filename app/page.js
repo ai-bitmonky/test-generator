@@ -38,8 +38,6 @@ export default function TestGenerator() {
   const [questionsDB, setQuestionsDB] = useState({})
   const [questionsLoading, setQuestionsLoading] = useState(false)
   const [subjects, setSubjects] = useState([])
-  const [chapters, setChapters] = useState([])
-  const [selectedChapters, setSelectedChapters] = useState([])
   const [excludedQuestions, setExcludedQuestions] = useState(new Set())
   const [selectedTopics, setSelectedTopics] = useState([])
   const [numQuestions, setNumQuestions] = useState(10)
@@ -122,35 +120,14 @@ export default function TestGenerator() {
     loadMetadata()
   }, [isAuthenticated, token])
 
-  // Load chapters when subject is selected
-  useEffect(() => {
-    const loadChapters = async () => {
-      if (isAuthenticated && token && selectedSubject) {
-        try {
-          const response = await fetch(`/api/questions/metadata?subject=${encodeURIComponent(selectedSubject)}`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-          })
-          const data = await response.json()
-          if (data.success) {
-            setChapters(data.chapters)
-            setSelectedChapters(data.chapters.map(ch => ch.name))
-          }
-        } catch (error) {
-          console.error('Error loading chapters:', error)
-        }
-      }
-    }
-
-    loadChapters()
-  }, [isAuthenticated, token, selectedSubject])
 
   // Load questions from Supabase database
   useEffect(() => {
     const loadQuestions = async () => {
-      if (isAuthenticated && selectedSubject && selectedChapters.length > 0) {
+      if (isAuthenticated && selectedSubject) {
         setQuestionsLoading(true)
         try {
-          // Get all questions for the subject first, then filter in JavaScript
+          // Get all questions for the subject
           const { data: questions, error } = await supabase
             .from('questions')
             .select('*')
@@ -162,13 +139,7 @@ export default function TestGenerator() {
             return
           }
 
-          // Filter by selected chapters (client-side filtering)
-          const filteredQuestions = questions.filter(q => {
-            const questionChapter = q.chapter || 'Unknown';
-            return selectedChapters.includes(questionChapter);
-          });
-
-          console.log(`Loaded ${questions.length} questions, filtered to ${filteredQuestions.length} based on chapters:`, selectedChapters);
+          console.log(`Loaded ${questions.length} questions for ${selectedSubject}`);
 
           // Helper function to decode HTML entities
           const decodeHTML = (html) => {
@@ -179,7 +150,7 @@ export default function TestGenerator() {
 
           // Group questions by topic
           const grouped = {}
-          filteredQuestions.forEach(q => {
+          questions.forEach(q => {
             if (!grouped[q.topic]) {
               grouped[q.topic] = []
             }
@@ -231,7 +202,7 @@ export default function TestGenerator() {
     }
 
     loadQuestions()
-  }, [isAuthenticated, selectedSubject, selectedChapters])
+  }, [isAuthenticated, selectedSubject])
 
   // Load question history
   useEffect(() => {
@@ -374,21 +345,6 @@ export default function TestGenerator() {
     }
   }
 
-  const selectAllChapters = () => {
-    setSelectedChapters(chapters.map(ch => ch.name))
-  }
-
-  const deselectAllChapters = () => {
-    setSelectedChapters([])
-  }
-
-  const toggleChapter = (chapterName) => {
-    if (selectedChapters.includes(chapterName)) {
-      setSelectedChapters(selectedChapters.filter(ch => ch !== chapterName))
-    } else {
-      setSelectedChapters([...selectedChapters, chapterName])
-    }
-  }
 
   const selectQuestions = (topics, count, strategy) => {
     let questions = []
@@ -1142,39 +1098,12 @@ export default function TestGenerator() {
               </div>
             </div>
 
-            {chapters.length > 0 && (
-              <div className="topic-selector">
-                <h3>Select Chapters - {selectedSubject}</h3>
-                <div className="button-group">
-                  <button className="btn btn-secondary" onClick={selectAllChapters}>Select All</button>
-                  <button className="btn btn-secondary" onClick={deselectAllChapters}>Deselect All</button>
-                  <button className="btn btn-secondary" onClick={() => setSelectedSubject(null)}>Change Subject</button>
-                </div>
-                <div className="topic-grid">
-                  {chapters.map(chapter => (
-                    <div
-                      key={chapter.name}
-                      className="topic-item"
-                      onClick={() => toggleChapter(chapter.name)}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedChapters.includes(chapter.name)}
-                        onChange={() => toggleChapter(chapter.name)}
-                      />
-                      <label>{chapter.name}</label>
-                      <span className="topic-count">{chapter.count}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
             <div className="topic-selector">
-              <h3>Select Topics</h3>
+              <h3>Select Topics - {selectedSubject}</h3>
               <div className="button-group">
                 <button className="btn btn-secondary" onClick={selectAllTopics}>Select All</button>
                 <button className="btn btn-secondary" onClick={deselectAllTopics}>Deselect All</button>
+                <button className="btn btn-secondary" onClick={() => setSelectedSubject(null)}>Change Subject</button>
               </div>
               <div className="topic-grid">
                 {Object.keys(questionsDB).sort().map(topic => (
@@ -1198,6 +1127,9 @@ export default function TestGenerator() {
             <div className="button-group">
               <button className="btn" onClick={generateTest}>
                 Generate Test Paper
+              </button>
+              <button className="btn btn-secondary" onClick={() => setSelectedSubject(null)}>
+                Back to Subject Selection
               </button>
             </div>
           </>

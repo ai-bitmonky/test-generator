@@ -1,0 +1,242 @@
+[
+  {
+    "num": 1,
+    "snippet": "Question 1:Problem 61 (Modified):The figure shows capacitor 1 (C\u2081 = 8.00 \u03bcF), capacitor 2 (C\u2082 = 6.00 \u03bcF), and capacitor 3 (C\u2083 = 8.00 \u03bcF) connected to a 12.0 V battery with a switch S initially open.12V+\u2212PC\u2081=8\u03bcFC\u2083=8\u03bcFC\u2082=6\u03bcFSC\u2084=6\u03bcF(uncharged)Switch S is initially open, then closedInitial Configuration:With switch S open, capacitors C\u2081 and C\u2083 are in series, and this series combination is in parallel "
+  },
+  {
+    "num": 2,
+    "snippet": "Question 2:Problem 26 (Modified):Capacitor 3 in the circuit shown below is a variable capacitor (its capacitance C\u2083 can be varied). The figure shows the electric potential V\u2081 across capacitor 1 versus C\u2083.V+\u2212C\u2081C\u2082C\u2083C\u2083 (\u03bcF)V\u2081 (V)02468100C\u2083\u209b=12.0Asymptote: V\u2081\u219210VThe horizontal scale is set by C\u2083\u209b = 12.0 \u03bcF. Electric potential V\u2081 approaches an asymptote of 10 V as C\u2083 \u2192 \u221e.Circuit Configuration:C\u2081 is in "
+  },
+  {
+    "num": 3,
+    "snippet": "Question 3:A parallel-plate capacitor has plate area A = 10.5 cm\u00b2 and plate separation d = 7.12 mm. The region between the plates is filled with dielectrics in a specific configuration:Left half:Uniformly filled with dielectric \u03ba\u2081 = 21.0Right half:Divided into two equal parts:Top section: dielectric \u03ba\u2082 = 42.0Bottom section: dielectric \u03ba\u2083 = 58.0Top Plate (+)\u03ba\u2081 = 21.0(Left Half)Area = A/2 = 5.25 cm\u00b2"
+  },
+  {
+    "num": 4,
+    "snippet": "Question 4:A parallel-plate capacitor of plate area A = 10.5 cm\u00b2 and plate separation 2d = 7.12 mm is configured as follows: The left half is filled with dielectric \u03ba\u2081 = 21.0. The right half is divided into two regions - top with \u03ba\u2082 = 42.0 and bottom with \u03ba\u2083 = 58.0. Calculate the total capacitance.[Left half: uniform \u03ba\u2081; Right half: top quarter \u03ba\u2082, bottom quarter \u03ba\u2083]"
+  },
+  {
+    "num": 5,
+    "snippet": "Question 5:Capacitor 3 in a circuit is a variable capacitor (its capacitance C\u2083 can be varied). The circuit consists of three capacitors connected with a battery of voltage V. A graph shows the electric potential V\u2081 across capacitor 1 versus C\u2083. The horizontal scale is set by C\u2083s = 12.0 \u03bcF. Electric potential V\u2081 approaches an asymptote of 10 V as C\u2083 \u2192 \u221e. When C\u2083 = 6.0 \u03bcF, V\u2081 = 4.0 V. What are the "
+  },
+  {
+    "num": 6,
+    "snippet": "Question 6:Figure shows a 12.0 V battery and four uncharged capacitors of capacitances C\u2081 = 1.00 \u03bcF, C\u2082 = 2.00 \u03bcF, C\u2083 = 3.00 \u03bcF, and C\u2084 = 4.00 \u03bcF. The circuit has two switches S\u2081 and S\u2082.[Circuit: Battery connected to C\u2081 and C\u2083 in series through S\u2081, and C\u2082 and C\u2084 in series through S\u2082, with the two branches in parallel]If only switch S\u2081 is closed, what is the charge on each capacitor? If both switch"
+  },
+  {
+    "num": 7,
+    "snippet": "Question 7:Two isolated conducting spheres have radii R\u2081 = 0.500 m and R\u2082 = 1.00 m with initial charges q\u2081 = +2.00 \u03bcC and q\u2082 = +1.00 \u03bcC respectively. They are far apart initially. After connecting them with a thin conducting wire and reaching equilibrium, find: (a) the charge on sphere 1, and (b) the ratio of surface charge densities \u03c3\u2081/\u03c3\u2082.[Figure shows two spheres of different radii connected by "
+  },
+  {
+    "num": 8,
+    "snippet": "Question 8:Two charged particles (particle 1 with charge q\u2081 = +5.0 \u03bcC and particle 2 with charge q\u2082 = -3.0 \u03bcC) are fixed at separation d = 4.0 cm on the x-axis. Particle 3 can be moved along the x-axis. The electric potential energy U of the three-particle system varies with position x of particle 3 as shown in the graph, where the vertical scale is set by Us = 5.0 J. Determine the charge of parti"
+  },
+  {
+    "num": 9,
+    "snippet": "Question 9:[Figure shows: A semi-infinite rod lies along positive x-axis starting from origin. Point P is at perpendicular distance R from the origin on the y-axis. The rod extends from origin to +\u221e along x-axis.](Hint: Separately find the component of Epparallel to the rod and the component perpendicular to the rod.)"
+  },
+  {
+    "num": 10,
+    "snippet": "Question 10:In the figure shown, two charges q\u2081 = +4e and q\u2082 = -2e are fixed in place. A third charge Q = +16e is to be brought from infinity to point P along the dashed line. Point P is at distance d = 1.40 cm from q\u2081 and at distance 2.00d from q\u2082. Calculate the work required to bring charge Q from infinity to point P.Given:q\u2081 = +4e = +4(1.6 \u00d7 10\u207b\u00b9\u2079 C) = +6.4 \u00d7 10\u207b\u00b9\u2079 Cq\u2082 = -2e = -2(1.6 \u00d7 10\u207b\u00b9\u2079 C)"
+  },
+  {
+    "num": 11,
+    "snippet": "Question 11:A rectangular array of charged particles is fixed in place with distance a = 39.0 cm. The charges are: corner 1: -q\u2081, corner 2: +4q\u2082, corner 3: +2q\u2081, corner 4: +2q\u2081, corner 5: +4q\u2082, corner 6: -3q\u2081, where q\u2081 = 3.40 pC and q\u2082 = 6.00 pC. Find the net electric potential at the rectangle's center. (V = 0 at infinity)[Figure shows a rectangular array with 6 charged particles at specific posi"
+  },
+  {
+    "num": 12,
+    "snippet": "Question 12:An electron is released from rest on the axis of an electric dipole at distance 7.0d from the dipole center on the positive side, where the dipole has charge \u00b1e and separation d = 20 pm. Find the electron's speed when it reaches a point 5.0d from the dipole center.[Figure shows an electric dipole with +e and -e charges separated by distance d]"
+  },
+  {
+    "num": 13,
+    "snippet": "Question 13:\u2212Negative plate+Positive plateE (uniform)e\u207bElectronp\u207aProtond = 5.0 cmMeeting point(~27 \u03bcm from + plate)Figure 22-60: Two parallel copper plates separated by 5.0 cm with uniform electric field E between them. \n Electron (e\u207b) starts at negative plate, proton (p\u207a) starts at positive plate. \n Both are released simultaneously from rest. They meet very close to the positive plate.Neglect the"
+  },
+  {
+    "num": 14,
+    "snippet": "Question 14:Assume that a honeybee is a sphere of diameter 1.000 cm with a charge of +45.0 pC uniformly spread over its surface. Assume also that a spherical pollen grain of diameter 40.0 \u03bcm is electrically held on the surface of the bee because the bee's charge induces a charge of \u22121.00 pC on the near side of the grain and a charge of +1.00 pC on the far side.+Bee (sphere)diameter = 1.000 cmcharg"
+  },
+  {
+    "num": 15,
+    "snippet": "Question 15:A uniformly charged plastic disk of radius R = 64.0 cm with surface charge density \u03c3 = 7.73 fC/m\u00b2 has three quadrants removed, leaving only one quadrant. Find the electric potential at point P on the central axis of the original disk at distance D = 25.9 cm from the center. (Take V = 0 at infinity)[Figure shows a quarter disk with point P on the axis]"
+  },
+  {
+    "num": 16,
+    "snippet": "Question 16:In the figure shown, two charges q\u2081 = +4e and q\u2082 = -2e are fixed in place. A third charge Q = +16e is to be brought from infinity to point P along the dashed line. Point P is at distance d = 1.40 cm from q\u2081 at angle \u03b8\u2081 = 43\u00b0 and at distance 2.00d from q\u2082 at angle \u03b8\u2082 = 60\u00b0. Calculate the work required to bring charge Q from infinity to point P.[Figure shows two fixed charges and point P"
+  },
+  {
+    "num": 17,
+    "snippet": "Question 17:Two charged particles (particle 1 with charge q\u2081 = +5.0 \u03bcC and particle 2 with charge q\u2082 = -3.0 \u03bcC) are fixed at separation d = 4.0 cm on the x-axis. Particle 3 can be moved along the x-axis. The electric potential energy U of the three-particle system varies with position x of particle 3 as shown in the graph, where the vertical scale is set by Us = 5.0 J. Determine the charge of part"
+  },
+  {
+    "num": 18,
+    "snippet": "Question 18:Four particles form a square with side length a = 5.0 cm. The charges are q\u2081 = -q\u2082 = 100 nC and q\u2083 = -q\u2084 = 200 nC, arranged at the corners as shown with particles 1 and 2 on the left side, and particles 3 and 4 on the right side (1 and 3 at bottom, 2 and 4 at top). What are the (a) x and (b) y components of the net electrostatic force on particle 3?1234aa"
+  },
+  {
+    "num": 19,
+    "snippet": "Question 19:A nonconducting solid sphere has a uniform volume charge density \u03c1. Let r\u20d7 be the vector from the center of the sphere to a general point P within the sphere.(a) Show that the electric field at P is given by E\u20d7 = \u03c1r\u20d7/(3\u03b5\u2080)Note that the result is independent of the radius of the sphere.(b) A spherical cavity is hollowed out of the sphere as shown in the figure. Using superposition conce"
+  },
+  {
+    "num": 20,
+    "snippet": "Question 20:Figure shows a Carnot engine that works between temperatures T\u2081 = 400 K and T\u2082 = 150 K and drives a Carnot refrigerator that works between temperatures T\u2083 = 325 K and T\u2084 = 225 K.Carnot Engine Driving Carnot RefrigeratorHot ReservoirT\u2081 = 400 KCarnotEngine\u03b7 = 1 - T\u2082/T\u2081T\u2082 = 150 KWorkTransferWCarnotRefrigeratorK = T\u2083/(T\u2083-T\u2084)T\u2083 = 325 KCold ReservoirT\u2084 = 225 KQ\u2081Q\u2082Q\u2083Q\u2084Find: Q\u2083/Q\u2081 = ?(Both sys"
+  },
+  {
+    "num": 21,
+    "snippet": "Question 21:A 15 kg block is held in place via a pulley system. The person's upper arm is vertical; the forearm is at angle \u03b8 = 30\u00b0 with the horizontal. The forearm and hand together have a mass of 2.0 kg, with a center of mass at distance d\u2081 = 15 cm from the contact point of the forearm bone and the upper-arm bone (humerus).The triceps muscle pulls vertically upward on the forearm at distance d\u2082 "
+  },
+  {
+    "num": 22,
+    "snippet": "Question 22:Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m\u00b2, b = 0.30 GN/m\u00b2, and c = 0.80 GN/m\u00b2.Assume that the thread has an initial length of 0.80 cm, an initial cross-sectional area of 8.0 \u00d7 10\u207b\u00b9\u00b2 m\u00b2, and (during stretching) a constant volume.Strain (\u03b5)Stre"
+  },
+  {
+    "num": 23,
+    "snippet": "Question 23:A crate, in the form of a cube with edge lengths of 1.2 m, contains a piece of machinery. The center of mass of the crate and its contents is located 0.30 m above the crate's geometrical center. The crate rests on a ramp that makes an angle \u03b8 with the horizontal.As \u03b8 is increased from zero, an angle will be reached at which the crate will either tip over or start to slide down the ramp"
+  },
+  {
+    "num": 24,
+    "snippet": "Question 24:A crate, in the form of a cube with edge lengths of 1.2 m, contains a piece of machinery. The center of mass of the crate and its contents is located 0.30 m above the crate's geometrical center. The crate rests on a ramp that makes an angle \u03b8 with the horizontal.As \u03b8 is increased from zero, an angle will be reached at which the crate will either tip over or start to slide down the ramp"
+  },
+  {
+    "num": 25,
+    "snippet": "Question 25:A 15 kg block is held in place via a pulley system. The person's upper arm is vertical; the forearm is at angle \u03b8 = 30\u00b0 with the horizontal. The forearm and hand together have a mass of 2.0 kg, with a center of mass at distance d\u2081 = 15 cm from the contact point of the forearm bone and the upper-arm bone (humerus).The triceps muscle pulls vertically upward on the forearm at distance d\u2082 "
+  },
+  {
+    "num": 26,
+    "snippet": "Question 26:A 15 kg block is held in place via a pulley system. The person's upper arm is vertical; the forearm is at angle \u03b8 = 30\u00b0 with the horizontal. The forearm and hand together have a mass of 2.0 kg, with a center of mass at distance d\u2081 = 15 cm from the contact point of the forearm bone and the upper-arm bone (humerus).The triceps muscle pulls vertically upward on the forearm at distance d\u2082 "
+  },
+  {
+    "num": 27,
+    "snippet": "Question 27:Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m\u00b2, b = 0.30 GN/m\u00b2, and c = 0.80 GN/m\u00b2.Assume that the thread has an initial length of 0.80 cm, an initial cross-sectional area of 8.0 \u00d7 10\u207b\u00b9\u00b2 m\u00b2, and (during stretching) a constant volume.Strain (\u03b5)Stre"
+  },
+  {
+    "num": 28,
+    "snippet": "Question 28:Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m\u00b2, b = 0.30 GN/m\u00b2, and c = 0.80 GN/m\u00b2.Assume that the thread has an initial length of 0.80 cm, an initial cross-sectional area of 8.0 \u00d7 10\u207b\u00b9\u00b2 m\u00b2, and (during stretching) a constant volume.Strain (\u03b5)Stre"
+  },
+  {
+    "num": 29,
+    "snippet": "Question 29:A crate, in the form of a cube with edge lengths of 1.2 m, contains a piece of machinery. The center of mass of the crate and its contents is located 0.30 m above the crate's geometrical center. The crate rests on a ramp that makes an angle \u03b8 with the horizontal.As \u03b8 is increased from zero, an angle will be reached at which the crate will either tip over or start to slide down the ramp"
+  },
+  {
+    "num": 30,
+    "snippet": "Question 30:A vertical uniform beam of length L is hinged at its lower end. A horizontal force Fais applied to the beam at distance y from the lower end. The beam remains vertical because of a cable attached at the upper end, at angle \u03b8 with the horizontal.The graph shows the tension T in the cable as a function of the position of the applied force given as a fraction y/L of the beam length. The s"
+  },
+  {
+    "num": 31,
+    "snippet": "Question 31:Figure 22-52a shows a nonconducting rod with a uniformly distributed chargeQ. The rod forms a half-circle with radiusRand produces an electric field of magnitudeEarcat its center of curvatureP. If the arc is collapsed to a point at distanceRfromP(Fig. 22-52b), by what factor is the magnitude of the electric field atPmultiplied?PRPQ at R"
+  },
+  {
+    "num": 32,
+    "snippet": "Question 32:In Fig. 3-31, a cube of edge lengthasits with one corner at the origin of an xyz coordinate system. A body diagonal is a line that extends from one corner to another through the center. In unit-vector notation, what is the body diagonal that extends from the corner at coordinates (0, 0, 0) to the diagonally opposite corner?xyz(0,0,0)(a,a,a)aaa"
+  },
+  {
+    "num": 33,
+    "snippet": "Question 33:Figure 22-56. A \u201csemi-infinite\u201d nonconducting rod (that is, infinite in one direction only) has uniform linear charge density\u03bb. Show that the electric field at pointPmakes an angle of 45\u00b0 with the rod and that this result is independent of the distanceR. (Hint:Separately find the component ofEpparallel to the rod and the component perpendicular to the rod.)semi-infinite rodPR"
+  },
+  {
+    "num": 34,
+    "snippet": "Question 34:Figure 22-53 shows two concentric rings, of radiiRandR\u2032= 3.00R, that lie on the same plane. PointPlies on the central z axis, at distanceD= 2.00Rfrom the center of the rings. The smaller ring has uniformly distributed chargeQ. In terms ofQ, what is the uniformly distributed charge on the larger ring if the net electric field atPis zero?P (D=2R)RR\u2032=3R"
+  },
+  {
+    "num": 35,
+    "snippet": "Question 35:Figure 22-48. A thin nonconducting rod with a uniform distribution of positive chargeQis bent into a complete circle of radiusR. The central perpendicular axis through the ring is a z axis, with the origin at the center of the ring. What is the magnitude of the electric field due to the rod at (a)z= 0 and (b)z= \u221e? (c) In terms ofR, at what positive value ofzis that magnitude maximum? ("
+  },
+  {
+    "num": 36,
+    "snippet": "Question 36:Electric quadrupole.Figure 22-46 shows a generic electric quadrupole. It consists of two dipoles with dipole moments that are equal in magnitude but opposite in direction. Show that the value ofEon the axis of the quadrupole for a pointPa distancezfrom its center (assumez\u226bd) is given byE = 3Q / (4\u03c0 \u03b5\u2080 z\u2074),in whichQ (= 2 q d\u00b2)is known as the quadrupole moment of the charge distribution."
+  },
+  {
+    "num": 37,
+    "snippet": "Question 37:In Fig. 3-31, a cube of edge lengthasits with one corner at the origin of an xyz coordinate system. A body diagonal is a line that extends from one corner to another through the center. In unit-vector notation, what is the body diagonal that extends from the corner at coordinates (0, 0, 0) to the diagonally opposite corner at (a, a, a)?xyz(0,0,0)(a,a,a)aaaBody Diagonal"
+  },
+  {
+    "num": 38,
+    "snippet": "Question 38:Figure 22-53 shows two concentric rings, of radiiRandR'= 3.00R, that lie on the same plane. PointPlies on the central z axis, at distanceD= 2.00Rfrom the center of the rings. The smaller ring has uniformly distributed chargeQ. In terms ofQ, what is the uniformly distributed charge on the larger ring if the net electric field atPis zero?R' = 3R (charge Q')R (charge Q)z-axisOPD = 2RRR' ="
+  },
+  {
+    "num": 39,
+    "snippet": "Question 39:Figure 22-48. A thin nonconducting rod with a uniform distribution of positive chargeQis bent into a complete circle of radiusR. The central perpendicular axis through the ring is a z axis, with the origin at the center of the ring.(a)What is the magnitude of the electric field due to the rod atz= 0?(b)What is the magnitude atz= \u221e?(c)In terms ofR, at what positive value ofzis that magn"
+  },
+  {
+    "num": 40,
+    "snippet": "Question 40:Figure 22-52a shows a nonconducting rod with a uniformly distributed chargeQ. The rod forms a half-circle with radiusRand produces an electric field of magnitudeEarcat its center of curvatureP. If the arc is collapsed to a point at distanceRfromP(Fig. 22-52b), by what factor is the magnitude of the electric field atPmultiplied?Figure 22-52aHalf-ring with charge Q+Q uniformly distribute"
+  },
+  {
+    "num": 41,
+    "snippet": "Question 41:Electric quadrupole.Figure 22-46 shows a generic electric quadrupole. It consists of two dipoles with dipole moments that are equal in magnitude but opposite in direction. Show that the value ofEon the axis of the quadrupole for a pointPa distancezfrom its center (assumez\u226bd) is given byE = 3Q / (4\u03c0 \u03b5\u2080 z\u2074),in whichQ (= 2 q d\u00b2)is known as the quadrupole moment of the charge distribution."
+  },
+  {
+    "num": 42,
+    "snippet": "Question 42:A ball is to be shot from level ground toward a wall at distancex. Theycomponentvyof the ball's velocity just as it would reach the wall varies with distancexas shown in the graph. The scaling is set byvys= 5.0 m/s andxs= 20 m. What is the launch angle?x (m)vy(m/s)+vys0-vys0xs2xs(0, vys)(xs, 0)(2xs, -vys)Graph shows:vyvaries linearly with x, passing through (0, 5.0 m/s), (20 m, 0), and"
+  },
+  {
+    "num": 43,
+    "snippet": "Question 43:A ball is to be shot from level ground toward a wall at distance x. The y component vyof the ball's velocity just as it would reach the wall varies with distance x as shown in the graph. The scaling is set by vys= 5.0 m/s and xs= 20 m. What is the launch angle?x (m)vy(m/s)vys-vysxs"
+  },
+  {
+    "num": 44,
+    "snippet": "Question 44:Figure 22-56. A \"semi-infinite\" nonconducting rod (that is, infinite in one direction only) has uniform linear charge density\u03bb. Show that the electric field at pointPmakes an angle of 45\u00b0 with the rod and that this result is independent of the distanceR. (Hint:Separately find the component ofEPparallel to the rod and the component perpendicular to the rod.)\u2192 extends to \u221eSemi-infinite r"
+  },
+  {
+    "num": 45,
+    "snippet": "Question 45:Figure 13-46a shows a particle A that can be moved along a y axis from an infinite distance to the origin. That origin lies at the midpoint between particles B and C, which have identical masses, and the y axis is a perpendicular bisector between them. Distance D is 0.3057 m. Figure 13-46b shows the potential energy U of the three-particle system as a function of the position of partic"
+  },
+  {
+    "num": 46,
+    "snippet": "Question 46:Three spheres in Fig. 13-45, with masses mA= 80 g, mB= 10 g, and mC= 20 g, have their centers on a common line, with L = 12 cm and d = 4.0 cm. You move sphere B along the line until its center-to-center separation from C is d = 4.0 cm. How much work is done on sphere B (a) by you and (b) by the net gravitational force on B due to spheres A and C?"
+  },
+  {
+    "num": 47,
+    "snippet": "Question 47:Figure 13-38 shows a spherical hollow inside a lead sphere of radius R = 4.00 cm; the surface of the hollow passes through the center of the sphere and \"touches\" the right side of the sphere. The mass of the sphere before hollowing was M = 2.95 kg. With what gravitational force does the hollowed-out lead sphere attract a small sphere of mass m = 0.431 kg that lies at a distance d = 9.0"
+  },
+  {
+    "num": 48,
+    "snippet": "Question 48:In the figure below, a non-uniform cylindrical object of mass M and radius R rolls smoothly from rest down a ramp and onto a horizontal section. From there it rolls off the ramp and onto the floor, landing a horizontal distance d = 0.506 m from the end of the ramp.Figure: Non-uniform cylindrical object rolling down from height H, leaving ramp at height h, landing at distance dThe initi"
+  },
+  {
+    "num": 49,
+    "snippet": "Question 49:A bowler throws a bowling ball of radius R = 11 cm along a lane. The ball (shown in figure below) slides on the lane with initial speed vcom,0= 8.5 m/s and initial angular speed \u03c9\u2080 = 0. The coefficient of kinetic friction between the ball and the lane is \u03bck= 0.21.Figure: Bowling ball initially sliding (\u03c9=0) then transitioning to smooth rolling (v=\u03c9R)The kinetic frictional force fkactin"
+  },
+  {
+    "num": 50,
+    "snippet": "Question 50:The wheel in the figure has eight equally spaced spokes and a radius of 30 cm. It is mounted on a fixed axle and is spinning at 2.5 rev/s. You want to shoot a 20-cm-long arrow parallel to this axle and through the wheel without hitting any of the spokes. Assume that the arrow and the spokes are very thin.What is the minimum speed the arrow must have?\u26a0\ufe0f FIGURE MISSING: This problem refe"
+  },
+  {
+    "num": 51,
+    "snippet": "Question 51:The figure shows a rigid assembly of a thin hoop (of mass m and radius R = 0.150 m) and a thin radial rod (of mass m and length L = 2.00R). The assembly is upright, but if we give it a slight nudge, it will rotate around a horizontal axis in the plane of the rod and hoop, through the lower end of the rod.Assuming that the energy given to the assembly in such a nudge is negligible, what"
+  },
+  {
+    "num": 52,
+    "snippet": "Question 52:In a judo foot-sweep move, you sweep your opponent's left foot out from under him while pulling on his gi (uniform) toward that side. As a result, your opponent rotates around his right foot and onto the mat. The figure shows a simplified diagram of your opponent as you face him, with his left foot swept out. The rotational axis is through point O (his right foot). The gravitational fo"
+  },
+  {
+    "num": 53,
+    "snippet": "Question 53:A disk, with a radius of 0.25 m, is to be rotated like a merry-go-round through 800 rad, starting from rest, gaining angular speed at the constant rate \u03b1\u2081 through the first 400 rad and then losing angular speed at the constant rate \u2212\u03b1\u2081 until it is again at rest. The magnitude of the centripetal acceleration of any portion of the disk is not to exceed 400 m/s\u00b2.\ud83c\udfaeInteractive:Click \"Start "
+  },
+  {
+    "num": 54,
+    "snippet": "Question 54:A solid brass ball of mass 0.280 g will roll smoothly along a loop-the-loop track when released from rest along the straight section. The circular loop has radius R = 14.0 cm, and the ball has radius r \u226a R.TopPoint QReleasehRFigure: Ball rolling down a ramp into a vertical circular loop(a)What is the minimum release height h if the ball is on the verge of leaving the track when it reac"
+  },
+  {
+    "num": 55,
+    "snippet": "Question 55:In the system shown above, string 1 has a linear density of 3.00 g/m, and string 2 has a linear density of 5.00 g/m. They are under tension due to the hanging block of mass M = 500 g.Part (a):What is the wave speed on string 1?Part (b):What is the wave speed on string 2?Part (c):If the block is divided into two separate blocks (with M\u2081 + M\u2082 = M) such that String 1 supports mass M\u2081 and "
+  },
+  {
+    "num": 56,
+    "snippet": "Question 56:In the figure, string 1 has a linear density of 3.00 g/m, and string 2 has a linear density of 5.00 g/m. They are under tension due to the hanging block of mass M = 500 g. When a string loops halfway around a pulley, it pulls on the pulley with a net force that is twice the tension in the string.Setup (a):Both strings connected to single hanging mass M via a pulley system (knot configu"
+  },
+  {
+    "num": 57,
+    "snippet": "Question 57:In the figure, string 1 has a linear density of 3.00 g/m, and string 2 has a linear density of 5.00 g/m. They are under tension due to the hanging block of mass M = 500 g. When a string loops halfway around a pulley, it pulls on the pulley with a net force that is twice the tension in the string.Part (a):What is the wave speed on string 1?Part (b):What is the wave speed on string 2?Par"
+  },
+  {
+    "num": 58,
+    "snippet": "Question 58:Body Armor Physics:When a high-speed projectile such as a bullet or bomb fragment strikes modern body armor, the fabric of the armor stops the projectile and prevents penetration by quickly spreading the projectile's energy over a large area.This spreading is done by longitudinal and transverse pulses that move radially from the impact point, where the projectile pushes a cone-shaped d"
+  },
+  {
+    "num": 59,
+    "snippet": "Question 1:Particle 1 of charge +q and particle 2 of charge +4.00q are held at separation L = 9.00 cm on an x axis. If particle 3 of charge q\u2083 is to be located such that the three particles remain in place when released, what must be (a) the x coordinate, (b) the y coordinate of particle 3, and (c) the ratio q\u2083/q?x+qParticle 1x = 0+4qParticle 2x = LL = 9.00 cmq\u2083Particle 3(x=?, y=?)Where should q\u2083 "
+  },
+  {
+    "num": 60,
+    "snippet": "Question 2:A thin uniform rod of length 0.600 m and mass M is rotating horizontally at 80.0 rad/s counterclockwise about an axis through its center. A particle of mass M/3.00 and traveling horizontally at speed 40.0 m/s hits the rod and sticks. The particle's path is perpendicular to the rod at the instant of the hit, at a distance d from the rod's center.(a) At what value of d are rod and particl"
+  }
+]

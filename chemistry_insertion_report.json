@@ -1,0 +1,344 @@
+{
+  "totalParsed": 85,
+  "results": {
+    "inserted": 0,
+    "updated": 0,
+    "failed": 83,
+    "missingAnswer": 2,
+    "missingOptions": 0,
+    "errors": [
+      {
+        "id": "Chem_c5ec938d_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_c5ec938d_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_c5ec938d_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_c5ec938d_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_c5ec938d_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_c5ec938d_Q6",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_c5ec938d_Q7",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_2a3fa75c_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_2a3fa75c_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_2a3fa75c_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_2a3fa75c_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_2a3fa75c_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_2a3fa75c_Q6",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d764dfd7_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d764dfd7_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d764dfd7_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d764dfd7_Q6",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d764dfd7_Q7",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d764dfd7_Q8",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q6",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q7",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q8",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q9",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q10",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q11",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_7697a7a1_Q12",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_764b3275_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_764b3275_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_764b3275_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_764b3275_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_764b3275_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_bb078d32_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_bb078d32_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_bb078d32_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_bb078d32_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_bb078d32_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q6",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q7",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q8",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_56d73e3d_Q9",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_69e6bdc2_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_69e6bdc2_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_69e6bdc2_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_69e6bdc2_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_69e6bdc2_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_69e6bdc2_Q6",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_69e6bdc2_Q7",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_4f5d917c_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_4f5d917c_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_4f5d917c_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_4f5d917c_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_4f5d917c_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_71b60941_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_71b60941_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_71b60941_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_71b60941_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_71b60941_Q7",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_71b60941_Q8",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_71b60941_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_71b60941_Q6",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_0e6bd7bb_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_0e6bd7bb_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_0e6bd7bb_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_0e6bd7bb_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_0e6bd7bb_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_0e6bd7bb_Q6",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_0e6bd7bb_Q7",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_0e6bd7bb_Q8",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d3b9b7ab_Q1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d3b9b7ab_Q2",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d3b9b7ab_Q3",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d3b9b7ab_Q4",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Chem_d3b9b7ab_Q5",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      }
+    ]
+  }
+}

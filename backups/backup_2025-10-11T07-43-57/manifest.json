@@ -1,0 +1,28 @@
+{
+  "backup_date": "2025-10-11T07:43:59.848Z",
+  "backup_timestamp": "2025-10-11T07-43-57",
+  "supabase_url": "https://qcbggagdtsmgllddfgax.supabase.co",
+  "statistics": {
+    "questions": 142,
+    "questionStats": 8,
+    "tests": 0,
+    "questionHistory": false
+  },
+  "files": [
+    "questions.json",
+    "question_stats.json",
+    "tests.json",
+    "question_history.json",
+    "manifest.json"
+  ],
+  "schema_files": [
+    "../supabase_schema.sql",
+    "../supabase_question_history_schema.sql",
+    "../fix_tests_rls.sql"
+  ],
+  "notes": [
+    "This backup contains all questions, tests, and user interaction history",
+    "To restore: Run schema files first, then use restore_database.js",
+    "Questions can be restored using migrate_questions.js with questions.json"
+  ]
+}

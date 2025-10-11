@@ -1,0 +1,3209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 Excluded Questions - Missing Correct Answers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-left: 6px solid #e17055;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .summary h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .summary ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .summary li {
+            padding: 10px 0;
+            color: #2d3748;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+
+        .summary li strong {
+            color: #d63031;
+        }
+
+        .subject-section {
+            margin-bottom: 50px;
+        }
+
+        .subject-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .subject-header h2 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .subject-header p {
+            margin-top: 5px;
+            opacity: 0.95;
+            font-size: 1.1em;
+        }
+
+        .question-card {
+            background: white;
+            border: 3px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .question-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 12px 28px rgba(102, 126, 234, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .question-number {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .question-id {
+            font-size: 0.9em;
+            color: #718096;
+            font-family: 'Courier New', monospace;
+            background: #f7fafc;
+            padding: 5px 10px;
+            border-radius: 6px;
+        }
+
+        .badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 6px 18px;
+            border-radius: 25px;
+            font-size: 0.85em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.easy { background: #c6f6d5; color: #22543d; }
+        .badge.medium { background: #feebc8; color: #7c2d12; }
+        .badge.hard { background: #fed7d7; color: #742a2a; }
+        .badge.missing {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+        }
+
+        .metadata-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 10px;
+        }
+
+        .metadata-item {
+            color: #4a5568;
+            font-size: 0.95em;
+        }
+
+        .metadata-item strong {
+            color: #2d3748;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .question-text {
+            color: #2d3748;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .options-title {
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .option {
+            padding: 15px 18px;
+            margin: 10px 0;
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            color: #2d3748;
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+            transform: translateX(5px);
+        }
+
+        .option-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 12px;
+            font-size: 1.05em;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 50%);
+            border: 3px solid #fc8181;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #742a2a;
+            box-shadow: 0 4px 12px rgba(252, 129, 129, 0.2);
+        }
+
+        .warning-box strong {
+            color: #c53030;
+            font-size: 1.05em;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #e6fffa;
+            color: #234e52;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            border: 1px solid #81e6d9;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .question-card {
+                page-break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .metadata-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 50 Excluded Questions Report</h1>
+        <p class="subtitle">Questions Skipped During Migration - Missing Correct Answers</p>
+
+        <div class="summary">
+            <h2>⚠️ Summary</h2>
+            <ul>
+                <li><strong>Total Excluded:</strong> 50 questions</li>
+                <li><strong>Mathematics:</strong> 38 questions excluded</li>
+                <li><strong>Physics:</strong> 12 questions excluded</li>
+                <li><strong>Reason:</strong> Missing or null <code>correct_answer</code> field in extracted data</li>
+                <li><strong>Status:</strong> These questions need manual review to determine correct answers</li>
+                <li><strong>Action:</strong> Can be manually added to database once correct answers are identified</li>
+            </ul>
+        </div>
+
+        <div class="subject-section">
+            <div class="subject-header">
+                <h2>📐 Mathematics Questions</h2>
+                <p>38 questions excluded during migration</p>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #1</div>
+                        <div class="question-id">ID: Algebra_130</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Algebra
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Matrices
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Matrix Operations
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">MATRICES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Consider the system of equationsx + y + z = 12x + 2y + 2z = 23x + 3y + 3z = kHere A = ⎡1 1 1⎤⎢2 2 2⎥⎣3 3 3⎦, 
+            B = ⎡1⎤⎢2⎥⎣k⎦, 
+            and adj A = ⎡0 0 0⎤⎢0 0 0⎥⎣0 0 0⎦Determine when the system has:(1) infinite number of solutions(2) no solution
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> k = 3 for infinite solutions; k ≠ 3 for no solution
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> k ≠ 3 for infinite solutions; k = 3 for no solution
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> k = 0 for infinite solutions; k ≠ 0 for no solution
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> Always has infinite solutions
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #2</div>
+                        <div class="question-id">ID: Algebra_131</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Algebra
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Matrices
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Matrix Operations
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">MATRICES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    For 1 ≤ i, j ≤ 3, letaij= ∫-π/2π/2cos(ix)cos(jx)dxand let A = (aij)3×3. Then
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> A is a singular matrix
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> AX = B has a unique solution for every 3×3 matrix B
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> A is a skew-symmetric matrix
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> A² = I
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #3</div>
+                        <div class="question-id">ID: Algebra_133</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Algebra
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Matrices
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Matrix Operations
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">MATRICES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Let an= 3n+ 5n, n ∈ ℕ, and letA = ⎡anan+1an+2⎤⎢an+1an+2an+3⎥⎣an+2an+3an+4⎦Then
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 0 is a root of the equation det(A - xI) = 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> det(A) = anan+2an+4
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> det(A) < 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> det(A) = an+ an+2+ an+4
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #4</div>
+                        <div class="question-id">ID: Algebra_141</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Algebra
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Matrices
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Matrix Operations
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">MATRICES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Let a, b and c be three real numbers satisfying[a b c]⎡1  9  7⎤⎢8  2  7⎥ = [0 0 0]⎣7  3  7⎦If the point P(a, b, c) lies on the plane 2x + y + z = 1, then the value of 7a + b + c is
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 12
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 7
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 6
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #5</div>
+                        <div class="question-id">ID: Coordinate_Geometry_192</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Coordinate Geometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Circles
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Equation of Circle
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CIRCLES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    The equation of the circle passing through the points (1, 0) and (0, 1) and having the smallest radius is
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> x² +y² − 2x− 2y+ 1 = 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> x² +y² −x−y= 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> x² +y² + 2x+ 2y− 7 = 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> x² +y² +x+y− 2 = 0
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #6</div>
+                        <div class="question-id">ID: Coordinate_Geometry_193</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Coordinate Geometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Circles
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Equation of Circle
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CIRCLES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    A circle passing through (1, −2) and touching the axis ofxat (3, 0) also passes through the point
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> (2, −5)
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> (5, −2)
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> (−2, 5)
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> (−5, 2)
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #7</div>
+                        <div class="question-id">ID: Coordinate_Geometry_195</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Coordinate Geometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Circles
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Equation of Circle
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CIRCLES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    If a circleCpassing through (4, 0) touches the circlex² +y² + 4x− 6y− 12 = 0 externally at a point (1, −1), then the radius of the circleCis:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 5
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 2√5
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 4
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> √57
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #8</div>
+                        <div class="question-id">ID: Coordinate_Geometry_196</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Coordinate Geometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Circles
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Equation of Circle
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CIRCLES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    If two vertices of an equilateral triangle areA(−a, 0) andB(a, 0),a> 0, and the third vertexClies abovex-axis, then the equation of the circumcircle of ΔABCis:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 3x² + 3y² − 2√3ay= 3a²
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 3x² + 3y² − 2ay= 3a²
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> x² +y² − 2ay=a²
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> x² +y² − √3ay=a²
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #9</div>
+                        <div class="question-id">ID: Coordinate_Geometry_197</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Coordinate Geometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Circles
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Equation of Circle
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CIRCLES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Statement-1:The only circle having radius √10 and a diameter along line 2x+y= 5 isx² +y² − 6x+ 2y= 0.Statement-2:2x+y= 5 is a normal to the circlex² +y² − 6x+ 2y= 0
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> Statement-1 is false, Statement-2 is true.
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> Statement-1 is true, Statement-2 is true, Statement-2 is a correct explanation for Statement-1.
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> Statement-1 is true, Statement-2 is false
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> Statement-1 is true, Statement-2 is true. Statement-2 is not a correct explanation for Statement-1.
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #10</div>
+                        <div class="question-id">ID: Coordinate_Geometry_198</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Coordinate Geometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Circles
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Equation of Circle
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CIRCLES</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    If a circle of unit radius is divided into two parts by an arc of another circle subtending an angle 60° on the circumference of the first circle, then the radius of the arc is:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> √3
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 1/2
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 1
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> √2
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #11</div>
+                        <div class="question-id">ID: Calculus_199</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Find the differential equation corresponding to the equationy = aex+ be2x+ ce-3xwherea, b, care arbitrary constants.
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #12</div>
+                        <div class="question-id">ID: Calculus_200</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Letf(x)be a differentiable function on the interval (0, ∞) such thatf(1) = 1, andlimt→x[t²f(x) - x²f(t)]/(t - x) = 1for eachx > 0. Thenf(x)is:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> (1/3)x² + (2/3)x
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> -(1/3)x² + (4/3)x
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> -(1/x) + 2x
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 1/x
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #13</div>
+                        <div class="question-id">ID: Calculus_201</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Supposey = y(x)satisfies the differential equationydx + y²dy = xdy. Ify(x) > 0for allx ∈ ℝandy(1) = 1, theny(-3)equals:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 1
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 2
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 3
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 5
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #14</div>
+                        <div class="question-id">ID: Calculus_203</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Solution of the differential equation2y sin x (dy/dx) = 2 sin x cos x - y² cos xsatisfyingy(π/2) = 1is given by:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> y² = sin x
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> y = sin² x
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> y² = cos x + 1
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> y² sin x = 4 cos² x
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #15</div>
+                        <div class="question-id">ID: Calculus_204</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Solution of the differential equationxdy - y dx = √(x² + y²) dxandy(1) = 0is:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> y = x log |sin x|
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> y = x sin(log |x|)
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> y² = x(x - 1)²
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> y = 2x²(x - 1)
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #16</div>
+                        <div class="question-id">ID: Calculus_206</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    The populationp(t)at timetof a certain mouse species follows the differential equationdp(t)/dt = 0.5p(t) - 450. Ifp(0) = 850, then the time at which the population becomes zero is:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> log 9
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> (1/2) log 18
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> log 18
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 2 log 18
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #17</div>
+                        <div class="question-id">ID: Calculus_208</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    The curvey = f(x)(wheref(x) ≥ 0, f(0) = 0) bounding a curvilinear trapezoid with the base [0, x], whose area is proportional to the(n + 1)th power off(x)andf(1) = 1, is given by:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> x = yn
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> y = xn
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> y + 1 = (x + 1)n
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> x = yn+ 1
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #18</div>
+                        <div class="question-id">ID: Calculus_211</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    A solution of the differential equationdy/dx = 1/(xy[x²sin y² + 1])is (whereCis an arbitrary constant):
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> x²(cos y² - sin y² - 2Ce-y²) = 2
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> y²(cos x² - (sin y² - 2Ce-y²) = 2
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> x²(cos y² - sin y² - e-y²) = 4
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> none of these
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #19</div>
+                        <div class="question-id">ID: Calculus_213</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Differential Equations
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> First and Second Order DE
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">DIFFERENTIAL_EQUATIONS</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    A solution of the equationy = 2x(dy/dx) + x²(dy/dx)⁴is:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> y = 2c1/2x1/4+ c
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> y = 2cx² + c²
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> y = 2c(x + 1)
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> y = 2√(cx) + c²
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #20</div>
+                        <div class="question-id">ID: Algebra_226</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Algebra
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Inverse Trigonometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Inverse Trig Functions
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">INVERSE_TRIGONOMETRY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Statement-1:tan-1{x + √(1+x2)} = π/2 - (1/2)cot-1xStatement-2:sin2[2tan-1√((1+x)/(1-x))] = 1-x2
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #21</div>
+                        <div class="question-id">ID: Algebra_227</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Algebra
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Inverse Trigonometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Inverse Trig Functions
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">INVERSE_TRIGONOMETRY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Statement-1:tan-1(2/5) + tan-1(3/7) = π/4Statement-2:tan-1(x/y) + tan-1[(y-x)/(y+x)] = π/4 (x, y > 0)
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #22</div>
+                        <div class="question-id">ID: Algebra_229</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Algebra
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Inverse Trigonometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Inverse Trig Functions
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">INVERSE_TRIGONOMETRY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Statement-1:If α, β are the roots of 18(tan-1x)2- 9π tan-1x + π2= 0, then α + β = 4/√3Statement-2:sec2(cos-1(1/4)) + cosec2(sin-1(1/5)) = 41
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #23</div>
+                        <div class="question-id">ID: Algebra_230</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Algebra
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Inverse Trigonometry
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Inverse Trig Functions
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">INVERSE_TRIGONOMETRY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Statement-1:sin-1tan(tan-1x + tan-1(1-x)) = π/2 has no non-zero integral solutionStatement-2:The number of positive integral solutions of tan-1x + cos-1(y/√(1+y2)) = sin-1(3/√10) is 2
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #24</div>
+                        <div class="question-id">ID: Mathematics_280</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mathematics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> General
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Mixed Topics
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">GENERAL</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Let $f : (0, \infty) \to \mathbb{R}$ and let $F(x) = \int_0^x f(t) dt$. If $F(x^2) = x^2(1+x)$, then $f(4)$ equals
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> $5/4$ ✓
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> $7$
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> $4$
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> $2$
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #25</div>
+                        <div class="question-id">ID: Mathematics_289</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mathematics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> General
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Mixed Topics
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">GENERAL</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    The equation of a curve is given by $y = f(x)$, where $f'(x)$ is a continuous function. The tangent at points $(1, f(1))$, $(2, f(2))$ and $(3, f(3))$ make angles $\pi/6$, $\pi/3$ and $\pi/4$ respectively with positive $x$-axis. Then $\int_2^3 f'(x)f''(x) dx + \int_1^3 f''(x) dx$ is:
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 1
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> $-1/\sqrt{3}$
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> $1/\sqrt{3}$ ✓
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 0
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #26</div>
+                        <div class="question-id">ID: Calculus_292</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Letf: (−1, 1) →Rbe a differentiable function withf(0) = −1 andf′(0) = 1. Letg(x) = [f(2f(x) + 2)]². Theng′(0) =
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> −2
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 4
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> −4
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #27</div>
+                        <div class="question-id">ID: Calculus_293</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Letybe an implicit function ofxdefined byx2x− 2xxcot y − 1 = 0. Theny′(1) equals
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> log 2
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> −log 2
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> −1
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 1
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #28</div>
+                        <div class="question-id">ID: Calculus_296</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Suppose thaty= tan−1(cotx) + cot−1(tanx), π/2 <x< πStatement-1:d²y/dx²= 0Statement-2:yis a linear function ofx.
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #29</div>
+                        <div class="question-id">ID: Calculus_297</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Letfis a twice differentiable function satisfyingf′(x) =f(1 −x) forx∈R.f(π/2) = 1Statement-1:f(x)= −(cos1/(1 + sin1)) cosx+ sinxStatement-2:fsatisfiesf″(x) −f(x) = 0.
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #30</div>
+                        <div class="question-id">ID: Calculus_298</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    For a real numbery, let [y] denote the greatest integer less than or equal toy. Thenf(x)= tan(π[x− π])/(1 + [x]²)is
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> discontinuous at somex
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> continuous at allx, but the derivativef′(x) does not exist for somex
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> f′(x) exists for allxbut the second derivativef″(x) does not exist
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> f′(x) exists for allx.
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #31</div>
+                        <div class="question-id">ID: Calculus_300</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Letf:R→R. Thenfis differentiable onRif
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> |f(x) −f(y)| ≤k(x−y) for allx,y∈Rand somek> 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> |f(x) −f(y)| ≤k|x−y|1/2for allx,y∈Rand somek> 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> |f(x) −f(y)| ≤k(x−y)² for allx,y∈Rand somek> 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> f² is differentiable onR
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #32</div>
+                        <div class="question-id">ID: Calculus_301</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    f:R→Rbe such that |f(x) −f(y)| ≤ |x−y|³ for allx,y∈Rthen the value off′(x) is
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> f(x)
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> constant possibly different from zero
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> (f(x))²
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 0
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #33</div>
+                        <div class="question-id">ID: Calculus_302</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    A value ofksuch thatf(x) = xkis (n− 1) times differentiable at 0 but notn-times differentiable at 0 is
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> (2n− 3)/3
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> (3n− 2)/3
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> (4n− 3)/3
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> none of these
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #34</div>
+                        <div class="question-id">ID: Calculus_303</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    The domain of the derivative of the functionf(x)= ⎧⎨ tan−1xif |x| ≤ 1⎩ (1/2)(|x| − 1)   if |x| > 1is
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> R~ {0}
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> R~ {1}
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> R~ {−1}
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> R~ {−1, 1}
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #35</div>
+                        <div class="question-id">ID: Calculus_305</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Suppose thatfis differentiable function with the propertyf(x+y) =f(x) +f(y) +x²y²and limx→0[f(x)/x] = 100 thenf′(x) is equal to
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 100
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 20
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 30
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> none of these
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #36</div>
+                        <div class="question-id">ID: Calculus_306</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Letf(a) =g(a) =kand theirnth derivativesfn(a),gn(a) exist and are not equal for somen. Further iflimx→a[f(a)g(x) −f(a)g(a) −f(x)g(a)]/[g(x) −f(x)] = 4then the value ofkis
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 2
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 1
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 0
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 4
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #37</div>
+                        <div class="question-id">ID: Calculus_308</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Iff(x)is differentiability function in the internal (0, ∞) such thatf(1) = 1 andlimt→x[t²f(x) − x²f(t)]/[t − x] = 1for eachx> 0, thenf(3/2) is equal to
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 23/18
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 13/6
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 25/9
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 31/8
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Math Question #38</div>
+                        <div class="question-id">ID: Calculus_309</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Calculus
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Continuity and Differentiability
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Differentiability
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">CONTINUITY_AND_DIFFERENTIABILITY</span><span class="tag">IIT_JEE</span><span class="tag">JEE_ADVANCED</span>
+                </div>
+
+                <div class="question-text">
+                    Letf: (−∞, ∞) → (−∞, ∞) be given byf(x) = x|x| + |x − 1| − |x − 2|² + |x − 3|³IfAdenotes the set of points wheref(·) is not differentiable, thenA=
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> {3}
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> {1}
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> {0}
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> {2}
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="subject-section">
+            <div class="subject-header">
+                <h2>🔬 Physics Questions</h2>
+                <p>12 questions excluded during migration</p>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #1</div>
+                        <div class="question-id">ID: Physics_2</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Physics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Electric Fields
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Electric Field and Potential
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">ELECTRIC_FIELDS</span><span class="tag">JEE_ADVANCED</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    zInner ringradius R, charge +QOuter ringradius R' = 3R, charge Q'OPD = 2RR3RFigure 22-53: Two concentric rings in the same plane. 
+ Inner ring has radius R with charge +Q, outer ring has radius R' = 3R with unknown charge Q'. 
+ Point P is on the z-axis at distance D = 2R from the center.−Negative plate+Positive plateE (uniform)e⁻Electronp⁺Protond = 5.0 cmMeeting point(~27 μm from + plate)Figure 22-60: Two parallel copper plates separated by 5.0 cm with uniform electric field E between them. 
+ Electron (e⁻) starts at negative plate, proton (p⁺) starts at positive plate. 
+ Both are released simultaneously from rest.+Bee (sphere)diameter = 1.000 cmcharge = +45.0 pC−+Pollen graind = 40 μm−1.00 pC (near)+1.00 pC (far)F_bee−Stigma−45.0 pC+−Pollen(1.000 mm fromstigma tip)F_stigmaSystem diagram: (Left) Honeybee with pollen grain on surface showing induced charges. 
+ (Right) Pollen grain brought near flower stigma at 1.000 mm distance.xSemi-infinite rod (charge λ per unit length)yOPRdxxrE_xE_yE45°Figure 22-56: Semi-infinite charged rod along positive x-axis with uniform charge density λ. 
+ Point P is at perpendicular distance R from origin on y-axis. 
+ The electric field E at P makes 45° with the rod, independent of R.(Hint: Separately find the component of Epparallel to the rod and the component perpendicular to the rod.)
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #2</div>
+                        <div class="question-id">ID: Physics_5</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Physics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Electric Fields
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Electric Field and Potential
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">ELECTRIC_FIELDS</span><span class="tag">JEE_ADVANCED</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    In Fig. 22-56, a "semi-infinite" nonconducting rod (that is, infinite in one direction only) has uniform linear charge density λ. Show that the electric field Epat point P makes an angle of 45° with the rod and that this result is independent of the distance R.xSemi-infinite rod (charge λ per unit length)yOPRdxxrE_xE_yE45°Figure 22-56: Semi-infinite charged rod along positive x-axis with uniform charge density λ. 
+ Point P is at perpendicular distance R from origin on y-axis. 
+ The electric field E at P makes 45° with the rod, independent of R.(Hint: Separately find the component of Epparallel to the rod and the component perpendicular to the rod.)
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #3</div>
+                        <div class="question-id">ID: Mechanics_42</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mechanics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Equilibrium and Elasticity
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Rigid Body Equilibrium
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">EQUILIBRIUM_AND_ELASTICITY</span><span class="tag">JEE_ADVANCED</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    A 55 kg rock climber is in a lie-back climb along a fissure, with hands pulling on one side of the fissure and feet pressed against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is a horizontal distance d = 0.40 m from the fissure. The coefficient of static friction between hands and rock is μ₁ = 0.40, and between boots and rock is μ₂ = 1.2.Assume the hands are at a vertical distance h above the feet. What is the least horizontal pull by the hands and push by the feet that will keep the climber stable?
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> F<sub>h</sub> = 275 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> F<sub>h</sub> = 412 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> F<sub>h</sub> = 688 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> F<sub>h</sub> = 550 N
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #4</div>
+                        <div class="question-id">ID: Mechanics_43</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mechanics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Equilibrium and Elasticity
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Rigid Body Equilibrium
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">EQUILIBRIUM_AND_ELASTICITY</span><span class="tag">JEE_ADVANCED</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    The driver of a car on a horizontal road makes an emergency stop by applying the brakes so that all four wheels lock and skid along the road. The coefficient of kinetic friction between tires and road is 0.40. The separation between the front and rear axles is L = 4.2 m, and the center of mass of the car is located at distance d = 1.8 m behind the front axle and distance h = 0.75 m above the road. The car weighs 11 kN.Although the car is not in translational equilibrium, it is in rotational equilibrium. Find the magnitude of the normal force on each front wheel (assuming two front wheels share the load equally).
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> N<sub>front</sub> = 3250 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> N<sub>front</sub> = 3040 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> N<sub>front</sub> = 2750 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> N<sub>front</sub> = 3500 N
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #5</div>
+                        <div class="question-id">ID: Mechanics_47</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mechanics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Equilibrium and Elasticity
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Rigid Body Equilibrium
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">EQUILIBRIUM_AND_ELASTICITY</span><span class="tag">JEE_ADVANCED</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    In the figure, a 55 kg rock climber is in a lie-back climb along a fissure, with hands pulling on one side of the fissure and feet pressed against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is a horizontal distance d = 0.40 m from the fissure. The coefficient of static friction between hands and rock is μ₁ = 0.40, and between boots and rock is μ₂ = 1.2.What is the least horizontal pull by the hands and push by the feet that will keep the climber stable?⚠️ FIGURE MISSING: This problem references a figure that was not included in the original document. The figure needs to be added manually.
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> F
+      <sub>
+       h
+      </sub>
+      = 275 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> F
+      <sub>
+       h
+      </sub>
+      = 412 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> F
+      <sub>
+       h
+      </sub>
+      = 688 N
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> F
+      <sub>
+       h
+      </sub>
+      = 550 N
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #6</div>
+                        <div class="question-id">ID: Mechanics_58</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mechanics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Fluid Mechanics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Fluid Statics and Dynamics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">FLUID_MECHANICS</span><span class="tag">JEE_ADVANCED</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    Work in Variable Radius Pipe:Water flows steadily from the left pipe section (radius r₁ = 2.00R), through the middle section (radius R), and into the right section (radius r₃ = 3.00R). The speed of the water in the middle section is 0.500 m/s. What is the net work done on 0.400 m³ of the water as it moves from the left section to the right section?
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> -195 J
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> +195 J
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> -97.5 J
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> +97.5 J
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #7</div>
+                        <div class="question-id">ID: Mechanics_93</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mechanics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Rotational Motion
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Rotation and Angular Momentum
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">ROTATIONAL_MOTION</span><span class="tag">JEE_ADVANCED</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    A rigid assembly consists of a thin hoop (mass m, radius R = 0.150 m) and a thin radial rod (mass m, length L = 2.00R). Initially upright, it rotates about a horizontal axis through the rod's lower end when nudged.What is the angular speed when it passes through the inverted orientation?
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> ω = 4.85 rad/s
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> ω = 5.33 rad/s
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> ω = 6.21 rad/s
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> ω = 4.42 rad/s
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #8</div>
+                        <div class="question-id">ID: Physics_150</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Physics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> General
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Mixed Topics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">GENERAL</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    For the following three vectors, what is 3C⃗·(2A⃗ × B⃗)?A⃗ = 2.00î + 3.00ĵ - 4.00k̂B⃗ = -3.00î + 4.00ĵ + 2.00k̂C⃗ = 7.00î - 8.00ĵ + 0.00k̂
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 504
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 168
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> -504
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> -168
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #9</div>
+                        <div class="question-id">ID: Physics_151</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Physics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> General
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Mixed Topics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">GENERAL</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    Displacementd⃗₁is in the yz plane 63.0° from the positive direction of the y axis, has a positive z component, and has a magnitude of 4.50 m. Displacementd⃗₂is in the xz plane 30.0° from the positive direction of the x axis, has a positive z component, and has magnitude 1.40 m. What is the angle betweend⃗₁andd⃗₂?xyzyz planexz planed⃗₁(4.50 m)63°d⃗₂(1.40 m)30°Oθ = ?
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> 82.4°
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> 97.6°
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> 75.3°
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> 104.7°
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #10</div>
+                        <div class="question-id">ID: Mechanics_173</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mechanics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Equilibrium and Elasticity
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Rigid Body Equilibrium
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">EQUILIBRIUM_AND_ELASTICITY</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    A rock climber of mass 55 kg is in a lie-back climb along a fissure. The climber's hands pull on one side of the fissure while the feet press against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is at a horizontal distance d = 0.40 m from the fissure.The coefficient of static friction between hands and rock is μ₁ = 0.40, and between boots and rock is μ₂ = 1.2.Left WallRight WallCOMw = 0.20 md = 0.40 mhHandsFeetN₁f₁N₂f₂mg = 550 NGiven Data:m = 55 kgw = 0.20 md = 0.40 mμ₁ = 0.40μ₂ = 1.2Figure: Rock climber in lie-back position in a fissure with all forces shownGiven:Mass of climber: m = 55 kgWidth of fissure: w = 0.20 mHorizontal distance of COM from fissure center: d = 0.40 mCoefficient of static friction (hands-rock): μ₁ = 0.40Coefficient of static friction (boots-rock): μ₂ = 1.2g = 10 m/s²Find:(a) What minimum horizontal pull by the hands and push by the feet will keep the climber stable?(b) For the horizontal pull and push of (a), what must be the vertical distance h between hands and feet if the climber is to be stable?
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> Part (a): Minimum horizontal pull by hands = 412.5 N; Part (b): Vertical distance h = 0.533 m
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> Part (a): Minimum horizontal pull by hands = 458.3 N; Part (b): Vertical distance h = 0.625 m
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> Part (a): Minimum horizontal pull by hands = 390.0 N; Part (b): Vertical distance h = 0.450 m
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> Part (a): Minimum horizontal pull by hands = 550.0 N; Part (b): Vertical distance h = 0.700 m
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #11</div>
+                        <div class="question-id">ID: Mechanics_177</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge medium">MEDIUM</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Mechanics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> Equilibrium and Elasticity
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Rigid Body Equilibrium
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">EQUILIBRIUM_AND_ELASTICITY</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    A rock climber of mass 55 kg is in a lie-back climb along a fissure. The climber's hands pull on one side of the fissure while the feet press against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is at a horizontal distance d = 0.40 m from the fissure.The coefficient of static friction between hands and rock is μ₁ = 0.40, and between boots and rock is μ₂ = 1.2.Left WallRight WallCOMHandsFeetw = 0.20 md = 0.40 mh = ?Given Data:m = 55 kgw = 0.20 md = 0.40 mμ₁ = 0.40 (hands)μ₂ = 1.2 (feet)g = 10 m/s²h = to be foundFigure: Rock climber in lie-back position showing the setup and given dimensionsGiven:Mass of climber: m = 55 kgWidth of fissure: w = 0.20 mHorizontal distance of COM from fissure center: d = 0.40 mCoefficient of static friction (hands-rock): μ₁ = 0.40Coefficient of static friction (boots-rock): μ₂ = 1.2g = 10 m/s²Find:(a) What minimum horizontal pull by the hands and push by the feet will keep the climber stable?(b) For the horizontal pull and push of (a), what must be the vertical distance h between hands and feet if the climber is to be stable?
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> Part (a): Minimum horizontal pull by hands = 412.5 N; Part (b): Vertical distance h = 0.533 m
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> Part (a): Minimum horizontal pull by hands = 458.3 N; Part (b): Vertical distance h = 0.625 m
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> Part (a): Minimum horizontal pull by hands = 390.0 N; Part (b): Vertical distance h = 0.450 m
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> Part (a): Minimum horizontal pull by hands = 550.0 N; Part (b): Vertical distance h = 0.700 m
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div>
+                        <div class="question-number">Physics Question #12</div>
+                        <div class="question-id">ID: Physics_204</div>
+                    </div>
+                    <div class="badges">
+                        <span class="badge hard">HARD</span>
+                        <span class="badge missing">⚠️ No Answer</span>
+                    </div>
+                </div>
+
+                <div class="metadata-info">
+                    <div class="metadata-item">
+                        <strong>📚 Chapter:</strong> Physics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📖 Topic:</strong> General
+                    </div>
+                    <div class="metadata-item">
+                        <strong>🔖 Subtopic:</strong> Mixed Topics
+                    </div>
+                    <div class="metadata-item">
+                        <strong>📋 Type:</strong> Multiple Choice Single Answer
+                    </div>
+                </div>
+
+                <div class="tags">
+<span class="tag">GENERAL</span><span class="tag">JEE_ADVANCED</span><span class="tag">IIT_JEE</span><span class="tag">NUMERICAL</span>
+                </div>
+
+                <div class="question-text">
+                    A skilled skier knows to jump upward before reaching a downward slope. Consider a jump where launch speed v₀ = 10 m/s at angle θ₀ = 11.3° above horizontal. The initial course is approximately flat, and the steeper track has a downward slope of 9.0°. When jumping at the edge of the steeper track (prejump at edge), how far below the launch level does the skier land, and what is the angle φ between the skier's path and the slope at landing?Flat section9.0° downward slopeLaunchLandingv₀ = 10 m/sθ₀=11.3°9.0°Δy ≈ 1.1 mvlandφ≈19°x ≈ 7.0 mxyDiagram:Skier launches at edge with trajectory landing on 9° downward slope
+                </div>
+
+                <div class="options">
+                    <div class="options-title">📝 Options:</div>
+
+                    <div class="option">
+                        <span class="option-label">(a)</span> Lands 0.5 m below, φ = 12°
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(b)</span> Lands 0.8 m below, φ = 18°
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(c)</span> Lands 1.2 m below, φ = 25°
+                    </div>
+
+                    <div class="option">
+                        <span class="option-label">(d)</span> Lands 0.9 m below, φ = 20° ← Original (slight error in vertical drop)
+                    </div>
+
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Manual Review Required:</strong> The correct answer is missing or null in the source data.
+                    Please review the original source material to determine the correct answer before adding this question to the database.
+                </div>
+            </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f7fafc; border-radius: 12px;">
+            <h3 style="color: #2d3748; margin-bottom: 15px;">📌 Next Steps</h3>
+            <p style="color: #4a5568; line-height: 1.8;">
+                1. Review each question against the original source HTML<br/>
+                2. Identify the correct answer for each question<br/>
+                3. Update the JSON files with correct answers<br/>
+                4. Re-run the migration scripts to add these questions to the database
+            </p>
+        </div>
+    </div>
+</body>
+</html>
