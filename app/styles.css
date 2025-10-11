@@ -1112,3 +1112,94 @@ sup, sub {
     font-size: 20px;
   }
 }
+
+/* Enhanced Metadata Styles */
+.metadata-section {
+  background: #f0f7ff;
+  border-left: 4px solid #667eea;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+}
+
+.metadata-section h5 {
+  color: #667eea;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+}
+
+.metadata-section p {
+  color: #333;
+  line-height: 1.6;
+}
+
+.solution-content {
+  margin: 20px 0;
+}
+
+.question-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.metadata-tag {
+  display: inline-block;
+  background: #e7e9fc;
+  color: #667eea;
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.tag {
+  display: inline-block;
+  background: #fff3e0;
+  color: #ff6f00;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  border: 1px solid #ffe0b2;
+}
+
+/* Chapter filter specific styling */
+.topic-selector h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Improved exam card styling */
+.exam-card h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Physics-specific styles */
+.metadata-section.strategy {
+  background: #fff3e0;
+  border-left-color: #ff6f00;
+}
+
+.metadata-section.insight {
+  background: #e8f5e9;
+  border-left-color: #4caf50;
+}
+
+.metadata-section.facts {
+  background: #f3e5f5;
+  border-left-color: #9c27b0;
+}

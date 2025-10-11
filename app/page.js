@@ -32,11 +32,14 @@ export default function TestGenerator() {
   // Exam selection state
   const [selectedExam, setSelectedExam] = useState(null) // 'IIT-JEE'
   const [selectedLevel, setSelectedLevel] = useState(null) // 'Advance'
-  const [selectedSubject, setSelectedSubject] = useState(null) // 'Maths'
+  const [selectedSubject, setSelectedSubject] = useState(null) // 'Mathematics' or 'Physics'
 
   // Test state
   const [questionsDB, setQuestionsDB] = useState({})
   const [questionsLoading, setQuestionsLoading] = useState(false)
+  const [subjects, setSubjects] = useState([])
+  const [chapters, setChapters] = useState([])
+  const [selectedChapters, setSelectedChapters] = useState([])
   const [excludedQuestions, setExcludedQuestions] = useState(new Set())
   const [selectedTopics, setSelectedTopics] = useState([])
   const [numQuestions, setNumQuestions] = useState(10)
@@ -98,15 +101,66 @@ export default function TestGenerator() {
     return () => subscription.unsubscribe()
   }, [])
 
+  // Load available subjects and chapters
+  useEffect(() => {
+    const loadMetadata = async () => {
+      if (isAuthenticated && token) {
+        try {
+          const response = await fetch(`/api/questions/metadata`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+          })
+          const data = await response.json()
+          if (data.success) {
+            setSubjects(data.subjects)
+          }
+        } catch (error) {
+          console.error('Error loading metadata:', error)
+        }
+      }
+    }
+
+    loadMetadata()
+  }, [isAuthenticated, token])
+
+  // Load chapters when subject is selected
+  useEffect(() => {
+    const loadChapters = async () => {
+      if (isAuthenticated && token && selectedSubject) {
+        try {
+          const response = await fetch(`/api/questions/metadata?subject=${encodeURIComponent(selectedSubject)}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+          })
+          const data = await response.json()
+          if (data.success) {
+            setChapters(data.chapters)
+            setSelectedChapters(data.chapters.map(ch => ch.name))
+          }
+        } catch (error) {
+          console.error('Error loading chapters:', error)
+        }
+      }
+    }
+
+    loadChapters()
+  }, [isAuthenticated, token, selectedSubject])
+
   // Load questions from Supabase database
   useEffect(() => {
     const loadQuestions = async () => {
-      if (isAuthenticated) {
+      if (isAuthenticated && selectedSubject && selectedChapters.length > 0) {
         setQuestionsLoading(true)
         try {
-          const { data: questions, error } = await supabase
+          let query = supabase
             .from('questions')
             .select('*')
+            .eq('subject', selectedSubject)
+
+          // Filter by selected chapters
+          if (selectedChapters.length > 0) {
+            query = query.in('chapter', selectedChapters)
+          }
+
+          const { data: questions, error } = await query
 
           if (error) {
             console.error('Error loading questions:', error)
@@ -114,18 +168,18 @@ export default function TestGenerator() {
             return
           }
 
+          // Helper function to decode HTML entities
+          const decodeHTML = (html) => {
+            const txt = document.createElement('textarea')
+            txt.innerHTML = html
+            return txt.value
+          }
+
           // Group questions by topic
           const grouped = {}
           questions.forEach(q => {
             if (!grouped[q.topic]) {
               grouped[q.topic] = []
-            }
-
-            // Helper function to decode HTML entities
-            const decodeHTML = (html) => {
-              const txt = document.createElement('textarea')
-              txt.innerHTML = html
-              return txt.value
             }
 
             // Parse options if string
@@ -144,14 +198,22 @@ export default function TestGenerator() {
             // Transform database format to match the expected format
             grouped[q.topic].push({
               id: q.external_id || q.id,
+              subject: q.subject,
+              chapter: q.chapter,
               topic: q.topic,
+              subtopic: q.subtopic,
               difficulty: q.difficulty,
               concepts: q.concepts || [],
-              question_html: q.question,
+              question_html: q.question_html || q.question,
+              question: q.question,
               options: optionsArray,
               correct_answer: q.correct_answer,
               solution_html: q.solution_html || q.solution_text,
-              solution_text: q.solution_text
+              solution_text: q.solution_text,
+              strategy: q.strategy || '',
+              expert_insight: q.expert_insight || '',
+              key_facts: q.key_facts || '',
+              tags: q.tags || []
             })
           })
 
@@ -305,6 +367,22 @@ export default function TestGenerator() {
       setSelectedTopics(selectedTopics.filter(t => t !== topic))
     } else {
       setSelectedTopics([...selectedTopics, topic])
+    }
+  }
+
+  const selectAllChapters = () => {
+    setSelectedChapters(chapters.map(ch => ch.name))
+  }
+
+  const deselectAllChapters = () => {
+    setSelectedChapters([])
+  }
+
+  const toggleChapter = (chapterName) => {
+    if (selectedChapters.includes(chapterName)) {
+      setSelectedChapters(selectedChapters.filter(ch => ch !== chapterName))
+    } else {
+      setSelectedChapters([...selectedChapters, chapterName])
     }
   }
 
@@ -776,6 +854,10 @@ export default function TestGenerator() {
 
   // Subject selection screen
   if (!selectedSubject) {
+    const mathSubject = subjects.find(s => s.name === 'Mathematics')
+    const physicsSubject = subjects.find(s => s.name === 'Physics')
+    const chemistrySubject = subjects.find(s => s.name === 'Chemistry')
+
     return (
       <div className="container">
         <div className="header">
@@ -790,31 +872,53 @@ export default function TestGenerator() {
         </div>
         <div className="content">
           <div className="exam-selection">
-            <button
-              className="exam-card"
-              onClick={() => setSelectedSubject('Maths')}
-            >
-              <h2>Mathematics</h2>
-              <p>89 questions available</p>
-            </button>
-            <button
-              className="exam-card disabled"
-              disabled
-              title="Coming soon"
-            >
-              <h2>Physics</h2>
-              <p>Questions coming soon</p>
-              <span className="badge">Coming Soon</span>
-            </button>
-            <button
-              className="exam-card disabled"
-              disabled
-              title="Coming soon"
-            >
-              <h2>Chemistry</h2>
-              <p>Questions coming soon</p>
-              <span className="badge">Coming Soon</span>
-            </button>
+            {mathSubject && (
+              <button
+                className="exam-card"
+                onClick={() => setSelectedSubject('Mathematics')}
+              >
+                <h2>📐 Mathematics</h2>
+                <p>{mathSubject.count} questions available</p>
+              </button>
+            )}
+            {physicsSubject ? (
+              <button
+                className="exam-card"
+                onClick={() => setSelectedSubject('Physics')}
+              >
+                <h2>🔬 Physics</h2>
+                <p>{physicsSubject.count} questions available</p>
+              </button>
+            ) : (
+              <button
+                className="exam-card disabled"
+                disabled
+                title="Coming soon"
+              >
+                <h2>🔬 Physics</h2>
+                <p>Questions coming soon</p>
+                <span className="badge">Coming Soon</span>
+              </button>
+            )}
+            {chemistrySubject ? (
+              <button
+                className="exam-card"
+                onClick={() => setSelectedSubject('Chemistry')}
+              >
+                <h2>🧪 Chemistry</h2>
+                <p>{chemistrySubject.count} questions available</p>
+              </button>
+            ) : (
+              <button
+                className="exam-card disabled"
+                disabled
+                title="Coming soon"
+              >
+                <h2>🧪 Chemistry</h2>
+                <p>Questions coming soon</p>
+                <span className="badge">Coming Soon</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -1034,6 +1138,34 @@ export default function TestGenerator() {
               </div>
             </div>
 
+            {chapters.length > 0 && (
+              <div className="topic-selector">
+                <h3>Select Chapters - {selectedSubject}</h3>
+                <div className="button-group">
+                  <button className="btn btn-secondary" onClick={selectAllChapters}>Select All</button>
+                  <button className="btn btn-secondary" onClick={deselectAllChapters}>Deselect All</button>
+                  <button className="btn btn-secondary" onClick={() => setSelectedSubject(null)}>Change Subject</button>
+                </div>
+                <div className="topic-grid">
+                  {chapters.map(chapter => (
+                    <div
+                      key={chapter.name}
+                      className="topic-item"
+                      onClick={() => toggleChapter(chapter.name)}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedChapters.includes(chapter.name)}
+                        onChange={() => toggleChapter(chapter.name)}
+                      />
+                      <label>{chapter.name}</label>
+                      <span className="topic-count">{chapter.count}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="topic-selector">
               <h3>Select Topics</h3>
               <div className="button-group">
@@ -1225,13 +1357,57 @@ export default function TestGenerator() {
                         <p>
                           <strong>Correct Answer:</strong> ({question.correct_answer}) {question.options.find(o => o.letter === question.correct_answer)?.value}
                         </p>
-                        {question.solution_html ? (
-                          <div dangerouslySetInnerHTML={{ __html: question.solution_html }} />
-                        ) : (
-                          <p>{question.solution_text || 'Solution not available for this question.'}</p>
+
+                        {/* Enhanced metadata for Physics questions */}
+                        {question.strategy && (
+                          <div className="metadata-section">
+                            <h5>💡 Strategy:</h5>
+                            <p>{question.strategy}</p>
+                          </div>
                         )}
+
+                        {question.expert_insight && (
+                          <div className="metadata-section">
+                            <h5>🎯 Expert Insight:</h5>
+                            <p>{question.expert_insight}</p>
+                          </div>
+                        )}
+
+                        {question.key_facts && (
+                          <div className="metadata-section">
+                            <h5>📚 Key Facts:</h5>
+                            <p>{question.key_facts}</p>
+                          </div>
+                        )}
+
+                        {/* Solution */}
+                        <div className="solution-content">
+                          {question.solution_html ? (
+                            <div dangerouslySetInnerHTML={{ __html: question.solution_html }} />
+                          ) : (
+                            <p>{question.solution_text || 'Solution not available for this question.'}</p>
+                          )}
+                        </div>
+
+                        {/* Question metadata */}
+                        <div className="question-metadata">
+                          {question.chapter && (
+                            <span className="metadata-tag">📖 {question.chapter}</span>
+                          )}
+                          {question.subtopic && (
+                            <span className="metadata-tag">🔖 {question.subtopic}</span>
+                          )}
+                          {question.tags && question.tags.length > 0 && (
+                            <div className="tags-list">
+                              {question.tags.map((tag, tidx) => (
+                                <span key={tidx} className="tag">{tag}</span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
                         {questionTimings[idx] && (
-                          <p><strong>Time taken:</strong> {formatTime(questionTimings[idx])}</p>
+                          <p><strong>⏱ Time taken:</strong> {formatTime(questionTimings[idx])}</p>
                         )}
                       </div>
                     )}
