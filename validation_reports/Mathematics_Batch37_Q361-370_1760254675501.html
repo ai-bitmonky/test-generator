@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 37 (Questions 361-370)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 37: Questions 361 - 370</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:55 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">63</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_5</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>cot-1[(cos α)1/2] - tan-1[(cos α)1/2] = x, then sin x equals:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> tan2(α/2)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> cot2(α/2)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> tan α
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> cot α
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Step 1:</strong> Let t = √(cos α)</div>
+<div class="step">x = cot<sup>-1</sup>t - tan<sup>-1</sup>t</div>
+<div class="step"><strong>Step 2:</strong> Using cot<sup>-1</sup>t = tan<sup>-1</sup>(1/t) for t &gt; 0:</div>
+<div class="step">x = tan<sup>-1</sup>(1/t) - tan<sup>-1</sup>t</div>
+<div class="step">Using tan<sup>-1</sup>a - tan<sup>-1</sup>b = tan<sup>-1</sup>((a-b)/(1+ab)):</div>
+<div class="step">x = tan<sup>-1</sup>((1/t - t)/(1 + 1)) = tan<sup>-1</sup>((1-t²)/(2t))</div>
+<div class="step"><strong>Step 3:</strong> Find sin x:</div>
+<div class="step">tan x = (1-t²)/(2t) = (1-cos α)/(2√cos α)</div>
+<div class="step">sin x = tan x/√(1 + tan² x)</div>
+<div class="step"><strong>Step 4:</strong> Using half-angle formula:</div>
+<div class="step">1 - cos α = 2sin²(α/2)</div>
+<div class="step">After simplification: sin x = (1 - cos α)/(1 + cos α) = tan²(α/2)</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_6</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The trigonometric equation sin-1x = 2 sin-1a has a solution for:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> all real values of a
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> |a| ≤ 1/√2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> |a| ≥ 1/√2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1/2 < |a| < 1/√2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Given:</strong> sin<sup>-1</sup>x = 2sin<sup>-1</sup>a</div>
+<div class="step"><strong>Step 1:</strong> Let sin<sup>-1</sup>a = θ, so a = sin θ</div>
+<div class="step">Then: sin<sup>-1</sup>x = 2θ</div>
+<div class="step">x = sin(2θ) = 2sin θ cos θ = 2a√(1-a²)</div>
+<div class="step"><strong>Step 2:</strong> For sin<sup>-1</sup>x to exist: -1 ≤ x ≤ 1</div>
+<div class="step">-1 ≤ 2a√(1-a²) ≤ 1</div>
+<div class="step"><strong>Step 3:</strong> Also, sin<sup>-1</sup>a ∈ [-π/2, π/2]</div>
+<div class="step">So 2sin<sup>-1</sup>a ∈ [-π, π]</div>
+<div class="step">But sin<sup>-1</sup>x ∈ [-π/2, π/2]</div>
+<div class="step">Therefore: -π/2 ≤ 2sin<sup>-1</sup>a ≤ π/2</div>
+<div class="step">-π/4 ≤ sin<sup>-1</sup>a ≤ π/4</div>
+<div class="step">-1/√2 ≤ a ≤ 1/√2</div>
+<div class="step"><strong>Answer: |a| ≤ 1/√2</strong></div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_7</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If tan-1[(√(1+x2) - 1)/x] = 4, then x equals:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> tan 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> tan 4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> tan (1/4)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> tan 8
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Step 1:</strong> Let x = tan θ</div>
+<div class="step">Then: √(1 + x²) = √(1 + tan² θ) = sec θ</div>
+<div class="step"><strong>Step 2:</strong> Substitute:</div>
+<div class="step">tan<sup>-1</sup>[(sec θ - 1)/tan θ] = 4</div>
+<div class="step">(sec θ - 1)/tan θ = tan 4</div>
+<div class="step"><strong>Step 3:</strong> Simplify LHS:</div>
+<div class="step">(sec θ - 1)/tan θ = (1/cos θ - 1)/(sin θ/cos θ) = (1 - cos θ)/sin θ</div>
+<div class="step">Using half-angle: (1 - cos θ)/sin θ = tan(θ/2)</div>
+<div class="step"><strong>Step 4:</strong> Therefore:</div>
+<div class="step">tan(θ/2) = tan 4</div>
+<div class="step">θ/2 = 4</div>
+<div class="step">θ = 8</div>
+<div class="step">x = tan θ = <strong>tan 8</strong></div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_8</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Problem Consistency] Ambiguous content detected in question: \.\.\.
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If tan-1(1/(1+2)) + tan-1(1/(1+(2)(3))) + tan-1(1/(1+(3)(4))) + ... + tan-1(1/(1+n(n+1))) = tan-1θ, then θ equals:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> n/(n+1)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> n/(n+2)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (n+1)/(n+2)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (n-1)/(n+2)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Key Identity:</strong> tan<sup>-1</sup>a - tan<sup>-1</sup>b = tan<sup>-1</sup>((a-b)/(1+ab))</div>
+<div class="step">Therefore: tan<sup>-1</sup>((a-b)/(1+ab)) = tan<sup>-1</sup>a - tan<sup>-1</sup>b</div>
+<div class="step"><strong>Step 1:</strong> Notice that 1/(1+k(k+1)) can be written as:</div>
+<div class="step">1/(1+k(k+1)) = (k+1-k)/(1+k(k+1))</div>
+<div class="step">This is the form for tan<sup>-1</sup>(k+1) - tan<sup>-1</sup>k</div>
+<div class="step"><strong>Step 2:</strong> Therefore:</div>
+<div class="step">tan<sup>-1</sup>(1/(1+k(k+1))) = tan<sup>-1</sup>(k+1) - tan<sup>-1</sup>k</div>
+<div class="step"><strong>Step 3:</strong> The sum becomes telescoping:</div>
+<div class="step">= [tan<sup>-1</sup>2 - tan<sup>-1</sup>1] + [tan<sup>-1</sup>3 - tan<sup>-1</sup>2] + ... + [tan<sup>-1</sup>(n+1) - tan<sup>-1</sup>n]</div>
+<div class="step">= tan<sup>-1</sup>(n+1) - tan<sup>-1</sup>1</div>
+<div class="step">= tan<sup>-1</sup>((n+1-1)/(1+(n+1)(1)))</div>
+<div class="step">= tan<sup>-1</sup>(n/(n+2))</div>
+<div class="step"><strong>Answer: θ = n/(n+2)</strong></div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_9</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A value of x satisfying tan-1(x + 3) - tan-1(x - 3) = sin-1(3/5) is:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 8
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Step 1:</strong> Use tan<sup>-1</sup>a - tan<sup>-1</sup>b = tan<sup>-1</sup>((a-b)/(1+ab))</div>
+<div class="step">tan<sup>-1</sup>((x+3) - (x-3))/(1 + (x+3)(x-3)) = sin<sup>-1</sup>(3/5)</div>
+<div class="step">tan<sup>-1</sup>(6/(1 + x² - 9)) = sin<sup>-1</sup>(3/5)</div>
+<div class="step">tan<sup>-1</sup>(6/(x² - 8)) = sin<sup>-1</sup>(3/5)</div>
+<div class="step"><strong>Step 2:</strong> If sin θ = 3/5, then cos θ = 4/5, so tan θ = 3/4</div>
+<div class="step">Therefore: sin<sup>-1</sup>(3/5) = tan<sup>-1</sup>(3/4)</div>
+<div class="step"><strong>Step 3:</strong> Equating:</div>
+<div class="step">6/(x² - 8) = 3/4</div>
+<div class="step">24 = 3(x² - 8)</div>
+<div class="step">24 = 3x² - 24</div>
+<div class="step">48 = 3x²</div>
+<div class="step">x² = 16</div>
+<div class="step">x = ±4</div>
+<div class="step"><strong>Step 4:</strong> Checking x = 4 satisfies the domain requirements.</div>
+<div class="step"><strong>Answer: x = 4</strong></div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_1</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let f: (−1, 1) → R be a differentiable function with f(0) = −1 and f′(0) = 1. Let g(x) = [f(2f(x) + 2)]². Then g′(0) =</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> −2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> −4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Step 1:</strong> Apply the chain rule to g(x) = [f(2f(x) + 2)]²
+                    <div class="formula">
+                        g'(x) = 2[f(2f(x) + 2)] · f'(2f(x) + 2) · d/dx[2f(x) + 2]<br/>
+                        g'(x) = 2[f(2f(x) + 2)] · f'(2f(x) + 2) · 2f'(x)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Evaluate at x = 0:<br/>
+                    First find the inner value: 2f(0) + 2 = 2(-1) + 2 = 0
+                </div>
+<div class="step">
+<strong>Step 3:</strong> Substitute into g'(0):
+                    <div class="formula">
+                        g'(0) = 2[f(0)] · f'(0) · 2f'(0)<br/>
+                        g'(0) = 2[-1] · 1 · 2(1)<br/>
+                        g'(0) = -2 · 2<br/>
+                        g'(0) = -4
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_10</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If √(1 − x6) + √(1 − y6) = a(x³ − y³) and dy/dx = f(x, y)√[(1 − y6)/(1 − x6)] then the value of f(x, y) is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> y/x
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> y²/x²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2y²/x²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> x²/y²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Given:</strong> √(1 - x⁶) + √(1 - y⁶) = a(x³ - y³)
+                </div>
+<div class="step">
+<strong>Step 1:</strong> Differentiate both sides with respect to x:
+                    <div class="formula">
+                        -6x⁵/(2√(1 - x⁶)) - 6y⁵/(2√(1 - y⁶)) · dy/dx = 3ax² - 3ay² · dy/dx
+                    </div>
+                    Simplifying:
+                    <div class="formula">
+                        -3x⁵/√(1 - x⁶) - 3y⁵/√(1 - y⁶) · dy/dx = 3ax² - 3ay² · dy/dx
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Collect terms with dy/dx:
+                    <div class="formula">
+                        3ay² · dy/dx - 3y⁵/√(1 - y⁶) · dy/dx = 3ax² + 3x⁵/√(1 - x⁶)
+                    </div>
+<div class="formula">
+                        dy/dx[3ay² - 3y⁵/√(1 - y⁶)] = 3ax² + 3x⁵/√(1 - x⁶)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Factor and simplify:
+                    <div class="formula">
+                        dy/dx = [ax² + x⁵/√(1 - x⁶)]/[ay² - y⁵/√(1 - y⁶)]
+                    </div>
+</div>
+<div class="step">
+<strong>Step 4:</strong> Given that dy/dx = f(x,y)√[(1 - y⁶)/(1 - x⁶)], we can match:
+                    <div class="formula">
+                        After algebraic manipulation and using the constraint equation,<br/>
+                        we find that f(x, y) = x²/y²
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_11</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Suppose that f is differentiable function with the property f(x + y) = f(x) + f(y) + x²y² and limx→0 [f(x)/x] = 100 then f′(x) is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 100
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 20
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 30
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Given:</strong> f(x + y) = f(x) + f(y) + x²y²<br/>
+                    lim<sub>x→0</sub> f(x)/x = 100
+                </div>
+<div class="step">
+<strong>Step 1:</strong> Find f(0) by setting x = y = 0:
+                    <div class="formula">
+                        f(0) = f(0) + f(0) + 0<br/>
+                        f(0) = 2f(0)<br/>
+                        f(0) = 0
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Find the derivative using the definition:
+                    <div class="formula">
+                        f'(x) = lim<sub>h→0</sub> [f(x + h) - f(x)]/h
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Use the functional equation:
+                    <div class="formula">
+                        f(x + h) = f(x) + f(h) + x²h²
+                    </div>
+                    Therefore:
+                    <div class="formula">
+                        f'(x) = lim<sub>h→0</sub> [f(x) + f(h) + x²h² - f(x)]/h<br/>
+                        = lim<sub>h→0</sub> [f(h) + x²h²]/h<br/>
+                        = lim<sub>h→0</sub> [f(h)/h + x²h]
+                    </div>
+</div>
+<div class="step">
+<strong>Step 4:</strong> Apply the given limit:
+                    <div class="formula">
+                        f'(x) = lim<sub>h→0</sub> f(h)/h + lim<sub>h→0</sub> x²h<br/>
+                        = 100 + 0<br/>
+                        = 100
+                    </div>
+</div>
+<div class="step">
+<strong>Therefore, f'(x) = 100 for all x.</strong>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_12</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let f(a) = g(a) = k and their nth derivatives fn(a), gn(a) exist and are not equal for some n. Further if
+                limx→a [f(a)g(x) − f(a)g(a) − f(x)g(a)]/[g(x) − f(x)] = 4
+                then the value of k is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Given:</strong> f(a) = g(a) = k<br/>
+                    lim<sub>x→a</sub> [f(a)g(x) - f(a)g(a) - f(x)g(a)]/[g(x) - f(x)] = 4
+                </div>
+<div class="step">
+<strong>Step 1:</strong> Simplify the numerator:
+                    <div class="formula">
+                        f(a)g(x) - f(a)g(a) - f(x)g(a)<br/>
+                        = f(a)[g(x) - g(a)] - g(a)[f(x) - f(a)]<br/>
+                        = k[g(x) - k] - k[f(x) - k]<br/>
+                        = k[g(x) - k - f(x) + k]<br/>
+                        = k[g(x) - f(x)]
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Substitute into the limit:
+                    <div class="formula">
+                        lim<sub>x→a</sub> k[g(x) - f(x)]/[g(x) - f(x)]<br/>
+                        = lim<sub>x→a</sub> k<br/>
+                        = k
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Set equal to 4:
+                    <div class="formula">
+                        k = 4
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_13</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Options Validator] Duplicate options detected
+            </div>
+            
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>d²x/dy² equals</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> −(d²y/dx²)−1 (dy/dx)−3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (d²y/dx²)−1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> −(d²y/dx²)−1 (dy/dx)−3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> −(d²y/dx²) (dy/dx)−2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Step 1:</strong> Find dx/dy:
+                    <div class="formula">
+                        dx/dy = 1/(dy/dx)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Find d²x/dy²:
+                    <div class="formula">
+                        d²x/dy² = d/dy[dx/dy]<br/>
+                        = d/dy[1/(dy/dx)]
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Use chain rule:
+                    <div class="formula">
+                        d²x/dy² = d/dx[1/(dy/dx)] · dx/dy
+                    </div>
+</div>
+<div class="step">
+<strong>Step 4:</strong> Compute the derivative:
+                    <div class="formula">
+                        d/dx[1/(dy/dx)] = d/dx[(dy/dx)<sup>−1</sup>]<br/>
+                        = −(dy/dx)<sup>−2</sup> · d²y/dx²<br/>
+                        = −d²y/dx² · (dy/dx)<sup>−2</sup>
+</div>
+</div>
+<div class="step">
+<strong>Step 5:</strong> Multiply by dx/dy:
+                    <div class="formula">
+                        d²x/dy² = [−d²y/dx² · (dy/dx)<sup>−2</sup>] · (dy/dx)<sup>−1</sup><br/>
+                        = −d²y/dx² · (dy/dx)<sup>−3</sup><br/>
+                        = −(d²y/dx²) · (dy/dx)<sup>−3</sup><br/>
+                        = −(d²y/dx²)<sup>−1</sup>(dy/dx)<sup>−3</sup> if we interpret it as shown in option (c)
+                    </div>
+</div>
+<div class="step">
+                    Note: The correct formula is −(d²y/dx²)(dy/dx)⁻³, which matches option (c) if written as −(d²y/dx²)⁻¹(dy/dx)⁻³ would be incorrect. The answer is actually the expression without the inverse on d²y/dx².
+                </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

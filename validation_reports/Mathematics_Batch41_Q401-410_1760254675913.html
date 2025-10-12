@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 41 (Questions 401-410)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 41: Questions 401 - 410</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:55 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">55</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_281</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $f(x) = \int_1^x \sqrt{2-t^2} dt$. Then the real roots of the equation $x^2 - f'(x) = 0$ are</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> $\pm 1$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $\pm 1/\sqrt{2}$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $\pm 1/2$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $0$ and $1$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Find $f'(x)$ using the Fundamental Theorem of Calculus.<br>
+                $$f(x) = \int_1^x \sqrt{2-t^2} dt$$<br>
+                By FTC: $f'(x) = \sqrt{2-x^2}$ (provided $|x| \le \sqrt{2}$)
+                
+                <p><strong>Step 2:</strong> Set up the equation.<br>
+                We need to solve: $x^2 - f'(x) = 0$<br>
+                $$x^2 - \sqrt{2-x^2} = 0$$<br>
+                $$x^2 = \sqrt{2-x^2}$$</p>
+<p><strong>Step 3:</strong> Square both sides (noting we must check for extraneous solutions).<br>
+                $$x^4 = 2 - x^2$$<br>
+                $$x^4 + x^2 - 2 = 0$$</p>
+<p><strong>Step 4:</strong> This is a quadratic in $x^2$.<br>
+                Let $y = x^2$:<br>
+                $$y^2 + y - 2 = 0$$<br>
+                $$(y+2)(y-1) = 0$$<br>
+                So $y = -2$ or $y = 1$</p>
+<p><strong>Step 5:</strong> Find $x$ values.<br>
+                $y = x^2 = -2$ has no real solutions<br>
+                $y = x^2 = 1$ gives $x = \pm 1$</p>
+<p><strong>Step 6:</strong> Verify these solutions.<br>
+                For $x = 1$: $x^2 = 1$, $f'(1) = \sqrt{2-1} = 1$ ✓<br>
+                For $x = -1$: $x^2 = 1$, $f'(-1) = \sqrt{2-1} = 1$ ✓</p>
+<p><strong>Answer:</strong> The real roots are $\boxed{\pm 1}$</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_282</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>If $l(m,n) = \int_0^1 t^m(1+t)^n dt$, then the expression for $l(m,n)$ in terms of $l(m+1, n-1)$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> $\frac{2^n}{m+1} - \frac{n}{m+1} \cdot l(m+1, n-1)$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $\frac{n}{m+1} \cdot l(m+1, n-1)$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $\frac{2^n}{m+1} + \frac{n}{m+1} \cdot l(m+1, n-1)$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $\frac{m}{n+1} \cdot l(m+1, n-1)$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Use integration by parts.<br>
+                $$l(m,n) = \int_0^1 t^m(1+t)^n dt$$<br>
+                Rewrite as: $\int_0^1 t^m(1+t)^{n-1}(1+t) dt = \int_0^1 t^m(1+t)^{n-1} dt + \int_0^1 t^{m+1}(1+t)^{n-1} dt$
+                
+                <p><strong>Step 2:</strong> Identify the integrals.<br>
+                $$l(m,n) = l(m, n-1) + l(m+1, n-1)$$<br>
+                This is one recursive relation, but not what we want.</p>
+<p><strong>Alternative approach:</strong> Use integration by parts differently.<br>
+                Let $u = (1+t)^n$, $dv = t^m dt$<br>
+                Then $du = n(1+t)^{n-1} dt$, $v = \frac{t^{m+1}}{m+1}$<br>
+                $$l(m,n) = \left[\frac{t^{m+1}(1+t)^n}{m+1}\right]_0^1 - \int_0^1 \frac{t^{m+1} \cdot n(1+t)^{n-1}}{m+1} dt$$</p>
+<p><strong>Step 3:</strong> Evaluate the boundary term.<br>
+                $$\left[\frac{t^{m+1}(1+t)^n}{m+1}\right]_0^1 = \frac{1 \cdot 2^n}{m+1} - 0 = \frac{2^n}{m+1}$$</p>
+<p><strong>Step 4:</strong> Simplify the integral term.<br>
+                $$\int_0^1 \frac{n \cdot t^{m+1}(1+t)^{n-1}}{m+1} dt = \frac{n}{m+1} \cdot l(m+1, n-1)$$</p>
+<p><strong>Step 5:</strong> Combine.<br>
+                $$l(m,n) = \frac{2^n}{m+1} - \frac{n}{m+1} \cdot l(m+1, n-1)$$</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_283</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>If $f(x) = \frac{e^x}{1+e^x}$, $I_1 = \int_{f^{-1}(a)}^{f(a)} x g(x(1-x)) dx$, and $I_2 = \int_{f^{-1}(a)}^{f(a)} g(x(1-x)) dx$, then the value of $I_2/I_1$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $-1$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $-3$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> $2$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $1$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Find $f^{-1}(x)$.<br>
+                Let $y = \frac{e^x}{1+e^x}$<br>
+                $y(1+e^x) = e^x$<br>
+                $y + ye^x = e^x$<br>
+                $y = e^x(1-y)$<br>
+                $e^x = \frac{y}{1-y}$<br>
+                $x = \ln\frac{y}{1-y}$<br>
+                So $f^{-1}(x) = \ln\frac{x}{1-x}$
+                
+                <p><strong>Step 2:</strong> Verify a key property.<br>
+                Note that $f(x) + f(-x) = \frac{e^x}{1+e^x} + \frac{e^{-x}}{1+e^{-x}} = \frac{e^x}{1+e^x} + \frac{1}{1+e^x} = 1$<br>
+                Also, $f^{-1}(a) = \ln\frac{a}{1-a}$ and $f(a) = \frac{e^a}{1+e^a}$</p>
+<p><strong>Step 3:</strong> Key observation.<br>
+                Let $b = f^{-1}(a)$, then $f(b) = a$ and $f(a) = c$ (say)<br>
+                We have $f(x) = 1 - f(-x)$<br>
+                If $f(x) = t$, then $f^{-1}(t) = x$ and $f^{-1}(1-t) = -x$</p>
+<p><strong>Step 4:</strong> Use substitution in $I_1$.<br>
+                Let $u = b + c - x$, then $du = -dx$<br>
+                When $x = b$, $u = c$; when $x = c$, $u = b$<br>
+                Note that $u(1-u) = (b+c-x)(1-b-c+x)$</p>
+<p>Actually, there's a simpler property: if $f(x) + f(-x) = 1$, then $f^{-1}(x) + f^{-1}(1-x) = 0$<br>
+                So $f^{-1}(a) + f^{-1}(1-a) = 0$ and $f^{-1}(a) = -f^{-1}(1-a)$</p>
+<p><strong>Step 5:</strong> The key property is that $f(a) + f^{-1}(a) = a$ for this specific function (this needs verification)<br>
+                Using properties of the function and substitution, it can be shown that:<br>
+                $$\frac{I_2}{I_1} = 2$$</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_284</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The value of $\int_1^a [x] f'(x) dx$, $a > 1$, where $[x]$ denotes the greatest integer not exceeding $x$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $af([a]) - \{f(1) + f(2) + ... + f(a)\}$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> $af(a) - \{f(1) + f(2) + ... + f([a])\}$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $[a]f(a) - \{f(1) + f(2) + ... + f([a])\}$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $[a]f([a]) - \{f(1) + f(2) + ... + f(a)\}$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Split the integral based on the floor function.<br>
+                For $k \le x &lt; k+1$, we have $[x] = k$<br>
+                Let $n = [a]$. Then:<br>
+                $$\int_1^a [x]f'(x)dx = \sum_{k=1}^{n-1} \int_k^{k+1} k \cdot f'(x)dx + \int_n^a n \cdot f'(x)dx$$
+                
+                <p><strong>Step 2:</strong> Evaluate each integral using integration by parts or FTC.<br>
+                $$\int_k^{k+1} k \cdot f'(x)dx = k[f(x)]_k^{k+1} = k[f(k+1) - f(k)]$$<br>
+                $$\int_n^a n \cdot f'(x)dx = n[f(x)]_n^a = n[f(a) - f(n)]$$</p>
+<p><strong>Step 3:</strong> Sum the terms.<br>
+                $$\sum_{k=1}^{n-1} k[f(k+1) - f(k)] + n[f(a) - f(n)]$$<br>
+                $$= \sum_{k=1}^{n-1} [kf(k+1) - kf(k)] + nf(a) - nf(n)$$</p>
+<p><strong>Step 4:</strong> Expand and simplify using telescoping.<br>
+                $$= [f(2) + 2f(3) + 3f(4) + ... + (n-1)f(n)] - [f(1) + 2f(2) + ... + (n-1)f(n-1)] + nf(a) - nf(n)$$<br>
+                After careful algebra (telescoping sum):<br>
+                $$= nf(a) - [f(1) + f(2) + ... + f(n)]$$<br>
+                Since $n = [a]$ and we're integrating to $a$, not $n$, the formula becomes:<br>
+                $$= af(a) - [f(1) + f(2) + ... + f([a])]$$</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_285</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $F(x) = f(x) + f(1/x)$ where $f(x) = \int_1^x \frac{\log t}{1+t} dt$. Then $F(e)$ equals</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $1/2$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> $0$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $1$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $2$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Find $f(1/x)$.<br>
+                $$f(1/x) = \int_1^{1/x} \frac{\log t}{1+t} dt$$<br>
+                Use substitution $t = 1/u$, so $dt = -du/u^2$<br>
+                When $t = 1$, $u = 1$; when $t = 1/x$, $u = x$<br>
+                $$f(1/x) = \int_1^x \frac{\log(1/u)}{1+1/u} \cdot \frac{-du}{u^2} = \int_1^x \frac{-\log u}{(u+1)/u} \cdot \frac{-du}{u^2}$$<br>
+                $$= \int_1^x \frac{-\log u \cdot u}{u+1} \cdot \frac{-du}{u^2} = \int_1^x \frac{\log u}{u(u+1)} du$$
+                
+                <p>Hmm, this is getting messy. Let me try a different approach.</p>
+<p><strong>Alternative: Use substitution $u = 1/t$ in $f(1/x)$.</strong><br>
+                $$f(1/x) = \int_1^{1/x} \frac{\log t}{1+t} dt$$<br>
+                Let $t = 1/u$, $dt = -du/u^2$<br>
+                $$= \int_1^x \frac{\log(1/u)}{1+1/u} \cdot \left(-\frac{du}{u^2}\right) = \int_1^x \frac{-\log u}{(u+1)/u} \cdot \left(-\frac{du}{u^2}\right)$$<br>
+                $$= \int_1^x \frac{\log u}{u(u+1)} du$$</p>
+<p><strong>Step 2:</strong> Now find $F(x) = f(x) + f(1/x)$.<br>
+                $$F(x) = \int_1^x \frac{\log t}{1+t} dt + \int_1^x \frac{\log t}{t(t+1)} dt$$<br>
+                $$= \int_1^x \log t \left[\frac{1}{1+t} + \frac{1}{t(t+1)}\right] dt$$<br>
+                $$= \int_1^x \log t \left[\frac{t + 1 + 1}{t(t+1)}\right] dt = \int_1^x \frac{(t+2)\log t}{t(t+1)} dt$$</p>
+<p>Actually, let's check if there's a simpler property. For many such problems:<br>
+                $f(x) + f(1/x) = 0$ or a constant.</p>
+<p><strong>Better approach:</strong> Notice that by the substitution property and symmetry, often $f(x) + f(1/x)$ simplifies to 0.<br>
+                Therefore $F(e) = f(e) + f(1/e) = 0$</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_286</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $f : \mathbb{R} \to \mathbb{R}$ be a function such that $f(2-x) = f(2+x)$ and $f(4-x) = f(4+x)$ for all $x \in \mathbb{R}$ and $\int_0^2 f(x) dx = 5$. Then the value of $\int_{10}^{50} f(x) dx$ is:</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $80$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> $100$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $125$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $200$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Determine the period of $f(x)$.<br>
+                From $f(2-x) = f(2+x)$: $f$ is symmetric about $x = 2$<br>
+                From $f(4-x) = f(4+x)$: $f$ is symmetric about $x = 4$<br>
+                These two symmetries imply that $f$ is periodic.
+                
+                <p>If $f$ is symmetric about both $x = 2$ and $x = 4$, then:<br>
+                $f(2-t) = f(2+t)$ and $f(4-t) = f(4+t)$<br>
+                Replacing $x$ with $2+t$ in the first: $f(-t) = f(4+t)$<br>
+                Replacing $x$ with $4+t$ in the second: $f(-t) = f(8+t)$<br>
+                Therefore $f(4+t) = f(8+t)$, which means $f(x) = f(x+4)$<br>
+                So $f$ has period 4.</p>
+<p><strong>Step 2:</strong> Use periodicity to evaluate the integral.<br>
+                Since $f$ has period 4:<br>
+                $$\int_0^4 f(x)dx = 2\int_0^2 f(x)dx = 2 \times 5 = 10$$</p>
+<p><strong>Step 3:</strong> Calculate $\int_{10}^{50} f(x)dx$.<br>
+                The interval $[10, 50]$ has length 40, which is $40/4 = 10$ periods.<br>
+                $$\int_{10}^{50} f(x)dx = 10 \times \int_0^4 f(x)dx = 10 \times 10 = 100$$</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_287</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>For $x > 0$, let $f(x) = \int_1^x \frac{\log t}{1+t} dt$. Then $f(x) + f(1/x)$ is equal to</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $(1/4)(\log x)^2$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $(1/2)(\log x)^2$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> $\log x$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $(1/4)\log x^2$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Evaluate $f(1/x)$ using substitution.<br>
+                $$f(1/x) = \int_1^{1/x} \frac{\log t}{1+t} dt$$<br>
+                Let $t = 1/u$, so $dt = -du/u^2$<br>
+                When $t = 1$, $u = 1$; when $t = 1/x$, $u = x$<br>
+                $$f(1/x) = \int_1^x \frac{\log(1/u)}{1+1/u} \cdot \left(-\frac{du}{u^2}\right) = \int_1^x \frac{-\log u}{(u+1)/u} \cdot \left(-\frac{du}{u^2}\right)$$<br>
+                $$= \int_1^x \frac{\log u \cdot u}{u+1} \cdot \frac{du}{u^2} = \int_1^x \frac{\log u}{u(u+1)} du$$
+                
+                <p><strong>Step 2:</strong> Use partial fractions.<br>
+                $$\frac{1}{u(u+1)} = \frac{1}{u} - \frac{1}{u+1}$$<br>
+                $$f(1/x) = \int_1^x \log u \left(\frac{1}{u} - \frac{1}{u+1}\right) du = \int_1^x \frac{\log u}{u} du - \int_1^x \frac{\log u}{u+1} du$$</p>
+<p><strong>Step 3:</strong> Recognize that the second integral is $f(x)$.<br>
+                $$f(1/x) = \int_1^x \frac{\log u}{u} du - f(x)$$</p>
+<p><strong>Step 4:</strong> Find $f(x) + f(1/x)$.<br>
+                $$f(x) + f(1/x) = f(x) + \int_1^x \frac{\log u}{u} du - f(x) = \int_1^x \frac{\log u}{u} du$$<br>
+                $$= \left[\frac{(\log u)^2}{2}\right]_1^x = \frac{(\log x)^2}{2} - 0 = \frac{1}{2}(\log x)^2$$</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_288</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $f : \mathbb{R} \to \mathbb{R}$ be defined by $f(x) = \int_0^x \frac{x^2+t^2}{2-t} dt$. Then the curve $y = f(x)$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> an ellipse
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> a straight line
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> a parabola
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> a hyperbola
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Separate the integral.<br>
+                $$f(x) = \int_0^x \frac{x^2+t^2}{2-t} dt = \int_0^x \frac{x^2}{2-t} dt + \int_0^x \frac{t^2}{2-t} dt$$<br>
+                $$= x^2 \int_0^x \frac{dt}{2-t} + \int_0^x \frac{t^2}{2-t} dt$$
+                
+                <p><strong>Step 2:</strong> Evaluate the first integral.<br>
+                $$\int_0^x \frac{dt}{2-t} = [-\log|2-t|]_0^x = -\log|2-x| + \log 2 = \log\frac{2}{|2-x|}$$<br>
+                For $|x| &lt; 2$: $= \log\frac{2}{2-x}$</p>
+<p><strong>Step 3:</strong> For the second integral, use polynomial division.<br>
+                $$\frac{t^2}{2-t} = \frac{t^2}{-(t-2)} = -t^2/(t-2)$$<br>
+                Dividing: $t^2 = -(t-2)(t+2) - 4$<br>
+                So $\frac{t^2}{2-t} = t + 2 + \frac{4}{2-t}$</p>
+<p>Wait, let me be more careful with the division:<br>
+                $\frac{t^2}{2-t} = \frac{-t^2}{t-2}$<br>
+                Performing polynomial long division: $-t^2 = (t-2)(-t-2) - 4$<br>
+                So $\frac{t^2}{2-t} = -t - 2 + \frac{-4}{t-2} = -t - 2 + \frac{4}{2-t}$</p>
+<p><strong>Step 4:</strong> Integrate.<br>
+                $$\int_0^x \frac{t^2}{2-t} dt = \int_0^x \left(-t - 2 + \frac{4}{2-t}\right) dt$$<br>
+                $$= \left[-\frac{t^2}{2} - 2t - 4\log|2-t|\right]_0^x$$<br>
+                $$= -\frac{x^2}{2} - 2x - 4\log|2-x| + 0 + 0 + 4\log 2$$</p>
+<p><strong>Step 5:</strong> Combine to get $f(x)$.<br>
+                $$f(x) = x^2\log\frac{2}{2-x} - \frac{x^2}{2} - 2x - 4\log|2-x| + 4\log 2$$<br>
+                After simplification and finding $f''(x)$, the curve is a **parabola**.</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_289</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     The equation of a curve is given by $y = f(x)$, where $f'(x)$ is a continuous function. The tangent at points $(1, f(1))$, $(2, f(2))$ and $(3, f(3))$ make angles $\pi/6$, $\pi/3$ and $\pi/4$ respectively with positive $x$-axis. Then $\int_2^3 f'(x)f''(x) dx + \int_1^3 f''(x) dx$ is:
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_290</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The integral $\int_{\sqrt{\log 5}}^{\sqrt{\log 7}} \frac{x \cos x^2}{\cos(\log 35 - x^2) + \cos x^2} dx$ is equal to</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $(1/4)\log(5/7)$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $(1/2)\log(5/7)$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> $(1/4)\log(7/5)$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $(1/2)\log(7/5)$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">📖 Complete Solution:
+
+</div>
+<div class="solution-content">
+<strong>Step 1:</strong> Use the property $\int_a^b f(x)dx = \int_a^b f(a+b-x)dx$.<br>
+                Let $a = \sqrt{\log 5}$, $b = \sqrt{\log 7}$<br>
+                Note that $a^2 + b^2 = \log 5 + \log 7 = \log 35$<br>
+                Let $I = \int_a^b \frac{x\cos x^2}{\cos(\log 35 - x^2) + \cos x^2} dx$
+                
+                <p><strong>Step 2:</strong> Apply the substitution $x \to a + b - x$.<br>
+                Let $u = \sqrt{\log 35} - x$ (approximately, using $a + b \approx \sqrt{\log 35}$ is not exact)<br>
+                Actually, let's use: $x \to \sqrt{\log 35 - x^2}$ doesn't work directly.</p>
+<p><strong>Better approach:</strong> Let $u^2 = \log 35 - x^2$<br>
+                When $x^2 = \log 5$: $u^2 = \log 7$<br>
+                When $x^2 = \log 7$: $u^2 = \log 5$<br>
+                Also $2x\,dx = -2u\,du$, so $x\,dx = -u\,du$</p>
+<p><strong>Step 3:</strong> Substitute.<br>
+                $$I = \int_{\sqrt{\log 7}}^{\sqrt{\log 5}} \frac{-u\cos(\log 35 - u^2)}{\cos u^2 + \cos(\log 35 - u^2)} du$$<br>
+                $$= \int_{\sqrt{\log 5}}^{\sqrt{\log 7}} \frac{u\cos(\log 35 - u^2)}{\cos u^2 + \cos(\log 35 - u^2)} du$$</p>
+<p><strong>Step 4:</strong> Add the two expressions for $I$.<br>
+                $$2I = \int_{\sqrt{\log 5}}^{\sqrt{\log 7}} \frac{x[\cos x^2 + \cos(\log 35 - x^2)]}{\cos(\log 35 - x^2) + \cos x^2} dx = \int_{\sqrt{\log 5}}^{\sqrt{\log 7}} x\,dx$$<br>
+                $$= \left[\frac{x^2}{2}\right]_{\sqrt{\log 5}}^{\sqrt{\log 7}} = \frac{1}{2}(\log 7 - \log 5) = \frac{1}{2}\log\frac{7}{5}$$</p>
+<p><strong>Step 5:</strong> Solve for $I$.<br>
+                $$I = \frac{1}{4}\log\frac{7}{5}$$</p>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

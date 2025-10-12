@@ -1,230 +1,196 @@
-#!/usr/bin/env node
 /**
- * Parse corrected HTML files and insert questions into database
- * Reads from excluded_mathematics_questions.html and excluded_physics_questions.html
+ * Extract questions from corrected HTML files and insert into database
  */
 
-const { createClient } = require('@supabase/supabase-js');
-const { JSDOM } = require('jsdom');
-const fs = require('fs');
-
-// Load environment variables
 require('dotenv').config({ path: '.env.local' });
+const fs = require('fs');
+const { JSDOM } = require('jsdom');
+const { createClient } = require('@supabase/supabase-js');
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
-if (!supabaseUrl || !supabaseKey) {
-  console.error('❌ Missing Supabase credentials in .env.local');
-  process.exit(1);
-}
+/**
+ * Extract questions from corrected HTML file
+ */
+function extractQuestionsFromHTML(htmlFile) {
+  console.log(`\n📄 Reading ${htmlFile}...`);
 
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-function parseHTMLFile(filename, subject) {
-  console.log(`\n📄 Parsing ${filename}...`);
-
-  const html = fs.readFileSync(filename, 'utf8');
+  const html = fs.readFileSync(htmlFile, 'utf8');
   const dom = new JSDOM(html);
   const document = dom.window.document;
 
-  const questions = [];
-
-  // Find all question cards
   const questionCards = document.querySelectorAll('.question-card');
+  console.log(`   Found ${questionCards.length} question cards`);
+
+  const questions = [];
 
   questionCards.forEach((card, index) => {
     try {
-      // Extract external ID
-      const questionIdEl = card.querySelector('.question-id');
-      const externalId = questionIdEl ? questionIdEl.textContent.replace('ID:', '').trim() : '';
-
-      // Extract difficulty from badge
+      // Extract metadata
+      const metaTags = card.querySelectorAll('.meta-tag');
+      let externalId = '';
+      let topic = '';
+      let chapter = '';
       let difficulty = 'MEDIUM';
-      const badges = card.querySelectorAll('.badge');
-      badges.forEach(badge => {
-        const text = badge.textContent.trim().toUpperCase();
-        if (text === 'HARD' || text === 'MEDIUM' || text === 'EASY') {
-          difficulty = text;
+
+      metaTags.forEach(tag => {
+        const text = tag.textContent.trim();
+        if (text.startsWith('ID:')) {
+          externalId = text.replace('ID:', '').trim();
+        } else if (text.startsWith('Topic:')) {
+          topic = text.replace('Topic:', '').trim();
+        } else if (text.startsWith('Chapter:')) {
+          chapter = text.replace('Chapter:', '').trim();
+        } else if (text.startsWith('Difficulty:')) {
+          difficulty = text.replace('Difficulty:', '').trim().toUpperCase();
         }
       });
 
-      // Extract metadata from metadata-item divs
-      let topic = '', chapter = '', subtopic = '', questionType = '';
-      const metadataItems = card.querySelectorAll('.metadata-item');
-
-      metadataItems.forEach(item => {
-        const text = item.textContent.trim();
-        if (text.includes('Chapter:')) {
-          chapter = text.replace(/.*Chapter:\s*/, '').trim();
-        } else if (text.includes('Topic:')) {
-          topic = text.replace(/.*Topic:\s*/, '').trim();
-        } else if (text.includes('Subtopic:')) {
-          subtopic = text.replace(/.*Subtopic:\s*/, '').trim();
-        } else if (text.includes('Type:')) {
-          questionType = text.replace(/.*Type:\s*/, '').trim();
-        }
-      });
-
-      // Extract tags
-      const tags = [];
-      const tagElements = card.querySelectorAll('.tag');
-      tagElements.forEach(tag => {
-        tags.push(tag.textContent.trim());
-      });
+      if (!externalId) {
+        console.log(`  ⚠️  Skipping question ${index + 1}: No external ID`);
+        return;
+      }
 
       // Extract question text
-      const questionDiv = card.querySelector('.question-text');
-      const questionText = questionDiv ? questionDiv.textContent.trim() : '';
-      const questionHtml = questionDiv ? questionDiv.innerHTML : '';
+      const questionTextDiv = card.querySelector('.question-text p');
+      const questionText = questionTextDiv ? questionTextDiv.textContent.trim() : '';
 
       // Extract options
-      const options = {};
+      const options = { a: '', b: '', c: '', d: '' };
       const optionElements = card.querySelectorAll('.option');
+
       optionElements.forEach(opt => {
-        const text = opt.textContent.trim();
-        const match = text.match(/^([A-D])[.:]\s*(.+)$/i);
-        if (match) {
-          const key = match[1].toLowerCase();
-          const value = match[2].trim();
-          options[key] = value;
+        const label = opt.querySelector('.option-label');
+        const text = opt.querySelector('.option-text');
+
+        if (label && text) {
+          const letter = label.textContent.trim().replace(/[.:]/g, '').toLowerCase();
+          if (['a', 'b', 'c', 'd'].includes(letter)) {
+            options[letter] = text.textContent.trim();
+          }
         }
       });
 
       // Extract correct answer
-      // Look for "✅ Correct Answer: (a)" pattern in strong tags
-      let correctAnswer = null;
-      const strongEls = card.querySelectorAll('strong');
-      for (const strong of strongEls) {
-        const text = strong.textContent.trim();
-        if (text.includes('Correct Answer')) {
-          const answerMatch = text.match(/\(([A-D])\)/i);
-          if (answerMatch) {
-            correctAnswer = answerMatch[1].toLowerCase();
-            break;
-          }
-        }
-      }
+      const answerSpan = card.querySelector('.answer-highlight');
+      const correctAnswer = answerSpan ? answerSpan.textContent.trim().toLowerCase() : null;
 
       // Extract solution
-      const solutionDiv = card.querySelector('.solution');
-      const solutionHtml = solutionDiv ? solutionDiv.innerHTML : null;
+      const solutionDiv = card.querySelector('.solution-content');
+      const solutionHtml = solutionDiv ? solutionDiv.innerHTML.trim() : '';
       const solutionText = solutionDiv ? solutionDiv.textContent.trim() : '';
 
-      // Build question object
+      // Determine subject from chapter
+      let subject = 'Physics';
+      if (chapter.includes('Mathematics') || chapter.includes('Calculus') || chapter.includes('Algebra')) {
+        subject = 'Mathematics';
+      }
+
+      // Skip if no options
+      if (!options.a && !options.b && !options.c && !options.d) {
+        console.log(`  ⏭️  Skipping ${externalId}: No options`);
+        return;
+      }
+
+      // Skip if no correct answer
+      if (!correctAnswer) {
+        console.log(`  ⏭️  Skipping ${externalId}: No correct answer`);
+        return;
+      }
+
       const question = {
         external_id: externalId,
         subject: subject,
-        chapter: chapter !== 'Unknown' && chapter !== '' ? chapter : null,
-        topic: topic !== 'Unknown' && topic !== '' ? topic : null,
-        subtopic: subtopic !== 'Unknown' && subtopic !== '' ? subtopic : null,
-        difficulty: difficulty || 'MEDIUM',
-        question_type: questionType !== '' ? questionType : null,
+        chapter: chapter,
+        topic: topic,
+        subtopic: '',
+        difficulty: difficulty,
+        question_type: 'Multiple Choice Single Answer',
         question: questionText,
-        question_html: questionHtml,
+        question_html: `<p>${questionText}</p>`,
         options: options,
         correct_answer: correctAnswer,
         solution_html: solutionHtml,
         solution_text: solutionText,
-        tags: tags,
+        tags: [],
         concepts: []
       };
 
       questions.push(question);
 
     } catch (error) {
-      console.error(`  ⚠️  Error parsing question ${index + 1}:`, error.message);
+      console.error(`  ❌ Error parsing question ${index + 1}:`, error.message);
     }
   });
 
-  console.log(`  ✅ Parsed ${questions.length} questions`);
+  console.log(`   ✅ Extracted ${questions.length} valid questions\n`);
   return questions;
 }
 
-async function insertQuestions(questions, subject) {
-  console.log(`\n📥 Processing ${subject} questions (insert/update)...\n`);
+/**
+ * Delete and insert questions
+ */
+async function updateQuestionsInDB(questions, subject) {
+  console.log(`\n${'='.repeat(70)}`);
+  console.log(`📘 UPDATING ${subject.toUpperCase()} QUESTIONS IN DATABASE`);
+  console.log('='.repeat(70));
 
   const results = {
     inserted: 0,
-    updated: 0,
     deleted: 0,
     failed: 0,
-    missingAnswer: 0,
     errors: []
   };
 
   for (let i = 0; i < questions.length; i++) {
     const q = questions[i];
-    const num = i + 1;
-
-    console.log(`[${num}/${questions.length}] ${q.external_id}`);
-
-    // Check if correct answer is present
-    if (!q.correct_answer) {
-      console.log(`  ⚠️  Missing correct answer - skipping`);
-      results.missingAnswer++;
-      continue;
-    }
-
-    console.log(`  ℹ️  Answer: ${q.correct_answer.toUpperCase()}`);
+    console.log(`\n[${i + 1}/${questions.length}] ${q.external_id}`);
 
     try {
-      // First, delete ALL existing questions with this external_id (handles duplicates)
-      console.log(`  🔄 Removing old versions...`);
-      const { data: deletedRecords, error: deleteError } = await supabase
+      // Delete existing
+      console.log(`  🔄 Removing old version...`);
+      const { data: deleted, error: deleteError } = await supabase
         .from('questions')
         .delete()
         .eq('external_id', q.external_id)
         .select();
 
-      if (deleteError && !deleteError.message.includes('No rows found')) {
-        console.log(`  ❌ Delete error: ${deleteError.message}`);
-        results.failed++;
-        results.errors.push({
-          id: q.external_id,
-          error: `Delete failed: ${deleteError.message}`
-        });
-        continue;
+      if (deleteError) {
+        console.log(`  ⚠️  Delete warning: ${deleteError.message}`);
+      } else if (deleted && deleted.length > 0) {
+        console.log(`  🗑️  Deleted ${deleted.length} old version(s)`);
+        results.deleted += deleted.length;
+      } else {
+        console.log(`  ℹ️  No existing version found (new question)`);
       }
 
-      const deletedCount = deletedRecords ? deletedRecords.length : 0;
-      if (deletedCount > 0) {
-        results.deleted += deletedCount;
-        console.log(`  ✅ Removed ${deletedCount} old version(s)`);
-      }
-
-      // Insert the new/updated question
-      const { data, error } = await supabase
+      // Insert corrected version
+      console.log(`  ➕ Inserting corrected version...`);
+      const { error: insertError } = await supabase
         .from('questions')
-        .insert([q])
-        .select();
+        .insert([q]);
 
-      if (error) {
-        console.log(`  ❌ Insert error: ${error.message}`);
+      if (insertError) {
+        console.log(`  ❌ Error: ${insertError.message}`);
         results.failed++;
         results.errors.push({
           id: q.external_id,
-          error: error.message
+          error: insertError.message
         });
       } else {
-        if (deletedCount > 0) {
-          console.log(`  ✅ Updated with corrected data`);
-          results.updated++;
-        } else {
-          console.log(`  ✅ Inserted new question`);
-          results.inserted++;
-        }
+        console.log(`  ✅ Inserted successfully`);
+        results.inserted++;
       }
 
-      // Small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 100));
-
-    } catch (error) {
-      console.log(`  ❌ Exception: ${error.message}`);
+    } catch (err) {
+      console.log(`  ❌ Exception: ${err.message}`);
       results.failed++;
       results.errors.push({
         id: q.external_id,
-        error: error.message
+        error: err.message
       });
     }
   }
@@ -232,92 +198,61 @@ async function insertQuestions(questions, subject) {
   return results;
 }
 
+/**
+ * Main execution
+ */
 async function main() {
-  console.log('🚀 Starting insertion from corrected HTML files...\n');
+  const args = process.argv.slice(2);
 
-  const allResults = {
-    Mathematics: null,
-    Physics: null
-  };
-
-  // Parse and insert Mathematics questions
-  try {
-    const mathQuestions = parseHTMLFile('excluded_mathematics_questions.html', 'Mathematics');
-    allResults.Mathematics = await insertQuestions(mathQuestions, 'Mathematics');
-  } catch (error) {
-    console.error('❌ Error processing Mathematics:', error.message);
+  if (args.length === 0) {
+    console.log('Usage: node insert_from_corrected_html.js <html-file-path>');
+    console.log('Example: node insert_from_corrected_html.js latex_corrections_physics.html');
+    process.exit(1);
   }
 
-  // Parse and insert Physics questions
-  try {
-    const physicsQuestions = parseHTMLFile('excluded_physics_questions.html', 'Physics');
-    allResults.Physics = await insertQuestions(physicsQuestions, 'Physics');
-  } catch (error) {
-    console.error('❌ Error processing Physics:', error.message);
+  const htmlFile = args[0];
+
+  if (!fs.existsSync(htmlFile)) {
+    console.log(`❌ Error: File not found: ${htmlFile}`);
+    process.exit(1);
   }
 
-  // Print final summary
-  console.log('\n\n' + '='.repeat(70));
+  console.log('🚀 Starting insertion from corrected HTML file...\n');
+
+  // Extract questions
+  const questions = extractQuestionsFromHTML(htmlFile);
+
+  if (questions.length === 0) {
+    console.log('❌ No valid questions found in HTML file');
+    process.exit(1);
+  }
+
+  // Determine subject from first question
+  const subject = questions[0].subject;
+
+  // Update database
+  const results = await updateQuestionsInDB(questions, subject);
+
+  // Final report
+  console.log(`\n\n${'='.repeat(70)}`);
   console.log('📊 FINAL RESULTS');
   console.log('='.repeat(70));
-
-  let totalInserted = 0;
-  let totalUpdated = 0;
-  let totalDeleted = 0;
-  let totalFailed = 0;
-  let totalMissingAnswer = 0;
-
-  for (const [subject, results] of Object.entries(allResults)) {
-    if (results) {
-      console.log(`\n${subject}:`);
-      console.log(`  ➕ New insertions: ${results.inserted}`);
-      console.log(`  🔄 Updated: ${results.updated}`);
-      console.log(`  🗑️  Deleted old versions: ${results.deleted}`);
-      console.log(`  ⚠️  Missing answer: ${results.missingAnswer}`);
-      console.log(`  ❌ Failed: ${results.failed}`);
-
-      totalInserted += results.inserted;
-      totalUpdated += results.updated;
-      totalDeleted += results.deleted;
-      totalFailed += results.failed;
-      totalMissingAnswer += results.missingAnswer;
-    }
-  }
-
-  console.log('\n' + '-'.repeat(70));
-  console.log('TOTALS:');
-  console.log(`  ➕ New insertions: ${totalInserted}`);
-  console.log(`  🔄 Updated: ${totalUpdated}`);
-  console.log(`  🗑️  Deleted: ${totalDeleted}`);
-  console.log(`  ⚠️  Missing answer: ${totalMissingAnswer}`);
-  console.log(`  ❌ Failed: ${totalFailed}`);
-  console.log('='.repeat(70));
-
-  // Show errors if any
-  for (const [subject, results] of Object.entries(allResults)) {
-    if (results && results.errors.length > 0) {
-      console.log(`\n❌ ${subject} Errors:`);
-      results.errors.forEach(err => {
-        console.log(`  • ${err.id}: ${err.error}`);
-      });
-    }
-  }
+  console.log(`\n📘 ${subject.toUpperCase()}:`);
+  console.log(`   ✅ Inserted: ${results.inserted}`);
+  console.log(`   🗑️  Deleted: ${results.deleted}`);
+  console.log(`   ❌ Failed: ${results.failed}`);
+  console.log('='.repeat(70) + '\n');
 
   // Save report
-  const reportFile = 'html_insertion_report.json';
-  fs.writeFileSync(reportFile, JSON.stringify(allResults, null, 2));
-  console.log(`\n💾 Detailed report saved to: ${reportFile}`);
+  const reportFile = `insertion_report_${subject.toLowerCase()}_${Date.now()}.json`;
+  fs.writeFileSync(reportFile, JSON.stringify(results, null, 2));
+  console.log(`💾 Detailed report saved to: ${reportFile}\n`);
 
-  return totalFailed === 0 ? 0 : 1;
+  if (results.failed > 0) {
+    console.log('⚠️  Some questions failed. Check the report for details.\n');
+  } else {
+    console.log('✨ All questions inserted successfully!\n');
+  }
 }
 
-// Execute
-main()
-  .then(exitCode => {
-    console.log('\n✨ Insertion complete!');
-    process.exit(exitCode);
-  })
-  .catch(error => {
-    console.error('❌ Fatal error:', error);
-    process.exit(1);
-  });
+main().catch(console.error);

@@ -1,0 +1,75 @@
+⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217
+[dotenv@17.2.3] injecting env (2) from .env.local -- tip: 🔄 add secrets lifecycle management: https://dotenvx.com/ops
+🤖 AI-Enhanced Self-Correcting Pipeline (Schema-Fixed)
+
+📚 Subject: Mathematics
+🎯 Processing first 2 questions with issues
+🧠 Using Claude AI for intelligent content generation
+
+📥 Fetched 100 questions
+
+======================================================================
+📝 Processing: Areas_Integration_1
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+     🔍 Verifying question has all information...
+     ⚠️  Question incomplete - AI detected issues
+     ✓ Verifying solution steps and answer match...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Areas_Integration_2
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+     🔍 Verifying question has all information...
+     ✓ Verifying solution steps and answer match...
+     ⚠️  Solution issues detected
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+✅ AI-Enhanced Pipeline Complete
+======================================================================
+
+📄 Report: ai_fixed_reports/ai_fixed_Mathematics_1760260380743.json
+
+📊 Summary:
+   Processed: 2 questions
+   Issues before: 10
+   Issues after: 0
+   Fixes applied: 14
+   Success rate: 100.0%
+

@@ -1,0 +1,39 @@
+{
+  "inserted": 0,
+  "deleted": 0,
+  "failed": 8,
+  "errors": [
+    {
+      "id": "Electromagnetism_172",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Physics_1",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Electromagnetism_217",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Electromagnetism_218",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Electromagnetism_219",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Electromagnetism_220",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Physics_213",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Physics_212",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    }
+  ]
+}

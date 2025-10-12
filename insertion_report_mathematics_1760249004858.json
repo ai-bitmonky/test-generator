@@ -1,0 +1,179 @@
+{
+  "inserted": 0,
+  "deleted": 0,
+  "failed": 43,
+  "errors": [
+    {
+      "id": "Mathematics_277",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_283",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_279",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_271",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_265",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_266",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_267",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_268",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_269",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_270",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_273",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_274",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_291",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_275",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_276",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_278",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_290",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_288",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_287",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_286",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_285",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_284",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_282",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_272",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Mathematics_281",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_125",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_123",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_122",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_121",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_120",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_119",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_118",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_117",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_116",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_115",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_114",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_113",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_112",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_129",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_128",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_127",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_126",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    },
+    {
+      "id": "Calculus_124",
+      "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+    }
+  ]
+}

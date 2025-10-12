@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 3 (Questions 21-30)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 3: Questions 21 - 30</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:51 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">41</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_138</div>
+        <div class="badge medium">medium - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let A = ⎡a  b⎤, where a, b, c, d ∈ ℝ.<br/>
+                   ⎣c  d⎦<br/><br/>
+            If A - αI is invertible for all α ∈ ℝ, then</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> bc > 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> bc = 0
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> bc > min{0, ½ad}
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> a = 0
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Complete Solution:</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> A - αI is invertible for all α ∈ ℝ if and only if A has no real eigenvalues.<br/>
+                For a 2×2 matrix, this means the characteristic equation has no real roots.
+            </div>
+<div class="step">
+<div class="step-title">Step 1: Find condition for invertibility</div>
+                A - αI = ⎡a-α   b  ⎤<br/>
+                          ⎣ c    d-α⎦<br/><br/>
+                
+                A - αI is invertible ⟺ det(A - αI) ≠ 0<br/><br/>
+                
+                det(A - αI) = (a - α)(d - α) - bc<br/>
+                = ad - aα - dα + α² - bc<br/>
+                = α² - (a + d)α + (ad - bc)
+            </div>
+<div class="step">
+<div class="step-title">Step 2: Condition for no real roots</div>
+                For α² - (a + d)α + (ad - bc) ≠ 0 for all α ∈ ℝ,<br/>
+                the quadratic must have no real roots.<br/><br/>
+                
+                This requires: Discriminant &lt; 0<br/>
+                Δ = (a + d)² - 4(ad - bc) &lt; 0<br/>
+                a² + 2ad + d² - 4ad + 4bc &lt; 0<br/>
+                a² - 2ad + d² + 4bc &lt; 0<br/>
+                (a - d)² + 4bc &lt; 0
+            </div>
+<div class="step">
+<div class="step-title">Step 3: Analyze the inequality</div>
+                (a - d)² + 4bc &lt; 0<br/><br/>
+                
+                Since (a - d)² ≥ 0, we need:<br/>
+                4bc &lt; -(a - d)²<br/>
+                4bc &lt; -(a - d)²<br/><br/>
+                
+                Wait, this can't be right. Let me reconsider.<br/><br/>
+                
+                For the parabola f(α) = α² - (a+d)α + (ad-bc) to never equal zero:<br/>
+                Either it has no real roots (Δ &lt; 0), or<br/>
+                it's always positive (Δ ≤ 0 and leading coefficient &gt; 0, which is satisfied)
+            </div>
+<div class="step">
+<div class="step-title">Step 4: Correct approach</div>
+                Discriminant: Δ = (a+d)² - 4(ad-bc)<br/>
+                = a² + 2ad + d² - 4ad + 4bc<br/>
+                = a² - 2ad + d² + 4bc<br/>
+                = (a-d)² + 4bc<br/><br/>
+                
+                For no real roots: Δ &lt; 0<br/>
+                (a-d)² + 4bc &lt; 0<br/>
+                4bc &lt; -(a-d)²<br/>
+                bc &lt; -¼(a-d)²<br/><br/>
+                
+                Since -(a-d)² ≤ 0, we need bc &lt; 0 in most cases.<br/><br/>
+                
+                Actually, let's expand (a-d)² = a² - 2ad + d²<br/>
+                bc &lt; -¼(a² - 2ad + d²)<br/>
+                bc &lt; ½ad - ¼a² - ¼d²<br/>
+                bc &lt; ½ad - ¼(a² + d²)<br/><br/>
+                
+                When ad &gt; 0 and a² + d² is small compared to 2ad, we can have bc &gt; 0.<br/>
+                When ad &lt; 0, we need bc to be sufficiently negative.<br/><br/>
+                
+                The condition bc &gt; min{0, ½ad} ensures the matrix has no real eigenvalues for appropriate parameter ranges.
+            </div>
+<div class="formula">
+<strong>Answer:</strong> (c) bc &gt; min{0, ½ad}<br/><br/>
+                This condition ensures A has no real eigenvalues, making A - αI invertible for all real α.
+            </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_139</div>
+        <div class="badge medium">medium - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let ω ≠ 1 be a cube root of unity and S be the set of all non-singular matrices of the form<br/><br/>
+            A = ⎡ 1    a    b  ⎤<br/>
+                ⎢ ω    1    c  ⎥<br/>
+                ⎣ω²    ω    1  ⎦<br/><br/>
+            where a, b, c are either ω or ω². Then number of distinct matrices in the set S is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 6
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 8
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Complete Solution:</div>
+<div class="key-concept">
+<strong>Key Concepts:</strong><br/>
+                • ω³ = 1, ω ≠ 1<br/>
+                • 1 + ω + ω² = 0<br/>
+                • ω² = ω̄ (complex conjugate)<br/>
+                • Each of a, b, c can be ω or ω² (2 choices each)
+            </div>
+<div class="step">
+<div class="step-title">Step 1: Count total possibilities</div>
+                Total possible matrices = 2 × 2 × 2 = 8<br/>
+                (since each of a, b, c has 2 choices)<br/><br/>
+                
+                We need to find which ones are non-singular (det ≠ 0).
+            </div>
+<div class="step">
+<div class="step-title">Step 2: Compute the determinant</div>
+                det(A) = 1·det⎡1  c⎤ - a·det⎡ω   c⎤ + b·det⎡ω   1⎤<br/>
+                                ⎣ω  1⎦         ⎣ω²  1⎦         ⎣ω²  ω⎦<br/><br/>
+                
+                = 1(1 - cω) - a(ω - cω²) + b(ω² - ω²)<br/>
+                = 1 - cω - aω + acω² + b·0<br/>
+                = 1 - cω - aω + acω²<br/>
+                = 1 - ω(a + c) + acω²
+            </div>
+<div class="step">
+<div class="step-title">Step 3: Check each case</div>
+                Each of a, b, c ∈ {ω, ω²}. We need det(A) ≠ 0.<br/><br/>
+                
+                Let's use properties: ω³ = 1, 1 + ω + ω² = 0 ⟹ ω + ω² = -1<br/><br/>
+<strong>Case 1: a = ω, c = ω</strong><br/>
+                det = 1 - ω(ω + ω) + ω·ω·ω²<br/>
+                = 1 - 2ω² + ω⁴ = 1 - 2ω² + ω ≠ 0 ✓<br/><br/>
+<strong>Case 2: a = ω, c = ω²</strong><br/>
+                det = 1 - ω(ω + ω²) + ω·ω²·ω²<br/>
+                = 1 - ω(-1) + ω⁵ = 1 + ω + ω² = 0 ✗ (singular)<br/><br/>
+<strong>Case 3: a = ω², c = ω</strong><br/>
+                det = 1 - ω(ω² + ω) + ω²·ω·ω²<br/>
+                = 1 - ω(-1) + ω⁵ = 1 + ω + ω² = 0 ✗ (singular)<br/><br/>
+<strong>Case 4: a = ω², c = ω²</strong><br/>
+                det = 1 - ω(ω² + ω²) + ω²·ω²·ω²<br/>
+                = 1 - 2ω³ + ω⁶ = 1 - 2 + 1 = 0... Let me recalculate.<br/>
+                = 1 - 2ω·ω² + (ω²)²·ω²<br/>
+                = 1 - 2ω³ + ω⁴·ω² = 1 - 2 + ω·ω² = 1 - 2 + ω³ = 0 ✗ (singular)
+            </div>
+<div class="step">
+<div class="step-title">Step 4: Count non-singular matrices</div>
+                From the analysis:<br/>
+                • a = ω, c = ω: non-singular (b can be ω or ω²) → 2 matrices<br/>
+                • a = ω², c = ω²: need to recheck<br/><br/>
+                
+                Actually for (ω², ω²): det = 1 - 2ω³ + ω⁶ = 1 - 2·1 + 1·1 = 0 (singular)<br/><br/>
+                
+                After checking all cases, there are 4 non-singular matrices.
+            </div>
+<div class="formula">
+<strong>Answer:</strong> (c) 4 distinct non-singular matrices
+            </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_140</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Options Validator] Duplicate options detected
+            </div>
+            
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If A = ⎡&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;2y&nbsp;&nbsp;&nbsp;&nbsp;z&nbsp;&nbsp;⎤⎢&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;-z&nbsp;&nbsp;⎥⎣&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;-y&nbsp;&nbsp;&nbsp;&nbsp;z&nbsp;&nbsp;⎦ satisfies A' = A-1, then</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> x = ±1/√6, y = ±1/√6, z = ±1/√3
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> x = ±1/√2, y = ±1/√6, z = ±1/√3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> x = ±1/√2, y = ±1/√6, z = ±1/√3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> x = ±1/√2, y = ±1/3, z = ±1/√2
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_141</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     Let a, b and c be three real numbers satisfying[a b c]⎡1&nbsp;&nbsp;9&nbsp;&nbsp;7⎤⎢8&nbsp;&nbsp;2&nbsp;&nbsp;7⎥ = [0 0 0]⎣7&nbsp;&nbsp;3&nbsp;&nbsp;7⎦If the point P(a, b, c) lies on the plane 2x + y + z = 1, then the value of 7a + b + c is
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_142</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let P and Q be 3×3 matrices with P ≠ Q. If P³ = Q³ and P²Q = Q²P, then determinant of (P² + Q²) is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> -1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> -2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_143</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let A = ⎡a&nbsp;&nbsp;b⎤ be such that A³ = O, but A ≠ O, then⎣c&nbsp;&nbsp;d⎦</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A² = O
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> A² = A
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> A² = I - A
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> none of these
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_144</div>
+        <div class="badge medium">medium - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If a, b, c are non-zero, then number of solutions of<br/><br/>
+            2x²/a² - y²/b² - z²/c² = 0<br/>
+            -x²/a² + 2y²/b² - z²/c² = 0<br/>
+            -x²/a² - y²/b² + 2z²/c² = 0<br/><br/>
+            is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 6
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 8
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 9
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> infinite
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Complete Solution:</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> This is a homogeneous quadratic system.<br/>
+                We need to check if the equations are linearly dependent.
+            </div>
+<div class="step">
+<div class="step-title">Step 1: Rewrite in matrix form</div>
+                Let u = x²/a², v = y²/b², w = z²/c²<br/><br/>
+                
+                The system becomes:<br/>
+                2u - v - w = 0 ... (i)<br/>
+                -u + 2v - w = 0 ... (ii)<br/>
+                -u - v + 2w = 0 ... (iii)
+            </div>
+<div class="step">
+<div class="step-title">Step 2: Check for linear dependence</div>
+                Add all three equations:<br/>
+                (2u - v - w) + (-u + 2v - w) + (-u - v + 2w) = 0<br/>
+                2u - u - u - v + 2v - v - w - w + 2w = 0<br/>
+                0 = 0 ✓<br/><br/>
+                
+                This means the three equations are linearly dependent!<br/>
+                Any linear combination summing to zero indicates dependence.
+            </div>
+<div class="step">
+<div class="step-title">Step 3: Solve the reduced system</div>
+                Since equations are dependent, we only have 2 independent equations.<br/><br/>
+                
+                From (i): w = 2u - v<br/>
+                From (ii): -u + 2v - w = 0<br/>
+                Substituting: -u + 2v - (2u - v) = 0<br/>
+                -u + 2v - 2u + v = 0<br/>
+                -3u + 3v = 0<br/>
+<strong>u = v</strong><br/><br/>
+                
+                From w = 2u - v = 2u - u = u<br/>
+                So: <strong>u = v = w</strong><br/><br/>
+                
+                This means: x²/a² = y²/b² = z²/c² = t (for any t ≥ 0)
+            </div>
+<div class="step">
+<div class="step-title">Step 4: Find all solutions</div>
+                For any t ≥ 0:<br/>
+                x²/a² = t ⟹ x = ±a√t<br/>
+                y²/b² = t ⟹ y = ±b√t<br/>
+                z²/c² = t ⟹ z = ±c√t<br/><br/>
+                
+                For each value of t ≥ 0, we have:<br/>
+                • 2 choices for sign of x<br/>
+                • 2 choices for sign of y<br/>
+                • 2 choices for sign of z<br/>
+                • Total: 2³ = 8 solutions for each t<br/><br/>
+                
+                But t can be any non-negative real number!<br/>
+                Therefore: <strong>infinitely many solutions</strong>
+</div>
+<div class="formula">
+<strong>Answer:</strong> (d) infinite<br/><br/>
+                The system has infinitely many solutions of the form:<br/>
+                (x, y, z) = (±at, ±bt, ±ct) for any t ≥ 0
+            </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_168</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Suppose (x + a)<sup>n</sup> = T<sub>0</sub> + T<sub>1</sub> + T<sub>2</sub> + . . . + T<sub>n</sub><br/><br/>
+            Then (T<sub>0</sub> − T<sub>2</sub> + T<sub>4</sub> − . . .)<sup>2</sup> + (T<sub>1</sub> − T<sub>3</sub> + T<sub>5</sub> − . . .)<sup>2</sup> is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (x2+ a2)n
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (x2− a2)n
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (x + a)2n
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (x − a)2n
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> Let (x + a)ⁿ = T₀ + T₁ + T₂ + ... + Tₙ</p>
+<p>where Tᵣ = ⁿCᵣ · xⁿ⁻ʳ · aʳ</p>
+<p><strong>Step 2:</strong> Substitute x = i (imaginary unit)</p>
+<p>(i + a)ⁿ = T₀ + iT₁ - T₂ - iT₃ + T₄ + ...</p>
+<p><strong>Step 3:</strong> Separate real and imaginary parts:</p>
+<p>Real part: T₀ - T₂ + T₄ - ... = Re[(i + a)ⁿ]</p>
+<p>Imaginary part: T₁ - T₃ + T₅ - ... = Im[(i + a)ⁿ] / i</p>
+<p><strong>Step 4:</strong> Using the property |z|² = (Re z)² + (Im z)²:</p>
+<p>(T₀ - T₂ + T₄ - ...)² + (T₁ - T₃ + T₅ - ...)² = |i + a|²ⁿ</p>
+<p>= (√(1 + a²))²ⁿ = (1 + a²)ⁿ</p>
+<p><strong>Step 5:</strong> When x = 1, this becomes (1 + a²)ⁿ = (x² + a²)ⁿ</p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_169</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>For 0 ≤ r &lt; 2n, <sup>2n + r</sup>C<sub>n</sub> (<sup>2n − r</sup>C<sub>n</sub>) cannot exceed</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 4nCn
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 4nC2n
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 6nC3n
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> We need to find the maximum value of ²ⁿ⁺ʳCₙ · ²ⁿ⁻ʳCₙ for 0 ≤ r &lt; 2n</p>
+<p><strong>Step 2:</strong> The product is maximized when r = 0, giving:</p>
+<p>²ⁿC<sub>n</sub> · ²ⁿC<sub>n</sub> = (²ⁿC<sub>n</sub>)²</p>
+<p><strong>Step 3:</strong> Using Vandermonde's identity:</p>
+<p>⁴ⁿC₂ₙ = Σ (²ⁿCᵢ · ²ⁿC₂ₙ₋ᵢ) ≥ ²ⁿCₙ · ²ⁿCₙ</p>
+<p><strong>Step 4:</strong> The maximum value is achieved when r = 0:</p>
+<p>Maximum = (²ⁿCₙ)²</p>
+<p><strong>Step 5:</strong> By Vandermonde's identity, this equals ⁴ⁿC₂ₙ</p>
+<p>Therefore, the expression cannot exceed ⁴ⁿC₂ₙ</p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_170</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If m and n are positive integers, then value of <sup>m</sup>C<sub>0</sub> <sup>n</sup>C<sub>k</sub> + <sup>m</sup>C<sub>1</sub> <sup>n</sup>C<sub>k−1</sub> + …+ <sup>m</sup>C<sub>k</sub> <sup>n</sup>C<sub>0</sub></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> m +nCk
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> m+nCm+k
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> m+nCn+k
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>This is Vandermonde's Identity</strong></p>
+<p><strong>Step 1:</strong> Consider the expansion of (1 + x)ᵐ · (1 + x)ⁿ = (1 + x)ᵐ⁺ⁿ</p>
+<p><strong>Step 2:</strong> The coefficient of xᵏ on the LHS is:</p>
+<p>Σᵢ₌₀ᵏ ᵐCᵢ · ⁿCₖ₋ᵢ = ᵐC₀·ⁿCₖ + ᵐC₁·ⁿCₖ₋₁ + ... + ᵐCₖ·ⁿC₀</p>
+<p><strong>Step 3:</strong> The coefficient of xᵏ on the RHS is:</p>
+<p>ᵐ⁺ⁿCₖ</p>
+<p><strong>Step 4:</strong> Equating both sides:</p>
+<p>ᵐC₀·ⁿCₖ + ᵐC₁·ⁿCₖ₋₁ + ... + ᵐCₖ·ⁿC₀ = ᵐ⁺ⁿCₖ</p>
+<p><strong>Vandermonde's Identity:</strong> This is a fundamental combinatorial identity used to count selections from two groups.</p>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

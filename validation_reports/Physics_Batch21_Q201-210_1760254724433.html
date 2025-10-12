@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 21 (Questions 201-210)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 21: Questions 201 - 210</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">20</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_68</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Light of wavelength λ = 400 nm is incident on a metal surface with work function φ = 2.0 eV. What is the de Broglie wavelength of the fastest photoelectrons ejected from the surface? (Take h = 6.626 × 10⁻³⁴ J·s, c = 3.0 × 10⁸ m/s, 1 eV = 1.6 × 10⁻¹⁹ J, mₑ = 9.11 × 10⁻³¹ kg)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.02 nm
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1.18 nm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.35 nm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.50 nm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate photon energy</strong>
+<br/>E_photon = hc/λ = (6.626 × 10⁻³⁴ × 3.0 × 10⁸)/(400 × 10⁻⁹)
+ <br/>E_photon = 4.970 × 10⁻¹⁹ J = 4.970 × 10⁻¹⁹/(1.6 × 10⁻¹⁹) = 3.106 eV</li>
+<li><strong>Step 2: Maximum kinetic energy</strong>
+<br/>KE_max = E_photon - φ = 3.106 - 2.0 = 1.106 eV
+ <br/>KE_max = 1.106 × 1.6 × 10⁻¹⁹ = 1.770 × 10⁻¹⁹ J</li>
+<li><strong>Step 3: Calculate momentum</strong>
+<br/>KE = p²/(2m) → p = √(2m·KE)
+ <br/>p = √(2 × 9.11 × 10⁻³¹ × 1.770 × 10⁻¹⁹)
+ <br/>p = √(3.223 × 10⁻⁴⁹) = 5.677 × 10⁻²⁵ kg·m/s</li>
+<li><strong>Step 4: de Broglie wavelength</strong>
+<br/>λ_dB = h/p = (6.626 × 10⁻³⁴)/(5.677 × 10⁻²⁵)
+ <br/>λ_dB = 1.167 × 10⁻⁹ m = <strong>1.17 nm ≈ 1.18 nm</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_69</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>In a Young's double-slit experiment, the slits are separated by d = 0.5 mm and are illuminated by coherent light of wavelength λ = 500 nm. The screen is placed at distance D = 2.0 m from the slits. A thin glass plate of thickness t = 2.0 μm and refractive index n = 1.5 is placed in front of one of the slits. By what distance does the central bright fringe shift on the screen?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2.0 mm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 3.0 mm
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 4.0 mm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 5.0 mm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Additional optical path</strong>
+<br/>When glass replaces air:
+ <br/>Optical path in glass = nt
+ <br/>Optical path in air = t
+ <br/>Additional optical path: Δ = (n-1)t = (1.5-1) × 2.0 × 10⁻⁶ = 1.0 × 10⁻⁶ m</li>
+<li><strong>Step 2: Understanding fringe shift</strong>
+<br/>The glass plate in front of S₁ increases optical path for beam from S₁
+ <br/>Central fringe (equal path) moves to position where geometric path difference compensates</li>
+<li><strong>Step 3: Calculate shift</strong>
+<br/>For point at height y on screen: geometric path difference ≈ dy/D
+ <br/>For new central fringe: dy/D = Δ
+ <br/>y_shift = DΔ/d</li>
+<li><strong>Step 4: Numerical calculation</strong>
+<br/>y_shift = (2.0 × 1.0 × 10⁻⁶)/(0.5 × 10⁻³)
+ <br/>y_shift = (2.0 × 10⁻⁶)/(5.0 × 10⁻⁴)
+ <br/>y_shift = 4.0 × 10⁻³ m = <strong>4.0 mm</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_7</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A flammable conducting liquid is stored in a nonconducting cylindrical plastic container of radius r = 0.20 m, filled to height h = 10 cm. During handling, the exterior surface commonly acquires a negative charge density of magnitude 2.0 μC/m² (approximately uniform). The capacitance of the central portion of the liquid relative to ground is 35 pF. The minimum spark energy needed to ignite the liquid is 10 mJ. How much negative charge is induced in the center of the liquid's bulk, and can a spark from the grounded venting port ignite the liquid?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Induced charge = -0.15 μC; Energy = 0.32 mJ; Cannot ignite
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Induced charge = -0.25 μC; Energy = 0.90 mJ; Cannot ignite
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Induced charge = -0.25 μC; Energy = 12.5 mJ; Can ignite
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Induced charge = -0.50 μC; Energy = 3.57 mJ; Cannot ignite
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For electrostatic induction problems with safety analysis: (1) Calculate total surface charge from charge density and surface area, (2) Apply induction principle (equal and opposite charge induced), (3) Use capacitance to find voltage and stored energy (U = ½Q²/C), (4) Compare with threshold energy for ignition. Always consider cylindrical surface area excluding top/bottom if charge is only on vertical surface.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper immediately recognizes this as an electrostatic induction problem combined with energy analysis. The key insight is that the conducting liquid will have induced charges that exactly balance the external charges. The safety assessment requires comparing stored electrostatic energy with ignition threshold - this is a classic engineering application of capacitor energy concepts. The cylindrical geometry requires careful area calculation.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Surface charge: Q = σ × A• Cylindrical surface area: A = 2πrh (lateral surface only)• Electrostatic induction: Q_induced = -Q_external• Capacitor energy: U = ½Q²/C = ½CV²• Voltage: V = Q/C
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate Surface Area</strong><br/>
+ Lateral surface area of cylinder: A = 2πrh<br/>
+ A = 2π × 0.20 × 0.10 = 0.1257 m²</li>
+<li><strong>Step 2: Calculate Surface Charge</strong><br/>
+ Q_surface = σ × A = 2.0 × 10⁻⁶ × 0.1257<br/>
+ Q_surface = 2.51 × 10⁻⁷ C = 0.251 μC ≈ 0.25 μC</li>
+<li><strong>Step 3: Apply Induction Principle</strong><br/>
+ The conducting liquid develops an induced charge equal and opposite to the surface charge:<br/>
+ Q_induced = -Q_surface = -0.25 μC<br/>
+ This charge concentrates in the central bulk of the liquid.</li>
+<li><strong>Step 4: Calculate Voltage</strong><br/>
+ V = |Q_induced|/C = 0.25 × 10⁻⁶ / 35 × 10⁻¹²<br/>
+ V = 7,143 V ≈ 7.14 kV</li>
+<li><strong>Step 5: Calculate Stored Energy</strong><br/>
+ U = ½Q²/C = ½ × (0.25 × 10⁻⁶)² / (35 × 10⁻¹²)<br/>
+ U = ½ × 6.25 × 10⁻¹⁴ / 3.5 × 10⁻¹¹<br/>
+ U = 8.93 × 10⁻⁴ J ≈ 0.90 mJ</li>
+<li><strong>Step 6: Safety Assessment</strong><br/>
+ Energy available: 0.90 mJ<br/>
+ Energy required for ignition: 10 mJ<br/>
+ Since 0.90 mJ &lt; 10 mJ, the spark CANNOT ignite the liquid.<br/>
+ Safety factor = 10/0.90 ≈ 11, providing significant safety margin.</li>
+<li><strong>Step 7: Physical Interpretation</strong><br/>
+ The induced charge creates an electric potential, but the stored energy is about 11 times less than needed for ignition. The system is safe under these conditions, though proper grounding procedures should still be followed to prevent charge accumulation.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_70</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A satellite of mass m is in an elliptical orbit around Earth (mass M, radius R). At perihelion (closest point), the satellite is at distance r₁ = R from Earth's center with speed v₁ = √(2GM/R). What is the speed of the satellite at aphelion (farthest point)? (Take G as the gravitational constant)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (1/3)√(GM/R)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (2/5)√(GM/R)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (1/2)√(GM/R)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> (2/3)√(GM/R)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Angular momentum conservation</strong>
+<br/>r₁v₁ = r₂v₂
+ <br/>R√(1.5GM/R) = r₂v₂
+ <br/>√(1.5GMR) = r₂v₂ ... (1)</li>
+<li><strong>Step 2: Energy conservation</strong>
+<br/>½m(1.5GM/R) - GMm/R = ½mv₂² - GMm/r₂
+ <br/>0.75GMm/R - GMm/R = ½mv₂² - GMm/r₂
+ <br/>-0.25GMm/R = ½mv₂² - GMm/r₂ ... (2)</li>
+<li><strong>Step 3: From (1): r₂ = √(1.5GMR)/v₂</strong>
+<br/>Substitute into (2):
+ <br/>-0.25GM/R = ½v₂² - GMv₂/√(1.5GMR)
+ <br/>-0.25GM/R = ½v₂² - v₂√(GM/(1.5R))</li>
+<li><strong>Step �4: Let v₂ = k√(GM/R)</strong>
+<br/>-0.25GM/R = ½k²(GM/R) - k√(GM/R)√(GM/(1.5R))
+ <br/>-0.25 = 0.5k² - k/√1.5
+ <br/>0.5k² - 0.816k + 0.25 = 0
+ <br/>Solving: k = 2/3 or k = 0.75
+ <br/>Since v₂ &lt; v₁, we have v₂ = <strong>(2/3)√(GM/R)</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_71</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A parallel-plate capacitor with plate area A = 0.01 m² and separation d = 1.0 mm is charged to voltage V₀ = 1000 V and then disconnected from the battery. A dielectric slab of dielectric constant K = 4 and thickness d is then inserted between the plates. How much work is done by the external agent inserting the dielectric?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> -1.66 × 10⁻⁵ J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> -2.21 × 10⁻⁵ J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> -3.32 × 10⁻⁵ J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> -4.43 × 10⁻⁵ J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Initial capacitance and energy</strong>
+<br/>C₀ = ε₀A/d = (8.85 × 10⁻¹² × 0.01)/(1.0 × 10⁻³) = 8.85 × 10⁻¹¹ F
+ <br/>U₀ = ½C₀V₀² = ½ × 8.85 × 10⁻¹¹ × (1000)² = 4.425 × 10⁻⁵ J</li>
+<li><strong>Step 2: Charge (constant for isolated capacitor)</strong>
+<br/>Q = C₀V₀ = 8.85 × 10⁻¹¹ × 1000 = 8.85 × 10⁻⁸ C</li>
+<li><strong>Step 3: After dielectric insertion</strong>
+<br/>C_f = KC₀ = 4 × 8.85 × 10⁻¹¹ = 3.54 × 10⁻¹⁰ F
+ <br/>V_f = Q/C_f = Q/(KC₀) = V₀/K = 1000/4 = 250 V</li>
+<li><strong>Step 4: energy</strong>
+<br/>U_f = ½C_f V_f² = ½(KC₀)(V₀/K)² = ½C₀V₀²/K = U₀/K
+ <br/>U_f = 4.425 × 10⁻⁵/4 = 1.106 × 10⁻⁵ J</li>
+<li><strong>Step 5: Work by external agent</strong>
+<br/>W_ext = ΔU = U_f - U₀ = 1.106 × 10⁻⁵ - 4.425 × 10⁻⁵
+ <br/>W_ext = <strong>-3.32 × 10⁻⁵ J</strong>
+<br/>(Negative because dielectric is pulled in by attractive force; external agent must restrain it)</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_72</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A 5.00 kg block is released from rest at the top of a frictionless curved ramp of radius R = 2.00 m (quarter circle). At the bottom, it enters a horizontal surface where the coefficient of kinetic friction varies with position as μₖ(x) = 0.2 + 0.1x (where x is in meters from the entry point). If the block comes to rest after traveling 4.00 m on the horizontal surface, what is the initial height h of the block above the horizontal surface? (Take g = 10 m/s²)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2.00 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.32 m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 2.64 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 3.00 m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For variable friction problems with energy: (1) Use energy conservation for frictionless portions, (2) Set up work integral for variable friction W = -∫μₖ(x)·N·dx, (3) Apply work-energy theorem connecting all stages. Always identify where energy is conserved vs. dissipated.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Elite students immediately recognize this requires integration of the variable friction force. They set up the complete energy equation from start to finish, identifying that the ramp is frictionless (energy conserved) while the horizontal section has variable friction (energy dissipated). The critical step is correctly evaluating the work integral.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Conservation of Energy (when applicable), Work by variable friction W_f = -∫μₖ(x)mg dx, Work-Energy Theorem (W_net = ΔKE), Integration of polynomial functions
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up energy equation from start to end</strong>
+<br/>Initial PE = Work done against friction (since KE and PE are zero)
+ <br/>mgh = -W_friction</li>
+<li><strong>Step 2: Calculate work done by friction</strong>
+<br/>W_friction = -∫₀⁴ μₖ(x)·mg dx
+ <br/>W_friction = -∫₀⁴ (0.2 + 0.1x)·(5)(10) dx
+ <br/>W_friction = -50 ∫₀⁴ (0.2 + 0.1x) dx</li>
+<li><strong>Step 3: Evaluate the integral</strong>
+<br/>∫₀⁴ (0.2 + 0.1x) dx = [0.2x + 0.05x²]₀⁴
+ <br/>= 0.2(4) + 0.05(16) - 0
+ <br/>= 0.8 + 0.8 = 1.6</li>
+<li><strong>Step 4: Calculate work done by friction</strong>
+<br/>W_friction = -50 × 1.6 = -80 J</li>
+<li><strong>Step 5: Apply energy conservation</strong>
+<br/>mgh = 80
+ <br/>5 × 10 × h = 80
+ <br/>h = 80/50 = 1.6 m</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_73</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>One mole of an ideal gas undergoes a polytropic process following the relation PV<sup>n</sup> = constant, where n = 1.3. The gas expands from initial state (P₁ = 5.0 × 10⁵ Pa, V₁ = 0.010 m³) to state with V₂ = 0.020 m³. Given that for this gas C<sub>v</sub> = (3/2)R and C<sub>p</sub> = (5/2)R, where R = 8.314 J/(mol·K), what is the heat absorbed by the gas during this process?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1250 J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1875 J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 2080 J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2500 J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For polytropic processes: (1) Find pressure using PVn= constant, (2) Calculate work W = (P₂V₂ - P₁V₁)/(1-n), (3) Find temperature change using ideal gas law, (4) Calculate ΔU = nCvΔT, (5) Apply first law Q = ΔU + W. Always check if n = γ (adiabatic), n = 1 (isothermal), or general polytropic.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Advanced students recognize polytropic processes as generalizations that include isothermal (n=1), adiabatic (n=γ), isobaric (n=0), and isochoric (n=∞) as special cases. The key insight is using the work formula for polytropic processes and recognizing that heat capacity for a polytropic process is C = Cv(γ-n)/(1-n), though using first law directly is more straightforward.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Polytropic process: PVn= constant, Work in polytropic process: W = (P₂V₂ - P₁V₁)/(1-n) for n≠1, Ideal gas law: PV = nRT, First Law: Q = ΔU + W, Internal energy change: ΔU = nCvΔT, γ = Cp/Cv= 5/3 for monoatomic gas
+</div>
+<ol class="steps">
+<li><strong>Step 1: Find pressure P₂</strong>
+<br/>P₁V₁<sup>n</sup> = P₂V₂<sup>n</sup>
+<br/>P₂ = P₁(V₁/V₂)<sup>n</sup>
+<br/>P₂ = 5.0 × 10⁵ × (0.010/0.020)<sup>1.3</sup>
+<br/>P₂ = 5.0 × 10⁵ × (0.5)<sup>1.3</sup>
+<br/>P₂ = 5.0 × 10⁵ × 0.4059 = 2.03 × 10⁵ Pa</li>
+<li><strong>Step 2: Calculate work done by gas</strong>
+<br/>W = (P₂V₂ - P₁V₁)/(1-n)
+ <br/>W = [(2.03 × 10⁵ × 0.020) - (5.0 × 10⁵ × 0.010)]/(1-1.3)
+ <br/>W = [4060 - 5000]/(-0.3)
+ <br/>W = -940/(-0.3) = 3133 J</li>
+<li><strong>Step 3: Calculate initial and temperatures</strong>
+<br/>PV = nRT (with n = 1 mole)
+ <br/>T₁ = P₁V₁/R = (5.0 × 10⁵ × 0.010)/8.314 = 601.3 K
+ <br/>T₂ = P₂V₂/R = (2.03 × 10⁵ × 0.020)/8.314 = 488.2 K</li>
+<li><strong>Step 4: Calculate change in internal energy</strong>
+<br/>ΔU = nC<sub>v</sub>ΔT = 1 × (3/2) × 8.314 × (488.2 - 601.3)
+ <br/>ΔU = 12.471 × (-113.1) = -1410.5 J</li>
+<li><strong>Step 5: Apply First Law to find heat</strong>
+<br/>Q = ΔU + W
+ <br/>Q = -1410.5 + 3133
+ <br/>Q = 1722.5 J</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_74</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A conducting rod of length ℓ = 0.5 m and mass m = 0.1 kg slides without friction on two parallel horizontal conducting rails separated by distance ℓ. A uniform magnetic field B = 2.0 T points vertically upward. The rails are connected at one end by a resistor R = 5.0 Ω. The rod is given an initial velocity v₀ = 10 m/s and then released. What is the velocity of the rod when it has traveled a distance of 2.0 m?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 3.68 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 4.50 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 5.25 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 6.00 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For motional EMF with friction-like damping: (1) Identify induced EMF = Bℓv, (2) Find induced current I = EMF/R, (3) Calculate magnetic force F = BIℓ = B²ℓ²v/R (opposes motion), (4) Set up differential equation ma = -B²ℓ²v/R, (5) Recognize exponential decay, or use energy method: Initial KE = KE + Energy dissipated. Energy method is faster for velocity at specific position.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top students recognize this as an exponentially decaying velocity problem (similar to RC circuits). The magnetic force provides velocity-dependent "drag." Two approaches work: (1) Solve differential equation dv/dt = -(B²ℓ²/mR)v to get v(t) = v₀e^(-t/τ) where τ = mR/(B²ℓ²), then integrate to find position, or (2) Use energy conservation recognizing that kinetic energy lost equals energy dissipated in resistor. The energy method with integration is more direct for this question.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Motional EMF: ε = Bℓv, Ohm's Law: I = ε/R, Magnetic force on current: F = BIℓ, Newton's Second Law: F = ma, Energy dissipation: P = I²R = (Bℓv)²/R, Work-Energy theorem: ΔKE = W = -∫F dx
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up the physics</strong>
+<br/>Induced EMF: ε = Bℓv
+ <br/>Induced current: I = Bℓv/R
+ <br/>Magnetic force (opposing motion): F = BIℓ = B²ℓ²v/R</li>
+<li><strong>Step 2: Apply Newton's Second Law</strong>
+<br/>ma = -B²ℓ²v/R
+ <br/>m(dv/dt) = -B²ℓ²v/R
+ <br/>This gives dv/v = -(B²ℓ²/mR) dt</li>
+<li><strong>Step 3: Change variable from time to position</strong>
+<br/>dv/dt = (dv/dx)(dx/dt) = v(dv/dx)
+ <br/>mv(dv/dx) = -B²ℓ²v/R
+ <br/>m dv = -(B²ℓ²/R) dx
+ <br/>Integrating: m∫[v₀ to v] dv = -(B²ℓ²/R)∫[0 to x] dx
+ <br/>m(v - v₀) = -(B²ℓ²/R)x</li>
+<li><strong>Step 4: Solve for velocity</strong>
+<br/>v = v₀ - (B²ℓ²x)/(mR)
+ <br/>v = 10 - (2.0² × 0.5² × 2.0)/(0.1 × 5.0)
+ <br/>v = 10 - (4 × 0.25 × 2.0)/(0.5)
+ <br/>v = 10 - 2.0/0.5
+ <br/>v = 10 - 4.0 = 6.0 m/s</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_75</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Light of wavelength λ = 400 nm is incident on a metal surface with work function φ = 2.0 eV. What is the de Broglie wavelength of the fastest photoelectrons ejected from the surface? (Take h = 6.626 × 10⁻³⁴ J·s, c = 3.0 × 10⁸ m/s, 1 eV = 1.6 × 10⁻¹⁹ J, m_e = 9.11 × 10⁻³¹ kg)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.02 nm
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1.18 nm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.35 nm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.50 nm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For photoelectric effect with de Broglie wavelength: (1) Calculate photon energy E = hc/λ, (2) Apply Einstein's photoelectric equation KE_max = E - φ, (3) Find electron momentum p = √(2m KE), (4) Calculate de Broglie wavelength λ_dB = h/p. Always convert units carefully (eV to J, nm to m).
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Skilled students immediately chain the equations: photon energy → maximum kinetic energy → momentum → de Broglie wavelength. The critical step is careful unit management and recognizing that fastest electrons have maximum KE. Some may try to use relativistic formulas, but at these energies, classical mechanics is sufficient (KE << m_e c² = 511 keV).
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Photon energy: E = hc/λ, Einstein's photoelectric equation: KE_max = hν - φ, Kinetic energy: KE = p²/(2m) → p = √(2m·KE), de Broglie wavelength: λ = h/p, Unit conversions: 1 eV = 1.6 × 10⁻¹⁹ J
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate photon energy</strong>
+<br/>E_photon = hc/λ
+ <br/>E_photon = (6.626 × 10⁻³⁴ × 3.0 × 10⁸)/(400 × 10⁻⁹)
+ <br/>E_photon = (19.878 × 10⁻²⁶)/(4.0 × 10⁻⁷)
+ <br/>E_photon = 4.9695 × 10⁻¹⁹ J
+ <br/>E_photon (in eV) = 4.9695 × 10⁻¹⁹ / 1.6 × 10⁻¹⁹ = 3.106 eV</li>
+<li><strong>Step 2: Calculate maximum kinetic energy of photoelectrons</strong>
+<br/>KE_max = E_photon - φ
+ <br/>KE_max = 3.106 - 2.0 = 1.106 eV
+ <br/>KE_max (in J) = 1.106 × 1.6 × 10⁻¹⁹ = 1.77 × 10⁻¹⁹ J</li>
+<li><strong>Step 3: Calculate momentum of photoelectrons</strong>
+<br/>KE = p²/(2m) → p = √(2m × KE)
+ <br/>p = √(2 × 9.11 × 10⁻³¹ × 1.77 × 10⁻¹⁹)
+ <br/>p = √(3.22 × 10⁻⁴⁹)
+ <br/>p = 5.68 × 10⁻²⁵ kg·m/s</li>
+<li><strong>Step 4: Calculate de Broglie wavelength</strong>
+<br/>λ_dB = h/p
+ <br/>λ_dB = 6.626 × 10⁻³⁴ / 5.68 × 10⁻²⁵
+ <br/>λ_dB = 1.166 × 10⁻⁹ m = 1.166 nm ≈ 1.18 nm</li>
+<li><strong>Step 5: Verification</strong>
+<br/>Check if relativistic effects are negligible:
+ <br/>KE/m_e c² = 1.106 eV / 511,000 eV = 0.0000022 &lt;&lt; 1 ✓
+ <br/>Classical treatment is valid.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_76</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A satellite of mass m is in an elliptical orbit around Earth (mass M, radius R). At perihelion (closest point), the satellite is at distance r₁ = R from Earth's center with speed v₁ = 2√(GM/R). What is the speed of the satellite at aphelion (farthest point)? (Take G as the gravitational constant)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (1/3)√(GM/R)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (2/5)√(GM/R)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (1/2)√(GM/R)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> (2/3)√(GM/R)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For elliptical orbits with energy and angular momentum: (1) Use conservation of angular momentum L = mr₁v₁ = mr₂v₂ to relate velocities, (2) Use conservation of energy E = ½mv² - GMm/r at both points, (3) Solve system of two equations for v₂ and r₂. Alternatively, use vis-viva equation v² = GM(2/r - 1/a) if semi-major axis a is known.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top performers immediately recognize that both energy and angular momentum are conserved in central force motion. They set up two equations and solve simultaneously. The key insight is that the problem gives enough information at perihelion to determine the total energy and angular momentum of the orbit, which then uniquely determine the motion at aphelion. Advanced students might recognize they can find the semi-major axis from energy and then use Kepler's relations.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Conservation of angular momentum: L = mrv (perpendicular component), at perihelion and aphelion velocity is perpendicular to radius, Conservation of energy: E = KE + PE = ½mv² - GMm/r, Vis-viva equation: v² = GM(2/r - 1/a) where a is semi-major axis, Relation: r₁ + r₂ = 2a for ellipse
+</div>
+<ol class="steps">
+<li><strong>Step 1: Apply conservation of angular momentum</strong>
+<br/>At perihelion and aphelion, velocity is perpendicular to radius
+ <br/>L = mr₁v₁ = mr₂v₂
+ <br/>r₁v₁ = r₂v₂
+ <br/>R × 2√(GM/R) = r₂v₂
+ <br/>2R√(GM/R) = r₂v₂ ... (equation 1)</li>
+<li><strong>Step 2: Apply conservation of energy</strong>
+<br/>E₁ = E₂
+ <br/>½mv₁² - GMm/r₁ = ½mv₂² - GMm/r₂
+ <br/>½(2√(GM/R))² - GM/R = ½v₂² - GM/r₂
+ <br/>½ × 4GM/R - GM/R = ½v₂² - GM/r₂
+ <br/>2GM/R - GM/R = ½v₂² - GM/r₂
+ <br/>GM/R = ½v₂² - GM/r₂ ... (equation 2)</li>
+<li><strong>Step 3: Solve for r₂ from equation 1</strong>
+<br/>r₂ = 2R√(GM/R) / v₂</li>
+<li><strong>Step 4: Substitute into equation 2</strong>
+<br/>GM/R = ½v₂² - GM/r₂
+ <br/>GM/R = ½v₂² - GMv₂/(2R√(GM/R))
+ <br/>GM/R = ½v₂² - v₂√(GM)/(2√R)
+ <br/>Let v₂ = k√(GM/R), then:
+ <br/>GM/R = ½k²(GM/R) - k√(GM/R) × √(GM)/(2√R)
+ <br/>1 = ½k² - k/2
+ <br/>2 = k² - k
+ <br/>k² - k - 2 = 0
+ <br/>(k - 2)(k + 1) = 0
+ <br/>k = 2 or k = -1</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

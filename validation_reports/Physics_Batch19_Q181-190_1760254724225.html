@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 19 (Questions 181-190)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 19: Questions 181 - 190</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">9</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">10%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">17</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (9 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_213</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Figure 22-53 shows two concentric rings, of radiiRandR′= 3.00R, that lie on the same plane. PointPlies on the central z axis, at distanceD= 2.00Rfrom the center of the rings. The smaller ring has uniformly distributed chargeQ. In terms ofQ, what is the uniformly distributed charge on the larger ring if the net electric field atPis zero?P (D=2R)RR′=3R</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Q′ = −(13/5)^{3/2} · Q ≈ −4.192 Q
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Q′ = −(5/13)^{3/2} · Q ≈ −0.238 Q
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Q′ = −(13/5) · Q = −2.6 Q
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Q′ = + (13/5)^{3/2} · Q ≈ +4.192 Q
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use ring-axis fieldE(z)=k z Q/(z²+R²)^{3/2}; set the algebraic sum from both rings to zero atz=D.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> When cancelling fields on axis, charges must have opposite signs if radii differ; reduce to a clean ratio of two geometry factors.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Ring field on axis; superposition;R′=3R,D=2R.
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Set <code>k D [ Q/(D²+R²)^{3/2} + Q′/(D²+R′²)^{3/2} ] = 0</code> → bracket must vanish.</li>
+<li><strong>Step 2:</strong> Solve for <code>Q′ = −Q · (D²+R′²)^{3/2}/(D²+R²)^{3/2}</code>.</li>
+<li><strong>Step 3:</strong> Insert numbers: <code>D²+R²=5R²</code>, <code>D²+R′²=13R²</code> → <code>Q′ = −Q · (13/5)^{3/2} ≈ −4.192Q</code>.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_214</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 33:
+      </h4>
+      Figure 22-56. A “semi-infinite” nonconducting rod (that is, infinite in one direction only) has uniform linear charge densityλ. Show that the electric field at pointPmakes an angle of 45° with the rod and that this result is independent of the distanceR. (Hint:Separately find the component ofEpparallel to the rod and the component perpendicular to the rod.)semi-infinite rodPR</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A. The field at
+       
+        P
+       
+       makes 30° with the rod (depends on
+       
+        R
+       
+       ).
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B. The field at
+       
+        P
+       
+       makes 45° with the rod (independent of
+       
+        R
+       
+       ).
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C. The field at
+       
+        P
+       
+       makes 60° with the rod (independent of
+       
+        R
+       
+       ).
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D. The field direction depends on
+       
+        R
+       
+       and
+       
+        λ
+       
+       .
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Use elementdE = (1/4π ε₀)(λ dx / r²), resolve into components, substitutex = R tanθto convert both component integrals to the same limits and compare.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         With the tangent substitution,E_parallel = E_perppops out immediately, giving a 45° resultant—this is a standard trick.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         Geometry of a line element; component integrals withr² = R² + x².
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Choose the rod along +x from 0→∞;
+          <code>
+           P
+          </code>
+          at (0,
+          <em>
+           R
+          </em>
+          ). For element at x,
+          <code>
+           r = √(R²+x²)
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Components:
+          <code>
+           dE_y = dE · (R/r)
+          </code>
+          ,
+          <code>
+           dE_x = dE · (x/r)
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          With
+          <code>
+           x = R tanθ
+          </code>
+          , limits 0→∞ map to 0→π/2. Both integrals reduce to the same value →
+          <code>
+           E_x = E_y
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Hence resultant
+          <code>
+           E
+          </code>
+          makes 45° with the rod, independent of
+          <em>
+           R
+          </em>
+          .
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_215</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Equations 22-8 and 22-9 are approximations of the magnitude of the electric field of an electric dipole, at points along the dipole axis. Consider a point <em>P</em> on that axis at distance <em>z</em> = 5.00<em>d</em> from the dipole center (<em>d</em> is the separation distance between the particles of the dipole). Let <em>E</em><sub>appr</sub> be the magnitude of the field at point <em>P</em> as approximated by Eqs. 22-8 and 22-9. Let <em>E</em><sub>act</sub> be the actual magnitude. What is the ratio <code>E_appr/E_act</code>?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.9604
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0.9801
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.0000
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.0201
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Write the exact axial field of ±q at ±d/2 and compare with the far-field formE ≈ (1/2π ε₀)(p/z³)wherep=qd.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Reduce the exact expression to the approximate one times a compact correction factor[1 − d²/(4z²)]⁻²and then plug in the geometry.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Exact axial field:E_act = (1/4π ε₀) · (2 p z)/(z² − d²/4)².
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Compute <code>E_appr/E_act = [ (1/2π ε₀) p/z³ ] / [ (1/4π ε₀) 2 p z / (z² − d²/4)² ] = (1 − d²/4z²)²</code>.</li>
+<li><strong>Step 2:</strong> With <code>z=5d</code>, get <code>(1 − 1/100)² = 0.99² = 0.9801</code>.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_216</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 31:
+      </h4>
+      Figure 22-52a shows a nonconducting rod with a uniformly distributed chargeQ. The rod forms a half-circle with radiusRand produces an electric field of magnitudeEarcat its center of curvatureP. If the arc is collapsed to a point at distanceRfromP(Fig. 22-52b), by what factor is the magnitude of the electric field atPmultiplied?PRPQ at R</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> π/2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2/π
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> π
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         ComputeE_arcat the center of a half-ring and compare withE_point = kQ/R²at the same distance.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         The axial (vertical) components from the half-ring sum; the horizontal components cancel. The half-ring field at the center is a staple result.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         For a uniformly charged arc of angleπat radiusR,E_arc = (2kQ)/(π R²); a point at distanceRgivesE_point = kQ/R².
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Ratio
+          <code>
+           (E_point)/(E_arc) = (kQ/R²)/[2kQ/(πR²)] = π/2
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Hence the field magnitude is multiplied by
+          <code>
+           π/2
+          </code>
+          .
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_232</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><svg height="450" width="800" xmlns="http://www.w3.org/2000/svg">
+<!-- Road -->
+<rect fill="#7f8c8d" height="120" stroke="#2c3e50" stroke-width="2" width="800" x="0" y="200"></rect>
+<line stroke="#f39c12" stroke-dasharray="30,20" stroke-width="4" x1="0" x2="800" y1="260" y2="260"></line>
+<!-- Your car (initial) -->
+<rect fill="#3498db" height="50" rx="5" stroke="#2c3e50" stroke-width="2" width="80" x="100" y="220"></rect>
+<circle cx="120" cy="275" fill="#2c3e50" r="12"></circle>
+<circle cx="160" cy="275" fill="#2c3e50" r="12"></circle>
+<text fill="white" font-size="16" font-weight="bold" text-anchor="middle" x="140" y="250">YOU</text>
+<text fill="#e74c3c" font-size="13" text-anchor="middle" x="140" y="310">😡📱</text>
+<text fill="#e74c3c" font-size="11" text-anchor="middle" x="140" y="325">(Distracted!)</text>
+<!-- Police car (initial) -->
+<rect fill="#e74c3c" height="50" rx="5" stroke="#2c3e50" stroke-width="2" width="80" x="250" y="220"></rect>
+<circle cx="270" cy="275" fill="#2c3e50" r="12"></circle>
+<circle cx="310" cy="275" fill="#2c3e50" r="12"></circle>
+<rect fill="#2980b9" height="12" rx="3" width="60" x="260" y="205"></rect>
+<circle cx="273" cy="211" fill="#3498db" r="3"></circle>
+<circle cx="285" cy="211" fill="#3498db" r="3"></circle>
+<circle cx="297" cy="211" fill="#e74c3c" r="3"></circle>
+<circle cx="309" cy="211" fill="#e74c3c" r="3"></circle>
+<text fill="white" font-size="14" font-weight="bold" text-anchor="middle" x="290" y="250">POLICE</text>
+<!-- Separation -->
+<line marker-end="url(#arrowright2)" marker-start="url(#arrowleft)" stroke="#27ae60" stroke-width="3" x1="180" x2="250" y1="190" y2="190"></line>
+<text fill="#27ae60" font-size="16" font-weight="bold" text-anchor="middle" x="215" y="185">25 m</text>
+<!-- Speed indicators -->
+<text fill="#3498db" font-size="14" font-weight="bold" text-anchor="middle" x="140" y="185">110 km/h →</text>
+<text fill="#e74c3c" font-size="14" font-weight="bold" text-anchor="middle" x="290" y="185">110 km/h →</text>
+<!-- Timeline -->
+<rect fill="#ecf0f1" height="320" rx="10" stroke="#2c3e50" stroke-width="2" width="320" x="450" y="50"></rect>
+<text font-size="18" font-weight="bold" text-anchor="middle" x="610" y="75">Timeline of Events</text>
+<!-- t = 0 -->
+<rect fill="#e74c3c" height="50" rx="5" stroke="#c0392b" stroke-width="2" width="270" x="470" y="95"></rect>
+<text fill="white" font-size="13" font-weight="bold" text-anchor="middle" x="605" y="115">t = 0 s: Police starts braking</text>
+<text fill="white" font-size="12" text-anchor="middle" x="605" y="132">You're distracted, keep going 110 km/h</text>
+<!-- t = 2.0 s -->
+<rect fill="#f39c12" height="50" rx="5" stroke="#e67e22" stroke-width="2" width="270" x="470" y="155"></rect>
+<text fill="white" font-size="13" font-weight="bold" text-anchor="middle" x="605" y="175">t = 2.0 s: Attention returns</text>
+<text fill="white" font-size="12" text-anchor="middle" x="605" y="192">(a) What's the separation now?</text>
+<!-- t = 2.4 s -->
+<rect fill="#9b59b6" height="50" rx="5" stroke="#8e44ad" stroke-width="2" width="270" x="470" y="215"></rect>
+<text fill="white" font-size="13" font-weight="bold" text-anchor="middle" x="605" y="235">t = 2.4 s: You start braking</text>
+<text fill="white" font-size="12" text-anchor="middle" x="605" y="252">(after 0.4 s reaction time)</text>
+<!-- Collision -->
+<rect fill="#c0392b" height="65" rx="5" stroke="#922b21" stroke-width="2" width="270" x="470" y="275"></rect>
+<text fill="white" font-size="13" font-weight="bold" text-anchor="middle" x="605" y="295">t = ?: COLLISION! 💥</text>
+<text fill="white" font-size="12" text-anchor="middle" x="605" y="313">(b) What's your speed at impact?</text>
+<text fill="white" font-size="11" text-anchor="middle" x="605" y="330">(Both braking at 5.0 m/s²)</text>
+<!-- Warning sign -->
+<path d="M 50 50 L 80 110 L 20 110 Z" fill="#f39c12" stroke="#d68910" stroke-width="3"></path>
+<text fill="#2c3e50" font-size="30" font-weight="bold" text-anchor="middle" x="50" y="95">!</text>
+<text fill="#e74c3c" font-size="12" font-weight="bold" text-anchor="middle" x="50" y="135">Don't text</text>
+<text fill="#e74c3c" font-size="12" font-weight="bold" text-anchor="middle" x="50" y="150">and drive!</text>
+<!-- Arrow markers -->
+<defs>
+<marker id="arrowleft" markerheight="10" markerwidth="10" orient="auto" refx="1" refy="3">
+<path d="M9,0 L9,6 L0,3 z" fill="#27ae60"></path>
+</marker>
+<marker id="arrowright2" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#27ae60"></path>
+</marker>
+</defs>
+</svg>
+<p><strong>(a)</strong> What is the separation between the two cars when your attention ly returns (after 2.0 s)?</p>
+<p><strong>(b)</strong> Suppose that you take another 0.40 s to realize your danger and begin braking. If you too brake at 5.0 m/s², what is your speed when you hit the police car?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 15.0 m; (b) 26.1 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 12.5 m; (b) 31.4 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 18.2 m; (b) 22.8 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 20.0 m; (b) 28.5 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For multi-stage relative motion problems, track each vehicle separately through each time phase. Calculate positions after each phase, find separations, then analyze the relative motion during the phase (both braking). Since both cars have the same deceleration in the phase, use relative velocity concepts to simplify.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper recognizes this as a three-phase problem: (1) distraction phase (2.0 s), (2) reaction phase (0.4 s), (3) both braking phase. The key insight: when both vehicles have the same acceleration, their relative acceleration is zero, so you can use constant relative velocity to find collision time. Always convert units first (km/h → m/s) to avoid errors!
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Initial speed: v₀ = 110 km/h = 30.56 m/sInitial separation: 25 mPolice deceleration: a = -5.0 m/s² (starting at t = 0)Distraction time: 2.0 sReaction time: 0.4 sYour deceleration: a = -5.0 m/s² (starting at t = 2.4 s)Position equation: x = x₀ + v₀t + ½at²Velocity equation: v = v₀ + at
+</div>
+<ol class="steps">
+<li><strong>Step 1: Convert units</strong><br/>
+<div class="formula">
+ Initial speed = 110 km/h = 110 × (1000/3600) m/s<br/>
+<strong>v₀ = 30.56 m/s</strong>
+</div>
+ 
+ This is the speed of both cars at t = 0.</li>
+<li><strong>Step 2: Analyze the distraction phase (0 to 2.0 s)</strong><br/>
+ During this phase:<br/>
+ • You maintain constant speed (distracted)<br/>
+ • Police car brakes at 5.0 m/s²<br/><br/>
+<strong>Your position after 2.0 s:</strong><br/>
+<div class="formula">
+ Starting at x = 0:<br/>
+ x_you = v₀t = 30.56 × 2.0 = 61.11 m
+ </div>
+<strong>Police car position after 2.0 s:</strong><br/>
+<div class="formula">
+ Starting at x = 25 m:<br/>
+ x_police = 25 + v₀t + ½at²<br/>
+ x_police = 25 + 30.56(2.0) + ½(-5.0)(2.0)²<br/>
+ x_police = 25 + 61.11 - 10.0<br/>
+ x_police = 76.11 m
+ </div>
+<strong>Police car velocity after 2.0 s:</strong><br/>
+<div class="formula">
+ v_police = v₀ + at = 30.56 + (-5.0)(2.0) = 20.56 m/s
+ </div></li>
+<li><strong>Step 3: Calculate separation after distraction phase (Part a)</strong><br/>
+<div class="formula">
+ Separation = x_police - x_you<br/>
+ Separation = 76.11 - 61.11<br/>
+<strong>(a) Separation = 15.0 m</strong>
+</div>
+ 
+ The gap has decreased from 25 m to 15 m! You're getting closer to the police car.</li>
+<li><strong>Step 4: Analyze the reaction phase (2.0 s to 2.4 s)</strong><br/>
+ During this additional 0.4 s:<br/>
+ • You still maintain speed 30.56 m/s<br/>
+ • Police car continues braking<br/><br/>
+<strong>Your position after 2.4 s:</strong><br/>
+<div class="formula">
+ x_you = 61.11 + 30.56(0.4) = 61.11 + 12.22 = 73.33 m
+ </div>
+<strong>Police position after 2.4 s:</strong><br/>
+<div class="formula">
+ x_police = 76.11 + 20.56(0.4) + ½(-5.0)(0.4)²<br/>
+ x_police = 76.11 + 8.22 - 0.4<br/>
+ x_police = 83.93 m
+ </div>
+<strong>Police velocity after 2.4 s:</strong><br/>
+<div class="formula">
+ v_police = 20.56 + (-5.0)(0.4) = 18.56 m/s
+ </div>
+<strong>Separation at t = 2.4 s:</strong><br/>
+<div class="formula">
+ Separation = 83.93 - 73.33 = 10.60 m
+ </div>
+ 
+ The gap is now only 10.60 m!</li>
+<li><strong>Step 5: Analyze the braking phase (both cars braking)</strong><br/>
+ Starting at t = 2.4 s:<br/>
+ • Your velocity: 30.56 m/s, acceleration: -5.0 m/s²<br/>
+ • Police velocity: 18.56 m/s, acceleration: -5.0 m/s²<br/>
+ • Separation: 10.60 m<br/><br/>
+<div class="key-point">
+<strong>Key Insight:</strong> Since both cars have the <em>same</em> acceleration (-5.0 m/s²), their <strong>relative acceleration is zero</strong>!<br/><br/>
+ 
+ Relative velocity = v_you - v_police = 30.56 - 18.56 = 12.0 m/s (you approaching police)<br/>
+ Relative acceleration = a_you - a_police = -5.0 - (-5.0) = 0 m/s²<br/><br/>
+ 
+ This means you approach the police car at a <strong>constant</strong> relative speed of 12.0 m/s!
+ </div></li>
+<li><strong>Step 6: Find time to collision</strong><br/>
+<div class="formula">
+ Since relative velocity is constant at 12.0 m/s:<br/>
+ Time to close 10.60 m gap = distance / relative velocity<br/>
+ t_collision = 10.60 / 12.0 = 0.883 s
+ </div>
+ 
+ So collision occurs 0.883 s after you start braking (at t = 2.4 + 0.883 = 3.283 s total).</li>
+<li><strong>Step 7: Calculate your speed at impact (Part b)</strong><br/>
+ You've been braking for 0.883 s at 5.0 m/s²:<br/>
+<div class="formula">
+ v_you_impact = v₀ + at<br/>
+ v_you_impact = 30.56 + (-5.0)(0.883)<br/>
+ v_you_impact = 30.56 - 4.42<br/>
+<strong>(b) v_you_impact = 26.14 m/s ≈ 26.1 m/s</strong>
+</div>
+ 
+ In km/h: 26.14 × 3.6 = 94.1 km/h<br/><br/>
+ 
+ That's still a significant collision speed! 💥</li>
+<li><strong>Step 8: Verification</strong><br/>
+ Let's verify the police car's speed at impact:<br/>
+<div class="formula">
+ v_police_impact = 18.56 + (-5.0)(0.883)<br/>
+ v_police_impact = 18.56 - 4.42 = 14.14 m/s
+ </div>
+ 
+ Relative velocity at impact = 26.14 - 14.14 = 12.0 m/s ✓<br/>
+ This confirms our relative velocity remained constant during the braking phase!</li>
+<li><strong>Step 9: Summary of motion phases</strong><br/>
+<svg height="400" width="700" xmlns="http://www.w3.org/2000/svg">
+<!-- Axes -->
+<line marker-end="url(#arrowright3)" stroke="#2c3e50" stroke-width="2" x1="50" x2="650" y1="350" y2="350"></line>
+<line marker-end="url(#arrowup7)" stroke="#2c3e50" stroke-width="2" x1="50" x2="50" y1="350" y2="50"></line>
+<text font-size="14" font-weight="bold" x="660" y="355">t (s)</text>
+<text font-size="14" font-weight="bold" x="30" y="40">v (m/s)</text>
+<!-- Your velocity -->
+<!-- Phase 1: constant at 30.56 -->
+<line stroke="#3498db" stroke-width="4" x1="50" x2="250" y1="165" y2="165"></line>
+<!-- Phase 2: constant at 30.56 -->
+<line stroke="#3498db" stroke-width="4" x1="250" x2="290" y1="165" y2="165"></line>
+<!-- Phase 3: decreasing -->
+<line stroke="#3498db" stroke-width="4" x1="290" x2="378" y1="165" y2="200"></line>
+<text fill="#3498db" font-size="13" font-weight="bold" x="200" y="155">YOU: 30.56 m/s</text>
+<!-- Police velocity -->
+<!-- Starts at 30.56, decreases throughout -->
+<line stroke="#e74c3c" stroke-width="4" x1="50" x2="290" y1="165" y2="230"></line>
+<!-- Continues decreasing -->
+<line stroke="#e74c3c" stroke-width="4" x1="290" x2="378" y1="230" y2="253"></line>
+<text fill="#e74c3c" font-size="13" font-weight="bold" x="150" y="205">POLICE (braking)</text>
+<!-- Collision point -->
+<circle cx="378" cy="200" fill="#3498db" r="6" stroke="#2c3e50" stroke-width="2"></circle>
+<circle cx="378" cy="253" fill="#e74c3c" r="6" stroke="#2c3e50" stroke-width="2"></circle>
+<text fill="#3498db" font-size="12" font-weight="bold" x="390" y="195">26.1 m/s</text>
+<text fill="#e74c3c" font-size="12" font-weight="bold" x="390" y="258">14.1 m/s</text>
+<text fill="#c0392b" font-size="14" font-weight="bold" text-anchor="middle" x="378" y="280">COLLISION! 💥</text>
+<!-- Time markers -->
+<line stroke="#2c3e50" stroke-width="2" x1="50" x2="50" y1="345" y2="355"></line>
+<text font-size="11" text-anchor="middle" x="50" y="370">0</text>
+<line stroke="#2c3e50" stroke-width="2" x1="250" x2="250" y1="345" y2="355"></line>
+<text font-size="11" text-anchor="middle" x="250" y="370">2.0</text>
+<line stroke="#f39c12" stroke-dasharray="5,5" stroke-width="2" x1="250" x2="250" y1="50" y2="350"></line>
+<text fill="#f39c12" font-size="11" text-anchor="middle" x="250" y="310">Attention</text>
+<text fill="#f39c12" font-size="11" text-anchor="middle" x="250" y="323">returns</text>
+<line stroke="#2c3e50" stroke-width="2" x1="290" x2="290" y1="345" y2="355"></line>
+<text font-size="11" text-anchor="middle" x="290" y="370">2.4</text>
+<line stroke="#9b59b6" stroke-dasharray="5,5" stroke-width="2" x1="290" x2="290" y1="50" y2="350"></line>
+<text fill="#9b59b6" font-size="11" text-anchor="middle" x="290" y="40">Start</text>
+<text fill="#9b59b6" font-size="11" text-anchor="middle" x="290" y="53">braking</text>
+<line stroke="#2c3e50" stroke-width="2" x1="378" x2="378" y1="345" y2="355"></line>
+<text font-size="11" text-anchor="middle" x="378" y="370">3.28</text>
+<line stroke="#c0392b" stroke-dasharray="5,5" stroke-width="2" x1="378" x2="378" y1="50" y2="350"></line>
+<!-- Velocity scale -->
+<text font-size="10" text-anchor="end" x="35" y="355">0</text>
+<text font-size="10" text-anchor="end" x="35" y="280">15</text>
+<text font-size="10" text-anchor="end" x="35" y="205">30</text>
+<!-- Phase labels -->
+<rect fill="#e74c3c" height="35" opacity="0.8" rx="5" stroke="#c0392b" stroke-width="2" width="100" x="120" y="80"></rect>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="170" y="100">Phase 1:</text>
+<text fill="white" font-size="10" text-anchor="middle" x="170" y="112">Distracted</text>
+<rect fill="#f39c12" height="35" opacity="0.8" rx="5" stroke="#e67e22" stroke-width="2" width="100" x="260" y="80"></rect>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="310" y="100">Phase 2:</text>
+<text fill="white" font-size="10" text-anchor="middle" x="310" y="112">Reacting</text>
+<rect fill="#9b59b6" height="35" opacity="0.8" rx="5" stroke="#8e44ad" stroke-width="2" width="100" x="330" y="80"></rect>
+<text fill="white" font-size="11" font-weight="bold" text-anchor="middle" x="380" y="100">Phase 3:</text>
+<text fill="white" font-size="10" text-anchor="middle" x="380" y="112">Both braking</text>
+<!-- Arrow markers -->
+<defs>
+<marker id="arrowright3" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#2c3e50"></path>
+</marker>
+<marker id="arrowup7" markerheight="10" markerwidth="10" orient="auto" refx="3" refy="1">
+<path d="M0,10 L6,0 L3,10 z" fill="#2c3e50"></path>
+</marker>
+</defs>
+</svg></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_234</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem 13 from Textbook:</strong></p>
+<p>A non-uniform ball of mass <em>M</em> and radius <em>R</em> rolls smoothly from rest down a ramp and onto a circular loop of radius 0.48 m. The initial height of the ball is h = 0.36 m (measured from the bottom of the loop). At the bottom of the loop, the magnitude of the normal force on the ball is 2.00<em>Mg</em>.</p>
+<p>The ball consists of an outer spherical shell (of a certain uniform density) that is glued to a central sphere (of a different uniform density). The rotational inertia of the ball can be expressed in the general form <em>I</em> = β<em>MR</em>², but β is not 0.4 as it is for a ball of uniform density.</p>
+<p><strong>Determine the value of β.</strong></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> β = 0.25
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> β = 0.40
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> β = 0.50
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> β = 0.60
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For problems involving non-uniform objects and energy conservation with constraints:
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A JEE Advanced topper recognizes this as a "hidden variable" problem where β is implicitly determined by the given constraint (normal force). The key insight is that the normal force equation provides the additional relationship needed to solve for the unknown parameter. Always look for such constraint equations in problems with seemingly insufficient information.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • For rolling: v = ωR• Energy conservation: Potential → Kinetic (translational + rotational)• Circular motion: N - Mg = Mv²/r• Rotational KE: KE_rot = (1/2)Iω² = (1/2)βMv²
+</div>
+<ol class="steps">
+<li>Apply energy conservation from initial to position</li>
+<li>Express rotational KE in terms of β and linear velocity</li>
+<li>Use the constraint condition (normal force equation) at the specified point</li>
+<li>Solve the system of equations to find β</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_235</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem 15 from Textbook:</strong></p>
+<p>A bowler throws a bowling ball of radius R = 11 cm along a lane. The ball slides on the lane with initial speed v<sub>com,0</sub> = 8.5 m/s and initial angular speed ω<sub>0</sub> = 0. The coefficient of kinetic friction between the ball and the lane is 0.21.</p>
+<p>The kinetic frictional force acting on the ball causes a linear acceleration of the ball while producing a torque that causes an angular acceleration of the ball. When speed v<sub>com</sub> has decreased enough and angular speed ω has increased enough, the ball stops sliding and then rolls smoothly.</p>
+<p><strong>Find:</strong></p>
+<p>(a) What is v<sub>com</sub> in terms of ω when smooth rolling begins?</p>
+<p>(b) What is the ball's linear acceleration during sliding?</p>
+<p>(c) What is the ball's angular acceleration during sliding?</p>
+<p>(d) How long does the ball slide?</p>
+<p>(e) How far does the ball slide?</p>
+<p>(f) What is the linear speed when smooth rolling begins?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> a = -1.50 m/s²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> a = -2.058 m/s²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> a = -2.50 m/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> a = -3.00 m/s²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For sliding-to-rolling transition problems:
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top performers immediately recognize that this problem has TWO simultaneous evolutions: v decreasing linearly while ω increases linearly. They set up both kinematic equations and find where they meet the rolling condition. The trick is recognizing that the SAME friction force creates both effects, so the accelerations are related by the geometry of the sphere.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • For a sphere: I = (2/5)MR²• Friction force: f = μkMg• Newton's 2nd law: F = Ma and τ = Iα• Rolling condition: v = ωR• Kinematics: v = v₀ + at, s = v₀t + (1/2)at²
+</div>
+<ol class="steps">
+<li>Identify that friction causes linear deceleration AND angular acceleration</li>
+<li>Write separate equations for linear and angular motion</li>
+<li>Find the time when rolling condition (v = ωR) is satisfied</li>
+<li>Use kinematics to find all other quantities</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_236</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem 16 from Textbook:</strong></p>
+<p>A cylindrical object of mass M and radius R rolls smoothly from rest down a ramp and onto a horizontal section. From there it rolls off the ramp and onto the floor, landing a horizontal distance d = 0.506 m from the end of the ramp.</p>
+<p>The initial height of the object is H = 0.90 m; the end of the ramp is at height h = 0.10 m. The object consists of an outer cylindrical shell (of a certain uniform density) that is glued to a central cylinder (of a different uniform density).</p>
+<p>The rotational inertia of the object can be expressed in the general form I = βMR², but β is not 0.5 as it is for a cylinder of uniform density.</p>
+<p><strong>Determine β.</strong></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> β = 0.125
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> β = 0.250
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> β = 0.375
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> β = 0.500
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For problems combining rolling motion with projectile motion:
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> This is a classic "reverse engineering" problem - you work backward from the observed range to determine the internal mass distribution. Top students recognize that β affects the speed at launch (through energy conservation), which then affects the range. The key is setting up the chain: β → v (from energy) → d (from projectiles).
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Energy conservation: MgH = (1/2)Mv² + (1/2)Iω² + Mgh• Rolling: v = ωR• Projectile motion: h = (1/2)gt², d = vt• For cylinder: I = βMR²
+</div>
+<ol class="steps">
+<li>Use energy conservation to find velocity at launch point</li>
+<li>Apply projectile motion equations to relate launch velocity to horizontal range</li>
+<li>Combine both relationships to solve for the unknown parameter</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_3</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 13:
+      </h4>
+      −Negative plate+Positive plateE (uniform)e⁻Electronp⁺Protond = 5.0 cmMeeting point(~27 μm from + plate)Figure 22-60: Two parallel copper plates separated by 5.0 cm with uniform electric field E between them. 
+ Electron (e⁻) starts at negative plate, proton (p⁺) starts at positive plate. 
+ Both are released simultaneously from rest. They meet very close to the positive plate.Neglect the force of the particles on each other and find their distance from the positive plate when they pass each other. (Does it surprise you that you need not know the electric field to solve this problem?)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2.5 cm (exactly at the midpoint)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2.73 × 10⁻³ cm = 27.3 μm (very close to positive plate)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4.997 cm (very close to positive plate from the negative plate side)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0.003 cm = 30 μm (very close to positive plate)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Use the fact that both particles have equal magnitude charges but vastly different masses. The center of mass principle or acceleration ratios determine where they meet.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

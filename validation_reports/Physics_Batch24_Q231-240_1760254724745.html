@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 24 (Questions 231-240)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 24: Questions 231 - 240</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">13</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_245</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A transverse sinusoidal wave is generated at one end of a long horizontal string by a bar that moves up and down through a distance of 1.00 cm. The motion is continuous and repeated regularly 120 times per second. The string has linear density 120 g/m and is kept under a tension of 90.0 N.
+    <br/>
+<br/>
+<strong>
+     Part (a):
+    </strong>
+    What is the maximum value of the transverse speed u of a particle on the string?
+    <br/>
+<strong>
+     Part (b):
+    </strong>
+    What is the maximum value of the transverse component of the tension τ?
+    <br/>
+<strong>
+     Part (c):
+    </strong>
+    Show that these two maximum values occur at the same phase. What is the transverse displacement y at these phases?
+    <br/>
+<strong>
+     Part (d):
+    </strong>
+    What is the maximum rate of energy transfer along the string?
+    <br/>
+<strong>
+     Part (e):
+    </strong>
+    What is the transverse displacement when maximum energy transfer occurs?
+    <br/>
+<strong>
+     Part (f):
+    </strong>
+    What is the minimum rate of energy transfer?
+    <br/>
+<strong>
+     Part (g):
+    </strong>
+    What is the transverse displacement when minimum transfer occurs?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> y = 0
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> y = ±0.25 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> y = ±0.50 cm (maximum)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> y = ±0.35 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Calculate amplitude and angular frequency
+      </strong>
+<br/>
+      Bar moves through 1.00 cm, so amplitude:
+      <br/>
+      y_m = 1.00/2 = 0.50 cm = 0.005 m ✓
+      <br/>
+<br/>
+      Frequency f = 120 Hz
+      <br/>
+      Angular frequency: ω = 2πf = 240π rad/s ✓</li>
+<li><strong>
+       Step 2: Find maximum transverse speed (Part a)
+      </strong>
+<br/>
+      For y = y_m sin(kx - ωt):
+      <br/>
+      Transverse velocity: u = ∂y/∂t = -ωy_m cos(kx - ωt)
+      <br/>
+<br/>
+      Maximum when |cos(kx - ωt)| = 1:
+      <br/>
+      u_max = ωy_m = 240π × 0.005
+      <br/>
+      u_max = 1.2π =
+      <strong>
+       3.77 m/s
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong></li>
+<li><strong>
+       Step 3: Calculate wave speed and wave number
+      </strong>
+<br/>
+      T = 90.0 N, μ = 120 g/m = 0.120 kg/m
+      <br/>
+<br/>
+      Wave speed: v = √(T/μ) = √(90/0.12)
+      <br/>
+      v = √750 = 27.39 m/s ✓
+      <br/>
+<br/>
+      Wave number: k = ω/v = 240π/27.39
+      <br/>
+      k = 27.55 rad/m ✓</li>
+<li><strong>
+       Step 4: Find maximum transverse tension component (Part b)
+      </strong>
+<br/>
+      Slope: ∂y/∂x = ky_m cos(kx - ωt)
+      <br/>
+      Transverse tension component: τ = T(∂y/∂x)
+      <br/>
+<br/>
+      Maximum when |cos(kx - ωt)| = 1:
+      <br/>
+      τ_max = Tky_m = 90.0 × 27.55 × 0.005
+      <br/>
+      τ_max =
+      <strong>
+       12.4 N
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong></li>
+<li><strong>
+       Step 5: Show same phase and find displacement (Part c)
+      </strong>
+<br/>
+      Both u and τ are maximum when |cos(kx - ωt)| = 1
+      <br/>
+      This occurs when cos(kx - ωt) = ±1
+      <br/>
+<br/>
+      At these points: sin(kx - ωt) = 0
+      <br/>
+      Therefore: y = y_m sin(kx - ωt) =
+      <strong>
+       0
+      </strong>
+      ✓
+      <strong>
+       Answer: A
+      </strong>
+<br/>
+<br/>
+      ✓ Both maxima occur at equilibrium position</li>
+<li><strong>
+       Step 6: Calculate maximum power (Part d)
+      </strong>
+<br/>
+      Instantaneous power: P = -T(∂y/∂x)(∂y/∂t)
+      <br/>
+      P = -T × ky_m cos(kx - ωt) × (-ωy_m cos(kx - ωt))
+      <br/>
+      P = Tkωy_m²cos²(kx - ωt)
+      <br/>
+<br/>
+      Maximum when cos² = 1:
+      <br/>
+      P_max = Tkωy_m² = 90 × 27.55 × 240π × (0.005)²
+      <br/>
+      P_max = 90 × 27.55 × 753.98 × 0.000025
+      <br/>
+      P_max =
+      <strong>
+       467 W
+      </strong>
+      ✓
+      <strong>
+       Answer: C
+      </strong></li>
+<li><strong>
+       Step 7: Displacement at max power (Part e)
+      </strong>
+<br/>
+      P_max occurs when cos(kx - ωt) = ±1
+      <br/>
+      At this point: sin(kx - ωt) = 0
+      <br/>
+      Therefore: y =
+      <strong>
+       0
+      </strong>
+      ✓
+      <strong>
+       Answer: A
+      </strong></li>
+<li><strong>
+       Step 8: Minimum power (Part f)
+      </strong>
+<br/>
+      P_min occurs when cos²(kx - ωt) = 0
+      <br/>
+      P_min =
+      <strong>
+       0 W
+      </strong>
+      ✓
+      <strong>
+       Answer: A
+      </strong></li>
+<li><strong>
+       Step 9: Displacement at min power (Part g)
+      </strong>
+<br/>
+      P_min occurs when cos(kx - ωt) = 0
+      <br/>
+      At this point: sin(kx - ωt) = ±1
+      <br/>
+      Therefore: y = y_m(±1) =
+      <strong>
+       ±0.50 cm
+      </strong>
+      ✓
+      <strong>
+       Answer: C
+      </strong>
+<br/>
+<br/>
+      ✓ Minimum power at maximum displacement (no velocity)</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_246</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A continuous traveling wave with amplitude A is incident on a boundary. The continuous reflection, with a smaller amplitude B, travels back through the incoming wave. The resulting interference pattern is displayed. The standing wave ratio (SWR) is defined as:
+    <br/>
+<br/>
+    SWR = (A + B)/(A - B)
+    <br/>
+<br/>
+    The reflection coefficient R is the ratio of the power of the reflected wave to the power of the incoming wave and is thus proportional to the ratio (B/A)².
+    <br/>
+<br/>
+<strong>
+     Part (a):
+    </strong>
+    What is the SWR for total reflection?
+    <br/>
+<strong>
+     Part (b):
+    </strong>
+    What is the SWR for no reflection?
+    <br/>
+<strong>
+     Part (c):
+    </strong>
+    For SWR = 1.50, what is R expressed as a percentage?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 4%
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 11%
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 25%
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 50%
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: SWR for total reflection (Part a)
+      </strong>
+<br/>
+      Total reflection means B = A (all incident wave reflects)
+      <br/>
+<br/>
+      SWR = (A + B)/(A - B) = (A + A)/(A - A)
+      <br/>
+      SWR = 2A/0 =
+      <strong>
+       ∞
+      </strong>
+      ✓
+      <strong>
+       Answer: D
+      </strong>
+<br/>
+<br/>
+      Physical interpretation: Infinite SWR indicates complete mismatch</li>
+<li><strong>
+       Step 2: SWR for no reflection (Part b)
+      </strong>
+<br/>
+      No reflection means B = 0 (perfect absorption)
+      <br/>
+<br/>
+      SWR = (A + B)/(A - B) = (A + 0)/(A - 0)
+      <br/>
+      SWR = A/A =
+      <strong>
+       1
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong>
+<br/>
+<br/>
+      Physical interpretation: SWR = 1 indicates perfect impedance matching</li>
+<li><strong>
+       Step 3: Find A/B ratio for SWR = 1.50 (Part c)
+      </strong>
+<br/>
+      Given: SWR = 1.50
+      <br/>
+<br/>
+      1.50 = (A + B)/(A - B)
+      <br/>
+      1.50(A - B) = A + B
+      <br/>
+      1.50A - 1.50B = A + B
+      <br/>
+      1.50A - A = B + 1.50B
+      <br/>
+      0.50A = 2.50B
+      <br/>
+      A/B = 2.50/0.50 = 5 ✓
+      <br/>
+<br/>
+      Therefore: B/A = 1/5 = 0.20</li>
+<li><strong>
+       Step 4: Calculate reflection coefficient
+      </strong>
+<br/>
+      Reflection coefficient: R = (B/A)²
+      <br/>
+      R = (0.20)² = 0.04
+      <br/>
+<br/>
+      As percentage: R =
+      <strong>
+       4%
+      </strong>
+      ✓
+      <strong>
+       Answer: A
+      </strong>
+<br/>
+<br/>
+      Physical interpretation: Only 4% of incident power is reflected, 96% is transmitted</li>
+<li><strong>
+       Step 5: Verification
+      </strong>
+<br/>
+      Check: SWR = (A + B)/(A - B) = (5B + B)/(5B - B)
+      <br/>
+      = 6B/4B = 1.5 ✓
+      <br/>
+<br/>
+      Also: R = 0.04 = 4% means very good impedance matching
+      <br/>
+      (Most power transmitted, minimal reflection)</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_247</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 57:
+      </h4>
+      In the figure, string 1 has a linear density of 3.00 g/m, and string 2 has a linear density of 5.00 g/m. They are under tension due to the hanging block of mass M = 500 g. When a string loops halfway around a pulley, it pulls on the pulley with a net force that is twice the tension in the string.Part (a):What is the wave speed on string 1?Part (b):What is the wave speed on string 2?Part (c):If the block is divided into two blocks (with M₁ + M₂ = M) and each string has its own hanging mass, what values of M₁ and M₂ will make the wave speeds in the two strings equal?⚠️ FIGURE MISSING: This problem references a figure that was not included in the original document. The figure needs to be added manually.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 250.0 g
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 281.3 g
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 312.5 g
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 375.0 g
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Calculate tension
+          </strong>
+<br>
+          M = 500 g = 0.5 kg, g = 9.8 m/s²
+          <br>
+          T = 2Mg = 2 × 0.5 × 9.8 = 9.8 N
+         </li>
+<li>
+<strong>
+           Step 2: Wave speed on String 1 (Part a)
+          </strong>
+<br>
+          μ₁ = 3.00 g/m = 0.003 kg/m
+          <br>
+          v₁ = √(9.8/0.003) = 57.16 m/s ≈
+          <strong>
+           57.2 m/s
+          </strong>
+          ✓
+          <strong>
+           Answer: B
+          </strong>
+</li>
+<li>
+<strong>
+           Step 3: Wave speed on String 2 (Part b)
+          </strong>
+<br>
+          μ₂ = 5.00 g/m = 0.005 kg/m
+          <br>
+          v₂ = √(9.8/0.005) = 44.27 m/s ≈
+          <strong>
+           44.3 m/s
+          </strong>
+          ✓
+          <strong>
+           Answer: B
+          </strong>
+</li>
+<li>
+<strong>
+           Step 4: Equal wave speeds (Part c)
+          </strong>
+<br>
+          M₁/μ₁ = M₂/μ₂ → M₁/0.003 = M₂/0.005 → M₁ = 0.6M₂
+          <br>
+          M₁ + M₂ = 0.5 → 0.6M₂ + M₂ = 0.5 → M₂ = 0.3125 kg =
+          <strong>
+           312.5 g
+          </strong>
+          ✓
+          <strong>
+           Answer: C
+          </strong>
+<br>
+          M₁ = 0.5 - 0.3125 =
+          <strong>
+           187.5 g
+          </strong>
+          ✓
+          <strong>
+           Answer: C
+          </strong>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_248</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A uniform rope of mass m and length L hangs from a ceiling. A transverse wave pulse is generated at the lower end of the rope and travels upward.
+    <br/>
+<br/>
+<strong>
+     Part (a):
+    </strong>
+    Show that the speed of a transverse wave on the rope is a function of y (distance from the lower end) and is given by v = √(gy).
+    <br/>
+<br/>
+<strong>
+     Part (b):
+    </strong>
+    Show that the time a transverse wave takes to travel the length of the rope is given by t = 2√(L/g).
+    <br/>
+<br/>
+<strong>
+     Part (c):
+    </strong>
+    Calculate the time taken for a wave pulse to travel from bottom to top if L = 10 m and g = 10 m/s².</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.0 s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2.0 s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> √2 s ≈ 1.41 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2√2 s ≈ 2.83 s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Tension at position y
+      </strong>
+<br/>
+      T(y) = (weight of rope below) = μyg where μ = m/L</li>
+<li><strong>
+       Step 2: Derive wave speed (Part a)
+      </strong>
+<br/>
+      v = √(T/μ) = √(μyg/μ) =
+      <strong>
+       √(gy)
+      </strong>
+      ✓</li>
+<li><strong>
+       Step 3: Set up time integral
+      </strong>
+<br/>
+      v = dy/dt → dt = dy/√(gy)
+      <br/>
+      t = ∫₀ᴸ dy/√(gy)</li>
+<li><strong>
+       Step 4: Evaluate integral (Part b)
+      </strong>
+<br/>
+      t = (1/√g)[2y¹/²]₀ᴸ = (2/√g)√L =
+      <strong>
+       2√(L/g)
+      </strong>
+      ✓</li>
+<li><strong>
+       Step 5: Calculate (Part c)
+      </strong>
+<br/>
+      L = 10 m, g = 10 m/s²
+      <br/>
+      t = 2√(10/10) =
+      <strong>
+       2.0 s
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_250</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A sound source sends a sinusoidal sound wave of angular frequency ω = 3000 rad/s and amplitude s<sub>m</sub> = 12.0 nm through a tube of air. The internal radius of the tube is r = 2.00 cm.</p>
+<svg height="300" viewbox="0 0 700 300" width="700">
+<!-- Tube -->
+<rect fill="#d6eaf8" height="100" stroke="#2980b9" stroke-width="3" width="600" x="50" y="100"></rect>
+<rect fill="#85929e" height="10" stroke="black" stroke-width="2" width="600" x="50" y="90"></rect>
+<rect fill="#85929e" height="10" stroke="black" stroke-width="2" width="600" x="50" y="200"></rect>
+<!-- Sound source -->
+<circle cx="100" cy="150" fill="#e74c3c" r="25" stroke="black" stroke-width="2"></circle>
+<text fill="white" font-size="14" font-weight="bold" x="85" y="155">Source</text>
+<!-- Wave representation -->
+<path d="M 150 150 Q 200 120, 250 150 T 350 150 T 450 150 T 550 150 T 650 150" fill="none" stroke="#e74c3c" stroke-width="3"></path>
+<!-- Radius marking -->
+<line stroke="black" stroke-width="2" x1="680" x2="680" y1="150" y2="100"></line>
+<line stroke="black" stroke-width="2" x1="675" x2="685" y1="150" y2="150"></line>
+<line stroke="black" stroke-width="2" x1="675" x2="685" y1="100" y2="100"></line>
+<text font-size="14" font-weight="bold" x="690" y="130">r = 2.00 cm</text>
+<!-- Labels -->
+<text font-size="16" font-weight="bold" x="300" y="80">Air-filled tube</text>
+<text font-size="14" x="250" y="240">ω = 3000 rad/s</text>
+<text font-size="14" x="250" y="260">s<tspan baseline-shift="sub">m</tspan> = 12.0 nm</text>
+</svg>
+<p><strong>Part (a):</strong> What is the average rate at which energy (the sum of the kinetic and potential energies) is transported to the opposite end of the tube?</p>
+<p><strong>Part (b):</strong> If, simultaneously, an identical wave travels along an adjacent, identical tube, what is the total average rate at which energy is transported to the opposite ends of the two tubes by the waves?</p>
+<p><strong>Part (c):</strong> If, instead, those two identical waves are sent along the same tube simultaneously with phase difference φ = 0, what is the total average rate at which they transport energy?</p>
+<p><strong>Part (d):</strong> What is the total average rate at which energy is transported when the phase difference is φ = 0.40π rad?</p>
+<p><strong>Part (e):</strong> What is the total average rate at which energy is transported when the phase difference is φ = π rad?</p>
+<p><strong>Additional information:</strong> Speed of sound in air = 343 m/s, Density of air = 1.21 kg/m³</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 1.27 × 10⁻⁶ W, (b) 2.54 × 10⁻⁶ W, (c) 5.08 × 10⁻⁶ W, (d) 3.32 × 10⁻⁶ W, (e) 0 W
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 2.54 × 10⁻⁶ W, (b) 5.08 × 10⁻⁶ W, (c) 10.16 × 10⁻⁶ W, (d) 6.64 × 10⁻⁶ W, (e) 0 W
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 1.27 × 10⁻⁶ W, (b) 2.54 × 10⁻⁶ W, (c) 5.08 × 10⁻⁶ W, (d) 6.64 × 10⁻⁶ W, (e) 2.54 × 10⁻⁶ W
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 3.81 × 10⁻⁶ W, (b) 7.62 × 10⁻⁶ W, (c) 15.24 × 10⁻⁶ W, (d) 9.96 × 10⁻⁶ W, (e) 0 W
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For wave energy transport problems:Use: Pavg= ½ρvω²sm²A, where A is cross-sectional areaFor two independent waves: Ptotal= P₁ + P₂ = 2PavgFor superposed waves: First find resultant amplitude, then calculate powerResultant amplitude depends on phase: sresultant= 2smcos(φ/2)Power is proportional to amplitude squared: P ∝ s²For in-phase waves (φ = 0): amplitude doubles, power quadruplesFor out-of-phase waves (φ = π): amplitude cancels, power is zero
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> An exam topper would immediately recognize this as a wave energy transport problem requiring understanding of both individual wave power and interference effects. The key insight is distinguishing between two cases: (1) independent waves in separate tubes where powers simply add, versus (2) superposed waves in the same tube where interference affects the resultant amplitude before calculating power. They would recall that power ∝ (amplitude)², so when two in-phase waves superpose with amplitude doubling to 2sm, the power becomes 4Pavg, not 2Pavg. For intermediate phase differences, they would use sresultant= 2smcos(φ/2) and calculate power from the resultant amplitude. The π phase difference giving zero power (destructive interference) is a crucial limiting case that demonstrates energy conservation through interference.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate power for single wave - Part (a)</strong>
+<p>Using P<sub>avg</sub> = ½ρvω²s<sub>m</sub>²A and given values:</p>
+<p><strong>P<sub>avg</sub> = 1.27 × 10⁻⁶ W</strong> ✓</p></li>
+<li><strong>Step 2: Part (b) - Two waves in separate tubes</strong>
+<p>Powers add independently:</p>
+<p>P<sub>total</sub> = 2 × 1.27 × 10⁻⁶ W = 2.54 × 10⁻⁶ W ✓</p></li>
+<li><strong>Step 3: Part (c) - φ = 0 (in phase)</strong>
+<p>Amplitude doubles → Power quadruples:</p>
+<p>P = 4 × 1.27 × 10⁻⁶ W = 5.08 × 10⁻⁶ W ✓</p></li>
+<li><strong>Step 4: Part (d) - φ = 0.40π</strong>
+<p>P = 4P<sub>avg</sub>cos²(0.20π) = 4 × 1.27 × 10⁻⁶ × 0.654 = 3.32 × 10⁻⁶ W ✓</p></li>
+<li><strong>Step 5: Part (e) - φ = π (out of phase)</strong>
+<p>Destructive interference: P = 0 W ✓</p>
+<p><strong>Answer: Option A</strong></p></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_251</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 56:
+      </h4>
+      In the figure, string 1 has a linear density of 3.00 g/m, and string 2 has a linear density of 5.00 g/m. They are under tension due to the hanging block of mass M = 500 g. When a string loops halfway around a pulley, it pulls on the pulley with a net force that is twice the tension in the string.Setup (a):Both strings connected to single hanging mass M via a pulley system (knot configuration).Part 1:What is the wave speed on string 1?Part 2:What is the wave speed on string 2?Part 3:If the block is divided into two blocks (with M₁ + M₂ = M) and each string has its own hanging mass, what values of M₁ and M₂ will make the wave speeds in the two strings equal?⚠️ FIGURE MISSING: This problem references a figure that was not included in the original document. The figure needs to be added manually.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 44.3 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 57.2 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 64.5 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 80.8 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Calculate tension in the system
+          </strong>
+<br>
+          Given: M = 500 g = 0.5 kg, g = 9.8 m/s²
+          <br>
+          When string loops around pulley, effective tension T = 2Mg
+          <br>
+          T = 2 × 0.5 × 9.8 = 9.8 N
+         </li>
+<li>
+<strong>
+           Step 2: Calculate wave speed on String 1
+          </strong>
+<br>
+          Linear density μ₁ = 3.00 g/m = 0.003 kg/m
+          <br>
+          Wave speed: v₁ = √(T/μ₁) = √(9.8/0.003)
+          <br>
+          v₁ = √3266.67 = 57.16 m/s ≈
+          <strong>
+           57.2 m/s
+          </strong>
+</li>
+<li>
+<strong>
+           Step 3: Calculate wave speed on String 2
+          </strong>
+<br>
+          Linear density μ₂ = 5.00 g/m = 0.005 kg/m
+          <br>
+          Wave speed: v₂ = √(T/μ₂) = √(9.8/0.005)
+          <br>
+          v₂ = √1960 = 44.27 m/s ≈
+          <strong>
+           44.3 m/s
+          </strong>
+</li>
+<li>
+<strong>
+           Step 4: Find M₁ and M₂ for equal wave speeds
+          </strong>
+<br>
+          For equal speeds: v₁ = v₂
+          <br>
+          √(T₁/μ₁) = √(T₂/μ₂)
+          <br>
+          √(2M₁g/μ₁) = √(2M₂g/μ₂)
+          <br>
+          M₁/μ₁ = M₂/μ₂
+          <br>
+          M₁/0.003 = M₂/0.005
+          <br>
+          M₁ = 0.6M₂
+         </li>
+<li>
+<strong>
+           Step 5: Apply constraint and solve
+          </strong>
+<br>
+          M₁ + M₂ = 0.5 kg
+          <br>
+          0.6M₂ + M₂ = 0.5
+          <br>
+          1.6M₂ = 0.5
+          <br>
+          M₂ = 0.3125 kg =
+          <strong>
+           312.5 g
+          </strong>
+<br>
+          M₁ = 0.5 - 0.3125 = 0.1875 kg =
+          <strong>
+           187.5 g
+          </strong>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_252</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A uniform rope of mass m and length L hangs from a ceiling. A transverse wave pulse is generated at the lower end of the rope and travels upward.
+    <br/>
+<br/>
+<strong>
+     Part 1:
+    </strong>
+    Show that the speed of a transverse wave on the rope is a function of y (distance from the lower end) and is given by v = √(gy).
+    <br/>
+<br/>
+<strong>
+     Part 2:
+    </strong>
+    Show that the time a transverse wave takes to travel the length of the rope is given by t = 2√(L/g).
+    <br/>
+<br/>
+    What is the time taken for a wave pulse to travel from bottom to top if L = 10 m and g = 10 m/s²?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.0 s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2.0 s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> √2 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2√2 s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Determine tension as function of position
+      </strong>
+<br/>
+      At distance y from bottom, tension T(y) supports the weight of rope below:
+      <br/>
+      Mass below = (m/L)y = μy where μ = m/L
+      <br/>
+      Tension: T(y) = μyg</li>
+<li><strong>
+       Step 2: Derive wave speed formula
+      </strong>
+<br/>
+      Wave speed: v = √(T/μ) = √(μyg/μ)
+      <br/>
+      v = √(gy) ✓
+      <strong>
+       (Part 1 proved)
+      </strong>
+<br/>
+      Note: This is independent of rope mass m!</li>
+<li><strong>
+       Step 3: Set up integral for travel time
+      </strong>
+<br/>
+      Since v = dy/dt, we have:
+      <br/>
+      dt = dy/v = dy/√(gy)
+      <br/>
+      Total time: t = ∫₀ᴸ dy/√(gy)</li>
+<li><strong>
+       Step 4: Evaluate the integral
+      </strong>
+<br/>
+      t = ∫₀ᴸ (1/√g) × y⁻¹/² dy
+      <br/>
+      t = (1/√g) [2y¹/²]₀ᴸ
+      <br/>
+      t = (2/√g) × √L
+      <br/>
+      t = 2√(L/g) ✓
+      <strong>
+       (Part 2 proved)
+      </strong></li>
+<li><strong>
+       Step 5: Calculate numerical answer
+      </strong>
+<br/>
+      Given: L = 10 m, g = 10 m/s²
+      <br/>
+      t = 2√(10/10) = 2√1 =
+      <strong>
+       2.0 s
+      </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_253</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A string oscillates according to the equation:
+    <br/>
+<br/>
+    y' = (0.50 cm) sin[(π/3 cm⁻¹)x] cos[(40π s⁻¹)t]
+    <br/>
+<br/>
+    This standing wave is formed by the superposition of two identical traveling waves moving in opposite directions.
+    <br/>
+<br/>
+<strong>
+     Part 1:
+    </strong>
+    What is the amplitude of each traveling wave?
+    <br/>
+<strong>
+     Part 2:
+    </strong>
+    What is the speed of the traveling waves?
+    <br/>
+<strong>
+     Part 3:
+    </strong>
+    What is the distance between adjacent nodes?
+    <br/>
+<strong>
+     Part 4:
+    </strong>
+    What is the transverse speed of the string at position x = 1.5 cm when t = 9/8 s?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.50 cm
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0.25 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.0 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0.125 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Identify standing wave parameters
+      </strong>
+<br/>
+      Given: y' = (0.50 cm) sin[(π/3)x] cos[(40π)t]
+      <br/>
+      Standard form: y' = 2y_m sin(kx) cos(ωt)
+      <br/>
+      Comparing: 2y_m = 0.50 cm
+      <br/>
+      Therefore: y_m = 0.25 cm =
+      <strong>
+       2.5 mm
+      </strong>
+<br/>
+      Also: k = π/3 cm⁻¹, ω = 40π s⁻¹</li>
+<li><strong>
+       Step 2: Calculate wave speed
+      </strong>
+<br/>
+      Wave speed: v = ω/k
+      <br/>
+      v = (40π)/(π/3) = 40π × (3/π) = 120 cm/s
+      <br/>
+      v =
+      <strong>
+       1.2 m/s
+      </strong></li>
+<li><strong>
+       Step 3: Find distance between nodes
+      </strong>
+<br/>
+      Nodes occur when sin(kx) = 0
+      <br/>
+      This happens at kx = 0, π, 2π, 3π, ...
+      <br/>
+      x = 0, π/k, 2π/k, 3π/k, ...
+      <br/>
+      Distance between adjacent nodes = π/k
+      <br/>
+      = π/(π/3) = 3 cm =
+      <strong>
+       3.0 cm
+      </strong></li>
+<li><strong>
+       Step 4: Calculate transverse speed at x = 1.5 cm, t = 9/8 s
+      </strong>
+<br/>
+      Transverse velocity: u = ∂y'/∂t
+      <br/>
+      u = -(0.50) sin[(π/3)x] × (40π) sin[(40π)t]
+      <br/>
+      u = -20π sin[(π/3)x] sin[(40π)t]
+      <br/>
+<br/>
+      At x = 1.5 cm:
+      <br/>
+      sin[(π/3)(1.5)] = sin[π/2] = 1
+      <br/>
+<br/>
+      At t = 9/8 s:
+      <br/>
+      sin[(40π)(9/8)] = sin[45π] = sin[π] = 0
+      <br/>
+<br/>
+      Therefore: u = -20π × 1 × 0 =
+      <strong>
+       0 cm/s
+      </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_254</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>An aluminum wire of length L₁ = 60.0 cm, cross-sectional area 1.00 × 10⁻² cm², and density 2.60 g/cm³ is joined to a steel wire of density 7.80 g/cm³ and the same cross-sectional area. The compound wire, loaded with a block of mass m = 10.0 kg, is arranged so that the distance L₂ from the joint to the supporting pulley is 86.6 cm. Transverse waves are set up on the wire by an external source of variable frequency. A node is located at the pulley.
+    <br/>
+<br/>
+<strong>
+     Part 1:
+    </strong>
+    What is the lowest frequency that generates a standing wave having the joint as one of the nodes?
+    <br/>
+<strong>
+     Part 2:
+    </strong>
+    How many nodes are observed at this frequency?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 162 Hz
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 258 Hz
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 324 Hz
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 486 Hz
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Calculate linear densities
+      </strong>
+<br/>
+      Cross-sectional area: A = 1.00 × 10⁻² cm² = 1.00 × 10⁻⁶ m²
+      <br/>
+<br/>
+      Aluminum: ρ₁ = 2.60 g/cm³ = 2600 kg/m³
+      <br/>
+      μ₁ = ρ₁A = 2600 × 1.00 × 10⁻⁶ = 0.0026 kg/m
+      <br/>
+<br/>
+      Steel: ρ₂ = 7.80 g/cm³ = 7800 kg/m³
+      <br/>
+      μ₂ = ρ₂A = 7800 × 1.00 × 10⁻⁶ = 0.0078 kg/m</li>
+<li><strong>
+       Step 2: Calculate tension and wave speeds
+      </strong>
+<br/>
+      Tension: T = mg = 10.0 × 9.8 = 98 N
+      <br/>
+<br/>
+      Aluminum wave speed:
+      <br/>
+      v₁ = √(T/μ₁) = √(98/0.0026) = √37692.3 = 194.15 m/s
+      <br/>
+<br/>
+      Steel wave speed:
+      <br/>
+      v₂ = √(T/μ₂) = √(98/0.0078) = √12564.1 = 112.08 m/s</li>
+<li><strong>
+       Step 3: Apply standing wave conditions
+      </strong>
+<br/>
+      For nodes at both ends and joint:
+      <br/>
+      Aluminum: n₁(λ₁/2) = L₁ = 0.60 m
+      <br/>
+      Steel: n₂(λ₂/2) = L₂ = 0.866 m
+      <br/>
+<br/>
+      Since frequency is same:
+      <br/>
+      f = v₁/λ₁ = v₂/λ₂
+      <br/>
+<br/>
+      This gives: n₁v₁/(2L₁) = n₂v₂/(2L₂)
+      <br/>
+      n₁v₁/L₁ = n₂v₂/L₂</li>
+<li><strong>
+       Step 4: Find integer ratio
+      </strong>
+<br/>
+      n₁(194.15)/0.60 = n₂(112.08)/0.866
+      <br/>
+      n₁(323.58) = n₂(129.38)
+      <br/>
+      n₁/n₂ = 129.38/323.58 = 0.40 = 2/5
+      <br/>
+<br/>
+      Smallest integers: n₁ = 2, n₂ = 5</li>
+<li><strong>
+       Step 5: Calculate lowest frequency
+      </strong>
+<br/>
+      f = n₁v₁/(2L₁) = 2 × 194.15/(2 × 0.60)
+      <br/>
+      f = 388.3/1.2 = 323.58 Hz ≈
+      <strong>
+       324 Hz
+      </strong>
+<br/>
+<br/>
+      Verify: f = n₂v₂/(2L₂) = 5 × 112.08/(2 × 0.866)
+      <br/>
+      f = 560.4/1.732 = 323.6 Hz ✓</li>
+<li><strong>
+       Step 6: Count total nodes
+      </strong>
+<br/>
+      Aluminum section: n₁ + 1 = 2 + 1 = 3 nodes (including ends)
+      <br/>
+      Steel section: n₂ + 1 = 5 + 1 = 6 nodes (including ends)
+      <br/>
+<br/>
+      Joint node is counted in both, so:
+      <br/>
+      Total = 3 + 6 - 1 =
+      <strong>
+       8 nodes
+      </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_255</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A transverse sinusoidal wave is generated at one end of a long horizontal string by a bar that moves up and down through a distance of 1.00 cm. The motion is continuous and repeated regularly 120 times per second. The string has linear density 120 g/m and is kept under a tension of 90.0 N.
+    <br/>
+<br/>
+<strong>
+     Part 1:
+    </strong>
+    What is the maximum value of the transverse speed u of a particle on the string?
+    <br/>
+<strong>
+     Part 2:
+    </strong>
+    What is the maximum value of the transverse component of the tension τ?
+    <br/>
+<strong>
+     Part 3:
+    </strong>
+    Show that these two maximum values occur at the same phase. What is the transverse displacement y at these phases?
+    <br/>
+<strong>
+     Part 4:
+    </strong>
+    What is the maximum rate of energy transfer along the string?
+    <br/>
+<strong>
+     Part 5:
+    </strong>
+    What is the transverse displacement when maximum energy transfer occurs?
+    <br/>
+<strong>
+     Part 6:
+    </strong>
+    What is the minimum rate of energy transfer?
+    <br/>
+<strong>
+     Part 7:
+    </strong>
+    What is the transverse displacement when minimum transfer occurs?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2.4 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 3.77 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4.8 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 6.28 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Calculate amplitude and angular frequency
+      </strong>
+<br/>
+      Bar moves through 1.00 cm, so amplitude:
+      <br/>
+      y_m = 1.00/2 = 0.50 cm = 0.005 m
+      <br/>
+<br/>
+      Frequency f = 120 Hz
+      <br/>
+      Angular frequency: ω = 2πf = 240π rad/s</li>
+<li><strong>
+       Step 2: Find maximum transverse speed (Part 1)
+      </strong>
+<br/>
+      For y = y_m sin(kx - ωt):
+      <br/>
+      Transverse velocity: u = ∂y/∂t = -ωy_m cos(kx - ωt)
+      <br/>
+<br/>
+      Maximum when |cos(kx - ωt)| = 1:
+      <br/>
+      u_max = ωy_m = 240π × 0.005
+      <br/>
+      u_max = 1.2π =
+      <strong>
+       3.77 m/s
+      </strong></li>
+<li><strong>
+       Step 3: Calculate wave speed and wave number
+      </strong>
+<br/>
+      T = 90.0 N, μ = 120 g/m = 0.120 kg/m
+      <br/>
+<br/>
+      Wave speed: v = √(T/μ) = √(90/0.12)
+      <br/>
+      v = √750 = 27.39 m/s
+      <br/>
+<br/>
+      Wave number: k = ω/v = 240π/27.39
+      <br/>
+      k = 27.55 rad/m</li>
+<li><strong>
+       Step 4: Find maximum transverse tension component (Part 2)
+      </strong>
+<br/>
+      Slope: ∂y/∂x = ky_m cos(kx - ωt)
+      <br/>
+      Transverse tension component: τ = T(∂y/∂x)
+      <br/>
+<br/>
+      Maximum when |cos(kx - ωt)| = 1:
+      <br/>
+      τ_max = Tky_m = 90.0 × 27.55 × 0.005
+      <br/>
+      τ_max =
+      <strong>
+       12.4 N
+      </strong></li>
+<li><strong>
+       Step 5: Show same phase and find displacement (Part 3)
+      </strong>
+<br/>
+      Both u and τ are maximum when |cos(kx - ωt)| = 1
+      <br/>
+      This occurs when cos(kx - ωt) = ±1
+      <br/>
+<br/>
+      At these points: sin(kx - ωt) = 0
+      <br/>
+      Therefore: y = y_m sin(kx - ωt) =
+      <strong>
+       0
+      </strong>
+<br/>
+<br/>
+      ✓ Both maxima occur at equilibrium position</li>
+<li><strong>
+       Step 6: Calculate maximum power (Part 4)
+      </strong>
+<br/>
+      Instantaneous power: P = -T(∂y/∂x)(∂y/∂t)
+      <br/>
+      P = -T × ky_m cos(kx - ωt) × (-ωy_m cos(kx - ωt))
+      <br/>
+      P = Tkωy_m²cos²(kx - ωt)
+      <br/>
+<br/>
+      Maximum when cos² = 1:
+      <br/>
+      P_max = Tkωy_m² = 90 × 27.55 × 240π × (0.005)²
+      <br/>
+      P_max = 90 × 27.55 × 753.98 × 0.000025
+      <br/>
+      P_max =
+      <strong>
+       467 W
+      </strong></li>
+<li><strong>
+       Step 7: Displacement at max power (Part 5)
+      </strong>
+<br/>
+      P_max occurs when cos(kx - ωt) = ±1
+      <br/>
+      At this point: sin(kx - ωt) = 0
+      <br/>
+      Therefore: y =
+      <strong>
+       0
+      </strong></li>
+<li><strong>
+       Step 8: Minimum power (Part 6)
+      </strong>
+<br/>
+      P_min occurs when cos²(kx - ωt) = 0
+      <br/>
+      P_min =
+      <strong>
+       0 W
+      </strong></li>
+<li><strong>
+       Step 9: Displacement at min power (Part 7)
+      </strong>
+<br/>
+      P_min occurs when cos(kx - ωt) = 0
+      <br/>
+      At this point: sin(kx - ωt) = ±1
+      <br/>
+      Therefore: y = y_m(±1) =
+      <strong>
+       ±0.50 cm
+      </strong>
+<br/>
+<br/>
+      ✓ Minimum power at maximum displacement (no velocity)</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

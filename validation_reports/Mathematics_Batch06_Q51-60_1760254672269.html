@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 6 (Questions 51-60)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 6: Questions 51 - 60</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:52 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">44</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_221</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>tan-1√[(a(a+b+c))/bc] + tan-1√[(b(a+b+c))/ca] + tan-1√[(c(a+b+c))/ab] is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> π/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> π
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> π/3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> π/4
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_222</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If a1, a2, a3, …, anis an A.P. with common difference d, thentan[tan-1(d/(1+a1a2)) + tan-1(d/(1+a2a3)) + … + tan-1(d/(1+an-1an))] =</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (an-a1)/(1+ana1)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (an-a1)/(1-ana1)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a1-an)/(1+ana1)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (an-a1)/(1+a1an+n)
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_223</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The sum of the infinite seriescot-12 + cot-18 + cot-118 + cot-132 + … is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> π/4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> π/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 3π/4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> cot⁻¹1
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_224</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The inequality sin-1(sin 5) &gt; x2- 4x holds if</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> x ∈ (2-√(4+5-π), 2+√(4+5-π))
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> x ∈ (-∞, 2-√(4+π-5)) ∪ (2+√(4+π-5), ∞)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> x ∈ (2-√(4+π-5), 2+√(4+π-5))
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> x ∈ ℝ
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_225</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If cos-1x + cos-1y = π/2 and tan-1x - tan-1y = 0, then x2+ xy + y2is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 3/4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 5/4
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_226</div>
+        <div class="badge critical">critical - 8 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>Statement-1:</strong> tan<sup>-1</sup>{x + √(1+x<sup>2</sup>)} = π/2 - (1/2)cot<sup>-1</sup>x<br/>
+<strong>Statement-2:</strong> sin<sup>2</sup>[2tan<sup>-1</sup>√((1+x)/(1-x))] = 1-x<sup>2</sup></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Statement-1 Analysis:</strong>
+<div class="formula">Let θ = tan<sup>-1</sup>x, so tan θ = x</div>
+<div class="formula">x + √(1+x²) = tan θ + sec θ</div>
+<div class="formula">tan<sup>-1</sup>(tan θ + sec θ) = tan<sup>-1</sup>[sin θ/(1-sin θ)] using tan(θ/2) formula</div>
+                    The given equality doesn't hold in general. <strong>FALSE</strong>
+</div>
+<div class="step">
+<strong>Statement-2 Analysis:</strong>
+<div class="formula">Let θ = tan<sup>-1</sup>√[(1+x)/(1-x)]</div>
+<div class="formula">tan θ = √[(1+x)/(1-x)]</div>
+<div class="formula">sin 2θ = 2tan θ/(1+tan²θ) = 2√[(1+x)/(1-x)]/[1 + (1+x)/(1-x)]</div>
+<div class="formula">= 2√[(1+x)/(1-x)] · (1-x)/(2) = √[(1+x)(1-x)] = √(1-x²)</div>
+<div class="formula">sin² 2θ = 1 - x²</div>
+<strong>TRUE</strong>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_227</div>
+        <div class="badge critical">critical - 8 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>Statement-1:</strong> tan<sup>-1</sup>(2/5) + tan<sup>-1</sup>(3/7) = π/4<br/>
+<strong>Statement-2:</strong> tan<sup>-1</sup>(x/y) + tan<sup>-1</sup>[(y-x)/(y+x)] = π/4 (x, y &gt; 0)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Statement-1 Verification:</strong>
+<div class="formula">tan<sup>-1</sup>(2/5) + tan<sup>-1</sup>(3/7) = tan<sup>-1</sup>[(2/5 + 3/7)/(1 - 6/35)]</div>
+<div class="formula">= tan<sup>-1</sup>[(14+15)/35 / (35-6)/35] = tan<sup>-1</sup>(29/29) = tan<sup>-1</sup>(1) = π/4</div>
+                    Actually, this is <strong>TRUE</strong>!
+                </div>
+<div class="step">
+<strong>Statement-2 Verification:</strong>
+<div class="formula">tan<sup>-1</sup>(x/y) + tan<sup>-1</sup>[(y-x)/(y+x)]</div>
+<div class="formula">= tan<sup>-1</sup>[{(x/y) + (y-x)/(y+x)}/{1 - (x/y)·(y-x)/(y+x)}]</div>
+<div class="formula">= tan<sup>-1</sup>[{x(y+x) + y(y-x)}/{y(y+x) - x(y-x)}]</div>
+<div class="formula">= tan<sup>-1</sup>[(xy + x² + y² - xy)/(y² + xy - xy + x²)]</div>
+<div class="formula">= tan<sup>-1</sup>[(x² + y²)/(x² + y²)] = tan<sup>-1</sup>(1) = π/4</div>
+<strong>TRUE</strong>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_228</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Statement-1:If x2- px + q = 0, where p is twice the tangent of the arithmetic mean of sin-1x and cos-1x, q is the geometric mean of tan-1x and cot-1x, then x = 1Statement-2:tan(sin-1x + cos-1x) = 1</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Statement-1 is true, Statement-2 is true; Statement-2 is a correct explanation for Statement-1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Statement-1 is true, Statement-2 is true; Statement-2 is not a correct explanation for Statement-1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Statement-1 is true, Statement-2 is false
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> Statement-1 is false, Statement-2 is true
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_229</div>
+        <div class="badge critical">critical - 8 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>Statement-1:</strong> If α, β are the roots of 18(tan<sup>-1</sup>x)<sup>2</sup> - 9π tan<sup>-1</sup>x + π<sup>2</sup> = 0, then α + β = 4/√3<br/>
+<strong>Statement-2:</strong> sec<sup>2</sup>(cos<sup>-1</sup>(1/4)) + cosec<sup>2</sup>(sin<sup>-1</sup>(1/5)) = 41</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Statement-1:</strong>
+<div class="formula">Let y = tan<sup>-1</sup>x</div>
+<div class="formula">18y² - 9πy + π² = 0</div>
+                    Sum of roots: y₁ + y₂ = 9π/18 = π/2
+                    <div class="formula">tan<sup>-1</sup>α + tan<sup>-1</sup>β = π/2</div>
+<div class="formula">This means tan<sup>-1</sup>β = π/2 - tan<sup>-1</sup>α = cot<sup>-1</sup>α</div>
+<div class="formula">So β = 1/α, thus αβ = 1</div>
+                    Product of roots: (tan<sup>-1</sup>α)(tan<sup>-1</sup>β) = π²/18
+                    From y₁ + y₂ = π/2 and using tan<sup>-1</sup>α + tan<sup>-1</sup>β = π/2:
+                    <div class="formula">tan<sup>-1</sup>[(α+β)/(1-αβ)] would be undefined if αβ = 1</div>
+                    Actually, solving: tan<sup>-1</sup>α = π/3, tan<sup>-1</sup>β = π/6
+                    <div class="formula">α = tan(π/3) = √3, β = tan(π/6) = 1/√3</div>
+<div class="formula">α + β = √3 + 1/√3 = (3 + 1)/√3 = 4/√3</div>
+<strong>TRUE</strong>
+</div>
+<div class="step">
+<strong>Statement-2:</strong>
+<div class="formula">sec²(cos<sup>-1</sup>(1/4)) = 1/cos²(cos<sup>-1</sup>(1/4)) = 1/(1/16) = 16</div>
+<div class="formula">cosec²(sin<sup>-1</sup>(1/5)) = 1/sin²(sin<sup>-1</sup>(1/5)) = 1/(1/25) = 25</div>
+<div class="formula">16 + 25 = 41</div>
+<strong>TRUE</strong>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_230</div>
+        <div class="badge critical">critical - 8 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trigonometry |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>Statement-1:</strong> sin<sup>-1</sup>tan(tan<sup>-1</sup>x + tan<sup>-1</sup>(1-x)) = π/2 has no non-zero integral solution<br/>
+<strong>Statement-2:</strong> The number of positive integral solutions of tan<sup>-1</sup>x + cos<sup>-1</sup>(y/√(1+y<sup>2</sup>)) = sin<sup>-1</sup>(3/√10) is 2</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Statement-1:</strong>
+<div class="formula">sin<sup>-1</sup>tan(tan<sup>-1</sup>x + tan<sup>-1</sup>(1-x)) = π/2</div>
+<div class="formula">tan(tan<sup>-1</sup>x + tan<sup>-1</sup>(1-x)) = 1</div>
+<div class="formula">tan<sup>-1</sup>x + tan<sup>-1</sup>(1-x) = π/4</div>
+<div class="formula">[x + (1-x)]/[1 - x(1-x)] = 1</div>
+<div class="formula">1/(1 - x + x²) = 1</div>
+<div class="formula">x² - x = 0</div>
+<div class="formula">x = 0 or x = 1</div>
+                    No non-zero integral solution except x = 1. Wait, x = 1 is a non-zero integer!
+                    Need to check: for x = 1, tan<sup>-1</sup>(1-x) = tan<sup>-1</sup>(0) = 0
+                    tan<sup>-1</sup>(1) + 0 = π/4, tan(π/4) = 1, sin<sup>-1</sup>(1) = π/2 ✓
+                    Statement is ambiguous. If x = 1 counts, it's FALSE.
+                </div>
+<div class="step">
+<strong>Statement-2:</strong>
+<div class="formula">cos<sup>-1</sup>(y/√(1+y²)) = tan<sup>-1</sup>y (standard identity)</div>
+<div class="formula">tan<sup>-1</sup>x + tan<sup>-1</sup>y = sin<sup>-1</sup>(3/√10)</div>
+<div class="formula">sin<sup>-1</sup>(3/√10) = tan<sup>-1</sup>(3) (since sin θ = 3/√10, cos θ = 1/√10, tan θ = 3)</div>
+<div class="formula">tan<sup>-1</sup>x + tan<sup>-1</sup>y = tan<sup>-1</sup>(3)</div>
+<div class="formula">(x+y)/(1-xy) = 3</div>
+<div class="formula">x + y = 3(1 - xy) = 3 - 3xy</div>
+<div class="formula">x + y + 3xy = 3</div>
+                    Positive integer solutions: (x,y) = (1,1), (1,2) are not valid.
+                    Actually: for (1,1): 1+1+3 = 5 ≠ 3
+                    This needs careful analysis of the equation.
+                </div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

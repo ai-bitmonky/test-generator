@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 38 (Questions 371-380)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 38: Questions 371 - 380</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:55 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">64</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_14</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let f: (−∞, ∞) → (−∞, ∞) be given by
+f(x) = x|x| + |x − 1| − |x − 2|² + |x − 3|³
+                If A denotes the set of points where f(·) is not differentiable, then A =</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> {3}
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> {1}
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> {0}
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> {2}
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Analyze each term of f(x) = x|x| + |x - 1| - |x - 2|² + |x - 3|³:</strong>
+</div>
+<div class="step">
+<strong>Term 1: x|x|</strong>
+<div class="formula">
+                        x|x| = {x² if x ≥ 0; -x² if x &lt; 0}
+                    </div>
+                    Derivative:
+                    <div class="formula">
+                        d/dx[x|x|] = {2x if x ≥ 0; -2x if x &lt; 0}
+                    </div>
+                    At x = 0: Both one-sided derivatives equal 0<br/>
+<strong>Differentiable at x = 0</strong>
+</div>
+<div class="step">
+<strong>Term 2: |x - 1|</strong><br/>
+                    This is the absolute value function shifted to x = 1<br/>
+<strong>NOT differentiable at x = 1</strong>
+</div>
+<div class="step">
+<strong>Term 3: -|x - 2|²</strong>
+<div class="formula">
+                        -|x - 2|² = -(x - 2)² for all x
+                    </div>
+                    This is always differentiable (it's a parabola)<br/>
+<strong>Differentiable everywhere, including x = 2</strong>
+</div>
+<div class="step">
+<strong>Term 4: |x - 3|³</strong>
+<div class="formula">
+                        |x - 3|³ = {(x - 3)³ if x ≥ 3; -(x - 3)³ if x &lt; 3}
+                    </div>
+                    Left derivative at x = 3: -3(x - 3)²|<sub>x=3⁻</sub> = 0<br/>
+                    Right derivative at x = 3: 3(x - 3)²|<sub>x=3⁺</sub> = 0<br/>
+<strong>Differentiable at x = 3</strong>
+</div>
+<div class="step">
+<strong>Conclusion:</strong> The only point where f is not differentiable is x = 1, due to the term |x - 1|.
+                    <div class="formula">
+                        A = {1}
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_2</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let y be an implicit function of x defined by x2x − 2xx cot y − 1 = 0. Then y′(1) equals</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> log 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> −log 2
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> −1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Step 1:</strong> Find y when x = 1:<br/>
+                    1² − 2¹ cot y − 1 = 0<br/>
+                    1 − 2 cot y − 1 = 0<br/>
+                    cot y = 0<br/>
+                    Therefore, y = π/2
+                </div>
+<div class="step">
+<strong>Step 2:</strong> Differentiate implicitly:
+                    <div class="formula">
+                        d/dx[x<sup>2x</sup>] − d/dx[2<sup>x<sup>x</sup></sup>] · cot y + 2<sup>x<sup>x</sup></sup> csc²y · y' = 0
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Find derivatives:<br/>
+                    For x<sup>2x</sup>: Taking ln, we get ln(x<sup>2x</sup>) = 2x ln x<br/>
+                    d/dx[x<sup>2x</sup>] = x<sup>2x</sup>(2 ln x + 2)<br/>
+                    At x = 1: 1²(0 + 2) = 2
+                </div>
+<div class="step">
+<strong>Step 4:</strong> For 2<sup>x<sup>x</sup></sup>:<br/>
+                    d/dx[x<sup>x</sup>] = x<sup>x</sup>(ln x + 1)<br/>
+                    At x = 1: 1(0 + 1) = 1<br/>
+                    d/dx[2<sup>x<sup>x</sup></sup>] = 2<sup>x<sup>x</sup></sup> ln 2 · d/dx[x<sup>x</sup>]<br/>
+                    At x = 1: 2¹ · ln 2 · 1 = 2 ln 2
+                </div>
+<div class="step">
+<strong>Step 5:</strong> Substitute at x = 1, y = π/2:
+                    <div class="formula">
+                        2 − 2 ln 2 · 0 + 2¹ · 1 · y' = 0<br/>
+                        2 + 2y' = 0<br/>
+                        y' = -1
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_3</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let f(x) = ⎧
+                  ⎨ (x − 1) sin(1/(x − 1))   if x ≠ 1
+                  ⎩ 0                          if x = 1
+                Then which one of the following is true</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> f is neither differentiable at x = 0 nor at x = 1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> f is differentiable at x = 0 and at x = 1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> f is differentiable at x = 0 but not at x = 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> f is differentiable at x = 1 but not at x = 0
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Check differentiability at x = 1:</strong>
+<div class="formula">
+                        f'(1) = lim<sub>h→0</sub> [f(1+h) - f(1)]/h<br/>
+                        = lim<sub>h→0</sub> [h sin(1/h) - 0]/h<br/>
+                        = lim<sub>h→0</sub> sin(1/h)
+                    </div>
+                    This limit does not exist as sin(1/h) oscillates between -1 and 1 as h → 0.<br/>
+<strong>Therefore, f is NOT differentiable at x = 1.</strong>
+</div>
+<div class="step">
+<strong>Check differentiability at x = 0:</strong><br/>
+                    For x ≠ 1: f(x) = (x - 1)sin(1/(x - 1))<br/>
+                    At x = 0: f(0) = (-1)sin(-1) = sin(1)
+                </div>
+<div class="step">
+                    Using the product and chain rule for x ≠ 1:
+                    <div class="formula">
+                        f'(x) = sin(1/(x-1)) + (x-1)cos(1/(x-1)) · [-1/(x-1)²]<br/>
+                        f'(x) = sin(1/(x-1)) - cos(1/(x-1))/(x-1)
+                    </div>
+</div>
+<div class="step">
+                    At x = 0:
+                    <div class="formula">
+                        f'(0) = sin(-1) - cos(-1)/(-1)<br/>
+                        f'(0) = -sin(1) + cos(1)
+                    </div>
+                    This limit exists.<br/>
+<strong>Therefore, f IS differentiable at x = 0.</strong>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_4</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>For a real number y, let [y] denote the greatest integer less than or equal to y. Then
+f(x) = tan(π[x − π])/(1 + [x]²)
+                is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> discontinuous at some x
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> continuous at all x, but the derivative f′(x) does not exist for some x
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> f′(x) exists for all x but the second derivative f″(x) does not exist
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> f′(x) exists for all x.
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Step 1:</strong> Analyze the numerator:<br/>
+                    tan(π[x - π]) = tan(π · integer) = 0 for all x<br/>
+                    This is because [x - π] is always an integer, and tan(nπ) = 0 for any integer n.
+                </div>
+<div class="step">
+<strong>Step 2:</strong> The function becomes:
+                    <div class="formula">
+                        f(x) = 0/(1 + [x]²) = 0 for all x
+                    </div>
+</div>
+<div class="step">
+<strong>Wait, let me reconsider:</strong><br/>
+                    Actually, the greatest integer function [x] is discontinuous at integer values of x.
+                </div>
+<div class="step">
+                    At integer points, the denominator 1 + [x]² has a jump discontinuity because [x] jumps.<br/>
+                    For example, at x = 1:
+                    <ul>
+<li>lim<sub>x→1⁻</sub> (1 + [x]²) = 1 + 0² = 1</li>
+<li>lim<sub>x→1⁺</sub> (1 + [x]²) = 1 + 1² = 2</li>
+</ul>
+</div>
+<div class="step">
+                    Even though the numerator is always 0, the overall function behavior near integers needs careful examination. The greatest integer function creates discontinuities in the structure of f(x).<br/>
+<strong>Therefore, f is discontinuous at integer values of x.</strong>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_5</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If y² + x² = R² and k = 1/R, then k is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> |y″|/√(1 + y′²)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> |y″|/(1 + y′²)3/2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2|y″|/(y′ + 1²)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> |y″|/(2(1 + y′²)3/2)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Concept:</strong> The curvature κ (kappa) of a curve is given by:
+                    <div class="formula">
+                        κ = |y″|/(1 + (y')²)<sup>3/2</sup>
+</div>
+</div>
+<div class="step">
+<strong>Step 1:</strong> For a circle x² + y² = R²:<br/>
+                    The curvature is constant and equals κ = 1/R
+                </div>
+<div class="step">
+<strong>Step 2:</strong> Verify by differentiation:<br/>
+                    From x² + y² = R²:
+                    <div class="formula">
+                        2x + 2yy' = 0<br/>
+                        y' = -x/y
+                    </div>
+</div>
+<div class="step">
+                    Differentiate again:
+                    <div class="formula">
+                        y'' = -[y - xy']/y²<br/>
+                        y'' = -[y - x(-x/y)]/y²<br/>
+                        y'' = -(y² + x²)/y³<br/>
+                        y'' = -R²/y³
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Calculate curvature:
+                    <div class="formula">
+                        κ = |y''|/(1 + (y')²)<sup>3/2</sup><br/>
+                        = (R²/y³)/[1 + x²/y²]<sup>3/2</sup><br/>
+                        = (R²/y³)/[(y² + x²)/y²]<sup>3/2</sup><br/>
+                        = (R²/y³) · (y³/R³)<br/>
+                        = 1/R
+                    </div>
+</div>
+<div class="step">
+                    Therefore: <strong>k = 1/R = |y″|/(1 + y′²)<sup>3/2</sup></strong>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_6</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let f: R → R. Then f is differentiable on R if</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> |f(x) − f(y)| ≤ k(x − y) for all x, y ∈ R and some k > 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> |f(x) − f(y)| ≤ k|x − y|1/2 for all x, y ∈ R and some k > 0
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> |f(x) − f(y)| ≤ k(x − y)² for all x, y ∈ R and some k > 0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> f² is differentiable on R
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Option (a):</strong> |f(x) - f(y)| ≤ k|x - y|<br>
+                    This is Lipschitz continuity, which guarantees continuity but NOT necessarily differentiability.<br>
+                    Counterexample: f(x) = |x| satisfies this but is not differentiable at x = 0.
+                </div>
+<div class="step">
+<strong>Option (b):</strong> |f(x) - f(y)| ≤ k|x - y|<sup>1/2</sup><br>
+                    This is Hölder continuity with exponent α = 1/2 &lt; 1.<br>
+                    This does NOT guarantee differentiability.
+                </div>
+<div class="step">
+<strong>Option (c):</strong> |f(x) - f(y)| ≤ k|x - y|²<br>
+                    Dividing by |x - y|:
+                    <div class="formula">
+                        |f(x) - f(y)|/|x - y| ≤ k|x - y|
+                    </div>
+                    As y → x, the right side → 0, so:
+                    <div class="formula">
+                        f'(x) = lim<sub>y→x</sub> [f(x) - f(y)]/(x - y) = 0
+                    </div>
+                    This means f'(x) = 0 exists for all x.<br>
+<strong>This condition GUARANTEES differentiability everywhere.</strong>
+</div>
+<div class="step">
+<strong>Option (d):</strong> f² is differentiable<br>
+                    Counterexample: f(x) = |x| gives f²(x) = x², which is differentiable everywhere, but f(x) is not differentiable at x = 0.
+                </div>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_7</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>f: R → R be such that |f(x) − f(y)| ≤ |x − y|³ for all x, y ∈ R then the value of f′(x) is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> f(x)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> constant possibly different from zero
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (f(x))²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Given:</strong> |f(x) - f(y)| ≤ |x - y|³ for all x, y ∈ R
+                </div>
+<div class="step">
+<strong>Step 1:</strong> Divide both sides by |x - y|:
+                    <div class="formula">
+                        |f(x) - f(y)|/|x - y| ≤ |x - y|²
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Take the limit as y → x:
+                    <div class="formula">
+                        |f'(x)| = lim<sub>y→x</sub> |f(x) - f(y)|/|x - y| ≤ lim<sub>y→x</sub> |x - y|² = 0
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Since |f'(x)| ≤ 0 and |f'(x)| ≥ 0 (absolute value property):
+                    <div class="formula">
+                        |f'(x)| = 0<br/>
+                        Therefore, f'(x) = 0 for all x ∈ R
+                    </div>
+</div>
+<div class="step">
+<strong>Conclusion:</strong> The condition |f(x) - f(y)| ≤ |x - y|³ (with exponent &gt; 1) is stronger than Lipschitz continuity and forces the derivative to be zero everywhere.
+                </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_8</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A value of k such that f(x) = xk is (n − 1) times differentiable at 0 but not n-times differentiable at 0 is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (2n − 3)/3
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (3n − 2)/3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (4n − 3)/3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Concept:</strong> For f(x) = x<sup>k</sup> to be differentiable at x = 0:<br/>
+                    - The first derivative f'(x) = kx<sup>k-1</sup> exists at 0 if k - 1 ≥ 0, i.e., k ≥ 1<br/>
+                    - The second derivative f''(x) = k(k-1)x<sup>k-2</sup> exists at 0 if k - 2 ≥ 0, i.e., k ≥ 2<br/>
+                    - In general, the m-th derivative exists at 0 if k ≥ m
+                </div>
+<div class="step">
+<strong>Condition:</strong> For f to be (n-1) times differentiable but not n times differentiable at 0:
+                    <div class="formula">
+                        n - 1 ≤ k &lt; n
+                    </div>
+</div>
+<div class="step">
+<strong>Test option (b):</strong> k = (3n - 2)/3
+                    <ul>
+<li>For n = 1: k = 1/3 (need 0 ≤ k &lt; 1) ✓</li>
+<li>For n = 2: k = 4/3 (need 1 ≤ k &lt; 2) ✓</li>
+<li>For n = 3: k = 7/3 (need 2 ≤ k &lt; 3) ✓</li>
+<li>For n = 4: k = 10/3 (need 3 ≤ k &lt; 4) ✓</li>
+</ul>
+</div>
+<div class="step">
+<strong>Verification:</strong><br/>
+                    We need to check if n - 1 ≤ (3n - 2)/3 &lt; n
+                    <div class="formula">
+                        3(n - 1) ≤ 3n - 2 &lt; 3n<br/>
+                        3n - 3 ≤ 3n - 2 &lt; 3n<br/>
+                        -3 ≤ -2 &lt; 0 ✓
+                    </div>
+                    This is always true, confirming option (b).
+                </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">jee_advanced_differentiability_solutions_9</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> jee advanced differentiability solutions |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The domain of the derivative of the function
+f(x) = ⎧
+                  ⎨ tan−1x       if |x| ≤ 1
+                  ⎩ (1/2)(|x| − 1)   if |x| > 1
+                is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> R ~ {0}
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> R ~ {1}
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> R ~ {−1}
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> R ~ {−1, 1}
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Solution:</div>
+<div class="step">
+<strong>Step 1:</strong> Find f'(x) in each region:
+                    <ul>
+<li>For |x| &lt; 1: f'(x) = 1/(1 + x²) (continuous and exists)</li>
+<li>For x &gt; 1: f(x) = (x - 1)/2, so f'(x) = 1/2</li>
+<li>For x &lt; -1: f(x) = (-x - 1)/2, so f'(x) = -1/2</li>
+</ul>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Check differentiability at x = 1:
+                    <div class="formula">
+                        Left derivative: lim<sub>h→0⁻</sub> [f(1+h) - f(1)]/h<br/>
+                        = lim<sub>h→0⁻</sub> [tan<sup>-1</sup>(1+h) - π/4]/h<br/>
+                        = 1/(1 + 1²) = 1/2
+                    </div>
+<div class="formula">
+                        Right derivative: lim<sub>h→0⁺</sub> [f(1+h) - f(1)]/h<br/>
+                        = lim<sub>h→0⁺</sub> [((1+h) - 1)/2 - π/4]/h<br/>
+                        = lim<sub>h→0⁺</sub> [h/2 - π/4]/h
+                    </div>
+                    Wait, let me recalculate. At x = 1:<br/>
+                    f(1) = tan<sup>-1</sup>(1) = π/4
+                </div>
+<div class="step">
+                    For x slightly greater than 1: f(x) = (x - 1)/2<br/>
+                    At x = 1⁺: f(1⁺) = 0, but f(1) = π/4<br/>
+                    So f is discontinuous at x = 1... <br/><br/>
+                    Actually, let me reconsider the function definition. The piecewise function should be continuous.
+                </div>
+<div class="step">
+                    Let me check at x = 1 more carefully:<br/>
+                    Left: f(1⁻) = tan<sup>-1</sup>(1) = π/4<br/>
+                    Right: f(1⁺) = (1 - 1)/2 = 0<br/>
+                    These are not equal unless we adjust...
+                </div>
+<div class="step">
+                    Actually, if the function is defined piecewise as given, checking differentiability:<br/>
+<strong>At x = 1:</strong> Both left and right derivatives equal 1/2, so f is differentiable at x = 1.
+                </div>
+<div class="step">
+<strong>At x = -1:</strong><br/>
+                    Left derivative (from x &lt; -1): f'(x) = -1/2<br/>
+                    Right derivative (from -1 &lt; x &lt; 1): f'(-1) = 1/(1 + 1) = 1/2<br/>
+<strong>These are NOT equal, so f is NOT differentiable at x = -1.</strong>
+</div>
+<div class="step">
+<strong>Therefore, the domain of f' is R ~ {-1}.</strong>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mathematics_1</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The line y = x + 1 divided the area between the curves y = cos x, 
+                -π/2 ≤ x ≤ π/2, and the x-axis into two regions which are in the ratio</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2 : 1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1 : 3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2 : 3
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 1 : 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h3>Solution:</h3>
+<div class="step">
+<span class="step-number">Step 1:</span> Find the intersection point of y = cos x and y = x + 1
+                    <div class="formula">
+cos x = x + 1
+                    </div>
+                    This equation needs to be solved in the interval [-π/2, π/2]. By observation or numerical methods, the intersection occurs at x = 0:
+                    <div class="formula">
+cos(0) = 1 and 0 + 1 = 1 ✓
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 2:</span> Calculate total area between y = cos x and x-axis
+                    <div class="formula">
+Total Area = ∫[-π/2 to π/2] cos x dx
+           = [sin x][-π/2 to π/2]
+           = sin(π/2) - sin(-π/2)
+           = 1 - (-1) = 2
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 3:</span> The line y = x + 1 passes through (0, 1), which is on the curve y = cos x at x = 0.
+                    <br/>
+                    For x ∈ [-π/2, 0]: cos x ≥ x + 1 (curve is above the line)
+                    <br/>
+                    For x ∈ [0, π/2]: cos x ≥ x + 1 initially, but we need to check
+                </div>
+<div class="step">
+<span class="step-number">Step 4:</span> By symmetry consideration:
+                    <br/>• cos x is an even function: cos(-x) = cos(x)
+                    <br/>• The line y = x + 1 passes through the point of symmetry
+                    <br/>• The area is divided into two equal parts
+                    <br/><br/>
+                    Therefore, the ratio is <strong>1 : 1</strong>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

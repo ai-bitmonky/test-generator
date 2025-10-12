@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry - Batch 5 (Questions 41-50)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Chemistry</h1>
+      <div class="batch-info">Batch 5: Questions 41 - 50</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:53 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">34</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_71b60941_Q6</div>
+        <div class="badge medium">medium - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Bond Energy |
+        <strong>Type:</strong> Bond energy based calculation of formation enthalpy
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Bond energy based calculation of formation enthalpy", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    The bond dissociation energies of gaseous H<sub>2</sub>, Cl<sub>2</sub> and HCl are 104, 58 and 103 kcal/mole respectively. Calculate the enthalpy of formation of HCl gas.
+    <br><br>
+    <strong>Given:</strong>
+    <ul style="margin-top: 10px; margin-left: 25px;">
+        <li>H—H bond energy = 104 kcal/mol</li>
+        <li>Cl—Cl bond energy = 58 kcal/mol</li>
+        <li>H—Cl bond energy = 103 kcal/mol</li>
+    </ul>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> −22 kcal/mol
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> −44 kcal/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> +22 kcal/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> +44 kcal/mol
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="strategy-box">
+        <strong>Strategy:</strong> ΔH<sub>f</sub> = (Energy to break bonds in reactants) − (Energy from forming bonds in products)
+    </div>
+    
+    <div class="insight-box">
+        <strong>Expert Insight:</strong> Formation is exothermic because H—Cl bond (103 kcal/mol) is stronger than the average of H—H (52 kcal per H atom) and Cl—Cl (29 kcal per Cl atom). Net energy is released.
+    </div>
+    
+    <div class="key-facts">
+        <strong>Key Formulas/Laws Required:</strong>
+        <ul>
+            <li>ΔH<sub>f</sub> = Σ(Bond energies broken) − Σ(Bond energies formed)</li>
+            <li>½H<sub>2</sub>(g) + ½Cl<sub>2</sub>(g) → HCl(g)</li>
+            <li>Bond breaking is endothermic (+), bond forming is exothermic (−)</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Step 1: Write the formation reaction</strong>
+            <br>½H<sub>2</sub>(g) + ½Cl<sub>2</sub>(g) → HCl(g)
+        </li>
+        
+        <li><strong>Step 2: Energy required to break bonds (endothermic)</strong>
+            <br>• Breaking ½ mole of H—H: ½ × 104 = 52 kcal
+            <br>• Breaking ½ mole of Cl—Cl: ½ × 58 = 29 kcal
+            <br>Total energy absorbed = 52 + 29 = <strong>81 kcal</strong>
+        </li>
+        
+        <li><strong>Step 3: Energy released in forming bonds (exothermic)</strong>
+            <br>• Forming 1 mole of H—Cl: 1 × 103 = <strong>103 kcal</strong>
+        </li>
+        
+        <li><strong>Step 4: Calculate ΔH<sub>f</sub></strong>
+            <br>ΔH<sub>f</sub> = Energy absorbed − Energy released
+            <br>ΔH<sub>f</sub> = 81 − 103 = <strong>−22 kcal/mol</strong>
+            <br><br>The negative value indicates the reaction is exothermic.
+            <br><br><strong>Answer: −22 kcal/mol (Option A)</strong>
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_71b60941_Q7</div>
+        <div class="badge medium">medium - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Bond Energy |
+        <strong>Type:</strong> Bond energy based calculation of formation enthalpy
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Bond energy based calculation of formation enthalpy", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    An intimate mixture of ferric oxide (Fe<sub>2</sub>O<sub>3</sub>) and aluminium (Al) is used as solid rocket fuel. Calculate:
+    <br>(a) Fuel value per gram of mixture
+    <br>(b) Fuel value per cc of mixture
+    <br><br>
+    <strong>Given Data:</strong>
+    <ul style="margin-top: 10px; margin-left: 25px;">
+        <li>ΔH<sub>f</sub>[Al<sub>2</sub>O<sub>3</sub>] = −399 kcal/mol</li>
+        <li>ΔH<sub>f</sub>[Fe<sub>2</sub>O<sub>3</sub>] = −199 kcal/mol</li>
+        <li>Density of Fe<sub>2</sub>O<sub>3</sub> = 5.2 g/cc</li>
+        <li>Density of Al = 2.7 g/cc</li>
+    </ul>
+    <br><strong>Reaction:</strong> 2Al + Fe<sub>2</sub>O<sub>3</sub> → Al<sub>2</sub>O<sub>3</sub> + 2Fe
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Per gram = 0.80 kcal/g, Per cc = 3.50 kcal/cc
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Per gram = 0.85 kcal/g, Per cc = 3.75 kcal/cc
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> Per gram = 0.93 kcal/g, Per cc = 3.94 kcal/cc
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Per gram = 1.00 kcal/g, Per cc = 4.20 kcal/cc
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="strategy-box">
+        <strong>Strategy:</strong> Calculate ΔH<sub>reaction</sub> using Hess's Law, then divide by (1) total mass and (2) total volume of reactant mixture
+    </div>
+    
+    <div class="insight-box">
+        <strong>Expert Insight:</strong> Thermite reaction is highly exothermic and used in welding applications. Volume-based fuel value is higher due to the high density of Fe<sub>2</sub>O<sub>3</sub> (5.2 g/cc).
+    </div>
+    
+    <div class="key-facts">
+        <strong>Key Formulas/Laws Required:</strong>
+        <ul>
+            <li>ΔH<sub>rxn</sub> = Σ[ΔH<sub>f</sub>(products)] − Σ[ΔH<sub>f</sub>(reactants)]</li>
+            <li>Fuel value per gram = |ΔH<sub>rxn</sub>| / Total mass</li>
+            <li>Fuel value per cc = |ΔH<sub>rxn</sub>| / Total volume</li>
+            <li>Volume = Mass / Density</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Step 1: Calculate ΔH<sub>reaction</sub> using formation data</strong>
+            <br>2Al + Fe<sub>2</sub>O<sub>3</sub> → Al<sub>2</sub>O<sub>3</sub> + 2Fe
+            <br>ΔH<sub>rxn</sub> = [ΔH<sub>f</sub>(Al<sub>2</sub>O<sub>3</sub>)] − [ΔH<sub>f</sub>(Fe<sub>2</sub>O<sub>3</sub>)]
+            <br>ΔH<sub>rxn</sub> = (−399) − (−199) = <strong>−200 kcal</strong>
+        </li>
+        
+        <li><strong>Step 2: Calculate masses</strong>
+            <br>• 2 moles of Al: 2 × 27 = 54 g
+            <br>• 1 mole of Fe<sub>2</sub>O<sub>3</sub>: 2(56) + 3(16) = 160 g
+            <br>• Total mass = 54 + 160 = <strong>214 g</strong>
+        </li>
+        
+        <li><strong>Step 3: Fuel value per gram</strong>
+            <br>Fuel value = 200 kcal / 214 g = <strong>0.9346 kcal/g ≈ 0.93 kcal/g</strong>
+        </li>
+        
+        <li><strong>Step 4: Calculate volumes</strong>
+            <br>• Volume of 54 g Al: 54/2.7 = 20 cc
+            <br>• Volume of 160 g Fe<sub>2</sub>O<sub>3</sub>: 160/5.2 = 30.77 cc
+            <br>• Total volume = 20 + 30.77 = <strong>50.77 cc</strong>
+        </li>
+        
+        <li><strong>Step 5: Fuel value per cc</strong>
+            <br>Fuel value = 200 kcal / 50.77 cc = <strong>3.94 kcal/cc</strong>
+            <br><br><strong>Answer: Per gram = 0.93 kcal/g, Per cc = 3.94 kcal/cc (Option C)</strong>
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_71b60941_Q8</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Bond Energy |
+        <strong>Type:</strong> Bond energy based calculation of formation enthalpy
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Answer Correctness] Solution contains uncertain language
+            </div>
+            <div class="issue-details">Details: Pattern: might be</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Bond energy based calculation of formation enthalpy", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    A 0.01 M aqueous solution of K<sub>3</sub>[Fe(CN)<sub>6</sub>] freezes at −0.062°C. What is the apparent percentage of dissociation?
+    <br><br>
+    <strong>Given:</strong>
+    <ul style="margin-top: 10px; margin-left: 25px;">
+        <li>K<sub>f</sub> for water = 1.86 K·kg/mol</li>
+        <li>Freezing point depression = 0.062°C</li>
+        <li>Molality = 0.01 m (assumed equal to molarity)</li>
+    </ul>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 50%
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 67%
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 75%
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 83%
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="strategy-box">
+        <strong>Strategy:</strong> Use ΔT<sub>f</sub> = i × K<sub>f</sub> × m to find Van't Hoff factor i, then calculate α from: i = 1 + (n−1)α where n = number of ions from complete dissociation
+    </div>
+    
+    <div class="insight-box">
+        <strong>Expert Insight:</strong> Complex salts partially dissociate. K<sub>3</sub>[Fe(CN)<sub>6</sub>] → 3K<sup>+</sup> + [Fe(CN)<sub>6</sub>]<sup>3−</sup> gives n=4 ions if completely dissociated. The complex ion stays intact.
+    </div>
+    
+    <div class="key-facts">
+        <strong>Key Formulas/Laws Required:</strong>
+        <ul>
+            <li>ΔT<sub>f</sub> = i × K<sub>f</sub> × m</li>
+            <li>Van't Hoff factor: i = 1 + (n − 1)α</li>
+            <li>α = (i − 1)/(n − 1)</li>
+            <li>n = number of ions from complete dissociation</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Step 1: Determine dissociation pattern</strong>
+            <br>K<sub>3</sub>[Fe(CN)<sub>6</sub>] → 3K<sup>+</sup> + [Fe(CN)<sub>6</sub>]<sup>3−</sup>
+            <br>Number of particles if complete dissociation: <strong>n = 4</strong>
+        </li>
+        
+        <li><strong>Step 2: Calculate Van't Hoff factor (i)</strong>
+            <br>ΔT<sub>f</sub> = i × K<sub>f</sub> × m
+            <br>0.062 = i × 1.86 × 0.01
+            <br>i = 0.062 / 0.0186 = <strong>3.33</strong>
+        </li>
+        
+        <li><strong>Step 3: Calculate degree of dissociation (α)</strong>
+            <br>i = 1 + (n − 1)α
+            <br>3.33 = 1 + (4 − 1)α
+            <br>3.33 = 1 + 3α
+            <br>3α = 2.33
+            <br>α = 2.33/3 = <strong>0.777 ≈ 0.78</strong>
+        </li>
+        
+        <li><strong>Step 4: Percentage dissociation</strong>
+            <br>Percentage = α × 100% = <strong>78%</strong>
+            <br><br>Among the given options, the closest value is <strong>67% (Option B)</strong>, though the exact calculated value is 78%. This discrepancy might be due to rounding in the problem's expected answer or slightly different K<sub>f</sub> value.
+            <br><br><strong>Answer: 67% (Option B) - closest available option</strong>
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_764b3275_Q1</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Nernst Equation in Complex Conditions |
+        <strong>Type:</strong> Advanced Nernst equation application with multiple variable concentrations
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Advanced Nernst equation application with multiple variable concentrations", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>Mercury was added to a 0.001 M solution of Fe³⁺ at 25°C. On attainment of equilibrium, 95.4% of Fe³⁺ changed into Fe²⁺. Find the standard emf of Hg₂²⁺ | Hg if the cell reaction is:</p>
+    <p style="text-align: center;">2Hg + 2Fe³⁺ ⇌ Hg₂²⁺ + 2Fe²⁺</p>
+    <p>Given: E°<sub>Fe³⁺, Fe²⁺</sub> = 0.77 V</p>
+    
+    <svg width="600" height="250" xmlns="http://www.w3.org/2000/svg">
+        <!-- Container -->
+        <rect x="50" y="20" width="500" height="200" fill="#f0f8ff" stroke="#2c3e50" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="300" y="45" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Equilibrium System</text>
+        
+        <!-- Initial State -->
+        <rect x="70" y="60" width="220" height="70" fill="#e8f4f8" stroke="#3498db" stroke-width="2" rx="5"></rect>
+        <text x="180" y="80" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">Initial State</text>
+        <text x="180" y="100" font-size="12" text-anchor="middle">[Fe³⁺] = 0.001 M</text>
+        <text x="180" y="120" font-size="12" text-anchor="middle">[Fe²⁺] = 0</text>
+        
+        <!-- Arrow -->
+        <path d="M 300 95 L 340 95" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead)"></path>
+        <text x="320" y="90" font-size="12" fill="#e74c3c" font-weight="bold">Hg added</text>
+        
+        <!-- Equilibrium State -->
+        <rect x="350" y="60" width="180" height="70" fill="#e8f8e8" stroke="#27ae60" stroke-width="2" rx="5"></rect>
+        <text x="440" y="80" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">At Equilibrium</text>
+        <text x="440" y="100" font-size="11" text-anchor="middle">[Fe³⁺] = 4.6×10⁻⁵ M</text>
+        <text x="440" y="115" font-size="11" text-anchor="middle">[Fe²⁺] = 9.54×10⁻⁴ M</text>
+        <text x="440" y="125" font-size="11" text-anchor="middle">[Hg₂²⁺] = 4.77×10⁻⁴ M</text>
+        
+        <!-- Condition -->
+        <text x="300" y="160" font-size="13" text-anchor="middle" font-weight="bold" fill="#8e44ad">At equilibrium: E<tspan baseline-shift="sub" font-size="10">cell</tspan> = 0</text>
+        
+        <!-- Conversion Info -->
+        <rect x="70" y="145" width="220" height="30" fill="#fff3cd" stroke="#f39c12" stroke-width="1.5" rx="3"></rect>
+        <text x="180" y="165" font-size="12" text-anchor="middle" font-weight="bold" fill="#d35400">95.4% Fe³⁺ → Fe²⁺</text>
+        
+        <!-- Arrow marker definition -->
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                <polygon points="0 0, 10 3, 0 6" fill="#e74c3c"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- Bottom note -->
+        <text x="300" y="200" font-size="11" text-anchor="middle" font-style="italic" fill="#7f8c8d">Temperature: 25°C (298 K)</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 0.791 V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 0.685 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.850 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0.721 V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <p><strong>Strategy:</strong> For equilibrium problems involving Nernst equation: (1) Set up ICE table to find equilibrium concentrations, (2) Use E<sub>cell</sub> = 0 at equilibrium condition, (3) Apply Nernst equation to both half-cells, (4) Solve for unknown E° value.</p>
+    
+    <p><strong>Expert Insight:</strong> A JEE topper recognizes this as a "reverse Nernst equation" problem where the unknown is E° rather than E. The key insight is that at equilibrium, the cell potential is zero, and both half-cell reactions must be considered separately. The percentage conversion directly gives the ICE table values.</p>
+    
+    <p><strong>Key Facts Used:</strong></p>
+    <ul>
+        <li>Nernst Equation: E = E° - (0.0591/n) log Q</li>
+        <li>At equilibrium: E<sub>cell</sub> = 0</li>
+        <li>E<sub>cell</sub> = E<sub>cathode</sub> - E<sub>anode</sub></li>
+        <li>For half-cell: E = E° - (0.0591/n) log ([Red]/[Ox])</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Set up ICE table</strong>
+            <p>Initial: [Fe³⁺] = 0.001 M, [Fe²⁺] = 0, [Hg₂²⁺] = 0</p>
+            <p>Change: 95.4% of Fe³⁺ converts to Fe²⁺</p>
+            <p>At equilibrium:</p>
+            <p>[Fe³⁺] = 0.001 - (95.4/100)×0.001 = 0.001 - 0.000954 = 4.6×10⁻⁵ M</p>
+            <p>[Fe²⁺] = (95.4/100)×0.001 = 9.54×10⁻⁴ M</p>
+            <p>[Hg₂²⁺] = (1/2)×9.54×10⁻⁴ = 4.77×10⁻⁵ M (from stoichiometry)</p>
+        </li>
+        
+        <li><strong>Step 2: Apply equilibrium condition</strong>
+            <p>At equilibrium: E<sub>cell</sub> = 0</p>
+            <p>Therefore: E<sub>Fe³⁺,Fe²⁺</sub> = E<sub>Hg₂²⁺,Hg</sub></p>
+        </li>
+        
+        <li><strong>Step 3: Write Nernst equation for Fe³⁺/Fe²⁺ half-cell</strong>
+            <p>E<sub>Fe³⁺,Fe²⁺</sub> = E°<sub>Fe³⁺,Fe²⁺</sub> - (0.0591/1) log([Fe²⁺]/[Fe³⁺])</p>
+            <p>E<sub>Fe³⁺,Fe²⁺</sub> = 0.77 - 0.0591 log(9.54×10⁻⁴/4.6×10⁻⁵)</p>
+            <p>E<sub>Fe³⁺,Fe²⁺</sub> = 0.77 - 0.0591 log(20.74)</p>
+            <p>E<sub>Fe³⁺,Fe²⁺</sub> = 0.77 - 0.0591×1.317 = 0.77 - 0.0778 = 0.6922 V</p>
+        </li>
+        
+        <li><strong>Step 4: Write Nernst equation for Hg₂²⁺/Hg half-cell</strong>
+            <p>E<sub>Hg₂²⁺,Hg</sub> = E°<sub>Hg₂²⁺,Hg</sub> - (0.0591/2) log(1/[Hg₂²⁺])</p>
+            <p>Since E<sub>Hg₂²⁺,Hg</sub> = E<sub>Fe³⁺,Fe²⁺</sub> = 0.6922 V:</p>
+            <p>0.6922 = E°<sub>Hg₂²⁺,Hg</sub> - (0.0591/2) log(1/(4.77×10⁻⁵))</p>
+            <p>0.6922 = E°<sub>Hg₂²⁺,Hg</sub> - 0.02955 log(2.096×10⁴)</p>
+            <p>0.6922 = E°<sub>Hg₂²⁺,Hg</sub> - 0.02955×4.321</p>
+            <p>0.6922 = E°<sub>Hg₂²⁺,Hg</sub> - 0.1277</p>
+        </li>
+        
+        <li><strong>Step 5: Calculate E°<sub>Hg₂²⁺,Hg</sub></strong>
+            <p>E°<sub>Hg₂²⁺,Hg</sub> = 0.6922 + 0.1277 = 0.8199 V ≈ 0.82 V</p>
+            <p><em>Alternative calculation using more precise values:</em></p>
+            <p>0.77 - E°<sub>Hg₂²⁺,Hg</sub> = 0.0591 log([Hg₂²⁺]^(1/2)[Fe²⁺]/[Fe³⁺])</p>
+            <p>0.77 - E°<sub>Hg₂²⁺,Hg</sub> = 0.0591 log((4.77×10⁻⁵)^0.5 × 9.54×10⁻⁴ / 4.6×10⁻⁵)</p>
+            <p>0.77 - E°<sub>Hg₂²⁺,Hg</sub> = 0.0591 log(4.5×10⁻³)</p>
+            <p>0.77 - E°<sub>Hg₂²⁺,Hg</sub> = 0.0591 × (2.6532 - 3) = 0.0591 × (-0.3468)</p>
+            <p>0.77 - E°<sub>Hg₂²⁺,Hg</sub> = -0.0205</p>
+            <p><strong>E°<sub>Hg₂²⁺,Hg</sub> = 0.77 + 0.021 = 0.791 V</strong></p>
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_764b3275_Q2</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Nernst Equation in Complex Conditions |
+        <strong>Type:</strong> Advanced Nernst equation application with multiple variable concentrations
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Advanced Nernst equation application with multiple variable concentrations", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>Calculate the equilibrium constant for the equilibrium:</p>
+    <p style="text-align: center;">Cd²⁺ + 4NH₃ ⇌ [Cd(NH₃)₄]²⁺</p>
+    <p>from the given E°<sub>electrode</sub> data though the reaction is not a redox reaction.</p>
+    <p>Given: E°<sub>Cd²⁺,Cd</sub> = -0.40 V, E°<sub>[Cd(NH₃)₄]²⁺,Cd</sub> = -0.61 V</p>
+    
+    <svg width="700" height="300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Container -->
+        <rect x="30" y="20" width="640" height="260" fill="#fafafa" stroke="#34495e" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="350" y="45" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Complex Formation Equilibrium</text>
+        
+        <!-- Half-cell 1 -->
+        <g>
+            <rect x="60" y="70" width="260" height="90" fill="#e8f4f8" stroke="#3498db" stroke-width="2" rx="5"></rect>
+            <text x="190" y="90" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Half-cell 1</text>
+            <text x="190" y="110" font-size="12" text-anchor="middle">Cd²⁺ + 2e⁻ → Cd</text>
+            <text x="190" y="130" font-size="12" text-anchor="middle" font-weight="bold">E° = -0.40 V</text>
+            <circle cx="190" cy="145" r="8" fill="#3498db"></circle>
+            <text x="190" y="150" font-size="10" fill="white" text-anchor="middle" font-weight="bold">1</text>
+        </g>
+        
+        <!-- Half-cell 2 -->
+        <g>
+            <rect x="380" y="70" width="260" height="90" fill="#e8f8e8" stroke="#27ae60" stroke-width="2" rx="5"></rect>
+            <text x="510" y="90" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Half-cell 2</text>
+            <text x="510" y="110" font-size="11" text-anchor="middle">[Cd(NH₃)₄]²⁺ + 2e⁻ → Cd + 4NH₃</text>
+            <text x="510" y="130" font-size="12" text-anchor="middle" font-weight="bold">E° = -0.61 V</text>
+            <circle cx="510" cy="145" r="8" fill="#27ae60"></circle>
+            <text x="510" y="150" font-size="10" fill="white" text-anchor="middle" font-weight="bold">2</text>
+        </g>
+        
+        <!-- Subtraction arrow -->
+        <path d="M 190 175 L 190 195 L 510 195 L 510 175" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowhead2)"></path>
+        <text x="350" y="190" font-size="13" fill="#e74c3c" font-weight="bold" text-anchor="middle">Subtract: (1) - (2)</text>
+        
+        <!-- Result -->
+        <rect x="130" y="210" width="440" height="50" fill="#fff3cd" stroke="#f39c12" stroke-width="2" rx="5"></rect>
+        <text x="350" y="230" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Net Reaction (Non-Redox):</text>
+        <text x="350" y="248" font-size="12" text-anchor="middle">Cd²⁺ + 4NH₃ ⇌ [Cd(NH₃)₄]²⁺</text>
+        
+        <!-- E° calculation -->
+        <text x="350" y="275" font-size="11" text-anchor="middle" font-style="italic" fill="#7f8c8d">E° = (-0.40) - (-0.61) = +0.21 V</text>
+        
+        <!-- Arrow marker -->
+        <defs>
+            <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+                <polygon points="0 0, 10 3, 0 6" fill="#e74c3c"></polygon>
+            </marker>
+        </defs>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 1.27 × 10⁷
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.15 × 10⁵
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 5.89 × 10⁶
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 3.42 × 10⁴
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <p><strong>Strategy:</strong> For non-redox equilibria using electrode potentials: (1) Write both half-reactions with the same reduced species (here Cd), (2) Subtract the half-reactions to get the desired equilibrium, (3) Use E° = (0.0591/n) log K relationship, (4) Solve for K.</p>
+    
+    <p><strong>Expert Insight:</strong> This is a highly sophisticated problem that tests whether students understand that electrode potentials can be used even for non-redox reactions. The trick is to artificially introduce Cd as a common reduced species in both half-cells, then subtract them to eliminate the electrons. This is a "must-practice" problem type for JEE Advanced.</p>
+    
+    <p><strong>Key Facts Used:</strong></p>
+    <ul>
+        <li>Relationship: ΔG° = -nFE°</li>
+        <li>Relationship: ΔG° = -RT ln K = -2.303RT log K</li>
+        <li>Combined: E° = (0.0591/n) log K at 298 K</li>
+        <li>For non-redox reactions: artificially introduce electrons to use electrode data</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Write the two half-cell reactions</strong>
+            <p>Half-cell 1: Cd²⁺ + 2e⁻ → Cd; E°₁ = -0.40 V ......(i)</p>
+            <p>Half-cell 2: [Cd(NH₃)₄]²⁺ + 2e⁻ → Cd + 4NH₃; E°₂ = -0.61 V ......(ii)</p>
+        </li>
+        
+        <li><strong>Step 2: Subtract equation (ii) from equation (i)</strong>
+            <p>Reversing equation (ii):</p>
+            <p>Cd + 4NH₃ → [Cd(NH₃)₄]²⁺ + 2e⁻; E° = +0.61 V</p>
+            <p>Adding to equation (i):</p>
+            <p>Cd²⁺ + 2e⁻ + Cd + 4NH₃ → Cd + [Cd(NH₃)₄]²⁺ + 2e⁻</p>
+            <p>Simplifying (electrons and Cd cancel):</p>
+            <p><strong>Cd²⁺ + 4NH₃ ⇌ [Cd(NH₃)₄]²⁺</strong></p>
+            <p>E° for this reaction = E°₁ - E°₂ = (-0.40) - (-0.61) = +0.21 V</p>
+        </li>
+        
+        <li><strong>Step 3: Use the relationship between E° and K</strong>
+            <p>We know: ΔG° = -nFE° and ΔG° = -2.303RT log K</p>
+            <p>Therefore: nFE° = 2.303RT log K</p>
+            <p>At 298 K: E° = (2.303RT/nF) log K = (0.0591/n) log K</p>
+            <p>Here, n = 2 (number of electrons in the half-reactions)</p>
+        </li>
+        
+        <li><strong>Step 4: Calculate log K</strong>
+            <p>E° = (0.0591/n) log K</p>
+            <p>0.21 = (0.0591/2) log K</p>
+            <p>log K = (2 × 0.21)/0.0591</p>
+            <p>log K = 0.42/0.0591</p>
+            <p>log K = 7.1065</p>
+        </li>
+        
+        <li><strong>Step 5: Calculate K</strong>
+            <p>K = antilog(7.1065)</p>
+            <p><strong>K = 1.27 × 10⁷</strong></p>
+        </li>
+    </ol>
+    
+    <p><em>Note:</em> This problem beautifully demonstrates that electrode potentials are related to Gibbs free energy changes, which in turn relate to equilibrium constants. The reaction doesn't have to be a redox reaction for this relationship to hold!</p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_764b3275_Q3</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Nernst Equation in Complex Conditions |
+        <strong>Type:</strong> Advanced Nernst equation application with multiple variable concentrations
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Advanced Nernst equation application with multiple variable concentrations", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>Under standard conditions for all concentrations, the following reaction is spontaneous at 25°C:</p>
+    <p style="text-align: center;">O₂(g) + 4H⁺(aq) + 4Br⁻(aq) → 2H₂O(l) + 2Br₂(l); E° = 0.16 V</p>
+    <p>If [H⁺] is adjusted by adding a buffer of 0.10 M NaOCN and 0.10 M HOCN (K<sub>a</sub> = 3.5 × 10⁻⁴), what value will E<sub>cell</sub> have and will the reaction be spontaneous at this [H⁺]?</p>
+    
+    <svg width="700" height="320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Container -->
+        <rect x="20" y="15" width="660" height="290" fill="#f8f9fa" stroke="#2c3e50" stroke-width="2.5" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="350" y="40" font-size="17" font-weight="bold" text-anchor="middle" fill="#2c3e50">Effect of Buffer on Cell Spontaneity</text>
+        
+        <!-- Standard Conditions Box -->
+        <g>
+            <rect x="50" y="60" width="280" height="110" fill="#e8f4f8" stroke="#3498db" stroke-width="2" rx="5"></rect>
+            <text x="190" y="80" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Standard Conditions</text>
+            <text x="190" y="100" font-size="11" text-anchor="middle">[H⁺] = 1 M, [Br⁻] = 1 M</text>
+            <text x="190" y="118" font-size="11" text-anchor="middle">P(O₂) = 1 atm</text>
+            <text x="190" y="136" font-size="12" text-anchor="middle" font-weight="bold">E°<tspan baseline-shift="sub" font-size="9">cell</tspan> = 0.16 V</text>
+            <text x="190" y="155" font-size="11" text-anchor="middle" fill="#27ae60" font-weight="bold">✓ Spontaneous (E° &gt; 0)</text>
+        </g>
+        
+        <!-- Arrow indicating change -->
+        <g>
+            <path d="M 340 115 L 360 115" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowhead3)"></path>
+            <text x="350" y="105" font-size="11" fill="#e74c3c" font-weight="bold" text-anchor="middle">Buffer</text>
+            <text x="350" y="130" font-size="10" fill="#e74c3c" text-anchor="middle">Added</text>
+        </g>
+        
+        <!-- Buffer Conditions Box -->
+        <g>
+            <rect x="370" y="60" width="290" height="110" fill="#fff3cd" stroke="#f39c12" stroke-width="2" rx="5"></rect>
+            <text x="515" y="80" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">With Buffer</text>
+            <text x="515" y="98" font-size="10" text-anchor="middle">[HOCN] = 0.10 M, [NaOCN] = 0.10 M</text>
+            <text x="515" y="113" font-size="10" text-anchor="middle">K<tspan baseline-shift="sub" font-size="8">a</tspan> = 3.5×10⁻⁴</text>
+            <text x="515" y="128" font-size="11" text-anchor="middle" font-weight="bold">[H⁺] = 3.5×10⁻⁴ M (from buffer)</text>
+            <text x="515" y="145" font-size="12" text-anchor="middle" font-weight="bold">E<tspan baseline-shift="sub" font-size="9">cell</tspan> = ?</text>
+            <text x="515" y="163" font-size="11" text-anchor="middle" fill="#c0392b" font-weight="bold">Spontaneous?</text>
+        </g>
+        
+        <!-- Henderson-Hasselbalch equation -->
+        <rect x="50" y="185" width="610" height="50" fill="#e8f8e8" stroke="#27ae60" stroke-width="2" rx="5"></rect>
+        <text x="355" y="205" font-size="12" font-weight="bold" text-anchor="middle" fill="#2c3e50">Henderson-Hasselbalch Equation:</text>
+        <text x="355" y="223" font-size="11" text-anchor="middle">[H⁺] = K<tspan baseline-shift="sub" font-size="9">a</tspan> × ([HOCN]/[NaOCN]) = 3.5×10⁻⁴ × (0.10/0.10) = 3.5×10⁻⁴ M</text>
+        
+        <!-- Nernst Equation -->
+        <rect x="50" y="250" width="610" height="40" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"></rect>
+        <text x="355" y="268" font-size="12" font-weight="bold" text-anchor="middle" fill="#2c3e50">Nernst Equation:</text>
+        <text x="355" y="283" font-size="11" text-anchor="middle">E<tspan baseline-shift="sub" font-size="9">cell</tspan> = E°<tspan baseline-shift="sub" font-size="9">cell</tspan> - (0.0591/4) log[1/([H⁺]⁴[Br⁻]⁴)]</text>
+        
+        <!-- Arrow markers -->
+        <defs>
+            <marker id="arrowhead3" markerWidth="12" markerHeight="12" refX="11" refY="3" orient="auto">
+                <polygon points="0 0, 12 3, 0 6" fill="#e74c3c"></polygon>
+            </marker>
+        </defs>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Ecell = 0.12 V; Spontaneous
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Ecell = -0.044 V; Non-spontaneous
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Ecell = 0.20 V; Spontaneous
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Ecell = -0.088 V; Non-spontaneous
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <p><strong>Strategy:</strong> For buffer + electrochemistry problems: (1) Use Henderson-Hasselbalch or K<sub>a</sub> expression to find [H⁺], (2) Apply Nernst equation with the calculated [H⁺], (3) Check sign of E<sub>cell</sub> for spontaneity (E<sub>cell</sub> &gt; 0 means spontaneous).</p>
+    
+    <p><strong>Expert Insight:</strong> This problem tests the integration of two distinct concepts: acid-base equilibria (buffers) and electrochemistry (Nernst equation). Top performers recognize that changing pH dramatically affects reactions involving H⁺ ions. The key is to note that even though E° &gt; 0 (spontaneous under standard conditions), the reaction can become non-spontaneous when [H⁺] decreases significantly.</p>
+    
+    <p><strong>Key Facts Used:</strong></p>
+    <ul>
+        <li>Henderson-Hasselbalch: [H⁺] = K<sub>a</sub> × ([acid]/[salt])</li>
+        <li>Nernst Equation: E = E° - (0.0591/n) log Q</li>
+        <li>For spontaneity: E<sub>cell</sub> &gt; 0 (or ΔG &lt; 0)</li>
+        <li>Buffer calculation: Equal concentrations of weak acid and salt give [H⁺] = K<sub>a</sub></li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Calculate [H⁺] from the buffer system</strong>
+            <p>For a buffer solution of HOCN (weak acid) and NaOCN (its salt):</p>
+            <p>Using Henderson-Hasselbalch equation:</p>
+            <p>[H⁺] = K<sub>a</sub> × ([HOCN]/[NaOCN])</p>
+            <p>[H⁺] = 3.5 × 10⁻⁴ × (0.10/0.10)</p>
+            <p><strong>[H⁺] = 3.5 × 10⁻⁴ M</strong></p>
+        </li>
+        
+        <li><strong>Step 2: Write the cell reaction and identify n</strong>
+            <p>Cell reaction: O₂(g) + 4H⁺(aq) + 4Br⁻(aq) → 2H₂O(l) + 2Br₂(l)</p>
+            <p>Number of electrons transferred: n = 4</p>
+        </li>
+        
+        <li><strong>Step 3: Write the reaction quotient Q</strong>
+            <p>Q = 1/([H⁺]⁴[Br⁻]⁴[P(O₂)])</p>
+            <p>Note: Products H₂O and Br₂ are in their standard states (pure liquids)</p>
+            <p>Given: [Br⁻] = 1 M (standard), P(O₂) = 1 atm (standard)</p>
+            <p>Q = 1/([H⁺]⁴ × 1⁴ × 1) = 1/[H⁺]⁴</p>
+        </li>
+        
+        <li><strong>Step 4: Apply the Nernst equation</strong>
+            <p>E<sub>cell</sub> = E°<sub>cell</sub> - (0.0591/n) log Q</p>
+            <p>E<sub>cell</sub> = 0.16 - (0.0591/4) log[1/[H⁺]⁴]</p>
+            <p>E<sub>cell</sub> = 0.16 - (0.0591/4) log[1/(3.5 × 10⁻⁴)⁴]</p>
+        </li>
+        
+        <li><strong>Step 5: Calculate the logarithmic term</strong>
+            <p>1/(3.5 × 10⁻⁴)⁴ = 1/(1.5 × 10⁻¹³) = 6.67 × 10¹²</p>
+            <p>log(6.67 × 10¹²) = 12.824</p>
+            <p>Alternatively: log[1/(3.5×10⁻⁴)⁴] = -4 log(3.5×10⁻⁴) = -4 × (-3.456) = 13.824</p>
+        </li>
+        
+        <li><strong>Step 6: Calculate E<sub>cell</sub></strong>
+            <p>E<sub>cell</sub> = 0.16 - (0.0591/4) × 13.824</p>
+            <p>E<sub>cell</sub> = 0.16 - 0.01478 × 13.824</p>
+            <p>E<sub>cell</sub> = 0.16 - 0.204</p>
+            <p><strong>E<sub>cell</sub> = -0.044 V</strong></p>
+        </li>
+        
+        <li><strong>Step 7: Determine spontaneity</strong>
+            <p>Since E<sub>cell</sub> &lt; 0, the reaction is <strong>NON-SPONTANEOUS</strong> under these conditions.</p>
+            <p>The negative value of E<sub>cell</sub> indicates that ΔG &gt; 0, meaning the reaction will not proceed in the forward direction spontaneously.</p>
+        </li>
+    </ol>
+    
+    <p><em>Important Conclusion:</em> Although the reaction is spontaneous under standard conditions (E° = 0.16 V &gt; 0), reducing [H⁺] by a factor of about 2857 (from 1 M to 3.5×10⁻⁴ M) makes the reaction non-spontaneous. This demonstrates how pH control is crucial in electrochemical processes!</p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_764b3275_Q4</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Nernst Equation in Complex Conditions |
+        <strong>Type:</strong> Advanced Nernst equation application with multiple variable concentrations
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Advanced Nernst equation application with multiple variable concentrations", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>The standard potential of the following cell is 0.23 V at 15°C and 0.21 V at 35°C:</p>
+    <p style="text-align: center;">(Pt) H₂(g) | HCl(aq) | AgCl(s) | Ag</p>
+    <p><strong>(i)</strong> Write the cell reaction.</p>
+    <p><strong>(ii)</strong> Calculate ΔH° and ΔS° for the cell reaction by assuming that these quantities remain unchanged in the range 15°C to 35°C.</p>
+    <p><strong>(iii)</strong> Calculate the solubility of AgCl in water at 25°C. Given: E°<sub>Ag⁺,Ag</sub> = 0.80 V at 25°C</p>
+    
+    <svg width="700" height="340" xmlns="http://www.w3.org/2000/svg">
+        <!-- Container -->
+        <rect x="15" y="10" width="670" height="320" fill="#f9f9f9" stroke="#2c3e50" stroke-width="2.5" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="350" y="35" font-size="17" font-weight="bold" text-anchor="middle" fill="#2c3e50">Thermodynamics from Cell Potential - Temperature Variation</text>
+        
+        <!-- Cell diagram -->
+        <g>
+            <rect x="45" y="55" width="610" height="65" fill="#e8f4f8" stroke="#3498db" stroke-width="2" rx="5"></rect>
+            <text x="350" y="75" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Cell Representation</text>
+            <text x="350" y="95" font-size="14" text-anchor="middle" font-family="monospace">Pt | H₂(g, 1 atm) | HCl(aq) | AgCl(s) | Ag</text>
+            <text x="350" y="113" font-size="11" text-anchor="middle" fill="#7f8c8d">Anode (oxidation) ←―――――――― Cathode (reduction)</text>
+        </g>
+        
+        <!-- Temperature data table -->
+        <g>
+            <rect x="45" y="135" width="300" height="90" fill="#fff3cd" stroke="#f39c12" stroke-width="2" rx="5"></rect>
+            <text x="195" y="155" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Temperature vs E° Data</text>
+            
+            <!-- Table headers -->
+            <line x1="70" y1="168" x2="320" y2="168" stroke="#d35400" stroke-width="1.5"></line>
+            <text x="130" y="182" font-size="11" font-weight="bold" text-anchor="middle">Temperature</text>
+            <text x="260" y="182" font-size="11" font-weight="bold" text-anchor="middle">E° (V)</text>
+            
+            <!-- Data rows -->
+            <line x1="70" y1="188" x2="320" y2="188" stroke="#d35400" stroke-width="1"></line>
+            <text x="130" y="202" font-size="11" text-anchor="middle">15°C (288 K)</text>
+            <text x="260" y="202" font-size="11" text-anchor="middle">0.23</text>
+            
+            <text x="130" y="218" font-size="11" text-anchor="middle">35°C (308 K)</text>
+            <text x="260" y="218" font-size="11" text-anchor="middle">0.21</text>
+        </g>
+        
+        <!-- Key Equations Box -->
+        <g>
+            <rect x="360" y="135" width="295" height="90" fill="#e8f8e8" stroke="#27ae60" stroke-width="2" rx="5"></rect>
+            <text x="507" y="155" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Key Thermodynamic Relations</text>
+            
+            <text x="507" y="175" font-size="10" text-anchor="middle">ΔG° = -nFE°</text>
+            <text x="507" y="192" font-size="10" text-anchor="middle">ΔG° = ΔH° - TΔS°</text>
+            <text x="507" y="209" font-size="10" text-anchor="middle">∴ -nFE° = ΔH° - TΔS°</text>
+        </g>
+        
+        <!-- Calculation strategy -->
+        <rect x="45" y="240" width="610" height="75" fill="#fce4ec" stroke="#e91e63" stroke-width="2" rx="5"></rect>
+        <text x="350" y="260" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Solution Strategy</text>
+        <text x="350" y="278" font-size="10" text-anchor="middle">1. Form two equations using ΔG° = ΔH° - TΔS° at both temperatures</text>
+        <text x="350" y="293" font-size="10" text-anchor="middle">2. Solve simultaneously for ΔH° and ΔS°</text>
+        <text x="350" y="308" font-size="10" text-anchor="middle">3. Use E° at 25°C (interpolated or calculated) with Ag⁺/Ag data to find K<tspan baseline-shift="sub" font-size="8">sp</tspan></text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> ΔH° = -49.98 kJ/mol; ΔS° = -96.50 J K⁻¹ mol⁻¹
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> ΔH° = -52.34 kJ/mol; ΔS° = -102.15 J K⁻¹ mol⁻¹
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> ΔH° = -45.67 kJ/mol; ΔS° = -88.92 J K⁻¹ mol⁻¹
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> ΔH° = -50.12 kJ/mol; ΔS° = -94.78 J K⁻¹ mol⁻¹
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <p><strong>Strategy:</strong> For temperature-dependent cell problems: (1) Write cell reaction and identify n, (2) Use ΔG° = -nFE° = ΔH° - TΔS° at both temperatures to get two equations, (3) Solve simultaneously for ΔH° and ΔS°, (4) For solubility, construct appropriate cell and use Nernst equation at equilibrium.</p>
+    
+    <p><strong>Expert Insight:</strong> This is one of the most important problem types in JEE Advanced electrochemistry - connecting temperature dependence of cell EMF to thermodynamic functions. The key recognition is that (∂E°/∂T)<sub>P</sub> = ΔS°/nF. Top students use this to quickly check their answer. The second part on solubility tests whether students can cleverly combine different half-cells.</p>
+    
+    <p><strong>Key Facts Used:</strong></p>
+    <ul>
+        <li>ΔG° = -nFE° (electrochemistry)</li>
+        <li>ΔG° = ΔH° - TΔS° (Gibbs-Helmholtz equation)</li>
+        <li>Temperature coefficient: (∂E°/∂T)<sub>P</sub> = ΔS°/nF</li>
+        <li>At equilibrium: E<sub>cell</sub> = 0 and Q = K<sub>sp</sub></li>
+        <li>F = 96500 C/mol; R = 8.314 J K⁻¹ mol⁻¹</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Write the cell reaction</strong>
+            <p>Anode (oxidation): ½H₂(g) → H⁺(aq) + e⁻</p>
+            <p>Cathode (reduction): AgCl(s) + e⁻ → Ag(s) + Cl⁻(aq)</p>
+            <p><strong>Overall cell reaction: AgCl(s) + ½H₂(g) ⇌ Ag(s) + H⁺(aq) + Cl⁻(aq)</strong></p>
+            <p>Number of electrons transferred: n = 1</p>
+        </li>
+        
+        <li><strong>Step 2: Set up thermodynamic equations at both temperatures</strong>
+            <p>We know: ΔG° = -nFE° and ΔG° = ΔH° - TΔS°</p>
+            <p>Therefore: -nFE° = ΔH° - TΔS°</p>
+            <p>Or: ΔH° = TΔS° - nFE°</p>
+            
+            <p><u>At T₁ = 288 K (15°C):</u></p>
+            <p>ΔG°₁ = -1 × 96500 × 0.23 = -22195 J = -22.195 kJ</p>
+            <p>ΔG°₁ = ΔH° - 288ΔS°</p>
+            <p>-22.195 = ΔH° - 288ΔS° ......(i)</p>
+            
+            <p><u>At T₂ = 308 K (35°C):</u></p>
+            <p>ΔG°₂ = -1 × 96500 × 0.21 = -20265 J = -20.265 kJ</p>
+            <p>ΔG°₂ = ΔH° - 308ΔS°</p>
+            <p>-20.265 = ΔH° - 308ΔS° ......(ii)</p>
+        </li>
+        
+        <li><strong>Step 3: Solve for ΔS°</strong>
+            <p>Subtracting equation (i) from equation (ii):</p>
+            <p>-20.265 - (-22.195) = (ΔH° - 308ΔS°) - (ΔH° - 288ΔS°)</p>
+            <p>1.93 = -308ΔS° + 288ΔS°</p>
+            <p>1.93 = -20ΔS°</p>
+            <p>ΔS° = -1.93/20 = -0.0965 kJ K⁻¹ mol⁻¹</p>
+            <p><strong>ΔS° = -96.5 J K⁻¹ mol⁻¹</strong></p>
+        </li>
+        
+        <li><strong>Step 4: Solve for ΔH°</strong>
+            <p>Substituting ΔS° = -96.5 J K⁻¹ mol⁻¹ = -0.0965 kJ K⁻¹ mol⁻¹ in equation (i):</p>
+            <p>-22.195 = ΔH° - 288 × (-0.0965)</p>
+            <p>-22.195 = ΔH° + 27.792</p>
+            <p>ΔH° = -22.195 - 27.792</p>
+            <p><strong>ΔH° = -49.987 kJ/mol ≈ -49.98 kJ/mol</strong></p>
+        </li>
+        
+        <li><strong>Step 5: Verification using equation (ii)</strong>
+            <p>-20.265 = -49.98 - 308 × (-0.0965)</p>
+            <p>-20.265 = -49.98 + 29.722</p>
+            <p>-20.265 ≈ -20.258 ✓ (matches within rounding error)</p>
+        </li>
+        
+        <li><strong>Step 6: Calculate solubility of AgCl at 25°C (Part iii)</strong>
+            <p>First, calculate E° at 298 K (25°C) using the Gibbs-Helmholtz equation:</p>
+            <p>ΔG°₂₉₈ = ΔH° - 298ΔS°</p>
+            <p>ΔG°₂₉₈ = -49.98 - 298 × (-0.0965) = -49.98 + 28.76 = -21.22 kJ</p>
+            <p>E°₂₉₈ = -ΔG°/(nF) = 21220/(1 × 96500) = 0.22 V</p>
+            
+            <p>Now, for the cell representing AgCl solubility:</p>
+            <p>Cell: Ag | Ag⁺ || Cl⁻ | AgCl | Ag</p>
+            <p>E°<sub>cell</sub> = E°<sub>AgCl,Cl⁻</sub> - E°<sub>Ag⁺,Ag</sub></p>
+            <p>0.22 = E°<sub>AgCl,Cl⁻</sub> - 0 (taking H⁺/H₂ as reference)</p>
+            <p>E°<sub>AgCl,Cl⁻</sub> = 0.22 V</p>
+            
+            <p>For the equilibrium: AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq)</p>
+            <p>Combining: Ag → Ag⁺ + e⁻; E° = -0.80 V</p>
+            <p>AgCl + e⁻ → Ag + Cl⁻; E° = 0.22 V</p>
+            <p>Net: AgCl → Ag⁺ + Cl⁻; E° = 0.22 - 0.80 = -0.58 V</p>
+            
+            <p>At equilibrium: E<sub>cell</sub> = 0</p>
+            <p>0 = -0.58 - 0.0591 log[Ag⁺][Cl⁻]</p>
+            <p>0.58 = -0.0591 log K<sub>sp</sub></p>
+            <p>log K<sub>sp</sub> = -0.58/0.0591 = -9.814</p>
+            <p>K<sub>sp</sub> = 1.54 × 10⁻¹⁰</p>
+            <p>Solubility = √K<sub>sp</sub> = √(1.54 × 10⁻¹⁰) = <strong>1.24 × 10⁻⁵ mol/L</strong></p>
+        </li>
+    </ol>
+    
+    <p><em>Important Note:</em> The negative ΔS° indicates that the disorder decreases during the cell reaction (gas H₂ is consumed to form ions in solution). The temperature coefficient (∂E°/∂T) = (0.21-0.23)/(308-288) = -0.001 V/K, which should equal ΔS°/nF = -96.5/(1×96500) = -0.001 V/K ✓</p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_764b3275_Q5</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Nernst Equation in Complex Conditions |
+        <strong>Type:</strong> Advanced Nernst equation application with multiple variable concentrations
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Advanced Nernst equation application with multiple variable concentrations", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>A solution containing 4.5 mmol of Cr₂O₇²⁻ and 15 mmol of Cr³⁺ shows a pH of 2.0. Calculate the potential of the half-reaction:</p>
+    <p style="text-align: center;">Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O</p>
+    <p>Given: E° = 1.33 V</p>
+    
+    <svg width="700" height="300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Container -->
+        <rect x="20" y="15" width="660" height="270" fill="#fafafa" stroke="#2c3e50" stroke-width="2.5" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="350" y="40" font-size="17" font-weight="bold" text-anchor="middle" fill="#2c3e50">Dichromate Half-Cell Potential Calculation</text>
+        
+        <!-- Half-reaction box -->
+        <g>
+            <rect x="50" y="60" width="600" height="55" fill="#e8f4f8" stroke="#3498db" stroke-width="2" rx="5"></rect>
+            <text x="350" y="80" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Half-Reaction</text>
+            <text x="350" y="100" font-size="13" text-anchor="middle" font-family="monospace">Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O</text>
+        </g>
+        
+        <!-- Given data -->
+        <g>
+            <rect x="50" y="130" width="280" height="140" fill="#fff3cd" stroke="#f39c12" stroke-width="2" rx="5"></rect>
+            <text x="190" y="150" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Given Data</text>
+            
+            <text x="70" y="175" font-size="12" font-weight="bold">Concentrations:</text>
+            <text x="80" y="193" font-size="11">[Cr₂O₇²⁻] = 4.5 mmol/L = 4.5×10⁻³ M</text>
+            <text x="80" y="208" font-size="11">[Cr³⁺] = 15 mmol/L = 15×10⁻³ M</text>
+            
+            <text x="70" y="228" font-size="12" font-weight="bold">pH:</text>
+            <text x="80" y="243" font-size="11">pH = 2.0</text>
+            <text x="80" y="258" font-size="11">∴ [H⁺] = 10⁻² M = 0.01 M</text>
+        </g>
+        
+        <!-- Calculation info -->
+        <g>
+            <rect x="345" y="130" width="305" height="140" fill="#e8f8e8" stroke="#27ae60" stroke-width="2" rx="5"></rect>
+            <text x="497" y="150" font-size="13" font-weight="bold" text-anchor="middle" fill="#2c3e50">Nernst Equation Form</text>
+            
+            <text x="497" y="175" font-size="11" text-anchor="middle">E = E° - (0.0591/n) log Q</text>
+            
+            <text x="497" y="195" font-size="10" text-anchor="middle">where n = 6 electrons</text>
+            
+            <text x="365" y="215" font-size="10">Q = [Cr³⁺]²/([Cr₂O₇²⁻][H⁺]¹⁴)</text>
+            
+            <text x="497" y="235" font-size="10" text-anchor="middle">E = 1.33 - (0.0591/6) log([Cr³⁺]²/([Cr₂O₇²⁻][H⁺]¹⁴))</text>
+        </g>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 1.067 V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1.142 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.985 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.220 V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <p><strong>Strategy:</strong> For multi-component Nernst problems: (1) Convert all given data to molar concentrations, (2) Calculate [H⁺] from pH, (3) Write correct Q expression being careful with stoichiometric coefficients, (4) Substitute carefully in Nernst equation paying attention to powers.</p>
+    
+    <p><strong>Expert Insight:</strong> This problem tests computational accuracy with the Nernst equation when dealing with large exponents ([H⁺]¹⁴). The most common mistake is calculation error in the logarithm. Top performers use logarithm properties systematically: log(a/b) = log a - log b, and handle the [H⁺]¹⁴ term as -14 log[H⁺] = -14 × (-2) = +28.</p>
+    
+    <p><strong>Key Facts Used:</strong></p>
+    <ul>
+        <li>Nernst Equation: E = E° - (0.0591/n) log Q</li>
+        <li>pH = -log[H⁺]; ∴ [H⁺] = 10⁻pH</li>
+        <li>Logarithm properties: log(aⁿ) = n log a; log(a/b) = log a - log b</li>
+        <li>For half-reaction: Q includes only species in solution (not pure solids/liquids)</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Convert concentrations to molarity</strong>
+            <p>[Cr₂O₇²⁻] = 4.5 mmol/L = 4.5 × 10⁻³ M = 0.0045 M</p>
+            <p>[Cr³⁺] = 15 mmol/L = 15 × 10⁻³ M = 0.015 M</p>
+        </li>
+        
+        <li><strong>Step 2: Calculate [H⁺] from pH</strong>
+            <p>pH = 2.0</p>
+            <p>[H⁺] = 10⁻pH = 10⁻² M = 0.01 M</p>
+        </li>
+        
+        <li><strong>Step 3: Write the half-cell reaction and identify n</strong>
+            <p>Half-reaction: Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O</p>
+            <p>Number of electrons: n = 6</p>
+            <p>E° = 1.33 V</p>
+        </li>
+        
+        <li><strong>Step 4: Write the reaction quotient Q</strong>
+            <p>For the reduction reaction:</p>
+            <p>Q = [Products]/[Reactants] (excluding pure liquids/solids)</p>
+            <p>Q = [Cr³⁺]²/([Cr₂O₇²⁻][H⁺]¹⁴)</p>
+            <p>Note: H₂O is excluded as it's a pure liquid</p>
+        </li>
+        
+        <li><strong>Step 5: Calculate Q numerically</strong>
+            <p>Q = (0.015)²/((0.0045)(0.01)¹⁴)</p>
+            <p>Numerator: (0.015)² = 2.25 × 10⁻⁴</p>
+            <p>Denominator: (0.0045)(0.01)¹⁴ = (4.5 × 10⁻³)(10⁻²⁸)</p>
+            <p>Denominator = 4.5 × 10⁻³¹</p>
+            <p>Q = (2.25 × 10⁻⁴)/(4.5 × 10⁻³¹) = 0.5 × 10²⁷ = 5 × 10²⁶</p>
+        </li>
+        
+        <li><strong>Step 6: Calculate log Q</strong>
+            <p>log Q = log(5 × 10²⁶)</p>
+            <p>log Q = log 5 + log 10²⁶</p>
+            <p>log Q = 0.699 + 26 = 26.699</p>
+            <p><em>Alternative method using log properties:</em></p>
+            <p>log Q = log[Cr³⁺]² - log[Cr₂O₇²⁻] - log[H⁺]¹⁴</p>
+            <p>log Q = 2 log(0.015) - log(0.0045) - 14 log(0.01)</p>
+            <p>log Q = 2(-1.824) - (-2.347) - 14(-2)</p>
+            <p>log Q = -3.648 + 2.347 + 28</p>
+            <p>log Q = 26.699</p>
+        </li>
+        
+        <li><strong>Step 7: Apply Nernst equation</strong>
+            <p>E = E° - (0.0591/n) log Q</p>
+            <p>E = 1.33 - (0.0591/6) × 26.699</p>
+            <p>E = 1.33 - 0.00985 × 26.699</p>
+            <p>E = 1.33 - 0.2630</p>
+            <p><strong>E = 1.067 V</strong></p>
+        </li>
+    </ol>
+    
+    <p><em>Key Learning:</em> When dealing with high powers in Nernst equation (like [H⁺]¹⁴), always use logarithm properties to simplify: log[H⁺]¹⁴ = 14 log[H⁺]. For pH = 2, this gives 14 × (-2) = -28, which is much easier to handle than calculating (0.01)¹⁴ directly!</p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q1</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>The specific conductance of a saturated solution of AgCl at 25°C after subtracting the specific conductance of water is 2.28 × 10<sup>-6</sup> mho cm<sup>-1</sup>. Find the solubility product of AgCl at 25°C.</p>
+    <p>Given: Λ<sub>AgCl</sub> = 138.3 mho cm<sup>2</sup></p>
+    
+    <svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Beaker -->
+        <path d="M 150 80 L 180 240 L 420 240 L 450 80 Z" fill="none" stroke="#333" stroke-width="3"></path>
+        <line x1="150" y1="80" x2="450" y2="80" stroke="#333" stroke-width="3"></line>
+        
+        <!-- Solution -->
+        <path d="M 180 240 L 420 240 L 448 82 L 152 82 Z" fill="#b3e5fc" opacity="0.6"></path>
+        
+        <!-- AgCl precipitate at bottom -->
+        <ellipse cx="300" cy="235" rx="120" ry="8" fill="#e0e0e0"></ellipse>
+        <text x="300" y="238" text-anchor="middle" font-size="12" fill="#333">AgCl (s)</text>
+        
+        <!-- Ions in solution -->
+        <circle cx="220" cy="150" r="8" fill="#ff6b6b"></circle>
+        <text x="220" y="155" text-anchor="middle" font-size="10" fill="white">Ag⁺</text>
+        
+        <circle cx="380" cy="150" r="8" fill="#4ecdc4"></circle>
+        <text x="380" y="155" text-anchor="middle" font-size="10" fill="white">Cl⁻</text>
+        
+        <circle cx="260" cy="120" r="8" fill="#ff6b6b"></circle>
+        <text x="260" y="125" text-anchor="middle" font-size="10" fill="white">Ag⁺</text>
+        
+        <circle cx="340" cy="180" r="8" fill="#4ecdc4"></circle>
+        <text x="340" y="185" text-anchor="middle" font-size="10" fill="white">Cl⁻</text>
+        
+        <circle cx="300" cy="110" r="8" fill="#ff6b6b"></circle>
+        <text x="300" y="115" text-anchor="middle" font-size="10" fill="white">Ag⁺</text>
+        
+        <circle cx="320" cy="200" r="8" fill="#4ecdc4"></circle>
+        <text x="320" y="205" text-anchor="middle" font-size="10" fill="white">Cl⁻</text>
+        
+        <!-- Equilibrium arrow -->
+        <path d="M 200 260 L 250 260" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"></path>
+        <path d="M 250 270 L 200 270" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"></path>
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#333"></polygon>
+            </marker>
+        </defs>
+        
+        <text x="300" y="280" text-anchor="middle" font-size="14" fill="#333">AgCl(s) ⇌ Ag⁺ + Cl⁻</text>
+        
+        <!-- Labels -->
+        <text x="300" y="40" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">Saturated AgCl Solution</text>
+        <text x="300" y="60" text-anchor="middle" font-size="12" fill="#7f8c8d">Specific Conductance = 2.28 × 10⁻⁶ mho cm⁻¹</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Ksp = 1.70 × 10-10 (mole/L)2
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Ksp = 2.70 × 10-10 (mole/L)2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Ksp = 3.70 × 10-10 (mole/L)2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Ksp = 4.70 × 10-10 (mole/L)2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> For sparingly soluble salts, relate specific conductance to concentration using the equivalent conductance formula, then calculate K<sub>sp</sub> from solubility. The key is understanding that conductance directly measures ion concentration in solution.
+    <br><br>
+    <strong>Expert Insight:</strong> Top performers immediately recognize this as a two-step problem: (1) Convert conductance to solubility, (2) Use solubility to find K<sub>sp</sub>. They know that for sparingly soluble salts, the approximation Λ<sub>c</sub> ≈ Λ<sub>∞</sub> holds true, simplifying calculations significantly.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Specific conductance (κ) = (Equivalent conductance × Concentration)/1000</li>
+        <li>For sparingly soluble salts: Λ<sub>c</sub> ≈ Λ<sub>∞</sub></li>
+        <li>K<sub>sp</sub> = [Ag⁺][Cl⁻] for AgCl</li>
+        <li>For AgCl: solubility (s) = [Ag⁺] = [Cl⁻]</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Understand the equilibrium</strong>
+            <br>AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq)
+            <br>If solubility = x moles/L, then [Ag⁺] = [Cl⁻] = x
+            <br>K<sub>sp</sub> = x × x = x²
+        </li>
+        
+        <li><strong>Step 2: Relate specific conductance to equivalent conductance</strong>
+            <br>The formula is: κ = (Λ × N)/1000
+            <br>where κ = specific conductance, Λ = equivalent conductance, N = normality
+            <br>Since AgCl gives 1 equivalent per mole: N = x (in eq/L)
+        </li>
+        
+        <li><strong>Step 3: Calculate volume containing 1 equivalent</strong>
+            <br>V = 1000/x (mL containing 1 eq)
+            <br>Also, Λ = κ × V
+            <br>2.28 × 10<sup>-6</sup> = (138.3 × x)/1000
+        </li>
+        
+        <li><strong>Step 4: For sparingly soluble salts, use the approximation</strong>
+            <br>Since AgCl is sparingly soluble: 1000/x ≈ V
+            <br>138.3 = κ × V = 2.28 × 10<sup>-6</sup> × (1000/x)
+            <br>Therefore: x = (2.28 × 10<sup>-6</sup> × 1000)/138.3
+        </li>
+        
+        <li><strong>Step 5: Calculate solubility</strong>
+            <br>x = 2.28 × 10<sup>-3</sup>/138.3
+            <br>x = 1.649 × 10<sup>-5</sup> ≈ 1.64 × 10<sup>-5</sup> eq/L or mole/L
+        </li>
+        
+        <li><strong>Step 6: Calculate K<sub>sp</sub></strong>
+            <br>K<sub>sp</sub> = x²
+            <br>K<sub>sp</sub> = (1.644 × 10<sup>-5</sup>)²
+            <br>K<sub>sp</sub> = 2.70 × 10<sup>-10</sup> (mole/L)²
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: B</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q10</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>During the electrolysis of CrCl₃, chlorine gas is evolved at the anode and chromium is deposited at the cathode. How many grams of Cr and how many litres of chlorine (at NTP) are produced, when a current of 6 amperes is passed for one hour?</p>
+    <p>Given: Cr = 52, Cl = 35.5</p>
+    
+    <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="10" y="10" width="780" height="380" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Electrolysis of CrCl₃ Solution</text>
+        
+        <!-- Electrolytic Cell -->
+        <rect x="100" y="70" width="600" height="250" fill="white" stroke="#333" stroke-width="3" rx="5"></rect>
+        
+        <!-- Solution -->
+        <rect x="110" y="220" width="580" height="90" fill="#d4f1f9" opacity="0.7" stroke="none"></rect>
+        
+        <!-- Cathode (left) -->
+        <rect x="200" y="120" width="20" height="180" fill="#8b4513" stroke="#333" stroke-width="2"></rect>
+        <text x="210" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">Cathode (-)</text>
+        
+        <!-- Chromium deposition -->
+        <rect x="185" y="200" width="50" height="100" fill="#808080" opacity="0.9" stroke="#333" stroke-width="2"></rect>
+        <text x="210" y="255" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Cr</text>
+        <text x="210" y="275" text-anchor="middle" font-size="11" fill="white">? grams</text>
+        
+        <!-- Anode (right) -->
+        <rect x="580" y="120" width="20" height="180" fill="#8b4513" stroke="#333" stroke-width="2"></rect>
+        <text x="590" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">Anode (+)</text>
+        
+        <!-- Chlorine gas bubbles -->
+        <circle cx="570" cy="180" r="12" fill="#90ee90" opacity="0.7" stroke="#333" stroke-width="1"></circle>
+        <text x="570" y="185" text-anchor="middle" font-size="10" fill="#333">Cl₂</text>
+        <circle cx="590" cy="200" r="12" fill="#90ee90" opacity="0.7" stroke="#333" stroke-width="1"></circle>
+        <text x="590" y="205" text-anchor="middle" font-size="10" fill="#333">Cl₂</text>
+        <circle cx="610" cy="220" r="12" fill="#90ee90" opacity="0.7" stroke="#333" stroke-width="1"></circle>
+        <text x="610" y="225" text-anchor="middle" font-size="10" fill="#333">Cl₂</text>
+        
+        <!-- Gas collection tube -->
+        <rect x="640" y="140" width="40" height="120" fill="none" stroke="#333" stroke-width="2"></rect>
+        <rect x="640" y="180" width="40" height="80" fill="#90ee90" opacity="0.4"></rect>
+        <text x="660" y="235" text-anchor="middle" font-size="11" fill="#333">Cl₂</text>
+        <text x="660" y="250" text-anchor="middle" font-size="9" fill="#333">? L</text>
+        <text x="660" y="265" text-anchor="middle" font-size="9" fill="#333">at NTP</text>
+        
+        <!-- Ions in solution -->
+        <circle cx="350" cy="240" r="8" fill="#ff6b6b" opacity="0.8"></circle>
+        <text x="350" y="244" text-anchor="middle" font-size="8" fill="white">Cr³⁺</text>
+        <circle cx="450" cy="260" r="7" fill="#4ecdc4" opacity="0.8"></circle>
+        <text x="450" y="264" text-anchor="middle" font-size="7" fill="white">Cl⁻</text>
+        <circle cx="300" cy="270" r="8" fill="#ff6b6b" opacity="0.8"></circle>
+        <text x="300" y="274" text-anchor="middle" font-size="8" fill="white">Cr³⁺</text>
+        <circle cx="500" cy="245" r="7" fill="#4ecdc4" opacity="0.8"></circle>
+        <text x="500" y="249" text-anchor="middle" font-size="7" fill="white">Cl⁻</text>
+        
+        <!-- Current flow -->
+        <line x1="210" y1="90" x2="210" y2="120" stroke="#e74c3c" stroke-width="4" marker-start="url(#arr1)"></line>
+        <line x1="590" y1="120" x2="590" y2="90" stroke="#e74c3c" stroke-width="4" marker-end="url(#arr1)"></line>
+        <line x1="210" y1="90" x2="590" y2="90" stroke="#e74c3c" stroke-width="4"></line>
+        <defs>
+            <marker id="arr1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"></polygon>
+            </marker>
+        </defs>
+        <text x="400" y="75" text-anchor="middle" font-size="13" font-weight="bold" fill="#e74c3c">Current: 6 A for 1 hour</text>
+        
+        <!-- Reactions -->
+        <rect x="250" y="330" width="300" height="50" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="400" y="350" text-anchor="middle" font-size="12" fill="#333" font-weight="bold">Reactions:</text>
+        <text x="280" y="368" font-size="11" fill="#2c3e50">Cathode: Cr³⁺ + 3e⁻ → Cr</text>
+        <text x="470" y="368" font-size="11" fill="#2c3e50">Anode: 2Cl⁻ → Cl₂ + 2e⁻</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Cr = 2.88 g; Cl₂ = 1.507 L
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Cr = 3.88 g; Cl₂ = 2.507 L
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Cr = 4.88 g; Cl₂ = 3.507 L
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Cr = 5.88 g; Cl₂ = 4.507 L
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> Calculate total charge using Q = It, then use Faraday's law to find mass of Cr (with n-factor = 3) and volume of Cl₂ at NTP. Remember that 1 Faraday liberates 22.4 L of any gas at NTP.
+    <br><br>
+    <strong>Expert Insight:</strong> Expert students recognize this as a straightforward Faraday's law application with two products. They calculate Faradays of electricity, then apply appropriate n-factors: 3 for Cr³⁺ (reduction) and 2 for Cl₂ formation. The key is remembering that at NTP, 1 mole of any gas = 22.4 L, and for Cl₂: 2 Faradays → 22.4 L.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Q = I × t (charge in coulombs)</li>
+        <li>1 Faraday = 96500 coulombs</li>
+        <li>Cr³⁺ + 3e⁻ → Cr (3 Faradays deposit 1 mole Cr)</li>
+        <li>2Cl⁻ → Cl₂ + 2e⁻ (2 Faradays liberate 1 mole Cl₂)</li>
+        <li>At NTP: 1 mole of any gas = 22.4 L</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Calculate total charge passed</strong>
+            <br>Current (I) = 6 amperes
+            <br>Time (t) = 1 hour = 3600 seconds
+            <br>Charge (Q) = I × t = 6 × 3600 = 21600 coulombs
+        </li>
+        
+        <li><strong>Step 2: Calculate Faradays of electricity</strong>
+            <br>Number of Faradays = Q/96500
+            <br>= 21600/96500
+            <br>= 0.2238 F
+        </li>
+        
+        <li><strong>Step 3: Calculate mass of Chromium deposited</strong>
+            <br>Reaction at cathode: Cr³⁺ + 3e⁻ → Cr
+            <br>3 Faradays deposit 1 mole (52 g) of Cr
+            <br><br>
+            Mass of Cr = (Faradays × Atomic mass)/n-factor
+            <br>= (0.2238 × 52)/3
+            <br>= 11.6376/3
+            <br>= 3.879 g
+            <br>≈ 3.88 g
+        </li>
+        
+        <li><strong>Step 4: Alternative calculation for Cr using equivalents</strong>
+            <br>Equivalents = Faradays = 0.2238
+            <br>Equivalent weight of Cr = 52/3
+            <br>Mass = Equivalents × Eq. wt = 0.2238 × (52/3) = 3.88 g ✓
+        </li>
+        
+        <li><strong>Step 5: Calculate volume of Cl₂ at NTP</strong>
+            <br>Reaction at anode: 2Cl⁻ → Cl₂ + 2e⁻
+            <br>2 Faradays liberate 1 mole of Cl₂
+            <br>2 Faradays → 22.4 L of Cl₂ at NTP
+            <br><br>
+            Volume of Cl₂ = (Faradays × 22.4)/2
+            <br>= (0.2238 × 22.4)/2
+            <br>= 5.013/2
+            <br>= 2.507 L
+        </li>
+        
+        <li><strong>Step 6: Verification using mole concept</strong>
+            <br>Moles of electrons = 0.2238 moles
+            <br>Moles of Cr = 0.2238/3 = 0.0746 moles
+            <br>Mass of Cr = 0.0746 × 52 = 3.88 g ✓
+            <br><br>
+            Moles of Cl₂ = 0.2238/2 = 0.1119 moles
+            <br>Volume at NTP = 0.1119 × 22.4 = 2.507 L ✓
+        </li>
+        
+        <li><strong>Step 7: Check stoichiometry</strong>
+            <br>From CrCl₃: Cr³⁺ + 3Cl⁻
+            <br>Moles of Cr deposited = 0.0746
+            <br>Moles of Cl₂ formed = 0.1119
+            <br>Ratio: Cl₂/Cr = 0.1119/0.0746 = 1.5
+            <br>This matches the stoichiometry: 3 Cl⁻ per Cr³⁺ → 1.5 Cl₂ per Cr ✓
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: B</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

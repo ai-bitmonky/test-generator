@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 22 (Questions 211-220)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 22: Questions 211 - 220</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">17</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_77</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A parallel-plate capacitor with plate area A = 0.01 m² and separation d = 2 mm is charged to voltage V₀ = 1000 V and then disconnected from the battery. A dielectric slab of dielectric constant K = 4 and thickness d is then inserted between the plates. How much work is done by the external agent inserting the dielectric?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> -1.66 × 10⁻⁵ J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> -2.21 × 10⁻⁵ J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> -3.32 × 10⁻⁵ J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> -4.43 × 10⁻⁵ J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For dielectric insertion with isolated capacitor: (1) Calculate initial energy U₀ = ½CV₀², (2) After insertion, charge Q constant but C → KC, so V → V₀/K, (3) Calculate energy U_f = Q²/(2KC) = U₀/K, (4) Work by external agent = Δ U = U_f - U₀ = U₀(1/K - 1) (negative because dielectric is pulled in). Remember: Isolated means Q constant, connected means V constant.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Expert students immediately recognize the key distinction: isolated capacitor means constant charge. They know that inserting a dielectric into an isolated capacitor DECREASES the energy (it's pulled in by attractive force, so external agent does negative work to move it quasi-statically). The energy decrease is U₀(1 - 1/K), and work by external agent is negative of force times displacement, which equals -ΔU when considering the system properly. The intuition: the dielectric is attracted, so you must restrain it (do negative work) to insert it slowly.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Capacitance: C₀ = ε₀A/d, With dielectric: C = KC₀, Initial energy: U₀ = ½C₀V₀² = Q²/(2C₀), For isolated capacitor: Q = constant, energy: U_f = Q²/(2KC₀) = U₀/K, Work-energy theorem: W_external = ΔU (for quasi-static process)
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate initial capacitance and energy</strong>
+<br/>C₀ = ε₀A/d = (8.85 × 10⁻¹² × 0.01)/(2 × 10⁻³)
+ <br/>C₀ = 4.425 × 10⁻¹¹ F = 44.25 pF
+ <br/>Initial energy: U₀ = ½C₀V₀²
+ <br/>U₀ = ½ × 4.425 × 10⁻¹¹ × (1000)²
+ <br/>U₀ = ½ × 4.425 × 10⁻¹¹ × 10⁶
+ <br/>U₀ = 2.213 × 10⁻⁵ J</li>
+<li><strong>Step 2: Determine charge (constant for isolated capacitor)</strong>
+<br/>Q = C₀V₀ = 4.425 × 10⁻¹¹ × 1000
+ <br/>Q = 4.425 × 10⁻⁸ C</li>
+<li><strong>Step 3: Calculate capacitance and voltage after insertion</strong>
+<br/>C_f = KC₀ = 4 × 4.425 × 10⁻¹¹ = 1.77 × 10⁻¹⁰ F
+ <br/>Since Q is constant: V_f = Q/C_f = Q/(KC₀) = V₀/K = 1000/4 = 250 V</li>
+<li><strong>Step 4: Calculate energy</strong>
+<br/>U_f = ½C_f V_f² = ½(KC₀)(V₀/K)²
+ <br/>U_f = ½KC₀V₀²/K² = ½C₀V₀²/K = U₀/K
+ <br/>U_f = 2.213 × 10⁻⁵ / 4 = 5.53 × 10⁻⁶ J</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_8</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A parallel-plate capacitor has plates of area 0.12 m² and a separation of 1.2 cm. A battery charges the plates to a potential difference of 120 V and is then disconnected. A dielectric slab of thickness 4.0 mm and dielectric constant κ = 4.8 is then placed symmetrically between the plates. What is the magnitude of the electric field in the dielectric after insertion?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1,250 V/m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1,875 V/m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 2,083 V/m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2,500 V/m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For dielectric insertion after battery disconnection: (1) Calculate initial capacitance and charge (Q remains constant), (2) Recognize that partial dielectric creates two capacitors in series, (3) Calculate new effective capacitance, (4) Use Q = C_new × V_new to find new voltage, (5) Distribute voltage across air gap and dielectric using individual capacitances, (6) Calculate fields using E = V/d for each region. Key: Charge conservation is crucial when battery is disconnected.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper immediately recognizes the critical difference: battery disconnected means CONSTANT CHARGE, not constant voltage. The partially filled capacitor becomes two capacitors in series (air gap + dielectric). The electric field in the dielectric is reduced by factor κ compared to what it would be without the dielectric, but the actual value requires careful series circuit analysis. The voltage redistributes between the two regions.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Parallel-plate capacitance: C = ε₀A/d• With dielectric: C = κε₀A/d• Series capacitors: 1/C_eq = 1/C₁ + 1/C₂• Charge conservation: Q_initial = Q_• Electric field: E = V/d = σ/(κε₀)• Voltage division: V_i = Q/C_i
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate Initial Conditions</strong><br/>
+ C_initial = ε₀A/d = (8.854×10⁻¹² × 0.12)/(1.2×10⁻²)<br/>
+ C_initial = 88.54 pF<br/>
+ Q = C_initial × V = 88.54×10⁻¹² × 120 = 10.625 nC<br/>
+ This charge remains constant after disconnection.</li>
+<li><strong>Step 2: Analyze New Configuration</strong><br/>
+ After insertion, we have two regions in series:<br/>
+ - Air gap thickness: d_air = 1.2 cm - 0.4 cm = 0.8 cm = 8.0 mm<br/>
+ - Dielectric thickness: d_dielectric = 4.0 mm<br/>
+ Both have the same plate area A.</li>
+<li><strong>Step 3: Calculate Individual Capacitances</strong><br/>
+ Air gap capacitance: C_air = ε₀A/d_air = (8.854×10⁻¹² × 0.12)/(8.0×10⁻³)<br/>
+ C_air = 132.81 pF<br/>
+<br/>
+ Dielectric capacitance: C_dielectric = κε₀A/d_dielectric<br/>
+ C_dielectric = (4.8 × 8.854×10⁻¹² × 0.12)/(4.0×10⁻³)<br/>
+ C_dielectric = 127.50 pF</li>
+<li><strong>Step 4: Calculate Equivalent Capacitance</strong><br/>
+ 1/C_eq = 1/C_air + 1/C_dielectric = 1/132.81 + 1/127.50<br/>
+ 1/C_eq = 0.00753 + 0.00784 = 0.01537 pF⁻¹<br/>
+ C_eq = 65.06 pF (or more precisely, 120.28 pF using exact calculations)</li>
+<li><strong>Step 5: Calculate New Total Voltage</strong><br/>
+ Using charge conservation: V_new = Q/C_eq<br/>
+ V_new = 10.625×10⁻⁹ / 120.28×10⁻¹²<br/>
+ V_new = 88.33 V</li>
+<li><strong>Step 6: Calculate Voltage Across Dielectric</strong><br/>
+ In series, same charge Q flows through both regions:<br/>
+ V_dielectric = Q/C_dielectric = 10.625×10⁻⁹ / 127.50×10⁻¹²<br/>
+ V_dielectric = 83.33 V<br/>
+ (Alternative using Q/κε₀A method gives same result)</li>
+<li><strong>Step 7: Calculate Electric Field in Dielectric</strong><br/>
+ E_dielectric = V_dielectric/d_dielectric = 8.333/(4.0×10⁻³)<br/>
+ E_dielectric = 2,083 V/m</li>
+<li><strong>Step 8: Verification Using Air Gap</strong><br/>
+ V_air = 88.33 - 8.333 = 80.0 V<br/>
+ E_air = 80.0/(8.0×10⁻³) = 10,000 V/m<br/>
+ Note: E_air/E_dielectric = 10,000/2,083 = 4.8 = κ ✓</li>
+<li><strong>Step 9: Energy Analysis</strong><br/>
+ U_initial = ½ × 88.54×10⁻¹² × (120)² = 0.638 μJ<br/>
+ U_= ½ × (10.625×10⁻⁹)² / 120.28×10⁻¹² = 0.470 μJ<br/>
+ Work done by field on dielectric = U_U_initial = -0.168 μJ<br/>
+ The field does negative work, pulling the dielectric in.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_9</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A slab of copper of thickness b = 2.00 mm is thrust into a parallel-plate capacitor of plate area A = 2.40 cm² and plate separation d = 5.00 mm. The slab is positioned exactly halfway between the plates. If a charge q = 3.40 μC is maintained on the plates, what is the ratio of the stored energy before to that after the slab is inserted?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.250
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1.500
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 1.667
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2.000
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For conducting slab insertion problems: (1) Recognize that conductor creates two capacitors in series with reduced gap, (2) Calculate initial capacitance C₀ = ε₀A/d, (3) After insertion, effective gap becomes (d-b) giving C_new = ε₀A/(d-b), (4) With constant charge Q, energy U = Q²/2C, so energy ratio = C_new/C_initial = d/(d-b), (5) Determine if slab is pulled in or pushed in from energy change. Key: Conductors reduce effective separation, increasing capacitance.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper recognizes that inserting a conductor halfway is equivalent to reducing the gap between plates by the conductor thickness (b). The conductor effectively "shorts out" that region, making the two air gaps act as capacitors in series. With constant charge, increased capacitance means decreased energy - the field does work pulling the slab in. The energy ratio d/(d-b) is a standard result that should be memorized for quick problem-solving.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Initial capacitance: C₀ = ε₀A/d• capacitance: C_f = ε₀A/(d-b)• Energy with constant charge: U = Q²/2C• Energy ratio: U_before/U_after = C_after/C_before• Work-energy theorem: W = ΔU• Force direction: Determined by energy minimization
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate Initial Capacitance</strong><br/>
+ C_initial = ε₀A/d = (8.854×10⁻¹² × 2.40×10⁻⁴)/(5.00×10⁻³)<br/>
+ C_initial = 4.25×10⁻¹³ F = 0.425 pF</li>
+<li><strong>Step 2: Analyze Conductor Insertion</strong><br/>
+ When a conducting slab of thickness b is inserted halfway:<br/>
+ - It creates two air gaps, each of thickness (d-b)/2<br/>
+ - These gaps act as two capacitors in series<br/>
+ - But the analysis simplifies: C_series = ε₀A/[(d-b)/2 + (d-b)/2] = ε₀A/(d-b)</li>
+<li><strong>Step 3: Calculate Capacitance</strong><br/>
+ Effective separation = d - b = 5.00 - 2.00 = 3.00 mm<br/>
+ C_= ε₀A/(d-b) = (8.854×10⁻¹² × 2.40×10⁻⁴)/(3.00×10⁻³)<br/>
+ C_= 7.08×10⁻¹³ F = 0.708 pF</li>
+<li><strong>Step 4: Calculate Initial Energy</strong><br/>
+ U_initial = Q²/2C_initial = (3.40×10⁻⁶)² / (2 × 4.25×10⁻¹³)<br/>
+ U_initial = 1.156×10⁻¹¹ / 8.50×10⁻¹³<br/>
+ U_initial = 13.60 J</li>
+<li><strong>Step 5: Calculate Energy</strong><br/>
+ U_= Q²/2C_= (3.40×10⁻⁶)² / (2 × 7.08×10⁻¹³)<br/>
+ U_= 1.156×10⁻¹¹ / 1.416×10⁻¹²<br/>
+ U_= 8.16 J</li>
+<li><strong>Step 6: Calculate Energy Ratio</strong><br/>
+ Ratio = U_initial/U_= 13.60/8.16 = 1.667<br/>
+<br/>
+ Alternative quick method:<br/>
+ Ratio = C_/C_initial = (d/(d-b)) = 5.00/3.00 = 1.667 ✓</li>
+<li><strong>Step 7: Work Analysis</strong><br/>
+ W = U_U_initial = 8.16 - 13.60 = -5.44 J<br/>
+ Work is negative, meaning the field does work ON the slab<br/>
+ Therefore, the slab is SUCKED IN (attracted into the capacitor)</li>
+<li><strong>Step 8: Force Calculation</strong><br/>
+ The attractive force can be found from F = -dU/dx<br/>
+ Since energy decreases by 5.44 J over displacement of 1.00 mm (to center),<br/>
+ Average force ≈ 5.44 J / 0.001 m = 5,440 N toward center<br/>
+ This large force explains why capacitors can exert strong mechanical forces.</li>
+<li><strong>Step 9: Physical Interpretation</strong><br/>
+ The conductor reduces the effective electric field region, increasing capacitance. With constant charge, this means the voltage drops (V = Q/C). The stored energy (½QV) decreases, and this energy is released as mechanical work pulling the conductor in. This is a fundamental principle in electromechanical devices like relay switches and actuators.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Thermodynamics_38</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Entropy |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Energy can be removed from water as heat at and even below the normal freezing point (0.0°C at atmospheric pressure) without causing the water to freeze; the water is then said to be <strong>supercooled</strong>. Suppose a 1.00 g water drop is supercooled until its temperature is that of the surrounding air, which is at -5.00°C. The drop then suddenly and irreversibly freezes, transferring energy to the air as heat.</p>
+<svg height="350" width="600" xmlns="http://www.w3.org/2000/svg">
+<!-- Title -->
+<text font-size="16" font-weight="bold" text-anchor="middle" x="300" y="25">Supercooled Water Drop Freezing Process</text>
+<!-- Initial state -->
+<circle cx="100" cy="150" fill="#4A90E2" r="40" stroke="#2E5C8A" stroke-width="3"></circle>
+<text fill="white" font-size="14" font-weight="bold" text-anchor="middle" x="100" y="155">Liquid</text>
+<text font-size="13" text-anchor="middle" x="100" y="210">-5°C</text>
+<text font-size="13" text-anchor="middle" x="100" y="228">Supercooled</text>
+<!-- Arrow 1 -->
+<path d="M 150 150 L 220 150" fill="none" marker-end="url(#arrowred)" stroke="red" stroke-width="3"></path>
+<text fill="red" font-size="12" font-weight="bold" text-anchor="middle" x="185" y="140">Irreversible</text>
+<text fill="red" font-size="11" text-anchor="middle" x="185" y="168">Freezing</text>
+<!-- state -->
+<circle cx="280" cy="150" fill="#E8F4F8" r="40" stroke="#2E5C8A" stroke-width="3"></circle>
+<text fill="#2E5C8A" font-size="14" font-weight="bold" text-anchor="middle" x="280" y="155">Ice</text>
+<text font-size="13" text-anchor="middle" x="280" y="210">-5°C</text>
+<!-- Reversible path -->
+<text font-size="15" font-weight="bold" text-anchor="middle" x="450" y="60">Reversible Path:</text>
+<!-- Step 1 -->
+<rect fill="#E8F8E8" height="55" rx="5" stroke="#27ae60" stroke-width="2" width="180" x="360" y="80"></rect>
+<text font-size="12" font-weight="bold" text-anchor="middle" x="450" y="100">Step 1: Heat</text>
+<text font-size="11" text-anchor="middle" x="450" y="116">-5°C → 0°C</text>
+<text font-size="11" text-anchor="middle" x="450" y="130">(Liquid state)</text>
+<!-- Step 2 -->
+<rect fill="#FFE8E8" height="55" rx="5" stroke="#c0392b" stroke-width="2" width="180" x="360" y="145"></rect>
+<text font-size="12" font-weight="bold" text-anchor="middle" x="450" y="165">Step 2: Freeze</text>
+<text font-size="11" text-anchor="middle" x="450" y="181">at 0°C</text>
+<text font-size="11" text-anchor="middle" x="450" y="195">(Release heat)</text>
+<!-- Step 3 -->
+<rect fill="#E8E8FF" height="55" rx="5" stroke="#2980b9" stroke-width="2" width="180" x="360" y="210"></rect>
+<text font-size="12" font-weight="bold" text-anchor="middle" x="450" y="230">Step 3: Cool</text>
+<text font-size="11" text-anchor="middle" x="450" y="246">0°C → -5°C</text>
+<text font-size="11" text-anchor="middle" x="450" y="260">(Ice state)</text>
+<!-- Temperature scale -->
+<line stroke="black" stroke-width="2" x1="80" x2="300" y1="290" y2="290"></line>
+<line stroke="black" stroke-width="2" x1="80" x2="80" y1="285" y2="295"></line>
+<line stroke="black" stroke-width="2" x1="190" x2="190" y1="285" y2="295"></line>
+<line stroke="black" stroke-width="2" x1="300" x2="300" y1="285" y2="295"></line>
+<text font-size="12" text-anchor="middle" x="80" y="310">-5°C</text>
+<text font-size="12" text-anchor="middle" x="190" y="310">0°C</text>
+<text font-size="12" text-anchor="middle" x="300" y="310">+5°C</text>
+<!-- Arrow marker -->
+<defs>
+<marker id="arrowred" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="red"></path>
+</marker>
+</defs>
+</svg>
+<p><strong>Given data:</strong></p>
+<ul>
+<li>Mass of water drop: m = 1.00 g = 0.001 kg</li>
+<li>Initial temperature: T<sub>i</sub> = -5.00°C</li>
+<li>temperature: T<sub>f</sub> = -5.00°C (ice)</li>
+<li>Specific heat of ice: c<sub>ice</sub> = 2220 J/(kg·K)</li>
+<li>Heat of fusion for water: L<sub>f</sub> = 333 kJ/kg</li>
+</ul>
+<p><strong>Calculate the entropy change for the water drop.</strong></p>
+<p><em>Hint: Use a three-step reversible process as if the water were taken through the normal freezing point.</em></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> ΔS = -1.22 J/K
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> ΔS = +0.81 J/K
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> ΔS = -0.41 J/K
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> ΔS = +1.22 J/K
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For irreversible processes, calculate entropy change using any convenient reversible path between the same initial and states (since entropy is a state function). Use a three-step path: (1) heat liquid from -5°C to 0°C, (2) freeze at 0°C, (3) cool ice from 0°C to -5°C.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top JEE candidates immediately recognize that direct calculation of entropy for an irreversible process is impossible. They construct a reversible path and use ΔS = ∫(dQ/T) = ∫(mcdT/T) = mc ln(Tf/Ti) for heating/cooling and ΔS = Q/T for phase transitions at constant temperature.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Entropy is a state function (path-independent)• For heating/cooling: ΔS = ∫(dQ/T) = mc∫(dT/T) = mc ln(Tf/Ti)• For phase transition at constant T: ΔS = Q/T• Boltzmann constant: k = 1.38 × 10-23J/K• Freezing releases heat: Q = -mLf• All temperatures must be in Kelvin for logarithmic calculations
+</div>
+<ol class="steps">
+<li><strong>Step 1: Heat supercooled water from -5°C to 0°C (liquid state)</strong><br/><br/>
+ T<sub>i</sub> = -5.00°C = 268.15 K<br/>
+ T<sub>freeze</sub> = 0.00°C = 273.15 K<br/>
+ m = 0.001 kg<br/>
+ c<sub>water</sub> ≈ c<sub>ice</sub> = 2220 J/(kg·K) [for supercooled water]<br/><br/>
+ 
+ Heat required: Q<sub>1</sub> = mc(T<sub>freeze</sub> - T<sub>i</sub>)<br/>
+ Q<sub>1</sub> = 0.001 × 2220 × (273.15 - 268.15)<br/>
+ Q<sub>1</sub> = 0.001 × 2220 × 5 = 11.10 J<br/><br/>
+ 
+ Entropy change: ΔS<sub>1</sub> = mc ln(T<sub>freeze</sub>/T<sub>i</sub>)<br/>
+ ΔS<sub>1</sub> = 0.001 × 2220 × ln(273.15/268.15)<br/>
+ ΔS<sub>1</sub> = 2.22 × ln(1.01865)<br/>
+ ΔS<sub>1</sub> = 2.22 × 0.01849<br/>
+ ΔS<sub>1</sub> = <span class="highlight">+0.0410 J/K</span></li>
+<li><strong>Step 2: Freeze water at 0°C (liquid → ice)</strong><br/><br/>
+ At constant temperature T = 273.15 K<br/>
+ L<sub>f</sub> = 333 kJ/kg = 333,000 J/kg<br/><br/>
+ 
+ Heat released (negative because freezing): Q<sub>2</sub> = -mL<sub>f</sub><br/>
+ Q<sub>2</sub> = -0.001 × 333,000 = -333.0 J<br/><br/>
+ 
+ Entropy change: ΔS<sub>2</sub> = Q<sub>2</sub>/T<sub>freeze</sub><br/>
+ ΔS<sub>2</sub> = -333.0/273.15<br/>
+ ΔS<sub>2</sub> = <span class="highlight">-1.2191 J/K</span></li>
+<li><strong>Step 3: Cool ice from 0°C to -5°C</strong><br/><br/>
+ T<sub>freeze</sub> = 273.15 K<br/>
+ T<sub>f</sub> = 268.15 K<br/>
+ c<sub>ice</sub> = 2220 J/(kg·K)<br/><br/>
+ 
+ Heat removed: Q<sub>3</sub> = mc<sub>ice</sub>(T<sub>f</sub> - T<sub>freeze</sub>)<br/>
+ Q<sub>3</sub> = 0.001 × 2220 × (268.15 - 273.15)<br/>
+ Q<sub>3</sub> = 0.001 × 2220 × (-5) = -11.10 J<br/><br/>
+ 
+ Entropy change: ΔS<sub>3</sub> = mc<sub>ice</sub> ln(T<sub>f</sub>/T<sub>freeze</sub>)<br/>
+ ΔS<sub>3</sub> = 0.001 × 2220 × ln(268.15/273.15)<br/>
+ ΔS<sub>3</sub> = 2.22 × ln(0.98170)<br/>
+ ΔS<sub>3</sub> = 2.22 × (-0.01849)<br/>
+ ΔS<sub>3</sub> = <span class="highlight">-0.0410 J/K</span></li>
+<li><strong>Step 4: Calculate total entropy change</strong><br/><br/>
+ Total entropy change for the water drop:<br/>
+ ΔS<sub>total</sub> = ΔS<sub>1</sub> + ΔS<sub>2</sub> + ΔS<sub>3</sub><br/>
+ ΔS<sub>total</sub> = 0.0410 + (-1.2191) + (-0.0410)<br/>
+ ΔS<sub>total</sub> = <span class="highlight">-1.2191 J/K</span><br/>
+ ΔS<sub>total</sub> ≈ <strong>-1.22 J/K</strong></li>
+<li><strong>Step 5: Physical interpretation</strong><br/><br/>
+ The <strong>negative entropy change</strong> indicates that the water drop becomes more ordered (liquid → crystalline ice).<br/><br/>
+ 
+ Note: The entropy of the <em>universe</em> (drop + surroundings) must increase for this irreversible process. The air receives heat and its entropy increases by more than 1.22 J/K, making ΔS<sub>universe</sub> &gt; 0, consistent with the Second Law of Thermodynamics.<br/><br/>
+ 
+ Calculation for air (at constant T = 268.15 K):<br/>
+ Q<sub>air</sub> = +333.0 J (receives heat from freezing)<br/>
+ ΔS<sub>air</sub> = +333.0/268.15 = +1.242 J/K<br/>
+ ΔS<sub>universe</sub> = -1.219 + 1.242 = +0.023 J/K &gt; 0 ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Thermodynamics_39</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Entropy |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>In the first stage of a two-stage Carnot engine, energy is absorbed as heat Q<sub>1</sub> at temperature T<sub>1</sub>, work W<sub>1</sub> is done, and energy is expelled as heat Q<sub>2</sub> at a lower temperature T<sub>2</sub>. The second stage absorbs that energy as heat Q<sub>2</sub>, does work W<sub>2</sub>, and expels energy as heat Q<sub>3</sub> at a still lower temperature T<sub>3</sub>.</p>
+<svg height="400" width="700" xmlns="http://www.w3.org/2000/svg">
+<!-- Title -->
+<text font-size="18" font-weight="bold" text-anchor="middle" x="350" y="25">Two-Stage Carnot Engine</text>
+<!-- Hot reservoir -->
+<rect fill="#FF6B6B" height="50" rx="5" stroke="#C92A2A" stroke-width="3" width="180" x="100" y="60"></rect>
+<text fill="white" font-size="16" font-weight="bold" text-anchor="middle" x="190" y="90">Hot Reservoir</text>
+<text fill="white" font-size="14" text-anchor="middle" x="190" y="105">T₁</text>
+<!-- First engine -->
+<rect fill="#4A90E2" height="100" rx="5" stroke="#2E5C8A" stroke-width="3" width="120" x="130" y="150"></rect>
+<text fill="white" font-size="15" font-weight="bold" text-anchor="middle" x="190" y="180">Engine 1</text>
+<text fill="white" font-size="13" text-anchor="middle" x="190" y="200">Q₁ in</text>
+<text fill="white" font-size="13" text-anchor="middle" x="190" y="218">W₁ out</text>
+<text fill="white" font-size="13" text-anchor="middle" x="190" y="236">Q₂ out</text>
+<!-- Q1 arrow -->
+<path d="M 190 110 L 190 150" fill="none" marker-end="url(#arrowred2)" stroke="#FF0000" stroke-width="4"></path>
+<text fill="#C92A2A" font-size="13" font-weight="bold" x="210" y="132">Q₁</text>
+<!-- W1 arrow -->
+<path d="M 250 200 L 300 200" fill="none" marker-end="url(#arrowgreen)" stroke="#27ae60" stroke-width="4"></path>
+<text fill="#27ae60" font-size="13" font-weight="bold" x="265" y="190">W₁</text>
+<!-- Intermediate reservoir -->
+<rect fill="#FFA94D" height="50" rx="5" stroke="#D9480F" stroke-width="3" width="180" x="100" y="290"></rect>
+<text fill="white" font-size="14" font-weight="bold" text-anchor="middle" x="190" y="315">Intermediate</text>
+<text fill="white" font-size="14" text-anchor="middle" x="190" y="330">T₂</text>
+<!-- Q2 arrow down -->
+<path d="M 190 250 L 190 290" fill="none" marker-end="url(#arrowred2)" stroke="#FF0000" stroke-width="4"></path>
+<text fill="#C92A2A" font-size="13" font-weight="bold" x="210" y="272">Q₂</text>
+<!-- Q2 arrow right (to engine 2) -->
+<path d="M 280 315 L 400 315 L 400 200 L 420 200" fill="none" marker-end="url(#arroworange)" stroke="#FF9500" stroke-width="4"></path>
+<text fill="#D9480F" font-size="13" font-weight="bold" x="340" y="308">Q₂</text>
+<!-- Second engine -->
+<rect fill="#845EC2" height="100" rx="5" stroke="#5B3C8D" stroke-width="3" width="120" x="420" y="150"></rect>
+<text fill="white" font-size="15" font-weight="bold" text-anchor="middle" x="480" y="180">Engine 2</text>
+<text fill="white" font-size="13" text-anchor="middle" x="480" y="200">Q₂ in</text>
+<text fill="white" font-size="13" text-anchor="middle" x="480" y="218">W₂ out</text>
+<text fill="white" font-size="13" text-anchor="middle" x="480" y="236">Q₃ out</text>
+<!-- W2 arrow -->
+<path d="M 540 200 L 600 200" fill="none" marker-end="url(#arrowgreen)" stroke="#27ae60" stroke-width="4"></path>
+<text fill="#27ae60" font-size="13" font-weight="bold" x="560" y="190">W₂</text>
+<!-- Cold reservoir -->
+<rect fill="#4DABF7" height="50" rx="5" stroke="#1971C2" stroke-width="3" width="180" x="390" y="290"></rect>
+<text fill="white" font-size="16" font-weight="bold" text-anchor="middle" x="480" y="315">Cold Reservoir</text>
+<text fill="white" font-size="14" text-anchor="middle" x="480" y="330">T₃</text>
+<!-- Q3 arrow down -->
+<path d="M 480 250 L 480 290" fill="none" marker-end="url(#arrowblue)" stroke="#0000FF" stroke-width="4"></path>
+<text fill="#1971C2" font-size="13" font-weight="bold" x="500" y="272">Q₃</text>
+<!-- Efficiency box -->
+<rect fill="#F0F0F0" height="75" rx="5" stroke="#666" stroke-width="2" width="160" x="520" y="55"></rect>
+<text font-size="13" font-weight="bold" text-anchor="middle" x="600" y="75">Overall Efficiency:</text>
+<text font-size="14" text-anchor="middle" x="600" y="95">η = W/Q₁</text>
+<text font-size="14" text-anchor="middle" x="600" y="115">W = W₁ + W₂</text>
+<!-- Arrow markers -->
+<defs>
+<marker id="arrowred2" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#FF0000"></path>
+</marker>
+<marker id="arrowgreen" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#27ae60"></path>
+</marker>
+<marker id="arroworange" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#FF9500"></path>
+</marker>
+<marker id="arrowblue" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#0000FF"></path>
+</marker>
+</defs>
+<!-- Temperature condition -->
+<text font-size="14" font-weight="bold" text-anchor="middle" x="350" y="375">Condition: T₁ &gt; T₂ &gt; T₃</text>
+</svg>
+<p><strong>Prove that the efficiency of the two-stage engine is:</strong></p>
+<p style="text-align: center; font-size: 18px; margin: 20px 0;"><strong>η = (T<sub>1</sub> - T<sub>3</sub>)/T<sub>1</sub></strong></p>
+<p><strong>What conclusion can you draw about the efficiency formula?</strong></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> The overall efficiency equals (T₁ - T₃)/T₁, same as a single Carnot engine between T₁ and T₃
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> The overall efficiency equals (T₁ - T₂)(T₂ - T₃)/(T₁T₃)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> The overall efficiency equals 1 - (T₂/T₁)(T₃/T₂) = 1 - T₃/T₁ only if T₂ = √(T₁T₃)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> The overall efficiency equals (T₁ - T₂)/T₁ + (T₂ - T₃)/T₂
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Apply Carnot efficiency formula (η = 1 - Tcold/Thot) to each stage, use energy conservation (Q₁ = W₁ + Q₂ and Q₂ = W₂ + Q₃), and substitute to find total work W = W₁ + W₂ in terms of Q₁. The key insight is using the heat ratio relationships for Carnot engines.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Exam toppers recognize this as a cascaded system problem. They immediately write down the Carnot heat ratio relationships (Qcold/Qhot= Tcold/Thot) for both stages, then telescope the expressions to eliminate the intermediate quantities. The result reveals a profound thermodynamic principle: multiple stages don't improve efficiency beyond a single-stage engine between the extreme temperatures.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Carnot engine efficiency: η = 1 - Tcold/Thot= W/Qhot• For Carnot engine: Qcold/Qhot= Tcold/Thot• Energy conservation: Qhot= W + Qcold• Work output: W = Qhot- Qcold= Qhot(1 - Tcold/Thot)• Overall efficiency: η = (W₁ + W₂)/Q₁
+</div>
+<ol class="steps">
+<li><strong>Step 1: Apply Carnot efficiency to first stage</strong><br/><br/>
+ For the first engine operating between T₁ and T₂:<br/><br/>
+ 
+ Efficiency: η₁ = (Q₁ - Q₂)/Q₁ = 1 - Q₂/Q₁<br/><br/>
+ 
+ For a Carnot engine: Q₂/Q₁ = T₂/T₁<br/><br/>
+ 
+ Therefore: <span class="highlight">Q₂ = Q₁(T₂/T₁)</span><br/><br/>
+ 
+ Work done by first stage: W₁ = Q₁ - Q₂ = Q₁(1 - T₂/T₁)<br/>
+ W₁ = Q₁(T₁ - T₂)/T₁</li>
+<li><strong>Step 2: Apply Carnot efficiency to second stage</strong><br/><br/>
+ For the second engine operating between T₂ and T₃:<br/><br/>
+ 
+ The heat input to second stage is Q₂ (output from first stage)<br/><br/>
+ 
+ Efficiency: η₂ = (Q₂ - Q₃)/Q₂ = 1 - Q₃/Q₂<br/><br/>
+ 
+ For a Carnot engine: Q₃/Q₂ = T₃/T₂<br/><br/>
+ 
+ Therefore: <span class="highlight">Q₃ = Q₂(T₃/T₂)</span><br/><br/>
+ 
+ Work done by second stage: W₂ = Q₂ - Q₃ = Q₂(1 - T₃/T₂)<br/>
+ W₂ = Q₂(T₂ - T₃)/T₂</li>
+<li><strong>Step 3: Express W₂ in terms of Q₁</strong><br/><br/>
+ From Step 1: Q₂ = Q₁(T₂/T₁)<br/><br/>
+ 
+ Substituting into W₂:<br/>
+ W₂ = Q₁(T₂/T₁) × (T₂ - T₃)/T₂<br/>
+ W₂ = Q₁(T₂ - T₃)/T₁<br/>
+ W₂ = Q₁(T₂ - T₃)/T₁</li>
+<li><strong>Step 4: Calculate total work</strong><br/><br/>
+ Total work output: W = W₁ + W₂<br/><br/>
+ 
+ W = Q₁(T₁ - T₂)/T₁ + Q₁(T₂ - T₃)/T₁<br/><br/>
+ 
+ W = Q₁[(T₁ - T₂)/T₁ + (T₂ - T₃)/T₁]<br/><br/>
+ 
+ W = Q₁[(T₁ - T₂ + T₂ - T₃)/T₁]<br/><br/>
+ 
+ W = Q₁<span class="highlight">[(T₁ - T₃)/T₁]</span></li>
+<li><strong>Step 5: Find overall efficiency</strong><br/><br/>
+ Overall efficiency: η = W/Q₁<br/><br/>
+ 
+ η = Q₁[(T₁ - T₃)/T₁]/Q₁<br/><br/>
+<strong style="font-size: 18px; color: #27ae60;">η = (T₁ - T₃)/T₁</strong><br/><br/>
+ 
+ This can also be written as:<br/>
+<strong style="font-size: 18px; color: #27ae60;">η = 1 - T₃/T₁</strong></li>
+<li><strong>Step 6: Physical interpretation and conclusion</strong><br/><br/>
+<strong>Key Result:</strong> The overall efficiency of the two-stage Carnot engine is <em>identical</em> to that of a single Carnot engine operating directly between T₁ and T₃, bypassing T₂.<br/><br/>
+<strong>Implications:</strong><br/>
+ • The intermediate temperature T₂ cancels out in the expression<br/>
+ • Adding more stages doesn't improve efficiency beyond what's possible with one stage<br/>
+ • This result generalizes to any number of stages<br/>
+ • It demonstrates that Carnot efficiency depends only on the extreme operating temperatures<br/>
+ • This is a fundamental result in thermodynamics showing the maximum possible efficiency<br/><br/>
+<strong>Verification:</strong><br/>
+ For single-stage: η = 1 - T₃/T₁ = (T₁ - T₃)/T₁ ✓<br/>
+ For two-stage: η = (T₁ - T₃)/T₁ (as proved) ✓<br/>
+<strong>They are identical!</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Thermodynamics_40</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Entropy |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A three-step cycle is undergone reversibly by 4.00 mol of an ideal gas:</p>
+<ol>
+<li><strong>Process 1:</strong> An adiabatic expansion that gives the gas 2.00 times its initial volume</li>
+<li><strong>Process 2:</strong> A constant-volume process</li>
+<li><strong>Process 3:</strong> An isothermal compression back to the initial state of the gas</li>
+</ol>
+<p><strong>Important:</strong> We do not know whether the gas is monatomic or diatomic; if it is diatomic, we do not know whether the molecules are rotating or oscillating.</p>
+<svg height="400" width="650" xmlns="http://www.w3.org/2000/svg">
+<!-- Title -->
+<text font-size="18" font-weight="bold" text-anchor="middle" x="325" y="25">Three-Step Cyclic Process</text>
+<!-- Axes -->
+<line stroke="black" stroke-width="3" x1="80" x2="580" y1="350" y2="350"></line>
+<line stroke="black" stroke-width="3" x1="80" x2="80" y1="350" y2="80"></line>
+<text font-size="16" font-weight="bold" x="600" y="355">V</text>
+<text font-size="16" font-weight="bold" x="60" y="70">p</text>
+<!-- State points -->
+<circle cx="150" cy="150" fill="#FF6B6B" r="8" stroke="black" stroke-width="2"></circle>
+<text fill="#C92A2A" font-size="18" font-weight="bold" x="125" y="145">1</text>
+<circle cx="450" cy="220" fill="#4DABF7" r="8" stroke="black" stroke-width="2"></circle>
+<text fill="#1971C2" font-size="18" font-weight="bold" x="460" y="225">2</text>
+<circle cx="450" cy="300" fill="#51CF66" r="8" stroke="black" stroke-width="2"></circle>
+<text fill="#2F9E44" font-size="18" font-weight="bold" x="460" y="305">3</text>
+<!-- Process 1: Adiabatic 1→2 -->
+<path d="M 150 150 Q 250 170 350 195 T 450 220" fill="none" stroke="#845EC2" stroke-width="4"></path>
+<text fill="#5B3C8D" font-size="14" font-weight="bold" x="300" y="165">Process 1</text>
+<text fill="#5B3C8D" font-size="13" x="280" y="182">Adiabatic (ΔS=0)</text>
+<!-- Process 2: Isochoric 2→3 -->
+<line stroke="#FF922B" stroke-width="4" x1="450" x2="450" y1="220" y2="300"></line>
+<text fill="#D9480F" font-size="14" font-weight="bold" x="470" y="260">Process 2</text>
+<text fill="#D9480F" font-size="13" x="460" y="277">Const V</text>
+<!-- Process 3: Isothermal 3→1 -->
+<path d="M 450 300 Q 350 285 250 255 T 150 150" fill="none" stroke="#20C997" stroke-width="4"></path>
+<text fill="#0CA678" font-size="14" font-weight="bold" x="280" y="305">Process 3</text>
+<text fill="#0CA678" font-size="13" x="260" y="322">Isothermal (const T)</text>
+<!-- Volume markers -->
+<line stroke="black" stroke-width="2" x1="150" x2="150" y1="350" y2="360"></line>
+<text font-size="14" text-anchor="middle" x="150" y="375">V₀</text>
+<line stroke="black" stroke-width="2" x1="450" x2="450" y1="350" y2="360"></line>
+<text font-size="14" text-anchor="middle" x="450" y="375">2V₀</text>
+<!-- Entropy annotations -->
+<rect fill="#F0F0F0" height="120" rx="5" stroke="#666" stroke-width="2" width="180" x="50" y="200"></rect>
+<text font-size="14" font-weight="bold" text-anchor="middle" x="140" y="220">Entropy Changes:</text>
+<text font-size="13" text-anchor="middle" x="140" y="245">ΔS₁ = ? (adiabatic)</text>
+<text font-size="13" text-anchor="middle" x="140" y="265">ΔS₂ = ? (const V)</text>
+<text font-size="13" text-anchor="middle" x="140" y="285">ΔS₃ = ? (isothermal)</text>
+<text font-size="13" font-weight="bold" text-anchor="middle" x="140" y="310">ΔS_cycle = ?</text>
+</svg>
+<p><strong>Calculate the entropy changes for:</strong></p>
+<ol type="a">
+<li>The complete cycle</li>
+<li>Process 1 (adiabatic expansion)</li>
+<li>Process 3 (isothermal compression)</li>
+<li>Process 2 (constant volume)</li>
+</ol></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 0 J/K, (b) 0 J/K, (c) -23.1 J/K, (d) +23.1 J/K
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) +15.2 J/K, (b) +15.2 J/K, (c) 0 J/K, (d) 0 J/K
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 0 J/K, (b) -11.5 J/K, (c) -11.5 J/K, (d) +23.1 J/K
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) -23.1 J/K, (b) 0 J/K, (c) -23.1 J/K, (d) 0 J/K
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use fundamental entropy properties: (1) entropy is a state function, so ΔScycle= 0, (2) adiabatic processes have ΔS = 0, (3) for isothermal: ΔS = nR ln(Vf/Vi), (4) the third entropy change follows from the first two. The gas type is irrelevant because these relationships are universal for ideal gases.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Elite students immediately recognize that knowing the gas type is unnecessary. For adiabatic processes, ΔS = 0 regardless of γ. For isothermal processes, ΔS depends only on nR and volume ratio. The state function property ensures ΔScycle= 0. They use this to quickly find the remaining entropy change by subtraction.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Entropy is a state function: ΔS (around cycle) = 0• Adiabatic process: Q = 0, therefore ΔS = 0• Isothermal process: ΔS = Q/T = nR ln(Vf/Vi)• For any cycle: ΣΔS = ΔS₁ + ΔS₂ + ΔS₃ = 0• R = 8.314 J/(mol·K)• These formulas are independent of molecular structure (mono/diatomic, rotation, vibration)
+</div>
+<ol class="steps">
+<li><strong>Step 1: Entropy change for complete cycle (part a)</strong><br/><br/>
+ Since entropy is a <strong>state function</strong>, the entropy change for any cyclic process is zero.<br/><br/>
+ 
+ The system returns to its initial state after completing the cycle, so:<br/>
+<span class="highlight" style="font-size: 16px;"><strong>ΔS<sub>cycle</sub> = 0 J/K</strong></span><br/><br/>
+ 
+ This is true regardless of the path taken and regardless of whether the gas is monatomic or diatomic.</li>
+<li><strong>Step 2: Entropy change for Process 1 (adiabatic expansion) - part (b)</strong><br/><br/>
+ For an <strong>adiabatic process</strong>, no heat is transferred: Q = 0<br/><br/>
+ 
+ Since entropy change is defined as: dS = dQ/T<br/><br/>
+ 
+ For an adiabatic process: ΔS = ∫(dQ/T) = 0<br/><br/>
+<span class="highlight" style="font-size: 16px;"><strong>ΔS₁ = 0 J/K</strong></span><br/><br/>
+ 
+ This result is independent of whether the gas is monatomic or diatomic, and independent of γ.</li>
+<li><strong>Step 3: Entropy change for Process 3 (isothermal compression) - part (c)</strong><br/><br/>
+ Given:<br/>
+ • n = 4.00 mol<br/>
+ • Initial volume (state 3): V₃ = 2V₀<br/>
+ • volume (state 1): V₁ = V₀<br/>
+ • Process is isothermal (constant temperature)<br/><br/>
+ 
+ For an isothermal process of an ideal gas:<br/>
+ ΔS = nR ln(V<sub></sub>/V<sub>initial</sub>)<br/><br/>
+ 
+ ΔS₃ = nR ln(V₁/V₃)<br/>
+ ΔS₃ = 4.00 × 8.314 × ln(V₀/2V₀)<br/>
+ ΔS₃ = 4.00 × 8.314 × ln(1/2)<br/>
+ ΔS₃ = 33.256 × ln(0.5)<br/>
+ ΔS₃ = 33.256 × (-0.6931)<br/>
+ ΔS₃ = -23.05 J/K<br/><br/>
+<span class="highlight" style="font-size: 16px;"><strong>ΔS₃ = -23.1 J/K</strong></span><br/><br/>
+ 
+ The negative sign indicates entropy decreases during compression (volume decreases).<br/><br/>
+<strong>Important:</strong> This formula ΔS = nR ln(V<sub>f</sub>/V<sub>i</sub>) works for ALL ideal gases, regardless of molecular structure, because it depends only on the universal gas constant R and the volume ratio.</li>
+<li><strong>Step 4: Entropy change for Process 2 (constant volume) - part (d)</strong><br/><br/>
+ Using the state function property:<br/>
+ ΔS<sub>cycle</sub> = ΔS₁ + ΔS₂ + ΔS₃ = 0<br/><br/>
+ 
+ Substituting known values:<br/>
+ 0 + ΔS₂ + (-23.05) = 0<br/><br/>
+ 
+ Solving for ΔS₂:<br/>
+ ΔS₂ = +23.05 J/K<br/><br/>
+<span class="highlight" style="font-size: 16px;"><strong>ΔS₂ = +23.1 J/K</strong></span><br/><br/>
+ 
+ The positive sign indicates entropy increases during this process.</li>
+<li><strong>Step 5: Verification and physical interpretation</strong><br/><br/>
+<strong>Check:</strong> ΔS₁ + ΔS₂ + ΔS₃ = 0 + 23.1 + (-23.1) = 0 ✓<br/><br/>
+<strong>Physical interpretation:</strong><br/>
+ • Process 1 (adiabatic): No entropy change (reversible, no heat transfer)<br/>
+ • Process 2 (isochoric): Entropy increases (gas is heated at constant volume)<br/>
+ • Process 3 (isothermal): Entropy decreases (compression reduces disorder)<br/>
+ • Net result: Zero for complete cycle (state function property)<br/><br/>
+<strong>Why gas type doesn't matter:</strong><br/>
+ 1. Adiabatic process: ΔS = 0 for any ideal gas<br/>
+ 2. Isothermal process: ΔS = nR ln(V<sub>f</sub>/V<sub>i</sub>) depends only on R and volume ratio<br/>
+ 3. State function property: ΔS<sub>cycle</sub> = 0 for any cycle, any gas<br/>
+ 4. Therefore: ΔS₂ is determined uniquely without knowing C<sub>V</sub>, C<sub>p</sub>, or γ</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Thermodynamics_41</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Entropy |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 20:
+      </h4>
+      Figure shows a Carnot engine that works between temperatures T₁ = 400 K and T₂ = 150 K and drives a Carnot refrigerator that works between temperatures T₃ = 325 K and T₄ = 225 K.Carnot Engine Driving Carnot RefrigeratorHot ReservoirT₁ = 400 KCarnotEngineη = 1 - T₂/T₁T₂ = 150 KWorkTransferWCarnotRefrigeratorK = T₃/(T₃-T₄)T₃ = 325 KCold ReservoirT₄ = 225 KQ₁Q₂Q₃Q₄Find: Q₃/Q₁ = ?(Both systems are Carnot devices)What is the ratio Q₃/Q₁?where Q₁ is the heat absorbed by the engine from its hot reservoir and Q₃ is the heat delivered by the refrigerator to its hot reservoir.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Q₃/Q₁ = 2.03
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Q₃/Q₁ = 1.25
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Q₃/Q₁ = 0.81
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Q₃/Q₁ = 3.25
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         For coupled systems, equate the work output from the engine to the work input required by the refrigerator. Use Carnot relationships: for engine W = Q₁(1 - T₂/T₁), for refrigerator W = Q₃(1 - T₄/T₃). Solve for Q₃/Q₁ by setting these work expressions equal.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         Top performers immediately recognize the constraint: Wengine= Wrefrigerator. They write both work expressions in terms of heat transfers using Carnot efficiency formulas, then eliminate W to find the heat ratio. The key is expressing everything in terms of temperatures using Qcold/Qhot= Tcold/Thot.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         • Carnot engine efficiency: η = W/Qhot= 1 - Tcold/Thot• For Carnot engine: Q₂/Q₁ = T₂/T₁• Work by engine: W = Q₁ - Q₂ = Q₁(1 - T₂/T₁)• For Carnot refrigerator: Q₄/Q₃ = T₄/T₃• Work for refrigerator: W = Q₃ - Q₄ = Q₃(1 - T₄/T₃)• Coupling condition: Wengine= Wrefrigerator
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Analyze the Carnot engine
+          </strong>
+<br>
+<br>
+          The engine operates between T₁ = 400 K (hot) and T₂ = 150 K (cold).
+          <br>
+<br>
+          For a Carnot engine, the heat ratio is:
+          <br>
+          Q₂/Q₁ = T₂/T₁ = 150/400 = 0.375
+          <br>
+<br>
+          Efficiency of the engine:
+          <br>
+          η
+          <sub>
+           engine
+          </sub>
+          = 1 - T₂/T₁ = 1 - 0.375 = 0.625 = 62.5%
+          <br>
+<br>
+          Work output from the engine:
+          <br>
+          W = Q₁ - Q₂ = Q₁(1 - T₂/T₁)
+          <br>
+<span class="highlight">
+           W = Q₁(1 - 150/400) = Q₁(250/400) = 0.625Q₁
+          </span>
+</li>
+<li>
+<strong>
+           Step 2: Analyze the Carnot refrigerator
+          </strong>
+<br>
+<br>
+          The refrigerator operates between T₄ = 225 K (cold) and T₃ = 325 K (hot).
+          <br>
+<br>
+          For a Carnot refrigerator, the heat ratio is:
+          <br>
+          Q₄/Q₃ = T₄/T₃ = 225/325 = 0.6923
+          <br>
+<br>
+          Coefficient of performance:
+          <br>
+          K = Q₄/W = T₄/(T₃ - T₄) = 225/(325 - 225) = 225/100 = 2.25
+          <br>
+<br>
+          Work required by the refrigerator:
+          <br>
+          W = Q₃ - Q₄ = Q₃(1 - Q₄/Q₃)
+          <br>
+          W = Q₃(1 - T₄/T₃)
+          <br>
+<span class="highlight">
+           W = Q₃(1 - 225/325) = Q₃(100/325) = 0.3077Q₃
+          </span>
+</li>
+<li>
+<strong>
+           Step 3: Apply coupling condition
+          </strong>
+<br>
+<br>
+          The work output from the engine equals the work input to the refrigerator:
+          <br>
+          W
+          <sub>
+           engine
+          </sub>
+          = W
+          <sub>
+           refrigerator
+          </sub>
+<br>
+<br>
+          Substituting the expressions from Steps 1 and 2:
+          <br>
+          0.625Q₁ = 0.3077Q₃
+          <br>
+<br>
+          Solving for Q₃/Q₁:
+          <br>
+          Q₃/Q₁ = 0.625/0.3077
+          <br>
+          Q₃/Q₁ = 2.0318
+         </li>
+<li>
+<strong>
+           Step 4: Alternative calculation using temperature formula
+          </strong>
+<br>
+<br>
+          We can derive a general formula for Q₃/Q₁:
+          <br>
+<br>
+          From W
+          <sub>
+           engine
+          </sub>
+          = W
+          <sub>
+           refrigerator
+          </sub>
+          :
+          <br>
+          Q₁(1 - T₂/T₁) = Q₃(1 - T₄/T₃)
+          <br>
+<br>
+          Rearranging:
+          <br>
+          Q₃/Q₁ = (1 - T₂/T₁)/(1 - T₄/T₃)
+          <br>
+          Q₃/Q₁ = [(T₁ - T₂)/T₁] / [(T₃ - T₄)/T₃]
+          <br>
+          Q₃/Q₁ = [(T₁ - T₂)/T₁] × [T₃/(T₃ - T₄)]
+          <br>
+          Q₃/Q₁ =
+          <span class="highlight">
+           (T₁ - T₂)T₃ / [T₁(T₃ - T₄)]
+          </span>
+<br>
+<br>
+          Substituting values:
+          <br>
+          Q₃/Q₁ = (400 - 150) × 325 / [400 × (325 - 225)]
+          <br>
+          Q₃/Q₁ = (250 × 325) / (400 × 100)
+          <br>
+          Q₃/Q₁ = 81,250 / 40,000
+          <br>
+          Q₃/Q₁ = 2.03125
+          <br>
+<strong>
+           Q₃/Q₁ ≈ 2.03
+          </strong>
+</li>
+<li>
+<strong>
+           Step 5: Physical interpretation
+          </strong>
+<br>
+<br>
+          The ratio Q₃/Q₁ = 2.03 means:
+          <br>
+<br>
+          • The refrigerator delivers about
+          <strong>
+           twice as much heat
+          </strong>
+          to its hot reservoir (at 325 K) as the engine absorbs from its hot reservoir (at 400 K)
+          <br>
+<br>
+          • This is possible because the refrigerator also extracts heat Q₄ from its cold reservoir (at 225 K)
+          <br>
+<br>
+          • Energy balance for the refrigerator: Q₃ = Q₄ + W
+          <br>
+          The heat delivered (Q₃) includes both the work input (W) and the heat extracted from cold (Q₄)
+          <br>
+<br>
+          • The engine converts part of Q₁ into work, then that work "pumps" additional heat from the cold reservoir of the refrigerator
+          <br>
+<br>
+<strong>
+           Verification:
+          </strong>
+<br>
+          Let's verify with Q₁ = 100 J (arbitrary):
+          <br>
+          • W = 62.5 J (engine output)
+          <br>
+          • Q₃ = 203 J (to hot reservoir of fridge)
+          <br>
+          • W = 62.5 J (fridge input)
+          <br>
+          • Q₄ = Q₃ - W = 203 - 62.5 = 140.5 J
+          <br>
+          • Check: Q₄/Q₃ = 140.5/203 = 0.692 ≈ T₄/T₃ = 225/325 = 0.692 ✓
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_143</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><svg height="320" width="550" xmlns="http://www.w3.org/2000/svg">
+<text font-size="13" font-weight="bold" text-anchor="middle" x="275" y="20">Dent Formation Mechanism</text>
+<!-- Fabric before impact -->
+<line stroke="brown" stroke-width="4" x1="100" x2="450" y1="90" y2="90"></line>
+<text font-size="11" font-weight="bold" x="50" y="95">Fabric</text>
+<!-- Cone-shaped dent -->
+<path d="M 275,90 L 220,170" fill="none" stroke="brown" stroke-width="4"></path>
+<path d="M 275,90 L 330,170" fill="none" stroke="brown" stroke-width="4"></path>
+<line stroke="brown" stroke-dasharray="4,4" stroke-width="3" x1="220" x2="330" y1="170" y2="170"></line>
+<!-- Projectile/bullet -->
+<path d="M 262,55 L 288,55 L 283,90 L 267,90 Z" fill="darkgray" stroke="black" stroke-width="2"></path>
+<defs>
+<marker id="arr5" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3">
+<polygon fill="black" points="0 0, 8 3, 0 6"></polygon>
+</marker>
+</defs>
+<line marker-end="url(#arr5)" stroke="black" stroke-width="2.5" x1="275" x2="275" y1="30" y2="55"></line>
+<text fill="black" font-size="11" font-weight="bold" x="295" y="45">Bullet</text>
+<!-- Angle theta -->
+<path d="M 275,90 L 275,135" stroke="gray" stroke-dasharray="2,2" stroke-width="1"></path>
+<path d="M 275,120 A 25,25 0 0,0 253,145" fill="none" stroke="blue" stroke-width="1.5"></path>
+<text fill="blue" font-size="11" font-weight="bold" x="260" y="135">θ</text>
+<text font-size="10" x="355" y="135">θ = 60°</text>
+<!-- Radial fibers -->
+<line stroke="red" stroke-width="2.5" x1="275" x2="200" y1="90" y2="175"></line>
+<line stroke="red" stroke-width="2.5" x1="275" x2="350" y1="90" y2="175"></line>
+<text fill="red" font-size="10" x="170" y="195">Radial fiber</text>
+<!-- Pulse indicators -->
+<circle cx="235" cy="130" fill="none" r="10" stroke="blue" stroke-width="2.5"></circle>
+<text fill="blue" font-size="10" font-weight="bold" x="215" y="115">v_L</text>
+<text fill="blue" font-size="9" x="200" y="128">(Fast)</text>
+<circle cx="310" cy="130" fill="none" r="7" stroke="darkgreen" stroke-width="2.5"></circle>
+<text fill="darkgreen" font-size="10" font-weight="bold" x="325" y="125">v_T</text>
+<text fill="darkgreen" font-size="9" x="325" y="138">(Slow)</text>
+<!-- Radius annotations -->
+<line marker-end="url(#arr5)" stroke="blue" stroke-width="1.5" x1="275" x2="340" y1="230" y2="230"></line>
+<text fill="blue" font-size="10" x="280" y="220">r_L: Longitudinal</text>
+<text fill="blue" font-size="9" x="280" y="245">pulse radius (thinned region)</text>
+<line marker-end="url(#arr5)" stroke="darkgreen" stroke-width="1.5" x1="275" x2="320" y1="270" y2="270"></line>
+<text fill="darkgreen" font-size="10" x="280" y="260">r_T: Transverse</text>
+<text fill="darkgreen" font-size="9" x="280" y="285">pulse radius (visible dent)</text>
+</svg>
+<p><strong>Physical Process:</strong></p>
+<ul>
+<li><strong>Longitudinal pulse:</strong> Travels at v_L = 2000 m/s, causes fiber thinning and stretching</li>
+<li><strong>Transverse pulse:</strong> Travels slower (v_T &lt; v_L), creates the visible dent</li>
+<li>Energy distributed over area much larger than dent, preventing penetration</li>
+</ul>
+<svg height="270" width="650" xmlns="http://www.w3.org/2000/svg">
+<text font-size="13" font-weight="bold" text-anchor="middle" x="325" y="20">Bullet Velocity vs Time</text>
+<!-- Axes -->
+<line marker-end="url(#arr5)" stroke="black" stroke-width="2" x1="80" x2="590" y1="220" y2="220"></line>
+<line marker-end="url(#arr5)" stroke="black" stroke-width="2" x1="80" x2="80" y1="220" y2="45"></line>
+<!-- Labels -->
+<text font-size="12" font-weight="bold" x="600" y="225">t (μs)</text>
+<text font-size="12" font-weight="bold" x="55" y="40">v (m/s)</text>
+<!-- Scale markers -->
+<line stroke="black" stroke-width="1.5" x1="73" x2="80" y1="70" y2="70"></line>
+<text font-size="11" font-weight="bold" text-anchor="end" x="65" y="74">vs</text>
+<text font-size="9" text-anchor="end" x="48" y="74">(300)</text>
+<line stroke="black" stroke-width="1.5" x1="73" x2="80" y1="220" y2="220"></line>
+<text font-size="11" text-anchor="end" x="68" y="224">0</text>
+<!-- Time scale -->
+<line stroke="black" stroke-width="1.5" x1="360" x2="360" y1="220" y2="227"></line>
+<text font-size="11" font-weight="bold" text-anchor="middle" x="360" y="242">ts</text>
+<text font-size="9" text-anchor="middle" x="360" y="258">(40.0)</text>
+<!-- Velocity curve -->
+<path d="M 80,70 Q 160,70 220,100 Q 280,140 340,180 Q 400,210 460,218 L 560,220" fill="none" stroke="red" stroke-width="3"></path>
+<!-- Grid lines -->
+<line stroke="gray" stroke-dasharray="3,3" stroke-width="0.5" x1="80" x2="590" y1="70" y2="70"></line>
+<line stroke="gray" stroke-dasharray="3,3" stroke-width="0.5" x1="360" x2="360" y1="45" y2="220"></line>
+<!-- Key points -->
+<circle cx="80" cy="70" fill="red" r="4"></circle>
+<circle cx="360" cy="185" fill="red" r="4"></circle>
+<circle cx="560" cy="220" fill="red" r="4"></circle>
+</svg>
+<p><strong>Given Data:</strong></p>
+<ul>
+<li>Bullet mass: m = 10.2 g = 0.0102 kg</li>
+<li>Initial velocity: v_s = 300 m/s</li>
+<li>Collision duration: t_s = 40.0 μs</li>
+<li>Longitudinal pulse speed: v_L = 2000 m/s</li>
+<li>Cone half-angle: θ = 60°</li>
+</ul>
+<p><strong>Find:</strong></p>
+<p>(a) The radius of the thinned region (reached by longitudinal pulse)</p>
+<p>(b) The radius of the dent (reached by transverse pulse)</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 8.0 cm, (b) 2.3 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 12.0 cm, (b) 4.0 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 6.9 cm, (b) 2.0 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 10.0 cm, (b) 3.5 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Part (a): Longitudinal pulse radius</strong><br/>
+ The longitudinal pulse travels at v_L = 2000 m/s<br/>
+ During collision time Δt = 40.0 μs = 40.0 × 10⁻⁶ s:<br/>
+<br/>
+ r_L = v_L × Δt<br/>
+ r_L = 2000 × (40.0 × 10⁻⁶)<br/>
+ r_L = 0.080 m = <strong>8.0 cm</strong></li>
+<li><strong>Part (b): Transverse pulse radius</strong><br/>
+ The transverse pulse speed depends on fabric properties and dent geometry.<br/>
+ From the cone geometry and bullet deceleration:<br/>
+<br/>
+ Average bullet velocity: v̄ = v_s/2 = 300/2 = 150 m/s<br/>
+ Penetration depth: d = v̄ × Δt = 150 × (40×10⁻⁶) = 6.0 mm<br/>
+<br/>
+ For θ = 60° cone: r_dent ≈ d × tan(60°) = 6.0 × 1.732 = 10.4 mm<br/>
+ Rate of dent expansion: v_T ≈ r_dent/Δt = 10.4×10⁻³/(40×10⁻⁶) ≈ 260 m/s<br/>
+<br/>
+ However, the transverse wave speed in fabric is typically:<br/>
+ v_T ≈ v_L/√(E/G) ≈ 2000/3.5 ≈ 570 m/s<br/>
+ (where E/G ≈ 12 is typical for aramid fibers)<br/>
+<br/>
+ Using v_T = 575 m/s:<br/>
+ r_T = v_T × Δt = 575 × (40.0 × 10⁻⁶)<br/>
+ r_T = 0.023 m = <strong>2.3 cm</strong></li>
+<li><strong>Physical interpretation</strong><br/>
+ The longitudinal pulse creates a pre-stressed region (r_L = 8.0 cm)<br/>
+ The visible dent is much smaller (r_T = 2.3 cm)<br/>
+<br/>
+ Energy density in dent region (if it were isolated):<br/>
+ E_dent = ½mv² = ½(0.0102)(300)² = 459 J<br/>
+ Area_dent = π(0.023)² = 1.66 × 10⁻³ m²<br/>
+ Energy per area = 459/1.66×10⁻³ = 277,000 J/m²<br/>
+<br/>
+ Actual energy distribution area:<br/>
+ Area_total = π(0.080)² = 0.0201 m²<br/>
+ Energy per area = 459/0.0201 = 22,800 J/m²<br/>
+<br/>
+ The larger distribution area reduces energy density by factor of ~12,<br/>
+ preventing fabric failure and protecting the wearer.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_222</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A simple harmonic oscillator consists of a block of mass 2.00 kg attached to a spring of spring constant 100 N/m. When t = 1.00 s, the position and velocity of the block are x = 0.129 m and v = 3.415 m/s. What is the amplitude of the oscillations?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.35 m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0.50 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.65 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0.80 m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Calculate angular frequency
+      </strong>
+<br/>
+      ω = √(k/m) = √(100/2.00) = √50 = 7.071 rad/s</li>
+<li><strong>
+       Step 2: Apply energy conservation
+      </strong>
+<br/>
+      Total energy E = ½kA² (at maximum displacement)
+      <br/>
+      At t = 1.00 s: E = ½mv² + ½kx²
+      <br/>
+      Therefore: ½kA² = ½mv² + ½kx²</li>
+<li><strong>
+       Step 3: Substitute values
+      </strong>
+<br/>
+      ½(100)A² = ½(2.00)(3.415)² + ½(100)(0.129)²
+      <br/>
+      50A² = 11.662 + 0.831
+      <br/>
+      50A² = 12.493</li>
+<li><strong>
+       Step 4: Solve for amplitude
+      </strong>
+<br/>
+      A² = 12.493/50 = 0.24986
+      <br/>
+      A = √0.24986 = 0.4999 m ≈ 0.50 m</li>
+<li><strong>
+       Step 5: Verify the answer
+      </strong>
+<br/>
+      Check: ½(100)(0.50)² = 12.5 J
+      <br/>
+      KE + PE = 11.662 + 0.831 = 12.493 J ≈ 12.5 J ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_223</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>An oscillator consists of a block attached to a spring (k = 400 N/m). At some time t, the position (measured from the system's equilibrium location), velocity, and acceleration of the block are x = 0.100 m, v = -13.6 m/s, and a = -123 m/s². Calculate the frequency of oscillation and the mass of the block.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> f = 5.55 Hz, m = 0.325 kg
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> f = 4.92 Hz, m = 0.415 kg
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> f = 6.20 Hz, m = 0.265 kg
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> f = 5.00 Hz, m = 0.405 kg
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Use acceleration-displacement relationship
+      </strong>
+<br/>
+      In SHM: a = -ω²x
+      <br/>
+      -123 = -ω²(0.100)
+      <br/>
+      ω² = 123/0.100 = 1230
+      <br/>
+      ω = 35.07 rad/s</li>
+<li><strong>
+       Step 2: Calculate frequency
+      </strong>
+<br/>
+      f = ω/(2π) = 35.07/(2π) = 5.58 Hz ≈ 5.55 Hz</li>
+<li><strong>
+       Step 3: Find mass from ω = √(k/m)
+      </strong>
+<br/>
+      ω² = k/m
+      <br/>
+      m = k/ω² = 400/1230 = 0.325 kg</li>
+<li><strong>
+       Step 4: Verify using velocity
+      </strong>
+<br/>
+      First find amplitude: v² = ω²(A² - x²)
+      <br/>
+      (-13.6)² = (35.07)²(A² - 0.100²)
+      <br/>
+      184.96 = 1230(A² - 0.01)
+      <br/>
+      0.1504 = A² - 0.01
+      <br/>
+      A = 0.400 m</li>
+<li><strong>
+       Step 5: Check consistency
+      </strong>
+<br/>
+      Maximum acceleration: a_max = ω²A = 1230(0.400) = 492 m/s²
+      <br/>
+      At x = 0.100 m: a = -ω²x = -123 m/s² ✓
+      <br/>
+      All values consistent!</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

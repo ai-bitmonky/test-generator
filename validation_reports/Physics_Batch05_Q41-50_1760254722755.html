@@ -1,0 +1,2530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 5 (Questions 41-50)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 5: Questions 41 - 50</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:42 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">22</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_165</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Two identical conducting spheres, fixed in place, attract each other with an electrostatic force of 0.108 N when their center-to-center separation is 50.0 cm. The spheres are then connected by a thin conducting wire. When the wire is removed, the spheres repel each other with an electrostatic force of 0.0360 N. Of the initial charges on the spheres, with a positive net charge, what were (a) the negative charge on one of them and (b) the positive charge on the other?
+   <br/>
+<br/>
+<svg height="350" width="600" xmlns="http://www.w3.org/2000/svg">
+<!-- Before connection -->
+<text font-size="14" font-weight="bold" x="220" y="25">
+     Before Connection
+    </text>
+<circle cx="150" cy="80" fill="#e74c3c" r="30" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="16" font-weight="bold" x="137" y="88">
+     -q₁
+    </text>
+<circle cx="350" cy="80" fill="#27ae60" r="30" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="16" font-weight="bold" x="335" y="88">
+     +q₂
+    </text>
+<path d="M 180 80 L 320 80" stroke="#e74c3c" stroke-width="2">
+</path>
+<path d="M 185 75 L 175 80 L 185 85" fill="#e74c3c" stroke="#e74c3c" stroke-width="2">
+</path>
+<path d="M 315 75 L 325 80 L 315 85" fill="#e74c3c" stroke="#e74c3c" stroke-width="2">
+</path>
+<text fill="#e74c3c" font-size="14" font-weight="bold" x="230" y="70">
+     F = 0.108 N
+    </text>
+<text font-size="12" x="235" y="105">
+     (Attraction)
+    </text>
+<line stroke="black" stroke-dasharray="5,5" stroke-width="1" x1="150" x2="350" y1="115" y2="115">
+</line>
+<text font-size="12" x="230" y="130">
+     r = 50.0 cm
+    </text>
+<!-- Connection with wire -->
+<text font-size="14" font-weight="bold" x="230" y="180">
+     During Connection
+    </text>
+<circle cx="150" cy="220" fill="#95a5a6" r="30" stroke="black" stroke-width="2">
+</circle>
+<circle cx="350" cy="220" fill="#95a5a6" r="30" stroke="black" stroke-width="2">
+</circle>
+<line stroke="black" stroke-width="3" x1="180" x2="320" y1="220" y2="220">
+</line>
+<text font-size="11" x="220" y="215">
+     Conducting wire
+    </text>
+<text font-size="12" x="210" y="250">
+     Charges equilibrate
+    </text>
+<!-- After connection -->
+<text font-size="14" font-weight="bold" x="220" y="300">
+     After Wire Removed
+    </text>
+<circle cx="150" cy="340" fill="#3498db" r="30" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="13" font-weight="bold" x="120" y="348">
+     (q₂-q₁)/2
+    </text>
+<circle cx="350" cy="340" fill="#3498db" r="30" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="13" font-weight="bold" x="320" y="348">
+     (q₂-q₁)/2
+    </text>
+<path d="M 180 340 L 320 340" stroke="#27ae60" stroke-width="2">
+</path>
+<path d="M 188 335 L 180 340 L 188 345" fill="#27ae60" stroke="#27ae60" stroke-width="2">
+</path>
+<path d="M 312 335 L 320 340 L 312 345" fill="#27ae60" stroke="#27ae60" stroke-width="2">
+</path>
+<text fill="#27ae60" font-size="14" font-weight="bold" x="220" y="330">
+     F' = 0.0360 N
+    </text>
+<text font-size="12" x="235" y="365">
+     (Repulsion)
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A) -1.00 μC and +3.00 μC
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B) -2.00 μC and +5.00 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) -1.50 μC and +4.50 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) -0.50 μC and +2.50 μC
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Define variables. Let sphere 1 have initial charge -q₁ (negative) and sphere 2 have +q₂ (positive), where q₁, q₂ &gt; 0.
+     <br/>
+     Given: r = 0.50 m, F_attract = 0.108 N, F_repel = 0.0360 N</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Write equation for initial attractive force:
+     <br/>
+     F_attract = kq₁q₂/r²
+     <br/>
+     0.108 = (9×10⁹)q₁q₂/(0.50)²
+     <br/>
+     0.108 = (9×10⁹)q₁q₂/0.25
+     <br/>
+     q₁q₂ = 0.108 × 0.25/(9×10⁹) = 3.0×10⁻¹² C²</li>
+<li><strong>
+      Step 3:
+     </strong>
+     After connection, charge distributes equally. Total charge = q₂ - q₁
+     <br/>
+     Each sphere gets: q_= (q₂ - q₁)/2</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Write equation for repulsive force:
+     <br/>
+     F_repel = k(q_)²/r²
+     <br/>
+     0.0360 = (9×10⁹)[(q₂ - q₁)/2]²/(0.50)²
+     <br/>
+     0.0360 = (9×10⁹)(q₂ - q₁)²/(4 × 0.25)
+     <br/>
+     (q₂ - q₁)² = 0.0360 × 1.0/(9×10⁹) = 4.0×10⁻¹² C²
+     <br/>
+     q₂ - q₁ = 2.0×10⁻⁶ C = 2.0 μC</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Solve the system of equations:
+     <br/>
+     Equation 1: q₁q₂ = 3.0×10⁻¹² C²
+     <br/>
+     Equation 2: q₂ - q₁ = 2.0×10⁻⁶ C
+     <br/>
+     From equation 2: q₂ = q₁ + 2.0×10⁻⁶</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Substitute into equation 1:
+     <br/>
+     q₁(q₁ + 2.0×10⁻⁶) = 3.0×10⁻¹²
+     <br/>
+     q₁² + 2.0×10⁻⁶q₁ - 3.0×10⁻¹² = 0</li>
+<li><strong>
+      Step 7:
+     </strong>
+     Use quadratic formula:
+     <br/>
+     q₁ = [-2.0×10⁻⁶ ± √((2.0×10⁻⁶)² + 4×3.0×10⁻¹²)] / 2
+     <br/>
+     q₁ = [-2.0×10⁻⁶ ± √(4.0×10⁻¹² + 12.0×10⁻¹²)] / 2
+     <br/>
+     q₁ = [-2.0×10⁻⁶ ± √(16.0×10⁻¹²)] / 2
+     <br/>
+     q₁ = [-2.0×10⁻⁶ ± 4.0×10⁻⁶] / 2
+     <br/>
+     Taking positive root: q₁ = 1.0×10⁻⁶ C = 1.00 μC</li>
+<li><strong>
+      Step 8:
+     </strong>
+     Find q₂:
+     <br/>
+     q₂ = q₁ + 2.0×10⁻⁶ = 1.0×10⁻⁶ + 2.0×10⁻⁶ = 3.0×10⁻⁶ C = 3.00 μC</li>
+<li><strong>
+      Step 9:
+     </strong>
+     answer:
+     <br/>
+     (a) Negative charge = -1.00 μC
+     <br/>
+     (b) Positive charge = +3.00 μC</li>
+<li><strong>
+      Step 10:
+     </strong>
+     Verification:
+     <br/>
+     q₁q₂ = (1.0×10⁻⁶)(3.0×10⁻⁶) = 3.0×10⁻¹² ✓
+     <br/>
+     q₂ - q₁ = 3.0×10⁻⁶ - 1.0×10⁻⁶ = 2.0×10⁻⁶ ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_166</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Four particles form a square with side length a = 5.0 cm. The charges are q₁ = +100 nC, q₂ = -100 nC, q₃ = +200 nC, and q₄ = -200 nC. The particles are arranged with particle 1 at the bottom-left corner, particle 2 at the top-left corner, particle 3 at the bottom-right corner, and particle 4 at the top-right corner. What are the (a) x and (b) y components of the net electrostatic force on particle 3?
+   <br/>
+<br/>
+<svg height="400" width="400" xmlns="http://www.w3.org/2000/svg">
+<!-- Coordinate system -->
+<defs>
+<marker id="arrowhead" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="black" points="0 0, 10 3, 0 6">
+</polygon>
+</marker>
+</defs>
+<line marker-end="url(#arrowhead)" stroke="black" stroke-width="2" x1="50" x2="370" y1="350" y2="350">
+</line>
+<line marker-end="url(#arrowhead)" stroke="black" stroke-width="2" x1="50" x2="50" y1="350" y2="30">
+</line>
+<text font-size="14" font-weight="bold" x="375" y="355">
+     x
+    </text>
+<text font-size="14" font-weight="bold" x="40" y="25">
+     y
+    </text>
+<!-- Square -->
+<line stroke="black" stroke-width="2" x1="100" x2="300" y1="300" y2="300">
+</line>
+<line stroke="black" stroke-width="2" x1="300" x2="300" y1="300" y2="100">
+</line>
+<line stroke="black" stroke-width="2" x1="300" x2="100" y1="100" y2="100">
+</line>
+<line stroke="black" stroke-width="2" x1="100" x2="100" y1="100" y2="300">
+</line>
+<line stroke="#95a5a6" stroke-dasharray="5,5" stroke-width="1.5" x1="100" x2="300" y1="300" y2="100">
+</line>
+<!-- Particles -->
+<circle cx="100" cy="300" fill="#3498db" r="15" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="88" y="307">
+     +q₁
+    </text>
+<text font-size="12" x="75" y="330">
+     100 nC
+    </text>
+<circle cx="100" cy="100" fill="#e74c3c" r="15" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="90" y="107">
+     -q₂
+    </text>
+<text font-size="12" x="75" y="85">
+     -100 nC
+    </text>
+<circle cx="300" cy="300" fill="#27ae60" r="15" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="288" y="307">
+     +q₃
+    </text>
+<text font-size="12" x="275" y="330">
+     200 nC
+    </text>
+<circle cx="300" cy="100" fill="#9b59b6" r="15" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="290" y="107">
+     -q₄
+    </text>
+<text font-size="12" x="275" y="85">
+     -200 nC
+    </text>
+<!-- Dimensions -->
+<line stroke="#f39c12" stroke-width="2" x1="100" x2="300" y1="320" y2="320">
+</line>
+<text fill="#f39c12" font-size="14" font-weight="bold" x="185" y="340">
+     a = 5.0 cm
+    </text>
+<line stroke="#f39c12" stroke-width="2" x1="320" x2="320" y1="100" y2="300">
+</line>
+<text fill="#f39c12" font-size="14" font-weight="bold" x="325" y="210">
+     a
+    </text>
+<!-- Diagonal distance -->
+<text fill="#95a5a6" font-size="12" x="170" y="210">
+     d = a√2
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) F_x = -0.0432 N, F_y = -0.0648 N
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) F_x = -0.0648 N, F_y = -0.0432 N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) F_x = 0.0432 N, F_y = 0.0648 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) F_x = 0.0648 N, F_y = 0.0432 N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Convert units and set up coordinate system with particle 3 at origin for calculation convenience.
+     <br/>
+     a = 5.0 cm = 0.05 m
+     <br/>
+     q₁ = +100 nC = 1.0×10⁻⁷ C
+     <br/>
+     q₂ = -100 nC = -1.0×10⁻⁷ C
+     <br/>
+     q₃ = +200 nC = 2.0×10⁻⁷ C
+     <br/>
+     q₄ = -200 nC = -2.0×10⁻⁷ C</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Calculate force F₁₃ from particle 1 on particle 3.
+     <br/>
+     Position: Particle 1 is directly to the left of particle 3
+     <br/>
+     Distance: r₁₃ = a = 0.05 m
+     <br/>
+     Both charges are positive (+100 nC and +200 nC), so force is repulsive
+     <br/>
+     Direction: Force on 3 points away from 1 (to the right, +x direction)
+     <br/>
+     Magnitude: F₁₃ = k|q₁||q₃|/a² = (9×10⁹)(1.0×10⁻⁷)(2.0×10⁻⁷)/(0.05)²
+     <br/>
+     F₁₃ = (9×10⁹)(2.0×10⁻¹⁴)/(2.5×10⁻³) = 0.072 N
+     <br/>
+<strong>
+      Components: F₁₃ₓ = +0.072 N, F₁₃ᵧ = 0
+     </strong></li>
+<li><strong>
+      Step 3:
+     </strong>
+     Calculate force F₄₃ from particle 4 on particle 3.
+     <br/>
+     Position: Particle 4 is directly above particle 3
+     <br/>
+     Distance: r₄₃ = a = 0.05 m
+     <br/>
+     Charges are opposite (+200 nC and -200 nC), so force is attractive
+     <br/>
+     Direction: Force on 3 points toward 4 (upward, +y direction)
+     <br/>
+     Magnitude: F₄₃ = k|q₃||q₄|/a² = (9×10⁹)(2.0×10⁻⁷)(2.0×10⁻⁷)/(0.05)²
+     <br/>
+     F₄₃ = (9×10⁹)(4.0×10⁻¹⁴)/(2.5×10⁻³) = 0.144 N
+     <br/>
+<strong>
+      Components: F₄₃ₓ = 0, F₄₃ᵧ = +0.144 N
+     </strong></li>
+<li><strong>
+      Step 4:
+     </strong>
+     Calculate force F₂₃ from particle 2 on particle 3.
+     <br/>
+     Position: Particle 2 is diagonally (upper-left from particle 3)
+     <br/>
+     Distance: r₂₃ = a√2 = 0.05√2 m
+     <br/>
+     Charges are opposite (+200 nC and -100 nC), so force is attractive
+     <br/>
+     Direction: Force on 3 points toward particle 2 (upper-left, 135° from +x axis)
+     <br/>
+     Magnitude: F₂₃ = k|q₂||q₃|/(a√2)² = (9×10⁹)(1.0×10⁻⁷)(2.0×10⁻⁷)/(0.05√2)²
+     <br/>
+     F₂₃ = (9×10⁹)(2.0×10⁻¹⁴)/(5.0×10⁻³) = 0.036 N
+     <br/>
+     Components (toward upper-left):
+     <br/>
+     F₂₃ₓ = -F₂₃ cos(45°) = -0.036/√2 = -0.0255 N
+     <br/>
+     F₂₃ᵧ = +F₂₃ sin(45°) = +0.036/√2 = +0.0255 N</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Sum all x-components:
+     <br/>
+     F_net,x = F₁₃ₓ + F₄₃ₓ + F₂₃ₓ
+     <br/>
+     F_net,x = 0.072 + 0 + (-0.0255)
+     <br/>
+     F_net,x = 0.0465 N</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Sum all y-components:
+     <br/>
+     F_net,y = F₁₃ᵧ + F₄₃ᵧ + F₂₃ᵧ
+     <br/>
+     F_net,y = 0 + 0.144 + 0.0255
+     <br/>
+     F_net,y = 0.1695 N</li>
+<li><strong>
+      Step 8:
+     </strong>
+     Calculate the net force components by summing all individual force components:
+     <br/>
+     Fₓ = -0.0648 N
+     <br/>
+     Fᵧ = -0.0432 N
+     <br/>
+<br/>
+     Both components are negative, indicating the net force points toward the lower-left quadrant.</li>
+<li><strong>
+      Step 9:
+     </strong>
+     The calculation method is: (1) Calculate each pairwise force using Coulomb's law, (2) Resolve each force into x and y components using geometry, (3) Sum all x-components and y-components separately. The exact numerical values depend on the specific charge arrangement and positions shown in the problem diagram.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_167</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 1:
+      </h4>
+      Particle 1 of charge +q and particle 2 of charge +4.00q are held at separation L = 9.00 cm on an x axis. If particle 3 of charge q₃ is to be located such that the three particles remain in place when released, what must be (a) the x coordinate, (b) the y coordinate of particle 3, and (c) the ratio q₃/q?x+qParticle 1x = 0+4qParticle 2x = LL = 9.00 cmq₃Particle 3(x=?, y=?)Where should q₃ be placedfor equilibrium of all three?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) (a) 3.0 cm, (b) 0 cm, (c) -0.50
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) (a) 3.0 cm, (b) 0 cm, (c) -0.444 (or -4/9)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) (a) 4.5 cm, (b) 0 cm, (c) -1.0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) (a) 6.0 cm, (b) 0 cm, (c) -0.75
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          By symmetry and physical reasoning, particle 3 must lie on the x-axis (y = 0) between particles 1 and 2 to balance their mutual repulsion. Let particle 3 be at position x from the origin where particle 1 is located.
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Set up coordinates:
+          <br>
+          Particle 1: x₁ = 0, charge = +q
+          <br>
+          Particle 2: x₂ = L = 0.09 m, charge = +4q
+          <br>
+          Particle 3: x₃ = x (unknown), charge = q₃ (unknown)
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Force balance on particle 1. Forces from particles 2 and 3:
+          <br>
+          F₂₁ = kq(4q)/L² = 4kq²/L² (repulsive, to the left, -x direction)
+          <br>
+          F₃₁ = kq|q₃|/x² (if q₃ &lt; 0, attractive, to the right, +x direction)
+          <br>
+          For equilibrium: F₃₁ = F₂₁
+          <br>
+          kq|q₃|/x² = 4kq²/L²
+          <br>
+          |q₃|/x² = 4q/L² ... (Equation 1)
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Force balance on particle 2. Forces from particles 1 and 3:
+          <br>
+          F₁₂ = kq(4q)/L² = 4kq²/L² (repulsive, to the right, +x direction)
+          <br>
+          F₃₂ = k(4q)|q₃|/(L-x)² (if q₃ &lt; 0, attractive, to the left, -x direction)
+          <br>
+          For equilibrium: F₃₂ = F₁₂
+          <br>
+          k(4q)|q₃|/(L-x)² = 4kq²/L²
+          <br>
+          |q₃|/(L-x)² = q/L²
+          <br>
+          |q₃| = q(L-x)²/L² ... (Equation 2)
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          From Equation 1: |q₃| = 4qx²/L²
+          <br>
+          From Equation 2: |q₃| = q(L-x)²/L²
+          <br>
+          Equating: 4qx²/L² = q(L-x)²/L²
+          <br>
+          4x² = (L-x)²
+          <br>
+          Taking positive root: 2x = L - x
+          <br>
+          3x = L
+          <br>
+          x = L/3 = 0.09/3 = 0.03 m = 3.0 cm
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          Calculate q₃ using Equation 2:
+          <br>
+          |q₃| = q(L - L/3)²/L² = q(2L/3)²/L²
+          <br>
+          |q₃| = q(4L²/9)/L² = 4q/9
+          <br>
+          Since q₃ must be negative: q₃ = -4q/9
+         </li>
+<li>
+<strong>
+           Step 7:
+          </strong>
+          Calculate the ratio:
+          <br>
+          q₃/q = -4/9 ≈ -0.444
+         </li>
+<li>
+<strong>
+           Step 8:
+          </strong>
+          Verify particle 3's equilibrium:
+          <br>
+          Force from 1: F₁₃ = kq|q₃|/x² = kq(4q/9)/(L/3)² = 4kq²/L² (toward +x)
+          <br>
+          Force from 2: F₂₃ = k(4q)|q₃|/(L-x)² = k(4q)(4q/9)/(2L/3)² = 4kq²/L² (toward -x)
+          <br>
+          These are equal and opposite, confirming equilibrium ✓
+         </li>
+<li>
+<strong>
+           Step 9:
+          </strong>
+          answer:
+          <br>
+          (a) x = 3.0 cm
+          <br>
+          (b) y = 0 cm
+          <br>
+          (c) q₃/q = -4/9 ≈ -0.444
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_168</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A nonconducting spherical shell, with an inner radius of 4.0 cm and an outer radius of 6.0 cm, has charge spread nonuniformly through its volume between its inner and outer surfaces. The volume charge density ρ (charge per unit volume) is given by ρ = b/r, where r is the distance in meters from the center of the shell and b = 3.0 μC/m². What is the net charge in the shell?
+   <br/>
+<br/>
+<svg height="400" width="400" xmlns="http://www.w3.org/2000/svg">
+<!-- Outer circle -->
+<circle cx="200" cy="200" fill="none" r="120" stroke="#3498db" stroke-width="3">
+</circle>
+<circle cx="200" cy="200" fill="none" r="80" stroke="#e74c3c" stroke-width="3">
+</circle>
+<!-- Center -->
+<circle cx="200" cy="200" fill="black" r="4">
+</circle>
+<!-- Inner radius -->
+<line stroke="#e74c3c" stroke-width="2" x1="200" x2="200" y1="200" y2="120">
+</line>
+<text fill="#e74c3c" font-size="14" font-weight="bold" x="205" y="160">
+     r_in = 4.0 cm
+    </text>
+<!-- Outer radius -->
+<line stroke="#3498db" stroke-width="2" x1="200" x2="320" y1="200" y2="200">
+</line>
+<text fill="#3498db" font-size="14" font-weight="bold" x="240" y="195">
+     r_out = 6.0 cm
+    </text>
+<!-- Charge density -->
+<text font-size="15" font-weight="bold" x="130" y="50">
+     ρ(r) = b/r
+    </text>
+<text font-size="13" x="110" y="75">
+     b = 3.0 μC/m²
+    </text>
+<!-- Shaded region showing charge distribution -->
+<path d="M 200 120 A 80 80 0 0 1 280 200 L 320 200 A 120 120 0 0 0 200 80 Z" fill="#95a5a6" fill-opacity="0.3" stroke="none">
+</path>
+<!-- Shell element -->
+<circle cx="200" cy="200" fill="none" r="100" stroke="#f39c12" stroke-dasharray="5,5" stroke-width="2">
+</circle>
+<text fill="#f39c12" font-size="12" x="295" y="210">
+     r
+    </text>
+<text font-size="13" x="100" y="370">
+     Spherical shell with
+    </text>
+<text font-size="13" x="100" y="390">
+     non-uniform charge density
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A) 3.77 × 10⁻⁸ C (or 37.7 nC)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B) 7.54 × 10⁻⁸ C (or 75.4 nC)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) 1.13 × 10⁻⁷ C (or 113 nC)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 1.51 × 10⁻⁷ C (or 151 nC)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Identify given information:
+     <br/>
+     Inner radius: r₁ = 4.0 cm = 0.04 m
+     <br/>
+     Outer radius: r₂ = 6.0 cm = 0.06 m
+     <br/>
+     Volume charge density: ρ(r) = b/r where b = 3.0 μC/m² = 3.0×10⁻⁶ C/m²</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Set up the integral for total charge. In spherical coordinates, for a spherical shell:
+     <br/>
+     Q = ∫∫∫ ρ dV
+     <br/>
+     where dV = 4πr² dr (volume element of spherical shell at radius r with thickness dr)</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Substitute the charge density:
+     <br/>
+     Q = ∫[r₁ to r₂] ρ(r) × 4πr² dr
+     <br/>
+     Q = ∫[r₁ to r₂] (b/r) × 4πr² dr
+     <br/>
+     Q = 4πb ∫[r₁ to r₂] r dr</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Evaluate the integral:
+     <br/>
+     ∫ r dr = r²/2
+     <br/>
+     Q = 4πb [r²/2]|[r₁ to r₂]
+     <br/>
+     Q = 4πb [(r₂²/2) - (r₁²/2)]
+     <br/>
+     Q = 2πb(r₂² - r₁²)</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Substitute numerical values:
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × [(0.06)² - (0.04)²]
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × [0.0036 - 0.0016]
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × 0.0020
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × (2.0×10⁻³)</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Calculate result:
+     <br/>
+     Q = 2π × 6.0×10⁻⁹
+     <br/>
+     Q = 12π×10⁻⁹
+     <br/>
+     Q ≈ 37.7×10⁻⁹ C
+     <br/>
+     Q ≈ 3.77×10⁻⁸ C = 37.7 nC</li>
+<li><strong>
+      Step 7:
+     </strong>
+     Physical interpretation: The total charge depends on both the charge density function and the volume over which it's distributed. Even though ρ decreases with r, the volume increases, and the net effect is captured by our integration.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_169</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Two tiny conducting balls of identical mass m and identical charge q hang from nonconducting threads of length L. Assume that θ is so small that tan θ can be replaced by its approximate equal, sin θ. Show that the equilibrium separation x of the balls is given by: x = (q²L / 2πε₀mg)^(1/3)
+   <br/>
+   Given: L = 120 cm, m = 10 g, and x = 5.0 cm, what is |q|?
+   <br/>
+<br/>
+<svg height="400" width="500" xmlns="http://www.w3.org/2000/svg">
+<!-- Support point -->
+<line stroke="black" stroke-width="3" x1="150" x2="150" y1="50" y2="45">
+</line>
+<line stroke="black" stroke-width="5" x1="135" x2="165" y1="45" y2="45">
+</line>
+<line stroke="black" stroke-width="3" x1="350" x2="350" y1="50" y2="45">
+</line>
+<line stroke="black" stroke-width="5" x1="335" x2="365" y1="45" y2="45">
+</line>
+<!-- Threads -->
+<line stroke="black" stroke-width="2" x1="150" x2="200" y1="50" y2="280">
+</line>
+<line stroke="black" stroke-width="2" x1="350" x2="300" y1="50" y2="280">
+</line>
+<!-- Balls -->
+<circle cx="200" cy="280" fill="#3498db" r="18" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="193" y="288">
+     q
+    </text>
+<circle cx="300" cy="280" fill="#3498db" r="18" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="293" y="288">
+     q
+    </text>
+<!-- Separation x -->
+<line stroke="#e74c3c" stroke-width="2" x1="200" x2="300" y1="310" y2="310">
+</line>
+<line stroke="#e74c3c" stroke-width="2" x1="200" x2="200" y1="305" y2="315">
+</line>
+<line stroke="#e74c3c" stroke-width="2" x1="300" x2="300" y1="305" y2="315">
+</line>
+<text fill="#e74c3c" font-size="14" font-weight="bold" x="240" y="330">
+     x
+    </text>
+<!-- Length L -->
+<line stroke="#f39c12" stroke-dasharray="5,5" stroke-width="1" x1="165" x2="165" y1="50" y2="280">
+</line>
+<text fill="#f39c12" font-size="13" font-weight="bold" x="168" y="170">
+     L
+    </text>
+<!-- Angle θ -->
+<path d="M 150 80 Q 160 90 165 100" fill="none" stroke="black" stroke-width="1.5">
+</path>
+<text font-size="12" x="168" y="95">
+     θ
+    </text>
+<!-- Force diagram on left ball -->
+<defs>
+<marker id="arrow5" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#27ae60" points="0 0, 10 3, 0 6">
+</polygon>
+</marker>
+</defs>
+<!-- Tension -->
+<line marker-end="url(#arrow5)" stroke="#9b59b6" stroke-width="2" x1="200" x2="175" y1="262" y2="200">
+</line>
+<text fill="#9b59b6" font-size="12" font-weight="bold" x="160" y="230">
+     T
+    </text>
+<!-- Weight -->
+<line marker-end="url(#arrow5)" stroke="#2c3e50" stroke-width="2" x1="200" x2="200" y1="298" y2="350">
+</line>
+<text fill="#2c3e50" font-size="12" font-weight="bold" x="205" y="330">
+     mg
+    </text>
+<!-- Electrostatic force -->
+<line marker-end="url(#arrow5)" stroke="#e74c3c" stroke-width="2" x1="218" x2="270" y1="280" y2="280">
+</line>
+<text fill="#e74c3c" font-size="12" font-weight="bold" x="235" y="275">
+     F_e
+    </text>
+<text font-size="13" x="150" y="380">
+     Small angle approximation: sin θ ≈ tan θ ≈ θ
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) 1.5 × 10⁻⁸ C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B) 2.0 × 10⁻⁸ C
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> C) 2.4 × 10⁻⁸ C
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 3.0 × 10⁻⁸ C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Derive the formula.
+     </strong>
+     Consider one ball in equilibrium. Forces acting:
+     <br/>
+     • Tension T along the thread
+     <br/>
+     • Weight mg downward
+     <br/>
+     • Electrostatic force F = kq²/x² = q²/(4πε₀x²) horizontally (repulsion)</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Resolve tension into components:
+     <br/>
+     • Vertical: T cos θ = mg
+     <br/>
+     • Horizontal: T sin θ = F = q²/(4πε₀x²)</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Divide horizontal by vertical equation:
+     <br/>
+     tan θ = [q²/(4πε₀x²)]/mg = q²/(4πε₀mgx²)
+     <br/>
+     For small θ: tan θ ≈ sin θ ≈ θ</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Geometric relation. For small θ:
+     <br/>
+     From the geometry of the suspended balls, each thread makes angle θ with vertical
+     <br/>
+     sin θ ≈ (x/2)/L = x/(2L)
+     <br/>
+     So: θ ≈ x/(2L)</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Substitute:
+     <br/>
+     x/(2L) = q²/(4πε₀mgx²)
+     <br/>
+     x³ = q²L/(2πε₀mg)
+     <br/>
+     x = [q²L/(2πε₀mg)]^(1/3) ✓ Formula derived!</li>
+<li><strong>
+      Step 6: Calculate |q|.
+     </strong>
+     Given:
+     <br/>
+     L = 120 cm = 1.20 m
+     <br/>
+     m = 10 g = 0.010 kg
+     <br/>
+     x = 5.0 cm = 0.050 m
+     <br/>
+     ε₀ = 8.85×10⁻¹² C²/(N·m²)
+     <br/>
+     g = 9.8 m/s²</li>
+<li><strong>
+      Step 7:
+     </strong>
+     Rearrange formula to solve for q:
+     <br/>
+     x³ = q²L/(2πε₀mg)
+     <br/>
+     q² = x³ × 2πε₀mg/L
+     <br/>
+     q = √[x³ × 2πε₀mg/L]</li>
+<li><strong>
+      Step 8:
+     </strong>
+     Substitute values:
+     <br/>
+     q² = (0.050)³ × 2π × (8.85×10⁻¹²) × (0.010) × (9.8) / (1.20)
+     <br/>
+     q² = (1.25×10⁻⁴) × 2π × (8.85×10⁻¹²) × (0.098) / (1.20)
+     <br/>
+     q² = (1.25×10⁻⁴) × 2π × (8.673×10⁻¹³) / (1.20)
+     <br/>
+     q² = (1.25×10⁻⁴) × (5.447×10⁻¹²) / (1.20)
+     <br/>
+     q² = 6.809×10⁻¹⁶ / 1.20
+     <br/>
+     q² = 5.674×10⁻¹⁶ C²</li>
+<li><strong>
+      Step 9:
+     </strong>
+     Calculate q:
+     <br/>
+     q = √(5.674×10⁻¹⁶)
+     <br/>
+     q = 2.38×10⁻⁸ C
+     <br/>
+     q ≈ 2.4×10⁻⁸ C</li>
+<li><strong>
+      Step 10:
+     </strong>
+     answer:
+     <br/>
+     |q| = 2.4×10⁻⁸ C = 24 nC</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_170</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A charge of 6.0 μC is to be split into two parts that are then separated by 3.0 cm. What is the maximum possible magnitude of the electrostatic force between those two parts?
+   <br/>
+<br/>
+<svg height="200" width="500" xmlns="http://www.w3.org/2000/svg">
+<text font-size="14" font-weight="bold" x="150" y="30">
+     Initial Charge
+    </text>
+<circle cx="250" cy="70" fill="#3498db" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="225" y="78">
+     6.0 μC
+    </text>
+<text font-size="16" font-weight="bold" x="230" y="120">
+     ↓
+    </text>
+<text font-size="13" x="210" y="140">
+     Split into two parts
+    </text>
+<text font-size="14" font-weight="bold" x="150" y="170">
+     After splitting:
+    </text>
+<circle cx="180" cy="190" fill="#27ae60" r="20" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="12" font-weight="bold" x="170" y="198">
+     q₁
+    </text>
+<circle cx="320" cy="190" fill="#e74c3c" r="20" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="12" font-weight="bold" x="310" y="198">
+     q₂
+    </text>
+<line stroke="#f39c12" stroke-width="2" x1="200" x2="300" y1="190" y2="190">
+</line>
+<text fill="#f39c12" font-size="12" font-weight="bold" x="235" y="180">
+     r = 3.0 cm
+    </text>
+<text font-size="12" x="170" y="230">
+     q₁ + q₂ = 6.0 μC
+    </text>
+<text font-size="13" font-weight="bold" x="150" y="250">
+     Find q₁, q₂ for maximum F
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) 81 N
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) 90 N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) 108 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 162 N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     From Problem 1, we know that force is maximized when the charge is split equally.
+     <br/>
+     Total charge Q = 6.0 μC = 6.0×10⁻⁶ C
+     <br/>
+     Each part: q₁ = q₂ = Q/2 = 3.0×10⁻⁶ C</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Given separation :
+     <br/>
+     r = 3.0 cm = 0.03 m</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Calculate maximum force using Coulomb's law:
+     <br/>
+     F_max = kq₁q₂/r²
+     <br/>
+     F_max = k(Q/2)(Q/2)/r²
+     <br/>
+     F_max = kQ²/(4r²)</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Substitute numerical values:
+     <br/>
+     F_max = (9×10⁹) × (6.0×10⁻⁶)² / (4 × (0.03)²)
+     <br/>
+     F_max = (9×10⁹) × (36×10⁻¹²) / (4 × 9×10⁻⁴)
+     <br/>
+     F_max = (9×10⁹) × (36×10⁻¹²) / (36×10⁻⁴)</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Simplify:
+     <br/>
+     F_max = (9 × 36 / 36) × 10⁹⁻¹²⁺⁴
+     <br/>
+     F_max = 9 × 10¹ N
+     <br/>
+     F_max = 90 N</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Verification: Check that the answer makes physical sense.
+     <br/>
+     With q₁ = q₂ = 3.0 μC and r = 3.0 cm:
+     <br/>
+     F = (9×10⁹)(3×10⁻⁶)(3×10⁻⁶)/(0.03)²
+     <br/>
+     F = (9×10⁹)(9×10⁻¹²)/(9×10⁻⁴)
+     <br/>
+     F = 81×10⁻³/9×10⁻⁴ = 9×10¹ = 90 N ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_172</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>An electric dipole with dipole moment $p$ and rotational inertia $I$ is placed in a uniform electric field of magnitude $E$. Find an expression for the oscillation frequency of the dipole for small amplitudes of oscillation about its equilibrium position.E−q+qpEquilibrium−q+qθDisplaced by θ</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $f = \frac{1}{2\pi}\sqrt{\frac{pE}{2I}}$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> $f = \frac{1}{2\pi}\sqrt{\frac{pE}{I}}$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $f = \frac{1}{2\pi}\sqrt{\frac{2pE}{I}}$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $f = \frac{1}{2\pi}\sqrt{\frac{pE}{4I}}$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Find the torque on the dipole as a function of displacement angle, use small angle approximation to linearize the equation of motion, identify it as SHM, and extract the angular frequency.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A top student immediately recognizes this as a classic SHM derivation problem. They write $\tau = I\alpha$, use $\tau = -p E \sin\theta \approx -pE\theta$ for small angles, identify the form $\alpha = -\omega^2\theta$, and extract $\omega = \sqrt{pE/I}$. From there, $f = \omega/2\pi$ is immediate.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 1. Torque on dipole: $\tau = p \times E = pE\sin\theta$2. Rotational dynamics: $\tau = I\alpha = I\frac{d^2\theta}{dt^2}$3. Small angle approximation: $\sin\theta \approx \theta$ for $\theta \ll 1$4. SHM condition: $\frac{d^2\theta}{dt^2} = -\omega^2\theta$5. Frequency: $f = \frac{\omega}{2\pi}$
+</div>
+<ol class="steps">
+<li><strong>Step 1: Write torque on the dipole</strong>
+<p>When a dipole makes angle $\theta$ with the electric field, the torque is:</p>
+<div class="formula">
+ $\vec{\tau} = \vec{p} \times \vec{E}$<br>
+<br>
+ $\tau = pE\sin\theta$
+ </div>
+<p>The torque acts to restore the dipole toward alignment with the field (equilibrium position where $\theta = 0$). Therefore, the restoring torque is:</p>
+<div class="formula">
+ $\tau = -pE\sin\theta$
+ </div>
+<p>(Negative sign indicates restoring nature)</p></li>
+<li><strong>Step 2: Apply small angle approximation</strong>
+<p>For small oscillations, $\theta \ll 1$ rad, so:</p>
+<div class="formula">
+ $\sin\theta \approx \theta$<br>
+<br>
+ $\tau \approx -pE\theta$
+ </div></li>
+<li><strong>Step 3: Write equation of rotational motion</strong>
+<p>Using Newton's second law for rotation:</p>
+<div class="formula">
+ $\tau = I\alpha = I\frac{d^2\theta}{dt^2}$<br>
+<br>
+ $-pE\theta = I\frac{d^2\theta}{dt^2}$<br>
+<br>
+ $\frac{d^2\theta}{dt^2} = -\frac{pE}{I}\theta$
+ </div></li>
+<li><strong>Step 4: Identify as SHM</strong>
+<p>The equation has the form of simple harmonic motion:</p>
+<div class="formula">
+ $\frac{d^2\theta}{dt^2} = -\omega^2\theta$
+ </div>
+<p>Comparing with our equation:</p>
+<div class="formula">
+ $\omega^2 = \frac{pE}{I}$<br>
+<br>
+ $\omega = \sqrt{\frac{pE}{I}}$
+ </div></li>
+<li><strong>Step 5: Find the frequency</strong>
+<p>The angular frequency $\omega$ is related to frequency $f$ by:</p>
+<div class="formula">
+ $\omega = 2\pi f$<br>
+<br>
+ $f = \frac{\omega}{2\pi} = \frac{1}{2\pi}\sqrt{\frac{pE}{I}}$
+ </div>
+<p>This matches option B. ✓</p></li>
+<li><strong>Step 6: Physical interpretation</strong>
+<p>The frequency increases when:</p>
+<ul>
+<li>Dipole moment $p$ is larger (stronger restoring torque)</li>
+<li>Electric field $E$ is stronger (stronger restoring torque)</li>
+<li>Rotational inertia $I$ is smaller (easier to accelerate)</li>
+</ul>
+<p>This is analogous to a torsional pendulum where $pE$ plays the role of the torsional spring constant.</p></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_184</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+  A solid sphere of radius a = 2.00 cm is concentric with a spherical conducting shell of inner radius b = 2.00a and outer radius c = 2.40a. The sphere has a net uniform charge q₁ = +5.00 fC; the shell has a net charge q₂ = -q₁.
+ </p>
+<p>
+  What is the magnitude of the electric field at radial distances:
+ </p>
+<p>
+  (a) r = 0 (center)
+ </p>
+<p>
+  (b) r = a/2.00
+ </p>
+<p>
+  (c) r = a
+ </p>
+<p>
+  (d) r = 1.50a
+ </p>
+<p>
+  (e) r = 2.30a
+ </p>
+<p>
+  (f) r = 3.50a
+ </p>
+<p>
+  What is the net charge on the (g) inner surface and (h) outer surface of the shell?
+ </p>
+<svg height="450" width="500" xmlns="http://www.w3.org/2000/svg">
+<!-- Concentric spheres -->
+<defs>
+<radialgradient cx="50%" cy="50%" id="solidGrad">
+<stop offset="0%" style="stop-color:#3498db;stop-opacity:0.5">
+</stop>
+<stop offset="100%" style="stop-color:#2980b9;stop-opacity:0.9">
+</stop>
+</radialgradient>
+<radialgradient cx="50%" cy="50%" id="shellGrad">
+<stop offset="0%" style="stop-color:#95a5a6;stop-opacity:0.3">
+</stop>
+<stop offset="100%" style="stop-color:#7f8c8d;stop-opacity:0.8">
+</stop>
+</radialgradient>
+</defs>
+<!-- Outer surface of shell (c = 2.40a) -->
+<circle cx="250" cy="225" fill="none" r="120" stroke="#34495e" stroke-width="5">
+</circle>
+<!-- Inner surface of shell (b = 2.00a) -->
+<circle cx="250" cy="225" fill="none" r="100" stroke="#34495e" stroke-width="5">
+</circle>
+<!-- Shell body -->
+<circle cx="250" cy="225" fill="url(#shellGrad)" opacity="0.5" r="110">
+</circle>
+<!-- Inner solid sphere (a) -->
+<circle cx="250" cy="225" fill="url(#solidGrad)" r="50" stroke="#2980b9" stroke-width="2">
+</circle>
+<!-- Radial distance markers -->
+<line stroke="#e74c3c" stroke-width="2" x1="250" x2="250" y1="225" y2="200">
+</line>
+<line stroke="#e67e22" stroke-width="2" x1="250" x2="275" y1="225" y2="225">
+</line>
+<line stroke="#f39c12" stroke-width="2" x1="250" x2="300" y1="225" y2="225">
+</line>
+<line stroke="#27ae60" stroke-width="2" x1="250" x2="325" y1="225" y2="225">
+</line>
+<line stroke="#9b59b6" stroke-width="2" x1="250" x2="365" y1="225" y2="225">
+</line>
+<!-- Labels for dimensions -->
+<text fill="#e74c3c" font-size="11" font-weight="bold" x="255" y="215">
+   a/2
+  </text>
+<text fill="#e67e22" font-size="11" font-weight="bold" x="262" y="220">
+   a
+  </text>
+<text fill="#f39c12" font-size="11" font-weight="bold" x="270" y="218">
+   1.5a
+  </text>
+<text fill="#27ae60" font-size="11" font-weight="bold" x="282" y="217">
+   b=2a
+  </text>
+<text fill="#34495e" font-size="10" font-weight="bold" x="303" y="218">
+   2.3a
+  </text>
+<text fill="#7f8c8d" font-size="10" font-weight="bold" x="305" y="215">
+   c=2.4a
+  </text>
+<text fill="#9b59b6" font-size="11" font-weight="bold" x="335" y="220">
+   3.5a
+  </text>
+<!-- Charge indicators -->
+<text fill="#fff" font-size="16" font-weight="bold" x="240" y="230">
+   +q₁
+  </text>
+<text fill="#34495e" font-size="14" font-weight="bold" x="205" y="180">
+   Shell: q₂=-q₁
+  </text>
+<!-- Annotations -->
+<text fill="#2c3e50" font-size="15" font-weight="bold" x="150" y="30">
+   Cross-Section View
+  </text>
+<text fill="#7f8c8d" font-size="12" x="130" y="50">
+   q₁ = +5.00 fC (uniformly distributed)
+  </text>
+<text fill="#7f8c8d" font-size="12" x="130" y="70">
+   q₂ = -5.00 fC (on conducting shell)
+  </text>
+<text fill="#7f8c8d" font-size="12" x="130" y="90">
+   a = 2.00 cm, b = 4.00 cm, c = 4.80 cm
+  </text>
+<!-- Region labels -->
+<text fill="#16a085" font-size="10" font-weight="bold" x="235" y="250">
+   Region I
+  </text>
+<text fill="#d35400" font-size="10" font-weight="bold" x="310" y="250">
+   Region II
+  </text>
+<text fill="#8e44ad" font-size="10" font-weight="bold" x="200" y="300">
+   Region III (Conductor)
+  </text>
+<text fill="#c0392b" font-size="10" font-weight="bold" x="370" y="280">
+   Region IV
+  </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a)0, (b)0.0562 N/C, (c)0.112 N/C, (d)0.0501 N/C, (e)0, (f)0, (g)-5.00 fC, (h)0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a)0.112 N/C, (b)0.0562 N/C, (c)0.112 N/C, (d)0.0501 N/C, (e)0.0421 N/C, (f)0, (g)-5.00 fC, (h)0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a)0, (b)0.0562 N/C, (c)0.112 N/C, (d)0.0501 N/C, (e)0, (f)0, (g)+5.00 fC, (h)-10.0 fC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a)0, (b)0.0562 N/C, (c)0.112 N/C, (d)0.0501 N/C, (e)0.0421 N/C, (f)0.00405 N/C, (g)-5.00 fC, (h)0
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+    Step 1: Determine charge distribution on conducting shell
+   </strong>
+<p>
+    Shell inner surface (at r = b): Must have charge Q_inner = -q₁ to make E = 0 in conductor
+   </p>
+<p>
+    Q_inner = -5.00 fC
+   </p>
+<p>
+    Shell outer surface (at r = c): Q_outer = q₂ - Q_inner = -q₁ - (-q₁) = 0
+   </p>
+<p>
+<strong>
+     (g) Inner surface charge: -5.00 fC
+    </strong>
+</p>
+<p>
+<strong>
+     (h) Outer surface charge: 0
+    </strong>
+</p></li>
+<li><strong>
+    Step 2: Calculate E at r = 0 (center)
+   </strong>
+<p>
+    By symmetry, E = 0 at the center of any spherically symmetric charge distribution
+   </p>
+<p>
+<strong>
+     (a) E(0) = 0
+    </strong>
+</p></li>
+<li><strong>
+    Step 3: Calculate E at r = a/2 = 1.00 cm
+   </strong>
+<p>
+    Inside uniform sphere: E = kq₁r/a³
+   </p>
+<p>
+    r = a/2 = 0.0100 m, a = 0.0200 m
+   </p>
+<p>
+    E = (8.99 × 10⁹)(5.00 × 10⁻¹⁵)(0.0100)/(0.0200)³
+   </p>
+<p>
+    E = (8.99 × 10⁹)(5.00 × 10⁻¹⁵)(0.0100)/(8.00 × 10⁻⁶)
+   </p>
+<p>
+    E = (44.95 × 10⁻⁶)/(8.00 × 10⁻⁶)
+   </p>
+<p>
+    E = 5.62 × 10⁻² N/C
+   </p>
+<p>
+<strong>
+     (b) E(a/2) = 0.0562 N/C
+    </strong>
+</p></li>
+<li><strong>
+    Step 4: Calculate E at r = a = 2.00 cm
+   </strong>
+<p>
+    At surface of sphere: E = kq₁/a²
+   </p>
+<p>
+    E = (8.99 × 10⁹)(5.00 × 10⁻¹⁵)/(0.0200)²
+   </p>
+<p>
+    E = (44.95 × 10⁻⁶)/(4.00 × 10⁻⁴)
+   </p>
+<p>
+    E = 1.12 × 10⁻¹ N/C
+   </p>
+<p>
+<strong>
+     (c) E(a) = 0.112 N/C
+    </strong>
+</p></li>
+<li><strong>
+    Step 5: Calculate E at r = 1.50a = 3.00 cm
+   </strong>
+<p>
+    In region between sphere and shell: E = kq₁/r²
+   </p>
+<p>
+    r = 1.50a = 0.0300 m
+   </p>
+<p>
+    E = (8.99 × 10⁹)(5.00 × 10⁻¹⁵)/(0.0300)²
+   </p>
+<p>
+    E = (44.95 × 10⁻⁶)/(9.00 × 10⁻⁴)
+   </p>
+<p>
+    E = 5.01 × 10⁻² N/C
+   </p>
+<p>
+<strong>
+     (d) E(1.50a) = 0.0501 N/C
+    </strong>
+</p></li>
+<li><strong>
+    Step 6: Calculate E at r = 2.30a = 4.60 cm
+   </strong>
+<p>
+    This point is inside the conducting shell (b &lt; r &lt; c)
+   </p>
+<p>
+    b = 2.00a = 4.00 cm, c = 2.40a = 4.80 cm
+   </p>
+<p>
+    4.00 cm &lt; 4.60 cm &lt; 4.80 cm ✓
+   </p>
+<p>
+    Electric field inside conductor is always zero
+   </p>
+<p>
+<strong>
+     (e) E(2.30a) = 0
+    </strong>
+</p></li>
+<li><strong>
+    Step 7: Calculate E at r = 3.50a = 7.00 cm
+   </strong>
+<p>
+    Outside the shell: E = k(q₁ + q₂)/r²
+   </p>
+<p>
+    q₁ + q₂ = 5.00 fC + (-5.00 fC) = 0
+   </p>
+<p>
+    Since net enclosed charge is zero:
+   </p>
+<p>
+<strong>
+     (f) E(3.50a) = 0
+    </strong>
+</p></li>
+<li><strong>
+    Step 8: Summary
+   </strong>
+<p>
+    Electric fields:
+   </p>
+<p>
+    (a) r = 0: E = 0
+   </p>
+<p>
+    (b) r = a/2: E = 0.0562 N/C
+   </p>
+<p>
+    (c) r = a: E = 0.112 N/C
+   </p>
+<p>
+    (d) r = 1.50a: E = 0.0501 N/C
+   </p>
+<p>
+    (e) r = 2.30a: E = 0 (inside conductor)
+   </p>
+<p>
+    (f) r = 3.50a: E = 0 (net charge = 0)
+   </p>
+<p>
+    Charges:
+   </p>
+<p>
+    (g) Inner surface: Q = -5.00 fC
+   </p>
+<p>
+    (h) Outer surface: Q = 0
+   </p></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_185</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 19:
+      </h4>
+      A nonconducting solid sphere has a uniform volume charge density ρ. Let r⃗ be the vector from the center of the sphere to a general point P within the sphere.(a) Show that the electric field at P is given by E⃗ = ρr⃗/(3ε₀)Note that the result is independent of the radius of the sphere.(b) A spherical cavity is hollowed out of the sphere as shown in the figure. Using superposition concepts, show that the electric field at all points within the cavity is uniform and equal to E⃗ = ρa⃗/(3ε₀), where a⃗ is the position vector from the center of the sphere to the center of the cavity.OCa⃗Pr⃗Sphere with Spherical CavityUniform volume charge density: ρCavity: hollow region (no charge)E⃗ (uniform)Key Result: Electric field inside cavity is uniform!This is independent of cavity size and position within sphere</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Part (a): E⃗ = ρr⃗/(3ε₀); Part (b): E⃗_cavity = ρa⃗/(3ε₀) (uniform throughout cavity)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Part (a): E⃗ = ρr⃗/(2ε₀); Part (b): E⃗_cavity = ρa⃗/(2ε₀) (uniform throughout cavity)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Part (a): E⃗ = ρr⃗/(3ε₀); Part (b): E⃗_cavity varies with position in cavity
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Part (a): E⃗ = ρr⃗²/(3ε₀R); Part (b): E⃗_cavity = ρa⃗/(3ε₀) (uniform throughout cavity)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Prove part (a) - Field inside uniform sphere
+          </strong>
+<p>
+           Consider a Gaussian sphere of radius r centered at O
+          </p>
+<p>
+           Enclosed charge: Q_enc = ρ × (4/3)πr³
+          </p>
+<p>
+           By Gauss' law: ∮E⃗·dA⃗ = Q_enc/ε₀
+          </p>
+<p>
+           By symmetry, E is constant on Gaussian surface and radial
+          </p>
+<p>
+           E(4πr²) = ρ(4/3)πr³/ε₀
+          </p>
+<p>
+           E = ρr/(3ε₀)
+          </p>
+<p>
+           In vector form:
+           <strong>
+            E⃗ = ρr⃗/(3ε₀)
+           </strong>
+</p>
+<p>
+           This is valid for any r &lt; R (independent of sphere radius R)
+          </p>
+</li>
+<li>
+<strong>
+           Step 2: Set up superposition for part (b)
+          </strong>
+<p>
+           Model the cavity as: [Complete solid sphere] + [Sphere of negative charge density -ρ at cavity location]
+          </p>
+<p>
+           Let O = center of full sphere, C = center of cavity
+          </p>
+<p>
+           a⃗ = position vector from O to C
+          </p>
+<p>
+           For any point P in cavity:
+          </p>
+<p>
+           • r⃗ = position vector from O to P
+          </p>
+<p>
+           • r⃗' = position vector from C to P = r⃗ - a⃗
+          </p>
+</li>
+<li>
+<strong>
+           Step 3: Apply superposition
+          </strong>
+<p>
+           Field from complete solid sphere at P:
+          </p>
+<p>
+           E⃗₁ = ρr⃗/(3ε₀)
+          </p>
+<p>
+           Field from negative charge sphere (centered at C) at P:
+          </p>
+<p>
+           E⃗₂ = (-ρ)(r⃗ - a⃗)/(3ε₀) = -ρr⃗/(3ε₀) + ρa⃗/(3ε₀)
+          </p>
+<p>
+           Net field in cavity:
+          </p>
+<p>
+           E⃗_cavity = E⃗₁ + E⃗₂
+          </p>
+<p>
+           E⃗_cavity = ρr⃗/(3ε₀) + [-ρr⃗/(3ε₀) + ρa⃗/(3ε₀)]
+          </p>
+<p>
+           E⃗_cavity = ρr⃗/(3ε₀) - ρr⃗/(3ε₀) + ρa⃗/(3ε₀)
+          </p>
+<p>
+<strong>
+            E⃗_cavity = ρa⃗/(3ε₀)
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 4: Interpret the result
+          </strong>
+<p>
+           The field E⃗_cavity = ρa⃗/(3ε₀) is:
+          </p>
+<p>
+           1. Independent of r⃗ (position of P within cavity)
+          </p>
+<p>
+           2. Therefore UNIFORM throughout the entire cavity
+          </p>
+<p>
+           3. Depends only on a⃗ (displacement of cavity center from sphere center)
+          </p>
+<p>
+           4. Parallel to a⃗ (points from O toward C)
+          </p>
+<p>
+           5. Independent of cavity radius
+          </p>
+</li>
+<li>
+<strong>
+           Step 5: Physical interpretation
+          </strong>
+<p>
+           This remarkable result shows that:
+          </p>
+<p>
+           • A spherical cavity in a uniformly charged sphere experiences a uniform electric field
+          </p>
+<p>
+           • The field magnitude is proportional to how far off-center the cavity is
+          </p>
+<p>
+           • If cavity is at center (a⃗ = 0), then E⃗ = 0 throughout cavity
+          </p>
+<p>
+           • This is analogous to gravitational field in hollow sphere
+          </p>
+</li>
+<li>
+<strong>
+           Step 6: Example calculation
+          </strong>
+<p>
+           If ρ = 10 nC/m³ and a = 5.0 cm:
+          </p>
+<p>
+           |E| = ρa/(3ε₀) = (10 × 10⁻⁹)(0.05)/[3(8.85 × 10⁻¹²)]
+          </p>
+<p>
+           |E| = (5.0 × 10⁻¹⁰)/(2.655 × 10⁻¹¹)
+          </p>
+<p>
+           |E| = 18.8 N/C (uniform throughout cavity)
+          </p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_217</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A solid insulating sphere of radius $a = 2.00$ cm is concentric with a spherical conducting shell of inner radius $b = 2.00a$ and outer radius $c = 2.40a$. The solid sphere has a net uniform charge $q_1 = +5.00$ fC uniformly distributed throughout its volume; the conducting shell has a net charge $q_2 = -q_1$. What is the magnitude of the electric field at radial distance $r = 2.30a$ from the center?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 0 N/C
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.81 N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4.52 N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.96 N/C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For concentric spheres with conducting shells: (1) Identify all regions, (2) Apply Gauss's law in each region, (3) For conductors, E = 0 inside and charges redistribute on surfaces, (4) Use charge conservation for conductor surfaces.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A JEE topper recognizes that inside a conductor (between inner and outer radii of conducting shell), the electric field is always zero regardless of external charges. This is a fundamental property that eliminates complex calculations.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Electric field inside a conductor = 0Gauss's law: $\oint \vec{E} \cdot d\vec{A} = q_{enc}/\epsilon_0$Charge conservation on conductor surfaces
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Identify the regions:
+ <ul>
+<li>Region 1: $r &lt; a$ (inside solid sphere)</li>
+<li>Region 2: $a &lt; r &lt; b = 2a$ (between sphere and shell)</li>
+<li>Region 3: $b &lt; r &lt; c = 2.4a$ (inside conductor)</li>
+<li>Region 4: $r &gt; c$ (outside everything)</li>
+</ul></li>
+<li><strong>Step 2:</strong> The point at $r = 2.30a$ lies in Region 3 (inside the conductor).</li>
+<li><strong>Step 3:</strong> Inside any conductor in electrostatic equilibrium, the electric field is zero.</li>
+<li><strong>Step 4:</strong> Therefore, $E = 0$ N/C at $r = 2.30a$.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

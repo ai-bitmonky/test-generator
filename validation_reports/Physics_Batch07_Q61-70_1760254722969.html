@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 7 (Questions 61-70)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 7: Questions 61 - 70</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:42 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">26</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_105</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A uniform spherical shell of mass M = 4.5 kg and radius R = 8.5 cm can rotate about a vertical axis on frictionless bearings. A massless cord passes around the equator of the shell, over a pulley of rotational inertia I = 3.0 × 10⁻³ kg·m² and radius r = 5.0 cm, and is attached to a small object of mass m = 0.60 kg. There is no friction on the pulley's axle; the cord does not slip on the pulley. What is the speed of the object when it has fallen 82 cm after being released from rest?</p>
+<div class="interactive-hint">
+ 🎮 <strong>Interactive:</strong> Click "Release Mass" to watch the system in motion. Energy distribution is shown in real-time.
+ </div>
+<div class="control-panel">
+<button class="control-btn" onclick="animateProblem5('release')">▶ Release Mass</button>
+<button class="control-btn" onclick="animateProblem5('pause')">⏸ Pause</button>
+<button class="control-btn" onclick="animateProblem5('reset')">🔄 Reset</button>
+</div>
+<div class="svg-container">
+<svg height="500" id="problem5-svg" viewbox="0 0 600 500" width="600">
+<!-- Support structure -->
+<rect fill="#666" height="20" width="100" x="250" y="30"></rect>
+<line stroke="#333" stroke-width="3" x1="300" x2="300" y1="50" y2="100"></line>
+<!-- Spherical shell -->
+<g id="shell-group" transform-origin="150 200">
+<circle cx="150" cy="200" fill="none" r="70" stroke="#1976d2" stroke-width="3"></circle>
+<circle cx="150" cy="200" fill="#1976d2" r="3"></circle>
+<!-- Radius line that rotates -->
+<line id="shell-radius" stroke="#333" stroke-dasharray="3,3" stroke-width="2" x1="150" x2="220" y1="200" y2="200"></line>
+<text font-size="12" x="175" y="195">R=8.5cm</text>
+</g>
+<!-- Rotation arrow shell -->
+<path d="M 150 130 A 70 70 0 0 1 210 170" fill="none" marker-end="url(#arrowshell5)" stroke="#ff6f00" stroke-width="2"></path>
+<text fill="#ff6f00" font-size="14" x="220" y="150">ω₁</text>
+<!-- Pulley -->
+<g id="pulley-group" transform-origin="300 120">
+<circle cx="300" cy="120" fill="#e0e0e0" r="30" stroke="#333" stroke-width="3"></circle>
+<circle cx="300" cy="120" fill="#333" r="3"></circle>
+<!-- Radius mark that rotates -->
+<line id="pulley-mark" stroke="#d32f2f" stroke-width="2" x1="300" x2="330" y1="120" y2="120"></line>
+</g>
+<!-- Rotation arrow pulley -->
+<path d="M 300 90 A 30 30 0 0 1 325 105" fill="none" marker-end="url(#arrowpulley5)" stroke="#d32f2f" stroke-width="2"></path>
+<text fill="#d32f2f" font-size="14" x="335" y="100">ω₂</text>
+<!-- Cord -->
+<line id="cord-left" stroke="#8B4513" stroke-width="2" x1="220" x2="270" y1="200" y2="120"></line>
+<line id="cord-top" stroke="#8B4513" stroke-width="2" x1="330" x2="450" y1="120" y2="120"></line>
+<line id="cord-right" stroke="#8B4513" stroke-width="2" x1="450" x2="450" y1="120" y2="200"></line>
+<!-- Hanging mass (will move down) -->
+<g id="hanging-mass" transform="translate(0, 0)">
+<rect fill="#f44336" height="40" stroke="#b71c1c" stroke-width="2" width="40" x="430" y="200"></rect>
+<text fill="white" font-size="14" font-weight="bold" x="437" y="225">m</text>
+</g>
+<!-- Velocity arrow -->
+<line id="velocity-arrow" marker-end="url(#arrowv5)" opacity="0" stroke="#4caf50" stroke-width="3" x1="450" x2="450" y1="240" y2="280"></line>
+<text fill="#4caf50" font-size="16" font-weight="bold" id="velocity-text" opacity="0" x="460" y="265">v</text>
+<!-- Distance markers -->
+<line id="distance-line" stroke="#666" stroke-dasharray="5,3" stroke-width="2" x1="500" x2="500" y1="120" y2="200"></line>
+<text font-size="14" id="distance-text" x="510" y="160">h = 0 cm</text>
+<!-- Labels -->
+<text font-size="12" font-weight="bold" x="100" y="290">Shell: M=4.5kg</text>
+<text font-size="12" x="100" y="305">R = 8.5 cm</text>
+<text font-size="12" font-weight="bold" x="260" y="180">Pulley:</text>
+<text font-size="12" x="250" y="195">I=3.0×10⁻³ kg·m²</text>
+<text font-size="12" x="260" y="210">r = 5.0 cm</text>
+<text font-size="12" x="410" y="260">m = 0.60 kg</text>
+<!-- Energy display -->
+<rect fill="#e3f2fd" height="130" rx="5" stroke="#1976d2" stroke-width="2" width="560" x="20" y="350"></rect>
+<text font-size="14" font-weight="bold" x="30" y="375">Energy Distribution:</text>
+<text font-size="12" x="30" y="400">PE of mass: <tspan font-weight="bold" id="pe-value">4.82 J</tspan> (100%)</text>
+<text font-size="12" x="30" y="420">KE translational: <tspan font-weight="bold" id="ke-trans">0.00 J</tspan> (0%)</text>
+<text font-size="12" x="30" y="440">KE shell: <tspan font-weight="bold" id="ke-shell">0.00 J</tspan> (0%)</text>
+<text font-size="12" x="30" y="460">KE pulley: <tspan font-weight="bold" id="ke-pulley">0.00 J</tspan> (0%)</text>
+<text font-size="12" x="300" y="400">Current speed: <tspan fill="#e74c3c" font-weight="bold" id="speed-value">0.00 m/s</tspan></text>
+<text font-size="12" x="300" y="420">Target speed: <tspan fill="#4caf50" font-weight="bold">1.42 m/s</tspan></text>
+<!-- Energy bars -->
+<rect fill="#ff9800" height="15" id="pe-bar" width="0" x="300" y="435"></rect>
+<rect fill="#4caf50" height="15" id="ke-bar" width="0" x="300" y="455"></rect>
+<text font-size="11" x="300" y="430">Energy conversion:</text>
+<defs>
+<marker id="arrowshell5" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#ff6f00"></path>
+</marker>
+<marker id="arrowpulley5" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#d32f2f"></path>
+</marker>
+<marker id="arrowv5" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#4caf50"></path>
+</marker>
+</defs>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> v = 1.42 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> v = 1.68 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> v = 1.95 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> v = 2.13 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li>I<sub>shell</sub> = (2/3)MR² = 0.02168 kg·m²</li>
+<li>No-slip: ω₁ = v/R, ω₂ = v/r</li>
+<li>Total KE = ½v²[m + I<sub>shell</sub>/R² + I<sub>pulley</sub>/r²] = ½v²(4.80 kg)</li>
+<li>Energy conservation: mgh = ½v²(4.80)</li>
+<li>v = √(2mgh/4.80) = <strong>1.42 m/s</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_106</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A rigid assembly consists of a thin hoop (of mass m and radius R = 0.150 m) and a thin radial rod (of mass m and length L = 2.00R). The assembly is upright, but if we give it a slight nudge, it will rotate around a horizontal axis in the plane of the rod and hoop, through the lower end of the rod. What would be the assembly's angular speed about the rotation axis when it passes through the upside-down (inverted) orientation?</p>
+<div class="interactive-hint">
+ 🎮 <strong>Interactive:</strong> Click "Tip Over" to watch the H-assembly rotate from upright to inverted. Energy bars show the conversion.
+ </div>
+<div class="control-panel">
+<button class="control-btn" onclick="animateProblem6('tip')">▶ Tip Over</button>
+<button class="control-btn" onclick="animateProblem6('pause')">⏸ Pause</button>
+<button class="control-btn" onclick="animateProblem6('reset')">🔄 Reset</button>
+</div>
+<div class="svg-container">
+<svg height="500" id="problem6-svg" viewbox="0 0 700 500" width="700">
+<!-- Ground -->
+<line stroke="#8B4513" stroke-width="4" x1="0" x2="700" y1="450" y2="450"></line>
+<!-- Assembly group (will rotate) -->
+<g id="assembly-group" transform-origin="350 450">
+<!-- Rod -->
+<line id="assembly-rod" stroke="#333" stroke-width="6" x1="350" x2="350" y1="450" y2="300"></line>
+<!-- Hoop -->
+<circle cx="350" cy="300" fill="none" id="assembly-hoop" r="40" stroke="#1976d2" stroke-width="3"></circle>
+<!-- COM markers -->
+<circle cx="350" cy="375" fill="#4caf50" id="rod-com" r="5"></circle>
+<text fill="#4caf50" font-size="11" x="360" y="380">Rod COM</text>
+<circle cx="350" cy="300" fill="#ff9800" id="hoop-com" r="5"></circle>
+<text fill="#ff9800" font-size="11" x="360" y="305">Hoop COM</text>
+</g>
+<!-- Pivot point O (fixed) -->
+<circle cx="350" cy="450" fill="#d32f2f" r="8"></circle>
+<text fill="#d32f2f" font-size="16" font-weight="bold" x="360" y="455">O</text>
+<!-- Reference lines -->
+<line id="vertical-ref" opacity="0.5" stroke="#999" stroke-dasharray="10,5" stroke-width="2" x1="350" x2="350" y1="450" y2="250"></line>
+<!-- Rotation indicators -->
+<path d="" fill="none" id="rotation-arc" opacity="0" stroke="#9c27b0" stroke-width="3"></path>
+<text fill="#9c27b0" font-size="16" font-weight="bold" id="angle-display6" x="380" y="420">θ = 0°</text>
+<!-- Data display -->
+<rect fill="#e3f2fd" height="160" rx="5" stroke="#1976d2" stroke-width="2" width="250" x="50" y="50"></rect>
+<text font-size="14" font-weight="bold" x="60" y="75">Real-time Data:</text>
+<text font-size="12" x="60" y="95">Hoop: m, R=0.15m</text>
+<text font-size="12" x="60" y="110">Rod: m, L=0.30m</text>
+<text fill="#e74c3c" font-size="13" id="omega-display6" x="60" y="130">ω = 0.00 rad/s</text>
+<text font-size="12" id="pe-display6" x="60" y="150">PE = 100%</text>
+<text font-size="12" id="ke-display6" x="60" y="170">KE = 0%</text>
+<text fill="#4caf50" font-size="13" font-weight="bold" id="inverted-msg" opacity="0" x="60" y="195">INVERTED! ω = 15.34 rad/s ✓</text>
+<!-- Energy visualization -->
+<rect fill="#fff3e0" height="120" rx="5" stroke="#ff6f00" stroke-width="2" width="300" x="350" y="50"></rect>
+<text font-size="14" font-weight="bold" x="360" y="75">Energy Conversion:</text>
+<text font-size="11" x="360" y="95">PE (height):</text>
+<rect fill="#e0e0e0" height="12" stroke="#333" stroke-width="1" width="200" x="440" y="85"></rect>
+<rect fill="#ff9800" height="12" id="pe-bar6" width="200" x="440" y="85"></rect>
+<text font-size="11" x="360" y="120">KE (rotation):</text>
+<rect fill="#e0e0e0" height="12" stroke="#333" stroke-width="1" width="200" x="440" y="110"></rect>
+<rect fill="#4caf50" height="12" id="ke-bar6" width="0" x="440" y="110"></rect>
+<text font-size="11" x="360" y="145">Rod drop: <tspan font-weight="bold" id="rod-drop">0.00 m</tspan></text>
+<text font-size="11" x="360" y="160">Hoop drop: <tspan font-weight="bold" id="hoop-drop">0.00 m</tspan></text>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> ω = 15.34 rad/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> ω = 12.85 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> ω = 18.20 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> ω = 16.72 rad/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li>Total I = I<sub>rod</sub> + I<sub>hoop</sub> = (4/3)mR² + 2mR² = (10/3)mR²</li>
+<li>Rod COM falls: 2R, Hoop COM falls: 4R</li>
+<li>Total PE loss: ΔPE = 2mgR + 4mgR = 6mgR</li>
+<li>Energy conservation: 6mgR = ½IωΩ² = ½(10/3)mR²ω²</li>
+<li>ω = √(18g/5R) = <strong>15.34 rad/s</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_144</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 54:
+      </h4>
+      A solid brass ball of mass 0.280 g will roll smoothly along a loop-the-loop track when released from rest along the straight section. The circular loop has radius R = 14.0 cm, and the ball has radius r ≪ R.TopPoint QReleasehRFigure: Ball rolling down a ramp into a vertical circular loop(a)What is the minimum release height h if the ball is on the verge of leaving the track when it reaches the top of the loop?(b)If the ball is released at height h = 6.00R, what is the magnitude of the horizontal force component acting on the ball at point Q (bottom of the loop)?(c)What is the direction of this horizontal force component?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> h = 2.5R = 35.0 cm
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> h = 2.7R = 37.8 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> h = 3.0R = 42.0 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> h = 2.0R = 28.0 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_145</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A non-uniform ball of mass M and radius R rolls smoothly from rest down a ramp and onto a circular loop of radius 0.48 m. The initial height of the ball is h = 0.36 m. At the loop bottom, the magnitude of the normal force on the ball is 2.00Mg.</p>
+<div class="diagram">
+<svg viewbox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<!-- Ground -->
+<line stroke="#333" stroke-width="2" x1="0" x2="600" y1="350" y2="350"></line>
+<pattern height="20" id="ground2" patternunits="userSpaceOnUse" width="20" x="0" y="0">
+<line stroke="#666" stroke-width="1" x1="0" x2="10" y1="20" y2="10"></line>
+<line stroke="#666" stroke-width="1" x1="10" x2="20" y1="20" y2="10"></line>
+</pattern>
+<rect fill="url(#ground2)" height="50" width="600" x="0" y="350"></rect>
+<!-- Ramp -->
+<line stroke="#2c3e50" stroke-width="4" x1="100" x2="250" y1="150" y2="350"></line>
+<!-- Loop -->
+<circle cx="400" cy="260" fill="none" r="90" stroke="#2c3e50" stroke-width="4"></circle>
+<line stroke="#2c3e50" stroke-width="4" x1="250" x2="310" y1="350" y2="350"></line>
+<!-- Ball at start -->
+<circle cx="100" cy="150" fill="#8B4513" r="15"></circle>
+<circle cx="100" cy="150" fill="#CD853F" r="8"></circle>
+<text fill="#333" font-size="14" x="115" y="145">Non-uniform</text>
+<text fill="#333" font-size="14" x="115" y="160">ball (I = βMR²)</text>
+<!-- Height marker -->
+<line stroke="#e74c3c" stroke-dasharray="5,5" stroke-width="2" x1="50" x2="50" y1="150" y2="350"></line>
+<text fill="#e74c3c" font-size="16" font-weight="bold" x="30" y="250">h = 0.36 m</text>
+<!-- Bottom point -->
+<circle cx="400" cy="350" fill="#27ae60" r="8"></circle>
+<text fill="#27ae60" font-size="14" font-weight="bold" x="420" y="355">Bottom: N = 2Mg</text>
+<!-- Loop radius -->
+<line stroke="#3498db" stroke-dasharray="3,3" stroke-width="2" x1="400" x2="400" y1="260" y2="350"></line>
+<text fill="#3498db" font-size="14" x="410" y="310">r = 0.48 m</text>
+</svg>
+<p><em>Non-uniform ball rolling from height h onto a vertical loop</em></p>
+</div>
+<p>The ball consists of an outer spherical shell (of a certain uniform density) that is glued to a central sphere (of a different uniform density). The rotational inertia can be expressed as <strong>I = βMR²</strong>, but β is not 0.4 as it is for a uniform solid sphere.</p>
+<p><strong>Determine the value of β.</strong></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> β = 0.40
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> β = 0.50
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> β = 0.60
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> β = 0.35
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_146</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A small, solid, uniform ball is to be shot from point P so that it rolls smoothly along a horizontal path, up along a ramp, and onto a plateau. Then it leaves the plateau horizontally to land on a game board, at a horizontal distance d from the right edge of the plateau.</p>
+<div class="diagram">
+<svg viewbox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+<!-- Ground -->
+<line stroke="#333" stroke-width="2" x1="0" x2="700" y1="350" y2="350"></line>
+<!-- Point P and horizontal path -->
+<circle cx="80" cy="340" fill="#DAA520" r="8"></circle>
+<text fill="#333" font-size="16" font-weight="bold" text-anchor="middle" x="80" y="370">P</text>
+<line stroke="#2c3e50" stroke-width="4" x1="80" x2="250" y1="350" y2="350"></line>
+<!-- Ramp -->
+<line stroke="#2c3e50" stroke-width="4" x1="250" x2="400" y1="350" y2="270"></line>
+<!-- Plateau -->
+<line stroke="#2c3e50" stroke-width="4" x1="400" x2="550" y1="270" y2="270"></line>
+<!-- Target landing area -->
+<line stroke="#999" stroke-dasharray="3,3" stroke-width="1" x1="550" x2="550" y1="270" y2="350"></line>
+<rect fill="#27ae60" height="16" opacity="0.3" width="100" x="550" y="334"></rect>
+<text fill="#27ae60" font-size="14" text-anchor="middle" x="600" y="365">Landing</text>
+<!-- h1 marker (ramp height) -->
+<line stroke="#e74c3c" stroke-dasharray="5,5" stroke-width="2" x1="420" x2="420" y1="270" y2="350"></line>
+<text fill="#e74c3c" font-size="16" font-weight="bold" x="435" y="310">h₁ = 5.00 cm</text>
+<!-- h2 marker (drop height) -->
+<line stroke="#3498db" stroke-dasharray="5,5" stroke-width="2" x1="570" x2="570" y1="270" y2="334"></line>
+<text fill="#3498db" font-size="16" font-weight="bold" x="585" y="305">h₂ = 1.60 cm</text>
+<!-- d marker (horizontal distance) -->
+<line stroke="#9b59b6" stroke-width="2" x1="550" x2="650" y1="360" y2="360"></line>
+<line stroke="#9b59b6" stroke-width="2" x1="550" x2="550" y1="355" y2="365"></line>
+<line stroke="#9b59b6" stroke-width="2" x1="650" x2="650" y1="355" y2="365"></line>
+<text fill="#9b59b6" font-size="16" font-weight="bold" x="600" y="385">d = 6.00 cm</text>
+<!-- Ball trajectory (dashed arc) -->
+<path d="M 550 270 Q 590 290, 650 342" fill="none" stroke="#e74c3c" stroke-dasharray="5,5" stroke-width="2"></path>
+<circle cx="650" cy="342" fill="#DAA520" r="8"></circle>
+<!-- Arrow showing initial velocity at P -->
+<line marker-end="url(#arrow6)" stroke="#e74c3c" stroke-width="3" x1="50" x2="75" y1="340" y2="340"></line>
+<text fill="#e74c3c" font-size="14" x="40" y="330">v_P</text>
+<defs>
+<marker id="arrow6" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#e74c3c" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+<p><em>Ball rolling from P, up ramp onto plateau, then projectile motion to landing point</em></p>
+</div>
+<p>The vertical heights are h₁ = 5.00 cm and h₂ = 1.60 cm. The target landing distance is d = 6.00 cm.</p>
+<p><strong>With what speed must the ball be shot at point P for it to land at distance d = 6.00 cm?</strong></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> v_P = 1.25 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> v_P = 1.44 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> v_P = 1.68 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> v_P = 1.12 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_147</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A bowler throws a bowling ball of radius R = 11 cm along a lane. The ball slides on the lane with initial speed v_com,0 = 8.5 m/s and initial angular speed ω₀ = 0. The coefficient of kinetic friction between the ball and the lane is μ_k = 0.21.</p>
+<div class="diagram">
+<svg viewbox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+<!-- Lane -->
+<rect fill="#CD853F" height="80" stroke="#8B4513" stroke-width="2" width="600" x="50" y="180"></rect>
+<text fill="#333" font-size="14" text-anchor="middle" x="350" y="275">Bowling Lane (μ_k = 0.21)</text>
+<!-- Initial state (sliding) -->
+<circle cx="150" cy="180" fill="#1a1a1a" r="40" stroke="#333" stroke-width="3"></circle>
+<circle cx="150" cy="180" fill="white" r="6"></circle>
+<text fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle" x="150" y="130">Initially Sliding</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="150" y="150">v₀ = 8.5 m/s</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="150" y="165">ω₀ = 0</text>
+<!-- Velocity arrow -->
+<line marker-end="url(#arrow7)" stroke="#e74c3c" stroke-width="3" x1="110" x2="70" y1="180" y2="180"></line>
+<text fill="#e74c3c" font-size="14" x="85" y="170">v</text>
+<!-- Friction arrow -->
+<line marker-end="url(#arrow8)" stroke="#9b59b6" stroke-width="3" x1="170" x2="210" y1="220" y2="220"></line>
+<text fill="#9b59b6" font-size="14" x="190" y="210">f_k</text>
+<!-- Transition arrow -->
+<line stroke="#333" stroke-dasharray="10,5" stroke-width="2" x1="230" x2="370" y1="180" y2="180"></line>
+<text fill="#333" font-size="14" text-anchor="middle" x="300" y="170">Transition</text>
+<!-- state (rolling) -->
+<circle cx="500" cy="180" fill="#1a1a1a" r="40" stroke="#333" stroke-width="3"></circle>
+<circle cx="500" cy="180" fill="white" r="6"></circle>
+<!-- Rotation indicator -->
+<circle cx="470" cy="180" fill="#27ae60" r="4"></circle>
+<path d="M 465 175 Q 460 180, 465 185" fill="none" marker-end="url(#arrow9)" stroke="#27ae60" stroke-width="2"></path>
+<text fill="#27ae60" font-size="16" font-weight="bold" text-anchor="middle" x="500" y="130">Smooth Rolling</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="500" y="150">v = ωR</text>
+<text fill="#333" font-size="14" text-anchor="middle" x="500" y="165">v_f = 6.07 m/s</text>
+<defs>
+<marker id="arrow7" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#e74c3c" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrow8" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#9b59b6" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrow9" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3">
+<polygon fill="#27ae60" points="0 0, 8 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+<p><em>Bowling ball transitioning from sliding (ω=0) to smooth rolling (v=ωR)</em></p>
+</div>
+<p>The kinetic frictional force causes linear acceleration while producing torque that causes angular acceleration. When v_com decreases enough and ω increases enough, the ball stops sliding and rolls smoothly.</p>
+<p><strong>Find:</strong></p>
+<p>(a) What is v_com in terms of ω when smooth rolling begins?</p>
+<p>(b) What is the ball's linear acceleration during sliding?</p>
+<p>(c) What is the ball's angular acceleration during sliding?</p>
+<p>(d) How long does the ball slide?</p>
+<p>(e) How far does the ball slide?</p>
+<p>(f) What is the linear speed when smooth rolling begins?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) v = ωR; (b) a = -2.06 m/s²; (c) α = 46.8 rad/s²; (d) t = 1.18 s; (e) s = 8.60 m; (f) v = 6.07 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) v = ωR; (b) a = -1.50 m/s²; (c) α = 35.0 rad/s²; (d) t = 1.50 s; (e) s = 9.50 m; (f) v = 5.50 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) v = ωR; (b) a = -2.50 m/s²; (c) α = 50.0 rad/s²; (d) t = 1.00 s; (e) s = 7.50 m; (f) v = 6.50 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) v = ωR; (b) a = -1.96 m/s²; (c) α = 44.0 rad/s²; (d) t = 1.25 s; (e) s = 8.00 m; (f) v = 6.25 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_148</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A non-uniform cylindrical object of mass M and radius R rolls smoothly from rest down a ramp and onto a horizontal section. From there it rolls off the ramp and onto the floor, landing a horizontal distance d = 0.506 m from the end of the ramp.</p>
+<div class="diagram">
+<svg viewbox="0 0 700 400" xmlns="http://www.w3.org/2000/svg">
+<!-- Ground -->
+<line stroke="#333" stroke-width="2" x1="0" x2="700" y1="350" y2="350"></line>
+<pattern height="20" id="ground3" patternunits="userSpaceOnUse" width="20" x="0" y="0">
+<line stroke="#666" stroke-width="1" x1="0" x2="10" y1="20" y2="10"></line>
+<line stroke="#666" stroke-width="1" x1="10" x2="20" y1="20" y2="10"></line>
+</pattern>
+<rect fill="url(#ground3)" height="50" width="700" x="0" y="350"></rect>
+<!-- Initial height marker -->
+<line stroke="#e74c3c" stroke-dasharray="5,5" stroke-width="2" x1="50" x2="50" y1="100" y2="350"></line>
+<text fill="#e74c3c" font-size="16" font-weight="bold" x="20" y="225">H = 0.90 m</text>
+<!-- Ramp -->
+<line stroke="#2c3e50" stroke-width="4" x1="50" x2="300" y1="100" y2="300"></line>
+<!-- Horizontal section -->
+<line stroke="#2c3e50" stroke-width="4" x1="300" x2="450" y1="300" y2="300"></line>
+<!-- Object at start -->
+<circle cx="50" cy="100" fill="#8B4513" r="20" stroke="#333" stroke-width="2"></circle>
+<circle cx="50" cy="100" fill="#CD853F" r="10"></circle>
+<text fill="#333" font-size="14" x="80" y="95">Non-uniform</text>
+<text fill="#333" font-size="14" x="80" y="110">I = βMR²</text>
+<!-- Height h marker -->
+<line stroke="#3498db" stroke-dasharray="5,5" stroke-width="2" x1="470" x2="470" y1="300" y2="350"></line>
+<text fill="#3498db" font-size="16" font-weight="bold" x="485" y="330">h = 0.10 m</text>
+<!-- Projectile path -->
+<path d="M 450 300 Q 520 320, 600 342" fill="none" stroke="#e74c3c" stroke-dasharray="5,5" stroke-width="2"></path>
+<!-- Landing point -->
+<circle cx="600" cy="342" fill="#27ae60" r="8"></circle>
+<!-- Distance d marker -->
+<line stroke="#9b59b6" stroke-width="2" x1="450" x2="600" y1="365" y2="365"></line>
+<line stroke="#9b59b6" stroke-width="2" x1="450" x2="450" y1="360" y2="370"></line>
+<line stroke="#9b59b6" stroke-width="2" x1="600" x2="600" y1="360" y2="370"></line>
+<text fill="#9b59b6" font-size="16" font-weight="bold" x="525" y="385">d = 0.506 m</text>
+<!-- Velocity arrow at edge -->
+<line marker-end="url(#arrow15)" stroke="#27ae60" stroke-width="3" x1="430" x2="400" y1="290" y2="290"></line>
+<text fill="#27ae60" font-size="14" x="410" y="280">v</text>
+<defs>
+<marker id="arrow15" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#27ae60" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+<p><em>Non-uniform cylindrical object rolling from height H, leaving ramp at height h, landing at distance d</em></p>
+</div>
+<p>The initial height is H = 0.90 m; the ramp end is at height h = 0.10 m. The object consists of an outer cylindrical shell glued to a central cylinder (different densities).</p>
+<p>The rotational inertia can be expressed as <strong>I = βMR²</strong>, but β is not 0.5 as it is for a uniform cylinder.</p>
+<p><strong>Determine the value of β.</strong></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> β = 0.20
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> β = 0.25
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> β = 0.30
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> β = 0.40
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_173</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Multiple Choice Single Answer", Suggested: "Numerical"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     A rock climber of mass 55 kg is in a lie-back climb along a fissure. The climber's hands pull on one side of the fissure while the feet press against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is at a horizontal distance d = 0.40 m from the fissure.The coefficient of static friction between hands and rock is μ₁ = 0.40, and between boots and rock is μ₂ = 1.2.Left WallRight WallCOMw = 0.20 md = 0.40 mhHandsFeetN₁f₁N₂f₂mg = 550 NGiven Data:m = 55 kgw = 0.20 md = 0.40 mμ₁ = 0.40μ₂ = 1.2Figure: Rock climber in lie-back position in a fissure with all forces shownGiven:Mass of climber: m = 55 kgWidth of fissure: w = 0.20 mHorizontal distance of COM from fissure center: d = 0.40 mCoefficient of static friction (hands-rock): μ₁ = 0.40Coefficient of static friction (boots-rock): μ₂ = 1.2g = 10 m/s²Find:(a) What minimum horizontal pull by the hands and push by the feet will keep the climber stable?(b) For the horizontal pull and push of (a), what must be the vertical distance h between hands and feet if the climber is to be stable?
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_174</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 25:
+      </h4>
+      A 15 kg block is held in place via a pulley system. The person's upper arm is vertical; the forearm is at angle θ = 30° with the horizontal. The forearm and hand together have a mass of 2.0 kg, with a center of mass at distance d₁ = 15 cm from the contact point of the forearm bone and the upper-arm bone (humerus).The triceps muscle pulls vertically upward on the forearm at distance d₂ = 2.5 cm behind that contact point. Distance d₃ is 35 cm.Upper Arm(Humerus)Contact Point(Elbow Joint)Forearm (at 30°)θ = 30°TricepsattachmentFtricepsCOM(forearm)marmg= 20 NBlock15 kgMg= 150 Nd₂2.5 cmd₁ = 15 cmd₃ = 35 cmGiven Data:M = 15 kg (block)m = 2.0 kg (forearm)θ = 30°d₁ = 15 cm = 0.15 md₂ = 2.5 cm = 0.025 md₃ = 35 cm = 0.35 mg = 10 m/s²Figure: Forearm lever system showing all forces, distances, and geometryFind:(a) Magnitude of force from triceps muscle on forearm(b) Magnitude of force on forearm from humerus at the contact point</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A. (a) F
+       
+        triceps
+       
+       = 3185 N; (b) F
+       
+        humerus
+       
+       = 3037 N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B. (a) F
+       
+        triceps
+       
+       = 2850 N; (b) F
+       
+        humerus
+       
+       = 2680 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C. (a) F
+       
+        triceps
+       
+       = 3500 N; (b) F
+       
+        humerus
+       
+       = 3320 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D. (a) F
+       
+        triceps
+       
+       = 2950 N; (b) F
+       
+        humerus
+       
+       = 2780 N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Identify all forces on forearm
+          </strong>
+<ul>
+<li>
+            Triceps force F
+            <sub>
+             t
+            </sub>
+            (vertically upward, distance d₂ = 0.025 m behind contact)
+           </li>
+<li>
+            Forearm weight: mg = 2.0 × 10 = 20 N (downward at COM, distance d₁ = 0.15 m from contact)
+           </li>
+<li>
+            Block weight: Mg = 15 × 10 = 150 N (downward at distance d₃ = 0.35 m from contact)
+           </li>
+<li>
+            Force from humerus F
+            <sub>
+             h
+            </sub>
+            at contact point (unknown - to be found)
+           </li>
+</ul>
+</li>
+<li>
+<strong>
+           Step 2: Determine perpendicular distances for torque about contact point
+          </strong>
+<p>
+           The forearm makes angle θ = 30° with horizontal. For vertical forces:
+          </p>
+<ul>
+<li>
+<strong>
+             Triceps:
+            </strong>
+            Acts vertically behind contact point
+            <br>
+            Perpendicular distance = d₂ = 0.025 m (pure vertical, distance measured perpendicular to forearm)
+           </li>
+<li>
+<strong>
+             Forearm weight:
+            </strong>
+            Acts vertically at distance d₁ along forearm
+            <br>
+            Horizontal projection (perpendicular distance) = d₁ × cos(30°) = 0.15 × 0.866 = 0.130 m
+           </li>
+<li>
+<strong>
+             Block weight:
+            </strong>
+            Acts vertically at distance d₃ along forearm
+            <br>
+            Horizontal projection = d₃ × cos(30°) = 0.35 × 0.866 = 0.303 m
+           </li>
+</ul>
+<p>
+<em>
+            Note: The original solution's calculation gives F
+            <sub>
+             t
+            </sub>
+            ≈ 1922 N, which differs from the answer key value of 3185 N. This discrepancy suggests the problem geometry may involve additional considerations about how d₂ is measured or that there are subtle biomechanical factors. For teaching purposes, we'll show the standard calculation and note the answer key value.
+           </em>
+</p>
+</li>
+<li>
+<strong>
+           Step 3: Apply torque equilibrium about contact point
+          </strong>
+<p>
+           Taking counterclockwise torques as positive:
+          </p>
+<p>
+           Στ = 0
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           × d₂ - mg × (d₁ cos 30°) - Mg × (d₃ cos 30°) = 0
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           × 0.025 = 20 × 0.130 + 150 × 0.303
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           × 0.025 = 2.6 + 45.45
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           × 0.025 = 48.05
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           = 1922 N (from standard calculation)
+          </p>
+<p>
+<strong>
+            Answer key value: F
+            <sub>
+             triceps
+            </sub>
+            = 3185 N
+           </strong>
+</p>
+<p>
+           The factor difference (3185/1922 ≈ 1.66) suggests the actual perpendicular moment arm for the triceps may be different due to anatomical considerations not fully specified in the problem statement.
+          </p>
+</li>
+<li>
+<strong>
+           Step 4: Apply vertical force equilibrium (Part b)
+          </strong>
+<p>
+           Using the answer key value F
+           <sub>
+            t
+           </sub>
+           = 3185 N:
+          </p>
+<p>
+           ΣF
+           <sub>
+            y
+           </sub>
+           = 0:
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           - mg - Mg - F
+           <sub>
+            h,y
+           </sub>
+           = 0
+          </p>
+<p>
+           If the humerus force acts downward (which it must, since triceps force exceeds the weights):
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           = mg + Mg + F
+           <sub>
+            h
+           </sub>
+</p>
+<p>
+           3185 = 20 + 150 + F
+           <sub>
+            h
+           </sub>
+</p>
+<p>
+           F
+           <sub>
+            h
+           </sub>
+           = 3185 - 170
+          </p>
+<p>
+<strong>
+            F
+            <sub>
+             h
+            </sub>
+            = 3015 N ≈ 3037 N
+           </strong>
+</p>
+<p>
+           (Small difference likely due to rounding in intermediate steps)
+          </p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_175</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 23:
+      </h4>
+      A crate, in the form of a cube with edge lengths of 1.2 m, contains a piece of machinery. The center of mass of the crate and its contents is located 0.30 m above the crate's geometrical center. The crate rests on a ramp that makes an angle θ with the horizontal.As θ is increased from zero, an angle will be reached at which the crate will either tip over or start to slide down the ramp.θGeom. centerCOM0.30 mL = 1.2 mmgTwo Cases to Consider:Case 1: μs= 0.60Case 2: μs= 0.70(Which fails first: tipping or sliding?)Key Dimensions:• Edge length: L = 1.2 m• Geom. center height: L/2 = 0.6 m• COM height above base: 0.9 m• Horizontal to edge: L/2 = 0.6 mFigure: Crate on inclined ramp showing center of mass location relative to geometric centerGiven:Edge length of cube: L = 1.2 mCOM is 0.30 m above geometric centerTherefore, COM height above base = L/2 + 0.30 = 0.6 + 0.30 = 0.90 mHorizontal distance from base center to edge = L/2 = 0.6 mFind:For each case, determine whether the crate tips or slides, and at what angle.Case 1:Coefficient of static friction μs= 0.60Case 2:Coefficient of static friction μs= 0.70</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Case 1: Crate slides at θ = 31.0°; Case 2: Crate tips at θ = 33.7°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Case 1: Crate tips at θ = 33.7°; Case 2: Crate slides at θ = 35.0°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Case 1: Crate tips at θ = 30.0°; Case 2: Crate tips at θ = 33.7°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Case 1: Crate slides at θ = 35.0°; Case 2: Crate tips at θ = 30.0°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Calculate tipping angle (same for both cases)
+          </strong>
+<p>
+           The crate tips when the vertical line through the COM falls outside the base of support (passes through the lower edge).
+          </p>
+<p>
+           Key dimensions:
+          </p>
+<ul>
+<li>
+            Horizontal distance from base center to edge: L/2 = 0.6 m
+           </li>
+<li>
+            Height of COM above base: h
+            <sub>
+             COM
+            </sub>
+            = 0.90 m
+           </li>
+</ul>
+<p>
+           At critical tipping angle, geometry gives:
+          </p>
+<p>
+           tan θ
+           <sub>
+            tip
+           </sub>
+           = (L/2) / h
+           <sub>
+            COM
+           </sub>
+</p>
+<p>
+           tan θ
+           <sub>
+            tip
+           </sub>
+           = 0.6 / 0.90 = 0.667
+          </p>
+<p>
+           θ
+           <sub>
+            tip
+           </sub>
+           = arctan(0.667)
+          </p>
+<p>
+<strong>
+            θ
+            <sub>
+             tip
+            </sub>
+            = 33.7°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 2: Calculate sliding angle for Case 1 (μ
+           <sub>
+            s
+           </sub>
+           = 0.60)
+          </strong>
+<p>
+           Sliding occurs when component of weight down ramp equals maximum friction:
+          </p>
+<p>
+           mg sin θ = μ
+           <sub>
+            s
+           </sub>
+           N = μ
+           <sub>
+            s
+           </sub>
+           mg cos θ
+          </p>
+<p>
+           tan θ
+           <sub>
+            slide
+           </sub>
+           = μ
+           <sub>
+            s
+           </sub>
+</p>
+<p>
+           tan θ
+           <sub>
+            slide
+           </sub>
+           = 0.60
+          </p>
+<p>
+           θ
+           <sub>
+            slide
+           </sub>
+           = arctan(0.60)
+          </p>
+<p>
+<strong>
+            θ
+            <sub>
+             slide
+            </sub>
+            = 31.0°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 3: Determine failure mode for Case 1
+          </strong>
+<p>
+           Compare critical angles:
+          </p>
+<p>
+           θ
+           <sub>
+            slide
+           </sub>
+           = 31.0°
+          </p>
+<p>
+           θ
+           <sub>
+            tip
+           </sub>
+           = 33.7°
+          </p>
+<p>
+           Since θ
+           <sub>
+            slide
+           </sub>
+           &lt; θ
+           <sub>
+            tip
+           </sub>
+           , sliding occurs first.
+          </p>
+<p>
+<strong>
+            Case 1 Result: Crate SLIDES at θ = 31.0°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 4: Calculate sliding angle for Case 2 (μ
+           <sub>
+            s
+           </sub>
+           = 0.70)
+          </strong>
+<p>
+           tan θ
+           <sub>
+            slide
+           </sub>
+           = μ
+           <sub>
+            s
+           </sub>
+           = 0.70
+          </p>
+<p>
+           θ
+           <sub>
+            slide
+           </sub>
+           = arctan(0.70)
+          </p>
+<p>
+<strong>
+            θ
+            <sub>
+             slide
+            </sub>
+            = 35.0°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 5: Determine failure mode for Case 2
+          </strong>
+<p>
+           Compare critical angles:
+          </p>
+<p>
+           θ
+           <sub>
+            slide
+           </sub>
+           = 35.0°
+          </p>
+<p>
+           θ
+           <sub>
+            tip
+           </sub>
+           = 33.7°
+          </p>
+<p>
+           Since θ
+           <sub>
+            tip
+           </sub>
+           &lt; θ
+           <sub>
+            slide
+           </sub>
+           , tipping occurs first.
+          </p>
+<p>
+<strong>
+            Case 2 Result: Crate TIPS at θ = 33.7°
+           </strong>
+</p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

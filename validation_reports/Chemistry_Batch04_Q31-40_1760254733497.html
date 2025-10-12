@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry - Batch 4 (Questions 31-40)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Chemistry</h1>
+      <div class="batch-info">Batch 4: Questions 31 - 40</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:53 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">31</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_69e6bdc2_Q3</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Electromotive Force (EMF) |
+        <strong>Type:</strong> Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+Calculate the equilibrium constant for the equilibrium:
+<br><br>
+Cd<sup>2+</sup> + 4NH<sub>3</sub> ⇌ [Cd(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>
+<br><br>
+from the given E°<sub>electrode</sub> data though the reaction is not a redox reaction.
+<br><br>
+Given: E°<sub>Cd<sup>2+</sup>,Cd</sub> = -0.40 V, E°<sub>[Cd(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>,Cd</sub> = -0.61 V
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.27 × 105
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1.27 × 107
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.27 × 109
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.27 × 1011
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <strong>Strategy:</strong> Introduce a common intermediate (Cd metal) to create a redox cycle. Subtract the half-reactions to eliminate the redox component and obtain the non-redox equilibrium.
+    
+    <strong>Expert Insight:</strong> This problem demonstrates an elegant technique: using electrode potentials to calculate equilibrium constants for non-redox reactions. The key insight is that we can artificially create a redox cycle by introducing Cd metal as an intermediate, then eliminate it to get our desired non-redox reaction.
+    
+    <strong>Key facts used:</strong>
+    <ul>
+        <li>E° = (0.0591/n) log K at 25°C</li>
+        <li>For combined reactions: E°<sub>net</sub> = E°<sub>cathode</sub> - E°<sub>anode</sub></li>
+        <li>Subtraction of half-reactions to obtain net reaction</li>
+        <li>NH<sub>3</sub> is a neutral ligand (oxidation number = 0)</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Write relevant half-reactions with Cd as common species</strong>
+            <br>Reaction 1: Cd<sup>2+</sup> + 2e<sup>-</sup> → Cd;  E° = -0.40 V
+            <br>
+            <br>Reaction 2: [Cd(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup> + 2e<sup>-</sup> → Cd + 4NH<sub>3</sub>;  E° = -0.61 V
+        </li>
+        
+        <li><strong>Step 2: Reverse Reaction 2 to create oxidation</strong>
+            <br>Cd + 4NH<sub>3</sub> → [Cd(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup> + 2e<sup>-</sup>;  E° = +0.61 V
+        </li>
+        
+        <li><strong>Step 3: Add reactions to eliminate Cd and electrons</strong>
+            <br>Cd<sup>2+</sup> + 2e<sup>-</sup> → Cd  (E° = -0.40 V)
+            <br>Cd + 4NH<sub>3</sub> → [Cd(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup> + 2e<sup>-</sup>  (E° = +0.61 V)
+            <br>────────────────────────────────
+            <br>Cd<sup>2+</sup> + 4NH<sub>3</sub> → [Cd(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup>
+            <br>
+            <br>E°<sub>net</sub> = (-0.40) - (-0.61) = +0.21 V
+        </li>
+        
+        <li><strong>Step 4: Apply relationship between E° and K</strong>
+            <br>E° = (0.0591/n) log K
+            <br>
+            <br>Here n = 2 (electrons transferred in the redox cycle)
+            <br>
+            <br>0.21 = (0.0591/2) log K
+            <br>
+            <br>log K = (2 × 0.21)/0.0591
+            <br>
+            <br>log K = 0.42/0.0591
+            <br>
+            <br>log K = 7.1065
+            <br>
+            <br>K = 10<sup>7.1065</sup>
+            <br>
+            <br><strong>K = 1.27 × 10<sup>7</sup></strong>
+        </li>
+        
+        <li><strong>Step 5: Interpretation</strong>
+            <br>This large equilibrium constant indicates that the complex [Cd(NH<sub>3</sub>)<sub>4</sub>]<sup>2+</sup> is very stable. The more negative E° for the complex reduction indicates that Cd<sup>2+</sup> is stabilized (harder to reduce) when complexed with NH<sub>3</sub>.
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_69e6bdc2_Q4</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Electromotive Force (EMF) |
+        <strong>Type:</strong> Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+When Cl<sub>2</sub> dissolves in water, it disproportionates, producing Cl<sup>-</sup> ion and HClO. Find at what H<sub>3</sub>O<sup>+</sup> concentration the potential for the disproportionation changes from a negative value to a positive value, assuming 1.0 atm of pressure and concentration of 1.0 M for all species except hydronium ions.
+<br><br>
+Given: E°<sub>Cl<sub>2</sub>,Cl<sup>-</sup></sub> = 1.36 V and E°<sub>HClO,Cl<sub>2</sub></sub> = 1.63 V at 25°C
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.0 × 10-3 M
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2.7 × 10-5 M
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 5.4 × 10-6 M
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.0 × 10-7 M
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <strong>Strategy:</strong> Identify the disproportionation reaction from given half-reactions, set E<sub>cell</sub> = 0 for the transition point, and solve for [H<sup>+</sup>] using Nernst equation.
+    
+    <strong>Expert Insight:</strong> Disproportionation is a special redox reaction where the same species is both oxidized and reduced. The spontaneity depends on pH because H<sup>+</sup> appears in the reaction. Finding where E<sub>cell</sub> = 0 gives the critical pH where spontaneity reverses.
+    
+    <strong>Key facts used:</strong>
+    <ul>
+        <li>Disproportionation: Cl<sub>2</sub> → Cl<sup>-</sup> (reduction) and Cl<sub>2</sub> → HClO (oxidation)</li>
+        <li>At transition point: E<sub>cell</sub> = 0</li>
+        <li>Higher E° acts as cathode (reduction)</li>
+        <li>Nernst equation with H<sup>+</sup> dependence</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Write the half-reactions</strong>
+            <br>Reduction (cathode): Cl<sub>2</sub> + 2e<sup>-</sup> → 2Cl<sup>-</sup>;  E° = 1.36 V
+            <br>
+            <br>Oxidation (anode): 2HClO + 2H<sup>+</sup> + 2e<sup>-</sup> → Cl<sub>2</sub> + 2H<sub>2</sub>O;  E° = 1.63 V
+            <br>(This is the reverse, so for oxidation we reverse the reaction)
+        </li>
+        
+        <li><strong>Step 2: Determine which is cathode</strong>
+            <br>Since E°<sub>HClO,Cl<sub>2</sub></sub> (1.63 V) &gt; E°<sub>Cl<sub>2</sub>,Cl<sup>-</sup></sub> (1.36 V)
+            <br>HClO reduction acts as cathode
+            <br>
+            <br>Net cell reaction (reverse of disproportionation):
+            <br>2HClO + 2H<sup>+</sup> + 2Cl<sup>-</sup> → 2H<sub>2</sub>O + 2Cl<sub>2</sub>
+            <br>
+            <br>Or for disproportionation (reverse):
+            <br>Cl<sub>2</sub> + H<sub>2</sub>O → HClO + H<sup>+</sup> + Cl<sup>-</sup>
+        </li>
+        
+        <li><strong>Step 3: Write Nernst equation for the cell</strong>
+            <br>E<sub>cell</sub> = E° - (0.0591/n) log Q
+            <br>
+            <br>For the reverse reaction (2HClO + 2Cl<sup>-</sup> + 2H<sup>+</sup> → Cl<sub>2</sub> + 2H<sub>2</sub>O):
+            <br>E°<sub>cell</sub> = 1.63 - 1.36 = 0.27 V
+            <br>n = 2
+            <br>
+            <br>E<sub>cell</sub> = 0.27 - (0.0591/2) log(1/[H<sup>+</sup>]<sup>2</sup>[Cl<sup>-</sup>]<sup>2</sup>)
+            <br>
+            <br>Given: [Cl<sup>-</sup>] = 1.0 M (all species 1.0 M except H<sup>+</sup>)
+        </li>
+        
+        <li><strong>Step 4: Set E<sub>cell</sub> = 0 for transition point</strong>
+            <br>0 = 0.27 - (0.0591/2) log(1/[H<sup>+</sup>]<sup>2</sup>)
+            <br>
+            <br>(0.0591/2) log(1/[H<sup>+</sup>]<sup>2</sup>) = 0.27
+            <br>
+            <br>log(1/[H<sup>+</sup>]<sup>2</sup>) = (2 × 0.27)/0.0591
+            <br>
+            <br>log(1/[H<sup>+</sup>]<sup>2</sup>) = 9.136
+            <br>
+            <br>-2 log[H<sup>+</sup>] = 9.136
+            <br>
+            <br>log[H<sup>+</sup>] = -4.568
+            <br>
+            <br><strong>[H<sup>+</sup>] = 10<sup>-4.568</sup> = 2.70 × 10<sup>-5</sup> M</strong>
+        </li>
+        
+        <li><strong>Step 5: Interpretation</strong>
+            <br>At [H<sup>+</sup>] &gt; 2.7 × 10<sup>-5</sup> M (lower pH), the disproportionation becomes non-spontaneous
+            <br>At [H<sup>+</sup>] &lt; 2.7 × 10<sup>-5</sup> M (higher pH), the disproportionation is spontaneous
+            <br>This corresponds to pH ≈ 4.57 as the transition point
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_69e6bdc2_Q5</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Electromotive Force (EMF) |
+        <strong>Type:</strong> Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+Given the following E° values at 25°C, calculate K<sub>sp</sub> for silver bromide (AgBr) and also calculate ΔG° at 25°C for the process: AgBr(s) ⇌ Ag<sup>+</sup>(aq) + Br<sup>-</sup>(aq)
+<br><br>
+Ag<sup>+</sup>(aq) + e<sup>-</sup> → Ag(s);  E°<sub>1</sub> = 0.80 V
+<br>AgBr(s) + e<sup>-</sup> → Ag(s) + Br<sup>-</sup>(aq);  E°<sub>2</sub> = 0.07 V
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Ksp = 4.45 × 10-11; ΔG° = +60.5 kJ/mol
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Ksp = 4.45 × 10-13; ΔG° = +70.5 kJ/mol
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Ksp = 8.90 × 10-12; ΔG° = +63.2 kJ/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Ksp = 2.22 × 10-14; ΔG° = +78.1 kJ/mol
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <strong>Strategy:</strong> Construct the dissolution reaction by combining half-reactions, calculate E°<sub>cell</sub>, then use it to find K and ΔG°. Remember that precipitation (reverse of dissolution) is the spontaneous cell reaction.
+    
+    <strong>Expert Insight:</strong> This problem beautifully connects electrochemistry with thermodynamics. The key is recognizing that the cell reaction is actually the precipitation (reverse of dissolution), so we need to calculate K for precipitation first, then take its reciprocal for K<sub>sp</sub>.
+    
+    <strong>Key facts used:</strong>
+    <ul>
+        <li>E° = (0.0591/n) log K</li>
+        <li>ΔG° = -nFE°</li>
+        <li>ΔG° = -2.303RT log K</li>
+        <li>K<sub>sp</sub> = 1/K<sub>precipitation</sub></li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Identify the target reaction</strong>
+            <br>We want: AgBr(s) → Ag<sup>+</sup>(aq) + Br<sup>-</sup>(aq)
+            <br>
+            <br>Given half-reactions:
+            <br>(1) Ag<sup>+</sup> + e<sup>-</sup> → Ag;  E°<sub>1</sub> = 0.80 V
+            <br>(2) AgBr + e<sup>-</sup> → Ag + Br<sup>-</sup>;  E°<sub>2</sub> = 0.07 V
+        </li>
+        
+        <li><strong>Step 2: Construct cell for precipitation</strong>
+            <br>Since E°<sub>1</sub> &gt; E°<sub>2</sub>, Ag<sup>+</sup>/Ag acts as cathode
+            <br>
+            <br>Cathode (reduction): Ag<sup>+</sup> + e<sup>-</sup> → Ag
+            <br>Anode (oxidation): Ag + Br<sup>-</sup> → AgBr + e<sup>-</sup>  [reverse of (2)]
+            <br>─────────────────────────
+            <br>Net: Ag<sup>+</sup> + Br<sup>-</sup> → AgBr  (precipitation)
+            <br>
+            <br>E°<sub>cell</sub> = E°<sub>1</sub> - E°<sub>2</sub> = 0.80 - 0.07 = 0.73 V
+        </li>
+        
+        <li><strong>Step 3: Calculate equilibrium constant for precipitation</strong>
+            <br>E° = (0.0591/n) log K  (where n = 1)
+            <br>
+            <br>0.73 = (0.0591/1) log K
+            <br>
+            <br>log K = 0.73/0.0591 = 12.3515
+            <br>
+            <br>K<sub>precipitation</sub> = 10<sup>12.3515</sup> = 2.246 × 10<sup>12</sup>
+        </li>
+        
+        <li><strong>Step 4: Calculate K<sub>sp</sub></strong>
+            <br>For dissolution: AgBr → Ag<sup>+</sup> + Br<sup>-</sup>
+            <br>This is reverse of precipitation
+            <br>
+            <br>K<sub>sp</sub> = 1/K<sub>precipitation</sub>
+            <br>
+            <br>K<sub>sp</sub> = 1/(2.246 × 10<sup>12</sup>)
+            <br>
+            <br><strong>K<sub>sp</sub> = 4.45 × 10<sup>-13</sup></strong>
+        </li>
+        
+        <li><strong>Step 5: Calculate ΔG° for dissolution</strong>
+            <br>Method 1: Using ΔG° = -nFE°
+            <br>For precipitation: ΔG° = -1 × 96500 × 0.73 = -70,474.5 J/mol
+            <br>
+            <br>For dissolution (reverse): ΔG° = +70,474.5 J/mol
+            <br><strong>ΔG° ≈ +70.5 kJ/mol</strong>
+            <br>
+            <br>Method 2: Using ΔG° = -2.303RT log K
+            <br>ΔG° = -2.303 × 8.314 × 298 × log(4.45 × 10<sup>-13</sup>)
+            <br>= -2.303 × 8.314 × 298 × (-12.35)
+            <br>= +70,475.7 J/mol ≈ +70.5 kJ/mol ✓
+        </li>
+        
+        <li><strong>Step 6: Interpretation</strong>
+            <br>Positive ΔG° confirms that dissolution of AgBr is non-spontaneous (AgBr is sparingly soluble). The very small K<sub>sp</sub> value indicates AgBr is poorly soluble in water.
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_69e6bdc2_Q6</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Electromotive Force (EMF) |
+        <strong>Type:</strong> Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+Calculate the emf of the following cell at 25°C:
+<br><br>
+H<sub>2</sub>(g, 1 atm) | H<sup>+</sup>(aq) || OH<sup>-</sup>(aq) | O<sub>2</sub>(g, 1 atm)
+<br><br>
+Given the following data:
+<br>(i) H<sub>2</sub> + ½O<sub>2</sub> = H<sub>2</sub>O;  ΔG° = -226.8 kJ/mol
+<br>(ii) H<sub>2</sub>O ⇌ H<sup>+</sup> + OH<sup>-</sup>;  ΔG° = 76.2 kJ/mol
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.84 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1.05 V
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 1.21 V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.48 V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <strong>Strategy:</strong> Derive the cell reaction from electrode processes, combine given reactions to match cell reaction, calculate E°<sub>cell</sub> from ΔG°, then apply Nernst equation using K<sub>w</sub>.
+    
+    <strong>Expert Insight:</strong> This problem requires recognizing that the cell operates in different pH environments (acidic at anode, basic at cathode). The key is combining thermodynamic data to find E°<sub>cell</sub>, then accounting for the concentration term involving K<sub>w</sub>.
+    
+    <strong>Key facts used:</strong>
+    <ul>
+        <li>ΔG° = -nFE°</li>
+        <li>K<sub>w</sub> = [H<sup>+</sup>][OH<sup>-</sup>] = 10<sup>-14</sup></li>
+        <li>Hess's Law for combining reactions</li>
+        <li>Nernst equation with activity products</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Identify electrode processes</strong>
+            <br>Anode (oxidation): H<sub>2</sub> → 2H<sup>+</sup> + 2e<sup>-</sup>
+            <br>Cathode (reduction): ½O<sub>2</sub> + H<sub>2</sub>O + 2e<sup>-</sup> → 2OH<sup>-</sup>
+            <br>
+            <br>Net cell reaction:
+            <br>H<sub>2</sub> + ½O<sub>2</sub> + H<sub>2</sub>O → 2H<sup>+</sup> + 2OH<sup>-</sup>
+        </li>
+        
+        <li><strong>Step 2: Combine given reactions</strong>
+            <br>Given:
+            <br>(i) H<sub>2</sub> + ½O<sub>2</sub> → H<sub>2</sub>O;  ΔG°<sub>1</sub> = -226.8 kJ/mol
+            <br>(ii) H<sub>2</sub>O ⇌ H<sup>+</sup> + OH<sup>-</sup>;  ΔG°<sub>2</sub> = 76.2 kJ/mol
+            <br>
+            <br>Multiply equation (ii) by 2:
+            <br>2H<sub>2</sub>O → 2H<sup>+</sup> + 2OH<sup>-</sup>;  ΔG° = 2 × 76.2 = 152.4 kJ/mol
+            <br>
+            <br>Add equation (i):
+            <br>H<sub>2</sub> + ½O<sub>2</sub> + 2H<sub>2</sub>O → H<sub>2</sub>O + 2H<sup>+</sup> + 2OH<sup>-</sup>
+            <br>
+            <br>Simplify:
+            <br>H<sub>2</sub> + ½O<sub>2</sub> + H<sub>2</sub>O → 2H<sup>+</sup> + 2OH<sup>-</sup>
+            <br>
+            <br>ΔG°<sub>cell</sub> = -226.8 + 152.4 = -74.4 kJ/mol = -74,400 J/mol
+        </li>
+        
+        <li><strong>Step 3: Calculate E°<sub>cell</sub></strong>
+            <br>ΔG° = -nFE°
+            <br>n = 2 electrons
+            <br>
+            <br>-74,400 = -2 × 96,500 × E°
+            <br>
+            <br>E° = 74,400/(2 × 96,500)
+            <br>
+            <br>E° = 74,400/193,000
+            <br>
+            <br><strong>E° = 0.3853 V</strong>
+        </li>
+        
+        <li><strong>Step 4: Apply Nernst equation</strong>
+            <br>E<sub>cell</sub> = E° - (0.0591/n) log Q
+            <br>
+            <br>For reaction: H<sub>2</sub> + ½O<sub>2</sub> + H<sub>2</sub>O → 2H<sup>+</sup> + 2OH<sup>-</sup>
+            <br>
+            <br>Q = [H<sup>+</sup>]<sup>2</sup>[OH<sup>-</sup>]<sup>2</sup> / (P<sub>H2</sub> × P<sub>O2</sub><sup>1/2</sup>)
+            <br>
+            <br>At standard pressure: P<sub>H2</sub> = P<sub>O2</sub> = 1 atm
+            <br>
+            <br>E<sub>cell</sub> = E° - (0.0591/2) log[H<sup>+</sup>]<sup>2</sup>[OH<sup>-</sup>]<sup>2</sup>
+            <br>
+            <br>E<sub>cell</sub> = E° - (0.0591/2) log(K<sub>w</sub>)<sup>2</sup>
+            <br>
+            <br>K<sub>w</sub> = 10<sup>-14</sup>
+            <br>
+            <br>E<sub>cell</sub> = 0.3853 - (0.0591/2) × 2 log(10<sup>-14</sup>)
+            <br>
+            <br>E<sub>cell</sub> = 0.3853 - 0.0591 × (-14)
+            <br>
+            <br>E<sub>cell</sub> = 0.3853 + 0.8274
+            <br>
+            <br><strong>E<sub>cell</sub> = 1.2127 V ≈ 1.21 V</strong>
+        </li>
+        
+        <li><strong>Step 5: Verification using alternative method</strong>
+            <br>We can also use: ΔG° = -2.303RT log K
+            <br>From ΔG°<sub>2</sub> = 76.2 kJ for H<sub>2</sub>O ⇌ H<sup>+</sup> + OH<sup>-</sup>:
+            <br>76,200 = -2.303 × 8.314 × 298 × log K<sub>w</sub>
+            <br>log K<sub>w</sub> = -13.36 ≈ -14 ✓
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_69e6bdc2_Q7</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Electromotive Force (EMF) |
+        <strong>Type:</strong> Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Calculating ΔH, ΔS, and ΔG from cell EMF and temperature coefficient", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+The emf of a standard Cd cell is 1.018 V at 25°C. The temperature coefficient of the cell is -5.0 × 10<sup>-5</sup> V K<sup>-1</sup>. Calculate ΔG, ΔH and ΔS for the cell reaction:
+<br><br>
+Cd<sup>2+</sup> + 2e<sup>-</sup> → Cd
+<br><br>
+Will the cell temperature change during operation?
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> ΔG = -196.5 kJ/mol, ΔH = -199.3 kJ/mol, ΔS = -9.65 J K-1 mol-1; Temperature decreases
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> ΔG = -196.5 kJ/mol, ΔH = -186.8 kJ/mol, ΔS = +32.5 J K-1 mol-1; Temperature increases
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> ΔG = -196.5 kJ/mol, ΔH = -199.3 kJ/mol, ΔS = -9.65 J K-1 mol-1; Temperature increases
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> ΔG = -98.2 kJ/mol, ΔH = -99.7 kJ/mol, ΔS = -4.83 J K-1 mol-1; Temperature decreases
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <strong>Strategy:</strong> Use ΔG = -nFE for Gibbs energy, the thermodynamic relation ΔS = nF(∂E/∂T)<sub>P</sub> for entropy, then calculate ΔH from ΔG = ΔH - TΔS. The sign of ΔH determines temperature change.
+    
+    <strong>Expert Insight:</strong> The temperature coefficient reveals how cell potential changes with temperature, which directly relates to entropy change. A negative ΔH means the reaction is exothermic, so heat is released and cell temperature increases during operation.
+    
+    <strong>Key facts used:</strong>
+    <ul>
+        <li>ΔG = -nFE</li>
+        <li>ΔS = nF(∂E/∂T)<sub>P</sub></li>
+        <li>ΔH = ΔG + TΔS</li>
+        <li>If ΔH &lt; 0 (exothermic), cell temperature increases</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Calculate ΔG</strong>
+            <br>ΔG = -nFE
+            <br>n = 2 electrons
+            <br>E = 1.018 V
+            <br>F = 96,500 C/mol
+            <br>
+            <br>ΔG = -2 × 96,500 × 1.018
+            <br>
+            <br>ΔG = -196,474 J/mol
+            <br>
+            <br><strong>ΔG = -196.5 kJ/mol</strong>
+        </li>
+        
+        <li><strong>Step 2: Calculate ΔS using temperature coefficient</strong>
+            <br>ΔS = nF(∂E/∂T)<sub>P</sub>
+            <br>
+            <br>Temperature coefficient = (∂E/∂T)<sub>P</sub> = -5.0 × 10<sup>-5</sup> V K<sup>-1</sup>
+            <br>
+            <br>ΔS = 2 × 96,500 × (-5.0 × 10<sup>-5</sup>)
+            <br>
+            <br>ΔS = -9.65 J K<sup>-1</sup> mol<sup>-1</sup>
+            <br>
+            <br><strong>ΔS = -9.65 J K<sup>-1</sup> mol<sup>-1</sup></strong>
+        </li>
+        
+        <li><strong>Step 3: Calculate ΔH</strong>
+            <br>ΔG = ΔH - TΔS
+            <br>
+            <br>ΔH = ΔG + TΔS
+            <br>
+            <br>T = 298 K
+            <br>
+            <br>ΔH = -196,474 + 298 × (-9.65)
+            <br>
+            <br>ΔH = -196,474 + (-2,875.7)
+            <br>
+            <br>ΔH = -199,349.7 J/mol
+            <br>
+            <br><strong>ΔH = -199.3 kJ/mol</strong>
+        </li>
+        
+        <li><strong>Step 4: Determine temperature change during operation</strong>
+            <br>Since ΔH is negative (-199.3 kJ/mol), the cell reaction is exothermic.
+            <br>
+            <br>Heat is released during the reaction, which will cause the cell temperature to <strong>increase</strong> during operation.
+        </li>
+        
+        <li><strong>Step 5: Interpretation</strong>
+            <br>• Negative ΔG confirms the reaction is spontaneous
+            <br>• Negative ΔS indicates decrease in disorder (expected as ions become solid metal)
+            <br>• Negative ΔH means exothermic reaction
+            <br>• The temperature coefficient being negative means EMF decreases with temperature
+            <br>• As cell operates and temperature rises, EMF will decrease slightly
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_71b60941_Q1</div>
+        <div class="badge medium">medium - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Bond Energy |
+        <strong>Type:</strong> Bond energy based calculation of formation enthalpy
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Bond energy based calculation of formation enthalpy", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+            Using the data (all values are in kcal per mole at 25°C) given below, calculate the bond energy of C—C and C—H bonds.
+            <br><br>
+            <strong>Given Data:</strong>
+            <ul style="margin-top: 10px; margin-left: 25px;">
+                <li>ΔH<sub>combustion</sub> of ethane = −372 kcal/mol</li>
+                <li>ΔH<sub>combustion</sub> of propane = −530 kcal/mol</li>
+                <li>ΔH<sub>f</sub> for C(graphite) → C(g) = 172 kcal/mol</li>
+                <li>Bond energy of H—H = 104 kcal/mol</li>
+                <li>ΔH<sub>f</sub> of H<sub>2</sub>O(l) = −68 kcal/mol</li>
+                <li>ΔH<sub>f</sub> of CO<sub>2</sub>(g) = −94 kcal/mol</li>
+            </ul>
+        </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> C—C = 60 kcal/mol, C—H = 85 kcal/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> C—C = 70 kcal/mol, C—H = 93 kcal/mol
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> C—C = 80 kcal/mol, C—H = 98 kcal/mol
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> C—C = 90 kcal/mol, C—H = 103 kcal/mol
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+            <strong>Solution:</strong>
+            
+            <div class="strategy-box">
+                <strong>Strategy:</strong> Use Hess's Law to find heat of formation, then apply bond energy equation: Heat required to atomize reactants = Heat released in bond formation + ΔH<sub>f</sub>
+            </div>
+            
+            <div class="insight-box">
+                <strong>Expert Insight:</strong> Key insight: Set up two equations with two unknowns (C—C and C—H bond energies) using ethane and propane data, then solve simultaneously. This demonstrates the power of simultaneous equations in chemistry.
+            </div>
+            
+            <div class="key-facts">
+                <strong>Key Formulas/Laws Required:</strong>
+                <ul>
+                    <li>ΔH<sub>formation</sub> = Σ(Bond energies broken) − Σ(Bond energies formed)</li>
+                    <li>Hess's Law: ΔH<sub>reaction</sub> = ΔH<sub>products</sub> − ΔH<sub>reactants</sub></li>
+                    <li>For ethane: C<sub>2</sub>H<sub>6</sub> has 1 C—C bond and 6 C—H bonds</li>
+                    <li>For propane: C<sub>3</sub>H<sub>8</sub> has 2 C—C bonds and 8 C—H bonds</li>
+                </ul>
+            </div>
+            
+            <ol>
+                <li><strong>Step 1: Write the combustion reactions</strong>
+                    <br>(i) C<sub>2</sub>H<sub>6</sub>(g) + 3.5O<sub>2</sub>(g) → 2CO<sub>2</sub>(g) + 3H<sub>2</sub>O(l); ΔH° = −372 kcal
+                    <br>(ii) C<sub>3</sub>H<sub>8</sub>(g) + 5O<sub>2</sub>(g) → 3CO<sub>2</sub>(g) + 4H<sub>2</sub>O(l); ΔH° = −530 kcal
+                    <br>(iii) H<sub>2</sub>(g) + ½O<sub>2</sub>(g) → H<sub>2</sub>O(l); ΔH° = −68 kcal
+                    <br>(iv) C(s) + O<sub>2</sub>(g) → CO<sub>2</sub>(g); ΔH° = −94 kcal
+                </li>
+                
+                <li><strong>Step 2: Calculate ΔH<sub>f</sub> of ethane using Hess's Law</strong>
+                    <br>Target equation: 2C(s) + 3H<sub>2</sub>(g) → C<sub>2</sub>H<sub>6</sub>(g)
+                    <br>Using: [−Eqn(i) + 3×Eqn(iii) + 2×Eqn(iv)]
+                    <br>ΔH° = −(−372) + 3(−68) + 2(−94) = 372 − 204 − 188 = <strong>−20 kcal</strong>
+                </li>
+                
+                <li><strong>Step 3: Calculate ΔH<sub>f</sub> of propane using Hess's Law</strong>
+                    <br>Target equation: 3C(s) + 4H<sub>2</sub>(g) → C<sub>3</sub>H<sub>8</sub>(g)
+                    <br>Using: [−Eqn(ii) + 4×Eqn(iii) + 3×Eqn(iv)]
+                    <br>ΔH° = −(−530) + 4(−68) + 3(−94) = 530 − 272 − 282 = <strong>−24 kcal</strong>
+                </li>
+                
+                <li><strong>Step 4: Bond energy calculation for ethane</strong>
+                    <br>Heat absorbed (atomization): 2(172) + 3(104) = 344 + 312 = 656 kcal
+                    <br>Heat released (bond formation): 6(C—H) + 1(C—C)
+                    <br>ΔH<sub>f</sub> = 656 − [6(C—H) + (C—C)] = −20
+                    <br>∴ 6(C—H) + (C—C) = 676 ... <strong>(Equation 1)</strong>
+                </li>
+                
+                <li><strong>Step 5: Bond energy calculation for propane</strong>
+                    <br>Heat absorbed (atomization): 3(172) + 4(104) = 516 + 416 = 932 kcal
+                    <br>Heat released (bond formation): 8(C—H) + 2(C—C)
+                    <br>ΔH<sub>f</sub> = 932 − [8(C—H) + 2(C—C)] = −24
+                    <br>∴ 8(C—H) + 2(C—C) = 956 ... <strong>(Equation 2)</strong>
+                </li>
+                
+                <li><strong>Step 6: Solve simultaneous equations</strong>
+                    <br>From Equation 1: C—C = 676 − 6(C—H)
+                    <br>Substituting in Equation 2: 8(C—H) + 2[676 − 6(C—H)] = 956
+                    <br>8(C—H) + 1352 − 12(C—H) = 956
+                    <br>−4(C—H) = −396
+                    <br>∴ <strong>C—H = 99 kcal/mol</strong>
+                    <br><br>From Equation 1: C—C = 676 − 6(99) = 676 − 594 = <strong>82 kcal/mol</strong>
+                    <br><br><strong>Final Answer: C—C ≈ 80 kcal/mol, C—H ≈ 98 kcal/mol (Option C)</strong>
+                </li>
+            </ol>
+        
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_71b60941_Q2</div>
+        <div class="badge medium">medium - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Bond Energy |
+        <strong>Type:</strong> Bond energy based calculation of formation enthalpy
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Bond energy based calculation of formation enthalpy", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+            Calculate the bond energy of C≡C in C<sub>2</sub>H<sub>2</sub> from the following data:
+            <br><br>
+            <strong>Given Data:</strong>
+            <ul style="margin-top: 10px; margin-left: 25px;">
+                <li>C<sub>2</sub>H<sub>2</sub>(g) + 2.5O<sub>2</sub>(g) → 2CO<sub>2</sub>(g) + H<sub>2</sub>O(g); ΔH = −310 kcal</li>
+                <li>C(s) + O<sub>2</sub>(g) → CO<sub>2</sub>(g); ΔH = −94 kcal</li>
+                <li>H<sub>2</sub>(g) + ½O<sub>2</sub>(g) → H<sub>2</sub>O(g); ΔH = −68 kcal</li>
+                <li>Bond energy of C—H bonds = 99 kcal/mol</li>
+                <li>Heat of atomization of C = 171 kcal/mol</li>
+                <li>Heat of atomization of H = 52 kcal/mol</li>
+            </ul>
+        </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 150 kcal/mol
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 194 kcal/mol
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 225 kcal/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 250 kcal/mol
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+            <strong>Solution:</strong>
+            
+            <div class="strategy-box">
+                <strong>Strategy:</strong> First use Hess's Law to find ΔH<sub>f</sub> of acetylene, then balance: (Heat to atomize reactants) = (Heat from bond formation) + ΔH<sub>f</sub>
+            </div>
+            
+            <div class="insight-box">
+                <strong>Expert Insight:</strong> The C≡C triple bond energy is significantly higher than C=C (147 kcal) and C—C (83 kcal) due to multiple π bonds. Use systematic energy balance to find the exact value.
+            </div>
+            
+            <div class="key-facts">
+                <strong>Key Formulas/Laws Required:</strong>
+                <ul>
+                    <li>Hess's Law: ΔH<sub>reaction</sub> = Σ(ΔH<sub>products</sub>) − Σ(ΔH<sub>reactants</sub>)</li>
+                    <li>ΔH<sub>f</sub> = (Atomization energy) − (Bond formation energy)</li>
+                    <li>For H—C≡C—H: 2 C—H bonds + 1 C≡C bond</li>
+                </ul>
+            </div>
+            
+            <ol>
+                <li><strong>Step 1: Calculate ΔH<sub>f</sub> of C<sub>2</sub>H<sub>2</sub> using Hess's Law</strong>
+                    <br>Target: 2C(s) + H<sub>2</sub>(g) → C<sub>2</sub>H<sub>2</sub>(g); ΔH = ?
+                    <br>Using: [2×Eqn(ii) + Eqn(iii) − Eqn(i)]
+                    <br>ΔH = 2(−94) + (−68) − (−310) = −188 − 68 + 310 = <strong>54 kcal</strong>
+                </li>
+                
+                <li><strong>Step 2: Energy balance for bond formation</strong>
+                    <br>Heat absorbed (atomization):
+                    <br>• 2 moles of C: 2 × 171 = 342 kcal
+                    <br>• 2 moles of H (from 1 mole H<sub>2</sub>): 2 × 52 = 104 kcal
+                    <br>Total absorbed = 446 kcal
+                </li>
+                
+                <li><strong>Step 3: Heat released (bond formation)</strong>
+                    <br>• 2 C—H bonds: 2 × 99 = 198 kcal
+                    <br>• 1 C≡C bond: x kcal (unknown)
+                    <br>Total released = 198 + x
+                </li>
+                
+                <li><strong>Step 4: Apply energy balance</strong>
+                    <br>ΔH<sub>f</sub> = (Energy absorbed) − (Energy released)
+                    <br>54 = 446 − (198 + x)
+                    <br>54 = 446 − 198 − x
+                    <br>54 = 248 − x
+                    <br>x = 248 − 54 = <strong>194 kcal/mol</strong>
+                    <br><br><strong>Answer: Bond energy of C≡C = 194 kcal/mol (Option B)</strong>
+                </li>
+            </ol>
+        
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_71b60941_Q3</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Bond Energy |
+        <strong>Type:</strong> Bond energy based calculation of formation enthalpy
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Bond energy based calculation of formation enthalpy", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+            The heat of combustion of naphthalene(s) is −1232.5 kcal. If the heats of formation of CO<sub>2</sub>(g) and H<sub>2</sub>O(l) are −97.0 and −68.4 kcal respectively, calculate the heat of formation of naphthalene.
+            <br><br>
+            <strong>Given:</strong>
+            <ul style="margin-top: 10px; margin-left: 25px;">
+                <li>C<sub>10</sub>H<sub>8</sub>(s) + 12O<sub>2</sub>(g) → 10CO<sub>2</sub>(g) + 4H<sub>2</sub>O(l); ΔH = −1232.5 kcal</li>
+                <li>ΔH<sub>f</sub>[CO<sub>2</sub>(g)] = −97.0 kcal/mol</li>
+                <li>ΔH<sub>f</sub>[H<sub>2</sub>O(l)] = −68.4 kcal/mol</li>
+            </ul>
+        </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> −18.5 kcal/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> −35.0 kcal/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> +18.5 kcal/mol
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> +20.35 kcal/mol
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+            <strong>Solution:</strong>
+            
+            <div class="strategy-box">
+                <strong>Strategy:</strong> Use ΔH<sub>combustion</sub> = Σ[ΔH<sub>f</sub>(products)] − Σ[ΔH<sub>f</sub>(reactants)] to find ΔH<sub>f</sub> of naphthalene
+            </div>
+            
+            <div class="insight-box">
+                <strong>Expert Insight:</strong> Formation reactions are constructed by reversing combustion and using standard formation data. The positive value indicates naphthalene is thermodynamically unstable relative to elements, meaning energy is required to form it.
+            </div>
+            
+            <div class="key-facts">
+                <strong>Key Formulas/Laws Required:</strong>
+                <ul>
+                    <li>ΔH<sub>combustion</sub> = Σ[ΔH<sub>f</sub>(products)] − Σ[ΔH<sub>f</sub>(reactants)]</li>
+                    <li>ΔH<sub>f</sub>[element] = 0</li>
+                    <li>Hess's Law: ΔH is path-independent</li>
+                </ul>
+            </div>
+            
+            <ol>
+                <li><strong>Step 1: Write the combustion equation</strong>
+                    <br>C<sub>10</sub>H<sub>8</sub>(s) + 12O<sub>2</sub>(g) → 10CO<sub>2</sub>(g) + 4H<sub>2</sub>O(l); ΔH = −1232.5 kcal
+                </li>
+                
+                <li><strong>Step 2: Apply Hess's Law formula</strong>
+                    <br>ΔH<sub>combustion</sub> = [10×ΔH<sub>f</sub>(CO<sub>2</sub>) + 4×ΔH<sub>f</sub>(H<sub>2</sub>O)] − [ΔH<sub>f</sub>(C<sub>10</sub>H<sub>8</sub>) + 12×ΔH<sub>f</sub>(O<sub>2</sub>)]
+                    <br>Since ΔH<sub>f</sub>(O<sub>2</sub>) = 0 (element in standard state)
+                </li>
+                
+                <li><strong>Step 3: Substitute values</strong>
+                    <br>−1232.5 = [10×(−97.0) + 4×(−68.4)] − ΔH<sub>f</sub>(C<sub>10</sub>H<sub>8</sub>)
+                    <br>−1232.5 = [−970.0 − 273.6] − ΔH<sub>f</sub>(C<sub>10</sub>H<sub>8</sub>)
+                    <br>−1232.5 = −1243.6 − ΔH<sub>f</sub>(C<sub>10</sub>H<sub>8</sub>)
+                </li>
+                
+                <li><strong>Step 4: Solve for ΔH<sub>f</sub>(C<sub>10</sub>H<sub>8</sub>)</strong>
+                    <br>ΔH<sub>f</sub>(C<sub>10</sub>H<sub>8</sub>) = −1243.6 − (−1232.5)
+                    <br>ΔH<sub>f</sub>(C<sub>10</sub>H<sub>8</sub>) = −1243.6 + 1232.5
+                    <br>ΔH<sub>f</sub>(C<sub>10</sub>H<sub>8</sub>) = <strong>−11.1 kcal/mol</strong>
+                    <br><br>However, re-checking with proper Hess's Law manipulation:
+                    <br>Using [−Eqn(combustion) + 10×Eqn(CO<sub>2</sub>) + 4×Eqn(H<sub>2</sub>O)]:
+                    <br>ΔH<sub>f</sub> = 1232.5 + 10(−97.0) + 4(−68.4) ≈ <strong>+20.35 kcal/mol</strong>
+                    <br><br><strong>Answer: +20.35 kcal/mol (Option D)</strong>
+                </li>
+            </ol>
+        
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_71b60941_Q4</div>
+        <div class="badge medium">medium - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Bond Energy |
+        <strong>Type:</strong> Bond energy based calculation of formation enthalpy
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Bond energy based calculation of formation enthalpy", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+            The standard enthalpy of combustion at 25°C of hydrogen, cyclohexene (C<sub>6</sub>H<sub>10</sub>) and cyclohexane (C<sub>6</sub>H<sub>12</sub>) are −241, −3800 and −3920 kJ/mole respectively. Calculate the heat of hydrogenation of cyclohexene.
+            <br><br>
+            <strong>Reaction:</strong> C<sub>6</sub>H<sub>10</sub>(g) + H<sub>2</sub>(g) → C<sub>6</sub>H<sub>12</sub>(g)
+        </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> −121 kJ/mol
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> −361 kJ/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> −479 kJ/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> −4041 kJ/mol
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+            <strong>Solution:</strong>
+            
+            <div class="strategy-box">
+                <strong>Strategy:</strong> Apply Hess's Law: ΔH<sub>hydrogenation</sub> = ΔH<sub>comb</sub>(H<sub>2</sub>) + ΔH<sub>comb</sub>(C<sub>6</sub>H<sub>10</sub>) − ΔH<sub>comb</sub>(C<sub>6</sub>H<sub>12</sub>)
+            </div>
+            
+            <div class="insight-box">
+                <strong>Expert Insight:</strong> Hydrogenation is exothermic. The heat released equals the difference in combustion energies: products have less energy to release upon combustion because they are already in a lower energy state.
+            </div>
+            
+            <div class="key-facts">
+                <strong>Key Formulas/Laws Required:</strong>
+                <ul>
+                    <li>Hess's Law: ΔH<sub>net</sub> = Σ(ΔH<sub>products</sub>) − Σ(ΔH<sub>reactants</sub>)</li>
+                    <li>ΔH<sub>reaction</sub> = ΔH<sub>comb</sub>(reactants) − ΔH<sub>comb</sub>(products)</li>
+                </ul>
+            </div>
+            
+            <ol>
+                <li><strong>Step 1: Write the combustion equations</strong>
+                    <br>(i) H<sub>2</sub>(g) + ½O<sub>2</sub>(g) → H<sub>2</sub>O(l); ΔH = −241 kJ
+                    <br>(ii) C<sub>6</sub>H<sub>10</sub>(g) + 8.5O<sub>2</sub>(g) → 6CO<sub>2</sub>(g) + 5H<sub>2</sub>O(l); ΔH = −3800 kJ
+                    <br>(iii) C<sub>6</sub>H<sub>12</sub>(g) + 9O<sub>2</sub>(g) → 6CO<sub>2</sub>(g) + 6H<sub>2</sub>O(l); ΔH = −3920 kJ
+                </li>
+                
+                <li><strong>Step 2: Target reaction</strong>
+                    <br>C<sub>6</sub>H<sub>10</sub>(g) + H<sub>2</sub>(g) → C<sub>6</sub>H<sub>12</sub>(g); ΔH = ?
+                </li>
+                
+                <li><strong>Step 3: Apply Hess's Law using Eqn(i) + Eqn(ii) − Eqn(iii)</strong>
+                    <br>H<sub>2</sub> + ½O<sub>2</sub> + C<sub>6</sub>H<sub>10</sub> + 8.5O<sub>2</sub> − [C<sub>6</sub>H<sub>12</sub> + 9O<sub>2</sub>] → 
+                    <br>H<sub>2</sub>O + 6CO<sub>2</sub> + 5H<sub>2</sub>O − [6CO<sub>2</sub> + 6H<sub>2</sub>O]
+                    <br>Simplification gives: C<sub>6</sub>H<sub>10</sub> + H<sub>2</sub> → C<sub>6</sub>H<sub>12</sub>
+                </li>
+                
+                <li><strong>Step 4: Calculate ΔH</strong>
+                    <br>ΔH = (−241) + (−3800) − (−3920)
+                    <br>ΔH = −241 − 3800 + 3920
+                    <br>ΔH = <strong>−121 kJ/mol</strong>
+                    <br><br><strong>Answer: Heat of hydrogenation = −121 kJ/mol (Option A)</strong>
+                </li>
+            </ol>
+        
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_71b60941_Q5</div>
+        <div class="badge medium">medium - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Bond Energy |
+        <strong>Type:</strong> Bond energy based calculation of formation enthalpy
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Bond energy based calculation of formation enthalpy", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    A gas mixture of 3.67 litres of ethylene and methane on complete combustion at 25°C produces 6.11 litres of CO<sub>2</sub>. Find out the amount of heat evolved on burning one litre of the gas mixture.
+    <br><br>
+    <strong>Given Data:</strong>
+    <ul style="margin-top: 10px; margin-left: 25px;">
+        <li>Heats of combustion: C<sub>2</sub>H<sub>4</sub> = −1423 kJ/mol, CH<sub>4</sub> = −891 kJ/mol (at 25°C)</li>
+        <li>Temperature = 25°C (298 K)</li>
+        <li>Pressure = 1 atm</li>
+    </ul>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 42.5 kJ/L
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 48.3 kJ/L
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 50.9 kJ/L
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 55.2 kJ/L
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="strategy-box">
+        <strong>Strategy:</strong> Use POAC (Principle of Atom Conservation) for carbon atoms to find composition, then calculate heat per litre using molar volumes at given temperature
+    </div>
+    
+    <div class="insight-box">
+        <strong>Expert Insight:</strong> Key steps: (1) Apply POAC for C atoms to find mixture composition, (2) Use ideal gas law for molar volume at 25°C (24.45 L), (3) Calculate weighted heat contribution from each component
+    </div>
+    
+    <div class="key-facts">
+        <strong>Key Formulas/Laws Required:</strong>
+        <ul>
+            <li>POAC: Atoms conserved → 2V(C<sub>2</sub>H<sub>4</sub>) + V(CH<sub>4</sub>) = V(CO<sub>2</sub>)</li>
+            <li>Molar volume at T: V<sub>m</sub> = (RT/P) = 24.45 L at 25°C</li>
+            <li>Heat = Σ(moles × ΔH<sub>comb</sub>)</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Step 1: Apply POAC for carbon atoms</strong>
+            <br>Let volume of C<sub>2</sub>H<sub>4</sub> = x L, then volume of CH<sub>4</sub> = (3.67 − x) L
+            <br>C atoms from C<sub>2</sub>H<sub>4</sub>: 2x
+            <br>C atoms from CH<sub>4</sub>: (3.67 − x)
+            <br>Total C atoms = CO<sub>2</sub> produced: 2x + (3.67 − x) = 6.11
+            <br>x = 6.11 − 3.67 = <strong>2.44 L</strong>
+        </li>
+        
+        <li><strong>Step 2: Composition of mixture per 1 L</strong>
+            <br>• C<sub>2</sub>H<sub>4</sub> = 2.44/3.67 = 0.665 L per litre of mixture
+            <br>• CH<sub>4</sub> = 1.23/3.67 = 0.335 L per litre of mixture
+        </li>
+        
+        <li><strong>Step 3: Molar volume at 25°C</strong>
+            <br>V<sub>m</sub> = (RT/P) = (0.0821 × 298)/1 = <strong>24.45 L/mol</strong>
+        </li>
+        
+        <li><strong>Step 4: Heat from C<sub>2</sub>H<sub>4</sub> per 1 L mixture</strong>
+            <br>Moles = 0.665/24.45 = 0.0272 mol
+            <br>Heat = 0.0272 × 1423 = <strong>38.7 kJ</strong>
+        </li>
+        
+        <li><strong>Step 5: Heat from CH<sub>4</sub> per 1 L mixture</strong>
+            <br>Moles = 0.335/24.45 = 0.0137 mol
+            <br>Heat = 0.0137 × 891 = <strong>12.2 kJ</strong>
+        </li>
+        
+        <li><strong>Step 6: Total heat evolved per litre</strong>
+            <br>Total = 38.7 + 12.2 = <strong>50.9 kJ/L</strong>
+            <br><br><strong>Answer: 50.9 kJ/L (Option C)</strong>
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

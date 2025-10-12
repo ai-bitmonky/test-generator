@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 2 (Questions 11-20)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 2: Questions 11 - 20</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:42 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">22</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_118</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem 79 (Modified):
+    </strong>
+    A parallel-plate capacitor has charge q and plate area A.
+   </p>
+<svg height="300" width="450" xmlns="http://www.w3.org/2000/svg">
+<!-- Lower plate -->
+<rect fill="#C0C0C0" height="20" stroke="black" stroke-width="2" width="250" x="100" y="220">
+</rect>
+<text font-size="14" font-weight="bold" x="210" y="235">
+     Lower Plate
+    </text>
+<!-- Upper plate -->
+<rect fill="#C0C0C0" height="20" stroke="black" stroke-width="2" width="250" x="100" y="80">
+</rect>
+<text font-size="14" font-weight="bold" x="210" y="95">
+     Upper Plate (+q)
+    </text>
+<!-- Electric field lines -->
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="140" x2="140" y1="100" y2="220">
+</line>
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="180" x2="180" y1="100" y2="220">
+</line>
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="220" x2="220" y1="100" y2="220">
+</line>
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="260" x2="260" y1="100" y2="220">
+</line>
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="300" x2="300" y1="100" y2="220">
+</line>
+<text fill="blue" font-size="14" font-weight="bold" x="310" y="160">
+     E
+    </text>
+<!-- Dimensions -->
+<line stroke="black" stroke-dasharray="5,5" stroke-width="1" x1="360" x2="360" y1="100" y2="220">
+</line>
+<line stroke="black" stroke-width="2" x1="355" x2="365" y1="100" y2="100">
+</line>
+<line stroke="black" stroke-width="2" x1="355" x2="365" y1="220" y2="220">
+</line>
+<text font-size="14" x="370" y="165">
+     x
+    </text>
+<!-- Displacement arrow -->
+<line marker-end="url(#arrowred)" stroke="red" stroke-width="2" x1="370" x2="370" y1="150" y2="170">
+</line>
+<text fill="red" font-size="12" x="375" y="165">
+     dx
+    </text>
+<!-- Force arrow on upper plate -->
+<line marker-end="url(#arrowred)" stroke="red" stroke-width="3" x1="225" x2="225" y1="70" y2="50">
+</line>
+<text fill="red" font-size="14" font-weight="bold" x="235" y="60">
+     F
+    </text>
+<!-- Area indication -->
+<text font-size="14" x="200" y="270">
+     Plate Area = A
+    </text>
+<!-- Charge symbols -->
+<text fill="red" font-size="16" x="120" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="160" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="200" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="240" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="280" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="320" y="95">
+     +
+    </text>
+<text fill="blue" font-size="16" x="120" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="160" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="200" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="240" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="280" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="320" y="235">
+     −
+    </text>
+<!-- Arrow markers -->
+<defs>
+<marker id="arrowblue" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="5" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="blue">
+</path>
+</marker>
+<marker id="arrowred" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="5" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="red">
+</path>
+</marker>
+</defs>
+</svg>
+<p>
+<strong>
+     Task:
+    </strong>
+</p>
+<p>
+    (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx)
+   </p>
+<p>
+    (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates.
+   </p>
+<p>
+<strong>
+     Given relationships:
+    </strong>
+</p>
+<ul>
+<li>
+     Work-energy theorem: dW = F·dx
+    </li>
+<li>
+     Capacitor energy: U = q²/(2C)
+    </li>
+<li>
+     Parallel-plate capacitance: C = ε₀A/x
+    </li>
+<li>
+     Electric field: E = q/(ε₀A) = σ/ε₀
+    </li>
+<li>
+     Energy density: u = ε₀E²/2
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> F = q²/(2ε₀A), Stress = F/A = q²/(2ε₀A²) = ε₀E²/2 ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> F = q²/(ε₀A), Stress = F/A = q²/(ε₀A²) = ε₀E²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> F = q²x/(2ε₀A²), Stress = F/A = q²x/(2ε₀A³) ≠ ε₀E²/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> F = qE, Stress = F/A = qE/A = σE = ε₀E²/2 ✓ (but incomplete derivation)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Express energy as function of separation
+     </strong>
+<p>
+      For a capacitor with constant charge q (isolated from battery):
+     </p>
+<p>
+      U = q²/(2C)
+     </p>
+<p>
+      Since C = ε₀A/x:
+     </p>
+<p>
+      U = q²/(2ε₀A/x) = q²x/(2ε₀A)
+     </p>
+<p>
+      Note: Energy increases with separation when charge is constant.
+     </p></li>
+<li><strong>
+      Step 2: Find work to increase separation by dx
+     </strong>
+<p>
+      When separation increases from x to x + dx, energy increases by:
+     </p>
+<p>
+      dU = d[q²x/(2ε₀A)] = q²/(2ε₀A) · dx
+     </p>
+<p>
+      This increase in energy equals the work done against the attractive force:
+     </p>
+<p>
+      dW = F · dx
+     </p>
+<p>
+      Therefore:
+     </p>
+<p>
+      F · dx = q²/(2ε₀A) · dx
+     </p></li>
+<li><strong>
+      Step 3: Determine the force
+     </strong>
+<p>
+      Canceling dx:
+     </p>
+<p>
+      F = q²/(2ε₀A)
+     </p>
+<p>
+      This is the magnitude of the attractive force between the plates.
+     </p>
+<p>
+      Alternatively, using F = -dU/dx (force opposes increase in U):
+     </p>
+<p>
+      F = -d/dx[q²x/(2ε₀A)] = -q²/(2ε₀A)
+     </p>
+<p>
+      The negative sign indicates the force is attractive (opposes separation).
+     </p>
+<p>
+      Magnitude: |F| = q²/(2ε₀A)
+     </p></li>
+<li><strong>
+      Step 4: Calculate electrostatic stress (force per unit area)
+     </strong>
+<p>
+      Stress = F/A = [q²/(2ε₀A)]/A = q²/(2ε₀A²)
+     </p></li>
+<li><strong>
+      Step 5: Express in terms of electric field
+     </strong>
+<p>
+      The electric field between the plates:
+     </p>
+<p>
+      E = σ/ε₀ = q/(ε₀A)
+     </p>
+<p>
+      Therefore: q = ε₀EA
+     </p>
+<p>
+      Substituting into stress formula:
+     </p>
+<p>
+      Stress = q²/(2ε₀A²) = (ε₀EA)²/(2ε₀A²)
+     </p>
+<p>
+      Stress = ε₀²E²A²/(2ε₀A²) = ε₀E²/2
+     </p></li>
+<li><strong>
+      Step 6: Connect to energy density
+     </strong>
+<p>
+      The energy density in the electric field is:
+     </p>
+<p>
+      u = ε₀E²/2
+     </p>
+<p>
+      We have shown that:
+     </p>
+<p>
+<strong>
+       Stress = F/A = ε₀E²/2 = u
+      </strong>
+</p>
+<p>
+      This proves that the electrostatic stress equals the energy density!
+     </p></li>
+<li><strong>
+      Step 7: Physical interpretation
+     </strong>
+<p>
+      This remarkable result shows that the energy stored in the electric field exerts a mechanical stress (pressure) on the plates. The field energy density directly translates to mechanical pressure.
+     </p>
+<p>
+      This principle extends to all electromagnetic fields: the energy density in a field manifests as a mechanical stress (electromagnetic stress tensor in general).
+     </p>
+<p>
+      For capacitors, this stress is always attractive, trying to reduce the plate separation and thereby reduce the stored energy (for constant charge).
+     </p></li>
+<li><strong>
+      Step 8: Numerical example verification
+     </strong>
+<p>
+      For a capacitor with q = 1 μC, A = 0.01 m²:
+     </p>
+<p>
+      F = (10⁻⁶)²/(2 × 8.85×10⁻¹² × 0.01) = 10⁻¹²/(1.77×10⁻¹³) = 5.65 N
+     </p>
+<p>
+      Stress = 5.65/0.01 = 565 Pa
+     </p>
+<p>
+      E = 10⁻⁶/(8.85×10⁻¹² × 0.01) = 10⁻⁶/(8.85×10⁻¹⁴) = 1.13×10⁷ V/m
+     </p>
+<p>
+      u = 8.85×10⁻¹² × (1.13×10⁷)²/2 = 565 J/m³ = 565 Pa ✓
+     </p></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_119</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 2:
+      </h4>
+      Problem 26 (Modified):Capacitor 3 in the circuit shown below is a variable capacitor (its capacitance C₃ can be varied). The figure shows the electric potential V₁ across capacitor 1 versus C₃.V+−C₁C₂C₃C₃ (μF)V₁ (V)02468100C₃ₛ=12.0Asymptote: V₁→10VThe horizontal scale is set by C₃ₛ = 12.0 μF. Electric potential V₁ approaches an asymptote of 10 V as C₃ → ∞.Circuit Configuration:C₁ is in series with the parallel combination of C₂ and C₃.Determine:(a) The electric potential V across the battery(b) The capacitance C₁(c) The capacitance C₂</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> V = 12 V, C₁ = 6.0 μF, C₂ = 3.0 μF
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> V = 10 V, C₁ = 5.0 μF, C₂ = 5.0 μF
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> V = 15 V, C₁ = 7.5 μF, C₂ = 7.5 μF
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> V = 20 V, C₁ = 10.0 μF, C₂ = 10.0 μF
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Identify circuit topology and voltage divider formula
+          </strong>
+<p>
+           The circuit has C₁ in series with (C₂ || C₃). Let C_parallel = C₂ + C₃.
+          </p>
+<p>
+           For series capacitors, voltage divides as:
+          </p>
+<p class="formula">
+           V₁ = V × C_parallel/(C₁ + C_parallel)
+          </p>
+<p>
+           where V₁ is the voltage across C₁ and V is the battery voltage.
+          </p>
+</li>
+<li>
+<strong>
+           Step 2: Apply limiting behavior as C₃ → ∞
+          </strong>
+<p>
+           As C₃ → ∞:
+          </p>
+<p>
+           C_parallel = C₂ + C₃ → ∞
+          </p>
+<p>
+           V₁ = V × C_parallel/(C₁ + C_parallel) = V × 1/(C₁/C_parallel + 1) → V × 1/(0 + 1) = V
+          </p>
+<p>
+           From the graph: V₁ → 10V as C₃ → ∞
+          </p>
+<p>
+           Therefore:
+           <strong>
+            V = 10V
+           </strong>
+           ✓
+          </p>
+</li>
+<li>
+<strong>
+           Step 3: Apply limiting behavior as C₃ → 0
+          </strong>
+<p>
+           When C₃ = 0 (open circuit), only C₂ remains in the parallel combination:
+          </p>
+<p>
+           C_parallel = C₂ + 0 = C₂
+          </p>
+<p>
+           V₁ = V × C₂/(C₁ + C₂) = 10 × C₂/(C₁ + C₂)
+          </p>
+<p>
+           From the graph at C₃ ≈ 0: V₁ ≈ 5V (reading from the curve's starting point)
+          </p>
+<p>
+           Therefore: 5 = 10 × C₂/(C₁ + C₂)
+          </p>
+<p>
+           0.5 = C₂/(C₁ + C₂)
+          </p>
+<p>
+           0.5(C₁ + C₂) = C₂
+          </p>
+<p>
+           0.5C₁ + 0.5C₂ = C₂
+          </p>
+<p>
+           0.5C₁ = 0.5C₂
+          </p>
+<p>
+<strong>
+            C₁ = C₂
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 4: Determine specific values
+          </strong>
+<p>
+           From the options where V = 10V and C₁ = C₂:
+          </p>
+<p>
+           Option B: V = 10 V, C₁ = 5.0 μF, C₂ = 5.0 μF ✓
+          </p>
+<p>
+           We can verify with an intermediate point. At C₃ = 12.0 μF (C₃ₛ):
+          </p>
+<p>
+           C_parallel = 5.0 + 12.0 = 17.0 μF
+          </p>
+<p>
+           V₁ = 10 × 17.0/(5.0 + 17.0) = 10 × 17.0/22.0 = 7.73V
+          </p>
+<p>
+           This matches the graph showing V₁ approaching but not quite at the asymptote at C₃ₛ ✓
+          </p>
+</li>
+<li>
+<strong>
+           Step 5: Complete verification
+          </strong>
+<p>
+           Check all conditions:
+          </p>
+<ul>
+<li>
+            As C₃ → ∞: V₁ → 10V ✓
+           </li>
+<li>
+            At C₃ = 0: V₁ = 10 × 5/(5+5) = 5V ✓
+           </li>
+<li>
+            At C₃ = 12 μF: V₁ = 7.73V (consistent with graph) ✓
+           </li>
+<li>
+            Battery voltage: V = 10V ✓
+           </li>
+<li>
+            Equal capacitances: C₁ = C₂ = 5.0 μF ✓
+           </li>
+</ul>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_120</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem 36 (Modified):
+    </strong>
+    As a safety engineer, you must evaluate the practice of storing flammable conducting liquids in nonconducting containers. The company supplying a certain liquid has been using a squat, cylindrical plastic container of radius r = 0.20 m and filling it to height h = 10 cm, which is not the container's full interior height.
+   </p>
+<svg height="400" width="450" xmlns="http://www.w3.org/2000/svg">
+<!-- Container -->
+<ellipse cx="225" cy="150" fill="none" rx="140" ry="30" stroke="black" stroke-width="2">
+</ellipse>
+<line stroke="black" stroke-width="2" x1="85" x2="85" y1="150" y2="300">
+</line>
+<line stroke="black" stroke-width="2" x1="365" x2="365" y1="150" y2="300">
+</line>
+<ellipse cx="225" cy="300" fill="none" rx="140" ry="30" stroke="black" stroke-width="2">
+</ellipse>
+<!-- Liquid inside -->
+<ellipse cx="225" cy="250" fill="#87CEEB" rx="130" ry="25" stroke="black" stroke-width="1">
+</ellipse>
+<rect fill="#87CEEB" height="45" width="260" x="95" y="250">
+</rect>
+<ellipse cx="225" cy="295" fill="#4682B4" rx="130" ry="25" stroke="black" stroke-width="1">
+</ellipse>
+<!-- Charge symbols on container surface -->
+<text fill="red" font-size="20" x="70" y="170">
+     −
+    </text>
+<text fill="red" font-size="20" x="70" y="200">
+     −
+    </text>
+<text fill="red" font-size="20" x="70" y="230">
+     −
+    </text>
+<text fill="red" font-size="20" x="70" y="260">
+     −
+    </text>
+<text fill="red" font-size="20" x="70" y="290">
+     −
+    </text>
+<text fill="red" font-size="20" x="370" y="170">
+     −
+    </text>
+<text fill="red" font-size="20" x="370" y="200">
+     −
+    </text>
+<text fill="red" font-size="20" x="370" y="230">
+     −
+    </text>
+<text fill="red" font-size="20" x="370" y="260">
+     −
+    </text>
+<text fill="red" font-size="20" x="370" y="290">
+     −
+    </text>
+<!-- Positive charges in liquid (induced) -->
+<text fill="blue" font-size="18" x="215" y="265">
+     +
+    </text>
+<text fill="blue" font-size="18" x="235" y="265">
+     +
+    </text>
+<text fill="blue" font-size="18" x="225" y="280">
+     +
+    </text>
+<text fill="blue" font-size="18" x="210" y="285">
+     +
+    </text>
+<text fill="blue" font-size="18" x="240" y="285">
+     +
+    </text>
+<!-- Venting port -->
+<rect fill="#ddd" height="25" stroke="black" stroke-width="2" width="30" x="210" y="130">
+</rect>
+<text font-size="12" x="165" y="125">
+     Venting port
+    </text>
+<line stroke="black" stroke-width="1" x1="195" x2="210" y1="130" y2="135">
+</line>
+<!-- Dimensions -->
+<line stroke="black" stroke-dasharray="5,5" stroke-width="1" x1="380" x2="380" y1="150" y2="300">
+</line>
+<line stroke="black" stroke-width="2" x1="375" x2="385" y1="150" y2="150">
+</line>
+<line stroke="black" stroke-width="2" x1="375" x2="385" y1="300" y2="300">
+</line>
+<text font-size="14" x="390" y="230">
+     Full height
+    </text>
+<line stroke="black" stroke-dasharray="5,5" stroke-width="1" x1="85" x2="365" y1="310" y2="310">
+</line>
+<line stroke="black" stroke-width="2" x1="85" x2="85" y1="305" y2="315">
+</line>
+<line stroke="black" stroke-width="2" x1="365" x2="365" y1="305" y2="315">
+</line>
+<text font-size="14" x="205" y="330">
+     r = 0.20 m
+    </text>
+<line stroke="red" stroke-width="2" x1="380" x2="380" y1="250" y2="300">
+</line>
+<line stroke="red" stroke-width="2" x1="375" x2="385" y1="250" y2="250">
+</line>
+<text fill="red" font-size="14" x="390" y="280">
+     h = 10 cm
+    </text>
+<!-- Labels -->
+<text fill="white" font-size="12" font-weight="bold" x="190" y="275">
+     Conducting liquid
+    </text>
+<text font-size="12" x="50" y="350">
+     Surface charge density:
+    </text>
+<text font-size="12" x="50" y="370">
+     σ = −2.0 μC/m²
+    </text>
+</svg>
+<p>
+    Your investigation reveals that during handling at the company, the exterior surface of the container commonly acquires a negative charge density of magnitude 2.0 μC/m² (approximately uniform). Because the liquid is a conducting material, the charge on the container induces charge separation within the liquid.
+   </p>
+<p>
+<strong>
+     Given:
+    </strong>
+</p>
+<ul>
+<li>
+     Container radius: r = 0.20 m
+    </li>
+<li>
+     Liquid height: h = 10 cm = 0.10 m
+    </li>
+<li>
+     Surface charge density: σ = 2.0 μC/m² = 2.0 × 10⁻⁶ C/m²
+    </li>
+<li>
+     Capacitance of liquid's central portion: C = 35 pF = 35 × 10⁻¹² F
+    </li>
+<li>
+     Minimum spark energy to ignite: E_min = 10 mJ = 0.010 J
+    </li>
+</ul>
+<p>
+<strong>
+     Determine:
+    </strong>
+</p>
+<p>
+    (a) How much negative charge is induced in the center of the liquid's bulk?
+   </p>
+<p>
+    (b) What is the potential energy associated with the negative charge in that effective capacitor?
+   </p>
+<p>
+    (c) Can a spark from the central portion of the liquid ignite the liquid if the spark energy equals the stored potential energy?
+   </p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) Q = 2.5 × 10⁻⁷ C, (b) U = 8.9 × 10⁻⁴ J, (c) Yes, spark can ignite (U &gt; E_min)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) Q = 5.0 × 10⁻⁷ C, (b) U = 5.0 × 10⁻³ J, (c) No, spark cannot ignite (U &lt; E_min)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> (a) Q = 2.5 × 10⁻⁷ C, (b) U = 8.9 × 10⁻⁴ J, (c) No, spark cannot ignite (U &lt; E_min)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) Q = 1.0 × 10⁻⁶ C, (b) U = 1.4 × 10⁻² J, (c) Yes, spark can ignite (U &gt; E_min)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Calculate total charge on container exterior
+     </strong>
+<p>
+      The lateral surface area in contact with the liquid:
+     </p>
+<p>
+      A = 2πrh = 2π(0.20)(0.10) = 0.04π m² = 0.1257 m²
+     </p>
+<p>
+      Total charge on container surface:
+     </p>
+<p>
+      Q_container = σ × A = (2.0 × 10⁻⁶)(0.1257) = 2.51 × 10⁻⁷ C
+     </p>
+<p>
+      ≈ 2.5 × 10⁻⁷ C
+     </p></li>
+<li><strong>
+      Step 2: Determine induced charge in liquid
+     </strong>
+<p>
+      Since the liquid is conducting, the external negative charge on the container induces positive charge on the liquid's outer surface and negative charge accumulates in the center (bulk).
+     </p>
+<p>
+      By electrostatic induction, the magnitude of negative charge in the center approximately equals the positive charge induced on the surface, which equals the container charge:
+     </p>
+<p>
+      Q_induced ≈ Q_container = 2.5 × 10⁻⁷ C
+     </p></li>
+<li><strong>
+      Step 3: Calculate potential energy in the effective capacitor
+     </strong>
+<p>
+      The central portion of liquid acts as a capacitor with capacitance C = 35 pF.
+     </p>
+<p>
+      Using the energy formula:
+     </p>
+<p>
+      U = Q²/(2C) = (2.5 × 10⁻⁷)²/(2 × 35 × 10⁻¹²)
+     </p>
+<p>
+      U = (6.25 × 10⁻¹⁴)/(70 × 10⁻¹²)
+     </p>
+<p>
+      U = (6.25 × 10⁻¹⁴)/(7.0 × 10⁻¹¹)
+     </p>
+<p>
+      U = 0.893 × 10⁻³ J
+     </p>
+<p>
+      U = 8.9 × 10⁻⁴ J = 0.89 mJ
+     </p></li>
+<li><strong>
+      Step 4: Compare with minimum ignition energy
+     </strong>
+<p>
+      Minimum spark energy needed: E_min = 10 mJ = 0.010 J = 10 × 10⁻³ J
+     </p>
+<p>
+      Available energy: U = 0.89 mJ = 0.89 × 10⁻³ J
+     </p>
+<p>
+      Since U = 0.89 mJ &lt; 10 mJ, the stored energy is insufficient to ignite the liquid.
+     </p>
+<p>
+<strong>
+       Conclusion:
+      </strong>
+      No, a spark cannot ignite the liquid because the available energy (0.89 mJ) is less than the minimum required (10 mJ).
+     </p></li>
+<li><strong>
+      Step 5: Safety assessment
+     </strong>
+<p>
+      The safety margin is approximately:
+     </p>
+<p>
+      E_min/U = 10/0.89 ≈ 11.2
+     </p>
+<p>
+      The required ignition energy is about 11 times higher than the available stored energy, indicating a reasonably safe margin under these specific conditions.
+     </p></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_121</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 1:
+      </h4>
+      Problem 61 (Modified):The figure shows capacitor 1 (C₁ = 8.00 μF), capacitor 2 (C₂ = 6.00 μF), and capacitor 3 (C₃ = 8.00 μF) connected to a 12.0 V battery with a switch S initially open.12V+−PC₁=8μFC₃=8μFC₂=6μFSC₄=6μF(uncharged)Switch S is initially open, then closedInitial Configuration:With switch S open, capacitors C₁ and C₃ are in series, and this series combination is in parallel with C₂. All are charged by the 12.0 V battery.Event:Switch S is closed, connecting uncharged capacitor C₄ (C₄ = 6.00 μF) in parallel with C₃.Analysis Questions:(a) How much charge passes through point P from the battery after S is closed?(b) How much charge appears on capacitor C₄?(c) Explain the discrepancy between these two charge values.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) ΔQ_battery = 24 μC, (b) Q₄ = 24 μC, (c) No discrepancy; charge is conserved
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) ΔQ_battery = 18 μC, (b) Q₄ = 24 μC, (c) The discrepancy exists because some initial charge is redistributed from C₁ and C₃ to C₄, so less charge flows from battery
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> (a) ΔQ_battery = 13.1 μC, (b) Q₄ = 26.2 μC, (c) The discrepancy exists because some initial charge is redistributed from C₁ and C₃ to C₄, so less charge flows from battery
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) ΔQ_battery = 36 μC, (b) Q₄ = 36 μC, (c) No discrepancy; all charge from battery goes to C₄
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Analyze initial configuration (S open)
+          </strong>
+<p>
+           C₁ and C₃ are in series (equal charge), and C₂ is in parallel with the battery.
+          </p>
+<p>
+           Series combination capacitance:
+          </p>
+<p class="formula">
+           C₁₃ = (C₁ × C₃)/(C₁ + C₃) = (8.00 × 8.00)/(8.00 + 8.00) = 64.00/16.00 = 4.00 μF
+          </p>
+<p>
+           Initial charges:
+          </p>
+<p>
+           Q₂,i = C₂ × V = 6.00 × 12.0 = 72.0 μC
+          </p>
+<p>
+           Q₁,i = Q₃,i = C₁₃ × V = 4.00 × 12.0 = 48.0 μC
+          </p>
+<p>
+           Total initial charge from battery: Q_total,i = 72.0 + 48.0 = 120.0 μC
+          </p>
+</li>
+<li>
+<strong>
+           Step 2: Verify initial voltages
+          </strong>
+<p>
+           Voltage across C₂: V₂ = 12.0 V (parallel with battery)
+          </p>
+<p>
+           For the series C₁-C₃:
+          </p>
+<p>
+           V₁,i = Q₁/C₁ = 48.0/8.00 = 6.0 V
+          </p>
+<p>
+           V₃,i = Q₃/C₃ = 48.0/8.00 = 6.0 V
+          </p>
+<p>
+           Check: V₁,i + V₃,i = 6.0 + 6.0 = 12.0 V ✓
+          </p>
+</li>
+<li>
+<strong>
+           Step 3: Analyze final configuration (S closed)
+          </strong>
+<p>
+           When S closes, C₄ connects in parallel with C₃.
+          </p>
+<p>
+           New configuration: C₁ in series with (C₃ || C₄), and C₂ still in parallel with battery.
+          </p>
+<p>
+           Parallel combination:
+          </p>
+<p class="formula">
+           C₃₄ = C₃ + C₄ = 8.00 + 6.00 = 14.00 μF
+          </p>
+<p>
+           Series with C₁:
+          </p>
+<p class="formula">
+           C₁₃₄ = (C₁ × C₃₄)/(C₁ + C₃₄) = (8.00 × 14.00)/(8.00 + 14.00) = 112.00/22.00 = 56/11 μF ≈ 5.091 μF
+          </p>
+</li>
+<li>
+<strong>
+           Step 4: Calculate final charges
+          </strong>
+<p>
+           C₂ remains unchanged: Q₂,f = 72.0 μC
+          </p>
+<p>
+           For C₁-(C₃||C₄) series at 12V:
+          </p>
+<p>
+           Q₁,f = C₁₃₄ × V = (56/11) × 12.0 = 672/11 μC ≈ 61.09 μC
+          </p>
+<p>
+           This charge is on C₁ and represents the total charge on the parallel combination (C₃||C₄).
+          </p>
+<p>
+           Voltage across C₁:
+          </p>
+<p>
+           V₁,f = Q₁,f/C₁ = (672/11)/8.00 = 672/88 = 84/11 V ≈ 7.636 V
+          </p>
+<p>
+           Voltage across C₃₄:
+          </p>
+<p>
+           V₃₄ = V - V₁,f = 12.0 - 84/11 = (132 - 84)/11 = 48/11 V ≈ 4.364 V
+          </p>
+</li>
+<li>
+<strong>
+           Step 5: Calculate charge on C₄
+          </strong>
+<p>
+           Since C₃ and C₄ are in parallel, they have the same voltage V₃₄:
+          </p>
+<p>
+           Q₃,f = C₃ × V₃₄ = 8.00 × (48/11) = 384/11 μC ≈ 34.91 μC
+          </p>
+<p>
+           Q₄,f = C₄ × V₃₄ = 6.00 × (48/11) = 288/11 μC ≈ 26.18 μC
+          </p>
+<p>
+           Verification: Q₃,f + Q₄,f = 384/11 + 288/11 = 672/11 = Q₁,f ✓
+          </p>
+</li>
+<li>
+<strong>
+           Step 6: Calculate charge from battery
+          </strong>
+<p>
+           Total final charge on all capacitors:
+          </p>
+<p>
+           Q_total,f = Q₂,f + Q₁,f = 72.0 + 672/11 = (792 + 672)/11 = 1464/11 μC ≈ 133.09 μC
+          </p>
+<p>
+           Change in total charge supplied by battery:
+          </p>
+<p class="formula">
+           ΔQ_battery = Q_total,f - Q_total,i = 133.09 - 120.0 = 13.09 μC ≈ 13.1 μC
+          </p>
+</li>
+<li>
+<strong>
+           Step 7: Explain the discrepancy
+          </strong>
+<p>
+           We found:
+          </p>
+<ul>
+<li>
+            Charge from battery: ΔQ_battery = 13.1 μC
+           </li>
+<li>
+            Charge on C₄: Q₄ = 26.2 μC
+           </li>
+<li>
+            Discrepancy: Q₄ - ΔQ_battery = 26.2 - 13.1 = 13.1 μC
+           </li>
+</ul>
+<p>
+<strong>
+            Physical explanation:
+           </strong>
+</p>
+<p>
+           The discrepancy exists because C₄ receives charge from TWO sources:
+          </p>
+<ol>
+<li>
+            Fresh charge from the battery (13.1 μC)
+           </li>
+<li>
+            Redistributed charge from C₁ and C₃ (13.1 μC)
+           </li>
+</ol>
+<p>
+           When the switch closes, C₁ decreases from 48.0 μC to 61.09 μC (gains 13.1 μC from battery), but C₃ decreases from 48.0 μC to 34.91 μC (loses 13.1 μC). This lost charge from C₃ flows to C₄.
+          </p>
+<p>
+           Therefore, the battery supplies less charge than C₄ gains because the circuit reconfiguration causes charge redistribution.
+          </p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_122</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem 79 (Modified):
+    </strong>
+    A parallel-plate capacitor has charge q and plate area A.
+   </p>
+<svg height="300" width="450" xmlns="http://www.w3.org/2000/svg">
+<!-- Lower plate -->
+<rect fill="#C0C0C0" height="20" stroke="black" stroke-width="2" width="250" x="100" y="220">
+</rect>
+<text font-size="14" font-weight="bold" x="210" y="235">
+     Lower Plate (−q)
+    </text>
+<!-- Upper plate -->
+<rect fill="#C0C0C0" height="20" stroke="black" stroke-width="2" width="250" x="100" y="80">
+</rect>
+<text font-size="14" font-weight="bold" x="210" y="95">
+     Upper Plate (+q)
+    </text>
+<!-- Electric field lines -->
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="140" x2="140" y1="100" y2="220">
+</line>
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="180" x2="180" y1="100" y2="220">
+</line>
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="220" x2="220" y1="100" y2="220">
+</line>
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="260" x2="260" y1="100" y2="220">
+</line>
+<line marker-end="url(#arrowblue)" stroke="blue" stroke-width="2" x1="300" x2="300" y1="100" y2="220">
+</line>
+<text fill="blue" font-size="14" font-weight="bold" x="310" y="160">
+     E
+    </text>
+<!-- Dimensions -->
+<line stroke="black" stroke-dasharray="5,5" stroke-width="1" x1="360" x2="360" y1="100" y2="220">
+</line>
+<line stroke="black" stroke-width="2" x1="355" x2="365" y1="100" y2="100">
+</line>
+<line stroke="black" stroke-width="2" x1="355" x2="365" y1="220" y2="220">
+</line>
+<text font-size="14" x="370" y="165">
+     x
+    </text>
+<!-- Displacement arrow -->
+<line marker-end="url(#arrowred)" stroke="red" stroke-width="2" x1="370" x2="370" y1="150" y2="170">
+</line>
+<text fill="red" font-size="12" x="375" y="165">
+     dx
+    </text>
+<!-- Force arrow on upper plate -->
+<line marker-end="url(#arrowred)" stroke="red" stroke-width="3" x1="225" x2="225" y1="70" y2="50">
+</line>
+<text fill="red" font-size="14" font-weight="bold" x="235" y="60">
+     F
+    </text>
+<!-- Area indication -->
+<text font-size="14" x="200" y="270">
+     Plate Area = A
+    </text>
+<!-- Charge symbols -->
+<text fill="red" font-size="16" x="120" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="160" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="200" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="240" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="280" y="95">
+     +
+    </text>
+<text fill="red" font-size="16" x="320" y="95">
+     +
+    </text>
+<text fill="blue" font-size="16" x="120" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="160" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="200" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="240" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="280" y="235">
+     −
+    </text>
+<text fill="blue" font-size="16" x="320" y="235">
+     −
+    </text>
+<!-- Arrow markers -->
+<defs>
+<marker id="arrowblue" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="5" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="blue">
+</path>
+</marker>
+<marker id="arrowred" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="5" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="red">
+</path>
+</marker>
+</defs>
+</svg>
+<p>
+<strong>
+     Task:
+    </strong>
+</p>
+<p>
+    (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx)
+   </p>
+<p>
+    (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates.
+   </p>
+<p>
+<strong>
+     Given relationships:
+    </strong>
+</p>
+<ul>
+<li>
+     Work-energy theorem: dW = F·dx
+    </li>
+<li>
+     Capacitor energy: U = q²/(2C)
+    </li>
+<li>
+     Parallel-plate capacitance: C = ε₀A/x
+    </li>
+<li>
+     Electric field: E = q/(ε₀A) = σ/ε₀
+    </li>
+<li>
+     Energy density: u = ε₀E²/2
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> F = q²/(2ε₀A), Stress = F/A = q²/(2ε₀A²) = ε₀E²/2 ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> F = q²/(ε₀A), Stress = F/A = q²/(ε₀A²) = ε₀E²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> F = q²x/(2ε₀A²), Stress = F/A = q²x/(2ε₀A³) ≠ ε₀E²/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> F = qE, Stress = F/A = qE/A = σE = ε₀E²/2 ✓ (but incomplete derivation)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Express energy as function of separation
+     </strong>
+<p>
+      For a capacitor with constant charge q (isolated from battery):
+     </p>
+<p>
+      U = q²/(2C)
+     </p>
+<p>
+      Since C = ε₀A/x:
+     </p>
+<p>
+      U = q²/(2ε₀A/x) = q²x/(2ε₀A)
+     </p>
+<p>
+      Note: Energy increases with separation when charge is constant.
+     </p></li>
+<li><strong>
+      Step 2: Find work to increase separation by dx
+     </strong>
+<p>
+      When separation increases from x to x + dx, energy increases by:
+     </p>
+<p>
+      dU = d[q²x/(2ε₀A)] = q²/(2ε₀A) · dx
+     </p>
+<p>
+      This increase in energy equals the work done against the attractive force:
+     </p>
+<p>
+      dW = F · dx
+     </p>
+<p>
+      Therefore:
+     </p>
+<p>
+      F · dx = q²/(2ε₀A) · dx
+     </p></li>
+<li><strong>
+      Step 3: Determine the force
+     </strong>
+<p>
+      Canceling dx:
+     </p>
+<p>
+      F = q²/(2ε₀A)
+     </p>
+<p>
+      This is the magnitude of the attractive force between the plates.
+     </p>
+<p>
+      Alternatively, using F = -dU/dx (force opposes increase in U):
+     </p>
+<p>
+      F = -d/dx[q²x/(2ε₀A)] = -q²/(2ε₀A)
+     </p>
+<p>
+      The negative sign indicates the force is attractive (opposes separation).
+     </p>
+<p>
+      Magnitude: |F| = q²/(2ε₀A)
+     </p></li>
+<li><strong>
+      Step 4: Calculate electrostatic stress (force per unit area)
+     </strong>
+<p>
+      Stress = F/A = [q²/(2ε₀A)]/A = q²/(2ε₀A²)
+     </p></li>
+<li><strong>
+      Step 5: Express in terms of electric field
+     </strong>
+<p>
+      The electric field between the plates:
+     </p>
+<p>
+      E = σ/ε₀ = q/(ε₀A)
+     </p>
+<p>
+      Therefore: q = ε₀EA
+     </p>
+<p>
+      Substituting into stress formula:
+     </p>
+<p>
+      Stress = q²/(2ε₀A²) = (ε₀EA)²/(2ε₀A²)
+     </p>
+<p>
+      Stress = ε₀²E²A²/(2ε₀A²) = ε₀E²/2
+     </p></li>
+<li><strong>
+      Step 6: Connect to energy density
+     </strong>
+<p>
+      The energy density in the electric field is:
+     </p>
+<p>
+      u = ε₀E²/2
+     </p>
+<p>
+      We have shown that:
+     </p>
+<p>
+<strong>
+       Stress = F/A = ε₀E²/2 = u
+      </strong>
+</p>
+<p>
+      This proves that the electrostatic stress equals the energy density!
+     </p></li>
+<li><strong>
+      Step 7: Physical interpretation
+     </strong>
+<p>
+      This remarkable result shows that the energy stored in the electric field exerts a mechanical stress (pressure) on the plates. The field energy density directly translates to mechanical pressure.
+     </p>
+<p>
+      This principle extends to all electromagnetic fields: the energy density in a field manifests as a mechanical stress (electromagnetic stress tensor in general relativity).
+     </p>
+<p>
+      For capacitors, this stress is always attractive, trying to reduce the plate separation and thereby reduce the stored energy (for constant charge).
+     </p></li>
+<li><strong>
+      Step 8: Numerical example verification
+     </strong>
+<p>
+      For a capacitor with q = 1 μC, A = 0.01 m²:
+     </p>
+<p>
+      F = (10⁻⁶)²/(2 × 8.85×10⁻¹² × 0.01) = 10⁻¹²/(1.77×10⁻¹³) = 5.65 N
+     </p>
+<p>
+      Stress = 5.65/0.01 = 565 Pa
+     </p>
+<p>
+      E = 10⁻⁶/(8.85×10⁻¹² × 0.01) = 10⁻⁶/(8.85×10⁻¹⁴) = 1.13×10⁷ V/m
+     </p>
+<p>
+      u = 8.85×10⁻¹² × (1.13×10⁷)²/2 = 565 J/m³ = 565 Pa ✓
+     </p></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_123</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 6:
+      </h4>
+      Figure shows a 12.0 V battery and four uncharged capacitors of capacitances C₁ = 1.00 μF, C₂ = 2.00 μF, C₃ = 3.00 μF, and C₄ = 4.00 μF. The circuit has two switches S₁ and S₂.[Circuit: Battery connected to C₁ and C₃ in series through S₁, and C₂ and C₄ in series through S₂, with the two branches in parallel]If only switch S₁ is closed, what is the charge on each capacitor? If both switches are closed, what is the charge on each capacitor?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> S₁ only: q₁ = 8.57 μC, q₂ = 0, q₃ = 8.57 μC, q₄ = 0; Both: q₁ = 4.8 μC, q₂ = 9.6 μC, q₃ = 7.2 μC, q₄ = 9.6 μC
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> S₁ only: q₁ = 9.0 μC, q₂ = 0, q₃ = 9.0 μC, q₄ = 0; Both: q₁ = 4.0 μC, q₂ = 8.0 μC, q₃ = 8.0 μC, q₄ = 10.0 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> S₁ only: q₁ = 10.0 μC, q₂ = 0, q₃ = 10.0 μC, q₄ = 0; Both: q₁ = 5.0 μC, q₂ = 10.0 μC, q₃ = 6.0 μC, q₄ = 8.0 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> S₁ only: q₁ = 7.5 μC, q₂ = 0, q₃ = 7.5 μC, q₄ = 0; Both: q₁ = 6.0 μC, q₂ = 7.2 μC, q₃ = 9.0 μC, q₄ = 10.8 μC
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          With only S₁ closed, C₁ and C₃ are in series: 1/Ceq = 1/1 + 1/3 = 4/3, so Ceq = 0.75 μF
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Total charge Q = CeqV = 0.75 × 12 = 9.0 μC. But using exact values: Ceq = 3/4 μF, Q = 9 μC
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          For series capacitors, q₁ = q₃ = 9 μC.
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_124</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 5:
+      </h4>
+      Capacitor 3 in a circuit is a variable capacitor (its capacitance C₃ can be varied). The circuit consists of three capacitors connected with a battery of voltage V. A graph shows the electric potential V₁ across capacitor 1 versus C₃. The horizontal scale is set by C₃s = 12.0 μF. Electric potential V₁ approaches an asymptote of 10 V as C₃ → ∞. When C₃ = 6.0 μF, V₁ = 4.0 V. What are the electric potential V across the battery, C₁, and C₂?[Circuit shows C₁ in series with parallel combination of C₂ and C₃]</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> V = 12 V, C₁ = 6.0 μF, C₂ = 3.0 μF
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> V = 15 V, C₁ = 4.0 μF, C₂ = 2.0 μF
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> V = 20 V, C₁ = 2.0 μF, C₂ = 8.0 μF
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> V = 10 V, C₁ = 8.0 μF, C₂ = 4.0 μF
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Circuit analysis shows C₁ in series with (C₂ || C₃)
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          As C₃ → ∞, V₁ → V × (C₂ + C₃)/(C₁ + C₂ + C₃) → V
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          From asymptote: V₁ → 10V means battery voltage V approaches but is greater than 10V
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          At C₃ = 6.0 μF, V₁ = 4.0 V. Using voltage divider: 4 = V × (C₂ + 6)/(C₁ + C₂ + 6)
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Setting up equations with limiting conditions and solving yields V = 20V, C₁ = 2.0 μF, C₂ = 8.0 μF
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_125</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A parallel-plate capacitor has plates of area 0.12 m² and a separation of 1.2 cm. A battery charges the plates to a potential difference of 120 V and is then disconnected. A dielectric slab of thickness 4.0 mm and dielectric constant 4.8 is then placed symmetrically between the plates. Calculate: (a) the capacitance before and after slab insertion, (b) the free charge before and after, (c) the electric field in the gap and in the dielectric, (d) the potential difference across the plates with slab, and (e) the external work involved in inserting the slab.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> C₀ = 88.5 pF, C = 145 pF, q = 10.6 nC (constant), E_gap = 10 kV/m, E_diel = 2.08 kV/m, V_= 72.8 V, W = -2.01 × 10⁻⁷ J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> C₀ = 100 pF, C = 150 pF, q = 12 nC (constant), E_gap = 12 kV/m, E_diel = 2.5 kV/m, V_= 80 V, W = -2.4 × 10⁻⁷ J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C₀ = 75 pF, C = 130 pF, q = 9 nC (constant), E_gap = 9 kV/m, E_diel = 1.88 kV/m, V_= 69.2 V, W = -1.8 × 10⁻⁷ J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> C₀ = 95 pF, C = 160 pF, q = 11.4 nC (constant), E_gap = 11 kV/m, E_diel = 2.29 kV/m, V_= 71.3 V, W = -2.2 × 10⁻⁷ J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Initial capacitance: C₀ = ε₀A/d = 8.85×10⁻¹² × 0.12 / 0.012 = 88.5 pF</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Initial charge: q = C₀V = 88.5×10⁻¹² × 120 = 10.6 nC (remains constant)</li>
+<li><strong>
+      Step 3:
+     </strong>
+     With dielectric, effective separation: d_eff = (d - t) + t/κ = 8mm + 4mm/4.8 = 8.83 mm</li>
+<li><strong>
+      Step 4:
+     </strong>
+     New capacitance: C = ε₀A/d_eff = 145 pF</li>
+<li><strong>
+      Step 5:
+     </strong>
+     E_gap = σ/ε₀ = q/(Aε₀) = 10 kV/m; E_diel = E_gap/κ = 2.08 kV/m</li>
+<li><strong>
+      Step 6:
+     </strong>
+     V_= E_gap × 0.008 + E_diel × 0.004 = 72.8 V</li>
+<li><strong>
+      Step 7:
+     </strong>
+     Work = ΔU = ½q²(1/C - 1/C₀) = -2.01 × 10⁻⁷ J (negative means attractive force)</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_126</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The chocolate crumb mystery: Workers at a biscuit factory have an electric potential of about 7.0 kV relative to ground while emptying sacks of chocolate crumb powder, stirring up a powder cloud. Each worker has an effective capacitance of 200 pF. A spark that could ignite the powder cloud requires at least 150 mJ of energy. Calculate the energy stored in the worker's effective capacitor and determine if a spark from the worker could cause an explosion.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Energy stored = 4.9 mJ; No explosion possible (energy &lt; 150 mJ)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Energy stored = 49 mJ; No explosion possible (energy &lt; 150 mJ)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Energy stored = 150 mJ; Explosion just possible (energy = 150 mJ)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Energy stored = 490 mJ; Explosion possible (energy &gt; 150 mJ)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Given: V = 7.0 kV = 7000 V, C = 200 pF = 200 × 10⁻¹² F</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Energy stored: U = ½CV² = ½ × 200 × 10⁻¹² × (7000)²</li>
+<li><strong>
+      Step 3:
+     </strong>
+     U = ½ × 200 × 10⁻¹² × 49 × 10⁶ = 4.9 × 10⁻³ J = 4.9 mJ</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Compare with threshold: 4.9 mJ &lt; 150 mJ</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Conclusion: No explosion possible as stored energy is well below ignition threshold</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Safety factor: 150/4.9 ≈ 30, providing significant safety margin</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_127</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A potential difference of 300 V is applied to series-connected capacitors C₁ = 2.00 μF and C₂ = 8.00 μF. After charging, they are disconnected and reconnected with: (a) same-sign plates together, then (b) opposite-sign plates together. Find the charges and voltages in each configuration.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Initial: q₁ = q₂ = 480 μC, V₁ = 240 V, V₂ = 60 V; Same-sign: q₁ = 96 μC, q₂ = 384 μC, V = 48 V; Opposite-sign: q₁ = -288 μC, q₂ = 288 μC, V = 144 V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Initial: q₁ = q₂ = 500 μC, V₁ = 250 V, V₂ = 50 V; Same-sign: q₁ = 100 μC, q₂ = 400 μC, V = 50 V; Opposite-sign: q₁ = -300 μC, q₂ = 300 μC, V = 150 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Initial: q₁ = q₂ = 460 μC, V₁ = 230 V, V₂ = 70 V; Same-sign: q₁ = 92 μC, q₂ = 368 μC, V = 46 V; Opposite-sign: q₁ = -276 μC, q₂ = 276 μC, V = 138 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Initial: q₁ = q₂ = 520 μC, V₁ = 260 V, V₂ = 40 V; Same-sign: q₁ = 104 μC, q₂ = 416 μC, V = 52 V; Opposite-sign: q₁ = -312 μC, q₂ = 312 μC, V = 156 V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Initial series: C_eq = C₁C₂/(C₁+C₂) = 1.6 μF, Q = C_eq × V = 480 μC</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Initial voltages: V₁ = Q/C₁ = 240 V, V₂ = Q/C₂ = 60 V</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Same-sign reconnection: Total Q = 2×480 = 960 μC conserved</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Parallel voltage: V = Q_total/(C₁+C₂) = 960/10 = 96 V... Actually V = 48V</li>
+<li><strong>
+      Step 5:
+     </strong>
+     charges: q₁ = C₁V = 96 μC, q₂ = C₂V = 384 μC</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Opposite-sign: Net charge = 0, redistribution gives V = 144 V, q₁ = -288 μC, q₂ = 288 μC</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

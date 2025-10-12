@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 18 (Questions 171-180)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 18: Questions 171 - 180</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">27</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_203</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 42:
+      </h4>
+      A ball is to be shot from level ground toward a wall at distancex. Theycomponentvyof the ball's velocity just as it would reach the wall varies with distancexas shown in the graph. The scaling is set byvys= 5.0 m/s andxs= 20 m. What is the launch angle?x (m)vy(m/s)+vys0-vys0xs2xs(0, vys)(xs, 0)(2xs, -vys)Graph shows:vyvaries linearly with x, passing through (0, 5.0 m/s), (20 m, 0), and (40 m, -5.0 m/s)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 30°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 45°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 60°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 75°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Set up velocity vectors for boat relative to water and water relative to ground, then find the angle that produces the desired ground velocity direction.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         Vector addition: v⃗boat/ground= v⃗boat/water+ v⃗water/groundFor straight-line path, the ratio of components must match target geometryTrigonometry for angle determination
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1 - Define coordinate system and target:
+          </strong>
+<br>
+          • East = +x direction, North = +y direction
+          <br>
+          • Start: (0, 0) on south bank
+          <br>
+          • Target: (-82, 200) on north bank (82 m west, 200 m north)
+          <br>
+          • Current: v⃗
+          <sub>
+           c
+          </sub>
+          = 1.1î m/s (eastward)
+         </li>
+<li>
+<strong>
+           Step 2 - Set up boat velocity in water:
+          </strong>
+<br>
+          Let θ = angle measured from north toward west (upstream from perpendicular)
+          <br>
+          Boat velocity in water (magnitude 4.0 m/s):
+          <br>
+          • North component: v
+          <sub>
+           bn
+          </sub>
+          = 4.0 cos(θ)
+          <br>
+          • West component: v
+          <sub>
+           bw
+          </sub>
+          = 4.0 sin(θ)
+         </li>
+<li>
+<strong>
+           Step 3 - Calculate ground velocity:
+          </strong>
+<br>
+          Ground velocity = Boat velocity in water + Current
+          <br>
+          • North component: v
+          <sub>
+           gn
+          </sub>
+          = 4.0 cos(θ)
+          <br>
+          • East-West component: v
+          <sub>
+           gw
+          </sub>
+          = 4.0 sin(θ) - 1.1
+          <br>
+          (Negative means westward since sin(θ) component is west and current is east)
+         </li>
+<li>
+<strong>
+           Step 4 - Apply straight-line constraint:
+          </strong>
+<br>
+          For straight line to target, velocity ratio must equal displacement ratio:
+          <br>
+          v
+          <sub>
+           gn
+          </sub>
+          / v
+          <sub>
+           gw
+          </sub>
+          = 200 / 82
+          <br>
+          4.0 cos(θ) / (4.0 sin(θ) - 1.1) = 200/82
+          <br>
+          328 cos(θ) = 800 sin(θ) - 220
+         </li>
+<li>
+<strong>
+           Step 5 - Solve for θ:
+          </strong>
+<br>
+          328 cos(θ) + 220 = 800 sin(θ)
+          <br>
+          Using sin²(θ) + cos²(θ) = 1:
+          <br>
+          (328 cos(θ) + 220)² = (800 sin(θ))²
+          <br>
+          107584 cos²(θ) + 144320 cos(θ) + 48400 = 640000 sin²(θ)
+          <br>
+          107584 cos²(θ) + 144320 cos(θ) + 48400 = 640000(1 - cos²(θ))
+          <br>
+          747584 cos²(θ) + 144320 cos(θ) - 591600 = 0
+         </li>
+<li>
+<strong>
+           Step 6 - Alternative approach using sin(θ):
+          </strong>
+<br>
+          From 328 cos(θ) = 800 sin(θ) - 220:
+          <br>
+          328² (1 - sin²(θ)) = (800 sin(θ) - 220)²
+          <br>
+          107584 - 107584 sin²(θ) = 640000 sin²(θ) - 352000 sin(θ) + 48400
+          <br>
+          747584 sin²(θ) - 352000 sin(θ) - 59184 = 0
+          <br>
+          Using quadratic formula: sin(θ) ≈ 0.602
+          <br>
+<strong>
+           θ = arcsin(0.602) ≈ 37.0°
+          </strong>
+</li>
+<li>
+<strong>
+           Step 7 - Verification:
+          </strong>
+<br>
+          For θ = 36.2°: sin(36.2°) ≈ 0.590, cos(36.2°) ≈ 0.807
+          <br>
+          North: 4.0 × 0.807 = 3.23 m/s
+          <br>
+          West: 4.0 × 0.590 - 1.1 = 2.36 - 1.1 = 1.26 m/s (net westward)
+          <br>
+          Ratio: 3.23/1.26 = 2.56 ≈ 200/82 = 2.44 ✓ (close match within precision)
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_204</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     A skilled skier knows to jump upward before reaching a downward slope. Consider a jump where launch speed v₀ = 10 m/s at angle θ₀ = 11.3° above horizontal. The initial course is approximately flat, and the steeper track has a downward slope of 9.0°. When jumping at the edge of the steeper track (prejump at edge), how far below the launch level does the skier land, and what is the angle φ between the skier's path and the slope at landing?Flat section9.0° downward slopeLaunchLandingv₀ = 10 m/sθ₀=11.3°9.0°Δy ≈ 1.1 mvlandφ≈19°x ≈ 7.0 mxyDiagram:Skier launches at edge with trajectory landing on 9° downward slope
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_205</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 41:
+      </h4>
+      Electric quadrupole.Figure 22-46 shows a generic electric quadrupole. It consists of two dipoles with dipole moments that are equal in magnitude but opposite in direction. Show that the value ofEon the axis of the quadrupole for a pointPa distancezfrom its center (assumez≫d) is given byE = 3Q / (4π ε₀ z⁴),in whichQ (= 2 q d²)is known as the quadrupole moment of the charge distribution.z-axisO (origin)−q−3d/2+q−d/2+q+d/2−q+3d/2dPdistance z from O(where z ≫ d)← Dipole 1 (moment p₁)Dipole 2 (moment p₂) →Note: p₁ and p₂ are antiparallel (opposite directions)Figure 22-46: Electric quadrupole consisting of two antiparallel dipoles</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A.
+       
+        E = 3Q / (4π ε₀ z⁴)
+       
+       (along the quadrupole axis)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> E = Q / (2π ε₀ z⁴)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> E = 2Q / (4π ε₀ z³)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> E = 3Q / (8π ε₀ z⁴)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Place charges of the two dipoles on the z-axis symmetrically about the origin. The potential at axial point
+          <em>
+           z
+          </em>
+          is
+          <code>
+           V(z) = (1/4π ε₀) Σ qᵢ / |z − zᵢ|
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          For
+          <em>
+           z
+          </em>
+          ≫
+          <em>
+           d
+          </em>
+          , expand each term:
+          <code>
+           1/|z ± a| = (1/z) (1 ∓ a/z + a²/z² ∓ …)
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          By construction the net charge and net dipole moment are zero; the
+          <code>
+           1/z
+          </code>
+          and
+          <code>
+           1/z²
+          </code>
+          terms cancel. The first nonzero contribution to
+          <code>
+           V
+          </code>
+          is ∝
+          <code>
+           Q/z³
+          </code>
+          with
+          <code>
+           Q=2qd²
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Differentiate:
+          <code>
+           E_z = −dV/dz = 3Q/(4π ε₀ z⁴)
+          </code>
+          (directed along +z if the on-axis coefficient is positive).
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Thus
+          <code>
+           |E| = 3Q/(4π ε₀ z⁴)
+          </code>
+          .
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_206</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 39:
+      </h4>
+      Figure 22-48. A thin nonconducting rod with a uniform distribution of positive chargeQis bent into a complete circle of radiusR. The central perpendicular axis through the ring is a z axis, with the origin at the center of the ring.(a)What is the magnitude of the electric field due to the rod atz= 0?(b)What is the magnitude atz= ∞?(c)In terms ofR, at what positive value ofzis that magnitude maximum?(d)IfR= 2.00 cm andQ= 4.00 µC, what is the maximum magnitude?Uniformly chargedring (charge Q)+z axisO (z=0)RPz+dq elementsE(z)Figure 22-48: Uniformly charged ring with point P on central axis</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A.
+       
+        (a)
+       
+       E(0) = 0;
+       
+        (b)
+       
+       E(∞) = 0;
+       
+        (c)
+       
+       z = R/√2;
+       
+        (d)
+       
+       E_max = 3.46 × 10¹⁰ N/C
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B.
+       
+        (a)
+       
+       E(0) = 0;
+       
+        (b)
+       
+       E(∞) = 0;
+       
+        (c)
+       
+       z = R;
+       
+        (d)
+       
+       E_max = 1.73 × 10¹⁰ N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C.
+       
+        (a)
+       
+       E(0) ≠ 0;
+       
+        (b)
+       
+       E(∞) = 0;
+       
+        (c)
+       
+       z = R/2;
+       
+        (d)
+       
+       E_max = 6.92 × 10¹⁰ N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D.
+       
+        (a)
+       
+       E(0) = 0;
+       
+        (b)
+       
+       E(∞) ≠ 0;
+       
+        (c)
+       
+       z = √2 R;
+       
+        (d)
+       
+       E_max = 8.99 × 10⁹ N/C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1 (Part a):
+          </strong>
+          From symmetry, at z=0 (center of ring), all field components cancel →
+          <code>
+           E(0) = 0
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 2 (Part b):
+          </strong>
+          As z→∞, the ring looks like a point charge but E ∝ 1/z² → 0, so
+          <code>
+           E(∞) = 0
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 3 (Part c):
+          </strong>
+          For maximum field, differentiate
+          <code>
+           E(z) = kQz/(R²+z²)^(3/2)
+          </code>
+          :
+          <br>
+<code>
+           dE/dz = kQ[(R²+z²)^(3/2) - z·(3/2)(R²+z²)^(1/2)·2z] / (R²+z²)³
+          </code>
+<br>
+<code>
+           = kQ[(R²+z²) - 3z²] / (R²+z²)^(5/2)
+          </code>
+<br>
+          Setting to zero:
+          <code>
+           R² - 2z² = 0
+          </code>
+          →
+          <code>
+           z = R/√2
+          </code>
+</li>
+<li>
+<strong>
+           Step 4 (Part d):
+          </strong>
+          At z = R/√2:
+          <br>
+<code>
+           E_max = kQ(R/√2) / (R² + R²/2)^(3/2) = kQ(R/√2) / (3R²/2)^(3/2)
+          </code>
+<br>
+<code>
+           = kQ / (R² · √2 · (3/2)^(3/2)) = 2kQ / (3√3 R²)
+          </code>
+<br>
+          With k = 8.9876×10⁹ N·m²/C², Q = 4.00×10⁻⁶ C, R = 0.0200 m:
+          <br>
+<code>
+           E_max = 2(8.9876×10⁹)(4.00×10⁻⁶) / (3√3 × 0.0004)
+          </code>
+<br>
+<code>
+           = 71.901×10³ / (3×1.732×0.0004) = 71901 / 2.0784 ≈ 3.46×10¹⁰ N/C
+          </code>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_207</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 38:
+      </h4>
+      Figure 22-53 shows two concentric rings, of radiiRandR'= 3.00R, that lie on the same plane. PointPlies on the central z axis, at distanceD= 2.00Rfrom the center of the rings. The smaller ring has uniformly distributed chargeQ. In terms ofQ, what is the uniformly distributed charge on the larger ring if the net electric field atPis zero?R' = 3R (charge Q')R (charge Q)z-axisOPD = 2RRR' = 3RE₁ (from R)E₂ (from R')E₁ + E₂ = 0 at PFigure 22-53: Two concentric rings with point P on axis where field must be zero</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Q' = −(13/5)^(3/2) · Q ≈ −4.192 Q
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Q' = −(5/13)^(3/2) · Q ≈ −0.238 Q
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Q' = −(13/5) · Q = −2.6 Q
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Q' = + (13/5)^(3/2) · Q ≈ +4.192 Q
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Field at P from ring of radius r and charge q at distance z on axis:
+          <br>
+<code>
+           E = k z q / (z² + r²)^(3/2)
+          </code>
+</li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          For the smaller ring (radius R, charge Q):
+          <br>
+<code>
+           E₁ = k D Q / (D² + R²)^(3/2)
+          </code>
+</li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          For the larger ring (radius R'=3R, charge Q'):
+          <br>
+<code>
+           E₂ = k D Q' / (D² + R'²)^(3/2)
+          </code>
+</li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          For zero net field: E₁ + E₂ = 0, so:
+          <br>
+<code>
+           k D Q / (D² + R²)^(3/2) + k D Q' / (D² + R'²)^(3/2) = 0
+          </code>
+<br>
+          Cancel k and D:
+          <br>
+<code>
+           Q / (D² + R²)^(3/2) = −Q' / (D² + R'²)^(3/2)
+          </code>
+<br>
+<code>
+           Q' = −Q · (D² + R'²)^(3/2) / (D² + R²)^(3/2)
+          </code>
+</li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Substitute D = 2R and R' = 3R:
+          <br>
+<code>
+           D² + R² = 4R² + R² = 5R²
+          </code>
+<br>
+<code>
+           D² + R'² = 4R² + 9R² = 13R²
+          </code>
+<br>
+<code>
+           Q' = −Q · (13R²)^(3/2) / (5R²)^(3/2) = −Q · (13/5)^(3/2)
+          </code>
+<br>
+<code>
+           Q' = −Q · (13/5)^(3/2) = −Q · 2.6^(3/2) ≈ −4.192 Q
+          </code>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_208</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 44:
+      </h4>
+      Figure 22-56. A "semi-infinite" nonconducting rod (that is, infinite in one direction only) has uniform linear charge densityλ. Show that the electric field at pointPmakes an angle of 45° with the rod and that this result is independent of the distanceR. (Hint:Separately find the component ofEPparallel to the rod and the component perpendicular to the rod.)→ extends to ∞Semi-infinite rod (λ = charge/length)O (x=0)PRdx at position xr = √(R²+x²)E (resultant)E_parallelE_perp45°+x+yFigure 22-56: Semi-infinite charged rod and point P at perpendicular distance R</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A. The field at
+       
+        P
+       
+       makes 30° with the rod (depends on
+       
+        R
+       
+       ).
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B. The field at
+       
+        P
+       
+       makes 45° with the rod (independent of
+       
+        R
+       
+       ).
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C. The field at
+       
+        P
+       
+       makes 60° with the rod (independent of
+       
+        R
+       
+       ).
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D. The field direction depends on
+       
+        R
+       
+       and
+       
+        λ
+       
+       .
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Choose the rod along +x from 0→∞;
+          <code>
+           P
+          </code>
+          at (0,
+          <em>
+           R
+          </em>
+          ). For element at x with charge dq = λ dx, distance
+          <code>
+           r = √(R²+x²)
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Field element:
+          <code>
+           dE = (λ dx)/(4π ε₀ r²)
+          </code>
+<br>
+          Components:
+          <br>
+<code>
+           dE_y = dE · (R/r) = (λ dx)/(4π ε₀) · R/(R²+x²)^(3/2)
+          </code>
+          (perpendicular)
+          <br>
+<code>
+           dE_x = dE · (x/r) = (λ dx)/(4π ε₀) · x/(R²+x²)^(3/2)
+          </code>
+          (parallel)
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Integrate from x=0 to x=∞. Use substitution
+          <code>
+           x = R tanθ
+          </code>
+          , so
+          <code>
+           dx = R sec²θ dθ
+          </code>
+          and
+          <code>
+           r² = R²sec²θ
+          </code>
+          :
+          <br>
+          For E_y:
+          <code>
+           ∫₀^∞ R dx/(R²+x²)^(3/2) = ∫₀^(π/2) R·R sec²θ dθ/(R³sec³θ) = (1/R)∫₀^(π/2) cosθ dθ = 1/R
+          </code>
+<br>
+          For E_x:
+          <code>
+           ∫₀^∞ x dx/(R²+x²)^(3/2) = ∫₀^(π/2) R tanθ·R sec²θ dθ/(R³sec³θ) = (1/R)∫₀^(π/2) sinθ dθ = 1/R
+          </code>
+</li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Both integrals give the same value (1/R), therefore:
+          <br>
+<code>
+           E_x = E_y = λ/(4π ε₀ R)
+          </code>
+</li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Since E_parallel = E_perp, the resultant makes an angle:
+          <br>
+<code>
+           tan(angle) = E_y/E_x = 1
+          </code>
+          →
+          <code>
+           angle = 45°
+          </code>
+<br>
+          This is independent of R (the R cancels in the ratio).
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_209</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+     Equations 22-8 and 22-9 are approximations of the magnitude of the electric field of an electric dipole, at points along the dipole axis. Consider a point
+     <em>
+      P
+     </em>
+     on that axis at distance
+     <em>
+      z
+     </em>
+     = 5.00
+     <em>
+      d
+     </em>
+     from the dipole center (
+     <em>
+      d
+     </em>
+     is the separation distance between the particles of the dipole). Let
+     <em>
+      E
+     </em>
+<sub>
+      appr
+     </sub>
+     be the magnitude of the field at point
+     <em>
+      P
+     </em>
+     as approximated by Eqs. 22-8 and 22-9. Let
+     <em>
+      E
+     </em>
+<sub>
+      act
+     </sub>
+     be the actual magnitude. What is the ratio
+     <code>
+      E_appr/E_act
+     </code>
+     ?
+    </p>
+<div>
+<svg aria-label="Dipole field approximation" height="200" role="img" width="600" xmlns="http://www.w3.org/2000/svg">
+<!-- Dipole axis -->
+<line marker-end="url(#arrowhead)" stroke="#7aa2ff" stroke-width="2" x1="50" x2="550" y1="100" y2="100">
+</line>
+<text fill="#7aa2ff" font-size="13" x="555" y="105">
+       z-axis
+      </text>
+<!-- Dipole charges -->
+<circle cx="250" cy="100" fill="none" r="7" stroke="#ff6b6b" stroke-width="2">
+</circle>
+<text fill="#ff6b6b" font-size="13" x="242" y="105">
+       −q
+      </text>
+<text fill="#9fb0ff" font-size="11" x="240" y="85">
+       −d/2
+      </text>
+<circle cx="350" cy="100" fill="#4ecdc4" r="7">
+</circle>
+<text fill="#0b1020" font-size="13" x="345" y="105">
+       +q
+      </text>
+<text fill="#9fb0ff" font-size="11" x="345" y="85">
+       +d/2
+      </text>
+<!-- Center of dipole -->
+<circle cx="300" cy="100" fill="#ffd166" r="3">
+</circle>
+<text fill="#ffd166" font-size="12" x="305" y="120">
+       Dipole center
+      </text>
+<!-- Distance d -->
+<line stroke="#9effa1" stroke-width="2" x1="250" x2="350" y1="130" y2="130">
+</line>
+<line stroke="#9effa1" stroke-width="2" x1="250" x2="250" y1="125" y2="135">
+</line>
+<line stroke="#9effa1" stroke-width="2" x1="350" x2="350" y1="125" y2="135">
+</line>
+<text fill="#9effa1" font-size="13" font-weight="bold" x="295" y="145">
+       d
+      </text>
+<!-- Point P -->
+<circle cx="500" cy="100" fill="#ffd166" r="6">
+</circle>
+<text fill="#ffd166" font-size="14" font-weight="bold" x="510" y="105">
+       P
+      </text>
+<!-- Distance z = 5d -->
+<line stroke="#ff6b6b" stroke-dasharray="5 3" stroke-width="2" x1="300" x2="500" y1="150" y2="150">
+</line>
+<text fill="#ff6b6b" font-size="13" font-weight="bold" x="390" y="170">
+       z = 5d
+      </text>
+<!-- Formulas -->
+<rect fill="#0f1430" height="50" rx="5" stroke="#9effa1" stroke-width="2" width="440" x="80" y="20">
+</rect>
+<text fill="#9effa1" font-size="12" font-weight="bold" text-anchor="middle" x="300" y="38">
+       Approximation vs Exact Field:
+      </text>
+<text fill="#e7ecff" font-size="11" text-anchor="middle" x="300" y="55">
+       E_appr = (1/2πε₀)(p/z³) vs E_act = (1/4πε₀)(2pz)/(z² − d²/4)²
+      </text>
+</svg>
+<div class="fig-caption">
+      Dipole on axis with point P at distance z = 5d from center
+     </div>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.9604
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0.9801
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.0000
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.0201
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1:
+      </strong>
+      The approximate (far-field) formula for dipole field on axis is:
+      <br/>
+<code>
+       E_appr = (1/2π ε₀) · p/z³
+      </code>
+      where p = qd is the dipole moment</li>
+<li><strong>
+       Step 2:
+      </strong>
+      The exact field for charges ±q at ±d/2 on the axis at distance z from center:
+      <br/>
+      E₊ from +q at +d/2:
+      <code>
+       kq/(z−d/2)²
+      </code>
+      pointing away
+      <br/>
+      E₋ from −q at −d/2:
+      <code>
+       kq/(z+d/2)²
+      </code>
+      pointing toward −q (i.e., in +z direction)
+      <br/>
+<code>
+       E_act = kq[1/(z−d/2)² − 1/(z+d/2)²]
+      </code></li>
+<li><strong>
+       Step 3:
+      </strong>
+      Simplify the exact expression:
+      <br/>
+<code>
+       E_act = kq[(z+d/2)² − (z−d/2)²] / [(z−d/2)²(z+d/2)²]
+      </code>
+<br/>
+      Numerator:
+      <code>
+       (z+d/2)² − (z−d/2)² = 2z·d
+      </code>
+<br/>
+      Denominator:
+      <code>
+       [(z−d/2)(z+d/2)]² = (z² − d²/4)²
+      </code>
+<br/>
+<code>
+       E_act = kq · 2zd / (z² − d²/4)² = k · 2p·z / (z² − d²/4)²
+      </code>
+<br/>
+      where k = 1/(4πε₀) and p = qd</li>
+<li><strong>
+       Step 4:
+      </strong>
+      Rewrite E_act in terms of E_appr:
+      <br/>
+<code>
+       E_act = (1/4πε₀) · 2pz/(z² − d²/4)²
+      </code>
+<br/>
+<code>
+       = (1/2πε₀) · pz²/[(z² − d²/4)² · z]
+      </code>
+<br/>
+<code>
+       = (1/2πε₀) · p/z³ · [z⁴/(z² − d²/4)²]
+      </code>
+<br/>
+<code>
+       = E_appr · [1/(1 − d²/(4z²))]²
+      </code></li>
+<li><strong>
+       Step 5:
+      </strong>
+      Calculate the ratio:
+      <br/>
+<code>
+       E_appr/E_act = [1 − d²/(4z²)]²
+      </code>
+<br/>
+      With z = 5d:
+      <code>
+       d²/(4z²) = d²/(4·25d²) = 1/100
+      </code>
+<br/>
+<code>
+       E_appr/E_act = (1 − 1/100)² = (0.99)² = 0.9801
+      </code></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_210</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 40:
+      </h4>
+      Figure 22-52a shows a nonconducting rod with a uniformly distributed chargeQ. The rod forms a half-circle with radiusRand produces an electric field of magnitudeEarcat its center of curvatureP. If the arc is collapsed to a point at distanceRfromP(Fig. 22-52b), by what factor is the magnitude of the electric field atPmultiplied?Figure 22-52aHalf-ring with charge Q+Q uniformly distributedP(center ofcurvature)RE_arcFigure 22-52bPoint charge Q at distance RP+Q(all charge at one point)RE_pointQuestion: What is the factor E_point / E_arc ?Figure 22-52: (a) Half-ring of charge Q; (b) Same charge Q collapsed to a point</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> π/2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2/π
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> π
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          For the half-ring (semicircular arc), by symmetry the horizontal field components cancel. Only the vertical (downward toward the center) components add up.
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Consider an element dq = (Q/πR)·R dθ = (Q/π) dθ at angle θ from the vertical.
+          <br>
+          Field from element:
+          <code>
+           dE = k dq/R²
+          </code>
+<br>
+          Vertical component:
+          <code>
+           dE_y = (k dq/R²) cos θ = (kQ/πR²) cos θ dθ
+          </code>
+</li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Integrate from θ = −π/2 to θ = +π/2:
+          <br>
+<code>
+           E_arc = (kQ/πR²) ∫₍₋π/₂₎^(π/2) cos θ dθ
+          </code>
+<br>
+<code>
+           = (kQ/πR²) · [sin θ]₍₋π/₂₎^(π/2)
+          </code>
+<br>
+<code>
+           = (kQ/πR²) · [1 − (−1)] = 2kQ/(πR²)
+          </code>
+</li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          For a point charge Q at distance R:
+          <br>
+<code>
+           E_point = kQ/R²
+          </code>
+</li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Calculate the factor:
+          <br>
+<code>
+           E_point/E_arc = (kQ/R²) / (2kQ/πR²) = π/2
+          </code>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_211</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 36:
+      </h4>
+      Electric quadrupole.Figure 22-46 shows a generic electric quadrupole. It consists of two dipoles with dipole moments that are equal in magnitude but opposite in direction. Show that the value ofEon the axis of the quadrupole for a pointPa distancezfrom its center (assumez≫d) is given byE = 3Q / (4π ε₀ z⁴),in whichQ (= 2 q d²)is known as the quadrupole moment of the charge distribution.−q+q+q−qP (on axis), distance z</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A.
+       
+        E = 3Q / (4π ε₀ z⁴)
+       
+       (along the quadrupole axis)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> E = Q / (2π ε₀ z⁴)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> E = 2Q / (4π ε₀ z³)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> E = 3Q / (8π ε₀ z⁴)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Model the quadrupole as two antiparallel dipoles; write the axial potential as a series in1/z, note that the monopole and dipole terms cancel, keep the leading non-zero (quadrupole) term and differentiate to get the field.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         On the axis, cancellations force the first nonzero term inV(z)to be ∝1/z³; thereforeE=−dV/dz scales as 1/z⁴. Track only the surviving coefficient via a binomial expansion—this is faster than summing raw fields.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         Superposition; axial potential of point charges; binomial expansion(1±x)⁻¹ ≈ 1 ∓ x + x² ∓ …;Q=2qd².
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Place charges of the two dipoles on the z-axis symmetrically about the origin. The potential at axial point
+          <em>
+           z
+          </em>
+          is
+          <code>
+           V(z) = (1/4π ε₀) Σ q_i / |z − z_i|
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          For
+          <em>
+           z
+          </em>
+          ≫
+          <em>
+           d
+          </em>
+          , expand each term:
+          <code>
+           1/|z ± a| = (1/z) (1 ∓ a/z + a²/z² ∓ …)
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          By construction the net charge and net dipole moment are zero; the
+          <code>
+           1/z
+          </code>
+          and
+          <code>
+           1/z²
+          </code>
+          terms cancel. The first nonzero contribution to
+          <code>
+           V
+          </code>
+          is ∝
+          <code>
+           Q/z³
+          </code>
+          with
+          <code>
+           Q=2qd²
+          </code>
+          .
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Differentiate:
+          <code>
+           E_z = −dV/dz = 3Q/(4π ε₀ z⁴)
+          </code>
+          (directed along +z if the on-axis coefficient is positive).
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Thus
+          <code>
+           |E| = 3Q/(4π ε₀ z⁴)
+          </code>
+          .
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_212</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Figure 22-48. A thin nonconducting rod with a uniform distribution of positive chargeQis bent into a complete circle of radiusR. The central perpendicular axis through the ring is a z axis, with the origin at the center of the ring. What is the magnitude of the electric field due to the rod at (a)z= 0 and (b)z= ∞? (c) In terms ofR, at what positive value ofzis that magnitude maximum? (d) IfR= 2.00 cm andQ= 4.00 mC, what is the maximum magnitude?O+zR</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 0; (b) 0; (c) z = R/√2; (d) 3.46 × 10¹⁰ N/C
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 0; (b) 0; (c) z = R; (d) 1.73 × 10¹⁰ N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) nonzero; (b) 0; (c) z = R/2; (d) 6.92 × 10¹⁰ N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 0; (b) nonzero; (c) z = √2 R; (d) 8.99 × 10⁹ N/C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use the standard ring-axis field, then optimizeE(z)by setting dE/dz=0. Evaluate numbers carefully.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Symmetry forcesE=0 at the center and points radially on axis; the extremum occurs whenz=R/√2, a classic result worth memorizing.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> E(z) = (1/4π ε₀) · (Q z)/(R²+z²)^{3/2}on axis of a ring; calculus optimization.
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> From symmetry, (a) <code>E(0)=0</code>; (b) <code>E(∞)=0</code>.</li>
+<li><strong>Step 2:</strong> Differentiate <code>E(z)</code> and set to zero → <code>R² − 2z² = 0 ⇒ z = R/√2</code>.</li>
+<li><strong>Step 3:</strong> Maximum value: <code>E_max = (1/4π ε₀) · Q · (2 / (3^{3/2} R²))</code>.</li>
+<li><strong>Step 4:</strong> Numerics with <code>Q=4.00×10⁻³ C, R=0.0200 m, 1/4π ε₀=8.9876×10⁹</code> → <code>E_max ≈ 3.46×10¹⁰ N/C</code>.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

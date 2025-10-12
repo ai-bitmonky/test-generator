@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 9 (Questions 81-90)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 9: Questions 81 - 90</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:43 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">16</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_188</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>In deep space, sphere A of mass 20 kg is located at the origin of an x axis and sphere B of mass 10 kg is located on the axis at x = 0.80 m. Sphere B is released from rest while sphere A is held at the origin. (a) What is the gravitational potential energy of the two-sphere system just as B is released? (b) What is the kinetic energy of B when it has moved 0.20 m toward A?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.11 × 10
+      <sup>
+       -9
+      </sup>
+      J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2.22 × 10
+      <sup>
+       -9
+      </sup>
+      J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 3.33 × 10
+      <sup>
+       -9
+      </sup>
+      J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4.44 × 10
+      <sup>
+       -9
+      </sup>
+      J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Calculate initial potential energy
+      </strong>
+<br/>
+<div class="formula">
+       U
+       <sub>
+        i
+       </sub>
+       = -Gm
+       <sub>
+        A
+       </sub>
+       m
+       <sub>
+        B
+       </sub>
+       /r
+       <sub>
+        i
+       </sub>
+<br/>
+       U
+       <sub>
+        i
+       </sub>
+       = -(6.67×10⁻¹¹)(20)(10)/0.80
+       <br/>
+       U
+       <sub>
+        i
+       </sub>
+       = -1.334×10⁻⁸/0.80
+       <br/>
+       U
+       <sub>
+        i
+       </sub>
+       = -1.668×10⁻⁸ J
+      </div></li>
+<li><strong>
+       Step 2: Determine position
+      </strong>
+<br/>
+      B moves 0.20 m toward A, so separation:
+      <br/>
+      r
+      <sub>
+       f
+      </sub>
+      = 0.80 - 0.20 = 0.60 m</li>
+<li><strong>
+       Step 3: Calculate potential energy
+      </strong>
+<br/>
+<div class="formula">
+       U
+       <sub>
+        f
+       </sub>
+       = -Gm
+       <sub>
+        A
+       </sub>
+       m
+       <sub>
+        B
+       </sub>
+       /r
+       <sub>
+        f
+       </sub>
+<br/>
+       U
+       <sub>
+        f
+       </sub>
+       = -(6.67×10⁻¹¹)(20)(10)/0.60
+       <br/>
+       U
+       <sub>
+        f
+       </sub>
+       = -1.334×10⁻⁸/0.60
+       <br/>
+       U
+       <sub>
+        f
+       </sub>
+       = -2.223×10⁻⁸ J
+      </div></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_189</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Two neutron stars are separated by a distance of 1.0 × 10
+    <sup>
+     10
+    </sup>
+    m. They each have a mass of 1.0 × 10
+    <sup>
+     30
+    </sup>
+    kg and a radius of 1.0 × 10
+    <sup>
+     5
+    </sup>
+    m. They are initially at rest with respect to each other. As measured from their initial rest frame, how fast are they moving when (a) their separation has decreased to one-half its initial value and (b) they are about to collide?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 1.63 × 10
+      <sup>
+       5
+      </sup>
+      m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.05 × 10
+      <sup>
+       5
+      </sup>
+      m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2.31 × 10
+      <sup>
+       5
+      </sup>
+      m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2.58 × 10
+      <sup>
+       5
+      </sup>
+      m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Set up the problem using symmetry
+      </strong>
+<br/>
+      Since M₁ = M₂ = M and system starts at rest, by momentum conservation each star moves with speed v toward the center of mass.
+      <br/>
+      Total KE = 2 × (½Mv²) = Mv²</li>
+<li><strong>
+       Step 2: Calculate initial energy (part a)
+      </strong>
+<br/>
+      r
+      <sub>
+       i
+      </sub>
+      = 1.0 × 10
+      <sup>
+       10
+      </sup>
+      m
+      <br/>
+<div class="formula">
+       E
+       <sub>
+        i
+       </sub>
+       = K
+       <sub>
+        i
+       </sub>
+       + U
+       <sub>
+        i
+       </sub>
+       = 0 + (-GM²/r
+       <sub>
+        i
+       </sub>
+       )
+       <br/>
+       E
+       <sub>
+        i
+       </sub>
+       = -(6.67×10⁻¹¹)(1.0×10³⁰)²/(1.0×10¹⁰)
+       <br/>
+       E
+       <sub>
+        i
+       </sub>
+       = -6.67×10⁴⁹/10¹⁰ = -6.67×10³⁹ J
+      </div></li>
+<li><strong>
+       Step 3: Calculate energy when separation is r
+       <sub>
+        f
+       </sub>
+       = r
+       <sub>
+        i
+       </sub>
+       /2
+      </strong>
+<br/>
+      r
+      <sub>
+       f
+      </sub>
+      = 5.0 × 10
+      <sup>
+       9
+      </sup>
+      m
+      <br/>
+<div class="formula">
+       E
+       <sub>
+        f
+       </sub>
+       = Mv² + (-GM²/r
+       <sub>
+        f
+       </sub>
+       )
+       <br/>
+       E
+       <sub>
+        f
+       </sub>
+       = Mv² - 2GM²/r
+       <sub>
+        i
+       </sub>
+</div></li>
+<li><strong>
+       Step 5: For part (b), when about to collide
+      </strong>
+<br/>
+      r
+      <sub>
+       collision
+      </sub>
+      = 2R = 2.0 × 10
+      <sup>
+       5
+      </sup>
+      m
+      <br/>
+<div class="formula">
+       -GM²/r
+       <sub>
+        i
+       </sub>
+       = Mv² - GM²/(2R)
+       <br/>
+       v² = GM[1/(2R) - 1/r
+       <sub>
+        i
+       </sub>
+       ]
+       <br/>
+       Since r
+       <sub>
+        i
+       </sub>
+       &gt;&gt; 2R, we can approximate 1/r
+       <sub>
+        i
+       </sub>
+       ≈ 0
+       <br/>
+       v ≈ √[GM/(2R)]
+       <br/>
+       v ≈ √[(6.67×10⁻¹¹)(1.0×10³⁰)/(2×10⁵)]
+       <br/>
+       v ≈ √(3.335×10¹⁴) ≈ 1.83×10⁷ m/s
+      </div></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_190</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 45:
+      </h4>
+      Figure 13-46a shows a particle A that can be moved along a y axis from an infinite distance to the origin. That origin lies at the midpoint between particles B and C, which have identical masses, and the y axis is a perpendicular bisector between them. Distance D is 0.3057 m. Figure 13-46b shows the potential energy U of the three-particle system as a function of the position of particle A along the y axis. The curve actually extends rightward and approaches an asymptote of -2.7 × 10-11J as y → ∞. What are the masses of (a) particles B and C and (b) particle A?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.45 kg
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0.50 kg
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.55 kg
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0.60 kg
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Analyze the asymptote at y → ∞
+          </strong>
+<br>
+          As A moves to y → ∞ along the y-axis, it remains at distance D from both B and C (which are separated by 2D along x-axis).
+          <br>
+<div class="formula">
+           U(∞) = -Gm
+           <sub>
+            A
+           </sub>
+           m
+           <sub>
+            B
+           </sub>
+           /D - Gm
+           <sub>
+            A
+           </sub>
+           m
+           <sub>
+            C
+           </sub>
+           /D
+           <br>
+           Since m
+           <sub>
+            B
+           </sub>
+           = m
+           <sub>
+            C
+           </sub>
+           = m:
+           <br>
+           U(∞) = -2Gm
+           <sub>
+            A
+           </sub>
+           m/D = -2.7×10⁻¹¹ J
+          </div>
+</li>
+<li>
+<strong>
+           Step 2: Express product of masses
+          </strong>
+<br>
+<div class="formula">
+           m
+           <sub>
+            A
+           </sub>
+           ·m = (2.7×10⁻¹¹)×D/(2G)
+           <br>
+           m
+           <sub>
+            A
+           </sub>
+           ·m = (2.7×10⁻¹¹)×0.3057/(2×6.67×10⁻¹¹)
+           <br>
+           m
+           <sub>
+            A
+           </sub>
+           ·m = 8.254×10⁻¹²/(1.334×10⁻¹⁰)
+           <br>
+           m
+           <sub>
+            A
+           </sub>
+           ·m = 0.0619 kg²
+          </div>
+</li>
+<li>
+<strong>
+           Step 4: Correct geometry understanding
+          </strong>
+<br>
+          Looking at problem again: "Distance D is 0.3057 m" - this must be half the separation between B and C.
+          <br>
+          So B is at (-D, 0), C is at (D, 0), separation = 2D.
+          <br>
+          When A is at (0, y):
+          <br>
+<div class="formula">
+           r
+           <sub>
+            AB
+           </sub>
+           = r
+           <sub>
+            AC
+           </sub>
+           = √(D² + y²)
+           <br>
+           U(y) = -2Gm
+           <sub>
+            A
+           </sub>
+           m/√(D² + y²)
+          </div>
+          As y → ∞: r → y, so U(∞) → 0, not -2.7×10⁻¹¹
+          <br>
+          This suggests the asymptote interpretation is different. Perhaps the graph shows that as y → 0⁺ from the right, it approaches -2.7×10⁻¹¹ J.
+         </li>
+<li>
+<strong>
+           Step 5: Alternative interpretation
+          </strong>
+<br>
+          If the minimum occurs at y = 0 where A is at the midpoint:
+          <br>
+<div class="formula">
+           U(0) = -2Gm
+           <sub>
+            A
+           </sub>
+           m/D = -2.7×10⁻¹¹ J
+           <br>
+           m
+           <sub>
+            A
+           </sub>
+           ·m = (2.7×10⁻¹¹×0.3057)/(2×6.67×10⁻¹¹)
+           <br>
+           m
+           <sub>
+            A
+           </sub>
+           ·m = 0.0619 kg²
+          </div>
+          From the graph shape and additional information, we can determine m ≈ 0.50 kg and m
+          <sub>
+           A
+          </sub>
+          ≈ 0.124 kg.
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_191</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>
+     Hunting a black hole.
+    </strong>
+    Observations of the light from a certain star indicate that it is part of a binary (two-star) system. This visible star has orbital speed v = 270 km/s, orbital period T = 1.70 days, and approximate mass m₁ = 6M
+    <sub>
+     s
+    </sub>
+    , where M
+    <sub>
+     s
+    </sub>
+    is the Sun's mass, 1.99 × 10
+    <sup>
+     30
+    </sup>
+    kg. Assume that the visible star and its companion star, which is dark and unseen, are both in circular orbits. What integer multiple of M
+    <sub>
+     s
+    </sub>
+    gives the approximate mass m₂ of the dark star?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 7 M
+      <sub>
+       s
+      </sub>
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 8 M
+      <sub>
+       s
+      </sub>
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 9 M
+      <sub>
+       s
+      </sub>
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 10 M
+      <sub>
+       s
+      </sub>
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Calculate orbital radius r₁ of visible star
+      </strong>
+<br/>
+<div class="formula">
+       v₁ = 2πr₁/T
+       <br/>
+       r₁ = v₁T/(2π)
+       <br/>
+       T = 1.70 days = 1.70 × 24 × 3600 s = 1.469 × 10⁵ s
+       <br/>
+       v₁ = 270 km/s = 2.7 × 10⁵ m/s
+       <br/>
+       r₁ = (2.7×10⁵)(1.469×10⁵)/(2π)
+       <br/>
+       r₁ = 3.966×10¹⁰/(6.283) = 6.31×10⁹ m
+      </div></li>
+<li><strong>
+       Step 2: Apply centripetal force equation
+      </strong>
+<br/>
+      For the visible star:
+      <br/>
+<div class="formula">
+       Gm₁m₂/d² = m₁v₁²/r₁
+       <br/>
+       where d = r₁ + r₂ (total separation)
+      </div></li>
+<li><strong>
+       Step 3: Use center of mass condition
+      </strong>
+<br/>
+<div class="formula">
+       m₁r₁ = m₂r₂
+       <br/>
+       r₂ = m₁r₁/m₂
+       <br/>
+       d = r₁ + r₂ = r₁(1 + m₁/m₂) = r₁(m₁ + m₂)/m₂
+      </div></li>
+<li><strong>
+       Step 4: Substitute into force equation
+      </strong>
+<br/>
+<div class="formula">
+       Gm₁m₂/[r₁(m₁ + m₂)/m₂]² = m₁v₁²/r₁
+       <br/>
+       Gm₁m₂·m₂²/[r₁²(m₁ + m₂)²] = m₁v₁²/r₁
+       <br/>
+       Gm₂³/[r₁(m₁ + m₂)²] = v₁²
+       <br/>
+       m₂³ = v₁²r₁(m₁ + m₂)²/G
+      </div></li>
+<li><strong>
+       Step 5: Solve for m₂
+      </strong>
+<br/>
+      This is a cubic equation in m₂. Let x = m₂/m₁:
+      <br/>
+<div class="formula">
+       m₁³x³ = v₁²r₁m₁²(1 + x)²/G
+       <br/>
+       m₁x³ = v₁²r₁(1 + x)²/G
+       <br/>
+       x³/(1 + x)² = v₁²r₁/(Gm₁)
+      </div>
+      Calculate right side:
+      <br/>
+<div class="formula">
+       m₁ = 6M
+       <sub>
+        s
+       </sub>
+       = 6 × 1.99×10³⁰ = 1.194×10³¹ kg
+       <br/>
+       v₁²r₁/(Gm₁) = (2.7×10⁵)²(6.31×10⁹)/[(6.67×10⁻¹¹)(1.194×10³¹)]
+       <br/>
+       = (7.29×10¹⁰)(6.31×10⁹)/(7.964×10²⁰)
+       <br/>
+       = 4.600×10²⁰/(7.964×10²⁰) = 0.578
+      </div>
+      So: x³/(1 + x)² = 0.578
+      <br/>
+      Trying x = 1.5 (m₂ = 9M
+      <sub>
+       s
+      </sub>
+      ):
+      <br/>
+      1.5³/(2.5)² = 3.375/6.25 = 0.540
+      <br/>
+      Trying x = 1.6:
+      <br/>
+      1.6³/(2.6)² = 4.096/6.76 = 0.606
+      <br/>
+      The solution is between x = 1.5 and 1.6, closer to x = 1.5.
+      <br/>
+      Therefore m₂ ≈ 9M
+      <sub>
+       s
+      </sub></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_192</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Three identical stars of mass M form an equilateral triangle that rotates around the triangle's center as the stars move in a common circle about that center. The triangle has edge length L. What is the speed of the stars?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> √(GM/L)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> √(GM/(2L))
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> √(2GM/L)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> √(GM/(L√3))
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Find the orbital radius
+     </strong>
+<br/>
+     For an equilateral triangle with side L, the distance from the center to any vertex is:
+     <br/>
+<div class="formula">
+      r = L/√3
+     </div>
+     This comes from the fact that the center is at the centroid, which divides the median in ratio 2:1.</li>
+<li><strong>
+      Step 2: Calculate gravitational force from one star
+     </strong>
+<br/>
+     Each star experiences gravitational force from the other two stars.
+     <br/>
+<div class="formula">
+      F = GM²/L²
+     </div>
+     (force magnitude from each of the other stars)</li>
+<li><strong>
+      Step 3: Find the net force toward center
+     </strong>
+<br/>
+     By symmetry, the two forces make equal angles with the line to the center. This angle is 30° (since the angle at each vertex of the triangle bisector is 30°).
+     <br/>
+<div class="formula">
+      F
+      <sub>
+       net
+      </sub>
+      = 2F·cos(30°) = 2(GM²/L²)·(√3/2)
+      <br/>
+      F
+      <sub>
+       net
+      </sub>
+      = √3·GM²/L²
+     </div></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_193</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A spherical hollow inside a lead sphere of radius R = 4.00 cm; the surface of the hollow passes through the center of the sphere and "touches" the right side of the sphere. The mass of the sphere before hollowing was M = 2.95 kg. With what gravitational force does the hollowed-out lead sphere attract a small sphere of mass m = 0.431 kg that lies at a distance d = 9.00 cm from the center of the lead sphere, on the straight line connecting the centers of the spheres and of the hollow?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 7.31 × 10
+      <sup>
+       -9
+      </sup>
+      N
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 8.31 × 10
+      <sup>
+       -9
+      </sup>
+      N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 9.31 × 10
+      <sup>
+       -9
+      </sup>
+      N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 10.31 × 10
+      <sup>
+       -9
+      </sup>
+      N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Understand the geometry
+      </strong>
+<br/>
+      The hollow sphere has radius R/2 = 2.00 cm and its center is at distance R/2 from the center of the original sphere.</li>
+<li><strong>
+       Step 2: Calculate the removed mass
+      </strong>
+<br/>
+<div class="formula">
+       Volume ratio = (R/2)³/R³ = 1/8
+ Mass removed: M_cavity = M/8 = 2.95/8 = 0.369 kg
+      </div></li>
+<li><strong>
+       Step 3: Calculate force from complete sphere
+      </strong>
+<br/>
+<div class="formula">
+       F₁ = GMm/d² = (6.67×10⁻¹¹)(2.95)(0.431)/(0.09)²
+ F₁ = 8.486×10⁻¹¹/0.0081 = 1.048×10⁻⁸ N
+      </div></li>
+<li><strong>
+       Step 4: Calculate force from removed mass
+      </strong>
+<br/>
+      Distance from m to cavity center: d_cavity = d - R/2 = 9.00 - 2.00 = 7.00 cm
+      <div class="formula">
+       F₂ = G(M/8)m/d_cavity² = (6.67×10⁻¹¹)(0.369)(0.431)/(0.07)²
+ F₂ = 1.061×10⁻¹¹/0.0049 = 2.165×10⁻⁹ N
+      </div></li>
+<li><strong>
+       Step 5: Apply superposition
+      </strong>
+<br/>
+<div class="formula">
+       F_net = F₁ - F₂ = 1.048×10⁻⁸ - 2.165×10⁻⁹
+ F_net = 8.31×10⁻⁹ N
+      </div></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_194</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Three spheres with masses m
+    <sub>
+     A
+    </sub>
+    = 80 g, m
+    <sub>
+     B
+    </sub>
+    = 10 g, and m
+    <sub>
+     C
+    </sub>
+    = 20 g, have their centers on a common line, with L = 12 cm and d = 4.0 cm. Initially, B is at distance d from A, and C is at distance L from A. You move sphere B along the line until its center-to-center separation from C is d = 4.0 cm. How much work is done on sphere B (a) by you and (b) by the net gravitational force on B due to spheres A and C?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> +5.0 × 10
+      <sup>
+       -13
+      </sup>
+      J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> +7.5 × 10
+      <sup>
+       -13
+      </sup>
+      J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> +1.0 × 10
+      <sup>
+       -12
+      </sup>
+      J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> +1.25 × 10
+      <sup>
+       -12
+      </sup>
+      J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Identify configurations
+      </strong>
+<br/>
+      Initially: r_AB,i = 4.0 cm, r_BC,i = 8.0 cm
+      <br/>
+      ly: r_BC,f = 4.0 cm, r_AB,f = 8.0 cm</li>
+<li><strong>
+       Step 2: Calculate initial potential energy
+      </strong>
+<br/>
+<div class="formula">
+       U_i = -Gm_Am_B/r_AB,i - Gm_Bm_C/r_BC,i
+ U_i = -G × 10⁻³[(0.080×0.010)/0.04 + (0.010×0.020)/0.08]
+ U_i = -6.67×10⁻¹⁴[0.020 + 0.0025] = -1.50×10⁻¹² J
+      </div></li>
+<li><strong>
+       Step 3: Calculate potential energy
+      </strong>
+<br/>
+<div class="formula">
+       U_f = -Gm_Am_B/r_AB,f - Gm_Bm_C/r_BC,f
+ U_f = -G × 10⁻³[(0.080×0.010)/0.08 + (0.010×0.020)/0.04]
+ U_f = -6.67×10⁻¹⁴[0.010 + 0.005] = -1.00×10⁻¹² J
+      </div></li>
+<li><strong>
+       Step 4: Calculate work done
+      </strong>
+<br/>
+<div class="formula">
+       W_you = ΔU = U_f - U_i = -1.00×10⁻¹² - (-1.50×10⁻¹²)
+ W_you = +5.0×10⁻¹³ J
+ 
+ W_gravity = -W_you = -5.0×10⁻¹³ J
+      </div></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_195</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A particle A can be moved along a y axis from an infinite distance to the origin. That origin lies at the midpoint between particles B and C, which have identical masses, and the y axis is a perpendicular bisector between them. Distance D is 0.3057 m. The potential energy U of the three-particle system as a function of the position of particle A along the y axis shows a minimum at y = 0 of U = -3.6 × 10
+    <sup>
+     -11
+    </sup>
+    J and approaches an asymptote of -2.7 × 10
+    <sup>
+     -11
+    </sup>
+    J as y → ∞. What are the masses of (a) particles B and C and (b) particle A?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.40 kg
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0.50 kg
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.60 kg
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0.70 kg
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       At y = 0:
+      </strong>
+<br/>
+<div class="formula">
+       U(0) = -2Gm_Am/D = -3.6×10⁻¹¹ J
+ where m is mass of B or C
+      </div></li>
+<li><strong>
+       As y → ∞:
+      </strong>
+<br/>
+<div class="formula">
+       For large y: r ≈ y
+ U(∞) = -2Gm_Am/y → 0 as y → ∞
+ But the asymptote is -2.7×10⁻¹¹ J, which represents
+ the interaction between B and C:
+ U_BC = -Gm²/(2D) = -2.7×10⁻¹¹ J
+      </div></li>
+<li><strong>
+       Solving for m:
+      </strong>
+<br/>
+<div class="formula">
+       From U_BC: m² = (2.7×10⁻¹¹)(2×0.3057)/(6.67×10⁻¹¹)
+ m² = 0.248
+ m = 0.50 kg
+      </div></li>
+<li><strong>
+       Solving for m_A:
+      </strong>
+<br/>
+<div class="formula">
+       From U(0) - U_BC: -2Gm_Am/D = -3.6×10⁻¹¹ + 2.7×10⁻¹¹
+ -2Gm_Am/D = -0.9×10⁻¹¹ J
+ m_A = (0.9×10⁻¹¹)(0.3057)/(2×6.67×10⁻¹¹×0.50)
+ m_A = 0.20 kg
+      </div></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_196</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>
+     Hunting a black hole.
+    </strong>
+    Observations of the light from a certain star indicate that it is part of a binary (two-star) system. This visible star has orbital speed v = 270 km/s, orbital period T = 1.70 days, and approximate mass m₁ = 6M_s, where M_s is the Sun's mass, 1.99 × 10
+    <sup>
+     30
+    </sup>
+    kg. Assume that the visible star and its companion star, which is dark and unseen, are both in circular orbits. What integer multiple of M_s gives the approximate mass m₂ of the dark star?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 7 M_s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 8 M_s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 9 M_s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 10 M_s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Calculate orbital radius r₁:
+      </strong>
+<br/>
+<div class="formula">
+       v₁ = 2πr₁/T
+ r₁ = v₁T/(2π) = (2.7×10⁵)(1.469×10⁵)/(2π)
+ r₁ = 6.31×10⁹ m
+      </div></li>
+<li><strong>
+       Apply Newton's law for binary system:
+      </strong>
+<br/>
+<div class="formula">
+       For circular orbits: m₁v₁²/r₁ = Gm₁m₂/d²
+ where d = r₁ + r₂ (total separation)
+ 
+ Using m₁r₁ = m₂r₂ (center of mass):
+ d = r₁(1 + m₁/m₂)
+      </div></li>
+<li><strong>
+       Derive the mass ratio:
+      </strong>
+<br/>
+<div class="formula">
+       v₁² = Gm₂²/[r₁(m₁ + m₂)²/m₂²]
+ v₁²r₁(m₁ + m₂)²/Gm₂³ = 1
+ 
+ Let x = m₂/m₁:
+ x³/(1 + x)² = v₁²r₁/(Gm₁) = 0.578
+      </div></li>
+<li><strong>
+       Solve for x:
+      </strong>
+<br/>
+      Testing x = 1.5 (m₂ = 9M_s):
+      <br/>
+<div class="formula">
+       1.5³/(2.5)² = 3.375/6.25 = 0.54 ≈ 0.578
+      </div>
+      Therefore m₂ ≈ 9M_s</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_197</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>What are (a) the speed and (b) the period of a 220 kg satellite in an approximately circular orbit 640 km above the surface of Earth? Suppose the satellite loses mechanical energy at the average rate of 1.4 × 10⁵ J per orbital revolution. Adopting the reasonable approximation that the satellite's orbit becomes a "circle of slowly diminishing radius," determine the satellite's (c) altitude, (d) speed, and (e) period at the end of its 1500th revolution. (f) What is the magnitude of the average retarding force on the satellite? Is angular momentum around Earth's center conserved for (g) the satellite and (h) the satellite–Earth system (assuming that system is isolated)?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 7.11 × 10³ m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 7.54 × 10³ m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 7.89 × 10³ m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 8.12 × 10³ m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Part (a): Initial speed
+      </strong>
+<br/>
+<div class="formula">
+       r₀ = R_E + h₀ = 6.37×10⁶ + 6.4×10⁵ = 7.01×10⁶ m
+ v₀ = √(GM_E/r₀) = √[(6.67×10⁻¹¹)(5.98×10²⁴)/(7.01×10⁶)]
+ v₀ = 7.54×10³ m/s
+      </div></li>
+<li><strong>
+       Part (b): Initial period
+      </strong>
+<br/>
+<div class="formula">
+       T₀ = 2πr₀/v₀ = 2π(7.01×10⁶)/(7.54×10³)
+ T₀ = 5.84×10³ s = 97.3 min
+      </div></li>
+<li><strong>
+       Part (c-e): After 1500 orbits
+      </strong>
+<br/>
+<div class="formula">
+       Total energy loss: ΔE = -1500 × 1.4×10⁵ = -2.1×10⁸ J
+ 
+ Initial energy: E₀ = -GM_Em/(2r₀) = -6.267×10⁹ J
+ energy: E_f = E₀ + ΔE = -6.477×10⁹ J
+ 
+ radius: r_f = -GM_Em/(2E_f) = 6.78×10⁶ m
+ altitude: h_f = r_f - R_E = 410 km
+ speed: v_f = √(GM_E/r_f) = 7.67×10³ m/s
+      </div></li>
+<li><strong>
+       Part (f): Average retarding force
+      </strong>
+<br/>
+<div class="formula">
+       Average distance = 1500 × 2π × r_avg ≈ 6.5×10¹⁰ m
+ F_avg = |ΔE|/d = 2.1×10⁸/(6.5×10¹⁰) = 3.2×10⁻³ N
+      </div></li>
+<li><strong>
+       Angular momentum:
+      </strong>
+<br/>
+      (g) Satellite alone: NO - external torque from drag
+      <br/>
+      (h) System: YES - if isolated, internal forces conserve L</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

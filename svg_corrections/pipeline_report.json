@@ -1,0 +1,28 @@
+[
+  {
+    "iteration": 1,
+    "svgIndex": 0,
+    "beforeScore": 85,
+    "afterScore": 100,
+    "fixes": [
+      "Added viewBox attribute"
+    ],
+    "review": {
+      "scoreImprovement": 15,
+      "percentImprovement": 17.647058823529413,
+      "isImproved": true,
+      "significantImprovement": true,
+      "beforeScore": 85,
+      "afterScore": 100,
+      "fixesApplied": 1,
+      "remainingIssues": {
+        "overlapping": 0,
+        "dimensionIssues": 0,
+        "missingElements": 0,
+        "styleIssues": 0,
+        "structureIssues": 0
+      },
+      "recommendation": "SVG is in excellent condition. Pipeline can stop."
+    }
+  }
+]

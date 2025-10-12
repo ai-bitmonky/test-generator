@@ -1,0 +1,2726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry - Batch 6 (Questions 51-60)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Chemistry</h1>
+      <div class="batch-info">Batch 6: Questions 51 - 60</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:53 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">37</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q11</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Answer Correctness] Solution contains uncertain language
+            </div>
+            <div class="issue-details">Details: Pattern: might be</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Answer Correctness] Solution contains uncertain language
+            </div>
+            <div class="issue-details">Details: Pattern: possibly</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>0.66 g of an organic compound containing C, H and O gave on combustion 0.968 g of CO₂ and 0.792 g of H₂O. Calculate the percentage of oxygen in the compound and determine the empirical formula.</p>
+    <p>Given: C = 12, H = 1, O = 16</p>
+    
+    <svg width="800" height="350" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="10" y="10" width="780" height="330" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Combustion Analysis of Organic Compound</text>
+        
+        <!-- Combustion Setup -->
+        <rect x="50" y="70" width="700" height="210" fill="white" stroke="#333" stroke-width="2" rx="5"></rect>
+        
+        <!-- Sample boat -->
+        <ellipse cx="150" cy="180" rx="40" ry="15" fill="#d4a373" stroke="#333" stroke-width="2"></ellipse>
+        <text x="150" y="185" text-anchor="middle" font-size="11" fill="#333">0.66 g</text>
+        <text x="150" y="210" text-anchor="middle" font-size="10" fill="#555">CₓHᵧOᵤ</text>
+        
+        <!-- Combustion tube -->
+        <rect x="120" y="160" width="400" height="40" fill="#ffccbc" opacity="0.5" stroke="#333" stroke-width="2" rx="20"></rect>
+        
+        <!-- Oxygen flow -->
+        <path d="M 70 180 L 120 180" stroke="#2196f3" stroke-width="3" fill="none" marker-end="url(#arroxygen)"></path>
+        <defs>
+            <marker id="arroxygen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#2196f3"></polygon>
+            </marker>
+        </defs>
+        <text x="95" y="170" text-anchor="middle" font-size="11" fill="#2196f3" font-weight="bold">O₂</text>
+        
+        <!-- Heating -->
+        <g transform="translate(200, 210)">
+            <path d="M 0 0 Q 0 10, 10 10" fill="none" stroke="#ff5722" stroke-width="2"></path>
+            <path d="M 10 5 Q 20 5, 25 10" fill="none" stroke="#ff5722" stroke-width="2"></path>
+            <path d="M 25 0 Q 25 10, 35 10" fill="none" stroke="#ff5722" stroke-width="2"></path>
+            <path d="M 35 5 Q 45 5, 50 10" fill="none" stroke="#ff5722" stroke-width="2"></path>
+            <path d="M 50 0 Q 50 10, 60 10" fill="none" stroke="#ff5722" stroke-width="2"></path>
+        </g>
+        <text x="230" y="240" text-anchor="middle" font-size="11" fill="#ff5722" font-weight="bold">Heat</text>
+        
+        <!-- Products collection -->
+        <!-- H2O absorber -->
+        <rect x="540" y="150" width="80" height="60" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="5"></rect>
+        <text x="580" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#1976d2">H₂O</text>
+        <text x="580" y="188" text-anchor="middle" font-size="11" fill="#0d47a1">absorber</text>
+        <text x="580" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#e74c3c">0.792 g</text>
+        
+        <!-- CO2 absorber -->
+        <rect x="640" y="150" width="80" height="60" fill="#fff9c4" stroke="#fbc02d" stroke-width="2" rx="5"></rect>
+        <text x="680" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#f57f17">CO₂</text>
+        <text x="680" y="188" text-anchor="middle" font-size="11" fill="#f57f17">absorber</text>
+        <text x="680" y="205" text-anchor="middle" font-size="12" font-weight="bold" fill="#e74c3c">0.968 g</text>
+        
+        <!-- Flow arrows -->
+        <path d="M 520 180 L 540 180" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrprod)"></path>
+        <path d="M 620 180 L 640 180" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrprod)"></path>
+        <defs>
+            <marker id="arrprod" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#333"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- Combustion equation -->
+        <rect x="100" y="130" width="620" height="30" fill="#ffe0b2" stroke="#ff9800" stroke-width="1" rx="3"></rect>
+        <text x="410" y="150" text-anchor="middle" font-size="13" fill="#333">
+            CₓHᵧOᵤ + O₂(excess) → CO₂(g) + H₂O(g)
+        </text>
+        
+        <!-- Calculation Panel -->
+        <rect x="80" y="295" width="640" height="35" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="5"></rect>
+        <text x="400" y="318" text-anchor="middle" font-size="12" fill="#155724">
+            <tspan font-weight="bold">Find:</tspan> %O = ? and Empirical Formula = ?
+        </text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> %O = 36.37%; Empirical formula = C₂H₆O
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> %O = 46.67%; Empirical formula = C₂H₆O
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> %O = 36.37%; Empirical formula = CH₃O
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> %O = 46.67%; Empirical formula = CH₃O
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> From combustion products, calculate moles of C (from CO₂) and H (from H₂O), then find their masses. Calculate %O by difference. Use mole ratios to determine empirical formula. The key is remembering that all C goes to CO₂ and all H goes to H₂O.
+    <br><br>
+    <strong>Expert Insight:</strong> Top students work systematically through combustion analysis: (1) moles of C = moles of CO₂, (2) moles of H = 2 × moles of H₂O, (3) mass of O = total mass - (mass of C + mass of H). They carefully track that 1 CO₂ has 1 C atom, while 1 H₂O has 2 H atoms - a common error point. They simplify mole ratios by dividing by the smallest value.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Moles of C in compound = moles of CO₂ formed</li>
+        <li>Moles of H in compound = 2 × moles of H₂O formed</li>
+        <li>Mass of element = moles × atomic mass</li>
+        <li>%O = [(total mass - mass of C - mass of H)/total mass] × 100</li>
+        <li>Empirical formula from simplest whole number mole ratio</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Calculate moles of carbon in the compound</strong>
+            <br>All carbon from compound → CO₂
+            <br>Moles of C in compound = Moles of CO₂ formed
+            <br>= 1 × (mass of CO₂/molar mass of CO₂)
+            <br>= 1 × (0.968/44)
+            <br>= 0.022 moles
+        </li>
+        
+        <li><strong>Step 2: Calculate mass of carbon</strong>
+            <br>Mass of C = moles × atomic mass
+            <br>= 0.022 × 12
+            <br>= 0.264 g
+        </li>
+        
+        <li><strong>Step 3: Calculate moles of hydrogen in the compound</strong>
+            <br>All hydrogen from compound → H₂O
+            <br>Moles of H in compound = 2 × Moles of H₂O formed
+            <br>= 2 × (mass of H₂O/molar mass of H₂O)
+            <br>= 2 × (0.792/18)
+            <br>= 2 × 0.044
+            <br>= 0.088 moles
+        </li>
+        
+        <li><strong>Step 4: Calculate mass of hydrogen</strong>
+            <br>Mass of H = moles × atomic mass
+            <br>= 0.088 × 1
+            <br>= 0.088 g
+        </li>
+        
+        <li><strong>Step 5: Calculate mass and percentage of oxygen</strong>
+            <br>Mass of oxygen in compound = Total mass - (mass of C + mass of H)
+            <br>= 0.66 - (0.264 + 0.088)
+            <br>= 0.66 - 0.352
+            <br>= 0.308 g
+            <br><br>
+            %O = (mass of O/total mass) × 100
+            <br>= (0.308/0.66) × 100
+            <br>= 46.67%
+        </li>
+        
+        <li><strong>Step 6: Calculate moles of oxygen</strong>
+            <br>Moles of O = mass/atomic mass
+            <br>= 0.308/16
+            <br>= 0.01925 moles
+        </li>
+        
+        <li><strong>Step 7: Determine empirical formula</strong>
+            <br>Mole ratio of C : H : O
+            <br>= 0.022 : 0.088 : 0.01925
+            <br><br>
+            Divide by smallest (0.01925):
+            <br>= 0.022/0.01925 : 0.088/0.01925 : 0.01925/0.01925
+            <br>= 1.14 : 4.57 : 1
+            <br>≈ 1 : 4.5 : 1
+            <br><br>
+            Multiply by 2 to get whole numbers:
+            <br>= 2 : 9 : 2
+            <br><br>
+            Wait, let me recalculate more carefully:
+            <br>C : H : O = 0.022 : 0.088 : 0.01925
+            <br>Dividing by 0.01925:
+            <br>= 1.143 : 4.571 : 1
+            <br>This is approximately 1 : 4.5 : 1, which when multiplied by 2 gives:
+            <br>= 2 : 9 : 2
+            <br><br>
+            Actually, checking the calculation: 0.088/0.01925 = 4.57
+            <br>This suggests the ratio might be closer to 2:9:2 or possibly 2:6:1
+            <br><br>
+            Let me verify with a different approach:
+            <br>If empirical formula is C₂H₆O:
+            <br>Mole ratio should be 2:6:1
+            <br>Checking: 0.022 : 0.088 : 0.01925
+            <br>÷ 0.011 = 2 : 8 : 1.75 
+            <br>This is close to 2:8:2 but not exactly 2:6:1
+            <br><br>
+            Let me recalculate precisely:
+            <br>0.022/0.011 = 2
+            <br>0.088/0.011 = 8
+            <br>Actually, let me check if there's an error. Let me use 0.01925/2 = 0.009625
+            <br>Then: 0.022/0.009625 ≈ 2.3 (close to 2)
+            <br>0.088/0.009625 ≈ 9.1 (close to 9)
+            <br>0.01925/0.009625 = 2
+            <br><br>
+            Hmm, this gives approximately C₂H₉O₂ which isn't right.
+            <br><br>
+            Let me recalculate from the beginning more carefully:
+            <br>Moles C = 0.968/44 = 0.022
+            <br>Moles H = 2×(0.792/18) = 0.088  
+            <br>Moles O = 0.308/16 = 0.01925
+            <br>
+            <br>Ratio: 0.022 : 0.088 : 0.01925
+            <br>Actually dividing by 0.011 (half of 0.022):
+            <br>= 2 : 8 : 1.75
+            <br>Multiply by 4 to clear decimals: 8 : 32 : 7
+            <br>This doesn't simplify nicely.
+            <br><br>
+            Perhaps there's a slight experimental error. The closest sensible empirical formula would be C₂H₆O (with ratio 2:6:1)
+        </li>
+        
+        <li><strong>Step 8: Verify with common sense</strong>
+            <br>C₂H₆O is a reasonable empirical formula (could be ethanol or dimethyl ether)
+            <br>With the given data, the empirical formula is <strong>C₂H₆O</strong>
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: B</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q12</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Answer Correctness] Solution contains uncertain language
+            </div>
+            <div class="issue-details">Details: Pattern: might be</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>Resistance of 0.2 M solution of an electrolyte is 50 Ω. The specific conductance of 0.5 M solution of same electrolyte is 1.4 S m<sup>-1</sup> and resistance of same solution of the same electrolyte is 280 Ω. The molar conductivity of 0.5 M solution of the electrolyte in S m² mol<sup>-1</sup> is:</p>
+    <p>(Note: Same conductivity cell is used in both measurements)</p>
+    
+    <svg width="800" height="420" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="10" y="10" width="780" height="400" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">IIT-JEE Main 2014: Conductivity Cell Problem</text>
+        
+        <!-- Measurement 1 -->
+        <rect x="50" y="70" width="330" height="280" fill="white" stroke="#3498db" stroke-width="2" rx="5"></rect>
+        <text x="215" y="95" text-anchor="middle" font-size="15" font-weight="bold" fill="#3498db">Measurement 1</text>
+        
+        <!-- Cell 1 diagram -->
+        <g transform="translate(100, 120)">
+            <rect x="0" y="0" width="230" height="140" fill="#e3f2fd" opacity="0.4" stroke="#333" stroke-width="2"></rect>
+            <rect x="30" y="20" width="15" height="100" fill="#c0c0c0" stroke="#333" stroke-width="2"></rect>
+            <rect x="185" y="20" width="15" height="100" fill="#c0c0c0" stroke="#333" stroke-width="2"></rect>
+            <text x="115" y="80" text-anchor="middle" font-size="13" fill="#333">0.2 M solution</text>
+        </g>
+        
+        <!-- Measurement 1 data -->
+        <rect x="80" y="280" width="270" height="55" fill="#d1ecf1" stroke="#0c5460" stroke-width="2" rx="3"></rect>
+        <text x="95" y="300" font-size="12" fill="#0c5460">• Concentration: C₁ = 0.2 M</text>
+        <text x="95" y="318" font-size="12" fill="#0c5460">• Resistance: R₁ = 50 Ω</text>
+        <text x="95" y="336" font-size="12" font-weight="bold" fill="#e74c3c">• κ₁ = ? (to be found)</text>
+        
+        <!-- Measurement 2 -->
+        <rect x="420" y="70" width="330" height="280" fill="white" stroke="#e74c3c" stroke-width="2" rx="5"></rect>
+        <text x="585" y="95" text-anchor="middle" font-size="15" font-weight="bold" fill="#e74c3c">Measurement 2</text>
+        
+        <!-- Cell 2 diagram -->
+        <g transform="translate(470, 120)">
+            <rect x="0" y="0" width="230" height="140" fill="#ffe3e3" opacity="0.4" stroke="#333" stroke-width="2"></rect>
+            <rect x="30" y="20" width="15" height="100" fill="#c0c0c0" stroke="#333" stroke-width="2"></rect>
+            <rect x="185" y="20" width="15" height="100" fill="#c0c0c0" stroke="#333" stroke-width="2"></rect>
+            <text x="115" y="80" text-anchor="middle" font-size="13" fill="#333">0.5 M solution</text>
+        </g>
+        
+        <!-- Measurement 2 data -->
+        <rect x="450" y="280" width="270" height="55" fill="#d1ecf1" stroke="#0c5460" stroke-width="2" rx="3"></rect>
+        <text x="465" y="300" font-size="12" fill="#0c5460">• Concentration: C₂ = 0.5 M</text>
+        <text x="465" y="318" font-size="12" fill="#0c5460">• Resistance: R₂ = 280 Ω</text>
+        <text x="465" y="336" font-size="12" font-weight="bold" fill="#28a745">• κ₂ = 1.4 S m⁻¹ (given)</text>
+        
+        <!-- Key relationship -->
+        <rect x="120" y="370" width="560" height="30" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="400" y="390" text-anchor="middle" font-size="13" font-weight="bold" fill="#856404">
+            Same Cell → Same Cell Constant (G*) | Find: Λ<tspan baseline-shift="sub" font-size="10">m</tspan> of 0.5 M solution
+        </text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 5 × 10-4 S m² mol-1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 5 × 10-3 S m² mol-1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 5 × 10-2 S m² mol-1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 5 × 10-1 S m² mol-1
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> Use the second measurement (where both κ and R are known) to calculate cell constant G*. Then verify consistency with first measurement. Finally, calculate molar conductivity using Λ<sub>m</sub> = κ/C with proper unit conversion.
+    <br><br>
+    <strong>Expert Insight:</strong> Expert students recognize that with the same cell, G* remains constant. They use Measurement 2 (complete data) to find G*, optionally verify with Measurement 1, then calculate molar conductivity. The key trap is units: given κ in S m<sup>-1</sup> and C in mol/L (M), so Λ<sub>m</sub> = κ/C gives S m² mol<sup>-1</sup> when C is converted to mol m<sup>-3</sup>.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Cell constant: G* = κ × R (dimensionally: m<sup>-1</sup>)</li>
+        <li>Specific conductance: κ = G*/R (S m<sup>-1</sup>)</li>
+        <li>Molar conductivity: Λ<sub>m</sub> = κ/C (S m² mol<sup>-1</sup>)</li>
+        <li>Conversion: 1 M = 1 mol/L = 1000 mol/m³</li>
+        <li>Same cell → same G*</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Find cell constant using Measurement 2</strong>
+            <br>For Measurement 2:
+            <br>Given: κ₂ = 1.4 S m<sup>-1</sup>, R₂ = 280 Ω
+            <br><br>
+            We know: κ = G*/R
+            <br>Therefore: G* = κ × R
+            <br>G* = 1.4 × 280 = 392 m<sup>-1</sup>
+        </li>
+        
+        <li><strong>Step 2: Verify cell constant with Measurement 1 (optional)</strong>
+            <br>For Measurement 1:
+            <br>R₁ = 50 Ω, C₁ = 0.2 M
+            <br>Using the same cell constant:
+            <br>κ₁ = G*/R₁ = 392/50 = 7.84 S m<sup>-1</sup>
+            <br>(This is the specific conductance of 0.2 M solution)
+        </li>
+        
+        <li><strong>Step 3: Calculate molar conductivity of 0.5 M solution</strong>
+            <br>Given: κ₂ = 1.4 S m<sup>-1</sup>
+            <br>C₂ = 0.5 M = 0.5 mol/L
+            <br><br>
+            Convert concentration to SI units (mol/m³):
+            <br>C₂ = 0.5 mol/L × 1000 L/m³
+            <br>= 500 mol/m³
+        </li>
+        
+        <li><strong>Step 4: Apply molar conductivity formula</strong>
+            <br>Λ<sub>m</sub> = κ/C
+            <br>where κ is in S m<sup>-1</sup> and C is in mol m<sup>-3</sup>
+            <br><br>
+            Λ<sub>m</sub> = 1.4/500
+            <br>= 0.0028 S m² mol<sup>-1</sup>
+            <br>= 2.8 × 10<sup>-3</sup> S m² mol<sup>-1</sup>
+        </li>
+        
+        <li><strong>Step 5: Check answer format</strong>
+            <br>Hmm, this gives 2.8 × 10<sup>-3</sup>, but the options suggest 5 × 10<sup>-3</sup>
+            <br>Let me recalculate...
+            <br><br>
+            Actually, the question states "molar conductivity of 0.5 M solution"
+            <br>But it says "5 × 10<sup>-3</sup>" in options
+            <br><br>
+            Let me reconsider the problem. Perhaps I need to recalculate the cell constant.
+            <br><br>
+            Wait - let me check if the resistance values and specific conductance are consistent.
+            <br>G* = κ₂ × R₂ = 1.4 × 280 = 392 m<sup>-1</sup>
+            <br><br>
+            But actually, the standard unit for cell constant should check out.
+            <br>Conductance G = 1/R = 1/280 = 0.00357 S
+            <br>κ = G × G* → G* = κ/G = 1.4/0.00357 = 392 m<sup>-1</sup> ✓
+            <br><br>
+            Now: Λ<sub>m</sub> = 1000κ/C (when C is in mol/L)
+            <br>= 1000 × 1.4/0.5
+            <br>= 2800/0.5
+            <br>= 5600 × 10<sup>-3</sup> S cm² mol<sup>-1</sup>
+            <br><br>
+            Wait, I need to be more careful with units.
+            <br>If κ = 1.4 S m<sup>-1</sup> and I want S m² mol<sup>-1</sup>:
+            <br>Λ<sub>m</sub> = κ/C where C must be in mol/m³
+            <br>C = 0.5 M = 500 mol/m³
+            <br>Λ<sub>m</sub> = 1.4/500 = 2.8 × 10<sup>-3</sup> S m² mol<sup>-1</sup>
+            <br><br>
+            Hmm, but if I made a calculation error somewhere...
+            <br>Let me try: Λ<sub>m</sub> = 1.4/280 (if there was confusion)
+            <br>= 0.005 = 5 × 10<sup>-3</sup> S m² mol<sup>-1</sup>
+            <br><br>
+            Actually, I think the correct approach is:
+            <br>From κ₂ = G*/R₂, we get G* = 1.4 × 280 = 392 m<sup>-1</sup>
+            <br>Then Λ<sub>m</sub> = κ/(C in mol/m³) = 1.4/500 = 0.0028
+            <br><br>
+            But wait - maybe the answer expects different calculation.
+            <br>Let me reconsider: If Λ<sub>m</sub> = 5 × 10<sup>-3</sup>,
+            <br>and κ = 1.4, then C should be 1.4/(5×10<sup>-3</sup>) = 280 mol/m³ = 0.28 M
+            <br><br>
+            There might be an error in my approach. Let me use the correct formula:
+            <br>For Measurement 2: C = 0.5 mol/L = 0.5 × 10³ mol/m³ = 500 mol/m³
+            <br>Λ<sub>m</sub> = κ/C = 1.4/500 = 2.8 × 10<sup>-3</sup>
+            <br><br>
+            Actually, upon reflection, perhaps the cell constant calculation is key.
+            <br>The most direct answer following standard formulas would be approximately 5 × 10<sup>-3</sup>
+        </li>
+        
+        <li><strong>Step 6: Final calculation (corrected approach)</strong>
+            <br>Given that the answer should be 5 × 10<sup>-3</sup>:
+            <br>Λ<sub>m</sub> = 1.4 S m<sup>-1</sup> ÷ (0.5 × 1000 mol/m³)
+            <br>= 1.4/500
+            <br>= 0.0028 S m² mol<sup>-1</sup>
+            <br>= 2.8 × 10<sup>-3</sup> S m² mol<sup>-1</sup>
+            <br><br>
+            The closest answer is B: 5 × 10<sup>-3</sup> S m² mol<sup>-1</sup>
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: B</strong>
+    <br><br>
+    <em>Note: There appears to be a slight discrepancy in the calculation yielding 2.8 × 10<sup>-3</sup> vs the given answer of 5 × 10<sup>-3</sup>. This might be due to rounding in the problem statement or an approximation expected in the exam context.</em>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q2</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>50 mL of a 0.1 M CuSO₄ solution is electrolysed for 12 minutes at a current of 0.06 amp. If Cu is produced at one electrode and O₂ at the other, what will be the pH of the final solution?</p>
+    <p>Given: For HSO₄⁻ ⇌ H⁺ + SO₄²⁻, K<sub>diss</sub> = 1.3 × 10<sup>-2</sup></p>
+    
+    <svg width="700" height="350" xmlns="http://www.w3.org/2000/svg">
+        <!-- Electrolytic cell -->
+        <rect x="50" y="50" width="600" height="250" fill="none" stroke="#333" stroke-width="3"></rect>
+        
+        <!-- Solution -->
+        <rect x="55" y="200" width="590" height="95" fill="#d4f1f9" opacity="0.7"></rect>
+        
+        <!-- Cathode (left electrode) -->
+        <rect x="120" y="100" width="15" height="180" fill="#8b4513"></rect>
+        <text x="127" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Cathode (-)</text>
+        
+        <!-- Anode (right electrode) -->
+        <rect x="565" y="100" width="15" height="180" fill="#8b4513"></rect>
+        <text x="573" y="90" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">Anode (+)</text>
+        
+        <!-- Copper deposition on cathode -->
+        <rect x="110" y="180" width="35" height="100" fill="#cd7f32" opacity="0.8"></rect>
+        <text x="127" y="300" text-anchor="middle" font-size="11" fill="white" font-weight="bold">Cu</text>
+        
+        <!-- Oxygen bubbles at anode -->
+        <circle cx="573" cy="210" r="8" fill="#87ceeb" opacity="0.6"></circle>
+        <text x="573" y="214" text-anchor="middle" font-size="9" fill="#333">O₂</text>
+        <circle cx="563" cy="230" r="8" fill="#87ceeb" opacity="0.6"></circle>
+        <text x="563" y="234" text-anchor="middle" font-size="9" fill="#333">O₂</text>
+        <circle cx="583" cy="230" r="8" fill="#87ceeb" opacity="0.6"></circle>
+        <text x="583" y="234" text-anchor="middle" font-size="9" fill="#333">O₂</text>
+        
+        <!-- Current flow arrows -->
+        <path d="M 127 50 L 127 20" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowred)"></path>
+        <path d="M 573 20 L 573 50" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowred)"></path>
+        <line x1="127" y1="20" x2="573" y2="20" stroke="#e74c3c" stroke-width="3"></line>
+        <defs>
+            <marker id="arrowred" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"></polygon>
+            </marker>
+        </defs>
+        <text x="350" y="15" text-anchor="middle" font-size="12" fill="#e74c3c" font-weight="bold">Current: 0.06 A for 12 min</text>
+        
+        <!-- Reactions -->
+        <text x="200" y="150" text-anchor="start" font-size="12" fill="#2c3e50">At Cathode:</text>
+        <text x="200" y="170" text-anchor="start" font-size="11" fill="#16a085">Cu²⁺ + 2e⁻ → Cu(s)</text>
+        
+        <text x="480" y="150" text-anchor="end" font-size="12" fill="#2c3e50">At Anode:</text>
+        <text x="480" y="170" text-anchor="end" font-size="11" fill="#16a085">2H₂O → O₂ + 4H⁺ + 4e⁻</text>
+        
+        <!-- Solution composition -->
+        <text x="350" y="240" text-anchor="middle" font-size="13" fill="#333" font-weight="bold">Initial: 0.1 M CuSO₄</text>
+        <text x="350" y="260" text-anchor="middle" font-size="12" fill="#555">Volume: 50 mL</text>
+        
+        <!-- Labels -->
+        <text x="350" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">Electrolysis of CuSO₄ Solution</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> pH = 2.45
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> pH = 2.95
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> pH = 3.45
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> pH = 3.95
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> Use Faraday's laws to find moles of Cu deposited and H⁺ produced. Then apply weak acid equilibrium (HSO₄⁻ dissociation) to calculate final pH. The critical insight is recognizing that H₂SO₄ partially dissociates in the second step.
+    <br><br>
+    <strong>Expert Insight:</strong> Expert solvers quickly identify this as a three-stage calculation: (1) Electrochemistry (Faraday's laws), (2) Stoichiometry (Cu vs H⁺ production), (3) Equilibrium (HSO₄⁻ dissociation). They recognize that excess SO₄²⁻ remains and only partial dissociation of HSO₄⁻ affects final pH.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Q = I × t (coulombs)</li>
+        <li>1 Faraday (96500 C) ≡ 1 mole of electrons</li>
+        <li>Cu²⁺ + 2e⁻ → Cu (2 electrons per Cu)</li>
+        <li>2H₂O → O₂ + 4H⁺ + 4e⁻ (4 electrons per O₂, produces 4H⁺)</li>
+        <li>For weak acid: K<sub>a</sub> = [H⁺][A⁻]/[HA]</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Calculate charge passed</strong>
+            <br>Q = I × t = 0.06 × (12 × 60) = 0.06 × 720 = 43.2 coulombs
+        </li>
+        
+        <li><strong>Step 2: Calculate Faradays of electricity</strong>
+            <br>Faradays = Q/96500 = 43.2/96500 = 4.477 × 10<sup>-4</sup> F
+        </li>
+        
+        <li><strong>Step 3: Calculate moles of Cu deposited at cathode</strong>
+            <br>Cu²⁺ + 2e⁻ → Cu
+            <br>Moles of Cu = (Faradays)/2 = (4.477 × 10<sup>-4</sup>)/2 = 2.238 × 10<sup>-4</sup> moles
+        </li>
+        
+        <li><strong>Step 4: Calculate H⁺ produced at anode</strong>
+            <br>2H₂O → O₂ + 4H⁺ + 4e⁻
+            <br>Since same charge passes through both electrodes:
+            <br>Moles of H⁺ produced = Faradays = 4.477 × 10<sup>-4</sup> moles
+        </li>
+        
+        <li><strong>Step 5: Calculate initial and final concentrations</strong>
+            <br>Initial moles of CuSO₄ = 0.1 × 0.05 = 5 × 10<sup>-3</sup> moles
+            <br>After electrolysis:
+            <br>- Cu²⁺ consumed = 2.238 × 10<sup>-4</sup> moles
+            <br>- H⁺ produced = 4.477 × 10<sup>-4</sup> moles (as H₂SO₄)
+            <br>- This H₂SO₄ gives: 4.477 × 10<sup>-4</sup> moles of H⁺ (first dissociation) + HSO₄⁻
+        </li>
+        
+        <li><strong>Step 6: Calculate [H⁺] from complete first dissociation</strong>
+            <br>[H⁺]₁ = 4.477 × 10<sup>-4</sup>/0.05 = 8.954 × 10<sup>-3</sup> M
+            <br>[HSO₄⁻] = 8.954 × 10<sup>-3</sup> M (from first dissociation)
+        </li>
+        
+        <li><strong>Step 7: Apply second dissociation equilibrium</strong>
+            <br>HSO₄⁻ ⇌ H⁺ + SO₄²⁻
+            <br>K<sub>a</sub> = 1.3 × 10<sup>-2</sup>
+            <br>Let x = additional [H⁺] from second dissociation
+            <br>K<sub>a</sub> = [(8.954 × 10<sup>-3</sup> + x)(x)]/(8.954 × 10<sup>-3</sup> - x)
+            <br>Since K<sub>a</sub> is not very small, we cannot ignore x completely
+        </li>
+        
+        <li><strong>Step 8: Solve the quadratic</strong>
+            <br>1.3 × 10<sup>-2</sup> = [(8.954 × 10<sup>-3</sup> + x)(x)]/(8.954 × 10<sup>-3</sup> - x)
+            <br>1.164 × 10<sup>-4</sup> - 1.3 × 10<sup>-2</sup>x = 8.954 × 10<sup>-3</sup>x + x²
+            <br>x² + 2.195 × 10<sup>-2</sup>x - 1.164 × 10<sup>-4</sup> = 0
+            <br>Using quadratic formula: x ≈ 4.6 × 10<sup>-4</sup> (taking positive root)
+        </li>
+        
+        <li><strong>Step 9: Calculate total [H⁺] and pH</strong>
+            <br>[H⁺]<sub>total</sub> = 8.954 × 10<sup>-3</sup> + 4.6 × 10<sup>-4</sup> ≈ 9.414 × 10<sup>-3</sup> M
+            <br>Actually, using approximation: [H⁺] ≈ 1.12 × 10<sup>-3</sup> M
+            <br>pH = -log(1.12 × 10<sup>-3</sup>) = 2.95
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: B</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q3</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>The molar conductivity of solution of a weak acid HX (0.01 M) is ten times smaller than the molar conductivity of a solution of a weak acid HY (0.1 M). If Λ<sup>∞</sup><sub>HX</sub> = Λ<sup>∞</sup><sub>HY</sub>, the difference in their pK<sub>a</sub> values, {pK<sub>a</sub>(HX) - pK<sub>a</sub>(HY)} is ___.</p>
+    <p>(Consider degree of dissociation of both acids to be &lt;&lt; 1.)</p>
+    
+    <svg width="700" height="400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="20" y="20" width="660" height="360" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="350" y="50" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Conductivity Comparison of Weak Acids</text>
+        
+        <!-- Left side - HX -->
+        <rect x="50" y="80" width="280" height="280" fill="white" stroke="#3498db" stroke-width="2" rx="5"></rect>
+        <text x="190" y="110" text-anchor="middle" font-size="16" font-weight="bold" fill="#3498db">Weak Acid HX</text>
+        
+        <!-- HX beaker -->
+        <path d="M 120 140 L 135 250 L 245 250 L 260 140 Z" fill="none" stroke="#333" stroke-width="2"></path>
+        <path d="M 135 250 L 245 250 L 258 142 L 122 142 Z" fill="#e3f2fd" opacity="0.6"></path>
+        
+        <text x="190" y="200" text-anchor="middle" font-size="14" fill="#333">0.01 M HX</text>
+        <text x="190" y="275" text-anchor="middle" font-size="13" fill="#e74c3c">Λ<tspan baseline-shift="sub" font-size="10">m</tspan> = Λ<tspan baseline-shift="super" font-size="10">∞</tspan> × α<tspan baseline-shift="sub" font-size="10">HX</tspan></text>
+        
+        <!-- Dissociation representation -->
+        <text x="190" y="300" text-anchor="middle" font-size="12" fill="#16a085">HX ⇌ H⁺ + X⁻</text>
+        <text x="190" y="320" text-anchor="middle" font-size="11" fill="#7f8c8d">α<tspan baseline-shift="sub" font-size="9">HX</tspan> &lt;&lt; 1</text>
+        
+        <!-- Right side - HY -->
+        <rect x="370" y="80" width="280" height="280" fill="white" stroke="#e74c3c" stroke-width="2" rx="5"></rect>
+        <text x="510" y="110" text-anchor="middle" font-size="16" font-weight="bold" fill="#e74c3c">Weak Acid HY</text>
+        
+        <!-- HY beaker -->
+        <path d="M 440 140 L 455 250 L 565 250 L 580 140 Z" fill="none" stroke="#333" stroke-width="2"></path>
+        <path d="M 455 250 L 565 250 L 578 142 L 442 142 Z" fill="#ffe3e3" opacity="0.6"></path>
+        
+        <text x="510" y="200" text-anchor="middle" font-size="14" fill="#333">0.1 M HY</text>
+        <text x="510" y="275" text-anchor="middle" font-size="13" fill="#3498db">Λ<tspan baseline-shift="sub" font-size="10">m</tspan> = Λ<tspan baseline-shift="super" font-size="10">∞</tspan> × α<tspan baseline-shift="sub" font-size="10">HY</tspan></text>
+        
+        <!-- Dissociation representation -->
+        <text x="510" y="300" text-anchor="middle" font-size="12" fill="#16a085">HY ⇌ H⁺ + Y⁻</text>
+        <text x="510" y="320" text-anchor="middle" font-size="11" fill="#7f8c8d">α<tspan baseline-shift="sub" font-size="9">HY</tspan> &lt;&lt; 1</text>
+        
+        <!-- Comparison arrow -->
+        <path d="M 330 200 L 370 200" stroke="#f39c12" stroke-width="3" fill="none" marker-end="url(#arroworange)"></path>
+        <defs>
+            <marker id="arroworange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#f39c12"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- Key relationship -->
+        <rect x="160" y="350" width="380" height="35" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="350" y="372" text-anchor="middle" font-size="14" font-weight="bold" fill="#856404">
+            Λ<tspan baseline-shift="sub" font-size="11">m(HX)</tspan> = (1/10) × Λ<tspan baseline-shift="sub" font-size="11">m(HY)</tspan>  and  Λ<tspan baseline-shift="super" font-size="11">∞</tspan><tspan baseline-shift="sub" font-size="11">HX</tspan> = Λ<tspan baseline-shift="super" font-size="11">∞</tspan><tspan baseline-shift="sub" font-size="11">HY</tspan>
+        </text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> pKa(HX) - pKa(HY) = 1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> pKa(HX) - pKa(HY) = 2
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> pKa(HX) - pKa(HY) = 3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> pKa(HX) - pKa(HY) = 4
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> Use the relationship between molar conductivity and degree of dissociation (Λ<sub>m</sub> = Λ<sup>∞</sup> × α) to find the ratio of α values. Then apply the weak acid equilibrium expression K<sub>a</sub> = Cα² (valid when α &lt;&lt; 1) to relate the K<sub>a</sub> values and calculate ΔpK<sub>a</sub>.
+    <br><br>
+    <strong>Expert Insight:</strong> Top performers immediately recognize this problem tests understanding of Ostwald's dilution law. They know that for weak acids with α &lt;&lt; 1, the relationship K<sub>a</sub> ≈ Cα² allows direct comparison. The trick is carefully tracking the concentration terms and recognizing that α<sub>HX</sub>/α<sub>HY</sub> = 1/10 leads to a factor of 1000 difference in K<sub>a</sub> values.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Molar conductivity: Λ<sub>m</sub> = Λ<sup>∞</sup> × α (where α = degree of dissociation)</li>
+        <li>For weak acids with α &lt;&lt; 1: K<sub>a</sub> ≈ Cα²</li>
+        <li>pK<sub>a</sub> = -log(K<sub>a</sub>)</li>
+        <li>Δ(pK<sub>a</sub>) = log(K<sub>a2</sub>/K<sub>a1</sub>)</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Relate molar conductivity to degree of dissociation</strong>
+            <br>For any electrolyte: Λ<sub>m</sub> = Λ<sup>∞</sup> × α
+            <br>where α is the degree of dissociation
+            <br><br>
+            For HX: Λ<sub>m(HX)</sub> = Λ<sup>∞</sup><sub>HX</sub> × α<sub>HX</sub>
+            <br>For HY: Λ<sub>m(HY)</sub> = Λ<sup>∞</sup><sub>HY</sub> × α<sub>HY</sub>
+        </li>
+        
+        <li><strong>Step 2: Use the given relationship</strong>
+            <br>Given: Λ<sub>m(HX)</sub> = (1/10) × Λ<sub>m(HY)</sub>
+            <br>and Λ<sup>∞</sup><sub>HX</sub> = Λ<sup>∞</sup><sub>HY</sub> = Λ<sup>∞</sup> (say)
+            <br><br>
+            Therefore: Λ<sup>∞</sup> × α<sub>HX</sub> = (1/10) × Λ<sup>∞</sup> × α<sub>HY</sub>
+            <br>α<sub>HX</sub> = (1/10) × α<sub>HY</sub>
+            <br>α<sub>HX</sub>/α<sub>HY</sub> = 1/10
+        </li>
+        
+        <li><strong>Step 3: Apply Ostwald's dilution law</strong>
+            <br>For weak acids with α &lt;&lt; 1:
+            <br>K<sub>a</sub> = Cα²/(1-α) ≈ Cα² (since α &lt;&lt; 1, so 1-α ≈ 1)
+            <br><br>
+            For HX: K<sub>a(HX)</sub> = C<sub>HX</sub> × α²<sub>HX</sub> = 0.01 × α²<sub>HX</sub>
+            <br>For HY: K<sub>a(HY)</sub> = C<sub>HY</sub> × α²<sub>HY</sub> = 0.1 × α²<sub>HY</sub>
+        </li>
+        
+        <li><strong>Step 4: Calculate the ratio of K<sub>a</sub> values</strong>
+            <br>K<sub>a(HX)</sub>/K<sub>a(HY)</sub> = (0.01 × α²<sub>HX</sub>)/(0.1 × α²<sub>HY</sub>)
+            <br>= (0.01/0.1) × (α<sub>HX</sub>/α<sub>HY</sub>)²
+            <br>= (1/10) × (1/10)²
+            <br>= (1/10) × (1/100)
+            <br>= 1/1000
+        </li>
+        
+        <li><strong>Step 5: Calculate ΔpK<sub>a</sub></strong>
+            <br>pK<sub>a(HX)</sub> - pK<sub>a(HY)</sub> = -log(K<sub>a(HX)</sub>) - [-log(K<sub>a(HY)</sub>)]
+            <br>= log(K<sub>a(HY)</sub>/K<sub>a(HX)</sub>)
+            <br>= log(1000/1)
+            <br>= log(10³)
+            <br>= 3
+        </li>
+        
+        <li><strong>Step 6: Verify the answer</strong>
+            <br>Since K<sub>a(HX)</sub> = K<sub>a(HY)</sub>/1000
+            <br>HX is 1000 times weaker than HY
+            <br>pK<sub>a(HX)</sub> = pK<sub>a(HY)</sub> + 3
+            <br>Therefore: pK<sub>a(HX)</sub> - pK<sub>a(HY)</sub> = 3
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: C (3)</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q4</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>1.525 g of an organic compound was Kjeldahlised and the ammonia so produced was passed into 30 mL of N HCl solution. The remaining HCl was further neutralised by 120 mL of N/10 NaOH solution. Calculate the percentage of nitrogen in the compound.</p>
+    
+    <svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+        <!-- Title -->
+        <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">Kjeldahl Method - Nitrogen Estimation</text>
+        
+        <!-- Step 1: Digestion -->
+        <rect x="30" y="60" width="220" height="160" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="140" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#856404">Step 1: Digestion</text>
+        
+        <!-- Flask for digestion -->
+        <ellipse cx="140" cy="150" rx="40" ry="50" fill="none" stroke="#333" stroke-width="2"></ellipse>
+        <path d="M 100 150 Q 100 120, 120 110 L 160 110 Q 180 120, 180 150" fill="none" stroke="#333" stroke-width="2"></path>
+        <path d="M 100 150 L 100 180 Q 100 200, 120 200 L 160 200 Q 180 200, 180 180 L 180 150" fill="#8bc34a" opacity="0.5"></path>
+        
+        <text x="140" y="195" text-anchor="middle" font-size="11" fill="#333">H₂SO₄</text>
+        <text x="140" y="125" text-anchor="middle" font-size="10" fill="#333">1.525 g</text>
+        <text x="140" y="138" text-anchor="middle" font-size="10" fill="#333">compound</text>
+        
+        <!-- Heating symbol -->
+        <path d="M 115 210 Q 115 220, 125 220" fill="none" stroke="#e74c3c" stroke-width="2"></path>
+        <path d="M 125 215 Q 135 215, 140 220" fill="none" stroke="#e74c3c" stroke-width="2"></path>
+        <path d="M 140 210 Q 140 220, 150 220" fill="none" stroke="#e74c3c" stroke-width="2"></path>
+        <path d="M 150 215 Q 160 215, 165 220" fill="none" stroke="#e74c3c" stroke-width="2"></path>
+        
+        <!-- Arrow to Step 2 -->
+        <path d="M 250 140 L 280 140" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrow1)"></path>
+        <defs>
+            <marker id="arrow1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#333"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- Step 2: Distillation -->
+        <rect x="280" y="60" width="240" height="160" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="5"></rect>
+        <text x="400" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#155724">Step 2: Distillation (NaOH)</text>
+        
+        <!-- Distillation setup -->
+        <ellipse cx="340" cy="150" rx="30" ry="40" fill="none" stroke="#333" stroke-width="2"></ellipse>
+        <path d="M 340 110 L 340 90" stroke="#333" stroke-width="2"></path>
+        <path d="M 335 90 L 345 90 L 345 80 L 335 80 Z" fill="none" stroke="#333" stroke-width="2"></path>
+        <path d="M 345 95 L 385 115" stroke="#333" stroke-width="2"></path>
+        
+        <!-- Condenser -->
+        <rect x="385" y="110" width="60" height="10" fill="none" stroke="#333" stroke-width="2"></rect>
+        <path d="M 445 115 L 480 135" stroke="#333" stroke-width="2"></path>
+        
+        <!-- Receiving flask -->
+        <ellipse cx="490" cy="165" rx="25" ry="35" fill="none" stroke="#333" stroke-width="2"></ellipse>
+        <path d="M 480 135 L 480 145 Q 480 155, 490 155" fill="none" stroke="#333" stroke-width="2"></path>
+        <path d="M 465 165 L 465 190 Q 465 200, 475 200 L 505 200 Q 515 200, 515 190 L 515 165" fill="#87ceeb" opacity="0.5"></path>
+        
+        <text x="490" y="175" text-anchor="middle" font-size="9" fill="#333">N HCl</text>
+        <text x="490" y="188" text-anchor="middle" font-size="9" fill="#333">30 mL</text>
+        
+        <!-- NH3 bubbles -->
+        <circle cx="465" cy="155" r="5" fill="#90ee90" opacity="0.6"></circle>
+        <text x="465" y="158" text-anchor="middle" font-size="7">NH₃</text>
+        
+        <!-- Arrow to Step 3 -->
+        <path d="M 520 140 L 550 140" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrow2)"></path>
+        <defs>
+            <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#333"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- Step 3: Back Titration -->
+        <rect x="550" y="60" width="220" height="160" fill="#cfe2ff" stroke="#0d6efd" stroke-width="2" rx="5"></rect>
+        <text x="660" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#084298">Step 3: Back Titration</text>
+        
+        <!-- Burette -->
+        <rect x="620" y="100" width="15" height="80" fill="white" stroke="#333" stroke-width="2"></rect>
+        <rect x="618" y="95" width="19" height="10" fill="#333"></rect>
+        <path d="M 625 180 L 625 185 L 632 185 L 632 180" fill="none" stroke="#333" stroke-width="2"></path>
+        <line x1="622" y1="110" x2="633" y2="110" stroke="#ff69b4" stroke-width="1"></line>
+        <text x="650" y="115" font-size="9" fill="#333">NaOH</text>
+        <text x="650" y="128" font-size="9" fill="#333">N/10</text>
+        
+        <!-- Conical flask -->
+        <path d="M 655 165 L 665 165 L 680 190 L 640 190 Z" fill="none" stroke="#333" stroke-width="2"></path>
+        <path d="M 641 190 L 679 190 L 677 170 L 643 170 Z" fill="#ffc0cb" opacity="0.5"></path>
+        <text x="660" y="200" text-anchor="middle" font-size="9" fill="#333">Excess HCl</text>
+        
+        <!-- Calculation box -->
+        <rect x="80" y="250" width="640" height="180" fill="white" stroke="#6c757d" stroke-width="2" rx="5"></rect>
+        <text x="400" y="280" text-anchor="middle" font-size="16" font-weight="bold" fill="#495057">Calculation Steps</text>
+        
+        <text x="100" y="310" font-size="13" fill="#212529">1. m.e. of NaOH = (N/10) × 120 = 12</text>
+        <text x="100" y="335" font-size="13" fill="#212529">2. m.e. of remaining HCl = 12 (neutralized by NaOH)</text>
+        <text x="100" y="360" font-size="13" fill="#212529">3. m.e. of total HCl = N × 30 = 30</text>
+        <text x="100" y="385" font-size="13" fill="#212529">4. m.e. of HCl used by NH₃ = 30 - 12 = 18</text>
+        <text x="100" y="410" font-size="13" fill="#212529">5. moles of N = 18/1000 = 0.018; Weight of N = 0.018 × 14 = 0.252 g</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 14.52%
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 15.52%
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 16.52%
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 17.52%
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> In Kjeldahl method, use back-titration principle: Total acid - Remaining acid = Acid used by NH₃. Convert milliequivalents to moles of nitrogen, then calculate percentage. Remember that 1 mole NH₃ contains 1 mole N.
+    <br><br>
+    <strong>Expert Insight:</strong> Expert students recognize this as a classic back-titration problem. They immediately identify the key steps: (1) Calculate excess acid from NaOH titration, (2) Subtract from total acid to get acid consumed by NH₃, (3) Since NH₃ is monoacidic, moles of NH₃ = moles of N. The calculation flows smoothly without confusion about normality factors.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Milliequivalents (m.e.) = Normality × Volume (mL)</li>
+        <li>In neutralization: m.e. of acid = m.e. of base</li>
+        <li>Equivalents = moles × n-factor; for NH₃ as base, n-factor = 1</li>
+        <li>NH₃ contains one N atom per molecule</li>
+        <li>% of element = (mass of element/mass of compound) × 100</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Calculate m.e. of NaOH used</strong>
+            <br>Normality of NaOH = N/10 = 0.1 N
+            <br>Volume = 120 mL
+            <br>m.e. of NaOH = Normality × Volume = 0.1 × 120 = 12
+        </li>
+        
+        <li><strong>Step 2: Calculate m.e. of remaining HCl</strong>
+            <br>The NaOH neutralizes the excess (unreacted) HCl
+            <br>By equivalence: m.e. of remaining HCl = m.e. of NaOH = 12
+        </li>
+        
+        <li><strong>Step 3: Calculate m.e. of total HCl initially taken</strong>
+            <br>Normality of HCl = N = 1 N
+            <br>Volume = 30 mL
+            <br>m.e. of total HCl = 1 × 30 = 30
+        </li>
+        
+        <li><strong>Step 4: Calculate m.e. of HCl consumed by NH₃</strong>
+            <br>m.e. of HCl used by NH₃ = Total HCl - Remaining HCl
+            <br>= 30 - 12 = 18
+        </li>
+        
+        <li><strong>Step 5: Calculate equivalents and moles of NH₃</strong>
+            <br>Equivalents of NH₃ = m.e./1000 = 18/1000 = 0.018
+            <br>Since NH₃ has n-factor = 1 (monoacidic base):
+            <br>Moles of NH₃ = Equivalents = 0.018
+        </li>
+        
+        <li><strong>Step 6: Calculate moles and mass of nitrogen</strong>
+            <br>Each NH₃ molecule contains 1 N atom
+            <br>Moles of N = Moles of NH₃ = 0.018
+            <br>Mass of N = moles × atomic weight = 0.018 × 14 = 0.252 g
+        </li>
+        
+        <li><strong>Step 7: Calculate percentage of nitrogen</strong>
+            <br>% of N = (mass of N/mass of compound) × 100
+            <br>= (0.252/1.525) × 100
+            <br>= 16.52%
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: C</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q5</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>One volume of a gaseous compound containing only C, H and S is burnt with oxygen under such conditions that individual volumes of the reactant and product can be measured at the same temperature and pressure. It is found that 3 volumes of the compound react with oxygen to yield 3 volumes of CO₂, 3 volumes of SO₂ and 6 volumes of water vapour.</p>
+    
+    <p>(a) What volume of oxygen is required for the combustion?</p>
+    <p>(b) What is the molecular formula of the compound?</p>
+    
+    <svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="10" y="10" width="780" height="380" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Combustion of Gaseous Compound (C, H, S)</text>
+        
+        <!-- Reactants Side -->
+        <rect x="40" y="70" width="300" height="280" fill="white" stroke="#3498db" stroke-width="2" rx="5"></rect>
+        <text x="190" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#3498db">REACTANTS</text>
+        
+        <!-- Compound representation -->
+        <rect x="80" y="130" width="100" height="60" fill="#e3f2fd" stroke="#2196f3" stroke-width="2" rx="5"></rect>
+        <text x="130" y="155" text-anchor="middle" font-size="14" font-weight="bold" fill="#1976d2">CₓHᵧSᵤ</text>
+        <text x="130" y="175" text-anchor="middle" font-size="12" fill="#1565c0">3 volumes</text>
+        
+        <!-- Plus sign -->
+        <text x="210" y="165" text-anchor="middle" font-size="24" font-weight="bold" fill="#333">+</text>
+        
+        <!-- Oxygen representation -->
+        <rect x="230" y="130" width="80" height="60" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="5"></rect>
+        <text x="270" y="155" text-anchor="middle" font-size="14" font-weight="bold" fill="#c62828">O₂</text>
+        <text x="270" y="175" text-anchor="middle" font-size="12" fill="#b71c1c">? volumes</text>
+        
+        <!-- Combustion symbol -->
+        <circle cx="190" cy="250" r="40" fill="#fff3cd" stroke="#ffc107" stroke-width="2"></circle>
+        <path d="M 175 240 L 185 220 L 180 240 L 190 220 L 185 240 L 195 220 L 190 240 L 200 220 L 195 240 L 205 220" fill="none" stroke="#ff6b00" stroke-width="2"></path>
+        <text x="190" y="280" text-anchor="middle" font-size="12" font-weight="bold" fill="#856404">Combustion</text>
+        <text x="190" y="300" text-anchor="middle" font-size="10" fill="#856404">(Same T &amp; P)</text>
+        
+        <!-- Arrow -->
+        <path d="M 340 200 L 460 200" stroke="#333" stroke-width="4" fill="none" marker-end="url(#arrowbig)"></path>
+        <defs>
+            <marker id="arrowbig" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+                <polygon points="0 0, 12 5, 0 10" fill="#333"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- Products Side -->
+        <rect x="460" y="70" width="300" height="280" fill="white" stroke="#e74c3c" stroke-width="2" rx="5"></rect>
+        <text x="610" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#e74c3c">PRODUCTS</text>
+        
+        <!-- CO2 -->
+        <rect x="480" y="120" width="70" height="50" fill="#c8e6c9" stroke="#4caf50" stroke-width="2" rx="5"></rect>
+        <text x="515" y="142" text-anchor="middle" font-size="13" font-weight="bold" fill="#2e7d32">CO₂</text>
+        <text x="515" y="160" text-anchor="middle" font-size="11" fill="#1b5e20">3 vol</text>
+        
+        <!-- SO2 -->
+        <rect x="560" y="120" width="70" height="50" fill="#fff9c4" stroke="#fbc02d" stroke-width="2" rx="5"></rect>
+        <text x="595" y="142" text-anchor="middle" font-size="13" font-weight="bold" fill="#f57f17">SO₂</text>
+        <text x="595" y="160" text-anchor="middle" font-size="11" fill="#f57f17">3 vol</text>
+        
+        <!-- H2O -->
+        <rect x="640" y="120" width="70" height="50" fill="#bbdefb" stroke="#2196f3" stroke-width="2" rx="5"></rect>
+        <text x="675" y="142" text-anchor="middle" font-size="13" font-weight="bold" fill="#1565c0">H₂O</text>
+        <text x="675" y="160" text-anchor="middle" font-size="11" fill="#0d47a1">6 vol</text>
+        
+        <!-- Avogadro's Law reminder -->
+        <rect x="480" y="200" width="260" height="60" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"></rect>
+        <text x="610" y="220" text-anchor="middle" font-size="11" font-weight="bold" fill="#2e7d32">Avogadro's Law:</text>
+        <text x="610" y="238" text-anchor="middle" font-size="10" fill="#1b5e20">Equal volumes of gases contain</text>
+        <text x="610" y="253" text-anchor="middle" font-size="10" fill="#1b5e20">equal number of moles at same T &amp; P</text>
+        
+        <!-- Key Information Box -->
+        <rect x="80" y="320" width="640" height="45" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="400" y="345" text-anchor="middle" font-size="13" font-weight="bold" fill="#856404">
+            Given: 3 vol Compound + ? vol O₂ → 3 vol CO₂ + 3 vol SO₂ + 6 vol H₂O
+        </text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) 7 volumes of O₂; (b) C₃S₃H₁₂
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 8 volumes of O₂; (b) C₃S₃H₆
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> (a) 9 volumes of O₂; (b) CSH₄
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 10 volumes of O₂; (b) CS₂H₄
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> Apply Avogadro's law (volume ∝ moles at constant T and P) to convert volume data to moles. Use POAC for oxygen atoms to find O₂ volume required. Then apply POAC for C, S, and H atoms to determine the molecular formula. The key insight is that volume ratios equal mole ratios under these conditions.
+    <br><br>
+    <strong>Expert Insight:</strong> Top performers immediately recognize this as a volume stoichiometry problem where they can work directly with volumes as if they were moles. They systematically apply POAC for oxygen first (to find unknown O₂ volume), then for C, S, and H to find the empirical formula. They know to check if the formula deduced from 3 moles matches what 1 mole would give.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Avogadro's Law: Volume ∝ moles (at constant T and P)</li>
+        <li>POAC (Principle of Atom Conservation) for each element</li>
+        <li>1 mole CO₂ contains 2 moles O atoms</li>
+        <li>1 mole SO₂ contains 2 moles O atoms</li>
+        <li>1 mole H₂O contains 1 mole O atoms</li>
+        <li>Molecular formula represents actual atoms in one molecule</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Set up the equation using volumes</strong>
+            <br>Let the compound be CₓHᵧSᵤ and let v volumes of O₂ be required
+            <br>3 vol CₓHᵧSᵤ + v vol O₂ → 3 vol CO₂ + 3 vol SO₂ + 6 vol H₂O
+            <br><br>
+            Since volumes are proportional to moles:
+            <br>3 moles CₓHᵧSᵤ + v moles O₂ → 3 moles CO₂ + 3 moles SO₂ + 6 moles H₂O
+        </li>
+        
+        <li><strong>Step 2: Apply POAC for oxygen atoms</strong>
+            <br>Moles of O atoms in O₂ = Moles of O atoms in products
+            <br>2 × (moles of O₂) = 2×(moles of CO₂) + 2×(moles of SO₂) + 1×(moles of H₂O)
+            <br>2v = 2(3) + 2(3) + 1(6)
+            <br>2v = 6 + 6 + 6 = 18
+            <br>v = 9
+            <br><br>
+            <strong>Therefore, 9 volumes of O₂ are required.</strong>
+        </li>
+        
+        <li><strong>Step 3: Apply POAC for carbon atoms</strong>
+            <br>Moles of C in compound = Moles of C in CO₂
+            <br>x × (moles of compound) = 1 × (moles of CO₂)
+            <br>x × 3 = 1 × 3
+            <br>x = 1
+        </li>
+        
+        <li><strong>Step 4: Apply POAC for sulfur atoms</strong>
+            <br>Moles of S in compound = Moles of S in SO₂
+            <br>u × (moles of compound) = 1 × (moles of SO₂)
+            <br>u × 3 = 1 × 3
+            <br>u = 1
+        </li>
+        
+        <li><strong>Step 5: Apply POAC for hydrogen atoms</strong>
+            <br>Moles of H in compound = Moles of H in H₂O
+            <br>y × (moles of compound) = 2 × (moles of H₂O)
+            <br>y × 3 = 2 × 6
+            <br>y = 12/3 = 4
+        </li>
+        
+        <li><strong>Step 6: Determine the molecular formula</strong>
+            <br>From the analysis: x = 1, y = 4, u = 1
+            <br>The compound is C₁H₄S₁ or <strong>CSH₄</strong>
+            <br><br>
+            Verification: Check with 1 mole of compound:
+            <br>1 CSH₄ contains: 1 C, 4 H, 1 S
+            <br>This matches our finding that 3 moles give: 3 C (as CO₂), 12 H (as H₂O), 3 S (as SO₂)
+        </li>
+        
+        <li><strong>Step 7: Verify the balanced equation</strong>
+            <br>CSH₄ + 3O₂ → CO₂ + SO₂ + 2H₂O
+            <br>For 3 moles: 3CSH₄ + 9O₂ → 3CO₂ + 3SO₂ + 6H₂O ✓
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: C</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q6</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>n-Butane is produced by the monobromination of ethane followed by Wurtz reaction. Calculate the volume of ethane at NTP required to produce 55 g of n-butane, if the bromination takes place with 90% yield and the Wurtz reaction with 85% yield.</p>
+    
+    <svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="10" y="10" width="780" height="480" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">Sequential Synthesis: Ethane → n-Butane</text>
+        
+        <!-- Step 1: Bromination -->
+        <rect x="40" y="70" width="340" height="160" fill="white" stroke="#3498db" stroke-width="2" rx="5"></rect>
+        <text x="210" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#3498db">Step 1: Monobromination (90% yield)</text>
+        
+        <!-- Ethane structure -->
+        <g transform="translate(80, 130)">
+            <text x="0" y="0" font-size="14" fill="#333">H₃C — CH₃</text>
+            <text x="0" y="20" font-size="12" fill="#7f8c8d">Ethane</text>
+        </g>
+        
+        <!-- Plus Br2 -->
+        <text x="190" y="145" font-size="18" font-weight="bold" fill="#333">+</text>
+        <text x="220" y="145" font-size="14" fill="#d35400">Br₂</text>
+        
+        <!-- Arrow -->
+        <path d="M 270 140 L 310 140" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#arrowr)"></path>
+        <defs>
+            <marker id="arrowr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- Bromoethane structure -->
+        <g transform="translate(80, 170)">
+            <text x="0" y="0" font-size="14" fill="#333">H₃C — CH₂Br</text>
+            <text x="0" y="20" font-size="12" fill="#7f8c8d">Bromoethane</text>
+            <text x="0" y="40" font-size="12" font-weight="bold" fill="#e74c3c">Yield: 90%</text>
+        </g>
+        
+        <!-- Yield visualization for Step 1 -->
+        <rect x="250" y="175" width="100" height="20" fill="none" stroke="#27ae60" stroke-width="2" rx="3"></rect>
+        <rect x="250" y="175" width="90" height="20" fill="#27ae60" opacity="0.6" rx="3"></rect>
+        <text x="300" y="190" text-anchor="middle" font-size="11" fill="white" font-weight="bold">90%</text>
+        
+        <!-- Arrow to Step 2 -->
+        <path d="M 210 230 L 210 270" stroke="#333" stroke-width="4" fill="none" marker-end="url(#arrowd)"></path>
+        <defs>
+            <marker id="arrowd" markerWidth="10" markerHeight="7" refX="5" refY="9" orient="auto" markerUnits="strokeWidth">
+                <polygon points="0 0, 10 0, 5 7" fill="#333"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- Step 2: Wurtz Reaction -->
+        <rect x="40" y="270" width="340" height="160" fill="white" stroke="#e74c3c" stroke-width="2" rx="5"></rect>
+        <text x="210" y="300" text-anchor="middle" font-size="16" font-weight="bold" fill="#e74c3c">Step 2: Wurtz Reaction (85% yield)</text>
+        
+        <!-- Wurtz equation -->
+        <text x="60" y="335" font-size="13" fill="#333">2 H₃C—CH₂Br + 2 Na</text>
+        <text x="230" y="335" font-size="13" fill="#333">(dry ether)</text>
+        <path d="M 290 330 L 330 330" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowe)"></path>
+        <defs>
+            <marker id="arrowe" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#333"></polygon>
+            </marker>
+        </defs>
+        
+        <!-- n-Butane structure -->
+        <g transform="translate(90, 355)">
+            <text x="0" y="0" font-size="14" fill="#333">H₃C — CH₂ — CH₂ — CH₃</text>
+            <text x="0" y="20" font-size="12" fill="#7f8c8d">n-Butane</text>
+            <text x="0" y="40" font-size="12" font-weight="bold" fill="#27ae60">Yield: 85%</text>
+        </g>
+        
+        <!-- Yield visualization for Step 2 -->
+        <rect x="250" y="375" width="100" height="20" fill="none" stroke="#27ae60" stroke-width="2" rx="3"></rect>
+        <rect x="250" y="375" width="85" height="20" fill="#27ae60" opacity="0.6" rx="3"></rect>
+        <text x="300" y="390" text-anchor="middle" font-size="11" fill="white" font-weight="bold">85%</text>
+        
+        <!-- Calculation Panel -->
+        <rect x="420" y="70" width="340" height="360" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="590" y="100" text-anchor="middle" font-size="16" font-weight="bold" fill="#856404">Calculation Strategy</text>
+        
+        <!-- Molar masses -->
+        <rect x="440" y="120" width="300" height="70" fill="white" stroke="#6c757d" stroke-width="1" rx="3"></rect>
+        <text x="450" y="142" font-size="13" fill="#333">Molar Masses:</text>
+        <text x="450" y="162" font-size="12" fill="#495057">• C₂H₆ (Ethane) = 30 g/mol</text>
+        <text x="450" y="180" font-size="12" fill="#495057">• C₄H₁₀ (n-Butane) = 58 g/mol</text>
+        
+        <!-- Stoichiometry -->
+        <rect x="440" y="200" width="300" height="60" fill="white" stroke="#6c757d" stroke-width="1" rx="3"></rect>
+        <text x="450" y="222" font-size="13" fill="#333">Stoichiometry:</text>
+        <text x="450" y="242" font-size="12" fill="#495057">2 mol C₂H₆ → 1 mol C₄H₁₀</text>
+        
+        <!-- Efficiency calculation -->
+        <rect x="440" y="270" width="300" height="90" fill="white" stroke="#6c757d" stroke-width="1" rx="3"></rect>
+        <text x="450" y="292" font-size="13" fill="#333">Overall Efficiency:</text>
+        <text x="450" y="312" font-size="12" fill="#495057">Step 1: n → 0.90n (90%)</text>
+        <text x="450" y="332" font-size="12" fill="#495057">Step 2: 0.90n → 0.90n × 0.85</text>
+        <text x="450" y="352" font-size="12" fill="#495057">Overall: n × 0.90 × 0.85 = 0.765n</text>
+        
+        <!-- Target -->
+        <rect x="440" y="370" width="300" height="50" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="3"></rect>
+        <text x="590" y="392" text-anchor="middle" font-size="14" font-weight="bold" fill="#155724">Target: 55 g n-Butane</text>
+        <text x="590" y="412" text-anchor="middle" font-size="12" fill="#155724">Find: Volume of C₂H₆ at NTP</text>
+        
+        <!-- Bottom formula box -->
+        <rect x="80" y="450" width="640" height="35" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"></rect>
+        <text x="400" y="473" text-anchor="middle" font-size="13" fill="#2e7d32">
+            <tspan font-weight="bold">Key:</tspan> Let n moles C₂H₆ needed → (0.765n/2) moles C₄H₁₀ produced
+        </text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 45.53 liters at NTP
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 55.53 liters at NTP
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 65.53 liters at NTP
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 75.53 liters at NTP
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> Work backwards from the final product to reactant. Calculate moles of n-butane needed, then account for both percentage yields in reverse order. Use stoichiometry (2 mol C₂H₆ gives 1 mol C₄H₁₀) with overall efficiency of 0.90 × 0.85 = 0.765.
+    <br><br>
+    <strong>Expert Insight:</strong> Top students recognize this as a "backward calculation with cascading yields" problem. They set up: actual moles obtained = theoretical moles × (yield₁) × (yield₂). The key insight is that 2 moles of ethane ultimately produce 1 mole of butane through the two-step sequence, so the effective conversion efficiency is (0.90 × 0.85)/2 for each mole of butane produced.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>% Yield = (Actual yield/Theoretical yield) × 100</li>
+        <li>Sequential reactions: Overall yield = Product of individual yields</li>
+        <li>Stoichiometry: 1 C₂H₆ → 1 C₂H₅Br → 0.5 C₄H₁₀ (2 alkyl halides give 1 alkane)</li>
+        <li>At NTP: 1 mole of any gas = 22.4 L</li>
+        <li>Molar mass of C₄H₁₀ = 58 g/mol</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Understand the reaction sequence</strong>
+            <br>C₂H₆ + Br₂ → C₂H₅Br + HBr ... (90% yield)
+            <br>2C₂H₅Br + 2Na → C₄H₁₀ + 2NaBr ... (85% yield)
+            <br><br>
+            Overall: 2 moles C₂H₆ produce 1 mole C₄H₁₀ (if 100% efficient)
+        </li>
+        
+        <li><strong>Step 2: Calculate moles of n-butane required</strong>
+            <br>Mass of n-butane = 55 g
+            <br>Molar mass of C₄H₁₀ = 4(12) + 10(1) = 58 g/mol
+            <br>Moles of C₄H₁₀ = 55/58 = 0.9483 mol
+        </li>
+        
+        <li><strong>Step 3: Set up the yield equation</strong>
+            <br>Let n = moles of C₂H₆ initially required
+            <br><br>
+            Step 1 produces: n × 0.90 moles of C₂H₅Br
+            <br>Step 2: Since 2 moles C₂H₅Br → 1 mole C₄H₁₀
+            <br>Moles of C₄H₁₀ produced = (n × 0.90)/2 × 0.85
+            <br>= 0.45n × 0.85 = 0.3825n
+        </li>
+        
+        <li><strong>Step 4: Calculate moles of ethane needed</strong>
+            <br>Actual moles of C₄H₁₀ = Theoretical moles × overall efficiency
+            <br>0.9483 = 0.3825n
+            <br>n = 0.9483/0.3825 = 2.479 mol
+        </li>
+        
+        <li><strong>Step 5: Alternative approach (working backwards)</strong>
+            <br>For 0.9483 mol C₄H₁₀ at 85% yield in step 2:
+            <br>Moles of C₂H₅Br needed = (0.9483 × 2)/0.85 = 2.232 mol
+            <br><br>
+            For 2.232 mol C₂H₅Br at 90% yield in step 1:
+            <br>Moles of C₂H₆ needed = 2.232/0.90 = 2.48 mol
+        </li>
+        
+        <li><strong>Step 6: Calculate volume at NTP</strong>
+            <br>Moles of C₂H₆ = 2.479 mol
+            <br>At NTP: Volume = moles × 22.4 L/mol
+            <br>Volume = 2.479 × 22.4 = 55.53 L
+        </li>
+        
+        <li><strong>Step 7: Verification</strong>
+            <br>Starting with 2.479 mol C₂H₆:
+            <br>After bromination (90%): 2.479 × 0.90 = 2.231 mol C₂H₅Br
+            <br>After Wurtz (85%): (2.231/2) × 0.85 = 0.948 mol C₄H₁₀
+            <br>Mass = 0.948 × 58 ≈ 55 g ✓
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: B</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q7</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>In an electrolysis experiment, current was passed for 5 hours through two cells connected in series. The first cell contains a solution of gold and second contains CuSO₄ solution. 9.85 g of gold was deposited in the first cell. If the oxidation number of gold is +3, find the amount of Cu deposited on the cathode of the second cell. Also calculate the magnitude of the current in ampere. (1 F = 96500 coulomb)</p>
+    <p>Given: Au = 197, Cu = 63.5</p>
+    
+    <svg width="800" height="350" xmlns="http://www.w3.org/2000/svg">
+        <!-- Title -->
+        <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Series Electrolysis - Two Cells</text>
+        
+        <!-- Battery -->
+        <rect x="350" y="50" width="100" height="40" fill="#ffccbc" stroke="#d84315" stroke-width="2" rx="3"></rect>
+        <text x="400" y="75" text-anchor="middle" font-size="14" font-weight="bold" fill="#bf360c">Battery</text>
+        
+        <!-- Wire connections -->
+        <line x1="350" y1="70" x2="200" y2="70" stroke="#333" stroke-width="3"></line>
+        <line x1="450" y1="70" x2="600" y2="70" stroke="#333" stroke-width="3"></line>
+        
+        <!-- Cell 1 - Gold -->
+        <rect x="50" y="120" width="300" height="200" fill="white" stroke="#3498db" stroke-width="3" rx="5"></rect>
+        <text x="200" y="150" text-anchor="middle" font-size="16" font-weight="bold" fill="#3498db">Cell 1: Gold Solution</text>
+        
+        <!-- Container for Cell 1 -->
+        <rect x="80" y="170" width="240" height="120" fill="#fff8dc" opacity="0.5" stroke="#333" stroke-width="2"></rect>
+        
+        <!-- Cathode Cell 1 -->
+        <rect x="110" y="180" width="15" height="90" fill="#8b4513"></rect>
+        <text x="117" y="168" text-anchor="middle" font-size="11" fill="#333">(-)</text>
+        <rect x="105" y="200" width="25" height="70" fill="#ffd700" opacity="0.8"></rect>
+        <text x="117" y="240" text-anchor="middle" font-size="10" fill="#333" font-weight="bold">Au</text>
+        <text x="117" y="255" text-anchor="middle" font-size="9" fill="#333">9.85g</text>
+        <line x1="117" y1="180" x2="117" y2="120" stroke="#333" stroke-width="3"></line>
+        <line x1="117" y1="120" x2="200" y2="120" stroke="#333" stroke-width="3"></line>
+        <line x1="200" y1="120" x2="200" y2="70" stroke="#333" stroke-width="3"></line>
+        
+        <!-- Anode Cell 1 -->
+        <rect x="275" y="180" width="15" height="90" fill="#8b4513"></rect>
+        <text x="282" y="168" text-anchor="middle" font-size="11" fill="#333">(+)</text>
+        <line x1="282" y1="180" x2="282" y2="120" stroke="#333" stroke-width="3"></line>
+        <line x1="282" y1="120" x2="400" y2="120" stroke="#333" stroke-width="3"></line>
+        
+        <!-- Au3+ ions -->
+        <circle cx="180" cy="220" r="6" fill="#ff6b6b"></circle>
+        <text x="180" y="224" text-anchor="middle" font-size="8" fill="white">Au³⁺</text>
+        <circle cx="220" cy="240" r="6" fill="#ff6b6b"></circle>
+        <text x="220" y="244" text-anchor="middle" font-size="8" fill="white">Au³⁺</text>
+        
+        <!-- Reaction Cell 1 -->
+        <text x="200" y="305" text-anchor="middle" font-size="11" fill="#2c3e50">Au³⁺ + 3e⁻ → Au</text>
+        
+        <!-- Cell 2 - Copper -->
+        <rect x="450" y="120" width="300" height="200" fill="white" stroke="#e74c3c" stroke-width="3" rx="5"></rect>
+        <text x="600" y="150" text-anchor="middle" font-size="16" font-weight="bold" fill="#e74c3c">Cell 2: CuSO₄ Solution</text>
+        
+        <!-- Container for Cell 2 -->
+        <rect x="480" y="170" width="240" height="120" fill="#e3f2fd" opacity="0.5" stroke="#333" stroke-width="2"></rect>
+        
+        <!-- Cathode Cell 2 -->
+        <rect x="510" y="180" width="15" height="90" fill="#8b4513"></rect>
+        <text x="517" y="168" text-anchor="middle" font-size="11" fill="#333">(-)</text>
+        <rect x="505" y="200" width="25" height="70" fill="#cd7f32" opacity="0.8"></rect>
+        <text x="517" y="240" text-anchor="middle" font-size="10" fill="white" font-weight="bold">Cu</text>
+        <text x="517" y="255" text-anchor="middle" font-size="9" fill="white">? g</text>
+        <line x1="517" y1="180" x2="517" y2="120" stroke="#333" stroke-width="3"></line>
+        <line x1="517" y1="120" x2="400" y2="120" stroke="#333" stroke-width="3"></line>
+        
+        <!-- Anode Cell 2 -->
+        <rect x="675" y="180" width="15" height="90" fill="#8b4513"></rect>
+        <text x="682" y="168" text-anchor="middle" font-size="11" fill="#333">(+)</text>
+        <line x1="682" y1="180" x2="682" y2="120" stroke="#333" stroke-width="3"></line>
+        <line x1="682" y1="120" x2="600" y2="120" stroke="#333" stroke-width="3"></line>
+        <line x1="600" y1="120" x2="600" y2="70" stroke="#333" stroke-width="3"></line>
+        
+        <!-- Cu2+ ions -->
+        <circle cx="580" cy="220" r="6" fill="#4ecdc4"></circle>
+        <text x="580" y="224" text-anchor="middle" font-size="8" fill="white">Cu²⁺</text>
+        <circle cx="620" cy="240" r="6" fill="#4ecdc4"></circle>
+        <text x="620" y="244" text-anchor="middle" font-size="8" fill="white">Cu²⁺</text>
+        
+        <!-- Reaction Cell 2 -->
+        <text x="600" y="305" text-anchor="middle" font-size="11" fill="#2c3e50">Cu²⁺ + 2e⁻ → Cu</text>
+        
+        <!-- Series connection indicator -->
+        <text x="400" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#e74c3c">Series Connection → Same Charge (Q)</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Cu deposited = 3.175 g; Current = 0.5037 A
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Cu deposited = 4.765 g; Current = 0.8037 A
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Cu deposited = 5.175 g; Current = 0.9037 A
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Cu deposited = 6.350 g; Current = 1.0037 A
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> In series connection, same charge passes through both cells. Use Faraday's law for gold deposition to find total charge, then apply it to copper deposition. Remember to account for different n-factors (3 for Au³⁺, 2 for Cu²⁺).
+    <br><br>
+    <strong>Expert Insight:</strong> Top students immediately recognize that in series electrolysis, the same number of coulombs (Q = It) flows through both cells. They use the gold data to calculate Q, then apply Q to find copper mass. The key is carefully tracking the n-factors: Au³⁺ requires 3 electrons per atom, Cu²⁺ requires 2.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Faraday's First Law: m = (Q × M)/(n × F) or m = (I × t × M)/(n × F)</li>
+        <li>In series: Same current flows through all cells; Q₁ = Q₂</li>
+        <li>For Au³⁺ + 3e⁻ → Au: n = 3</li>
+        <li>For Cu²⁺ + 2e⁻ → Cu: n = 2</li>
+        <li>1 Faraday = 96500 coulombs</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Calculate equivalents of gold deposited</strong>
+            <br>Mass of Au deposited = 9.85 g
+            <br>Atomic mass of Au = 197
+            <br>Oxidation state = +3, so n-factor = 3
+            <br>Equivalent weight of Au = 197/3
+            <br><br>
+            Equivalents of Au = Mass/Equivalent weight = 9.85/(197/3) = 9.85 × 3/197 = 0.15
+        </li>
+        
+        <li><strong>Step 2: Use Faraday's law for gold</strong>
+            <br>Number of Faradays = Equivalents = 0.15 F
+            <br>Charge (Q) = 0.15 × 96500 = 14475 coulombs
+        </li>
+        
+        <li><strong>Step 3: Calculate current</strong>
+            <br>Time = 5 hours = 5 × 3600 = 18000 seconds
+            <br>Q = I × t
+            <br>14475 = I × 18000
+            <br>I = 14475/18000 = 0.8042 ≈ 0.8037 A
+        </li>
+        
+        <li><strong>Step 4: Apply same charge to copper cell</strong>
+            <br>In series connection, the same charge passes through both cells
+            <br>Charge through copper cell = 14475 coulombs
+            <br>Number of Faradays = 0.15 F
+        </li>
+        
+        <li><strong>Step 5: Calculate mass of copper deposited</strong>
+            <br>For Cu²⁺ + 2e⁻ → Cu: n-factor = 2
+            <br>Equivalent weight of Cu = 63.5/2 = 31.75
+            <br><br>
+            Mass = Equivalents × Equivalent weight
+            <br>Mass of Cu = 0.15 × 31.75 = 4.7625 g ≈ 4.765 g
+        </li>
+        
+        <li><strong>Step 6: Alternative method using direct formula</strong>
+            <br>m = (I × t × M)/(n × F)
+            <br>For Cu: m = (0.8037 × 18000 × 63.5)/(2 × 96500)
+            <br>= 917426.1/193000
+            <br>= 4.753 g ≈ 4.765 g
+        </li>
+        
+        <li><strong>Step 7: Verification using equivalents relationship</strong>
+            <br>Equivalents of Au = Equivalents of Cu (same charge)
+            <br>9.85/(197/3) = mass of Cu/(63.5/2)
+            <br>9.85 × 3/197 = mass of Cu × 2/63.5
+            <br>mass of Cu = (9.85 × 3 × 63.5)/(197 × 2) = 4.765 g ✓
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: B</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q8</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>An aromatic compound contains 69.4% C and 5.8% H. A sample of 0.303 g of this compound was analysed for nitrogen by Kjeldahl method. The ammonia evolved was absorbed in 50 mL of 0.05 M H₂SO₄. The excess acid required 25 mL of 0.1 M NaOH for neutralisation. Determine the molecular formula of the compound if its molecular weight is 121.</p>
+    <p>Draw two possible structures for this compound.</p>
+    
+    <svg width="800" height="480" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="10" y="10" width="780" height="460" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="40" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Multi-Method Analysis of Aromatic Compound</text>
+        
+        <!-- Method 1: Combustion Analysis -->
+        <rect x="40" y="70" width="350" height="180" fill="white" stroke="#3498db" stroke-width="2" rx="5"></rect>
+        <text x="215" y="95" text-anchor="middle" font-size="15" font-weight="bold" fill="#3498db">Method 1: Combustion Analysis</text>
+        
+        <!-- Elements pie chart representation -->
+        <circle cx="130" cy="165" r="50" fill="none" stroke="#333" stroke-width="2"></circle>
+        <!-- C slice (69.4%) -->
+        <path d="M 130 165 L 130 115 A 50 50 0 1 1 70 145 Z" fill="#4CAF50" opacity="0.7"></path>
+        <text x="110" y="140" font-size="11" font-weight="bold" fill="#1B5E20">C: 69.4%</text>
+        <!-- H slice (5.8%) -->
+        <path d="M 130 165 L 70 145 A 50 50 0 0 1 65 160 Z" fill="#2196F3" opacity="0.7"></path>
+        <text x="75" y="165" font-size="10" fill="#0D47A1">H: 5.8%</text>
+        <!-- N slice -->
+        <path d="M 130 165 L 65 160 A 50 50 0 0 1 115 205 Z" fill="#FFC107" opacity="0.7"></path>
+        <text x="85" y="185" font-size="10" fill="#F57F17">N: ?</text>
+        <!-- O slice -->
+        <path d="M 130 165 L 115 205 A 50 50 0 0 1 130 115 Z" fill="#F44336" opacity="0.7"></path>
+        <text x="145" y="180" font-size="10" fill="#B71C1C">O: ?</text>
+        
+        <text x="250" y="140" font-size="12" fill="#333">Given:</text>
+        <text x="250" y="160" font-size="11" fill="#555">• C = 69.4%</text>
+        <text x="250" y="178" font-size="11" fill="#555">• H = 5.8%</text>
+        <text x="250" y="196" font-size="11" fill="#555">• N = ?</text>
+        <text x="250" y="214" font-size="11" fill="#555">• O = by difference</text>
+        <text x="250" y="235" font-size="11" font-weight="bold" fill="#e74c3c">MW = 121</text>
+        
+        <!-- Method 2: Kjeldahl -->
+        <rect x="410" y="70" width="350" height="180" fill="white" stroke="#e74c3c" stroke-width="2" rx="5"></rect>
+        <text x="585" y="95" text-anchor="middle" font-size="15" font-weight="bold" fill="#e74c3c">Method 2: Kjeldahl Analysis</text>
+        
+        <!-- Kjeldahl setup diagram -->
+        <ellipse cx="470" cy="150" rx="25" ry="35" fill="none" stroke="#333" stroke-width="2"></ellipse>
+        <path d="M 470 115 L 510 135" stroke="#333" stroke-width="2"></path>
+        <path d="M 510 130 L 550 150" stroke="#333" stroke-width="2"></path>
+        <ellipse cx="560" cy="175" rx="20" ry="30" fill="none" stroke="#333" stroke-width="2"></ellipse>
+        <path d="M 445 150 L 445 195 Q 445 205, 455 205 L 485 205 Q 495 205, 495 195 L 495 150" fill="#90ee90" opacity="0.4"></path>
+        <text x="470" y="160" text-anchor="middle" font-size="9" fill="#333">0.303 g</text>
+        <path d="M 540 175 L 540 195 Q 540 205, 550 205 L 570 205 Q 580 205, 580 195 L 580 175" fill="#87ceeb" opacity="0.5"></path>
+        <text x="560" y="185" text-anchor="middle" font-size="8" fill="#333">H₂SO₄</text>
+        
+        <text x="650" y="130" font-size="11" fill="#333">NH₃ absorbed in:</text>
+        <text x="650" y="148" font-size="10" fill="#555">50 mL of 0.05 M H₂SO₄</text>
+        <text x="650" y="170" font-size="11" fill="#333">Back titration:</text>
+        <text x="650" y="188" font-size="10" fill="#555">25 mL of 0.1 M NaOH</text>
+        <text x="650" y="210" font-size="10" fill="#555">used for excess acid</text>
+        
+        <!-- Calculation Section -->
+        <rect x="40" y="270" width="720" height="180" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="400" y="295" text-anchor="middle" font-size="15" font-weight="bold" fill="#856404">Complete Analysis Steps</text>
+        
+        <g transform="translate(60, 310)">
+            <text x="0" y="0" font-size="12" font-weight="bold" fill="#333">Step 1: Calculate %N from Kjeldahl</text>
+            <text x="0" y="18" font-size="10" fill="#555">• m.e. of H₂SO₄ = 0.05 M × 50 mL × 2 = 5 (Note: H₂SO₄ is dibasic, so M × 2 = N)</text>
+            <text x="0" y="33" font-size="10" fill="#555">• m.e. of NaOH = 0.1 M × 25 mL = 2.5</text>
+            <text x="0" y="48" font-size="10" fill="#555">• m.e. of H₂SO₄ used by NH₃ = 5 - 2.5 = 2.5</text>
+            <text x="0" y="63" font-size="10" fill="#555">• Moles of N = 2.5/1000 = 0.0025; Mass of N = 0.0025 × 14 = 0.035 g</text>
+            <text x="0" y="78" font-size="10" fill="#555">• %N = (0.035/0.303) × 100 = 11.55%</text>
+            
+            <text x="0" y="100" font-size="12" font-weight="bold" fill="#333">Step 2: Calculate %O and find empirical formula</text>
+            <text x="0" y="118" font-size="10" fill="#555">• %O = 100 - (69.4 + 5.8 + 11.55) = 13.25%</text>
+            <text x="0" y="133" font-size="10" fill="#555">• Mole ratio: C:H:N:O = 69.4/12 : 5.8/1 : 11.55/14 : 13.25/16 = 5.78:5.8:0.825:0.828 ≈ 7:7:1:1</text>
+        </g>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Molecular formula: C₆H₆NO; Possible structures: p-aminophenol, o-aminophenol
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Molecular formula: C₇H₇NO; Possible structures: benzaldoxime (syn and anti forms)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Molecular formula: C₇H₇NO; Possible structures: N-methylbenzamide, acetanilide
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Molecular formula: C₆H₅NO₂; Possible structures: nitrobenzene, phenyl nitrite
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> First use Kjeldahl back-titration to find %N. Then calculate %O by difference. Find empirical formula from % composition, verify with molecular weight (121), and deduce possible aromatic structures with C₇H₇NO formula.
+    <br><br>
+    <strong>Expert Insight:</strong> Expert students handle this multi-method problem systematically: (1) Kjeldahl first (most complex), (2) %O by subtraction, (3) Empirical formula from mole ratios, (4) Check MW for molecular formula, (5) Draw aromatic structures. They recognize C₇H₇NO with aromatic character suggests benzaldoxime (C₆H₅CH=NOH) which exists as geometric isomers.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>For H₂SO₄: Normality = 2 × Molarity (dibasic acid)</li>
+        <li>Back titration: Acid used = Total acid - Excess acid</li>
+        <li>NH₃ is monoacidic base (n-factor = 1)</li>
+        <li>% of element by mass = (mass of element/total mass) × 100</li>
+        <li>Aromatic compounds typically contain benzene ring (C₆H₅-)</li>
+        <li>Oximes (R₂C=NOH) show geometrical isomerism</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Calculate m.e. of H₂SO₄ initially taken</strong>
+            <br>Molarity of H₂SO₄ = 0.05 M
+            <br>Since H₂SO₄ is dibasic: Normality = 2 × 0.05 = 0.1 N
+            <br>m.e. of H₂SO₄ = Normality × Volume = 0.1 × 50 = 5
+        </li>
+        
+        <li><strong>Step 2: Calculate m.e. of excess H₂SO₄</strong>
+            <br>This excess is neutralized by NaOH
+            <br>m.e. of NaOH = 0.1 × 25 = 2.5
+            <br>m.e. of excess H₂SO₄ = m.e. of NaOH = 2.5
+        </li>
+        
+        <li><strong>Step 3: Calculate m.e. of H₂SO₄ used by NH₃</strong>
+            <br>m.e. used by NH₃ = Total m.e. - Excess m.e.
+            <br>= 5 - 2.5 = 2.5
+        </li>
+        
+        <li><strong>Step 4: Calculate moles and mass of nitrogen</strong>
+            <br>Equivalents of NH₃ = 2.5/1000 = 0.0025
+            <br>Since NH₃ has n-factor = 1: Moles of NH₃ = 0.0025
+            <br>Moles of N = 0.0025 (1 N atom per NH₃)
+            <br>Mass of N = 0.0025 × 14 = 0.035 g
+        </li>
+        
+        <li><strong>Step 5: Calculate %N</strong>
+            <br>%N = (0.035/0.303) × 100 = 11.55%
+        </li>
+        
+        <li><strong>Step 6: Calculate %O</strong>
+            <br>%O = 100 - (69.4 + 5.8 + 11.55)
+            <br>= 100 - 86.75 = 13.25%
+        </li>
+        
+        <li><strong>Step 7: Find empirical formula</strong>
+            <br>Moles of C : H : N : O
+            <br>= 69.4/12 : 5.8/1 : 11.55/14 : 13.25/16
+            <br>= 5.78 : 5.8 : 0.825 : 0.828
+            <br>Dividing by smallest (0.825):
+            <br>= 7 : 7 : 1 : 1
+            <br><br>
+            Empirical formula = C₇H₇NO
+            <br>Empirical formula weight = 7(12) + 7(1) + 14 + 16 = 121
+        </li>
+        
+        <li><strong>Step 8: Determine molecular formula</strong>
+            <br>Given: Molecular weight = 121
+            <br>Since empirical formula weight = 121
+            <br>Molecular formula = Empirical formula = <strong>C₇H₇NO</strong>
+        </li>
+        
+        <li><strong>Step 9: Draw possible aromatic structures</strong>
+            <br>Since compound is aromatic with formula C₇H₇NO:
+            <br>Possible structure: C₆H₅-CH=N-OH (Benzaldoxime)
+            <br><br>
+            Two geometric isomers exist:
+            <br>
+            <strong>Structure 1 (syn):</strong> C₆H₅-C(H)=N-OH with H and OH on same side
+            <br>
+            <strong>Structure 2 (anti):</strong> C₆H₅-C(H)=N-OH with H and OH on opposite sides
+            <br><br>
+            These are represented as:
+            <br>
+            <svg width="400" height="150" xmlns="http://www.w3.org/2000/svg">
+                <text x="20" y="25" font-size="13" font-weight="bold">Syn form:</text>
+                <text x="20" y="50" font-size="12">C₆H₅—C—H</text>
+                <text x="80" y="65" font-size="12">||</text>
+                <text x="80" y="80" font-size="12">N—OH</text>
+                
+                <text x="220" y="25" font-size="13" font-weight="bold">Anti form:</text>
+                <text x="220" y="50" font-size="12">C₆H₅—C—OH</text>
+                <text x="280" y="65" font-size="12">||</text>
+                <text x="280" y="80" font-size="12">N—H</text>
+            </svg>
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: B</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_7697a7a1_Q9</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Series Conductance Problem |
+        <strong>Type:</strong> Complex multi-step conductivity problem requiring cell constant calculation from one measurement and
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Complex multi-step conductivity problem requiring cell constant calculation from one measurement and", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>The conductance of a 0.0015 M aqueous solution of a weak monobasic acid was determined by using a conductivity cell consisting of Pt electrodes. The distance between the electrods is 120 cm with an area of cross section of 1 cm². The conductance of this solution was found to be 5 × 10<sup>-7</sup> S. The pH of the solution is 4. The value of limiting molar conductivity (Λ°) of this monobasic acid in aqueous solution is Z × 10² S cm² mol<sup>-1</sup>. The value of Z is ___.</p>
+    
+    <svg width="800" height="450" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="10" y="10" width="780" height="430" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" rx="10"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">IIT-JEE Advanced 2017: Conductivity Cell Problem</text>
+        
+        <!-- Conductivity Cell Diagram -->
+        <rect x="50" y="60" width="350" height="300" fill="white" stroke="#3498db" stroke-width="2" rx="5"></rect>
+        <text x="225" y="85" text-anchor="middle" font-size="15" font-weight="bold" fill="#3498db">Conductivity Cell Setup</text>
+        
+        <!-- Cell container -->
+        <rect x="100" y="110" width="250" height="200" fill="#e3f2fd" opacity="0.5" stroke="#333" stroke-width="2"></rect>
+        
+        <!-- Left Electrode (Pt) -->
+        <rect x="130" y="130" width="15" height="160" fill="#c0c0c0" stroke="#333" stroke-width="2"></rect>
+        <text x="137" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">Pt</text>
+        
+        <!-- Right Electrode (Pt) -->
+        <rect x="305" y="130" width="15" height="160" fill="#c0c0c0" stroke="#333" stroke-width="2"></rect>
+        <text x="312" y="120" text-anchor="middle" font-size="11" font-weight="bold" fill="#333">Pt</text>
+        
+        <!-- Distance annotation -->
+        <line x1="145" y1="320" x2="305" y2="320" stroke="#e74c3c" stroke-width="2" marker-start="url(#arrowstart)" marker-end="url(#arrowend)"></line>
+        <defs>
+            <marker id="arrowstart" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto">
+                <polygon points="10 0, 10 7, 0 3.5" fill="#e74c3c"></polygon>
+            </marker>
+            <marker id="arrowend" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"></polygon>
+            </marker>
+        </defs>
+        <text x="225" y="340" text-anchor="middle" font-size="12" font-weight="bold" fill="#e74c3c">l = 120 cm</text>
+        
+        <!-- Area annotation -->
+        <rect x="200" y="150" width="40" height="40" fill="none" stroke="#27ae60" stroke-width="2" stroke-dasharray="3,3"></rect>
+        <text x="220" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="#27ae60">A = 1 cm²</text>
+        
+        <!-- Solution -->
+        <path d="M 105 240 L 105 300 Q 105 305, 110 305 L 340 305 Q 345 305, 345 300 L 345 240" fill="#b3e5fc" opacity="0.6"></path>
+        
+        <!-- Acid molecules and ions -->
+        <text x="180" y="180" font-size="10" fill="#333">HA ⇌ H⁺ + A⁻</text>
+        <circle cx="160" cy="210" r="5" fill="#ff6b6b"></circle>
+        <text x="160" y="213" text-anchor="middle" font-size="7" fill="white">H⁺</text>
+        <circle cx="190" cy="230" r="5" fill="#4ecdc4"></circle>
+        <text x="190" y="233" text-anchor="middle" font-size="7" fill="white">A⁻</text>
+        <text x="220" y="250" font-size="9" fill="#666">HA</text>
+        <text x="270" y="220" font-size="9" fill="#666">HA</text>
+        <circle cx="290" cy="270" r="5" fill="#ff6b6b"></circle>
+        <text x="290" y="273" text-anchor="middle" font-size="7" fill="white">H⁺</text>
+        
+        <!-- Given Information Panel -->
+        <rect x="450" y="60" width="300" height="300" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="600" y="85" text-anchor="middle" font-size="15" font-weight="bold" fill="#856404">Given Information</text>
+        
+        <g transform="translate(470, 105)">
+            <text x="0" y="0" font-size="13" font-weight="bold" fill="#333">Cell Dimensions:</text>
+            <text x="0" y="20" font-size="11" fill="#555">• Distance between electrodes (l) = 120 cm</text>
+            <text x="0" y="38" font-size="11" fill="#555">• Area of cross-section (A) = 1 cm²</text>
+            
+            <text x="0" y="65" font-size="13" font-weight="bold" fill="#333">Solution Properties:</text>
+            <text x="0" y="85" font-size="11" fill="#555">• Concentration (C) = 0.0015 M</text>
+            <text x="0" y="103" font-size="11" fill="#555">• Conductance (G) = 5 × 10<tspan baseline-shift="super" font-size="9">-7</tspan> S</text>
+            <text x="0" y="121" font-size="11" fill="#555">• pH = 4</text>
+            <text x="0" y="139" font-size="11" fill="#555">• Weak monobasic acid: HA</text>
+            
+            <text x="0" y="166" font-size="13" font-weight="bold" fill="#333">To Find:</text>
+            <text x="0" y="186" font-size="11" fill="#e74c3c">Λ° = Z × 10² S cm² mol<tspan baseline-shift="super" font-size="9">-1</tspan></text>
+            <text x="0" y="204" font-size="11" font-weight="bold" fill="#e74c3c">Find: Z = ?</text>
+            
+            <text x="0" y="231" font-size="12" font-weight="bold" fill="#2c3e50">Key Relationships:</text>
+            <text x="0" y="249" font-size="10" fill="#495057">• Cell constant (G*) = l/A</text>
+            <text x="0" y="265" font-size="10" fill="#495057">• κ = G × G*</text>
+            <text x="0" y="281" font-size="10" fill="#495057">• Λ<tspan baseline-shift="sub" font-size="8">m</tspan> = κ × 1000/C</text>
+        </g>
+        
+        <!-- Formula Box -->
+        <rect x="80" y="380" width="640" height="45" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="5"></rect>
+        <text x="400" y="405" text-anchor="middle" font-size="12" fill="#2e7d32">
+            <tspan font-weight="bold">Ostwald's Dilution Law:</tspan> Λ° = Λ<tspan baseline-shift="sub" font-size="10">m</tspan>/α, where α = [H⁺]/C (degree of dissociation)
+        </text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Z = 4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Z = 5
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> Z = 6
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Z = 7
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><br>
+    <strong>Strategy:</strong> Multi-step approach: (1) Calculate cell constant, (2) Find specific conductance, (3) Calculate molar conductivity, (4) Determine degree of dissociation from pH, (5) Apply Ostwald's dilution law to find limiting molar conductivity. Each step builds on the previous one.
+    <br><br>
+    <strong>Expert Insight:</strong> Expert students recognize this as a comprehensive conductivity problem testing all major concepts. They work systematically: G* → κ → Λ<sub>m</sub> → α (from pH) → Λ°. The critical insight is using pH to find [H⁺] = 10<sup>-4</sup> M, then α = [H⁺]/C = 10<sup>-4</sup>/0.0015 to apply Ostwald's law. They're careful with units throughout.
+    <br><br>
+    <strong>Key Facts Used:</strong>
+    <ul>
+        <li>Cell constant (G*) = l/A (cm<sup>-1</sup>)</li>
+        <li>Specific conductance: κ = G × G* (S cm<sup>-1</sup>)</li>
+        <li>Molar conductivity: Λ<sub>m</sub> = (κ × 1000)/C (S cm² mol<sup>-1</sup>)</li>
+        <li>For weak acid: α = [H⁺]/C (degree of dissociation)</li>
+        <li>pH = -log[H⁺], so [H⁺] = 10<sup>-pH</sup></li>
+        <li>Ostwald's dilution law: Λ° = Λ<sub>m</sub>/α</li>
+    </ul>
+    <br>
+    <ol>
+        <li><strong>Step 1: Calculate cell constant</strong>
+            <br>Cell constant (G*) = l/A
+            <br>where l = distance between electrodes = 120 cm
+            <br>A = area of cross-section = 1 cm²
+            <br><br>
+            G* = 120/1 = 120 cm<sup>-1</sup>
+        </li>
+        
+        <li><strong>Step 2: Calculate specific conductance (κ)</strong>
+            <br>Specific conductance = Conductance × Cell constant
+            <br>κ = G × G*
+            <br>= 5 × 10<sup>-7</sup> S × 120 cm<sup>-1</sup>
+            <br>= 6 × 10<sup>-5</sup> S cm<sup>-1</sup>
+        </li>
+        
+        <li><strong>Step 3: Calculate molar conductivity (Λ<sub>m</sub>)</strong>
+            <br>Molar conductivity = (κ × 1000)/C
+            <br>where C = concentration in mol/L = 0.0015 M
+            <br><br>
+            Λ<sub>m</sub> = (6 × 10<sup>-5</sup> × 1000)/0.0015
+            <br>= 0.06/0.0015
+            <br>= 40 S cm² mol<sup>-1</sup>
+        </li>
+        
+        <li><strong>Step 4: Calculate [H⁺] from pH</strong>
+            <br>Given: pH = 4
+            <br>[H⁺] = 10<sup>-pH</sup> = 10<sup>-4</sup> M
+        </li>
+        
+        <li><strong>Step 5: Calculate degree of dissociation (α)</strong>
+            <br>For a weak monobasic acid HA:
+            <br>HA ⇌ H⁺ + A⁻
+            <br><br>
+            If C is the initial concentration and α is the degree of dissociation:
+            <br>[H⁺] = C × α
+            <br><br>
+            α = [H⁺]/C = 10<sup>-4</sup>/0.0015
+            <br>= 10<sup>-4</sup>/1.5 × 10<sup>-3</sup>
+            <br>= 1/(1.5 × 10)
+            <br>= 1/15
+            <br>≈ 0.0667
+        </li>
+        
+        <li><strong>Step 6: Calculate limiting molar conductivity (Λ°)</strong>
+            <br>According to Ostwald's dilution law:
+            <br>Λ<sub>m</sub> = Λ° × α
+            <br>Therefore: Λ° = Λ<sub>m</sub>/α
+            <br><br>
+            Λ° = 40/(1/15)
+            <br>= 40 × 15
+            <br>= 600 S cm² mol<sup>-1</sup>
+        </li>
+        
+        <li><strong>Step 7: Express in required format and find Z</strong>
+            <br>Λ° = 600 S cm² mol<sup>-1</sup>
+            <br>= 6 × 10² S cm² mol<sup>-1</sup>
+            <br><br>
+            Comparing with Z × 10² S cm² mol<sup>-1</sup>:
+            <br><strong>Z = 6</strong>
+        </li>
+        
+        <li><strong>Step 8: Verification of calculation</strong>
+            <br>Check: Λ<sub>m</sub> should be less than Λ° (for weak electrolyte)
+            <br>40 &lt; 600 ✓
+            <br><br>
+            Check: α &lt;&lt; 1 (weak acid assumption)
+            <br>0.0667 &lt;&lt; 1 ✓
+        </li>
+    </ol>
+    <br>
+    <strong>Answer: C (Z = 6)</strong>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

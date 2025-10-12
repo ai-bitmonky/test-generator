@@ -1,0 +1,150 @@
+{
+  "mathResults": {
+    "inserted": 0,
+    "deleted": 0,
+    "failed": 25,
+    "skipped": 18,
+    "errors": [
+      {
+        "id": "Mathematics_277",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_283",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_279",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_271",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_265",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_266",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_267",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_268",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_269",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_270",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_273",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_274",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_291",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_275",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_276",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_278",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_290",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_288",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_287",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_286",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_285",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_284",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_282",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_272",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Mathematics_281",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      }
+    ]
+  },
+  "physicsResults": {
+    "inserted": 0,
+    "deleted": 0,
+    "failed": 8,
+    "skipped": 0,
+    "errors": [
+      {
+        "id": "Electromagnetism_172",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Physics_1",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Electromagnetism_217",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Electromagnetism_218",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Electromagnetism_219",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Electromagnetism_220",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Physics_213",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      },
+      {
+        "id": "Physics_212",
+        "error": "duplicate key value violates unique constraint \"questions_external_id_key\""
+      }
+    ]
+  }
+}

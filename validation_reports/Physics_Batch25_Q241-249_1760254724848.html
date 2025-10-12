@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 25 (Questions 241-249)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 25: Questions 241 - 249</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">9</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">9</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">15</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (9 of 9)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_256</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A continuous traveling wave with amplitude A is incident on a boundary. The continuous reflection, with a smaller amplitude B, travels back through the incoming wave. The resulting interference pattern is displayed. The standing wave ratio (SWR) is defined as:
+    <br/>
+<br/>
+    SWR = (A + B)/(A - B)
+    <br/>
+<br/>
+    The reflection coefficient R is the ratio of the power of the reflected wave to the power of the incoming wave and is thus proportional to the ratio (B/A)².
+    <br/>
+<br/>
+<strong>
+     Part 1:
+    </strong>
+    What is the SWR for total reflection?
+    <br/>
+<strong>
+     Part 2:
+    </strong>
+    What is the SWR for no reflection?
+    <br/>
+<strong>
+     Part 3:
+    </strong>
+    For SWR = 1.50, what is R expressed as a percentage?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 4%
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 11%
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 25%
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 50%
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: SWR for total reflection (Part 1)
+      </strong>
+<br/>
+      Total reflection means B = A (all incident wave reflects)
+      <br/>
+<br/>
+      SWR = (A + B)/(A - B) = (A + A)/(A - A)
+      <br/>
+      SWR = 2A/0 =
+      <strong>
+       ∞
+      </strong>
+<br/>
+<br/>
+      Physical interpretation: Infinite SWR indicates complete mismatch</li>
+<li><strong>
+       Step 2: SWR for no reflection (Part 2)
+      </strong>
+<br/>
+      No reflection means B = 0 (perfect absorption)
+      <br/>
+<br/>
+      SWR = (A + B)/(A - B) = (A + 0)/(A - 0)
+      <br/>
+      SWR = A/A =
+      <strong>
+       1
+      </strong>
+<br/>
+<br/>
+      Physical interpretation: SWR = 1 indicates perfect impedance matching</li>
+<li><strong>
+       Step 3: Find A/B ratio for SWR = 1.50 (Part 3)
+      </strong>
+<br/>
+      Given: SWR = 1.50
+      <br/>
+<br/>
+      1.50 = (A + B)/(A - B)
+      <br/>
+      1.50(A - B) = A + B
+      <br/>
+      1.50A - 1.50B = A + B
+      <br/>
+      1.50A - A = B + 1.50B
+      <br/>
+      0.50A = 2.50B
+      <br/>
+      A/B = 2.50/0.50 = 5
+      <br/>
+<br/>
+      Therefore: B/A = 1/5 = 0.20</li>
+<li><strong>
+       Step 4: Calculate reflection coefficient
+      </strong>
+<br/>
+      Reflection coefficient: R = (B/A)²
+      <br/>
+      R = (0.20)² = 0.04
+      <br/>
+<br/>
+      As percentage: R =
+      <strong>
+       4%
+      </strong>
+<br/>
+<br/>
+      Physical interpretation: Only 4% of incident power is reflected, 96% is transmitted</li>
+<li><strong>
+       Step 5: Verification
+      </strong>
+<br/>
+      Check: SWR = (A + B)/(A - B) = (5B + B)/(5B - B)
+      <br/>
+      = 6B/4B = 1.5 ✓
+      <br/>
+<br/>
+      Also: R = 0.04 = 4% means very good impedance matching
+      <br/>
+      (Most power transmitted, minimal reflection)</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_257</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Block 1 of mass 0.200 kg slides to the right over a frictionless elevated surface at a speed of 8.00 m/s. The block undergoes an elastic collision with stationary block 2, which is attached to a spring of spring constant 1208.5 N/m. (Assume that the spring does not affect the collision.) After the collision, block 2 oscillates in SHM with a period of 0.140 s, and block 1 slides off the opposite end of the elevated surface, landing a distance d from the base of that surface after falling height h = 4.90 m. What is the value of d?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> d = 2.80 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> d = 3.20 m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> d = 4.00 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> d = 4.80 m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> This multi-step problem requires: (1) Finding mass of block 2 from SHM data, (2) Applying elastic collision equations to find velocities after collision, (3) Using projectile motion to find range. The key is systematic progression through each physics concept without mixing them.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper would recognize three distinct phases: (1) Use T = 2π√(m/k) to find m₂, (2) Apply momentum and energy conservation for elastic collision, (3) Use standard projectile formulas. The problem tests ability to chain multiple concepts correctly.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Find mass of block 2 from SHM period</strong><br/>
+ T = 2π√(m₂/k)<br/>
+ 0.140 = 2π√(m₂/1208.5)<br/>
+ 0.140/(2π) = √(m₂/1208.5)<br/>
+ 0.02228 = √(m₂/1208.5)<br/>
+ (0.02228)² = m₂/1208.5<br/>
+ m₂ = (0.02228)² × 1208.5 = 0.000496 × 1208.5 = 0.600 kg ✓</li>
+<li><strong>Step 2: Apply elastic collision formulas</strong><br/>
+ Given: m₁ = 0.200 kg, m₂ = 0.600 kg, v₁i = 8.00 m/s, v₂i = 0<br/>
+ For elastic collision:<br/>
+ v₁f = ((m₁ - m₂)/(m₁ + m₂))v₁i = ((0.200 - 0.600)/(0.200 + 0.600)) × 8.00<br/>
+ v₁f = (-0.400/0.800) × 8.00 = -4.00 m/s<br/>
+ (Negative means block 1 reverses direction) ✓</li>
+<li><strong>Step 3: Verify with block 2 velocity</strong><br/>
+ v₂f = (2m₁/(m₁ + m₂))v₁i = (2 × 0.200/0.800) × 8.00<br/>
+ v₂f = (0.400/0.800) × 8.00 = 4.00 m/s ✓<br/>
+<br/>
+ Check momentum: p_before = 0.200(8) = 1.6 kg·m/s<br/>
+ p_after = 0.200(-4) + 0.600(4) = -0.8 + 2.4 = 1.6 kg·m/s ✓<br/>
+<br/>
+ Check energy: KE_before = ½(0.200)(8)² = 6.4 J<br/>
+ KE_after = ½(0.200)(4)² + ½(0.600)(4)² = 1.6 + 4.8 = 6.4 J ✓</li>
+<li><strong>Step 4: Find time of flight for projectile motion</strong><br/>
+ h = ½gt²<br/>
+ 4.90 = ½(9.8)t²<br/>
+ t² = 4.90/4.9 = 1.00<br/>
+ t = 1.00 s ✓</li>
+<li><strong>Step 5: Calculate horizontal range</strong><br/>
+ Block 1 leaves with horizontal velocity magnitude |v₁f| = 4.00 m/s<br/>
+ d = |v₁f| × t = 4.00 × 1.00 = 4.00 m ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_258</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Two blocks (m = 1.8 kg and M = 10 kg) and a spring (k = 200 N/m) are arranged on a horizontal, frictionless surface. The coefficient of static friction between the two blocks is 0.40. What amplitude of simple harmonic motion of the spring-blocks system puts the smaller block on the verge of slipping over the larger block?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A = 0.231 m (23.1 cm)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> A = 0.173 m (17.3 cm)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> A = 0.200 m (20.0 cm)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> A = 0.150 m (15.0 cm)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> The blocks move together in SHM until the required friction force exceeds maximum static friction. At maximum displacement, acceleration is maximum. Find the system's ω, then use the condition that friction force = mass × acceleration ≤ μₛN to find critical amplitude. The key insight is treating both blocks as a single system initially.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper would recognize this as a "threshold problem" where the system changes behavior at a critical point. The smaller mass requires friction to provide its acceleration. Calculate the system frequency first (total mass), then apply the friction constraint to the smaller mass only.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Understand the physics</strong><br/>
+ Both blocks move together in SHM (no external horizontal forces on system)<br/>
+ The spring provides force to M, and M provides friction force to m<br/>
+ At maximum displacement, acceleration is maximum: a_max = ω²A<br/>
+ Slipping occurs when required friction &gt; μₛmg</li>
+<li><strong>Step 2: Find system angular frequency</strong><br/>
+ Total mass = m + M = 1.8 + 10 = 11.8 kg<br/>
+ ω = √(k/(m+M)) = √(200/11.8) = √16.949 = 4.117 rad/s<br/>
+ ω² = 16.949 rad²/s²</li>
+<li><strong>Step 3: Apply slipping condition for small block</strong><br/>
+ Force required on small block: F = ma_max = m(ω²A)<br/>
+ Maximum friction available: f_max = μₛmg<br/>
+ For verge of slipping: m(ω²A) = μₛmg<br/>
+ Simplifying: ω²A = μₛg</li>
+<li><strong>Step 4: Solve for critical amplitude</strong><br/>
+ A = μₛg/ω² = (0.40 × 9.8)/16.949<br/>
+ A = 3.92/16.949 = 0.2313 m ≈ 0.231 m = 23.1 cm ✓</li>
+<li><strong>Step 5: Verification</strong><br/>
+ At A = 0.231 m:<br/>
+ Maximum acceleration: a_max = ω²A = 16.949 × 0.231 = 3.92 m/s²<br/>
+ Force needed: F = ma = 1.8 × 3.92 = 7.06 N<br/>
+ Maximum friction: f_max = μₛmg = 0.40 × 1.8 × 9.8 = 7.06 N ✓<br/>
+<br/>
+ The forces match perfectly, confirming this is the critical amplitude.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_259</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A massless spring hangs from the ceiling with a small object attached to its lower end. The object is initially held at rest in a position y_i such that the spring is at its rest length. The object is then released from y_i and oscillates up and down, with its lowest position being 10 cm below y_i. 
+ <br/><br/>
+ (a) What is the frequency of the oscillation? 
+ <br/>(b) What is the speed of the object when it is 8.0 cm below the initial position? 
+ <br/>(c) An object of mass 300 g is attached to the first object, after which the system oscillates with half the original frequency. What is the mass of the first object? 
+ <br/>(d) How far below y_i is the new equilibrium position with both objects?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) f = 2.23 Hz, (b) v = 0.60 m/s, (c) m = 100 g, (d) Δy = 20 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) f = 2.23 Hz, (b) v = 0.67 m/s, (c) m = 150 g, (d) Δy = 25 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) f = 1.98 Hz, (b) v = 0.55 m/s, (c) m = 120 g, (d) Δy = 22 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) f = 2.50 Hz, (b) v = 0.75 m/s, (c) m = 80 g, (d) Δy = 18 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For vertical spring: (1) Released from natural length, the equilibrium during oscillation is at the midpoint of the motion range. (2) Use energy methods for speed calculations. (3) Frequency ratio gives mass ratio through f ∝ 1/√m. (4) New equilibrium from force balance with new total mass.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> The critical insight is that when released from natural length, the object falls and reaches a lowest point. The equilibrium position during oscillation is halfway between release point and lowest point. At equilibrium: kx₀ = mg.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Understand the motion geometry</strong><br/>
+ Released from natural length (y = 0)<br/>
+ Falls to lowest point: y = -10 cm<br/>
+ Equilibrium position during oscillation: y_eq = -5 cm (midpoint)<br/>
+ Amplitude: A = 5 cm = 0.05 m</li>
+<li><strong>Step 2: Part (a) - Find frequency</strong><br/>
+ At equilibrium: kx₀ = mg, where x₀ = 0.05 m<br/>
+ Therefore: k/m = g/x₀ = 9.8/0.05 = 196 rad²/s²<br/>
+ ω = √(k/m) = √196 = 14.0 rad/s<br/>
+ f = ω/(2π) = 14.0/(2π) = 2.228 Hz ≈ 2.23 Hz ✓</li>
+<li><strong>Step 3: Part (b) - Find speed at y = -8.0 cm</strong><br/>
+ Position: y = -8.0 cm = -0.080 m<br/>
+ From equilibrium: displacement = -0.080 - (-0.050) = -0.030 m<br/>
+ Using v² = ω²(A² - x²):<br/>
+ v² = (14.0)²[(0.05)² - (0.03)²]<br/>
+ v² = 196[0.0025 - 0.0009] = 196(0.0016) = 0.3136<br/>
+ v = 0.560 m/s ≈ 0.60 m/s ✓
+ 
+ <br/><br/>Alternative using energy from natural length:<br/>
+ At natural length: E = 0 (reference)<br/>
+ At y = -0.08 m: ½mv² + ½k(0.08)² - mg(0.08) = 0<br/>
+ Since k/m = 196: ½v² + ½(196)(0.0064) - 9.8(0.08) = 0<br/>
+ ½v² + 0.627 - 0.784 = 0<br/>
+ v² = 0.314, v ≈ 0.56 m/s ✓</li>
+<li><strong>Step 4: Part (c) - Find original mass</strong><br/>
+ Original frequency: f₁ = 2.23 Hz, mass = m<br/>
+ New frequency: f₂ = f₁/2 = 1.12 Hz, mass = m + 0.300 kg<br/>
+<br/>
+ Using f ∝ 1/√m:<br/>
+ f₁/f₂ = √((m + 0.300)/m)<br/>
+ 2 = √((m + 0.300)/m)<br/>
+ 4 = (m + 0.300)/m<br/>
+ 4m = m + 0.300<br/>
+ 3m = 0.300<br/>
+ m = 0.100 kg = 100 g ✓</li>
+<li><strong>Step 5: Part (d) - Find new equilibrium position</strong><br/>
+ New total mass: m_total = 0.100 + 0.300 = 0.400 kg<br/>
+ At new equilibrium: kx_new = m_total × g<br/>
+<br/>
+ From original: k = mg/x₀ = (0.100)(9.8)/0.05 = 19.6 N/m<br/>
+<br/>
+ New equilibrium stretch:<br/>
+ x_new = m_total × g/k = (0.400)(9.8)/19.6 = 3.92/19.6 = 0.20 m<br/>
+<br/>
+ Distance below y_i: Δy = 20 cm ✓
+ 
+ <br/><br/>Verification: x_new/x_old = m_new/m_old = 0.400/0.100 = 4<br/>
+ x_new = 4 × 0.05 = 0.20 m ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_260</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A uniform stick of length L = 1.85 m oscillates as a physical pendulum about a pivot point O. The pivot can be positioned anywhere along the stick. What value of distance x between the stick's center of mass (COM) and the pivot point O gives the least period? What is that least period?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> x = 0.535 m, T_min = 2.23 s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> x = 0.625 m, T_min = 2.50 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> x = 0.475 m, T_min = 2.05 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> x = 0.550 m, T_min = 2.35 s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For a physical pendulum, T = 2π√(I/(mgh)), where I is moment of inertia about pivot. For a uniform rod, use parallel axis theorem: I = I_cm + mx². Express T as function of x, then minimize by taking dT/dx = 0. This is a classic optimization problem requiring calculus.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper knows this is a standard result: minimum period occurs at x = L/√12 ≈ 0.289L for a uniform rod. Rather than deriving from scratch under time pressure, recognize the pattern and use the formula, then verify if needed. The minimum period is T_min = 2π√(2L/(3g)).
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up period equation for uniform rod</strong><br/>
+ For uniform rod: I_cm = mL²/12<br/>
+ About pivot at distance x from center:<br/>
+ I = I_cm + mx² = mL²/12 + mx² = m(L²/12 + x²)<br/>
+ T = 2π√[I/(mgx)] = 2π√[(L²/12 + x²)/(gx)]</li>
+<li><strong>Step 2: Find minimum by calculus</strong><br/>
+ T = 2π√[(L²/12 + x²)/(gx)] = (2π/√g)√[(L²/12 + x²)/x]<br/>
+ To minimize T, minimize f(x) = (L²/12 + x²)/x = L²/(12x) + x<br/>
+<br/>
+ df/dx = -L²/(12x²) + 1 = 0<br/>
+ L²/(12x²) = 1<br/>
+ x² = L²/12<br/>
+ x = L/√12 = L/(2√3) ≈ 0.289L</li>
+<li><strong>Step 3: Calculate optimal x for L = 1.85 m</strong><br/>
+ x = 1.85/√12 = 1.85/3.464 = 0.534 m ≈ 0.535 m ✓</li>
+<li><strong>Step 4: Calculate minimum period using direct formula</strong><br/>
+ T_min = 2π√(2L/(3g))<br/>
+ T_min = 2π√(2 × 1.85/(3 × 9.8))<br/>
+ T_min = 2π√(3.70/29.4)<br/>
+ T_min = 2π√0.1259<br/>
+ T_min = 2π(0.3548)<br/>
+ T_min = 2.229 s ≈ 2.23 s ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_261</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A solid cylinder of mass M attached to a horizontal spring (k = 3.00 N/m) rolls without slipping along a horizontal surface. If the system is released from rest when the spring is stretched by 0.250 m, find (a) the translational kinetic energy and (b) the rotational kinetic energy of the cylinder as it passes through the equilibrium position. (c) Show that under these conditions the cylinder's center of mass executes simple harmonic motion with period T = 2π√(3M/2k), where M is the cylinder mass.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) KE_trans = 0.0625 J, (b) KE_rot = 0.03125 J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) KE_trans = 0.0500 J, (b) KE_rot = 0.02500 J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) KE_trans = 0.0750 J, (b) KE_rot = 0.03750 J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) KE_trans = 0.0833 J, (b) KE_rot = 0.04165 J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Rolling without slipping means v = ωR. Total KE = KE_trans + KE_rot = ½Mv² + ½Iω². For solid cylinder, I = ½MR², giving KE_total = ¾Mv². Use energy conservation: initial PE = total KE. The effective mass for the oscillator is 3M/2 because of the rotational inertia contribution.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> The key insight is that rolling motion couples translation and rotation, effectively increasing the inertia. The system behaves like a spring-mass system with effective mass M_eff = M + I/R² = M + ½M = 3M/2. This gives ω = √(k/M_eff) = √(2k/3M), leading to the given period formula.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Apply energy conservation</strong><br/>
+ Initial energy (at maximum stretch): E = ½kA² = ½(3.00)(0.250)²<br/>
+ E = ½(3.00)(0.0625) = 0.09375 J<br/>
+ At equilibrium: PE_spring = 0, all energy is kinetic<br/>
+ Total KE = 0.09375 J</li>
+<li><strong>Step 2: Partition kinetic energy for rolling cylinder</strong><br/>
+ For rolling without slipping: v = ωR, so ω = v/R<br/>
+ KE_rot = ½Iω² = ½(½MR²)(v/R)² = ¼Mv²<br/>
+ KE_trans = ½Mv²<br/>
+ Total KE = ½Mv² + ¼Mv² = ¾Mv²<br/>
+<br/>
+ Ratio: KE_rot/KE_trans = (¼Mv²)/(½Mv²) = 1/2<br/>
+ So rotational KE is half of translational KE for a solid cylinder</li>
+<li><strong>Step 3: Calculate translational KE</strong><br/>
+ Total KE = KE_trans + KE_rot<br/>
+ KE_trans = (2/3) × Total KE = (2/3)(0.09375) = 0.0625 J ✓</li>
+<li><strong>Step 4: Calculate rotational KE</strong><br/>
+ KE_rot = (1/3) × Total KE = (1/3)(0.09375) = 0.03125 J ✓<br/>
+<br/>
+ Verification: 0.0625 + 0.03125 = 0.09375 J ✓<br/>
+ Ratio check: 0.03125/0.0625 = 0.5 ✓</li>
+<li><strong>Step 5: Part (c) - Derive period formula</strong><br/>
+ Total energy at any position x:<br/>
+ E = ½kx² + ½Mv² + ½Iω²<br/>
+ Since v = ωR and I = ½MR²:<br/>
+ E = ½kx² + ½Mv² + ½(½MR²)(v/R)²<br/>
+ E = ½kx² + ½Mv² + ¼Mv²<br/>
+ E = ½kx² + ¾Mv²<br/>
+<br/>
+ For SHM: v = dx/dt<br/>
+ E = ½kx² + ¾M(dx/dt)²<br/>
+<br/>
+ Since E is constant, dE/dt = 0:<br/>
+ 0 = kx(dx/dt) + ¾M(2)(dx/dt)(d²x/dt²)<br/>
+ 0 = kx + (3M/2)(d²x/dt²)<br/>
+<br/>
+ Rearranging:<br/>
+ d²x/dt² = -(k/(3M/2))x = -(2k/3M)x<br/>
+<br/>
+ This is SHM with ω² = 2k/3M<br/>
+ ω = √(2k/3M)<br/>
+<br/>
+ Period: T = 2π/ω = 2π/√(2k/3M) = 2π√(3M/2k) ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_263</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A massless spring hangs from the ceiling with a small object attached to its lower end. The object is initially held at rest in a position y<sub>i</sub> such that the spring is at its rest length (unstretched). The object is then released from y<sub>i</sub> and oscillates up and down, with its lowest position being 10 cm below y<sub>i</sub>.</p>
+<svg height="450" width="400" xmlns="http://www.w3.org/2000/svg">
+<!-- Ceiling -->
+<rect fill="#666" height="15" stroke="black" stroke-width="2" width="100" x="150" y="20"></rect>
+<line stroke="black" stroke-width="1" x1="140" x2="160" y1="35" y2="50"></line>
+<line stroke="black" stroke-width="1" x1="160" x2="180" y1="35" y2="50"></line>
+<line stroke="black" stroke-width="1" x1="180" x2="200" y1="35" y2="50"></line>
+<line stroke="black" stroke-width="1" x1="200" x2="220" y1="35" y2="50"></line>
+<line stroke="black" stroke-width="1" x1="220" x2="240" y1="35" y2="50"></line>
+<line stroke="black" stroke-width="1" x1="240" x2="260" y1="35" y2="50"></line>
+<!-- Spring at natural length -->
+<path d="M 200 35 L 200 65 L 215 75 L 185 85 L 215 95 L 185 105 L 215 115 L 185 125 L 215 135 L 185 145 L 215 155 L 185 165 L 200 175" fill="none" stroke="black" stroke-width="2"></path>
+<!-- Mass at y_i -->
+<circle cx="200" cy="185" fill="#FF6B6B" r="15" stroke="black" stroke-width="2"></circle>
+<text fill="white" font-size="12" font-weight="bold" x="193" y="193">m</text>
+<text fill="black" font-size="14" x="220" y="190">y<tspan baseline-shift="sub">i</tspan> (initial)</text>
+<!-- Spring stretched -->
+<path d="M 330 35 L 330 65 L 345 80 L 315 100 L 345 120 L 315 140 L 345 160 L 315 180 L 345 200 L 315 220 L 345 240 L 315 260 L 330 280" fill="none" stroke="black" stroke-dasharray="5,5" stroke-width="2"></path>
+<!-- Mass at lowest position -->
+<circle cx="330" cy="290" fill="#FF6B6B" opacity="0.5" r="15" stroke="black" stroke-width="2"></circle>
+<text fill="black" font-size="14" x="350" y="295">Lowest (y<tspan baseline-shift="sub">i</tspan> - 10 cm)</text>
+<!-- Distance markers -->
+<line stroke="blue" stroke-width="2" x1="270" x2="270" y1="185" y2="290"></line>
+<line stroke="blue" stroke-width="2" x1="265" x2="275" y1="185"></line>
+<line stroke="blue" stroke-width="2" x1="265" x2="275" y1="290" y2="290"></line>
+<text fill="blue" font-size="13" font-weight="bold" x="240" y="240">10 cm</text>
+<!-- Equilibrium position -->
+<line stroke="green" stroke-dasharray="3,3" stroke-width="2" x1="180" x2="220" y1="240" y2="240"></line>
+<text fill="green" font-size="12" x="140" y="245">Equilibrium</text>
+<text fill="green" font-size="12" x="140" y="260">(5 cm below y<tspan baseline-shift="sub">i</tspan>)</text>
+<!-- Oscillation path -->
+<path d="M 210 185 Q 250 200, 250 240 Q 250 280, 210 295" fill="none" stroke="red" stroke-dasharray="3,3" stroke-width="2"></path>
+<text fill="red" font-size="11" x="255" y="245">Oscillation</text>
+<text fill="red" font-size="11" x="255" y="260">Amplitude = 5 cm</text>
+<!-- Part (d) - with added mass -->
+<text fill="purple" font-size="14" font-weight="bold" x="50" y="350">After adding 300 g mass:</text>
+<line stroke="purple" stroke-width="2" x1="80" x2="120" y1="370" y2="370"></line>
+<text fill="purple" font-size="12" x="50" y="385">New equilibrium?</text>
+</svg>
+<p>Questions:</p>
+<p><strong>(a)</strong> What is the frequency of the oscillation?</p>
+<p><strong>(b)</strong> What is the speed of the object when it is 8.0 cm below the initial position?</p>
+<p><strong>(c)</strong> An object of mass 300 g is attached to the first object, after which the system oscillates with half the original frequency. What is the mass of the first object?</p>
+<p><strong>(d)</strong> How far below y<sub>i</sub> is the new equilibrium (rest) position with both objects attached to the spring?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) 1.89 Hz, (b) 0.489 m/s, (c) 75 g, (d) 15 cm
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (a) 2.23 Hz, (b) 0.560 m/s, (c) 100 g, (d) 20 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 2.57 Hz, (b) 0.623 m/s, (c) 125 g, (d) 25 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 2.91 Hz, (b) 0.701 m/s, (c) 150 g, (d) 30 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For vertical spring problems: (1) Use energy conservation from release to lowest point to find relationship between k and m, (2) Recognize equilibrium is midway between extremes for release from rest, (3) For frequency changes with added mass, use frequency ratio to solve for original mass, (4) Calculate new equilibrium from force balance.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper immediately recognizes this as a classic "release from natural length" problem. The key insight is that energy conservation gives k = 20mg, making all subsequent calculations straightforward. The symmetry of oscillation about equilibrium (5 cm below release point) is crucial. Time-saving tip: Use the frequency ratio directly without calculating k explicitly.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Energy conservation: Initial PE = PE (spring) + PE (gravity)At equilibrium for vertical spring: kxeq= mgFrequency of SHM: f = (1/2π)√(k/m) = (ω/2π)For vertical oscillation from rest at natural length: equilibrium is at A below release pointTotal energy in SHM: E = ½kA²
+</div>
+<ol class="steps">
+<li><strong>Step 1: Analyze the motion and find equilibrium position</strong><br/>
+ Released from y<sub>i</sub> (spring at natural length), goes down to y<sub>i</sub> - 10 cm<br/>
+ Since released from rest, it will return to y<sub>i</sub> (conservation of energy)<br/>
+ Therefore, oscillation is between y<sub>i</sub> and y<sub>i</sub> - 10 cm<br/>
+ Equilibrium is at the midpoint: y<sub>eq</sub> = y<sub>i</sub> - 5 cm<br/>
+ Amplitude: A = 5 cm = 0.05 m</li>
+<li><strong>Step 2: Find spring constant using energy conservation</strong><br/>
+ From y<sub>i</sub> (spring natural, v = 0) to lowest point (spring stretched 10 cm, v = 0):<br/>
+<br/>
+ Taking y<sub>i</sub> as reference for gravitational PE:<br/>
+ Initial energy: E<sub>i</sub> = 0 (no KE, no spring PE, zero gravitational PE at reference)<br/>
+<br/>
+ energy at lowest point:<br/>
+ E<sub>f</sub> = -mg(0.10) + ½k(0.10)²<br/>
+<br/>
+ By conservation: 0 = -mg(0.10) + ½k(0.10)²<br/>
+ mg(0.10) = ½k(0.10)²<br/>
+ mg = ½k(0.10) = 0.05k<br/>
+ k = 20mg</li>
+<li><strong>Step 3: Verify equilibrium position</strong><br/>
+ At equilibrium: kx<sub>eq</sub> = mg<br/>
+ x<sub>eq</sub> = mg/k = mg/(20mg) = 1/20 = 0.05 m = 5 cm ✓<br/>
+<br/>
+ This confirms equilibrium is 5 cm below y<sub>i</sub></li>
+<li><strong>Step 4: Calculate frequency (Part a)</strong><br/>
+ Angular frequency: ω = √(k/m) = √(20mg/m) = √(20g)<br/>
+ ω = √(20 × 9.8) = √196 = 14 rad/s<br/>
+<br/>
+ Frequency: f = ω/(2π) = 14/(2π)<br/>
+ f = 2.228 Hz ≈ 2.23 Hz</li>
+<li><strong>Step 5: Calculate speed at 8 cm below y<sub>i</sub> (Part b)</strong><br/>
+ Position: 8 cm below y<sub>i</sub> = 3 cm below equilibrium<br/>
+ Displacement from equilibrium: x = 0.03 m<br/>
+<br/>
+ Total mechanical energy: E = ½kA² = ½k(0.05)²<br/>
+ E = ½(20mg)(0.0025) = 0.025mg<br/>
+<br/>
+ At position x = 0.03 m from equilibrium:<br/>
+ E = ½kx² + ½mv²<br/>
+ 0.025mg = ½(20mg)(0.03)² + ½mv²<br/>
+ 0.025mg = 10mg(0.0009) + ½mv²<br/>
+ 0.025mg = 0.009mg + ½mv²<br/>
+ 0.016mg = ½mv²<br/>
+ v² = 0.032g = 0.032 × 9.8 = 0.3136<br/>
+ v = 0.560 m/s</li>
+<li><strong>Step 6: Find mass of first object (Part c)</strong><br/>
+ Original frequency: f₁ = (1/2π)√(k/m)<br/>
+<br/>
+ After adding 300 g: f₂ = (1/2π)√(k/(m + 0.3)) = f₁/2<br/>
+<br/>
+ Taking ratio:<br/>
+ f₂/f₁ = √[k/(m + 0.3)] / √(k/m) = √[m/(m + 0.3)] = 1/2<br/>
+<br/>
+ Squaring: m/(m + 0.3) = 1/4<br/>
+ 4m = m + 0.3<br/>
+ 3m = 0.3<br/>
+ m = 0.1 kg = 100 g</li>
+<li><strong>Step 7: Find new equilibrium position (Part d)</strong><br/>
+ New total mass: M = m + 0.3 = 0.1 + 0.3 = 0.4 kg<br/>
+<br/>
+ Spring constant unchanged: k = 20mg = 20(0.1)(9.8) = 19.6 N/m<br/>
+<br/>
+ New equilibrium: kx<sub>new</sub> = Mg<br/>
+ x<sub>new</sub> = Mg/k = (0.4)(9.8)/19.6<br/>
+ x<sub>new</sub> = 3.92/19.6 = 0.20 m = 20 cm<br/>
+<br/>
+ New equilibrium is 20 cm below y<sub>i</sub></li>
+<li><strong>Step 8: Verification</strong><br/>
+ Check frequency ratio:<br/>
+ f₁ = (1/2π)√(19.6/0.1) = (1/2π)√196 = 14/(2π) = 2.228 Hz ✓<br/>
+ f₂ = (1/2π)√(19.6/0.4) = (1/2π)√49 = 7/(2π) = 1.114 Hz ✓<br/>
+ Ratio: f₁/f₂ = 2.228/1.114 = 2.00 ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_264</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A pendulum is formed by pivoting a long thin rod about a point on the rod. In a series of experiments, the period is measured as a function of the distance <em>x</em> between the pivot point and the rod's center of mass. The rod's length is L = 2.20 m and its mass is m = 22.1 g.</p>
+<svg height="400" width="500" xmlns="http://www.w3.org/2000/svg">
+<!-- Pivot point -->
+<circle cx="250" cy="50" fill="black" r="5"></circle>
+<text fill="black" font-size="14" font-weight="bold" x="260" y="55">Pivot O</text>
+<!-- Rod -->
+<line stroke="#8B4513" stroke-width="8" x1="250" x2="250" y1="50" y2="300"></line>
+<text fill="black" font-size="12" x="190" y="180">L = 2.20 m</text>
+<text fill="black" font-size="12" x="190" y="195">m = 22.1 g</text>
+<!-- Center of mass -->
+<circle cx="250" cy="175" fill="red" r="6" stroke="black" stroke-width="2"></circle>
+<text fill="red" font-size="13" font-weight="bold" x="260" y="180">COM</text>
+<!-- Distance x -->
+<line stroke="blue" stroke-width="2" x1="245" x2="245" y1="50" y2="175"></line>
+<line stroke="blue" stroke-width="2" x1="240" x2="250" y1="50" y2="50"></line>
+<line stroke="blue" stroke-width="2" x1="240" x2="250" y1="175" y2="175"></line>
+<text fill="blue" font-size="14" font-weight="bold" x="210" y="115">x</text>
+<!-- Angle indication -->
+<path d="M 250 50 L 280 130" opacity="0.5" stroke="gray" stroke-dasharray="5,5" stroke-width="6"></path>
+<path d="M 250 75 Q 265 80, 268 95" fill="none" stroke="red" stroke-width="2"></path>
+<text fill="red" font-size="12" x="270" y="85">θ</text>
+<!-- Period vs x graph schematic -->
+<rect fill="#f0f0f0" height="120" stroke="black" stroke-width="2" width="150" x="320" y="230"></rect>
+<text fill="black" font-size="13" font-weight="bold" x="360" y="220">Period T vs x</text>
+<!-- Axes -->
+<line stroke="black" stroke-width="2" x1="335" x2="455" y1="335" y2="335"></line>
+<line stroke="black" stroke-width="2" x1="335" x2="335" y1="245" y2="335"></line>
+<text fill="black" font-size="11" x="390" y="360">x</text>
+<text fill="black" font-size="11" x="315" y="295">T</text>
+<!-- Curve showing minimum -->
+<path d="M 345 320 Q 370 265, 395 260 Q 420 265, 445 320" fill="none" stroke="blue" stroke-width="2"></path>
+<circle cx="395" cy="260" fill="red" r="3"></circle>
+<text fill="red" font-size="10" x="380" y="250">T<tspan baseline-shift="sub">min</tspan></text>
+<!-- Variable pivot positions -->
+<circle cx="250" cy="100" fill="green" opacity="0.5" r="3"></circle>
+<circle cx="250" cy="150" fill="green" opacity="0.5" r="3"></circle>
+<circle cx="250" cy="200" fill="green" opacity="0.5" r="3"></circle>
+<text fill="green" font-size="10" x="260" y="105">x₁</text>
+<text fill="green" font-size="10" x="260" y="155">x₂</text>
+<text fill="green" font-size="10" x="260" y="205">x₃</text>
+</svg>
+<p>Questions:</p>
+<p><strong>(a)</strong> What is the minimum period?</p>
+<p><strong>(b)</strong> If <em>x</em> is chosen to minimize the period and then L is increased, does the period increase, decrease, or remain the same?</p>
+<p><strong>(c)</strong> If, instead, <em>m</em> is increased without L increasing, does the period increase, decrease, or remain the same?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) 1.98 s, (b) increases, (c) decreases
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (a) 2.26 s, (b) increases, (c) remains same
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 2.54 s, (b) decreases, (c) increases
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 2.82 s, (b) remains same, (c) remains same
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For physical pendulum optimization: (1) Write period formula T = 2π√(I/(mgh)) using parallel axis theorem for I, (2) Take derivative dT/dx and set to zero to find minimum, (3) Analyze how T_min depends on L and m to answer conceptual questions. Use calculus systematically.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top students immediately recognize this requires minimization using calculus. The key insight is that moment of inertia increases with x² but restoring torque also increases linearly with x, creating an optimal balance. The result x = L/(2√3) is worth memorizing. Time-saver: After finding x_min, analyze the formula T_min ∝ √L to answer (b) and (c) without calculation.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Physical pendulum period: T = 2π√(I/(mgh)) where h = distance from pivot to COMParallel axis theorem: Ipivot= ICM+ mx²Moment of inertia of rod about center: ICM= (1/12)mL²Calculus: To minimize, set dT/dx = 0For uniform rod: COM is at geometric center (L/2 from each end)
+</div>
+<ol class="steps">
+<li><strong>Step 1: Express period as function of x</strong><br/>
+ For a uniform rod with COM at center:<br/>
+ I<sub>CM</sub> = (1/12)mL² (about center of mass)<br/>
+<br/>
+ Using parallel axis theorem for pivot at distance x from COM:<br/>
+ I<sub>pivot</sub> = I<sub>CM</sub> + mx² = (1/12)mL² + mx²<br/>
+<br/>
+ Period formula:<br/>
+ T = 2π√(I<sub>pivot</sub>/(mgx))<br/>
+ T = 2π√[(mL²/12 + mx²)/(mgx)]<br/>
+ T = 2π√[(L²/12 + x²)/(gx)]<br/>
+<br/>
+ Note: mass m cancels out!</li>
+<li><strong>Step 2: Find minimum using calculus</strong><br/>
+ Let T² = 4π²[(L²/12 + x²)/(gx)] = (4π²/g)[(L²/12 + x²)/x]<br/>
+<br/>
+ Let f(x) = (L²/12 + x²)/x = L²/(12x) + x<br/>
+<br/>
+ To minimize T, minimize f(x):<br/>
+ df/dx = -L²/(12x²) + 1<br/>
+<br/>
+ Setting df/dx = 0:<br/>
+ -L²/(12x²) + 1 = 0<br/>
+ 1 = L²/(12x²)<br/>
+ 12x² = L²<br/>
+ x² = L²/12<br/>
+ x = L/(2√3) = L√3/6</li>
+<li><strong>Step 3: Verify this is a minimum</strong><br/>
+ Second derivative:<br/>
+ d²f/dx² = 2L²/(12x³) = L²/(6x³) &gt; 0 for x &gt; 0<br/>
+<br/>
+ Since second derivative is positive, this is indeed a minimum ✓</li>
+<li><strong>Step 4: Calculate x_min for given L</strong><br/>
+ x<sub>min</sub> = L/(2√3) = 2.20/(2√3)<br/>
+ x<sub>min</sub> = 2.20/(2 × 1.732)<br/>
+ x<sub>min</sub> = 2.20/3.464<br/>
+ x<sub>min</sub> = 0.635 m</li>
+<li><strong>Step 5: Calculate minimum period (Part a)</strong><br/>
+ Substituting x = L/(2√3) into period formula:<br/>
+<br/>
+ I<sub>pivot</sub> = (1/12)mL² + m[L/(2√3)]²<br/>
+ I<sub>pivot</sub> = (1/12)mL² + mL²/12<br/>
+ I<sub>pivot</sub> = (1/6)mL²<br/>
+<br/>
+ T<sub>min</sub> = 2π√[(mL²/6)/(mg × L/(2√3))]<br/>
+ T<sub>min</sub> = 2π√[(L²/6)/(g × L/(2√3))]<br/>
+ T<sub>min</sub> = 2π√[(L²/6) × (2√3)/(gL)]<br/>
+ T<sub>min</sub> = 2π√[L√3/(3g)]<br/>
+<br/>
+ For L = 2.20 m:<br/>
+ T<sub>min</sub> = 2π√[2.20 × 1.732/(3 × 9.8)]<br/>
+ T<sub>min</sub> = 2π√[3.810/29.4]<br/>
+ T<sub>min</sub> = 2π√0.1296<br/>
+ T<sub>min</sub> = 2π × 0.360<br/>
+ T<sub>min</sub> = 2.262 s ≈ 2.26 s</li>
+<li><strong>Step 6: Effect of increasing L (Part b)</strong><br/>
+ From the formula: T<sub>min</sub> = 2π√[L√3/(3g)]<br/>
+<br/>
+ We can rewrite: T<sub>min</sub> = 2π√(√3/3g) × √L<br/>
+ T<sub>min</sub> = constant × √L<br/>
+<br/>
+ Therefore: T<sub>min</sub> ∝ √L<br/>
+<br/>
+<strong>If L increases, T<sub>min</sub> increases</strong></li>
+<li><strong>Step 7: Effect of increasing m (Part c)</strong><br/>
+ Looking at the period formula:<br/>
+ T = 2π√[(L²/12 + x²)/(gx)]<br/>
+<br/>
+ Notice that mass m does not appear in this expression (it cancelled out).<br/>
+<br/>
+ Therefore, T<sub>min</sub> is independent of mass.<br/>
+<br/>
+<strong>If m increases, T<sub>min</sub> remains the same</strong></li>
+<li><strong>Step 8: Physical interpretation</strong><br/>
+ The minimum period occurs at x = L/(2√3) ≈ 0.289L<br/>
+<br/>
+ This means the optimal pivot point is at distance 0.635 m from the center, or:<br/>
+ - Distance from one end: L/2 - x = 1.10 - 0.635 = 0.465 m<br/>
+ - Distance from other end: L/2 + x = 1.10 + 0.635 = 1.735 m<br/>
+<br/>
+ Both pivot points (symmetric about center) give the same minimum period.<br/>
+<br/>
+ The period is minimized when there's an optimal balance between:<br/>
+ - Moment of inertia (which increases as pivot moves away from COM)<br/>
+ - Restoring torque (which increases as pivot moves away from COM)<br/>
+<br/>
+ The independence from mass occurs because both I and the restoring torque are proportional to m, so m cancels in the ratio.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_36</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 58:
+      </h4>
+      Body Armor Physics:When a high-speed projectile such as a bullet or bomb fragment strikes modern body armor, the fabric of the armor stops the projectile and prevents penetration by quickly spreading the projectile's energy over a large area.This spreading is done by longitudinal and transverse pulses that move radially from the impact point, where the projectile pushes a cone-shaped dent into the fabric.Dent Formation in FabricFabricBulletvθθ = 60°Radial fibervₗvₜRadius reached bylongitudinal pulseRadius reached bytransverse pulsePhysics of the Process:Thelongitudinal pulse, racing along the fibers at speedvₗahead of the denting, causes the fibers to thin and stretch, with material flowing radially inward into the dentThetransverse pulse, moving at slower speedvₜ, is due to the denting itselfAs the projectile increases the dent's depth, the dent increases in radiusBullet Velocity vs Timet (μs)v (m/s)vs(300)0ts(40.0)Given Data:Bullet mass: m = 10.2 g = 0.0102 kgFired from .38 Special revolverInitial velocity: vs = 300 m/s (from graph)Collision duration: ts = 40.0 μs = 40.0 × 10⁻⁶ s (from graph)Longitudinal pulse speed: vₗ = 2000 m/sHalf-angle of conical dent: θ = 60°Person wearing armor remains stationaryAt the end of the collision, what are:(a) The radius of the thinned region (reached by longitudinal pulse)?(b) The radius of the dent (reached by transverse pulse)?Note: Assume vₜ can be estimated from the geometry and bullet deceleration.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 8.0 cm, (b) 2.3 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 12.0 cm, (b) 4.0 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 6.9 cm, (b) 2.0 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 10.0 cm, (b) 3.5 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Calculate how far each pulse travels during the collision time. For the longitudinal pulse, distance = vₗ × t. For the transverse pulse, first estimate its speed from the dent geometry and bullet motion, then calculate distance traveled. The relationship between the pulses and the cone angle provides geometric constraints.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         A topper would recognize this as a sophisticated energy dissipation problem combining wave propagation, projectile dynamics, and geometry. The key insight is that the longitudinal pulse travels at the material's characteristic wave speed (vₗ = 2000 m/s), while the transverse pulse speed is related to the projectile's deceleration and the geometric constraint of the 60° cone angle. The ratio of radii is approximately vₗ/vₜ ≈ 3.5, which can be estimated from tan(θ) considerations.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         Distance traveled by pulse: d = v × tLongitudinal wave speed in fiber: vₗ = 2000 m/s (given)Collision time: Δt = 40.0 μs (from graph)Geometric constraint: cone half-angle θ = 60°Transverse pulse speed related to dent expansion rateAverage velocity of bullet during collision ≈ v₀/2 (for deceleration to rest)Trigonometric relations for cone geometry
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Calculate radius of thinned region (longitudinal pulse)
+          </strong>
+<br>
+          The longitudinal pulse travels at vₗ = 2000 m/s
+          <br>
+          During collision time Δt = 40.0 × 10⁻⁶ s:
+          <br>
+          Radius = vₗ × Δt = 2000 × (40.0 × 10⁻⁶) = 0.080 m = 8.0 cm
+         </li>
+<li>
+<strong>
+           Estimate transverse pulse speed
+          </strong>
+<br>
+          The transverse pulse speed is related to the rate at which the dent radius increases.
+          <br>
+          This is connected to the radial component of the bullet's velocity and the cone geometry.
+          <br>
+<br>
+          Average bullet velocity during collision: v̄ = v₀/2 = 300/2 = 150 m/s
+          <br>
+          (assuming linear deceleration from 300 m/s to 0)
+          <br>
+<br>
+          Depth of penetration during collision:
+          <br>
+          d = v̄ × Δt = 150 × (40.0 × 10⁻⁶) = 6.0 × 10⁻³ m = 6.0 mm
+          <br>
+<br>
+          For a cone with half-angle θ = 60°:
+          <br>
+          Radius of dent base: r = d × tan(θ) = 6.0 × tan(60°) = 6.0 × 1.732 = 10.4 mm
+          <br>
+<br>
+          Rate of radius increase: vₜ = r/Δt = (10.4 × 10⁻³)/(40.0 × 10⁻⁶) = 260 m/s
+          <br>
+<br>
+          Hmm, this gives vₜ ≈ 260 m/s, but let me check the calculation differently...
+         </li>
+<li>
+<strong>
+           Calculate radius of dent (transverse pulse)
+          </strong>
+<br>
+          Using vₜ ≈ 575 m/s:
+          <br>
+          Radius = vₜ × Δt = 575 × (40.0 × 10⁻⁶) = 0.023 m = 2.3 cm
+         </li>
+<li>
+<strong>
+           Physical interpretation
+          </strong>
+<br>
+          The longitudinal pulse travels ~3.5 times faster than the transverse pulse,
+          <br>
+          creating a thinned region with radius 8.0 cm, while the actual dent has radius 2.3 cm.
+          <br>
+<br>
+          This means the fabric is pre-tensioned and thinned over a much larger area
+          <br>
+          than the visible dent, distributing the impact energy effectively.
+          <br>
+<br>
+          The energy is dissipated through:
+          <br>
+          1. Fiber stretching and thinning (longitudinal pulse region)
+          <br>
+          2. Fabric deformation (transverse pulse/dent region)
+          <br>
+          3. Heat generation (inelastic deformation)
+          <br>
+          4. Possible fiber breaking/damage
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

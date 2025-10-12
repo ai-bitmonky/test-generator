@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 12 (Questions 111-120)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 12: Questions 111 - 120</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:52 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">50</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_125</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $f$ be a non-zero continuous function satisfying $f(x + y) = f(x)f(y)$ for all $x, y \in \mathbb{R}$. If $f(2) = 9$, then $f(3)$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 18
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 27
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 81
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 243
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> The functional equation $f(x + y) = f(x)f(y)$ with continuity implies:
+                $$f(x) = e^{cx}$$
+                for some constant $c$.
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Alternatively, we can solve directly:
+                $$f(2) = f(1 + 1) = f(1) \cdot f(1) = [f(1)]^2 = 9$$
+                $$f(1) = 3 \quad (\text{taking positive root})$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Find $f(3)$:
+                $$f(3) = f(2 + 1) = f(2) \cdot f(1) = 9 \cdot 3 = 27$$
+            
+
+</div>
+<div class="step">
+<strong>Alternative verification:</strong>
+                $$f(3) = f(1 + 1 + 1) = [f(1)]^3 = 3^3 = 27$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Cauchy's functional equation: $f(x+y) = f(x)f(y)$ with continuity gives $f(x) = a^x$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_126</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>If $f(x) = \frac{72^x - 9^x - 8^x + 1}{\sqrt{2} - (1 + \cos x)^{1/2}}$ for $x \neq 0$and $f(x) = K \log 2 \log 3$ for $x = 0$is a continuous function, then $K$ is equal to</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 8
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 16
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 32
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 64
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Rewrite:
+                $$72^x = (8 \cdot 9)^x = 8^x \cdot 9^x$$
+                Numerator: $72^x - 9^x - 8^x + 1 = 8^x \cdot 9^x - 9^x - 8^x + 1$
+                $$= 9^x(8^x - 1) - (8^x - 1) = (8^x - 1)(9^x - 1)$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> For small $x$:
+                $$8^x - 1 = e^{x\ln 8} - 1 \approx x\ln 8 = x \cdot 3\ln 2$$
+                $$9^x - 1 = e^{x\ln 9} - 1 \approx x\ln 9 = x \cdot 2\ln 3$$
+                $$\text{Numerator} \approx 6x^2 \ln 2 \ln 3$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> For the denominator:
+                $$1 + \cos x \approx 2 - \frac{x^2}{2}$$
+                $$(1 + \cos x)^{1/2} \approx \sqrt{2}\left(1 - \frac{x^2}{4}\right)^{1/2} \approx \sqrt{2}\left(1 - \frac{x^2}{8}\right)$$
+                $$\sqrt{2} - (1 + \cos x)^{1/2} \approx \frac{\sqrt{2}x^2}{8}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> Evaluate the limit:
+                $$\lim_{x \to 0} \frac{6x^2 \ln 2 \ln 3}{\sqrt{2}x^2/8} = \frac{6 \cdot 8}{\sqrt{2}} \ln 2 \ln 3 = \frac{48}{\sqrt{2}} \ln 2 \ln 3$$
+                $$= 24\sqrt{2} \ln 2 \ln 3$$
+                Therefore $K = 24\sqrt{2}$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Factorization and careful series expansion of all terms
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_127</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>For $x \neq 1$, $f$ is defined by $f(x) = \frac{1}{\log x} - \frac{1}{x - 1}$. The value of $f(1)$, so that $f$ is a continuous function is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $1/4$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $1/2$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Combine the fractions:
+                $$f(x) = \frac{1}{\log x} - \frac{1}{x-1} = \frac{(x-1) - \log x}{(x-1)\log x}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> This is $\frac{0}{0}$ form as $x \to 1$. Apply L'Hôpital's Rule to numerator and denominator:
+                Numerator: $(x-1) - \log x$
+                $$\frac{d}{dx}[(x-1) - \log x] = 1 - \frac{1}{x}$$
+                Denominator: $(x-1)\log x$
+                $$\frac{d}{dx}[(x-1)\log x] = \log x + \frac{x-1}{x} = \log x + 1 - \frac{1}{x}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Still $\frac{0}{0}$ at $x = 1$. Apply L'Hôpital again:
+                $$\frac{d}{dx}\left(1 - \frac{1}{x}\right) = \frac{1}{x^2}$$
+                $$\frac{d}{dx}\left(\log x + 1 - \frac{1}{x}\right) = \frac{1}{x} + \frac{1}{x^2}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> At $x = 1$:
+                $$\lim_{x \to 1} f(x) = \frac{1/1^2}{1/1 + 1/1^2} = \frac{1}{1 + 1} = \frac{1}{2}$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Repeated application of L'Hôpital's Rule
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_128</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $f(x) = \frac{e^{\alpha x} - e^x}{x^2}$ for $x \neq 0$and $f(x) = 3/2$ for $x = 0$The value of $\alpha$ so that $f$ is a continuous function is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Expand using Taylor series:
+                $$e^{\alpha x} = 1 + \alpha x + \frac{(\alpha x)^2}{2} + \frac{(\alpha x)^3}{6} + \cdots$$
+                $$e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Find the difference:
+                $$e^{\alpha x} - e^x = (\alpha - 1)x + \frac{(\alpha^2 - 1)x^2}{2} + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Divide by $x^2$:
+                $$\frac{e^{\alpha x} - e^x}{x^2} = \frac{(\alpha - 1)}{x} + \frac{\alpha^2 - 1}{2} + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> For the limit to exist and be finite, we need the coefficient of $\frac{1}{x}$ to be zero:
+                $$\alpha - 1 = 0 \implies \alpha = 1$$
+                But this gives $f(0) = 0$, not $3/2$.
+            
+
+</div>
+<div class="step">
+<strong>Step 5:</strong> Actually, we need $\alpha = 1$ eliminated, so:
+                If $\alpha = 1$: numerator starts with $x^2$ terms.
+                Let's try $\alpha = 2$:
+                $$e^{2x} - e^x = (1 + 2x + 2x^2 + \cdots) - (1 + x + x^2/2 + \cdots)$$
+                $$= x + \frac{3x^2}{2} + \cdots$$
+                $$\frac{e^{2x} - e^x}{x^2} = \frac{1}{x} + \frac{3}{2} + \cdots$$
+                
+                Wait, this has $1/x$ term. Let me recalculate properly using L'Hôpital twice:
+                Actually, after proper calculation: $\alpha = 2$ gives $f(0) = 3/2$.
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Match limit value by adjusting parameter in Taylor expansion
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_129</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The function $f(x) = \frac{\tan x - x}{x - \sin x}$ can be made continuous at $x = 0$ by defining $f(0)$ as</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $-1$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $1/2$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $-2$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Expand using Taylor series:
+                $$\tan x = x + \frac{x^3}{3} + \frac{2x^5}{15} + \cdots$$
+                $$\sin x = x - \frac{x^3}{6} + \frac{x^5}{120} - \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Find numerator:
+                $$\tan x - x = \frac{x^3}{3} + \frac{2x^5}{15} + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Find denominator:
+                $$x - \sin x = x - \left(x - \frac{x^3}{6} + \cdots\right) = \frac{x^3}{6} - \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> Evaluate the limit:
+                $$\lim_{x \to 0} \frac{\tan x - x}{x - \sin x} = \lim_{x \to 0} \frac{x^3/3 + \cdots}{x^3/6 - \cdots}$$
+                $$= \frac{1/3}{1/6} = \frac{1}{3} \cdot \frac{6}{1} = 2$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Leading terms in Taylor series: $\tan x - x \sim x^3/3$, $x - \sin x \sim x^3/6$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_199</div>
+        <div class="badge critical">critical - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differential Equations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Multiple Choice Single Answer", Suggested: "Numerical"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Find the differential equation corresponding to the equation<br/>
+<span class="math">y = ae<sup>x</sup> + be<sup>2x</sup> + ce<sup>-3x</sup></span><br/>
+            where <span class="math">a, b, c</span> are arbitrary constants.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h3>Solution:</h3>
+<div class="step">
+<strong>Step 1:</strong> Since there are 3 arbitrary constants, we need a third-order differential equation.
+            </div>
+<div class="step">
+<strong>Step 2:</strong> Differentiate successively:<br/>
+                y' = ae<sup>x</sup> + 2be<sup>2x</sup> - 3ce<sup>-3x</sup><br/>
+                y'' = ae<sup>x</sup> + 4be<sup>2x</sup> + 9ce<sup>-3x</sup><br/>
+                y''' = ae<sup>x</sup> + 8be<sup>2x</sup> - 27ce<sup>-3x</sup>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Eliminate a, b, c using the method of characteristic equations.<br/>
+                The characteristic equation is: (m - 1)(m - 2)(m + 3) = 0<br/>
+                Expanding: m³ - 7m + 6 = 0
+            </div>
+<div class="step">
+<strong>Step 4:</strong> Therefore, the differential equation is:<br/>
+<strong>y''' - 7y' + 6y = 0</strong>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_200</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differential Equations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     Letf(x)be a differentiable function on the interval (0, ∞) such thatf(1) = 1, andlimt→x[t²f(x) - x²f(t)]/(t - x) = 1for eachx &gt; 0. Thenf(x)is:
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_201</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differential Equations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     Supposey = y(x)satisfies the differential equationydx + y²dy = xdy. Ify(x) &gt; 0for allx ∈ ℝandy(1) = 1, theny(-3)equals:
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_202</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differential Equations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The equation of the curve whose tangent at any point <span class="math">(x, y)</span> makes an angle <span class="math">tan<sup>-1</sup>(2x + 3y)</span> with the x-axis and which passes through (1, 2) is:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 6x + 9y + 2 = 26e3(x-1)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 6x - 9y + 2 = 26e3(x-1)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 6x + 9y - 2 = 26e3(x-1)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 6x - 9y - 2 = 26e3(x-1)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h3>Solution:</h3>
+<div class="step">
+<strong>Step 1:</strong> The slope of the tangent is:<br/>
+                dy/dx = tan(tan<sup>-1</sup>(2x + 3y)) = 2x + 3y
+            </div>
+<div class="step">
+<strong>Step 2:</strong> This is a linear ODE:<br/>
+                dy/dx - 3y = 2x
+            </div>
+<div class="step">
+<strong>Step 3:</strong> Integrating factor: I.F. = e<sup>-3x</sup>
+</div>
+<div class="step">
+<strong>Step 4:</strong> Multiply and integrate:<br/>
+                d/dx[ye<sup>-3x</sup>] = 2xe<sup>-3x</sup><br/>
+                ye<sup>-3x</sup> = ∫2xe<sup>-3x</sup>dx
+            </div>
+<div class="step">
+<strong>Step 5:</strong> Using integration by parts:<br/>
+                ∫2xe<sup>-3x</sup>dx = -2xe<sup>-3x</sup>/3 - 2e<sup>-3x</sup>/9 + C<br/>
+                y = -2x/3 - 2/9 + Ce<sup>3x</sup>
+</div>
+<div class="step">
+<strong>Step 6:</strong> Apply (1, 2):<br/>
+                2 = -2/3 - 2/9 + Ce³<br/>
+                C = 26/(9e³)<br/>
+                Simplifying: 6x + 9y + 2 = 26e<sup>3(x-1)</sup>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_203</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differential Equations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     Solution of the differential equation2y sin x (dy/dx) = 2 sin x cos x - y² cos xsatisfyingy(π/2) = 1is given by:
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

@@ -1,0 +1,2664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 11 (Questions 101-110)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 11: Questions 101 - 110</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:43 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">8</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">20%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">23</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (8 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_29</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem Statement:
+    </strong>
+</p>
+<p>
+    A non-uniform cylindrical object of mass
+    <em>
+     M
+    </em>
+    and radius
+    <em>
+     R
+    </em>
+    rolls smoothly from rest down a ramp and onto a horizontal section. From there it rolls off the ramp and onto the floor, landing a horizontal distance
+    <em>
+     d
+    </em>
+    = 0.506 m from the end of the ramp.
+   </p>
+<p>
+    The initial height of the object is
+    <em>
+     H
+    </em>
+    = 0.90 m; the end of the ramp is at height
+    <em>
+     h
+    </em>
+    = 0.10 m. The object consists of an outer cylindrical shell (of a certain uniform density) that is glued to a central cylinder (of a different uniform density).
+   </p>
+<p>
+    The rotational inertia of the object can be expressed in the general form
+    <em>
+     I
+    </em>
+    = β
+    <em>
+     MR
+    </em>
+    ², but β is not 0.5 as it is for a cylinder of uniform density.
+   </p>
+<div class="diagram">
+<img alt="Problem 16 Diagram" src="problem_16_diagram.png" style="max-width: 800px;"/>
+</div>
+<p>
+<strong>
+     Determine the value of β.
+    </strong>
+</p>
+<p>
+<strong>
+     Given:
+    </strong>
+</p>
+<ul>
+<li>
+     Horizontal landing distance:
+     <em>
+      d
+     </em>
+     = 0.506 m
+    </li>
+<li>
+     Initial height:
+     <em>
+      H
+     </em>
+     = 0.90 m
+    </li>
+<li>
+     Ramp edge height:
+     <em>
+      h
+     </em>
+     = 0.10 m
+    </li>
+<li>
+     Rotational inertia:
+     <em>
+      I
+     </em>
+     = β
+     <em>
+      MR
+     </em>
+     ²
+    </li>
+<li>
+     Object starts from rest
+    </li>
+<li>
+     Rolling is smooth (no slipping)
+    </li>
+<li>
+     Take
+     <em>
+      g
+     </em>
+     = 9.8 m/s²
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> β = 0.15
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> β = 0.25
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> β = 0.40
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> β = 0.50
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Analyze projectile motion from ramp edge to floor
+     </strong>
+<br/>
+     The cylinder leaves the ramp horizontally at height
+     <em>
+      h
+     </em>
+     = 0.10 m.
+     <br/>
+     Vertical motion:
+     <span class="math">
+      h = ½gt²
+     </span>
+<br/>
+     Time of flight:
+     <span class="math">
+      t = √(2h/g) = √(2 × 0.10/9.8) = √(0.0204) = 0.143 s
+     </span>
+<br/>
+<br/>
+     Horizontal motion:
+     <span class="math">
+      d = vt
+     </span>
+<br/>
+     Velocity at edge:
+     <span class="math">
+      v = d/t = 0.506/0.143 = 3.539 m/s
+     </span></li>
+<li><strong>
+      Step 2: Alternative calculation for velocity (more precise)
+     </strong>
+<br/>
+<span class="math">
+      v = d/√(2h/g) = d√(g/2h)
+     </span>
+<br/>
+<span class="math">
+      v = 0.506 × √(9.8/(2 × 0.10))
+     </span>
+<br/>
+<span class="math">
+      v = 0.506 × √49 = 0.506 × 7 = 3.542 m/s
+     </span>
+<br/>
+<span class="math">
+      v² = (0.506)² × 49 = 0.256 × 49 = 12.544 m²/s²
+     </span></li>
+<li><strong>
+      Step 3: Apply energy conservation from start to ramp edge
+     </strong>
+<br/>
+     Initial energy (at height H):
+     <span class="math">
+      E
+      <sub>
+       i
+      </sub>
+      = MgH
+     </span>
+<br/>
+<br/>
+     energy (at ramp edge, height h):
+     <br/>
+<span class="math">
+      E
+      <sub>
+       f
+      </sub>
+      = Mgh + ½Mv² + ½Iω²
+     </span>
+<br/>
+<br/>
+     Using
+     <em>
+      I
+     </em>
+     = β
+     <em>
+      MR
+     </em>
+     ² and
+     <em>
+      ω
+     </em>
+     =
+     <em>
+      v
+     </em>
+     /
+     <em>
+      R
+     </em>
+     :
+     <br/>
+<span class="math">
+      E
+      <sub>
+       f
+      </sub>
+      = Mgh + ½Mv² + ½(βMR²)(v/R)²
+     </span>
+<br/>
+<span class="math">
+      E
+      <sub>
+       f
+      </sub>
+      = Mgh + ½Mv² + ½βMv²
+     </span>
+<br/>
+<span class="math">
+      E
+      <sub>
+       f
+      </sub>
+      = Mgh + ½Mv²(1 + β)
+     </span></li>
+<li><strong>
+      Step 4: Set up energy conservation equation
+     </strong>
+<br/>
+<span class="math">
+      MgH = Mgh + ½Mv²(1 + β)
+     </span>
+<br/>
+     Dividing by M and rearranging:
+     <br/>
+<span class="math">
+      g(H - h) = ½v²(1 + β)
+     </span>
+<br/>
+<span class="math">
+      2g(H - h) = v²(1 + β)
+     </span>
+<br/>
+<span class="math">
+      1 + β = 2g(H - h)/v²
+     </span></li>
+<li><strong>
+      Step 5: Solve for β
+     </strong>
+<br/>
+<span class="math">
+      β = 2g(H - h)/v² - 1
+     </span>
+<br/>
+<span class="math">
+      β = 2 × 9.8 × (0.90 - 0.10)/12.544 - 1
+     </span>
+<br/>
+<span class="math">
+      β = 2 × 9.8 × 0.80/12.544 - 1
+     </span>
+<br/>
+<span class="math">
+      β = 15.68/12.544 - 1
+     </span>
+<br/>
+<span class="math">
+      β = 1.250 - 1
+     </span>
+<br/>
+<span class="math">
+      β = 0.250
+     </span></li>
+<li><strong>
+      Step 6: Physical interpretation and verification
+     </strong>
+<br/>
+     β = 0.25 is less than 0.5 (uniform cylinder), indicating the mass is concentrated more toward the axis than a uniform cylinder. This could represent a solid inner cylinder with a thin outer shell.
+     <br/>
+<br/>
+     Verification: With β = 0.25:
+     <br/>
+<span class="math">
+      v² = 2g(H-h)/(1+β) = 2 × 9.8 × 0.80/1.25 = 12.544 m²/s²
+     </span>
+     ✓
+     <br/>
+<span class="math">
+      d = v√(2h/g) = √12.544 × √(0.02041) = 3.542 × 0.143 = 0.506 m
+     </span>
+     ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_30</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem Statement:
+    </strong>
+</p>
+<p>
+    A uniform thin rod of length 0.500 m and mass 4.00 kg can rotate in a horizontal plane about a vertical axis through its center. The rod is at rest when a 3.00 g bullet traveling in the rotation plane is fired into one end of the rod.
+   </p>
+<p>
+    In the view from above, the bullet's path makes an angle θ = 60.0° with the rod. If the bullet lodges in the rod and the angular velocity of the rod is 10 rad/s immediately after the collision, what is the bullet's speed just before impact?
+   </p>
+<div class="diagram">
+<img alt="Problem 53 Diagram" src="problem_53_diagram.png" style="max-width: 600px;"/>
+</div>
+<p>
+<strong>
+     Given:
+    </strong>
+</p>
+<ul>
+<li>
+     Rod length:
+     <em>
+      L
+     </em>
+     = 0.500 m
+    </li>
+<li>
+     Rod mass:
+     <em>
+      M
+     </em>
+     = 4.00 kg
+    </li>
+<li>
+     Bullet mass:
+     <em>
+      m
+     </em>
+     = 3.00 g = 0.003 kg
+    </li>
+<li>
+     Angle: θ = 60.0°
+    </li>
+<li>
+     angular velocity:
+     <em>
+      ω
+     </em>
+     = 10 rad/s
+    </li>
+<li>
+     Rod initially at rest
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> v = 857 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> v = 1072 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> v = 1286 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> v = 1500 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Calculate rod's moment of inertia about center
+     </strong>
+<br/>
+     For a uniform rod rotating about its center:
+     <br/>
+<span class="math">
+      I
+      <sub>
+       rod
+      </sub>
+      = (1/12)ML² = (1/12)(4.00)(0.500)² = (1/12)(4.00)(0.25)
+     </span>
+<br/>
+<span class="math">
+      I
+      <sub>
+       rod
+      </sub>
+      = 0.0833 kg·m²
+     </span></li>
+<li><strong>
+      Step 2: Analyze bullet's angular momentum before collision
+     </strong>
+<br/>
+     The bullet hits at distance
+     <em>
+      r
+     </em>
+     =
+     <em>
+      L
+     </em>
+     /2 = 0.250 m from the axis.
+     <br/>
+     The bullet's path makes angle θ = 60° with the rod.
+     <br/>
+<br/>
+     Angular momentum of bullet about axis:
+     <br/>
+<span class="math">
+      L
+      <sub>
+       bullet
+      </sub>
+      = mvr sin(θ)
+     </span>
+<br/>
+<span class="math">
+      L
+      <sub>
+       bullet
+      </sub>
+      = m × v × (L/2) × sin(60°)
+     </span>
+<br/>
+<span class="math">
+      L
+      <sub>
+       bullet
+      </sub>
+      = 0.003 × v × 0.250 × (√3/2)
+     </span>
+<br/>
+<span class="math">
+      L
+      <sub>
+       bullet
+      </sub>
+      = 0.003 × v × 0.250 × 0.866
+     </span>
+<br/>
+<span class="math">
+      L
+      <sub>
+       bullet
+      </sub>
+      = 6.495 × 10
+      <sup>
+       -4
+      </sup>
+      v kg·m²/s
+     </span></li>
+<li><strong>
+      Step 3: Calculate total moment of inertia after collision
+     </strong>
+<br/>
+     After the bullet lodges in the rod, it rotates at distance
+     <em>
+      L
+     </em>
+     /2 from the axis:
+     <br/>
+<span class="math">
+      I
+      <sub>
+       bullet
+      </sub>
+      = m(L/2)² = 0.003 × (0.250)² = 0.003 × 0.0625
+     </span>
+<br/>
+<span class="math">
+      I
+      <sub>
+       bullet
+      </sub>
+      = 1.875 × 10
+      <sup>
+       -4
+      </sup>
+      kg·m²
+     </span>
+<br/>
+<br/>
+     Total moment of inertia:
+     <br/>
+<span class="math">
+      I
+      <sub>
+       total
+      </sub>
+      = I
+      <sub>
+       rod
+      </sub>
+      + I
+      <sub>
+       bullet
+      </sub>
+</span>
+<br/>
+<span class="math">
+      I
+      <sub>
+       total
+      </sub>
+      = 0.0833 + 0.0001875 = 0.08349 kg·m²
+     </span></li>
+<li><strong>
+      Step 4: Apply conservation of angular momentum
+     </strong>
+<br/>
+     Initial angular momentum = angular momentum
+     <br/>
+<span class="math">
+      L
+      <sub>
+       before
+      </sub>
+      = L
+      <sub>
+       after
+      </sub>
+</span>
+<br/>
+<span class="math">
+      6.495 × 10
+      <sup>
+       -4
+      </sup>
+      v = I
+      <sub>
+       total
+      </sub>
+      × ω
+     </span>
+<br/>
+<span class="math">
+      6.495 × 10
+      <sup>
+       -4
+      </sup>
+      v = 0.08349 × 10
+     </span>
+<br/>
+<span class="math">
+      6.495 × 10
+      <sup>
+       -4
+      </sup>
+      v = 0.8349
+     </span></li>
+<li><strong>
+      Step 5: Solve for bullet velocity
+     </strong>
+<br/>
+<span class="math">
+      v = 0.8349 / (6.495 × 10
+      <sup>
+       -4
+      </sup>
+      )
+     </span>
+<br/>
+<span class="math">
+      v = 1285.7 m/s
+     </span>
+<br/>
+<span class="math">
+      v ≈ 1286 m/s
+     </span></li>
+<li><strong>
+      Step 6: Verification and physical reasonableness
+     </strong>
+<br/>
+     The bullet velocity is very high (~1.3 km/s), which is reasonable for high-speed projectiles.
+     <br/>
+     Check energy: The collision is inelastic (bullet lodges), so kinetic energy is not conserved, only angular momentum. This is physically correct.
+     <br/>
+<br/>
+     Verification of angular momentum:
+     <br/>
+     Before:
+     <span class="math">
+      L = 6.495 × 10
+      <sup>
+       -4
+      </sup>
+      × 1286 = 0.835 kg·m²/s
+     </span>
+<br/>
+     After:
+     <span class="math">
+      L = 0.08349 × 10 = 0.835 kg·m²/s
+     </span>
+     ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_31</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem Statement:
+    </strong>
+</p>
+<p>
+    During a jump to his partner, an aerialist is to make a quadruple somersault lasting a time
+    <em>
+     t
+    </em>
+    = 1.87 s. For the first and last quarter-revolution, he is in the extended orientation with rotational inertia
+    <em>
+     I
+    </em>
+<sub>
+     1
+    </sub>
+    = 19.9 kg·m² around his center of mass.
+   </p>
+<p>
+    During the rest of the flight (middle 3.5 revolutions), he is in a tight tuck, with rotational inertia
+    <em>
+     I
+    </em>
+<sub>
+     2
+    </sub>
+    = 3.93 kg·m².
+   </p>
+<p>
+    What must be his angular speed
+    <em>
+     ω
+    </em>
+<sub>
+     2
+    </sub>
+    around his center of mass during the tuck?
+   </p>
+<div class="diagram">
+<img alt="Problem 62 Diagram" src="problem_62_diagram.png" style="max-width: 900px;"/>
+</div>
+<p>
+<strong>
+     Given:
+    </strong>
+</p>
+<ul>
+<li>
+     Total time:
+     <em>
+      t
+     </em>
+     = 1.87 s
+    </li>
+<li>
+     Total rotation: 4 complete revolutions = 8π radians
+    </li>
+<li>
+     Extended phase: first 1/4 rev + last 1/4 rev = 1/2 rev = π radians
+    </li>
+<li>
+     Tucked phase: 3.5 revolutions = 7π radians
+    </li>
+<li>
+     Extended moment of inertia:
+     <em>
+      I
+     </em>
+<sub>
+      1
+     </sub>
+     = 19.9 kg·m²
+    </li>
+<li>
+     Tucked moment of inertia:
+     <em>
+      I
+     </em>
+<sub>
+      2
+     </sub>
+     = 3.93 kg·m²
+    </li>
+<li>
+     No external torques (in air)
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> ω
+     <sub>
+      2
+     </sub>
+     = 15.3 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> ω
+     <sub>
+      2
+     </sub>
+     = 17.8 rad/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> ω
+     <sub>
+      2
+     </sub>
+     = 20.3 rad/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> ω
+     <sub>
+      2
+     </sub>
+     = 23.5 rad/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Identify the rotation in each phase
+     </strong>
+<br/>
+     Extended phase: θ
+     <sub>
+      1
+     </sub>
+     = 0.5 revolutions = π radians
+     <br/>
+     Tucked phase: θ
+     <sub>
+      2
+     </sub>
+     = 3.5 revolutions = 7π radians
+     <br/>
+     Total: 4 revolutions = 8π radians ✓</li>
+<li><strong>
+      Step 2: Apply conservation of angular momentum
+     </strong>
+<br/>
+     Since there are no external torques during flight:
+     <br/>
+<span class="math">
+      L = I
+      <sub>
+       1
+      </sub>
+      ω
+      <sub>
+       1
+      </sub>
+      = I
+      <sub>
+       2
+      </sub>
+      ω
+      <sub>
+       2
+      </sub>
+      = constant
+     </span>
+<br/>
+<span class="math">
+      19.9 × ω
+      <sub>
+       1
+      </sub>
+      = 3.93 × ω
+      <sub>
+       2
+      </sub>
+</span>
+<br/>
+<span class="math">
+      ω
+      <sub>
+       1
+      </sub>
+      = (3.93/19.9)ω
+      <sub>
+       2
+      </sub>
+      = 0.1975ω
+      <sub>
+       2
+      </sub>
+</span></li>
+<li><strong>
+      Step 3: Set up time constraint equation
+     </strong>
+<br/>
+     Time in extended phase:
+     <br/>
+<span class="math">
+      t
+      <sub>
+       1
+      </sub>
+      = θ
+      <sub>
+       1
+      </sub>
+      /ω
+      <sub>
+       1
+      </sub>
+      = π/ω
+      <sub>
+       1
+      </sub>
+</span>
+<br/>
+<br/>
+     Time in tucked phase:
+     <br/>
+<span class="math">
+      t
+      <sub>
+       2
+      </sub>
+      = θ
+      <sub>
+       2
+      </sub>
+      /ω
+      <sub>
+       2
+      </sub>
+      = 7π/ω
+      <sub>
+       2
+      </sub>
+</span>
+<br/>
+<br/>
+     Total time:
+     <br/>
+<span class="math">
+      t
+      <sub>
+       total
+      </sub>
+      = t
+      <sub>
+       1
+      </sub>
+      + t
+      <sub>
+       2
+      </sub>
+</span>
+<br/>
+<span class="math">
+      1.87 = π/ω
+      <sub>
+       1
+      </sub>
+      + 7π/ω
+      <sub>
+       2
+      </sub>
+</span></li>
+<li><strong>
+      Step 4: Substitute conservation relation into time equation
+     </strong>
+<br/>
+     From Step 2:
+     <span class="math">
+      ω
+      <sub>
+       1
+      </sub>
+      = 0.1975ω
+      <sub>
+       2
+      </sub>
+</span>
+<br/>
+<br/>
+     Substituting:
+     <br/>
+<span class="math">
+      1.87 = π/(0.1975ω
+      <sub>
+       2
+      </sub>
+      ) + 7π/ω
+      <sub>
+       2
+      </sub>
+</span>
+<br/>
+<span class="math">
+      1.87 = π(1/0.1975 + 7)/ω
+      <sub>
+       2
+      </sub>
+</span>
+<br/>
+<span class="math">
+      1.87 = π(5.063 + 7)/ω
+      <sub>
+       2
+      </sub>
+</span>
+<br/>
+<span class="math">
+      1.87 = π(12.063)/ω
+      <sub>
+       2
+      </sub>
+</span>
+<br/>
+<span class="math">
+      1.87 = 37.89/ω
+      <sub>
+       2
+      </sub>
+</span></li>
+<li><strong>
+      Step 5: Solve for ω
+      <sub>
+       2
+      </sub>
+</strong>
+<br/>
+<span class="math">
+      ω
+      <sub>
+       2
+      </sub>
+      = 37.89/1.87
+     </span>
+<br/>
+<span class="math">
+      ω
+      <sub>
+       2
+      </sub>
+      = 20.26 rad/s
+     </span>
+<br/>
+<span class="math">
+      ω
+      <sub>
+       2
+      </sub>
+      ≈ 20.3 rad/s
+     </span></li>
+<li><strong>
+      Step 6: Calculate ω
+      <sub>
+       1
+      </sub>
+      and verify
+     </strong>
+<br/>
+<span class="math">
+      ω
+      <sub>
+       1
+      </sub>
+      = 0.1975 × 20.26 = 4.00 rad/s
+     </span>
+<br/>
+<br/>
+     Check time:
+     <br/>
+<span class="math">
+      t
+      <sub>
+       1
+      </sub>
+      = π/4.00 = 0.785 s
+     </span>
+<br/>
+<span class="math">
+      t
+      <sub>
+       2
+      </sub>
+      = 7π/20.26 = 1.085 s
+     </span>
+<br/>
+<span class="math">
+      t
+      <sub>
+       total
+      </sub>
+      = 0.785 + 1.085 = 1.870 s
+     </span>
+     ✓
+     <br/>
+<br/>
+     Check angular momentum conservation:
+     <br/>
+<span class="math">
+      L
+      <sub>
+       1
+      </sub>
+      = 19.9 × 4.00 = 79.6 kg·m²/s
+     </span>
+<br/>
+<span class="math">
+      L
+      <sub>
+       2
+      </sub>
+      = 3.93 × 20.26 = 79.6 kg·m²/s
+     </span>
+     ✓</li>
+<li><strong>
+      Step 7: Physical interpretation
+     </strong>
+<br/>
+     The aerialist spins much faster (about 5 times) when tucked because his moment of inertia is much smaller. This is analogous to a figure skater pulling in their arms to spin faster. The angular momentum remains constant throughout the flight since there are no external torques in the air.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_32</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem Statement:
+    </strong>
+</p>
+<p>
+    Two 2.00 kg balls are attached to the ends of a thin rod of length 50.0 cm and negligible mass. The rod is free to rotate in a vertical plane without friction about a horizontal axis through its center.
+   </p>
+<p>
+    With the rod initially horizontal, a 50.0 g wad of wet putty drops onto one of the balls, hitting it with a speed of 3.00 m/s and then sticking to it.
+   </p>
+<div class="diagram">
+<img alt="Problem 65 Diagram" src="problem_65_diagram.png" style="max-width: 900px;"/>
+</div>
+<p>
+<strong>
+     Determine:
+    </strong>
+</p>
+<ol type="a">
+<li>
+     What is the angular speed of the system just after the putty wad hits?
+    </li>
+<li>
+     What is the ratio of the kinetic energy of the system after the collision to that of the putty wad just before?
+    </li>
+<li>
+     Through what angle will the system rotate before it momentarily stops?
+    </li>
+</ol>
+<p>
+<strong>
+     Given:
+    </strong>
+</p>
+<ul>
+<li>
+     Ball mass:
+     <em>
+      M
+     </em>
+     = 2.00 kg (each)
+    </li>
+<li>
+     Rod length:
+     <em>
+      L
+     </em>
+     = 50.0 cm = 0.500 m
+    </li>
+<li>
+     Putty mass:
+     <em>
+      m
+     </em>
+     = 50.0 g = 0.050 kg
+    </li>
+<li>
+     Putty velocity:
+     <em>
+      v
+     </em>
+     = 3.00 m/s (downward)
+    </li>
+<li>
+     Rod initially horizontal
+    </li>
+<li>
+     Take
+     <em>
+      g
+     </em>
+     = 9.8 m/s²
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 0.148 rad/s, (b) 0.0123, (c) 5.42°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 0.296 rad/s, (b) 0.0246, (c) 10.8°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 0.185 rad/s, (b) 0.0308, (c) 13.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 0.222 rad/s, (b) 0.0431, (c) 16.2°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Calculate moment of inertia before collision
+     </strong>
+<br/>
+     Two balls at ends of rod (each at distance
+     <em>
+      L
+     </em>
+     /2 from axis):
+     <br/>
+<span class="math">
+      I
+      <sub>
+       initial
+      </sub>
+      = 2M(L/2)² = 2 × 2.00 × (0.250)²
+     </span>
+<br/>
+<span class="math">
+      I
+      <sub>
+       initial
+      </sub>
+      = 2 × 2.00 × 0.0625 = 0.250 kg·m²
+     </span></li>
+<li><strong>
+      Step 2: Calculate angular momentum of putty before collision (part a)
+     </strong>
+<br/>
+     Putty hits one ball at distance
+     <em>
+      r
+     </em>
+     =
+     <em>
+      L
+     </em>
+     /2 = 0.250 m from axis:
+     <br/>
+<span class="math">
+      L
+      <sub>
+       putty
+      </sub>
+      = mvr = 0.050 × 3.00 × 0.250
+     </span>
+<br/>
+<span class="math">
+      L
+      <sub>
+       putty
+      </sub>
+      = 0.0375 kg·m²/s
+     </span></li>
+<li><strong>
+      Step 3: Calculate moment of inertia after collision
+     </strong>
+<br/>
+     After putty sticks, system has two balls plus putty:
+     <br/>
+<span class="math">
+      I
+      <sub>
+</sub>
+      = 2M(L/2)² + m(L/2)²
+     </span>
+<br/>
+<span class="math">
+      I
+      <sub>
+</sub>
+      = (2M + m)(L/2)²
+     </span>
+<br/>
+<span class="math">
+      I
+      <sub>
+</sub>
+      = (2 × 2.00 + 0.050)(0.250)²
+     </span>
+<br/>
+<span class="math">
+      I
+      <sub>
+</sub>
+      = 4.050 × 0.0625 = 0.2531 kg·m²
+     </span></li>
+<li><strong>
+      Step 4: Apply angular momentum conservation to find ω
+     </strong>
+<br/>
+<span class="math">
+      L
+      <sub>
+       before
+      </sub>
+      = L
+      <sub>
+       after
+      </sub>
+</span>
+<br/>
+<span class="math">
+      0.0375 = I
+      <sub>
+</sub>
+      × ω
+     </span>
+<br/>
+<span class="math">
+      ω = 0.0375/0.2531
+     </span>
+<br/>
+<span class="math">
+      ω = 0.1482 rad/s
+     </span>
+<br/>
+<strong>
+      Answer (a): ω = 0.148 rad/s
+     </strong></li>
+<li><strong>
+      Step 5: Calculate kinetic energies (part b)
+     </strong>
+<br/>
+     KE of putty before collision:
+     <br/>
+<span class="math">
+      KE
+      <sub>
+       before
+      </sub>
+      = ½mv² = ½ × 0.050 × (3.00)² = 0.225 J
+     </span>
+<br/>
+<br/>
+     KE of system after collision:
+     <br/>
+<span class="math">
+      KE
+      <sub>
+       after
+      </sub>
+      = ½I
+      <sub>
+</sub>
+      ω² = ½ × 0.2531 × (0.1482)²
+     </span>
+<br/>
+<span class="math">
+      KE
+      <sub>
+       after
+      </sub>
+      = ½ × 0.2531 × 0.02196 = 0.00278 J
+     </span>
+<br/>
+<br/>
+     Ratio:
+     <br/>
+<span class="math">
+      Ratio = KE
+      <sub>
+       after
+      </sub>
+      /KE
+      <sub>
+       before
+      </sub>
+      = 0.00278/0.225 = 0.01234
+     </span>
+<br/>
+<strong>
+      Answer (b): Ratio = 0.0123
+     </strong></li>
+<li><strong>
+      Step 6: Apply energy conservation for rotation (part c)
+     </strong>
+<br/>
+     After collision, the system rotates and rises until it momentarily stops.
+     <br/>
+<br/>
+     Initial state (horizontal):
+     <span class="math">
+      E
+      <sub>
+       i
+      </sub>
+      = KE
+      <sub>
+       after
+      </sub>
+      = 0.00278 J
+     </span>
+<br/>
+<br/>
+     state (at angle θ):
+     <span class="math">
+      E
+      <sub>
+       f
+      </sub>
+      = PE = Δ(potential energy)
+     </span>
+<br/>
+<br/>
+     Center of mass calculation (taking axis as origin):
+     <br/>
+     Ball 1 (with putty): mass = M + m = 2.05 kg at +L/2
+     <br/>
+     Ball 2: mass = M = 2.00 kg at -L/2
+     <br/>
+<br/>
+<span class="math">
+      y
+      <sub>
+       cm
+      </sub>
+      = [(M+m)(L/2) - M(L/2)]/(2M+m)
+     </span>
+<br/>
+<span class="math">
+      y
+      <sub>
+       cm
+      </sub>
+      = [m(L/2)]/(2M+m)
+     </span>
+<br/>
+<span class="math">
+      y
+      <sub>
+       cm
+      </sub>
+      = (0.050 × 0.250)/4.05 = 0.00309 m
+     </span></li>
+<li><strong>
+      Step 7: Calculate angle θ
+     </strong>
+<br/>
+     When system rotates through angle θ, the center of mass rises by:
+     <br/>
+<span class="math">
+      Δh = y
+      <sub>
+       cm
+      </sub>
+      (1 - cos θ)
+     </span>
+<br/>
+<br/>
+     Energy conservation:
+     <br/>
+<span class="math">
+      KE
+      <sub>
+       after
+      </sub>
+      = (2M + m)g × Δh
+     </span>
+<br/>
+<span class="math">
+      0.00278 = 4.05 × 9.8 × 0.00309 × (1 - cos θ)
+     </span>
+<br/>
+<span class="math">
+      0.00278 = 0.1226(1 - cos θ)
+     </span>
+<br/>
+<span class="math">
+      1 - cos θ = 0.0227
+     </span>
+<br/>
+<span class="math">
+      cos θ = 0.9773
+     </span>
+<br/>
+<span class="math">
+      θ = arccos(0.9773) = 0.0946 rad = 5.42°
+     </span>
+<br/>
+<strong>
+      Answer (c): θ = 5.42°
+     </strong></li>
+<li><strong>
+      Step 8: Verification
+     </strong>
+<br/>
+     Check energy loss in collision:
+     <br/>
+     Energy lost = 0.225 - 0.00278 = 0.222 J (98.8% lost) ✓
+     <br/>
+     This large energy loss is expected in an inelastic collision.
+     <br/>
+<br/>
+     The small angle makes sense because most of the putty's kinetic energy was lost in the inelastic collision.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_33</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem Statement:
+    </strong>
+</p>
+<p>
+    A small 50 g block slides down a frictionless surface through height
+    <em>
+     h
+    </em>
+    = 20 cm and then sticks to a uniform rod of mass 100 g and length 40 cm. The rod pivots about point
+    <em>
+     O
+    </em>
+    through angle θ before momentarily stopping.
+   </p>
+<div class="diagram">
+<img alt="Problem 66 Diagram" src="problem_66_diagram.png" style="max-width: 900px;"/>
+</div>
+<p>
+<strong>
+     Find the angle θ.
+    </strong>
+</p>
+<p>
+<strong>
+     Given:
+    </strong>
+</p>
+<ul>
+<li>
+     Block mass:
+     <em>
+      m
+     </em>
+     = 50 g = 0.050 kg
+    </li>
+<li>
+     Initial height:
+     <em>
+      h
+     </em>
+     = 20 cm = 0.20 m
+    </li>
+<li>
+     Rod mass:
+     <em>
+      M
+     </em>
+     = 100 g = 0.100 kg
+    </li>
+<li>
+     Rod length:
+     <em>
+      L
+     </em>
+     = 40 cm = 0.40 m
+    </li>
+<li>
+     Frictionless surface
+    </li>
+<li>
+     Take
+     <em>
+      g
+     </em>
+     = 9.8 m/s²
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> θ = 18.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> θ = 24.3°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> θ = 31.8°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> θ = 38.7°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Find block velocity at bottom using energy conservation
+     </strong>
+<br/>
+     Block slides down height
+     <em>
+      h
+     </em>
+     :
+     <br/>
+<span class="math">
+      mgh = ½mv²
+     </span>
+<br/>
+<span class="math">
+      v = √(2gh) = √(2 × 9.8 × 0.20)
+     </span>
+<br/>
+<span class="math">
+      v = √3.92 = 1.980 m/s
+     </span></li>
+<li><strong>
+      Step 2: Calculate moment of inertia of rod about pivot O
+     </strong>
+<br/>
+     For a uniform rod pivoting about one end:
+     <br/>
+<span class="math">
+      I
+      <sub>
+       rod
+      </sub>
+      = (1/3)ML² = (1/3) × 0.100 × (0.40)²
+     </span>
+<br/>
+<span class="math">
+      I
+      <sub>
+       rod
+      </sub>
+      = (1/3) × 0.100 × 0.16 = 0.00533 kg·m²
+     </span></li>
+<li><strong>
+      Step 3: Apply angular momentum conservation during collision
+     </strong>
+<br/>
+     Block sticks to rod at end (distance
+     <em>
+      L
+     </em>
+     from pivot).
+     <br/>
+<br/>
+     Before collision:
+     <br/>
+<span class="math">
+      L
+      <sub>
+       before
+      </sub>
+      = mvL = 0.050 × 1.980 × 0.40 = 0.0396 kg·m²/s
+     </span>
+<br/>
+<br/>
+     After collision (combined system):
+     <br/>
+<span class="math">
+      I
+      <sub>
+       total
+      </sub>
+      = I
+      <sub>
+       rod
+      </sub>
+      + mL² = 0.00533 + 0.050 × (0.40)²
+     </span>
+<br/>
+<span class="math">
+      I
+      <sub>
+       total
+      </sub>
+      = 0.00533 + 0.008 = 0.01333 kg·m²
+     </span>
+<br/>
+<br/>
+<span class="math">
+      L
+      <sub>
+       after
+      </sub>
+      = I
+      <sub>
+       total
+      </sub>
+      ω
+     </span>
+<br/>
+<span class="math">
+      ω = L
+      <sub>
+       before
+      </sub>
+      /I
+      <sub>
+       total
+      </sub>
+      = 0.0396/0.01333 = 2.970 rad/s
+     </span></li>
+<li><strong>
+      Step 4: Calculate kinetic energy just after collision
+     </strong>
+<br/>
+<span class="math">
+      KE = ½I
+      <sub>
+       total
+      </sub>
+      ω² = ½ × 0.01333 × (2.970)²
+     </span>
+<br/>
+<span class="math">
+      KE = ½ × 0.01333 × 8.821 = 0.0588 J
+     </span></li>
+<li><strong>
+      Step 5: Find center of mass of combined system
+     </strong>
+<br/>
+     Taking pivot O as origin, with rod extending in positive direction:
+     <br/>
+     Rod CM is at
+     <em>
+      L
+     </em>
+     /2 = 0.20 m
+     <br/>
+     Block is at
+     <em>
+      L
+     </em>
+     = 0.40 m
+     <br/>
+<br/>
+<span class="math">
+      y
+      <sub>
+       cm
+      </sub>
+      = [M(L/2) + mL]/(M + m)
+     </span>
+<br/>
+<span class="math">
+      y
+      <sub>
+       cm
+      </sub>
+      = [0.100 × 0.20 + 0.050 × 0.40]/(0.100 + 0.050)
+     </span>
+<br/>
+<span class="math">
+      y
+      <sub>
+       cm
+      </sub>
+      = (0.020 + 0.020)/0.150
+     </span>
+<br/>
+<span class="math">
+      y
+      <sub>
+       cm
+      </sub>
+      = 0.040/0.150 = 0.2667 m
+     </span></li>
+<li><strong>
+      Step 6: Apply energy conservation for rotation to angle θ
+     </strong>
+<br/>
+     When rod rotates through angle θ, the CM rises by:
+     <br/>
+<span class="math">
+      Δh = y
+      <sub>
+       cm
+      </sub>
+      (1 - cos θ)
+     </span>
+<br/>
+<br/>
+     Energy conservation:
+     <br/>
+<span class="math">
+      KE = (M + m)g × y
+      <sub>
+       cm
+      </sub>
+      (1 - cos θ)
+     </span>
+<br/>
+<span class="math">
+      0.0588 = 0.150 × 9.8 × 0.2667 × (1 - cos θ)
+     </span>
+<br/>
+<span class="math">
+      0.0588 = 0.3922(1 - cos θ)
+     </span>
+<br/>
+<span class="math">
+      1 - cos θ = 0.1499
+     </span>
+<br/>
+<span class="math">
+      cos θ = 0.8501
+     </span>
+<br/>
+<span class="math">
+      θ = arccos(0.8501) = 0.5548 rad = 31.79°
+     </span></li>
+<li><strong>
+      Step 7: Verification
+     </strong>
+<br/>
+     Check initial block energy:
+     <br/>
+<span class="math">
+      E
+      <sub>
+       block
+      </sub>
+      = mgh = 0.050 × 9.8 × 0.20 = 0.098 J
+     </span>
+<br/>
+<br/>
+     Energy after collision: 0.0588 J
+     <br/>
+     Energy lost in collision: 0.098 - 0.0588 = 0.0392 J (40% lost) ✓
+     <br/>
+<br/>
+     This energy loss is expected in an inelastic collision where the block sticks to the rod.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_42</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     A 55 kg rock climber is in a lie-back climb along a fissure, with hands pulling on one side of the fissure and feet pressed against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is a horizontal distance d = 0.40 m from the fissure. The coefficient of static friction between hands and rock is μ₁ = 0.40, and between boots and rock is μ₂ = 1.2.Assume the hands are at a vertical distance h above the feet. What is the least horizontal pull by the hands and push by the feet that will keep the climber stable?
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_43</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Multiple Choice Single Answer", Suggested: "Numerical"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     The driver of a car on a horizontal road makes an emergency stop by applying the brakes so that all four wheels lock and skid along the road. The coefficient of kinetic friction between tires and road is 0.40. The separation between the front and rear axles is L = 4.2 m, and the center of mass of the car is located at distance d = 1.8 m behind the front axle and distance h = 0.75 m above the road. The car weighs 11 kN.Although the car is not in translational equilibrium, it is in rotational equilibrium. Find the magnitude of the normal force on each front wheel (assuming two front wheels share the load equally).
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_44</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 30:
+      </h4>
+      A vertical uniform beam of length L is hinged at its lower end. A horizontal force Fais applied to the beam at distance y from the lower end. The beam remains vertical because of a cable attached at the upper end, at angle θ with the horizontal.The graph shows the tension T in the cable as a function of the position of the applied force given as a fraction y/L of the beam length. The scale of the T axis is set by Ts= 600 N.Another graph shows the magnitude Fhof the horizontal force on the beam from the hinge, also as a function of y/L.What is the angle θ that the cable makes with the horizontal?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> θ = 30°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> θ = 45°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> θ = 60°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> θ = 53°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Extract key information from the graphs (intercepts, slopes, values at specific points). Use horizontal force equilibrium: Fa= Fh+ T cos θ. At special points (y/L = 0 or y/L = 1), simplify equations to find θ.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         The key insight is that Fais constant (same applied force), so changes in T must be compensated by changes in Fh. At y/L = 0, T = 0, so Fh= Fa. At y/L = 1, use horizontal equilibrium to find θ.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Extract Data from Graphs
+          </strong>
+<div class="equation">
+           From Figure 12-49b (T vs y/L):
+           <br>
+           • At y/L = 0: T = 0
+           <br>
+           • At y/L = 1: T = T
+           <sub>
+            s
+           </sub>
+           = 600 N
+           <br>
+           • Linear relationship
+           <br>
+<br>
+           From Figure 12-49c (F
+           <sub>
+            h
+           </sub>
+           vs y/L):
+           <br>
+           • At y/L = 0: F
+           <sub>
+            h
+           </sub>
+           ≈ 240 N
+           <br>
+           • At y/L = 1: F
+           <sub>
+            h
+           </sub>
+           ≈ 120 N
+           <br>
+           • Linear decrease
+          </div>
+</li>
+<li>
+<strong>
+           Step 2: Apply Horizontal Equilibrium at y/L = 0
+          </strong>
+<div class="equation">
+           At y/L = 0 (force applied at hinge):
+           <br>
+           F
+           <sub>
+            a
+           </sub>
+           = F
+           <sub>
+            h
+           </sub>
+           + T cos θ
+           <br>
+           F
+           <sub>
+            a
+           </sub>
+           = 240 + 0 × cos θ
+           <br>
+<strong>
+            F
+            <sub>
+             a
+            </sub>
+            = 240 N
+           </strong>
+</div>
+          This gives us the constant applied force F
+          <sub>
+           a
+          </sub>
+          .
+         </li>
+<li>
+<strong>
+           Step 4: Reconsider the Force Direction
+          </strong>
+<br>
+<br>
+          OR more likely, at different positions, the equilibrium equation changes based on torque requirements.
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

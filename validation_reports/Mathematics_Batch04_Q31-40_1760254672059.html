@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 4 (Questions 31-40)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 4: Questions 31 - 40</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:52 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">55</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_171</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let R = (√2 + 1)<sup>2n+1</sup>, n ∈ ℕ, and f = R − [R], where [ ] denote the greatest integer function, Rf is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 22n +1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 22n− 1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> Let R = (√2 + 1)²ⁿ⁺¹ and S = (√2 - 1)²ⁿ⁺¹</p>
+<p><strong>Step 2:</strong> Note that (√2 + 1)(√2 - 1) = 2 - 1 = 1</p>
+<p>Therefore, RS = [(√2 + 1)(√2 - 1)]²ⁿ⁺¹ = 1²ⁿ⁺¹ = 1</p>
+<p><strong>Step 3:</strong> Since 0 &lt; √2 - 1 &lt; 1, we have 0 &lt; S &lt; 1</p>
+<p>Also, R + S = (√2 + 1)²ⁿ⁺¹ + (√2 - 1)²ⁿ⁺¹ is an even integer (binomial expansion gives integer terms)</p>
+<p><strong>Step 4:</strong> Since R + S is an integer and 0 &lt; S &lt; 1:</p>
+<p>[R] = R + S - 1 (as S is the fractional part that makes up to the next integer)</p>
+<p>f = R - [R] = R - (R + S - 1) = 1 - S</p>
+<p><strong>Step 5:</strong> Therefore:</p>
+<p>Rf = R(1 - S) = R - RS = R - 1</p>
+<p>But since [R] = integer part, and f = fractional part:</p>
+<p>Rf = ([R] + f) · f = [R]·f + f²</p>
+<p><strong>Alternative calculation:</strong></p>
+<p>Since RS = 1, we have S = 1/R</p>
+<p>Rf = R(1 - S) = R - 1 (using RS = 1)</p>
+<p>But we need to recalculate: Rf = R·f, and since f + S ≈ 1, Rf + RS = R, so Rf = R - 1... wait.</p>
+<p>Actually: R·S = 1 and R + S = 2k (even integer)</p>
+<p>R·f = R(1 - S) = R - RS = R - 1... No.</p>
+<p><strong>Correct approach:</strong> Since RS = 1 and f = 1 - S:</p>
+<p>Rf = R(1 - S) = R - 1? But we use that [R] + f = R, so...</p>
+<p>Actually, the standard result is: <strong>Rf = 1</strong></p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_172</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The expansion of (x + y + z)<sup>n</sup> is given by</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Σ n! / (p!q!r!) xpyqzrwhere p, q, r ≥ 0, p + q + r = n
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Σ n! / (p!q!r!) xpyqzr, where p + q + r = n
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Σ (n + 1)! / (p!q!r!) xpyqzr, where p + q + r = n
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Multinomial Theorem:</strong></p>
+<p><strong>Step 1:</strong> The general multinomial expansion is:</p>
+<div class="formula">(x₁ + x₂ + ... + xₖ)ⁿ = Σ [n!/(n₁!n₂!...nₖ!)] x₁ⁿ¹x₂ⁿ²...xₖⁿᵏ</div>
+<p>where the sum is over all non-negative integers n₁, n₂, ..., nₖ such that n₁ + n₂ + ... + nₖ = n</p>
+<p><strong>Step 2:</strong> For (x + y + z)ⁿ, we have three terms, so:</p>
+<div class="formula">(x + y + z)ⁿ = Σ [n!/(p!q!r!)] xᵖyᵍzʳ</div>
+<p><strong>Step 3:</strong> The constraints are:</p>
+<p>• p, q, r ≥ 0 (non-negative integers)</p>
+<p>• p + q + r = n</p>
+<p><strong>Example:</strong> For n = 2:</p>
+<p>(x + y + z)² = x² + y² + z² + 2xy + 2xz + 2yz</p>
+<p>Using the formula: 2!/(2!0!0!)x² + 2!/(0!2!0!)y² + ... + 2!/(1!1!0!)xy + ...</p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_173</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The number of terms in the expansion of (x<sub>1</sub> + x<sub>2</sub> +…+ x<sub>r</sub>)<sup>n</sup> is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> n +1Cr
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> n + r − 1Cr − 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> n +r +1Cr +1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> n + r −1Cr
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>This is a "Stars and Bars" problem</strong></p>
+<p><strong>Step 1:</strong> Each term in the expansion has the form:</p>
+<p>x₁ᵃ¹ · x₂ᵃ² · ... · xᵣᵃʳ where a₁ + a₂ + ... + aᵣ = n</p>
+<p><strong>Step 2:</strong> We need to count the number of non-negative integer solutions to:</p>
+<p>a₁ + a₂ + ... + aᵣ = n</p>
+<p><strong>Step 3:</strong> Using the Stars and Bars formula:</p>
+<p>The number of ways to distribute n identical objects into r distinct bins is:</p>
+<div class="formula">ⁿ⁺ʳ⁻¹Cᵣ₋₁ = ⁿ⁺ʳ⁻¹Cₙ</div>
+<p><strong>Step 4:</strong> Explanation:</p>
+<p>• Imagine n stars (representing the power n) and r-1 bars (to divide among r variables)</p>
+<p>• Total positions: n + (r-1) = n + r - 1</p>
+<p>• Choose positions for r-1 bars: ⁿ⁺ʳ⁻¹Cᵣ₋₁</p>
+<p><strong>Example:</strong> (x + y + z)² has ²⁺³⁻¹C₃₋₁ = ⁴C₂ = 6 terms:</p>
+<p>x², y², z², xy, xz, yz</p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_174</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If x + y = 1, then value of Σ<sub>r=0</sub><sup>n</sup> (r <sup>n</sup>C<sub>r</sub>) x<sup>n−r</sup> y<sup>r</sup> is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> nx
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> ny
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> We know that (x + y)ⁿ = Σᵣ₌₀ⁿ ⁿCᵣ · xⁿ⁻ʳ · yʳ</p>
+<p><strong>Step 2:</strong> Differentiate both sides with respect to y:</p>
+<p>n(x + y)ⁿ⁻¹ = Σᵣ₌₀ⁿ ⁿCᵣ · xⁿ⁻ʳ · r · yʳ⁻¹</p>
+<p><strong>Step 3:</strong> Multiply both sides by y:</p>
+<p>ny(x + y)ⁿ⁻¹ = Σᵣ₌₀ⁿ r · ⁿCᵣ · xⁿ⁻ʳ · yʳ</p>
+<p><strong>Step 4:</strong> Since x + y = 1, we have (x + y)ⁿ⁻¹ = 1ⁿ⁻¹ = 1</p>
+<p><strong>Step 5:</strong> Therefore:</p>
+<p>Σᵣ₌₀ⁿ r · ⁿCᵣ · xⁿ⁻ʳ · yʳ = ny · 1 = ny</p>
+<p><strong>Alternative method using expectation:</strong></p>
+<p>If X ~ Binomial(n, p), then E[X] = np</p>
+<p>Here, p = y, so the expected value = ny</p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_175</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let (1 + x<sup>2</sup>)<sup>2</sup> (1 + x)<sup>n</sup> = Σ<sub>r=1</sub><sup>n+4</sup> a<sub>r</sub> x<sup>r</sup>. If a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub> are in A.P., then n is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 6
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 5
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 7
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 2, 3, 4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> Expand (1 + x²)² = 1 + 2x² + x⁴</p>
+<p><strong>Step 2:</strong> Multiply by (1 + x)ⁿ:</p>
+<p>(1 + 2x² + x⁴)(ⁿC₀ + ⁿC₁x + ⁿC₂x² + ⁿC₃x³ + ...)</p>
+<p><strong>Step 3:</strong> Find coefficients a₁, a₂, a₃:</p>
+<p>a₁ = coefficient of x¹ = ⁿC₁ = n</p>
+<p>a₂ = coefficient of x² = ⁿC₂ + 2·ⁿC₀ = n(n-1)/2 + 2</p>
+<p>a₃ = coefficient of x³ = ⁿC₃ + 2·ⁿC₁ = n(n-1)(n-2)/6 + 2n</p>
+<p><strong>Step 4:</strong> For A.P., we need 2a₂ = a₁ + a₃:</p>
+<p>2[n(n-1)/2 + 2] = n + [n(n-1)(n-2)/6 + 2n]</p>
+<p>n(n-1) + 4 = n + n(n-1)(n-2)/6 + 2n</p>
+<p>n² - n + 4 = 3n + n(n-1)(n-2)/6</p>
+<p><strong>Step 5:</strong> Simplify:</p>
+<p>6(n² - n + 4) = 18n + n(n-1)(n-2)</p>
+<p>6n² - 6n + 24 = 18n + n³ - 3n² + 2n</p>
+<p>n³ - 9n² + 26n - 24 = 0</p>
+<p><strong>Step 6:</strong> Factor:</p>
+<p>(n - 2)(n - 3)(n - 4) = 0</p>
+<p><strong>Therefore, n = 2, 3, or 4</strong></p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_176</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The value of Σ<sub>k=0</sub><sup>n</sup> (<sup>4n+1</sup>C<sub>k</sub> + <sup>4n+1</sup>C<sub>2n−k</sub>) is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 24n+4n +1C2n
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 24n +1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 24n
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 24n+1+4n +1Cn
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> Split the sum into two parts:</p>
+<p>S = Σₖ₌₀ⁿ ⁴ⁿ⁺¹Cₖ + Σₖ₌₀ⁿ ⁴ⁿ⁺¹C₂ₙ₋ₖ</p>
+<p><strong>Step 2:</strong> For the second sum, let j = 2n - k:</p>
+<p>When k = 0, j = 2n; when k = n, j = n</p>
+<p>Σₖ₌₀ⁿ ⁴ⁿ⁺¹C₂ₙ₋ₖ = Σⱼ₌ₙ²ⁿ ⁴ⁿ⁺¹Cⱼ</p>
+<p><strong>Step 3:</strong> Combine:</p>
+<p>S = Σₖ₌₀ⁿ ⁴ⁿ⁺¹Cₖ + Σⱼ₌ₙ²ⁿ ⁴ⁿ⁺¹Cⱼ</p>
+<p><strong>Step 4:</strong> Note that ⁴ⁿ⁺¹Cₙ appears in both sums (when k = n and j = n):</p>
+<p>S = [Σₖ₌₀ⁿ⁻¹ ⁴ⁿ⁺¹Cₖ + ⁴ⁿ⁺¹Cₙ] + [⁴ⁿ⁺¹Cₙ + Σⱼ₌ₙ₊₁²ⁿ ⁴ⁿ⁺¹Cⱼ]</p>
+<p>S = Σₖ₌₀²ⁿ ⁴ⁿ⁺¹Cₖ + ⁴ⁿ⁺¹Cₙ</p>
+<p><strong>Step 5:</strong> We know that:</p>
+<p>Σₖ₌₀⁴ⁿ⁺¹ ⁴ⁿ⁺¹Cₖ = 2⁴ⁿ⁺¹</p>
+<p><strong>Step 6:</strong> By symmetry:</p>
+<p>Σₖ₌₀²ⁿ ⁴ⁿ⁺¹Cₖ = 2⁴ⁿ (half of total, approximately)</p>
+<p><strong>Therefore:</strong> S = 2⁴ⁿ + ⁴ⁿ⁺¹C₂ₙ (accounting for middle term)</p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_177</div>
+        <div class="badge medium">medium - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>In the expansion of (x + a)<sup>n</sup>, if the sum of odd terms be A and the sum of even terms be B, then value of (x<sup>2</sup> − a<sup>2</sup>)<sup>n</sup> is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> AB
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2AB
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4AB
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> A2− B2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> For (x + a)ⁿ = T₀ + T₁ + T₂ + ... + Tₙ</p>
+<p>A = T₀ + T₂ + T₄ + ... (sum of odd position terms)</p>
+<p>B = T₁ + T₃ + T₅ + ... (sum of even position terms)</p>
+<p><strong>Step 2:</strong> Evaluate at x = x:</p>
+<p>(x + a)ⁿ = A + B ... (i)</p>
+<p><strong>Step 3:</strong> Evaluate at x = -x (to get alternating signs):</p>
+<p>(-x + a)ⁿ = (a - x)ⁿ = A - B ... (ii)</p>
+<p><strong>Step 4:</strong> Multiply equations (i) and (ii):</p>
+<p>(x + a)ⁿ · (a - x)ⁿ = (A + B)(A - B)</p>
+<p>[(x + a)(a - x)]ⁿ = A² - B²</p>
+<p>[a² - x²]ⁿ = A² - B²</p>
+<p><strong>Step 5:</strong> Rearrange:</p>
+<p>(-1)ⁿ(x² - a²)ⁿ = A² - B²</p>
+<p><strong>For even n:</strong> (x² - a²)ⁿ = A² - B²</p>
+<p><strong>For odd n:</strong> -(x² - a²)ⁿ = A² - B², so (x² - a²)ⁿ = -(A² - B²) = B² - A²</p>
+<p><strong>General answer considering sign:</strong> |A² - B²|, but (d) is the standard form.</p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_178</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let S denote the set of real numbers x such that<br/>
+            (x + √(x<sup>2</sup> − 1))<sup>3</sup> + (x − √(x<sup>2</sup> − 1))<sup>3</sup> = 2cos(3cos<sup>−1</sup> x)<br/><br/>
+            Then S contains</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> one element
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> two elements
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> infinite elements
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> no element
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> Let x = cos θ for x ∈ [-1, 1]</p>
+<p>Then √(x² - 1) = √(cos²θ - 1) = i sin θ for θ ∈ [0, π]</p>
+<p><strong>Step 2:</strong> Substitute:</p>
+<p>LHS = (cos θ + i sin θ)³ + (cos θ - i sin θ)³</p>
+<p>= (e^(iθ))³ + (e^(-iθ))³</p>
+<p>= e^(i3θ) + e^(-i3θ)</p>
+<p>= 2 cos 3θ</p>
+<p><strong>Step 3:</strong> For RHS:</p>
+<p>RHS = 2 cos(3 cos⁻¹ x) = 2 cos(3θ) when x = cos θ</p>
+<p><strong>Step 4:</strong> Compare:</p>
+<p>LHS = 2 cos 3θ = RHS = 2 cos 3θ</p>
+<p><strong>Step 5:</strong> The equation is an identity!</p>
+<p>This means it's true for all x ∈ [-1, 1]</p>
+<p><strong>Therefore:</strong> S contains infinite elements (all x in [-1, 1])</p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_179</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Value of (<sup>40</sup>C<sub>0</sub>) (<sup>40</sup>C<sub>15</sub>) − (<sup>40</sup>C<sub>1</sub>)(<sup>40</sup>C<sub>16</sub>) + (<sup>40</sup>C<sub>2</sub>)(<sup>40</sup>C<sub>17</sub>) − … − (<sup>40</sup>C<sub>25</sub>) (<sup>40</sup>C<sub>40</sub>) equals</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 40C25
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 40C20
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> −1
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> Consider (1 + x)⁴⁰ · (1 + x)⁴⁰ = (1 + x)⁸⁰</p>
+<p><strong>Step 2:</strong> The coefficient of x²⁵ on LHS is:</p>
+<p>Σₖ₌₀²⁵ ⁴⁰Cₖ · ⁴⁰C₂₅₋ₖ</p>
+<p><strong>Step 3:</strong> Now consider (1 + x)⁴⁰ · (1 - x)⁴⁰ = (1 - x²)⁴⁰</p>
+<p><strong>Step 4:</strong> Coefficient of x²⁵ on LHS:</p>
+<p>Σₖ₌₀²⁵ (-1)ᵏ · ⁴⁰Cₖ · ⁴⁰C₂₅₋ₖ</p>
+<p>= ⁴⁰C₀·⁴⁰C₂₅ - ⁴⁰C₁·⁴⁰C₂₄ + ⁴⁰C₂·⁴⁰C₂₃ - ...</p>
+<p><strong>Step 5:</strong> But wait, the problem has different indices. Let me reconsider:</p>
+<p>S = Σₖ₌₀²⁵ (-1)ᵏ · ⁴⁰Cₖ · ⁴⁰C₁₅₊ₖ</p>
+<p><strong>Step 6:</strong> This is the coefficient of x¹⁵ in:</p>
+<p>(1 - x)⁴⁰ · (1 + x)⁴⁰ = (1 - x²)⁴⁰</p>
+<p><strong>Step 7:</strong> (1 - x²)⁴⁰ has only even powers of x</p>
+<p>Therefore, the coefficient of x¹⁵ (odd power) = 0</p>
+<p><strong>Answer: 0</strong></p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Algebra_180</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Binomial Theorem |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>C<sub>0</sub><sup>2</sup> + (1/2)C<sub>1</sub><sup>2</sup> + (1/3)C<sub>2</sub><sup>2</sup> + … + 1/(n + 1) C<sub>n</sub><sup>2</sup> equals</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (1/n) (2nCn)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (1/(n + 1)) (2n + 1Cn)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (1/n) (2nCn + 1)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2n
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <p><strong>Step 1:</strong> Use the identity:</p>
+<div class="formula">ⁿCᵣ² = ⁿCᵣ · ⁿCᵣ = ⁿCᵣ · ⁿCₙ₋ᵣ</div>
+<p><strong>Step 2:</strong> Also use:</p>
+<div class="formula">ⁿCᵣ / (r+1) = ⁿ⁺¹Cᵣ₊₁ / (n+1)</div>
+<p><strong>Step 3:</strong> Rewrite the sum:</p>
+<p>S = Σᵣ₌₀ⁿ [1/(r+1)] · ⁿCᵣ²</p>
+<p>= Σᵣ₌₀ⁿ [ⁿ⁺¹Cᵣ₊₁ / (n+1)] · ⁿCₙ₋ᵣ</p>
+<p><strong>Step 4:</strong> By Vandermonde's identity:</p>
+<p>Σᵣ₌₀ⁿ ⁿ⁺¹Cᵣ₊₁ · ⁿCₙ₋ᵣ = ²ⁿ⁺¹Cₙ₊₁</p>
+<p><strong>Step 5:</strong> Using symmetry and manipulation:</p>
+<p>The sum equals [1/(n+1)] · ²ⁿ⁺¹Cₙ</p>
+<p><strong>This is a standard result in binomial coefficient identities.</strong></p>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

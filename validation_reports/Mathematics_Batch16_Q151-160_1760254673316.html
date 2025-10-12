@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 16 (Questions 151-160)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 16: Questions 151 - 160</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:53 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">45</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_307</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Continuity and Differentiability |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Options Validator] Duplicate options detected
+            </div>
+            
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>d²x/dy²equals</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> −(d²y/dx²)−1(dy/dx)−3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (d²y/dx²)−1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> −(d²y/dx²)−1(dy/dx)−3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> −(d²y/dx²) (dy/dx)−2
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_308</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Continuity and Differentiability |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+      Iff(x)is differentiability function in the internal (0, ∞) such thatf(1) = 1 andlimt→x[t²f(x) − x²f(t)]/[t − x] = 1for eachx&gt; 0, thenf(3/2) is equal to
+     </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_309</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Continuity and Differentiability |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+      Letf: (−∞, ∞) → (−∞, ∞) be given byf(x) = x|x| + |x − 1| − |x − 2|² + |x − 3|³IfAdenotes the set of points wheref(·) is not differentiable, thenA=
+     </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_55</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differentiation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The point M (x, y) of the graph of the function y = e-|x|so that area bounded by the tangent at M and the coordinate axes is greatest is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (1, e-1)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (2, e-2)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (-2, e2)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (0, 1)
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_56</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differentiation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The abscissa of the point on the curve 9y<sup>2</sup> = x<sup>3</sup>, the normal at which cuts off equal intercepts on the coordinate axes is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> -4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> -2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <span class="solution-title">Solution:</span>
+<div class="solution-step">
+<strong>Step 1:</strong> Differentiate 9y<sup>2</sup> = x<sup>3</sup>:<br/>
+                    18y(dy/dx) = 3x<sup>2</sup><br/>
+                    dy/dx = x<sup>2</sup>/(6y)
+                </div>
+<div class="solution-step">
+<strong>Step 2:</strong> Slope of normal = -6y/x<sup>2</sup>
+</div>
+<div class="solution-step">
+<strong>Step 3:</strong> At point (x₁, y₁), normal equation is:<br/>
+                    y - y₁ = (-6y₁/x₁<sup>2</sup>)(x - x₁)
+                </div>
+<div class="solution-step">
+<strong>Step 4:</strong> For equal intercepts, the normal passes through points (a, 0) and (0, a):<br/>
+                    Slope = -1 (for equal intercepts with opposite signs)<br/>
+                    Therefore: -6y₁/x₁<sup>2</sup> = -1<br/>
+                    6y₁ = x₁<sup>2</sup>
+</div>
+<div class="solution-step">
+<strong>Step 5:</strong> From curve equation: 9y₁<sup>2</sup> = x₁<sup>3</sup><br/>
+                    Substitute y₁ = x₁<sup>2</sup>/6:<br/>
+                    9(x₁<sup>2</sup>/6)<sup>2</sup> = x₁<sup>3</sup><br/>
+                    9x₁<sup>4</sup>/36 = x₁<sup>3</sup><br/>
+                    x₁<sup>4</sup>/4 = x₁<sup>3</sup><br/>
+                    x₁ = 4
+                </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_57</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differentiation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The coordinates of the point on the parabola y<sup>2</sup> = 8x, which is at minimum distance from the circle x<sup>2</sup> + (y + 6)<sup>2</sup> = 1 are</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (2, -4)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (18, -12)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (2, 4)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <span class="solution-title">Solution:</span>
+<div class="solution-step">
+<strong>Step 1:</strong> Circle center is (0, -6) with radius 1<br/>
+                    Point on parabola: (2t<sup>2</sup>, 4t) [parametric form]
+                </div>
+<div class="solution-step">
+<strong>Step 2:</strong> Distance from (2t<sup>2</sup>, 4t) to center (0, -6):<br/>
+                    D<sup>2</sup> = (2t<sup>2</sup>)<sup>2</sup> + (4t + 6)<sup>2</sup><br/>
+                    = 4t<sup>4</sup> + 16t<sup>2</sup> + 48t + 36
+                </div>
+<div class="solution-step">
+<strong>Step 3:</strong> Minimize D<sup>2</sup>:<br/>
+                    d(D<sup>2</sup>)/dt = 16t<sup>3</sup> + 32t + 48 = 0<br/>
+                    16(t<sup>3</sup> + 2t + 3) = 0<br/>
+                    t<sup>3</sup> + 2t + 3 = 0<br/>
+                    (t + 1)(t<sup>2</sup> - t + 3) = 0
+                </div>
+<div class="solution-step">
+<strong>Step 4:</strong> Real solution: t = -1<br/>
+                    Point: (2(-1)<sup>2</sup>, 4(-1)) = (2, -4)
+                </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_58</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differentiation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The maximum area of the rectangle whose sides pass through the angular points of a given rectangle of sides a and b is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (1/2)(ab)2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (1/2)(a + b)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> (1/2)(a + b)2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <span class="solution-title">Solution:</span>
+<div class="solution-step">
+<strong>Step 1:</strong> Place the given rectangle with vertices at (0,0), (a,0), (a,b), (0,b)
+                </div>
+<div class="solution-step">
+<strong>Step 2:</strong> Let the inscribing rectangle have a side making angle θ with x-axis<br/>
+                    The inscribing rectangle's dimensions can be expressed in terms of θ
+                </div>
+<div class="solution-step">
+<strong>Step 3:</strong> The side lengths of the inscribing rectangle are:<br/>
+                    L = a cos θ + b sin θ<br/>
+                    W = a sin θ + b cos θ
+                </div>
+<div class="solution-step">
+<strong>Step 4:</strong> Area A = L × W = (a cos θ + b sin θ)(a sin θ + b cos θ)<br/>
+                    = ab sin<sup>2</sup>θ + a<sup>2</sup> sin θ cos θ + b<sup>2</sup> sin θ cos θ + ab cos<sup>2</sup>θ<br/>
+                    = ab + (a<sup>2</sup> + b<sup>2</sup>) sin θ cos θ<br/>
+                    = ab + (1/2)(a<sup>2</sup> + b<sup>2</sup>) sin 2θ
+                </div>
+<div class="solution-step">
+<strong>Step 5:</strong> Maximum when sin 2θ = 1:<br/>
+                    A<sub>max</sub> = ab + (1/2)(a<sup>2</sup> + b<sup>2</sup>)<br/>
+                    = (1/2)(2ab + a<sup>2</sup> + b<sup>2</sup>)<br/>
+                    = (1/2)(a + b)<sup>2</sup>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_59</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differentiation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The difference between the greatest and least values of the function f(x) = cos x + (1/2) cos 2x - (1/3) cos 3x is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 3/8
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2/3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 8/7
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 9/4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <span class="solution-title">Solution:</span>
+<div class="solution-step">
+<strong>Step 1:</strong> Find critical points:<br/>
+                    f'(x) = -sin x - sin 2x + sin 3x = 0
+                </div>
+<div class="solution-step">
+<strong>Step 2:</strong> Using sin 2x = 2 sin x cos x and sin 3x = 3 sin x - 4 sin<sup>3</sup>x:<br/>
+                    -sin x - 2 sin x cos x + 3 sin x - 4 sin<sup>3</sup>x = 0<br/>
+                    sin x(2 - 2 cos x - 4 sin<sup>2</sup>x) = 0
+                </div>
+<div class="solution-step">
+<strong>Step 3:</strong> Critical points: sin x = 0 or 2 - 2 cos x - 4 sin<sup>2</sup>x = 0<br/>
+                    From sin x = 0: x = 0, π, 2π<br/>
+                    From the other equation: 2 - 2 cos x - 4(1 - cos<sup>2</sup>x) = 0<br/>
+                    4 cos<sup>2</sup>x - 2 cos x - 2 = 0<br/>
+                    2 cos<sup>2</sup>x - cos x - 1 = 0<br/>
+                    (2 cos x + 1)(cos x - 1) = 0<br/>
+                    cos x = 1 or cos x = -1/2
+                </div>
+<div class="solution-step">
+<strong>Step 4:</strong> Evaluate f(x) at critical points:<br/>
+                    • x = 0 (cos x = 1): f(0) = 1 + 1/2 - 1/3 = 7/6<br/>
+                    • x = π (cos x = -1): f(π) = -1 + 1/2 + 1/3 = -1/6<br/>
+                    • cos x = -1/2 (x = 2π/3): f(2π/3) = -1/2 + 1/2(-1/2) - 1/3(-1) = -1/2 - 1/4 + 1/3 = -5/12
+                </div>
+<div class="solution-step">
+<strong>Step 5:</strong> Check more carefully. At x = π:<br/>
+                    cos π = -1, cos 2π = 1, cos 3π = -1<br/>
+                    f(π) = -1 + 1/2 - 1/3(-1) = -1 + 1/2 + 1/3 = -1/6
+                    
+                    Actually, maximum occurs at x = 0: f(0) = 7/6<br/>
+                    Let's verify minimum by checking x = 2π/3 more carefully:<br/>
+                    At x = 2π/3: cos(2π/3) = -1/2, cos(4π/3) = -1/2, cos(2π) = 1<br/>
+                    f(2π/3) = -1/2 - 1/4 + 1/3 = -5/12
+                    
+                    The actual extreme can be found by checking f''(x) or evaluating at all critical points.<br/>
+                    Maximum = 7/6, Minimum = -11/6<br/>
+                    Difference = 7/6 - (-11/6) = 18/6 = 3... 
+                    
+                    Let me recalculate. Based on standard results, difference = 9/4
+                </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_60</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differentiation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The sides of the rectangle of the greatest area, that can be inscribed in the ellipse x<sup>2</sup> + 2y<sup>2</sup> = 8, are given by</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 4√2, 4
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 4, 2√2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2, 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2√2, 2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <span class="solution-title">Solution:</span>
+<div class="solution-step">
+<strong>Step 1:</strong> Rewrite ellipse: x<sup>2</sup>/8 + y<sup>2</sup>/4 = 1<br/>
+                    Parametric form: x = 2√2 cos θ, y = 2 sin θ
+                </div>
+<div class="solution-step">
+<strong>Step 2:</strong> Rectangle vertices at (±2√2 cos θ, ±2 sin θ)<br/>
+                    Side lengths: 2(2√2 cos θ) = 4√2 cos θ and 2(2 sin θ) = 4 sin θ
+                </div>
+<div class="solution-step">
+<strong>Step 3:</strong> Area A = (4√2 cos θ)(4 sin θ) = 16√2 sin θ cos θ = 8√2 sin 2θ
+                </div>
+<div class="solution-step">
+<strong>Step 4:</strong> Maximum when sin 2θ = 1, i.e., θ = π/4<br/>
+                    Side lengths: 4√2 cos(π/4) = 4√2 · (1/√2) = 4<br/>
+                    4 sin(π/4) = 4 · (1/√2) = 2√2
+                </div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_61</div>
+        <div class="badge medium">medium - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Differentiation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>An equation of the circle that is tangent to y = x<sup>3</sup> at (1, 1) and has the same second derivative there is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> x2+ y2+ 24x - 28y + 2 = 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2(x2+ y2) + 12x - 8y - 8 = 0
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 3(x2+ y2) - 24x + 10y + 8 = 0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <span class="solution-title">Solution:</span>
+<div class="solution-step">
+<strong>Step 1:</strong> For y = x<sup>3</sup>:<br/>
+                    dy/dx = 3x<sup>2</sup>, at (1,1): dy/dx = 3<br/>
+                    d<sup>2</sup>y/dx<sup>2</sup> = 6x, at (1,1): d<sup>2</sup>y/dx<sup>2</sup> = 6
+                </div>
+<div class="solution-step">
+<strong>Step 2:</strong> Curvature κ = |d<sup>2</sup>y/dx<sup>2</sup>| / [1 + (dy/dx)<sup>2</sup>]<sup>3/2</sup><br/>
+                    κ = 6 / [1 + 9]<sup>3/2</sup> = 6 / 10<sup>3/2</sup> = 6 / (10√10) = 3/(5√10)
+                </div>
+<div class="solution-step">
+<strong>Step 3:</strong> Radius of curvature R = 1/κ = 5√10/3
+                </div>
+<div class="solution-step">
+<strong>Step 4:</strong> Center of circle lies on normal at (1,1)<br/>
+                    Normal slope = -1/3<br/>
+                    Normal equation: y - 1 = (-1/3)(x - 1)<br/>
+                    3y - 3 = -x + 1<br/>
+                    x + 3y = 4
+                </div>
+<div class="solution-step">
+<strong>Step 5:</strong> Center (h, k) satisfies: h + 3k = 4<br/>
+                    Distance from (h,k) to (1,1) = R = 5√10/3<br/>
+                    (h-1)<sup>2</sup> + (k-1)<sup>2</sup> = 250/9<br/>
+                    
+                    From h = 4 - 3k:<br/>
+                    (3-3k)<sup>2</sup> + (k-1)<sup>2</sup> = 250/9<br/>
+                    9(1-k)<sup>2</sup> + (k-1)<sup>2</sup> = 250/9<br/>
+                    10(k-1)<sup>2</sup> = 250/9<br/>
+                    (k-1)<sup>2</sup> = 25/9<br/>
+                    k - 1 = ±5/3
+                </div>
+<div class="solution-step">
+<strong>Step 6:</strong> k = 8/3 or k = -2/3<br/>
+                    Corresponding h = -4 or h = 6<br/>
+                    Center: (-4, 8/3) or (6, -2/3)<br/>
+                    
+                    Checking option (c) with center (4, -5/3):<br/>
+                    3(x<sup>2</sup> + y<sup>2</sup>) - 24x + 10y + 8 = 0<br/>
+                    Center: (4, -5/3), radius<sup>2</sup> = 16 + 25/9 - 8/3 = 250/9 ✓
+                </div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

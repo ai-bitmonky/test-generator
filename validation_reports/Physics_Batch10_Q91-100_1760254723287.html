@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 10 (Questions 91-100)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 10: Questions 91 - 100</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:43 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">9</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">10%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">16</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (9 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_21</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 49:
+      </h4>
+      A bowler throws a bowling ball of radius R = 11 cm along a lane. The ball (shown in figure below) slides on the lane with initial speed vcom,0= 8.5 m/s and initial angular speed ω₀ = 0. The coefficient of kinetic friction between the ball and the lane is μk= 0.21.Figure: Bowling ball initially sliding (ω=0) then transitioning to smooth rolling (v=ωR)The kinetic frictional force fkacting on the ball causes a linear acceleration of the ball while producing a torque that causes an angular acceleration of the ball. When speed vcomhas decreased enough and angular speed ω has increased enough, the ball stops sliding and then rolls smoothly.Find the following quantities:(a)What is vcomin terms of ω when smooth rolling begins?(b)What is the ball's linear acceleration during the sliding phase?(c)What is the ball's angular acceleration during the sliding phase?(d)How long does the ball slide?(e)How far does the ball slide?(f)What is the linear speed of the ball when smooth rolling begins?⚠️ FIGURE MISSING: This problem references a figure that was not included in the original document. The figure needs to be added manually.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) v = ωR; (b) a = -2.06 m/s²; (c) α = 46.8 rad/s²; (d) t = 1.18 s; (e) s = 8.60 m; (f) v = 6.07 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) v = ωR; (b) a = -1.50 m/s²; (c) α = 35.0 rad/s²; (d) t = 1.50 s; (e) s = 9.50 m; (f) v = 5.50 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) v = ωR; (b) a = -2.50 m/s²; (c) α = 50.0 rad/s²; (d) t = 1.00 s; (e) s = 7.50 m; (f) v = 6.50 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) v = ωR; (b) a = -1.96 m/s²; (c) α = 44.0 rad/s²; (d) t = 1.25 s; (e) s = 8.00 m; (f) v = 6.25 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Part (a) - Rolling Condition
+          </strong>
+<p>
+           Smooth rolling occurs when the velocity of the contact point is zero, which requires:
+          </p>
+<div class="formula">
+           v
+           <sub>
+            com
+           </sub>
+           = ωR
+          </div>
+<p>
+           This is the fundamental condition for rolling without slipping.
+          </p>
+</li>
+<li>
+<strong>
+           Step 2: Part (b) - Linear Acceleration
+          </strong>
+<p>
+           The friction force acts backward (opposing motion):
+          </p>
+<div class="formula">
+           f_k = μ_k Mg (backward)
+           <br>
+<br>
+           ΣF = Ma
+           <br>
+           -f_k = Ma
+           <br>
+           -μ_k Mg = Ma
+           <br>
+           a = -μ_k g = -0.21 × 9.8 = -2.058 m/s²
+          </div>
+<p>
+<strong>
+            Answer: a ≈ -2.06 m/s²
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 3: Part (c) - Angular Acceleration
+          </strong>
+<p>
+           The friction creates a torque about the center of mass:
+          </p>
+<div class="formula">
+           τ = f_k × R (causes clockwise rotation viewed from side)
+           <br>
+<br>
+           Στ = Iα
+           <br>
+           f_k R = Iα
+           <br>
+<br>
+           For a solid sphere: I = (2/5)MR²
+           <br>
+           μ_k Mg R = (2/5)MR² α
+           <br>
+           α = (5μ_k g)/(2R) = (5 × 0.21 × 9.8)/(2 × 0.11)
+           <br>
+           α = 10.29/0.22 = 46.77 rad/s²
+          </div>
+<p>
+<strong>
+            Answer: α ≈ 46.8 rad/s²
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 4: Part (d) - Time to Reach Smooth Rolling
+          </strong>
+<p>
+           Using kinematics for linear and angular motion:
+          </p>
+<div class="formula">
+           v_com(t) = v_com,0 + at = 8.5 - 2.058t
+           <br>
+           ω(t) = ω_0 + αt = 0 + 46.77t = 46.77t
+          </div>
+<p>
+           At smooth rolling: v_com = ωR
+          </p>
+<div class="formula">
+           8.5 - 2.058t = 46.77t × 0.11
+           <br>
+           8.5 - 2.058t = 5.145t
+           <br>
+           8.5 = 2.058t + 5.145t = 7.203t
+           <br>
+           t = 8.5/7.203 = 1.180 s
+          </div>
+<p>
+<strong>
+            Answer: t ≈ 1.18 s
+           </strong>
+</p>
+<p>
+<em>
+            Alternative elegant derivation:
+           </em>
+</p>
+<div class="formula">
+           From v = v₀ + at and ω = αt:
+           <br>
+           v = v₀ - μgt and ω = (5μg)/(2R) × t
+           <br>
+           At rolling: v = ωR
+           <br>
+           v₀ - μgt = (5μg)/(2R) × t × R
+           <br>
+           v₀ - μgt = (5μgt)/2
+           <br>
+           v₀ = μgt + (5μgt)/2 = μgt(1 + 5/2) = (7μgt)/2
+           <br>
+           t = 2v₀/(7μg)
+          </div>
+</li>
+<li>
+<strong>
+           Step 5: Part (e) - Sliding Distance
+          </strong>
+<p>
+           Using kinematic equation for distance:
+          </p>
+<div class="formula">
+           s = v₀t + (1/2)at²
+           <br>
+           s = 8.5 × 1.180 + (1/2) × (-2.058) × (1.180)²
+           <br>
+           s = 10.03 - 1.433
+           <br>
+           s = 8.597 m ≈ 8.60 m
+          </div>
+<p>
+<strong>
+            Answer: s ≈ 8.60 m
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 6: Part (f) - Speed When Rolling Begins
+          </strong>
+<p>
+           Using the linear velocity equation:
+          </p>
+<div class="formula">
+           v = v₀ + at = 8.5 + (-2.058) × 1.180
+           <br>
+           v = 8.5 - 2.428 = 6.072 m/s
+          </div>
+<p>
+           Or using the elegant relation:
+          </p>
+<div class="formula">
+           v = ωR = (αt)R = (5μgt/2R) × R = (5μgt)/2
+           <br>
+           v = (5 × 0.21 × 9.8 × 1.180)/2 = 6.072 m/s
+          </div>
+<p>
+           Or using energy (for verification):
+          </p>
+<div class="formula">
+           v_/v_initial = 5/7 (for sphere sliding to rolling)
+           <br>
+           v = (5/7) × 8.5 = 6.071 m/s
+          </div>
+<p>
+<strong>
+            Answer: v ≈ 6.07 m/s
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 7: Physical Interpretation
+          </strong>
+<p>
+           The ball loses about 29% of its speed during the transition:
+          </p>
+<div class="formula">
+           Speed loss = (8.5 - 6.07)/8.5 = 28.6%
+          </div>
+<p>
+           This energy goes into:
+          </p>
+<ul>
+<li>
+            Rotational kinetic energy (ball starts spinning)
+           </li>
+<li>
+            Heat due to friction (sliding dissipation)
+           </li>
+</ul>
+<p>
+           After reaching v = ωR, the ball rolls smoothly with no more sliding friction (only static friction maintains rolling).
+          </p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_23</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem Statement:</strong></p>
+<p>A non-uniform ball of mass <em>M</em> and radius <em>R</em> rolls smoothly from rest down a ramp and onto a circular loop of radius 0.48 m. The initial height of the ball is <em>h</em> = 0.36 m. At the loop bottom, the magnitude of the normal force on the ball is 2.00<em>Mg</em>.</p>
+<p>The ball consists of an outer spherical shell (of a certain uniform density) that is glued to a central sphere (of a different uniform density). The rotational inertia of the ball can be expressed in the general form <em>I</em> = β<em>MR</em>², but β is not 0.4 as it is for a ball of uniform density.</p>
+<p><strong>Determine the value of β.</strong></p>
+<div class="diagram">
+<svg height="400" viewbox="0 0 600 400" width="600" xmlns="http://www.w3.org/2000/svg">
+<!-- Ramp -->
+<line stroke="#8B4513" stroke-width="4" x1="50" x2="250" y1="150" y2="300"></line>
+<line stroke="#8B4513" stroke-width="4" x1="50" x2="250" y1="155" y2="305"></line>
+<!-- Circular loop -->
+<circle cx="400" cy="300" fill="none" r="96" stroke="#4A4A4A" stroke-width="3"></circle>
+<circle cx="400" cy="300" fill="none" r="104" stroke="#4A4A4A" stroke-dasharray="5,5" stroke-width="1"></circle>
+<!-- Ball at start -->
+<circle cx="80" cy="165" fill="#E74C3C" r="15" stroke="#C0392B" stroke-width="2"></circle>
+<text fill="#2C3E50" font-size="14" text-anchor="middle" x="80" y="130">M, R</text>
+<!-- Ball at bottom of loop -->
+<circle cx="400" cy="396" fill="#E74C3C" opacity="0.5" r="15" stroke="#C0392B" stroke-width="2"></circle>
+<!-- Height markers -->
+<line marker-end="url(#arrowhead)" stroke="#2C3E50" stroke-width="2" x1="20" x2="20" y1="300" y2="150"></line>
+<line marker-start="url(#arrowhead)" stroke="#2C3E50" stroke-width="2" x1="20" x2="20" y1="300" y2="150"></line>
+<text fill="#2C3E50" font-size="16" text-anchor="end" x="10" y="230">h = 0.36 m</text>
+<!-- Ground line -->
+<line stroke="#000" stroke-width="2" x1="0" x2="600" y1="300" y2="300"></line>
+<!-- Loop radius marker -->
+<line stroke="#3498DB" stroke-width="2" x1="400" x2="496" y1="300" y2="300"></line>
+<text fill="#3498DB" font-size="14" x="448" y="290">R_loop = 0.48 m</text>
+<!-- Normal force arrow at bottom -->
+<defs>
+<marker id="arrowhead" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#2C3E50" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowblue" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#3498DB" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowred" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#E74C3C" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+</defs>
+<line marker-end="url(#arrowblue)" stroke="#3498DB" stroke-width="3" x1="400" x2="400" y1="396" y2="340"></line>
+<text fill="#3498DB" font-size="14" x="420" y="370">N = 2Mg</text>
+<line marker-end="url(#arrowred)" stroke="#E74C3C" stroke-width="2" x1="400" x2="400" y1="396" y2="430"></line>
+<text fill="#E74C3C" font-size="14" x="420" y="420">Mg</text>
+<!-- Labels -->
+<text fill="#2C3E50" font-size="18" font-weight="bold" x="300" y="50">Ball Rolling on Loop-the-Loop</text>
+<text fill="#666" font-size="12" x="150" y="340">Initial: v = 0, at height h</text>
+<text fill="#666" font-size="12" x="320" y="370">At bottom: N = 2Mg</text>
+</svg>
+</div>
+<p><strong>Given:</strong></p>
+<ul>
+<li>Loop radius: R<sub>loop</sub> = 0.48 m</li>
+<li>Initial height: h = 0.36 m</li>
+<li>Normal force at bottom: N = 2.00Mg</li>
+<li>Rotational inertia: I = βMR²</li>
+<li>Ball starts from rest</li>
+<li>Rolling is smooth (no slipping)</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> β = 0.25
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> β = 0.40
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> β = 0.50
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> β = 0.60
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use energy conservation to find velocity at the bottom of the loop, then apply Newton's second law for circular motion at that point. The normal force constraint provides the equation to solve for β.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Find velocity at bottom using force analysis</strong><br/>
+            At the bottom, net upward force provides centripetal acceleration:<br/>
+<span class="math">N - Mg = Mv²/R_loop</span><br/>
+            Given N = 2.00Mg:<br/>
+<span class="math">2.00Mg - Mg = Mv²/R_loop</span><br/>
+<span class="math">Mg = Mv²/R_loop</span><br/>
+<span class="math">v² = g × R_loop = 9.8 × 0.48 = 4.704 m²/s²</span></li>
+<li><strong>Step 2: Apply energy conservation</strong><br/>
+            Initial energy: <span class="math">E_i = Mgh</span><br/>
+            Final energy: <span class="math">E_f = ½Mv² + ½Iω²</span><br/>
+<br/>
+            For rolling without slipping: <span class="math">ω = v/R_ball</span><br/>
+            With I = βMR²_ball:<br/>
+<span class="math">E_f = ½Mv² + ½(βMR²_ball)(v/R_ball)²</span><br/>
+<span class="math">E_f = ½Mv² + ½βMv²</span><br/>
+<span class="math">E_f = ½Mv²(1 + β)</span></li>
+<li><strong>Step 3: Set up conservation equation</strong><br/>
+<span class="math">Mgh = ½Mv²(1 + β)</span><br/>
+<span class="math">2gh = v²(1 + β)</span><br/>
+<span class="math">v² = 2gh/(1 + β)</span></li>
+<li><strong>Step 4: Solve for β</strong><br/>
+            From Step 1: <span class="math">v² = g × R_loop = 4.704</span><br/>
+            From Step 3: <span class="math">v² = 2gh/(1 + β)</span><br/>
+<br/>
+            Equating:<br/>
+<span class="math">g × R_loop = 2gh/(1 + β)</span><br/>
+<span class="math">R_loop(1 + β) = 2h</span><br/>
+<span class="math">1 + β = 2h/R_loop</span><br/>
+<span class="math">β = 2h/R_loop - 1</span><br/>
+<span class="math">β = 2(0.36)/0.48 - 1</span><br/>
+<span class="math">β = 0.72/0.48 - 1</span><br/>
+<span class="math">β = 1.5 - 1</span><br/>
+<span class="math">β = 0.50 ✓</span></li>
+<li><strong>Step 5: Verification</strong><br/>
+            Check: <span class="math">v² = 2gh/(1+β) = 2(9.8)(0.36)/1.5 = 7.056/1.5 = 4.704 ✓</span><br/>
+            This matches the value from circular motion analysis.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_237</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+      Problem 53 from Textbook:
+     </strong>
+</p>
+<p>
+     A uniform thin rod of length 0.500 m and mass 4.00 kg can rotate in a horizontal plane about a vertical axis through its center. The rod is at rest when a 3.00 g bullet traveling in the rotation plane is fired into one end of the rod.
+    </p>
+<p>
+     In the view from above, the bullet's path makes angle θ = 60.0° with the rod. If the bullet lodges in the rod and the angular velocity of the rod is 10 rad/s immediately after the collision, what is the bullet's speed just before impact?
+    </p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 850 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1050 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 1286 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1520 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li>Identify the axis of rotation</li>
+<li>Calculate moment of inertia before and after collision</li>
+<li>Express angular momentum before collision (point mass)</li>
+<li>Express angular momentum after collision (rotating system)</li>
+<li>Apply conservation of angular momentum</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_238</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+      Problem 62 from Textbook:
+     </strong>
+</p>
+<p>
+     During a jump to his partner, an aerialist is to make a quadruple somersault lasting a time t = 1.87 s. For the first and last quarter-revolution, he is in the extended orientation with rotational inertia I₁ = 19.9 kg·m² around his center of mass.
+    </p>
+<p>
+     During the rest of the flight he is in a tight tuck, with rotational inertia I₂ = 3.93 kg·m².
+    </p>
+<p>
+<strong>
+      What must be his angular speed ω₂ around his center of mass during the tuck?
+     </strong>
+</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 15.5 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 18.2 rad/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 20.3 rad/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 22.7 rad/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li>Apply angular momentum conservation: I₁ω₁ = I₂ω₂</li>
+<li>Set up time equation: total time = time in each configuration</li>
+<li>Set up angle equation: total angle = angle in each configuration</li>
+<li>Solve the system of equations</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_239</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+      Problem 66 from Textbook:
+     </strong>
+</p>
+<p>
+     A small 50 g block slides down a frictionless surface through height h = 20 cm and then sticks to a uniform rod of mass 100 g and length 40 cm. The rod pivots about point O through angle θ before momentarily stopping.
+    </p>
+<p>
+<strong>
+      Find θ (in degrees).
+     </strong>
+</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 25.4°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 31.8°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 38.2°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 45.0°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li>Find block's speed just before collision using energy conservation</li>
+<li>Apply angular momentum conservation during the collision</li>
+<li>Find angular velocity immediately after collision</li>
+<li>Apply energy conservation for the rotating system to find maximum angle</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_24</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem Statement:</strong></p>
+<p>A bowler throws a bowling ball of radius R = 11 cm along a lane. The ball (initially) slides on the lane with initial speed v<sub>com,0</sub> = 8.5 m/s and initial angular speed ω<sub>0</sub> = 0.</p>
+<p>The coefficient of kinetic friction between the ball and the lane is 0.21. The kinetic frictional force acting on the ball causes a linear deceleration of the ball while producing a torque that causes an angular acceleration of the ball.</p>
+<p>When speed v<sub>com</sub> has decreased enough and angular speed ω has increased enough, the ball stops sliding and then rolls smoothly.</p>
+<div class="diagram">
+<svg height="300" viewbox="0 0 800 300" width="800" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2C3E50" font-size="16" font-weight="bold" text-anchor="middle" x="400" y="30">Bowling Ball: Sliding to Rolling Transition</text>
+<!-- Lane -->
+<rect fill="#D2B48C" height="60" stroke="#8B4513" stroke-width="2" width="700" x="50" y="200"></rect>
+<line stroke="#000" stroke-width="3" x1="50" x2="750" y1="260" y2="260"></line>
+<!-- Initial state (sliding) -->
+<text fill="#2C3E50" font-size="14" font-weight="bold" x="150" y="80">Initial State (Sliding):</text>
+<circle cx="150" cy="180" fill="#E74C3C" r="40" stroke="#C0392B" stroke-width="3"></circle>
+<circle cx="150" cy="180" fill="#000" r="5"></circle>
+<!-- Velocity arrow -->
+<line marker-end="url(#arrowblue)" stroke="#3498DB" stroke-width="4" x1="190" x2="270" y1="150" y2="150"></line>
+<text fill="#3498DB" font-size="14" font-weight="bold" x="230" y="140">v₀ = 8.5 m/s</text>
+<!-- No rotation initially -->
+<text fill="#E74C3C" font-size="12" text-anchor="middle" x="150" y="250">ω₀ = 0</text>
+<!-- Friction force -->
+<line marker-end="url(#arrowred)" stroke="#FF6B6B" stroke-width="3" x1="150" x2="110" y1="220" y2="220"></line>
+<text fill="#FF6B6B" font-size="12" x="80" y="215">f = μₖMg</text>
+<!-- Final state (rolling) -->
+<text fill="#2C3E50" font-size="14" font-weight="bold" x="550" y="80">Final State (Rolling):</text>
+<circle cx="550" cy="180" fill="#27AE60" r="40" stroke="#229954" stroke-width="3"></circle>
+<circle cx="550" cy="180" fill="#000" r="5"></circle>
+<!-- Rolling arrows -->
+<path d="M 565,165 Q 575,155 585,165" fill="none" marker-end="url(#arrowblack)" stroke="#000" stroke-width="2"></path>
+<text fill="#000" font-size="12" x="590" y="160">ω</text>
+<line marker-end="url(#arrowgreen)" stroke="#27AE60" stroke-width="4" x1="590" x2="650" y1="150" y2="150"></line>
+<text fill="#27AE60" font-size="14" font-weight="bold" x="620" y="140">v = 6.07 m/s</text>
+<text fill="#27AE60" font-size="12" text-anchor="middle" x="550" y="250">v = ωR</text>
+<!-- Arrow indicating transition -->
+<line marker-end="url(#arrowpurple)" stroke="#9B59B6" stroke-dasharray="10,5" stroke-width="3" x1="300" x2="450" y1="180" y2="180"></line>
+<text fill="#9B59B6" font-size="13" font-weight="bold" text-anchor="middle" x="375" y="170">Sliding Phase</text>
+<text fill="#666" font-size="12" text-anchor="middle" x="375" y="200">t = 1.18 s, d = 8.60 m</text>
+<!-- Markers -->
+<defs>
+<marker id="arrowblue" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#3498DB" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowred" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#FF6B6B" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowgreen" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#27AE60" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowpurple" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#9B59B6" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowblack" markerheight="8" markerwidth="8" orient="auto" refx="4" refy="4">
+<polygon fill="#000" points="0 0, 8 4, 0 8"></polygon>
+</marker>
+</defs>
+</svg>
+</div>
+<p><strong>Determine:</strong></p>
+<ol type="a">
+<li>What is v<sub>com</sub> (in terms of ω) when smooth rolling begins?</li>
+<li>What is the ball's linear acceleration during sliding?</li>
+<li>What is the ball's angular acceleration during sliding?</li>
+<li>How long does the ball slide?</li>
+<li>How far does the ball slide?</li>
+<li>What is the linear speed when smooth rolling begins?</li>
+</ol>
+<p><strong>Given:</strong></p>
+<ul>
+<li>Ball radius: R = 11 cm = 0.11 m</li>
+<li>Initial linear velocity: v<sub>0</sub> = 8.5 m/s</li>
+<li>Initial angular velocity: ω<sub>0</sub> = 0</li>
+<li>Coefficient of kinetic friction: μ<sub>k</sub> = 0.21</li>
+<li>For a solid sphere: I = (2/5)MR²</li>
+<li>Take g = 9.8 m/s²</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> <strong>Part (a):</strong> v<sub>com</sub> = ωR<br/>
+<strong>Part (b):</strong> |a| = 2.06 m/s²<br/>
+<strong>Part (c):</strong> α = 46.8 rad/s²<br/>
+<strong>Part (d):</strong> t = 1.18 s<br/>
+<strong>Part (e):</strong> s = 8.60 m<br/>
+<strong>Part (f):</strong> v = 6.07 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> <strong>Part (a):</strong> v<sub>com</sub> = 2ωR<br/>
+<strong>Part (b):</strong> |a| = 2.06 m/s²<br/>
+<strong>Part (c):</strong> α = 93.5 rad/s²<br/>
+<strong>Part (d):</strong> t = 2.36 s<br/>
+<strong>Part (e):</strong> s = 17.2 m<br/>
+<strong>Part (f):</strong> v = 3.04 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> <strong>Part (a):</strong> v<sub>com</sub> = ωR/2<br/>
+<strong>Part (b):</strong> |a| = 1.03 m/s²<br/>
+<strong>Part (c):</strong> α = 23.4 rad/s²<br/>
+<strong>Part (d):</strong> t = 2.36 s<br/>
+<strong>Part (e):</strong> s = 17.2 m<br/>
+<strong>Part (f):</strong> v = 12.1 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> <strong>Part (a):</strong> v<sub>com</sub> = ωR<br/>
+<strong>Part (b):</strong> |a| = 4.12 m/s²<br/>
+<strong>Part (c):</strong> α = 23.4 rad/s²<br/>
+<strong>Part (d):</strong> t = 0.59 s<br/>
+<strong>Part (e):</strong> s = 4.30 m<br/>
+<strong>Part (f):</strong> v = 6.07 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> During sliding, friction causes linear deceleration and angular acceleration. Apply Newton's laws separately for translation and rotation. The transition to rolling occurs when v = ωR.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Part (a): Rolling condition</strong><br/>
+            Smooth rolling occurs when:<br/>
+<span class="math">v<sub>com</sub> = ωR ✓</span></li>
+<li><strong>Part (b): Linear acceleration</strong><br/>
+            Friction opposes motion:<br/>
+<span class="math">-f<sub>k</sub> = Ma</span><br/>
+<span class="math">a = -μ<sub>k</sub>g = -0.21 × 9.8 = -2.058 m/s²</span><br/>
+<span class="math">|a| = 2.06 m/s² ✓</span></li>
+<li><strong>Part (c): Angular acceleration</strong><br/>
+            Torque equation:<br/>
+<span class="math">τ = fR = Iα</span><br/>
+<span class="math">μ<sub>k</sub>MgR = (2/5)MR²α</span><br/>
+<span class="math">α = 5μ<sub>k</sub>g/(2R)</span><br/>
+<span class="math">α = 5(0.21)(9.8)/(2 × 0.11)</span><br/>
+<span class="math">α = 10.29/0.22 = 46.77 rad/s²</span><br/>
+<span class="math">α = 46.8 rad/s² ✓</span></li>
+<li><strong>Part (d): Sliding time</strong><br/>
+            Linear: <span class="math">v = v<sub>0</sub> + at = 8.5 - 2.058t</span><br/>
+            Angular: <span class="math">ω = ω<sub>0</sub> + αt = 0 + 46.77t</span><br/>
+<br/>
+            When v = ωR:<br/>
+<span class="math">8.5 - 2.058t = 46.77t × 0.11</span><br/>
+<span class="math">8.5 - 2.058t = 5.145t</span><br/>
+<span class="math">8.5 = 7.203t</span><br/>
+<span class="math">t = 1.180 s ≈ 1.18 s ✓</span></li>
+<li><strong>Part (e): Sliding distance</strong><br/>
+<span class="math">s = v<sub>0</sub>t + ½at²</span><br/>
+<span class="math">s = 8.5(1.180) + ½(-2.058)(1.180)²</span><br/>
+<span class="math">s = 10.03 - 1.432</span><br/>
+<span class="math">s = 8.60 m ✓</span></li>
+<li><strong>Part (f): Final speed</strong><br/>
+<span class="math">v = v<sub>0</sub> + at = 8.5 + (-2.058)(1.180)</span><br/>
+<span class="math">v = 8.5 - 2.428 = 6.072 m/s</span><br/>
+<span class="math">v ≈ 6.07 m/s ✓</span></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_26</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem Statement:</strong></p>
+<p>Two 2.00 kg balls are attached to the ends of a thin rod of length 50.0 cm and negligible mass. The rod is free to rotate in a vertical plane without friction about a horizontal axis through its center.</p>
+<p>With the rod initially horizontal, a 50.0 g wad of wet putty drops onto one of the balls, hitting it with a speed of 3.00 m/s and then sticking to it.</p>
+<div class="diagram">
+<svg height="400" viewbox="0 0 900 400" width="900" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2C3E50" font-size="16" font-weight="bold" text-anchor="middle" x="450" y="25">Putty Collision with Rotating Rod System</text>
+<!-- Before collision -->
+<text fill="#2C3E50" font-size="14" font-weight="bold" text-anchor="middle" x="200" y="70">Before Collision:</text>
+<!-- Horizontal rod with balls -->
+<line stroke="#8B4513" stroke-width="6" x1="75" x2="325" y1="180" y2="180"></line>
+<circle cx="200" cy="180" fill="#000" r="8"></circle>
+<text fill="#000" font-size="11" text-anchor="middle" x="200" y="210">Pivot</text>
+<!-- Balls at ends -->
+<circle cx="75" cy="180" fill="#3498DB" r="20" stroke="#2980B9" stroke-width="2"></circle>
+<text fill="#3498DB" font-size="11" text-anchor="middle" x="75" y="150">M = 2.00 kg</text>
+<circle cx="325" cy="180" fill="#3498DB" r="20" stroke="#2980B9" stroke-width="2"></circle>
+<text fill="#3498DB" font-size="11" text-anchor="middle" x="325" y="150">M = 2.00 kg</text>
+<!-- Rod length -->
+<line stroke="#666" stroke-dasharray="2,2" stroke-width="1" x1="75" x2="325" y1="230" y2="230"></line>
+<text fill="#666" font-size="11" text-anchor="middle" x="200" y="250">L = 50.0 cm</text>
+<!-- Falling putty -->
+<circle cx="325" cy="80" fill="#FF6B6B" r="12" stroke="#E74C3C" stroke-width="2"></circle>
+<line marker-end="url(#arrowred)" stroke="#E74C3C" stroke-width="3" x1="325" x2="325" y1="92" y2="150"></line>
+<text fill="#E74C3C" font-size="12" font-weight="bold" x="345" y="120">v = 3.00 m/s</text>
+<text fill="#FF6B6B" font-size="11" x="360" y="80">m = 50 g</text>
+<!-- After collision -->
+<text fill="#2C3E50" font-size="14" font-weight="bold" text-anchor="middle" x="650" y="70">After Collision:</text>
+<!-- Rod at angle -->
+<g transform="translate(650, 200)">
+<!-- Rotated rod -->
+<line stroke="#8B4513" stroke-width="6" x1="-125" x2="125" y1="0" y2="0"></line>
+<circle cx="0" cy="0" fill="#000" r="8"></circle>
+<!-- Balls -->
+<circle cx="-125" cy="0" fill="#3498DB" r="20" stroke="#2980B9" stroke-width="2"></circle>
+<circle cx="125" cy="0" fill="#27AE60" r="20" stroke="#229954" stroke-width="2"></circle>
+<!-- Putty stuck to ball -->
+<circle cx="125" cy="0" fill="#FF6B6B" r="12" stroke="#E74C3C" stroke-width="2" transform="translate(15, 0)"></circle>
+<!-- Rotation arrow -->
+<path d="M 15,-40 Q 25,-50 35,-40" fill="none" marker-end="url(#arrowpurple)" stroke="#9B59B6" stroke-width="3"></path>
+<text fill="#9B59B6" font-size="13" font-weight="bold" x="40" y="-35">ω</text>
+</g>
+<text fill="#666" font-size="11" text-anchor="middle" x="650" y="280">System rotates upward</text>
+<!-- Question parts -->
+<rect fill="#FFF9E6" height="80" rx="5" stroke="#FF9800" stroke-width="2" width="800" x="50" y="310"></rect>
+<text fill="#2C3E50" font-size="13" font-weight="bold" text-anchor="middle" x="450" y="335">Determine:</text>
+<text fill="#2C3E50" font-size="12" x="70" y="360">(a) Angular speed ω immediately after collision</text>
+<text fill="#2C3E50" font-size="12" x="70" y="380">(b) Ratio of KE_after / KE_before</text>
+<text fill="#2C3E50" font-size="12" x="450" y="360">(c) Angle θ through which system rotates before stopping</text>
+<defs>
+<marker id="arrowred" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#E74C3C" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowpurple" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#9B59B6" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+</defs>
+</svg>
+</div>
+<p><strong>Determine:</strong></p>
+<ol type="a">
+<li>What is the angular speed immediately after the putty hits?</li>
+<li>What is the ratio of KE<sub>after</sub> / KE<sub>before</sub>?</li>
+<li>Through what angle will the system rotate before momentarily stopping?</li>
+</ol>
+<p><strong>Given:</strong></p>
+<ul>
+<li>Ball mass: M = 2.00 kg (each)</li>
+<li>Rod length: L = 50.0 cm = 0.500 m</li>
+<li>Putty mass: m = 50.0 g = 0.050 kg</li>
+<li>Putty velocity: v = 3.00 m/s (downward)</li>
+<li>Rod initially horizontal</li>
+<li>Take g = 9.8 m/s²</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) ω = 0.148 rad/s<br/>
+ (b) Ratio = 0.0123<br/>
+ (c) θ = 5.42°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) ω = 0.296 rad/s<br/>
+ (b) Ratio = 0.0246<br/>
+ (c) θ = 10.8°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) ω = 0.185 rad/s<br/>
+ (b) Ratio = 0.0308<br/>
+ (c) θ = 13.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) ω = 0.222 rad/s<br/>
+ (b) Ratio = 0.0431<br/>
+ (c) θ = 16.2°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Three-stage problem: (1) Angular momentum conservation for collision, (2) Energy ratio calculation, (3) Energy conservation for rotation.Solution AnalysisPart (a): CollisionInitial: L = mvr = 0.050×3.00×0.250: I_total = 2M(L/2)² + m(L/2)²0.0375 = 0.2531×ωω = 0.148 rad/s ✓Part (b): Energy RatioKE_before = ½mv² = ½(0.050)(3.00)²= 0.225 JKE_after = ½Iω² = ½(0.2531)(0.148)²= 0.00278 JRatio = 0.0123 ✓Part (c): Rotational MotionMM+my_cmCenter of mass position:y_cm = m(L/2)/(2M+m) = 0.050×0.250/4.05= 0.00309 m from pivotEnergy conservation (rotation):KE = (2M+m)g × y_cm × (1-cos θ)0.00278 = 4.05×9.8×0.00309×(1-cos θ)1-cos θ = 0.0227 → cos θ = 0.9773θ = 5.42° ✓
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Part (a): ω after collision</strong><br/>
+<span class="math">I_initial = 2M(L/2)² = 0.250 kg·m²</span><br/>
+<span class="math">L_putty = mvr = 0.050×3.00×0.250 = 0.0375 kg·m²/s</span><br/>
+<span class="math">I_= (2M+m)(L/2)² = 0.2531 kg·m²</span><br/>
+<span class="math">ω = 0.0375/0.2531 = 0.148 rad/s ✓</span></li>
+<li><strong>Part (b): Energy ratio</strong><br/>
+<span class="math">KE_before = ½(0.050)(3.00)² = 0.225 J</span><br/>
+<span class="math">KE_after = ½(0.2531)(0.148)² = 0.00278 J</span><br/>
+<span class="math">Ratio = 0.00278/0.225 = 0.0123 ✓</span></li>
+<li><strong>Part (c): Rotation angle</strong><br/>
+<span class="math">y_cm = 0.050×0.250/4.05 = 0.00309 m</span><br/>
+<span class="math">0.00278 = 4.05×9.8×0.00309×(1-cos θ)</span><br/>
+<span class="math">θ = arccos(0.9773) = 5.42° ✓</span></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_27</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem Statement:</strong></p>
+<p>A small 50 g block slides down a frictionless surface through height h = 20 cm and then sticks to a uniform rod of mass 100 g and length 40 cm. The rod pivots about point O through angle θ before momentarily stopping.</p>
+<div class="diagram">
+<svg height="400" viewbox="0 0 900 400" width="900" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2C3E50" font-size="16" font-weight="bold" text-anchor="middle" x="450" y="25">Block Sliding and Colliding with Pivoting Rod</text>
+<!-- Stage 1: Block at top -->
+<text fill="#2C3E50" font-size="13" font-weight="bold" text-anchor="middle" x="150" y="70">Stage 1: Initial</text>
+<rect fill="#E74C3C" height="25" stroke="#C0392B" stroke-width="2" width="25" x="120" y="110"></rect>
+<text fill="#E74C3C" font-size="11" text-anchor="middle" x="132.5" y="155">m = 50 g</text>
+<!-- Ramp -->
+<line stroke="#8B4513" stroke-width="4" x1="145" x2="280" y1="122.5" y2="250"></line>
+<!-- Height marker -->
+<line stroke="#3498DB" stroke-dasharray="3,3" stroke-width="2" x1="90" x2="90" y1="122.5" y2="250"></line>
+<line stroke="#3498DB" stroke-width="2" x1="85" x2="95" y1="122.5" y2="122.5"></line>
+<line stroke="#3498DB" stroke-width="2" x1="85" x2="95" y1="250" y2="250"></line>
+<text fill="#3498DB" font-size="12" text-anchor="end" x="70" y="190">h = 20 cm</text>
+<!-- Stage 2: Block at bottom -->
+<text fill="#2C3E50" font-size="13" font-weight="bold" text-anchor="middle" x="300" y="70">Stage 2: Before Collision</text>
+<line stroke="#666" stroke-width="2" x1="0" x2="900" y1="250" y2="250"></line>
+<rect fill="#E74C3C" height="25" stroke="#C0392B" stroke-width="2" width="25" x="268" y="225"></rect>
+<line marker-end="url(#arrowblue)" stroke="#3498DB" stroke-width="3" x1="293" x2="340" y1="225" y2="225"></line>
+<text fill="#3498DB" font-size="12" x="320" y="215">v</text>
+<!-- Rod (vertical before collision) -->
+<line stroke="#8B4513" stroke-width="6" x1="350" x2="350" y1="250" y2="110"></line>
+<circle cx="350" cy="250" fill="#000" r="8"></circle>
+<text fill="#8B4513" font-size="11" x="370" y="180">M = 100 g, L = 40 cm</text>
+<text fill="#000" font-size="11" x="370" y="255">Pivot O</text>
+<!-- Stage 3: After collision -->
+<text fill="#2C3E50" font-size="13" font-weight="bold" text-anchor="middle" x="600" y="70">Stage 3: After Collision</text>
+<!-- Rotated rod with block -->
+<g transform="translate(600, 250)">
+<circle cx="0" cy="0" fill="#000" r="8"></circle>
+<!-- Rod at angle -->
+<line stroke="#8B4513" stroke-width="6" transform="rotate(-20 0 0)" x1="0" x2="50" y1="0" y2="-135"></line>
+<!-- Block at end -->
+<rect fill="#27AE60" height="15" stroke="#229954" stroke-width="2" transform="rotate(-20 0 0)" width="15" x="43" y="-148"></rect>
+<!-- Angle arc -->
+<path d="M 0,-50 A 50,50 0 0,1 17,-47" fill="none" stroke="#9B59B6" stroke-width="2"></path>
+<text fill="#9B59B6" font-size="12" font-weight="bold" x="25" y="-40">θ</text>
+<!-- Vertical reference -->
+<line stroke="#666" stroke-dasharray="3,2" stroke-width="1" x1="0" x2="0" y1="0" y2="-80"></line>
+</g>
+<text fill="#666" font-size="11" text-anchor="middle" x="600" y="310">System swings up and stops</text>
+<!-- Question -->
+<rect fill="#FFF9E6" height="50" rx="5" stroke="#FF9800" stroke-width="2" width="800" x="50" y="340"></rect>
+<text fill="#2C3E50" font-size="13" font-weight="bold" text-anchor="middle" x="450" y="365">Find the angle θ through which the rod rotates</text>
+<text fill="#666" font-size="12" text-anchor="middle" x="450" y="382">Use energy conservation, then angular momentum, then energy again</text>
+<defs>
+<marker id="arrowblue" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#3498DB" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+</defs>
+</svg>
+</div>
+<p><strong>Find the angle θ.</strong></p>
+<p><strong>Given:</strong></p>
+<ul>
+<li>Block mass: m = 50 g = 0.050 kg</li>
+<li>Initial height: h = 20 cm = 0.20 m</li>
+<li>Rod mass: M = 100 g = 0.100 kg</li>
+<li>Rod length: L = 40 cm = 0.40 m</li>
+<li>Frictionless surface</li>
+<li>Take g = 9.8 m/s²</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> θ = 18.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> θ = 24.3°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> θ = 31.8°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> θ = 38.7°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Three-stage problem: (1) Energy conservation for sliding, (2) Angular momentum conservation for collision, (3) Energy conservation for rotation.Three-Stage SolutionStage 1: SlidingEnergy conservation:mgh = ½mv²v = √(2gh)v = 1.980 m/sStage 2: CollisionAngular momentum:mvL = (I_rod + I_block)ωI_total = ⅓ML² + mL²ω = 2.970 rad/sStage 3: RotationEnergy conservation:½Iω² = (M+m)g×ΔhΔh = y_cm(1-cos θ)θ = 31.8°Detailed Calculations:Step 1:v = √(2×9.8×0.20) = 1.980 m/sStep 2:I_rod = ⅓ML² = ⅓(0.100)(0.40)² = 0.00533 kg·m²L_before = mvL = 0.050×1.980×0.40 = 0.0396 kg·m²/sI_total = 0.00533 + 0.050×(0.40)² = 0.01333 kg·m²ω = 0.0396/0.01333 = 2.970 rad/sStep 3:KE = ½(0.01333)(2.970)² = 0.0588 Jy_cm = [M(L/2) + mL]/(M+m) = [0.100×0.20 + 0.050×0.40]/0.150= 0.040/0.150 = 0.2667 mEnergy: 0.0588 = 0.150×9.8×0.2667×(1-cos θ)1-cos θ = 0.1499 → cos θ = 0.8501θ = arccos(0.8501) = 31.79° ≈ 31.8° ✓
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_28</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+<strong>
+     Problem Statement:
+    </strong>
+</p>
+<p>
+    A bowler throws a bowling ball of radius
+    <em>
+     R
+    </em>
+    = 11 cm along a lane. The ball (initially) slides on the lane with initial speed
+    <em>
+     v
+    </em>
+<sub>
+     com,0
+    </sub>
+    = 8.5 m/s and initial angular speed
+    <em>
+     ω
+    </em>
+<sub>
+     0
+    </sub>
+    = 0.
+   </p>
+<p>
+    The coefficient of kinetic friction between the ball and the lane is 0.21. The kinetic frictional force acting on the ball causes a linear deceleration of the ball while producing a torque that causes an angular acceleration of the ball.
+   </p>
+<p>
+    When speed
+    <em>
+     v
+    </em>
+<sub>
+     com
+    </sub>
+    has decreased enough and angular speed
+    <em>
+     ω
+    </em>
+    has increased enough, the ball stops sliding and then rolls smoothly.
+   </p>
+<div class="diagram">
+<img alt="Problem 15 Diagram" src="problem_15_diagram.png" style="max-width: 800px;"/>
+</div>
+<p>
+<strong>
+     Determine:
+    </strong>
+</p>
+<ol type="a">
+<li>
+     What is
+     <em>
+      v
+     </em>
+<sub>
+      com
+     </sub>
+     (in terms of
+     <em>
+      ω
+     </em>
+     ) when smooth rolling begins?
+    </li>
+<li>
+     What is the ball's linear acceleration during sliding?
+    </li>
+<li>
+     What is the ball's angular acceleration during sliding?
+    </li>
+<li>
+     How long does the ball slide?
+    </li>
+<li>
+     How far does the ball slide?
+    </li>
+<li>
+     What is the linear speed when smooth rolling begins?
+    </li>
+</ol>
+<p>
+<strong>
+     Given:
+    </strong>
+</p>
+<ul>
+<li>
+     Ball radius:
+     <em>
+      R
+     </em>
+     = 11 cm = 0.11 m
+    </li>
+<li>
+     Initial linear velocity:
+     <em>
+      v
+     </em>
+<sub>
+      0
+     </sub>
+     = 8.5 m/s
+    </li>
+<li>
+     Initial angular velocity:
+     <em>
+      ω
+     </em>
+<sub>
+      0
+     </sub>
+     = 0
+    </li>
+<li>
+     Coefficient of kinetic friction: μ
+     <sub>
+      k
+     </sub>
+     = 0.21
+    </li>
+<li>
+     For a solid sphere:
+     <em>
+      I
+     </em>
+     = (2/5)
+     <em>
+      MR
+     </em>
+     ²
+    </li>
+<li>
+     Take
+     <em>
+      g
+     </em>
+     = 9.8 m/s²
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a)
+     <em>
+      v
+     </em>
+<sub>
+      com
+     </sub>
+     =
+     <em>
+      ωR
+     </em>
+     , (b) 2.06 m/s², (c) 46.8 rad/s², (d) 1.18 s, (e) 8.60 m, (f) 6.07 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a)
+     <em>
+      v
+     </em>
+<sub>
+      com
+     </sub>
+     = 2
+     <em>
+      ωR
+     </em>
+     , (b) 2.06 m/s², (c) 93.5 rad/s², (d) 2.36 s, (e) 17.2 m, (f) 3.04 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a)
+     <em>
+      v
+     </em>
+<sub>
+      com
+     </sub>
+     =
+     <em>
+      ωR
+     </em>
+     /2, (b) 1.03 m/s², (c) 23.4 rad/s², (d) 2.36 s, (e) 17.2 m, (f) 12.1 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a)
+     <em>
+      v
+     </em>
+<sub>
+      com
+     </sub>
+     =
+     <em>
+      ωR
+     </em>
+     , (b) 4.12 m/s², (c) 23.4 rad/s², (d) 0.59 s, (e) 4.30 m, (f) 6.07 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Answer part (a) - Condition for smooth rolling
+     </strong>
+<br/>
+     Smooth rolling (no slipping) occurs when the rolling constraint is satisfied:
+     <br/>
+<span class="math">
+      v
+      <sub>
+       com
+      </sub>
+      = ωR
+     </span>
+<br/>
+<strong>
+      Answer (a): v
+      <sub>
+       com
+      </sub>
+      = ωR
+     </strong></li>
+<li><strong>
+      Step 2: Calculate linear acceleration (part b)
+     </strong>
+<br/>
+     During sliding, friction opposes the motion:
+     <br/>
+     Friction force:
+     <span class="math">
+      f
+      <sub>
+       k
+      </sub>
+      = μ
+      <sub>
+       k
+      </sub>
+      Mg
+     </span>
+<br/>
+     By Newton's 2nd law:
+     <br/>
+<span class="math">
+      -f
+      <sub>
+       k
+      </sub>
+      = Ma
+     </span>
+<br/>
+<span class="math">
+      a = -μ
+      <sub>
+       k
+      </sub>
+      g = -0.21 × 9.8 = -2.058 m/s²
+     </span>
+<br/>
+<strong>
+      Answer (b): |a| = 2.06 m/s² (deceleration)
+     </strong></li>
+<li><strong>
+      Step 3: Calculate angular acceleration (part c)
+     </strong>
+<br/>
+     Friction creates torque about the center of mass:
+     <br/>
+<span class="math">
+      τ = f
+      <sub>
+       k
+      </sub>
+      R = μ
+      <sub>
+       k
+      </sub>
+      MgR
+     </span>
+<br/>
+     By rotational Newton's 2nd law:
+     <br/>
+<span class="math">
+      Iα = τ
+     </span>
+<br/>
+<span class="math">
+      (2/5)MR²α = μ
+      <sub>
+       k
+      </sub>
+      MgR
+     </span>
+<br/>
+<span class="math">
+      α = (5μ
+      <sub>
+       k
+      </sub>
+      g)/(2R) = (5 × 0.21 × 9.8)/(2 × 0.11)
+     </span>
+<br/>
+<span class="math">
+      α = 10.29/0.22 = 46.77 rad/s²
+     </span>
+<br/>
+<strong>
+      Answer (c): α = 46.8 rad/s²
+     </strong></li>
+<li><strong>
+      Step 4: Determine sliding time (part d)
+     </strong>
+<br/>
+     Linear velocity:
+     <span class="math">
+      v = v
+      <sub>
+       0
+      </sub>
+      + at = 8.5 - 2.058t
+     </span>
+<br/>
+     Angular velocity:
+     <span class="math">
+      ω = ω
+      <sub>
+       0
+      </sub>
+      + αt = 0 + 46.77t
+     </span>
+<br/>
+     Rolling begins when
+     <span class="math">
+      v = ωR
+     </span>
+     :
+     <br/>
+<span class="math">
+      8.5 - 2.058t = 46.77t × 0.11
+     </span>
+<br/>
+<span class="math">
+      8.5 - 2.058t = 5.145t
+     </span>
+<br/>
+<span class="math">
+      8.5 = 7.203t
+     </span>
+<br/>
+<span class="math">
+      t = 1.180 s
+     </span>
+<br/>
+<strong>
+      Answer (d): t = 1.18 s
+     </strong></li>
+<li><strong>
+      Step 5: Calculate sliding distance (part e)
+     </strong>
+<br/>
+     Using kinematics:
+     <br/>
+<span class="math">
+      s = v
+      <sub>
+       0
+      </sub>
+      t + ½at²
+     </span>
+<br/>
+<span class="math">
+      s = 8.5(1.180) + ½(-2.058)(1.180)²
+     </span>
+<br/>
+<span class="math">
+      s = 10.03 - 1.432
+     </span>
+<br/>
+<span class="math">
+      s = 8.60 m
+     </span>
+<br/>
+<strong>
+      Answer (e): s = 8.60 m
+     </strong></li>
+<li><strong>
+      Step 6: Find linear speed (part f)
+     </strong>
+<br/>
+     At t = 1.180 s:
+     <br/>
+<span class="math">
+      v = v
+      <sub>
+       0
+      </sub>
+      + at = 8.5 + (-2.058)(1.180)
+     </span>
+<br/>
+<span class="math">
+      v = 8.5 - 2.428 = 6.072 m/s
+     </span>
+<br/>
+     Alternatively, using the ratio:
+     <span class="math">
+      v
+      <sub>
+</sub>
+      = (5/7)v
+      <sub>
+       0
+      </sub>
+      = (5/7)(8.5) = 6.071 m/s
+     </span>
+<br/>
+<strong>
+      Answer (f): v = 6.07 m/s
+     </strong></li>
+<li><strong>
+      Step 7: Verification
+     </strong>
+<br/>
+     Check rolling condition:
+     <span class="math">
+      ω = v/R = 6.071/0.11 = 55.19 rad/s
+     </span>
+<br/>
+     From angular acceleration:
+     <span class="math">
+      ω = αt = 46.77 × 1.180 = 55.19 rad/s
+     </span>
+     ✓
+     <br/>
+     Energy check: The ball loses kinetic energy to friction work, which is expected and correct.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

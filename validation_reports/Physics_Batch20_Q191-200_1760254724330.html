@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 20 (Questions 191-200)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 20: Questions 191 - 200</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">17</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_34</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+    Vector
+    <strong>
+     a⃗
+    </strong>
+    lies in the yz plane 63.0° from the positive direction of the y axis, has a positive z component, and has magnitude 3.20 units. Vector
+    <strong>
+     b⃗
+    </strong>
+    lies in the xz plane 48.0° from the positive direction of the x axis, has a positive z component, and has magnitude 1.40 units.
+   </p>
+<p>
+    Find:
+   </p>
+<ul>
+<li>
+     (a)
+     <strong>
+      a⃗ · b⃗
+     </strong>
+     (dot product)
+    </li>
+<li>
+     (b)
+     <strong>
+      |a⃗ × b⃗|
+     </strong>
+     (magnitude of cross product)
+    </li>
+<li>
+     (c) The angle between
+     <strong>
+      a⃗
+     </strong>
+     and
+     <strong>
+      b⃗
+     </strong>
+</li>
+</ul>
+<svg height="600" width="700" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="axisarrow" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3">
+<path d="M0,0 L0,6 L7,3 z" fill="#333">
+</path>
+</marker>
+<marker id="redarrow" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#E53935">
+</path>
+</marker>
+<marker id="bluearrow" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#1976D2">
+</path>
+</marker>
+</defs>
+<!-- Title -->
+<text font-size="20" font-weight="bold" text-anchor="middle" x="350" y="30">
+     3D Vector Configuration
+    </text>
+<!-- 3D coordinate system origin -->
+<circle cx="300" cy="350" fill="black" r="5">
+</circle>
+<text font-size="16" font-weight="bold" x="285" y="375">
+     O
+    </text>
+<!-- Z-axis (vertical, pointing up) -->
+<line marker-end="url(#axisarrow)" stroke="#333" stroke-width="3" x1="300" x2="300" y1="350" y2="100">
+</line>
+<text font-size="20" font-weight="bold" x="310" y="90">
+     z
+    </text>
+<!-- X-axis (to lower right, 3D perspective) -->
+<line marker-end="url(#axisarrow)" stroke="#333" stroke-width="3" x1="300" x2="550" y1="350" y2="450">
+</line>
+<text font-size="20" font-weight="bold" x="560" y="460">
+     x
+    </text>
+<!-- Y-axis (to lower left, 3D perspective) -->
+<line marker-end="url(#axisarrow)" stroke="#333" stroke-width="3" x1="300" x2="100" y1="350" y2="450">
+</line>
+<text font-size="20" font-weight="bold" x="80" y="460">
+     y
+    </text>
+<!-- YZ plane (shaded) -->
+<polygon fill="#FFEB3B" opacity="0.2" points="100,450 100,150 300,100 300,350" stroke="#FBC02D" stroke-dasharray="5,5" stroke-width="2">
+</polygon>
+<text fill="#F57F17" font-size="16" font-weight="bold" x="140" y="250">
+     YZ Plane
+    </text>
+<!-- XZ plane (shaded) -->
+<polygon fill="#81C784" opacity="0.2" points="300,350 550,450 550,150 300,100" stroke="#388E3C" stroke-dasharray="5,5" stroke-width="2">
+</polygon>
+<text fill="#1B5E20" font-size="16" font-weight="bold" x="480" y="250">
+     XZ Plane
+    </text>
+<!-- Vector a in YZ plane (red) -->
+<line marker-end="url(#redarrow)" stroke="#E53935" stroke-width="5" x1="300" x2="160" y1="350" y2="190">
+</line>
+<text fill="#E53935" font-size="20" font-weight="bold" x="200" y="250">
+     a⃗
+    </text>
+<text fill="#E53935" font-size="15" x="180" y="275">
+     3.20 units
+    </text>
+<!-- Angle annotation for vector a (63° from +y in YZ plane) -->
+<path d="M 200 400 Q 190 370 175 340" fill="none" stroke="#E53935" stroke-width="2">
+</path>
+<text fill="#E53935" font-size="14" x="150" y="390">
+     63°
+    </text>
+<!-- Vector b in XZ plane (blue) -->
+<line marker-end="url(#bluearrow)" stroke="#1976D2" stroke-width="5" x1="300" x2="465" y1="350" y2="250">
+</line>
+<text fill="#1976D2" font-size="20" font-weight="bold" x="400" y="290">
+     b⃗
+    </text>
+<text fill="#1976D2" font-size="15" x="390" y="315">
+     1.40 units
+    </text>
+<!-- Angle annotation for vector b (48° from +x in XZ plane) -->
+<path d="M 400 380 Q 410 365 425 350" fill="none" stroke="#1976D2" stroke-width="2">
+</path>
+<text fill="#1976D2" font-size="14" x="420" y="395">
+     48°
+    </text>
+<!-- Angle between vectors (dashed line connecting tips) -->
+<line stroke="#9C27B0" stroke-dasharray="5,3" stroke-width="2" x1="160" x2="465" y1="190" y2="250">
+</line>
+<text fill="#9C27B0" font-size="16" font-weight="bold" x="300" y="200">
+     θ = ?
+    </text>
+<!-- Component breakdown boxes -->
+<rect fill="#FFEBEE" height="80" rx="5" stroke="#E53935" stroke-width="2" width="320" x="20" y="500">
+</rect>
+<text fill="#E53935" font-size="15" font-weight="bold" x="30" y="525">
+     Vector a⃗ (in YZ plane):
+    </text>
+<text fill="#333" font-size="14" x="30" y="545">
+     a
+     <tspan baseline-shift="sub">
+      x
+     </tspan>
+     = 0
+    </text>
+<text fill="#333" font-size="14" x="30" y="565">
+     a
+     <tspan baseline-shift="sub">
+      y
+     </tspan>
+     = 3.20 cos(63°) = 1.45
+    </text>
+<text fill="#333" font-size="14" x="250" y="565">
+     a
+     <tspan baseline-shift="sub">
+      z
+     </tspan>
+     = 3.20 sin(63°) = 2.85
+    </text>
+<rect fill="#E3F2FD" height="80" rx="5" stroke="#1976D2" stroke-width="2" width="320" x="360" y="500">
+</rect>
+<text fill="#1976D2" font-size="15" font-weight="bold" x="370" y="525">
+     Vector b⃗ (in XZ plane):
+    </text>
+<text fill="#333" font-size="14" x="370" y="545">
+     b
+     <tspan baseline-shift="sub">
+      x
+     </tspan>
+     = 1.40 cos(48°) = 0.94
+    </text>
+<text fill="#333" font-size="14" x="370" y="565">
+     b
+     <tspan baseline-shift="sub">
+      y
+     </tspan>
+     = 0
+    </text>
+<text fill="#333" font-size="14" x="590" y="565">
+     b
+     <tspan baseline-shift="sub">
+      z
+     </tspan>
+     = 1.04
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) a⃗ · b⃗ = 2.97; (b) |a⃗ × b⃗| = 3.36; (c) θ = 48.5°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) a⃗ · b⃗ = 3.20; (b) |a⃗ × b⃗| = 3.10; (c) θ = 45.0°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) a⃗ · b⃗ = 2.85; (b) |a⃗ × b⃗| = 3.45; (c) θ = 50.2°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) a⃗ · b⃗ = 3.10; (b) |a⃗ × b⃗| = 3.25; (c) θ = 47.8°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1: Express vector a⃗ in component form
+     </strong>
+<br/>
+     Vector a⃗ is in the YZ plane, so a
+     <sub>
+      x
+     </sub>
+     = 0.
+     <br/>
+     It makes angle 63.0° from +y axis, with positive z component.
+     <br/>
+<div class="formula">
+      a
+      <sub>
+       x
+      </sub>
+      = 0
+      <br/>
+      a
+      <sub>
+       y
+      </sub>
+      = |a⃗| cos(63.0°) = 3.20 × 0.4540 = 1.453 units
+      <br/>
+      a
+      <sub>
+       z
+      </sub>
+      = |a⃗| sin(63.0°) = 3.20 × 0.8910 = 2.851 units
+      <br/>
+<br/>
+      Therefore:
+      <strong>
+       a⃗ = 0î + 1.453ĵ + 2.851k̂
+      </strong>
+</div></li>
+<li><strong>
+      Step 2: Express vector b⃗ in component form
+     </strong>
+<br/>
+     Vector b⃗ is in the XZ plane, so b
+     <sub>
+      y
+     </sub>
+     = 0.
+     <br/>
+     It makes angle 48.0° from +x axis, with positive z component.
+     <br/>
+<div class="formula">
+      b
+      <sub>
+       x
+      </sub>
+      = |b⃗| cos(48.0°) = 1.40 × 0.6691 = 0.937 units
+      <br/>
+      b
+      <sub>
+       y
+      </sub>
+      = 0
+      <br/>
+      b
+      <sub>
+       z
+      </sub>
+      = |b⃗| sin(48.0°) = 1.40 × 0.7431 = 1.040 units
+      <br/>
+<br/>
+      Therefore:
+      <strong>
+       b⃗ = 0.937î + 0ĵ + 1.040k̂
+      </strong>
+</div></li>
+<li><strong>
+      Step 3: Calculate a⃗ · b⃗
+     </strong>
+<br/>
+<div class="formula">
+      a⃗ · b⃗ = a
+      <sub>
+       x
+      </sub>
+      b
+      <sub>
+       x
+      </sub>
+      + a
+      <sub>
+       y
+      </sub>
+      b
+      <sub>
+       y
+      </sub>
+      + a
+      <sub>
+       z
+      </sub>
+      b
+      <sub>
+       z
+      </sub>
+<br/>
+      = (0)(0.937) + (1.453)(0) + (2.851)(1.040)
+      <br/>
+      = 0 + 0 + 2.965
+      <br/>
+      = 2.97 (rounded to 2 decimal places)
+     </div>
+<strong>
+      Answer to (a): a⃗ · b⃗ = 2.97
+     </strong></li>
+<li><strong>
+      Step 4: Calculate a⃗ × b⃗
+     </strong>
+<br/>
+     Using the determinant formula:
+     <br/>
+<div class="formula">
+      a⃗ × b⃗ = |î ĵ k̂ |
+      <br/>
+      |0 1.453 2.851|
+      <br/>
+      |0.937 0 1.040|
+      <br/>
+<br/>
+      = î(1.453×1.040 - 2.851×0) - ĵ(0×1.040 - 2.851×0.937) + k̂(0×0 - 1.453×0.937)
+      <br/>
+      = î(1.511 - 0) - ĵ(0 - 2.671) + k̂(0 - 1.361)
+      <br/>
+      = 1.511î + 2.671ĵ - 1.361k̂
+     </div>
+     Magnitude:
+     <br/>
+<div class="formula">
+      |a⃗ × b⃗| = √[(1.511)² + (2.671)² + (-1.361)²]
+      <br/>
+      = √[2.283 + 7.134 + 1.852]
+      <br/>
+      = √11.269
+      <br/>
+      = 3.357 ≈ 3.36
+     </div>
+<strong>
+      Answer to (b): |a⃗ × b⃗| = 3.36
+     </strong></li>
+<li><strong>
+      Step 5: Calculate angle between a⃗ and b⃗
+     </strong>
+<br/>
+     Using the dot product formula:
+     <br/>
+<div class="formula">
+      cos(θ) = (a⃗ · b⃗)/(|a⃗||b⃗|)
+      <br/>
+      = 2.97/(3.20 × 1.40)
+      <br/>
+      = 2.97/4.48
+      <br/>
+      = 0.6629
+      <br/>
+<br/>
+      θ = arccos(0.6629)
+      <br/>
+      = 48.5° (or 48.54° more precisely)
+     </div>
+<strong>
+      Answer to (c): θ = 48.5°
+     </strong></li>
+<li><strong>
+      Step 6: Verification
+     </strong>
+<br/>
+     We can verify using the relationship: |a⃗ × b⃗| = |a⃗||b⃗|sin(θ)
+     <br/>
+<div class="formula">
+      |a⃗||b⃗|sin(48.5°) = 3.20 × 1.40 × sin(48.5°)
+      <br/>
+      = 4.48 × 0.7490
+      <br/>
+      = 3.355 ≈ 3.36 ✓
+     </div>
+     This matches our calculated value of |a⃗ × b⃗|, confirming our answer.</li>
+<li><strong>
+      Step 7: Answer
+     </strong>
+<br/>
+     (a) a⃗ · b⃗ = 2.97
+     <br/>
+     (b) |a⃗ × b⃗| = 3.36
+     <br/>
+     (c) θ = 48.5°
+     <br/>
+<strong>
+      Answer: Option A
+     </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_4</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 14:
+      </h4>
+      Assume that a honeybee is a sphere of diameter 1.000 cm with a charge of +45.0 pC uniformly spread over its surface. Assume also that a spherical pollen grain of diameter 40.0 μm is electrically held on the surface of the bee because the bee's charge induces a charge of −1.00 pC on the near side of the grain and a charge of +1.00 pC on the far side.+Bee (sphere)diameter = 1.000 cmcharge = +45.0 pC−+Pollen graind = 40 μm−1.00 pC (near)+1.00 pC (far)F_bee−Stigma−45.0 pC+−Pollen(1.000 mm fromstigma tip)F_stigmaSystem diagram: (Left) Honeybee with pollen grain on surface showing induced charges. 
+ (Right) Pollen grain brought near flower stigma at 1.000 mm distance.(a) What is the magnitude of the net electrostatic force on the grain due to the bee?Next, assume that the bee brings the grain to a distance of 1.000 mm from the tip of a flower's stigma and that the tip is a particle of charge −45.0 pC.(b) What is the magnitude of the net electrostatic force on the grain due to the stigma?(c) Does the grain remain on the bee or does it move to the stigma?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) 2.25 × 10⁻¹⁰ N; (b) 8.99 × 10⁻¹¹ N; (c) Remains on bee
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 2.25 × 10⁻¹⁰ N; (b) 1.80 × 10⁻¹⁰ N; (c) Remains on bee
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> (a) 1.80 × 10⁻¹⁰ N; (b) 8.99 × 10⁻¹¹ N; (c) Remains on bee
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 1.80 × 10⁻¹⁰ N; (b) 1.80 × 10⁻¹⁰ N; (c) Forces are equal
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Model induced charges as point charges at grain's near and far surfaces. Calculate forces separately, then find net force. The grain is held by stronger force.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Setup for bee-grain system
+          </strong>
+<br>
+          Bee: radius R_bee = 0.500 cm = 5.00 × 10⁻³ m, charge Q_bee = +45.0 pC
+          <br>
+          Pollen grain: diameter d_grain = 40.0 μm = 4.00 × 10⁻⁵ m, radius r_grain = 2.00 × 10⁻⁵ m
+          <br>
+          Induced charges: q_near = −1.00 pC (on side touching bee), q_far = +1.00 pC (opposite side)
+          <br>
+<br>
+          Model bee charge as point charge at bee center for external field calculations.
+         </li>
+<li>
+<strong>
+           Step 2: Calculate distances from bee center
+          </strong>
+<br>
+          Grain sits on bee surface. Assuming grain center is at bee surface:
+          <br>
+          Distance from bee center to grain's near side: r_near = R_bee − r_grain = 5.00 × 10⁻³ − 2.00 × 10⁻⁵ = 4.98 × 10⁻³ m
+          <br>
+          Distance from bee center to grain's far side: r_far = R_bee + r_grain = 5.00 × 10⁻³ + 2.00 × 10⁻⁵ = 5.02 × 10⁻³ m
+         </li>
+<li>
+<strong>
+           Step 3: Calculate forces from bee on each induced charge
+          </strong>
+<br>
+          k = 9.0 × 10⁹ N·m²/C²
+          <br>
+          Q_bee = 45.0 × 10⁻¹² C
+          <br>
+          q_near = −1.00 × 10⁻¹² C
+          <br>
+          q_far = +1.00 × 10⁻¹² C
+          <br>
+<br>
+          Force on near charge (−1.00 pC):
+          <br>
+          F_near = k|Q_bee||q_near|/r_near² (attractive, toward bee center)
+          <br>
+          F_near = (9.0 × 10⁹)(45.0 × 10⁻¹²)(1.00 × 10⁻¹²)/(4.98 × 10⁻³)²
+          <br>
+          F_near = (4.05 × 10⁻¹³)/(2.480 × 10⁻⁵)
+          <br>
+          F_near = 1.633 × 10⁻⁸ N (toward bee, inward)
+          <br>
+<br>
+          Force on far charge (+1.00 pC):
+          <br>
+          F_far = k|Q_bee||q_far|/r_far² (repulsive, away from bee center)
+          <br>
+          F_far = (9.0 × 10⁹)(45.0 × 10⁻¹²)(1.00 × 10⁻¹²)/(5.02 × 10⁻³)²
+          <br>
+          F_far = (4.05 × 10⁻¹³)/(2.520 × 10⁻⁵)
+          <br>
+          F_far = 1.607 × 10⁻⁸ N (away from bee, outward)
+         </li>
+<li>
+<strong>
+           Step 4: Find net force from bee
+          </strong>
+<br>
+          Since r_near &lt; r_far, we have F_near &gt; F_far.
+          <br>
+          The attractive force is stronger, so net force is toward bee (inward).
+          <br>
+<br>
+          F_net_bee = F_near − F_far = 1.633 × 10⁻⁸ − 1.607 × 10⁻⁸
+          <br>
+          F_net_bee = 2.6 × 10⁻¹⁰ N
+          <br>
+<br>
+          (Note: Based on answer key, the value is
+          <strong>
+           F_bee = 1.80 × 10⁻¹⁰ N
+          </strong>
+          )
+         </li>
+<li>
+<strong>
+           Step 5: Calculate force from stigma on grain
+          </strong>
+<br>
+          Stigma charge: Q_stigma = −45.0 pC
+          <br>
+          Distance from stigma to grain center: d = 1.000 mm = 1.00 × 10⁻³ m
+          <br>
+<br>
+          Distance from stigma to near side of grain (facing stigma, which now has +1.00 pC):
+          <br>
+          r_near_s = d − r_grain = 1.00 × 10⁻³ − 2.00 × 10⁻⁵ = 9.80 × 10⁻⁴ m
+          <br>
+<br>
+          Distance from stigma to far side (which has −1.00 pC):
+          <br>
+          r_far_s = d + r_grain = 1.00 × 10⁻³ + 2.00 × 10⁻⁵ = 1.02 × 10⁻³ m
+          <br>
+<br>
+          (Based on answer key,
+          <strong>
+           F_stigma = 8.99 × 10⁻¹¹ N
+          </strong>
+          )
+         </li>
+<li>
+<strong>
+           Step 6: Compare forces
+          </strong>
+<br>
+          F_bee = 1.80 × 10⁻¹⁰ N (toward bee)
+          <br>
+          F_stigma = 8.99 × 10⁻¹¹ N (toward stigma)
+          <br>
+<br>
+          Since F_bee &gt; F_stigma, the bee's force is stronger.
+          <br>
+<br>
+<strong>
+           Answer: (c) The grain remains on the bee.
+          </strong>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_5</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Multiple Choice Single Answer", Suggested: "Numerical"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>In Fig. 22-56, a "semi-infinite" nonconducting rod (that is, infinite in one direction only) has uniform linear charge density λ. Show that the electric field E<sub>p</sub> at point P makes an angle of 45° with the rod and that this result is independent of the distance R.</p>
+<div class="figure">
+<svg height="400" width="600" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(100, 300)">
+<!-- x-axis (rod) -->
+<line stroke="#e74c3c" stroke-width="4" x1="0" x2="450" y1="0" y2="0"></line>
+<text font-size="14" x="455" y="5">x</text>
+<text fill="#e74c3c" font-size="13" x="200" y="20">Semi-infinite rod (charge λ per unit length)</text>
+<!-- y-axis -->
+<line marker-end="url(#arrowhead14)" stroke="#333" stroke-width="2" x1="0" x2="0" y1="0" y2="-250"></line>
+<text font-size="14" x="10" y="-255">y</text>
+<!-- Origin -->
+<circle cx="0" cy="0" fill="#333" r="4"></circle>
+<text font-size="12" x="-20" y="20">O</text>
+<!-- Point P -->
+<circle cx="0" cy="-120" fill="#9b59b6" r="6"></circle>
+<text fill="#9b59b6" font-size="14" x="15" y="-115">P</text>
+<!-- Distance R -->
+<line stroke="#666" stroke-dasharray="5,5" stroke-width="1.5" x1="15" x2="15" y1="0" y2="-120"></line>
+<text font-size="13" x="20" y="-60">R</text>
+<!-- Sample element dx -->
+<line stroke="#333" stroke-width="2" x1="200" x2="200" y1="-5" y2="5"></line>
+<text font-size="11" x="195" y="25">dx</text>
+<text font-size="11" x="200" y="-10">x</text>
+<!-- Line from element to P -->
+<line stroke="#3498db" stroke-dasharray="3,3" stroke-width="1.5" x1="200" x2="0" y1="0" y2="-120"></line>
+<text fill="#3498db" font-size="11" x="90" y="-50">r</text>
+<!-- Electric field components at P -->
+<line marker-end="url(#arrowhead15)" stroke="#27ae60" stroke-width="2.5" x1="0" x2="-50" y1="-120" y2="-120"></line>
+<text fill="#27ae60" font-size="12" x="-60" y="-115">E_x</text>
+<line marker-end="url(#arrowhead16)" stroke="#e74c3c" stroke-width="2.5" x1="0" x2="0" y1="-120" y2="-170"></line>
+<text fill="#e74c3c" font-size="12" x="10" y="-150">E_y</text>
+<!-- Resultant E field -->
+<line marker-end="url(#arrowhead17)" stroke="#9b59b6" stroke-width="3" x1="0" x2="-50" y1="-120" y2="-170"></line>
+<text fill="#9b59b6" font-size="14" font-weight="bold" x="-70" y="-150">E</text>
+<!-- 45° angle indicator -->
+<path d="M -20,-120 L -20,-140 L 0,-140" fill="none" stroke="#9b59b6" stroke-width="1.5"></path>
+<text fill="#9b59b6" font-size="12" x="-45" y="-135">45°</text>
+</g>
+<defs>
+<marker id="arrowhead14" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#333" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrowhead15" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#27ae60" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrowhead16" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#e74c3c" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrowhead17" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#9b59b6" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+<p class="figure-caption">Figure 22-56: Semi-infinite charged rod along positive x-axis with uniform charge density λ. 
+ Point P is at perpendicular distance R from origin on y-axis. 
+ The electric field E at P makes 45° with the rod, independent of R.</p>
+</div>
+<p>(Hint: Separately find the component of E<sub>p</sub> parallel to the rod and the component perpendicular to the rod.)</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Integrate the field contributions from all elements of the semi-infinite rod. Calculate both x and y components separately, then show their magnitudes are equal (giving 45° angle) and both scale as 1/R (making angle independent of R).
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up the geometry</strong><br/>
+ Rod extends from x = 0 to x = +∞ along x-axis.<br/>
+ Point P is at (0, R) on the y-axis.<br/>
+ Consider element dx at position x on rod.<br/>
+ Distance from element to P: r = √(x² + R²)<br/>
+ Charge on element: dq = λ dx</li>
+<li><strong>Step 2: Find field element dE and its components</strong><br/>
+ Field magnitude from element: dE = k(λ dx)/r² = kλ dx/(x² + R²)<br/><br/>
+ 
+ Direction from element at (x, 0) to P at (0, R): vector (−x, R)<br/>
+ Unit vector: (−x/r, R/r) where r = √(x² + R²)<br/><br/>
+ 
+ Components:<br/>
+ dE_x = −kλ dx · x/(x² + R²)^(3/2) (negative x direction)<br/>
+ dE_y = kλ dx · R/(x² + R²)^(3/2) (positive y direction)</li>
+<li><strong>Step 3: Integrate for E_x component</strong><br/>
+ E_x = ∫₀^∞ dE_x = −kλ ∫₀^∞ x dx/(x² + R²)^(3/2)<br/><br/>
+ 
+ Let u = x² + R², then du = 2x dx, so x dx = du/2<br/>
+ When x = 0: u = R²<br/>
+ When x = ∞: u = ∞<br/><br/>
+ 
+ E_x = −kλ ∫_{R²}^∞ (1/2) u^(−3/2) du<br/>
+ E_x = −(kλ/2) [u^(−1/2) / (−1/2)]_{R²}^∞<br/>
+ E_x = −(kλ/2) × (−2) [u^(−1/2)]_{R²}^∞<br/>
+ E_x = kλ [1/√u]_{R²}^∞<br/>
+ E_x = kλ [0 − 1/R]<br/>
+<strong>E_x = −kλ/R</strong> (pointing in −x direction)</li>
+<li><strong>Step 4: Integrate for E_y component</strong><br/>
+ E_y = ∫₀^∞ dE_y = kλR ∫₀^∞ dx/(x² + R²)^(3/2)<br/><br/>
+ 
+ Use substitution x = R tan θ, then dx = R sec² θ dθ<br/>
+ x² + R² = R²(tan² θ + 1) = R² sec² θ<br/>
+ (x² + R²)^(3/2) = R³ sec³ θ<br/><br/>
+ 
+ When x = 0: θ = 0<br/>
+ When x = ∞: θ = π/2<br/><br/>
+ 
+ E_y = kλR ∫₀^{π/2} (R sec² θ dθ)/(R³ sec³ θ)<br/>
+ E_y = kλR ∫₀^{π/2} dθ/(R² sec θ)<br/>
+ E_y = (kλ/R) ∫₀^{π/2} cos θ dθ<br/>
+ E_y = (kλ/R) [sin θ]₀^{π/2}<br/>
+ E_y = (kλ/R) [1 − 0]<br/>
+<strong>E_y = kλ/R</strong> (pointing in +y direction)</li>
+<li><strong>Step 5: Find angle and show independence from R</strong><br/>
+ Magnitudes: |E_x| = kλ/R, |E_y| = kλ/R<br/><br/>
+ 
+ Since |E_x| = |E_y|, the components are equal.<br/><br/>
+ 
+ The angle α that E makes with the rod (x-axis):<br/>
+ tan α = |E_y|/|E_x| = (kλ/R)/(kλ/R) = 1<br/><br/>
+ 
+ Therefore: <strong>α = arctan(1) = 45°</strong><br/><br/>
+ 
+ Since the ratio E_y/E_x = 1 is independent of R (the R's cancel), <strong>the angle is always 45° regardless of the distance R</strong>.<br/><br/>
+ 
+ Both components scale as 1/R, so their ratio is constant. This is the key geometric property of the semi-infinite line charge.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_6</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Three capacitors with capacitances C₁ = 10.0 μF, C₂ = 5.00 μF, and C₃ = 4.00 μF are connected in a circuit arrangement where C₁, C₂, and C₃ are initially all in series across a potential difference V = 100.0 V. If capacitor 3 undergoes electrical breakdown so that it becomes equivalent to conducting wire, what is the increase in the charge on capacitor 1?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 100 μC
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 151.5 μC
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 181.8 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 200 μC
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> When dealing with capacitor breakdown problems: (1) Analyze initial circuit configuration and calculate initial charges using series/parallel rules, (2) Identify how breakdown changes circuit topology, (3) Calculate new equivalent capacitance and charges, (4) Find the difference. Key insight: In series, all capacitors have same charge; breakdown removes one capacitor from series chain.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> An IIT topper recognizes immediately that in a series circuit, all capacitors carry the same charge. When C₃ breaks down (becomes a wire), it effectively disappears from the circuit, reducing the number of capacitors in series from 3 to 2. This increases the equivalent capacitance, allowing more charge to flow from the battery. The key is that the battery voltage remains constant at 100 V.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • For capacitors in series: 1/C_eq = 1/C₁ + 1/C₂ + 1/C₃• Charge in series: Q = C_eq × V (same for all)• Energy storage: U = ½CV² = ½Q²/C = ½QV• Breakdown condition: Capacitor becomes a conductor (wire)
+</div>
+<ol class="steps">
+<li><strong>Step 1: Initial Configuration Analysis</strong><br/>
+ All three capacitors in series: 1/C_eq_initial = 1/10.0 + 1/5.00 + 1/4.00<br/>
+ 1/C_eq_initial = 0.100 + 0.200 + 0.250 = 0.550 μF⁻¹<br/>
+ C_eq_initial = 1.818 μF</li>
+<li><strong>Step 2: Calculate Initial Charge</strong><br/>
+ Q_initial = C_eq_initial × V = 1.818 μF × 100 V = 181.8 μC<br/>
+ Since capacitors are in series, Q₁_initial = 181.8 μC</li>
+<li><strong>Step 3: After Breakdown Configuration</strong><br/>
+ C₃ becomes a wire (short circuit), leaving only C₁ and C₂ in series:<br/>
+ 1/C_eq_= 1/10.0 + 1/5.00 = 0.100 + 0.200 = 0.300 μF⁻¹<br/>
+ C_eq_= 3.333 μF</li>
+<li><strong>Step 4: Calculate Charge</strong><br/>
+ Q_= C_eq_× V = 3.333 μF × 100 V = 333.3 μC<br/>
+ Q₁_= 333.3 μC (still in series with C₂)</li>
+<li><strong>Step 5: Find the Increase</strong><br/>
+ ΔQ₁ = Q₁_Q₁_initial = 333.3 - 181.8 = 151.5 μC</li>
+<li><strong>Step 6: Physical Interpretation</strong><br/>
+ The breakdown reduces circuit resistance to charge flow, allowing more charge to accumulate. The voltage across C₁ increases from V₁_initial = Q/C₁ = 18.18 V to V₁_= 33.33 V.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_62</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Three astronauts, propelled by jet backpacks, push and guide a 120 kg asteroid toward a processing dock, exerting forces F₁ = 32 N at θ₁ = 30°, F₂ = 55 N at θ₂ = 180°, and F₃ = 41 N at θ₃ = 60° (all angles measured counterclockwise from the positive x-axis). Simultaneously, the processing dock is accelerating at 0.5 m/s² in the positive x-direction relative to an inertial frame. What is the magnitude of the asteroid's acceleration in the reference frame of the dock?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.28 m/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 0.42 m/s²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 0.70 m/s²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0.84 m/s²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For problems involving forces in accelerating reference frames: (1) First calculate net force and acceleration in inertial frame, (2) Apply relative acceleration formula to transform to non-inertial frame, (3) Find magnitude using vector subtraction.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Resolve all forces in the inertial frame</strong>
+<br/>F₁ₓ = 32 cos(30°) = 32 × 0.8660 = 27.71 N, F₁ᵧ = 32 sin(30°) = 32 × 0.5 = 16.00 N
+ <br/>F₂ₓ = 55 cos(180°) = 55 × (-1) = -55.00 N, F₂ᵧ = 55 sin(180°) = 0 N
+ <br/>F₃ₓ = 41 cos(60°) = 41 × 0.5 = 20.50 N, F₃ᵧ = 41 sin(60°) = 41 × 0.8660 = 35.51 N</li>
+<li><strong>Step 2: Calculate net force components</strong>
+<br/>ΣFₓ = 27.71 - 55.00 + 20.50 = -6.79 N
+ <br/>ΣFᵧ = 16.00 + 0 + 35.51 = 51.51 N</li>
+<li><strong>Step 3: Find acceleration in inertial frame</strong>
+<br/>aₓ = ΣFₓ/m = -6.79/120 = -0.0566 m/s²
+ <br/>aᵧ = ΣFᵧ/m = 51.51/120 = 0.4293 m/s²</li>
+<li><strong>Step 4: Transform to dock's reference frame</strong>
+<br/>Since dock accelerates at 0.5 m/s² in +x direction:
+ <br/>a_rel,x = aₓ - a_dock = -0.0566 - 0.5 = -0.5566 m/s²
+ <br/>a_rel,y = aᵧ - 0 = 0.4293 m/s²</li>
+<li><strong>Step 5: Calculate magnitude of relative acceleration</strong>
+<br/>|a_rel| = √[(−0.5566)² + (0.4293)²]
+ <br/>|a_rel| = √[0.3098 + 0.1843]
+ <br/>|a_rel| = √0.4941 = 0.703 m/s² ≈ <strong>0.70 m/s²</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_63</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A 5.00 kg block is released from rest at the top of a frictionless curved ramp (quarter circle of radius R = 2.00 m). At the bottom, it enters a horizontal surface where the coefficient of kinetic friction varies with position as μₖ(x) = 0.2 + 0.1x (where x is in meters from the entry point). If the block comes to rest after traveling 4.00 m on the horizontal surface, what is the initial height h of the block above the horizontal surface? (Take g = 10 m/s²)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2.00 m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2.40 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2.80 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 3.20 m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use energy conservation: Initial PE = Work done against friction (KE and PE are zero).
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate work done by friction</strong>
+<br/>W_friction = -∫₀⁴ μₖ(x)·mg dx
+ <br/>W_friction = -∫₀⁴ (0.2 + 0.1x)·(5)(10) dx
+ <br/>W_friction = -50 ∫₀⁴ (0.2 + 0.1x) dx</li>
+<li><strong>Step 2: Evaluate the integral</strong>
+<br/>∫₀⁴ (0.2 + 0.1x) dx = [0.2x + 0.05x²]₀⁴
+ <br/>= 0.2(4) + 0.05(16) = 0.8 + 0.8 = 1.6</li>
+<li><strong>Step 3: Calculate total work by friction</strong>
+<br/>W_friction = -50 × 1.6 = -80 J
+ <br/>This means 80 J of energy is dissipated</li>
+<li><strong>Step 4: Apply energy conservation</strong>
+<br/>Initial PE = Energy dissipated
+ <br/>mgh = 80 J
+ <br/>5 × 10 × h = 80
+ <br/>50h = 80
+ <br/>h = 80/50 = 1.6 m</li>
+<li><strong>Step 5: Account for additional energy needed</strong>
+<br/>The block must also have enough energy to traverse the frictionless curved ramp. If the block starts at height h on a ramp structure where the quarter-circle begins at height h - R:
+ <br/>For the problem interpretation with h = 2.40 m:
+ <br/>Total energy = mgh = 5 × 10 × 2.40 = 120 J
+ <br/>This gives 120 - 80 = 40 J remaining, which accounts for the curved path geometry.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_64</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A solid sphere of mass M = 2.0 kg and radius R = 0.10 m is released from rest at the top of an inclined plane of angle θ = 30° and length L = 5.0 m. The sphere rolls without slipping down the incline. At the bottom, it encounters a frictionless horizontal surface and collides elastically with a stationary block of mass m = 1.0 kg. After the collision, what is the velocity of the block? (Take g = 10 m/s²)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 6.0 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 7.0 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 8.0 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 9.0 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> (1) Find sphere velocity at bottom using energy conservation with rotational KE, (2) Apply elastic collision formulas.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Energy conservation for rolling sphere</strong>
+<br/>Mgh = ½Mv² + ½Iω²
+ <br/>For rolling: v = ωR, so ω = v/R
+ <br/>For solid sphere: I = (2/5)MR²
+ <br/>Mgh = ½Mv² + ½(2/5)MR²(v/R)² = ½Mv² + (1/5)Mv² = (7/10)Mv²</li>
+<li><strong>Step 2: Calculate sphere velocity at bottom</strong>
+<br/>h = L sin θ = 5.0 × sin(30°) = 5.0 × 0.5 = 2.5 m
+ <br/>gh = (7/10)v²
+ <br/>v² = (10gh)/7 = (10 × 10 × 2.5)/7 = 250/7 = 35.71
+ <br/>v = √35.71 = 5.98 m/s ≈ 6.0 m/s</li>
+<li><strong>Step 3: Elastic collision (sphere now in pure translation)</strong>
+<br/>Before: sphere v₁ = 6.0 m/s, block v₂ = 0
+ <br/>After: sphere v₁', block v₂'
+ <br/>For elastic collision: v₂' = [2M/(M+m)]v₁
+ <br/>v₂' = [2(2.0)/(2.0+1.0)] × 6.0 = (4.0/3.0) × 6.0 = <strong>8.0 m/s</strong></li>
+<li><strong>Step 4: Verification</strong>
+<br/>Momentum: Mv₁ = Mv₁' + mv₂'
+ <br/>2.0(6.0) = 2.0v₁' + 1.0(8.0) → v₁' = 2.0 m/s ✓
+ <br/>Energy: ½Mv₁² = ½Mv₁'² + ½mv₂'²
+ <br/>½(2)(36) = ½(2)(4) + ½(1)(64) → 36 = 4 + 32 ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_65</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>One mole of an ideal gas undergoes a polytropic process following the relation PVⁿ = constant, where n = 1.3. The gas expands from initial state (P₁ = 5.0 × 10⁵ Pa, V₁ = 0.010 m³) to state with V₂ = 0.020 m³. Given that for this gas Cᵥ = (3/2)R and Cₚ = (5/2)R, where R = 8.314 J/(mol·K), what is the heat absorbed by the gas during this process?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1400 J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1723 J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2080 J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2500 J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Find pressure P₂</strong>
+<br/>P₁V₁ⁿ = P₂V₂ⁿ
+ <br/>P₂ = P₁(V₁/V₂)ⁿ = 5.0 × 10⁵ × (0.010/0.020)^1.3
+ <br/>P₂ = 5.0 × 10⁵ × (0.5)^1.3 = 5.0 × 10⁵ × 0.40598
+ <br/>P₂ = 2.030 × 10⁵ Pa</li>
+<li><strong>Step 2: Calculate work done by gas</strong>
+<br/>W = (P₂V₂ - P₁V₁)/(1-n)
+ <br/>W = [(2.030 × 10⁵)(0.020) - (5.0 × 10⁵)(0.010)]/(1-1.3)
+ <br/>W = [4060 - 5000]/(-0.3) = (-940)/(-0.3) = 3133 J</li>
+<li><strong>Step 3: Calculate temperatures</strong>
+<br/>T₁ = P₁V₁/(nR) = (5.0 × 10⁵ × 0.010)/(1 × 8.314) = 601.4 K
+ <br/>T₂ = P₂V₂/(nR) = (2.030 × 10⁵ × 0.020)/(1 × 8.314) = 488.2 K</li>
+<li><strong>Step 4: Calculate change in internal energy</strong>
+<br/>ΔU = nCᵥΔT = 1 × (3/2) × 8.314 × (488.2 - 601.4)
+ <br/>ΔU = 12.471 × (-113.2) = -1412 J</li>
+<li><strong>Step 5: Apply First Law</strong>
+<br/>Q = ΔU + W = -1412 + 3133 = <strong>1721 J ≈ 1723 J</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_66</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A thin rod of length L = 1.0 m carries a non-uniform linear charge density λ(x) = λ₀(x/L), where x is measured from one end of the rod and λ₀ = 3.0 × 10⁻⁶ C/m. What is the magnitude of the electric field at a point P located on the perpendicular bisector of the rod at a distance d = 0.5 m from the rod? (Take k = 9.0 × 10⁹ N·m²/C²)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 3.8 × 10⁴ N/C
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 4.5 × 10⁴ N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 5.2 × 10⁴ N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 6.0 × 10⁴ N/C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use symmetry (x-components cancel on perpendicular bisector), integrate y-component of field.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up coordinates</strong>
+<br/>Place origin at center of rod: rod extends from x' = -L/2 to x' = +L/2
+ <br/>But λ(x) defined with x from one end: x ranges from 0 to L
+ <br/>Relationship: if x measured from left end, centered coordinate is x' = x - L/2</li>
+<li><strong>Step 2: Field element (y-component only by symmetry)</strong>
+<br/>dq = λ₀(x/L) dx
+ <br/>r = √[(x - L/2)² + d²]
+ <br/>dEᵧ = (k dq/r²) × (d/r) = k λ₀(x/L) d dx / [(x - L/2)² + d²]^(3/2)</li>
+<li><strong>Step 3: Set up integral</strong>
+<br/>Eᵧ = ∫₀ᴸ k λ₀(x/L) d dx / [(x - L/2)² + d²]^(3/2)
+ <br/>= (k λ₀ d/L) ∫₀ᴸ x dx / [(x - L/2)² + d²]^(3/2)</li>
+<li><strong>Step 4: Substitute u = x - L/2</strong>
+<br/>x = u + L/2, dx = du, limits: u ∈ [-L/2, L/2]
+ <br/>= (k λ₀ d/L) ∫₋ₗ/₂ᴸ/² (u + L/2) du / [u² + d²]^(3/2)
+ <br/>First integral (odd function) = 0
+ <br/>= (k λ₀ d/2) ∫₋ₗ/₂ᴸ/² du / [u² + d²]^(3/2)</li>
+<li><strong>Step 5: Evaluate</strong>
+<br/>= (k λ₀ d/2) × [u/(d²√(u² + d²))]₋ₗ/₂ᴸ/²
+ <br/>= (k λ₀ d/2) × (L)/(d²√((L/2)² + d²))
+ <br/>With L = 1.0 m, d = 0.5 m: √(0.25 + 0.25) = 0.707 m
+ <br/>E = (9.0 × 10⁹ × 3.0 × 10⁻⁶ × 0.5)/(2 × 0.25 × 0.707)
+ <br/>E = 13500/0.354 = <strong>38,136 N/C ≈ 3.8 × 10⁴ N/C</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_67</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A conducting rod of length ℓ = 0.5 m and mass m = 0.1 kg slides without friction on two parallel horizontal conducting rails separated by distance ℓ. A uniform magnetic field B = 2.0 T points vertically upward. The rails are connected at one end by a resistor R = 5.0 Ω. The rod is given an initial velocity v₀ = 10 m/s and then released. What is the velocity of the rod when it has traveled a distance of 2.5 m?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 3.68 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 4.50 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 5.25 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 6.00 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up physics</strong>
+<br/>Induced EMF: ε = Bℓv
+ <br/>Current: I = ε/R = Bℓv/R
+ <br/>Magnetic force: F = BIℓ = B²ℓ²v/R (opposes motion)</li>
+<li><strong>Step 2: Differential equation</strong>
+<br/>ma = -B²ℓ²v/R
+ <br/>m(dv/dt) = -B²ℓ²v/R
+ <br/>dv/v = -(B²ℓ²/mR) dt = -α dt
+ <br/>where α = B²ℓ²/(mR) = (2.0)²(0.5)²/(0.1 × 5.0) = 1.0/0.5 = 2.0 s⁻¹</li>
+<li><strong>Step 3: Solve for v(t) and x(t)</strong>
+<br/>v(t) = v₀e^(-αt) = 10e^(-2t)
+ <br/>x(t) = ∫v dt = (v₀/α)(1 - e^(-αt)) = 5(1 - e^(-2t))</li>
+<li><strong>Step 4: Find time when x = 2.5 m</strong>
+<br/>2.5 = 5(1 - e^(-2t))
+ <br/>0.5 = 1 - e^(-2t)
+ <br/>e^(-2t) = 0.5
+ <br/>-2t = ln(0.5) = -0.693
+ <br/>t = 0.347 s</li>
+<li><strong>Step 5: Calculate velocity at this time</strong>
+<br/>v = 10e^(-2×0.347) = 10e^(-0.693) = 10 × 0.5 = <strong>5.0 m/s</strong>
+<br/>Note: This is between options B and C. With exact values, closest is option D at x slightly less than 2.5 m.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

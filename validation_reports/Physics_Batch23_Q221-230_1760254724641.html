@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 23 (Questions 221-230)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 23: Questions 221 - 230</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">16</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_224</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A block rides on a piston (a squat cylindrical piece) that is moving vertically with simple harmonic motion. If the SHM has period 1.0 s, at what amplitude of motion will the block and piston separate? Also, if the piston has an amplitude of 5.0 cm, what is the maximum frequency for which the block and piston will be in contact continuously?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A = 0.25 m, f_max = 2.23 Hz
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> A = 0.30 m, f_max = 2.00 Hz
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> A = 0.20 m, f_max = 2.50 Hz
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> A = 0.35 m, f_max = 1.90 Hz
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Understand the separation condition
+      </strong>
+<br/>
+      Block and piston separate when normal force N = 0
+      <br/>
+      At the top of oscillation: ma = mg - N
+      <br/>
+      For separation: N = 0, so a = g (downward)
+      <br/>
+      Maximum downward acceleration: a_max = ω²A</li>
+<li><strong>
+       Step 2: Part (a) - Find critical amplitude for T = 1.0 s
+      </strong>
+<br/>
+      ω = 2π/T = 2π/1.0 = 6.283 rad/s
+      <br/>
+      For separation: ω²A = g
+      <br/>
+      A = g/ω² = 9.8/(6.283)² = 9.8/39.48 = 0.248 m ≈ 0.25 m</li>
+<li><strong>
+       Step 3: Part (b) - Find maximum frequency for A = 5.0 cm
+      </strong>
+<br/>
+      Given: A = 5.0 cm = 0.050 m
+      <br/>
+      For continuous contact: ω²A ≤ g
+      <br/>
+      Maximum: ω²A = g
+      <br/>
+      ω² = g/A = 9.8/0.050 = 196 rad²/s²</li>
+<li><strong>
+       Step 4: Calculate maximum frequency
+      </strong>
+<br/>
+      ω = √196 = 14.0 rad/s
+      <br/>
+      f_max = ω/(2π) = 14.0/(2π) = 2.228 Hz ≈ 2.23 Hz</li>
+<li><strong>
+       Step 5: Physical interpretation
+      </strong>
+<br/>
+      If T &lt; 1.0 s (or f &gt; 2.23 Hz) with A = 5.0 cm, the acceleration exceeds g and the block flies off. This is why high-frequency small-amplitude shaking can throw objects off surfaces.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_225</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A block of mass M = 5.4 kg, at rest on a horizontal frictionless table, is attached to a rigid support by a spring of constant k = 6000 N/m. A bullet of mass m = 9.5 g and velocity of magnitude 630 m/s strikes and is embedded in the block. Assuming the compression of the spring is negligible until the bullet is embedded, determine (a) the speed of the block immediately after the collision and (b) the amplitude of the resulting simple harmonic motion.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> v = 1.11 m/s, A = 0.033 m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> v = 1.11 m/s, A = 0.044 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> v = 0.95 m/s, A = 0.030 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> v = 1.25 m/s, A = 0.050 m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Apply momentum conservation for collision
+      </strong>
+<br/>
+      Before collision: p = mv₀ = (0.0095 kg)(630 m/s) = 5.985 kg⋅m/s
+      <br/>
+      After collision: p = (m + M)v
+      <br/>
+      (0.0095 + 5.4)v = 5.985
+      <br/>
+      5.4095v = 5.985
+      <br/>
+      v = 1.106 m/s ≈ 1.11 m/s</li>
+<li><strong>
+       Step 2: Check energy loss in collision
+      </strong>
+<br/>
+      KE before = ½(0.0095)(630)² = 1883.3 J
+      <br/>
+      KE after = ½(5.4095)(1.106)² = 3.315 J
+      <br/>
+      Energy lost to heat/deformation = 1880 J (99.8% lost!)</li>
+<li><strong>
+       Step 3: Find amplitude using energy conservation in SHM
+      </strong>
+<br/>
+      At equilibrium position right after collision: all KE
+      <br/>
+      At maximum displacement: all PE
+      <br/>
+      ½(m+M)v² = ½kA²
+      <br/>
+      (m+M)v² = kA²</li>
+<li><strong>
+       Step 4: Solve for amplitude
+      </strong>
+<br/>
+      A² = (m+M)v²/k = (5.4095)(1.106)²/6000
+      <br/>
+      A² = 5.4095 × 1.223/6000 = 6.616/6000 = 0.001103
+      <br/>
+      A = 0.0332 m ≈ 0.033 m = 3.3 cm</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_226</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A massless spring hangs from the ceiling with a small object attached to its lower end. The object is initially held at rest in a position yᵢ such that the spring is at its rest length. The object is then released from yᵢ and oscillates up and down, with its lowest position being 10 cm below yᵢ. (a) What is the frequency of the oscillation? (b) What is the speed of the object when it is 8.0 cm below the initial position? (c) An object of mass 300 g is attached to the first object, after which the system oscillates with half the original frequency. What is the mass of the first object? (d) How far below yᵢ is the new equilibrium position with both objects?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 1.58 Hz, (b) 0.70 m/s, (c) 100 g, (d) 20 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 1.58 Hz, (b) 0.60 m/s, (c) 150 g, (d) 25 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 1.40 Hz, (b) 0.65 m/s, (c) 120 g, (d) 22 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 1.75 Hz, (b) 0.75 m/s, (c) 80 g, (d) 18 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Analyze initial oscillation
+      </strong>
+<br/>
+      Released from natural length position (yᵢ)
+      <br/>
+      Falls to lowest point 10 cm below yᵢ
+      <br/>
+      The equilibrium position is halfway: 5 cm below yᵢ
+      <br/>
+      Amplitude A = 5 cm = 0.05 m
+      <br/>
+      At equilibrium: kx₀ = mg, where x₀ = 0.05 m</li>
+<li><strong>
+       Step 3: Alternative approach using energy
+      </strong>
+<br/>
+      At natural length: U_g = 0 (reference), U_s = 0, KE = 0
+      <br/>
+      At lowest point (10 cm down): U_g = -mg(0.10), U_s = ½k(0.10)², KE = 0
+      <br/>
+      Energy conservation: 0 = -mg(0.10) + ½k(0.10)²
+      <br/>
+      mg(0.10) = ½k(0.10)²
+      <br/>
+      mg = ½k(0.10) = 0.05k</li>
+<li><strong>
+       Step 5: Reconsidering the problem
+      </strong>
+<br/>
+      If released from natural length and goes 10 cm down total, then equilibrium is at 5 cm, amplitude is 5 cm. But my calculation gives 2.23 Hz, not 1.58 Hz. Without complete problem context, I'll note the methodology is sound but numerical answer requires verification of problem parameters.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_227</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A stick of length L = 1.85 m oscillates as a physical pendulum. What value of distance x between the stick's center of mass and its pivot point O gives the least period? What is that least period?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> x = 0.535 m, T_min = 1.52 s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> x = 0.625 m, T_min = 1.68 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> x = 0.475 m, T_min = 1.45 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> x = 0.550 m, T_min = 1.60 s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Set up period equation for uniform rod
+      </strong>
+<br/>
+      For uniform rod: I_cm = mL²/12
+      <br/>
+      About pivot at distance x from center:
+      <br/>
+      I = I_cm + mx² = mL²/12 + mx² = m(L²/12 + x²)
+      <br/>
+      T = 2π√[I/(mgx)] = 2π√[(L²/12 + x²)/(gx)]</li>
+<li><strong>
+       Step 2: Simplify and find minimum
+      </strong>
+<br/>
+      T = 2π√[(L²/12 + x²)/(gx)] = (2π/√g)√[(L²/12 + x²)/x]
+      <br/>
+      To minimize T, minimize f(x) = (L²/12 + x²)/x = L²/(12x) + x
+      <br/>
+      df/dx = -L²/(12x²) + 1 = 0
+      <br/>
+      L²/(12x²) = 1
+      <br/>
+      x² = L²/12
+      <br/>
+      x = L/√12 = L/(2√3)</li>
+<li><strong>
+       Step 3: Calculate optimal x for L = 1.85 m
+      </strong>
+<br/>
+      x = 1.85/√12 = 1.85/3.464 = 0.534 m ≈ 0.535 m</li>
+<li><strong>
+       Step 4: Calculate minimum period
+      </strong>
+<br/>
+      At x = L/√12:
+      <br/>
+      T_min = 2π√[(L²/12 + L²/12)/(g × L/√12)]
+      <br/>
+      T_min = 2π√[(L²/6)/(gL/√12)]
+      <br/>
+      T_min = 2π√[(L²√12)/(6gL)]
+      <br/>
+      T_min = 2π√[L√12/(6g)]
+      <br/>
+      T_min = 2π√[1.85 × 3.464/(6 × 9.8)]
+      <br/>
+      T_min = 2π√[6.408/58.8] = 2π√0.109 = 2π(0.330)
+      <br/>
+      T_min = 2.07 s</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_228</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Simple Harmonic Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A solid cylinder attached to a horizontal spring (k = 3.00 N/m) rolls without slipping along a horizontal surface. If the system is released from rest when the spring is stretched by 0.250 m, find (a) the translational kinetic energy and (b) the rotational kinetic energy of the cylinder as it passes through the equilibrium position. (c) Show that under these conditions the cylinder's center of mass executes simple harmonic motion with period T = 2π√(3M/2k), where M is the cylinder mass.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) KE_trans = 0.0625 J, (b) KE_rot = 0.03125 J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) KE_trans = 0.0500 J, (b) KE_rot = 0.02500 J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) KE_trans = 0.0750 J, (b) KE_rot = 0.03750 J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) KE_trans = 0.0833 J, (b) KE_rot = 0.04165 J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Apply energy conservation
+      </strong>
+<br/>
+      Initial energy (at maximum stretch): E = ½kA² = ½(3.00)(0.250)²
+      <br/>
+      E = ½(3.00)(0.0625) = 0.09375 J
+      <br/>
+      At equilibrium: PE = 0, all energy is kinetic
+      <br/>
+      Total KE = 0.09375 J</li>
+<li><strong>
+       Step 2: Partition kinetic energy for rolling cylinder
+      </strong>
+<br/>
+      For rolling: v = ωR, so ω = v/R
+      <br/>
+      KE_rot = ½Iω² = ½(½MR²)(v/R)² = ¼Mv²
+      <br/>
+      KE_trans = ½Mv²
+      <br/>
+      Total: KE = ½Mv² + ¼Mv² = ¾Mv²
+      <br/>
+      Ratio: KE_rot/KE_trans = (¼Mv²)/(½Mv²) = 1/2</li>
+<li><strong>
+       Step 3: Calculate translational KE
+      </strong>
+<br/>
+      Total KE = KE_trans + KE_rot = 0.09375 J
+      <br/>
+      KE_trans = (2/3) × Total KE = (2/3)(0.09375) = 0.0625 J</li>
+<li><strong>
+       Step 4: Calculate rotational KE
+      </strong>
+<br/>
+      KE_rot = (1/3) × Total KE = (1/3)(0.09375) = 0.03125 J
+      <br/>
+      Check: 0.0625 + 0.03125 = 0.09375 ✓</li>
+<li><strong>
+       Step 5: Derive period formula for part (c)
+      </strong>
+<br/>
+      Energy: E = ½kx² + ¾Mv²
+      <br/>
+      For SHM: v = dx/dt, so E = ½kx² + ¾M(dx/dt)²
+      <br/>
+      Taking derivative: 0 = kx(dx/dt) + ¾M(2)(dx/dt)(d²x/dt²)
+      <br/>
+      Dividing by dx/dt: 0 = kx + (3M/2)(d²x/dt²)
+      <br/>
+      d²x/dt² = -(2k/3M)x
+      <br/>
+      This is SHM with ω² = 2k/3M
+      <br/>
+      Period: T = 2π/ω = 2π√(3M/2k) ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_240</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 55:
+      </h4>
+      In the system shown above, string 1 has a linear density of 3.00 g/m, and string 2 has a linear density of 5.00 g/m. They are under tension due to the hanging block of mass M = 500 g.Part (a):What is the wave speed on string 1?Part (b):What is the wave speed on string 2?Part (c):If the block is divided into two separate blocks (with M₁ + M₂ = M) such that String 1 supports mass M₁ and String 2 supports mass M₂ (each through its own pulley arrangement), what values of M₁ and M₂ will make the wave speeds in the two strings equal?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 250.0 g
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 281.3 g
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 312.5 g
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 375.0 g
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Calculate tension in the system
+          </strong>
+<br>
+          Given: M = 500 g = 0.5 kg, g = 9.8 m/s²
+          <br>
+          Due to pulley configuration, effective tension: T = 2Mg
+          <br>
+          T = 2 × 0.5 × 9.8 = 9.8 N
+         </li>
+<li>
+<strong>
+           Step 2: Calculate wave speed on String 1 (Part a)
+          </strong>
+<br>
+          Linear density μ₁ = 3.00 g/m = 0.003 kg/m
+          <br>
+          Wave speed: v₁ = √(T/μ₁) = √(9.8/0.003)
+          <br>
+          v₁ = √3266.67 = 57.16 m/s ≈
+          <strong>
+           57.2 m/s
+          </strong>
+          ✓
+          <strong>
+           Answer: B
+          </strong>
+</li>
+<li>
+<strong>
+           Step 3: Calculate wave speed on String 2 (Part b)
+          </strong>
+<br>
+          Linear density μ₂ = 5.00 g/m = 0.005 kg/m
+          <br>
+          Wave speed: v₂ = √(T/μ₂) = √(9.8/0.005)
+          <br>
+          v₂ = √1960 = 44.27 m/s ≈
+          <strong>
+           44.3 m/s
+          </strong>
+          ✓
+          <strong>
+           Answer: B
+          </strong>
+</li>
+<li>
+<strong>
+           Step 4: Find M₁ and M₂ for equal wave speeds (Part c)
+          </strong>
+<br>
+          For equal speeds: v₁ = v₂
+          <br>
+          √(T₁/μ₁) = √(T₂/μ₂)
+          <br>
+          √(2M₁g/μ₁) = √(2M₂g/μ₂)
+          <br>
+          M₁/μ₁ = M₂/μ₂
+          <br>
+          M₁/0.003 = M₂/0.005
+          <br>
+          M₁ = 0.6M₂
+         </li>
+<li>
+<strong>
+           Step 5: Apply constraint and solve
+          </strong>
+<br>
+          M₁ + M₂ = 0.5 kg
+          <br>
+          0.6M₂ + M₂ = 0.5
+          <br>
+          1.6M₂ = 0.5
+          <br>
+          M₂ = 0.3125 kg =
+          <strong>
+           312.5 g
+          </strong>
+          ✓
+          <strong>
+           Answer: C
+          </strong>
+<br>
+          M₁ = 0.5 - 0.3125 = 0.1875 kg =
+          <strong>
+           187.5 g
+          </strong>
+          ✓
+          <strong>
+           Answer: C
+          </strong>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_241</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A uniform rope of mass m and length L hangs vertically from a ceiling. A transverse wave pulse is generated at the lower end of the rope and travels upward.
+    <br/>
+<br/>
+<strong>
+     Part (a):
+    </strong>
+    Show that the speed of a transverse wave on the rope is a function of y (distance from the lower end) and is given by v = √(gy).
+    <br/>
+<br/>
+<strong>
+     Part (b):
+    </strong>
+    Show that the time a transverse wave takes to travel the length of the rope is given by t = 2√(L/g).
+    <br/>
+<br/>
+<strong>
+     Part (c):
+    </strong>
+    Calculate the time taken for a wave pulse to travel from bottom to top if L = 10 m and g = 10 m/s².</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.0 s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2.0 s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> √2 s ≈ 1.41 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2√2 s ≈ 2.83 s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Determine tension as function of position
+      </strong>
+<br/>
+      At distance y from bottom, tension T(y) supports the weight of rope below:
+      <br/>
+      Mass below = (m/L)y = μy where μ = m/L
+      <br/>
+      Tension: T(y) = μyg</li>
+<li><strong>
+       Step 2: Derive wave speed formula (Part a)
+      </strong>
+<br/>
+      Wave speed: v = √(T/μ) = √(μyg/μ)
+      <br/>
+      v = √(gy) ✓
+      <strong>
+       (Part a proven)
+      </strong>
+<br/>
+      Note: This is independent of rope mass m!</li>
+<li><strong>
+       Step 3: Set up integral for travel time
+      </strong>
+<br/>
+      Since v = dy/dt, we have:
+      <br/>
+      dt = dy/v = dy/√(gy)
+      <br/>
+      Total time: t = ∫₀ᴸ dy/√(gy)</li>
+<li><strong>
+       Step 4: Evaluate the integral (Part b)
+      </strong>
+<br/>
+      t = ∫₀ᴸ (1/√g) × y⁻¹/² dy
+      <br/>
+      t = (1/√g) [2y¹/²]₀ᴸ
+      <br/>
+      t = (2/√g) × √L
+      <br/>
+      t = 2√(L/g) ✓
+      <strong>
+       (Part b proven)
+      </strong></li>
+<li><strong>
+       Step 5: Calculate numerical answer (Part c)
+      </strong>
+<br/>
+      Given: L = 10 m, g = 10 m/s²
+      <br/>
+      t = 2√(10/10) = 2√1 =
+      <strong>
+       2.0 s
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_242</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A string oscillates according to the equation:
+    <br/>
+<br/>
+    y' = (0.50 cm) sin[(π/3 cm⁻¹)x] cos[(40π s⁻¹)t]
+    <br/>
+<br/>
+    This standing wave is formed by the superposition of two identical traveling waves moving in opposite directions.
+    <br/>
+<br/>
+<strong>
+     Part (a):
+    </strong>
+    What is the amplitude of each traveling wave?
+    <br/>
+<strong>
+     Part (b):
+    </strong>
+    What is the speed of the traveling waves?
+    <br/>
+<strong>
+     Part (c):
+    </strong>
+    What is the distance between adjacent nodes?
+    <br/>
+<strong>
+     Part (d):
+    </strong>
+    What is the transverse speed of the string at position x = 1.5 cm when t = 9/8 s?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0 cm/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 15.7 cm/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 31.4 cm/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 62.8 cm/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Identify standing wave parameters (Part a)
+      </strong>
+<br/>
+      Given: y' = (0.50 cm) sin[(π/3)x] cos[(40π)t]
+      <br/>
+      Standard form: y' = 2y_m sin(kx) cos(ωt)
+      <br/>
+      Comparing: 2y_m = 0.50 cm
+      <br/>
+      Therefore: y_m = 0.25 cm =
+      <strong>
+       2.5 mm
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong>
+<br/>
+      Also: k = π/3 cm⁻¹, ω = 40π s⁻¹</li>
+<li><strong>
+       Step 2: Calculate wave speed (Part b)
+      </strong>
+<br/>
+      Wave speed: v = ω/k
+      <br/>
+      v = (40π)/(π/3) = 40π × (3/π) = 120 cm/s
+      <br/>
+      v =
+      <strong>
+       1.2 m/s
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong></li>
+<li><strong>
+       Step 3: Find distance between nodes (Part c)
+      </strong>
+<br/>
+      Nodes occur when sin(kx) = 0
+      <br/>
+      This happens at kx = 0, π, 2π, 3π, ...
+      <br/>
+      x = 0, π/k, 2π/k, 3π/k, ...
+      <br/>
+      Distance between adjacent nodes = π/k
+      <br/>
+      = π/(π/3) = 3 cm =
+      <strong>
+       3.0 cm
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong></li>
+<li><strong>
+       Step 4: Calculate transverse speed at x = 1.5 cm, t = 9/8 s (Part d)
+      </strong>
+<br/>
+      Transverse velocity: u = ∂y'/∂t
+      <br/>
+      u = -(0.50) sin[(π/3)x] × (40π) sin[(40π)t]
+      <br/>
+      u = -20π sin[(π/3)x] sin[(40π)t]
+      <br/>
+<br/>
+      At x = 1.5 cm:
+      <br/>
+      sin[(π/3)(1.5)] = sin[π/2] = 1 ✓
+      <br/>
+<br/>
+      At t = 9/8 s:
+      <br/>
+      sin[(40π)(9/8)] = sin[45π] = sin[π] = 0 ✓
+      <br/>
+<br/>
+      Therefore: u = -20π × 1 × 0 =
+      <strong>
+       0 cm/s
+      </strong>
+      ✓
+      <strong>
+       Answer: A
+      </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_243</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>An aluminum wire of length L₁ = 60.0 cm, cross-sectional area 1.00 × 10⁻² cm², and density 2.60 g/cm³ is joined to a steel wire of density 7.80 g/cm³ and the same cross-sectional area. The compound wire, loaded with a block of mass m = 10.0 kg, is arranged so that the distance L₂ from the joint to the supporting pulley is 86.6 cm. Transverse waves are set up on the wire by an external source of variable frequency. A node is located at the pulley.
+    <br/>
+<br/>
+<strong>
+     Part (a):
+    </strong>
+    What is the lowest frequency that generates a standing wave having the joint as one of the nodes?
+    <br/>
+<strong>
+     Part (b):
+    </strong>
+    How many nodes are observed at this frequency?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 6 nodes
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 7 nodes
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 8 nodes
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 9 nodes
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Calculate linear densities
+      </strong>
+<br/>
+      Cross-sectional area: A = 1.00 × 10⁻² cm² = 1.00 × 10⁻⁶ m²
+      <br/>
+<br/>
+      Aluminum: ρ₁ = 2.60 g/cm³ = 2600 kg/m³
+      <br/>
+      μ₁ = ρ₁A = 2600 × 1.00 × 10⁻⁶ = 0.0026 kg/m ✓
+      <br/>
+<br/>
+      Steel: ρ₂ = 7.80 g/cm³ = 7800 kg/m³
+      <br/>
+      μ₂ = ρ₂A = 7800 × 1.00 × 10⁻⁶ = 0.0078 kg/m ✓</li>
+<li><strong>
+       Step 2: Calculate tension and wave speeds
+      </strong>
+<br/>
+      Tension: T = mg = 10.0 × 9.8 = 98 N ✓
+      <br/>
+<br/>
+      Aluminum wave speed:
+      <br/>
+      v₁ = √(T/μ₁) = √(98/0.0026) = √37692.3 = 194.15 m/s ✓
+      <br/>
+<br/>
+      Steel wave speed:
+      <br/>
+      v₂ = √(T/μ₂) = √(98/0.0078) = √12564.1 = 112.08 m/s ✓</li>
+<li><strong>
+       Step 3: Apply standing wave conditions
+      </strong>
+<br/>
+      For nodes at both ends and joint:
+      <br/>
+      Aluminum: n₁(λ₁/2) = L₁ = 0.60 m
+      <br/>
+      Steel: n₂(λ₂/2) = L₂ = 0.866 m
+      <br/>
+<br/>
+      Since frequency is same:
+      <br/>
+      f = v₁/λ₁ = v₂/λ₂
+      <br/>
+<br/>
+      This gives: n₁v₁/(2L₁) = n₂v₂/(2L₂)
+      <br/>
+      n₁v₁/L₁ = n₂v₂/L₂</li>
+<li><strong>
+       Step 4: Find integer ratio
+      </strong>
+<br/>
+      n₁(194.15)/0.60 = n₂(112.08)/0.866
+      <br/>
+      n₁(323.58) = n₂(129.38)
+      <br/>
+      n₁/n₂ = 129.38/323.58 = 0.3998 ≈ 2/5
+      <br/>
+<br/>
+      Smallest integers: n₁ = 2, n₂ = 5 ✓</li>
+<li><strong>
+       Step 5: Calculate lowest frequency (Part a)
+      </strong>
+<br/>
+      f = n₁v₁/(2L₁) = 2 × 194.15/(2 × 0.60)
+      <br/>
+      f = 388.3/1.2 = 323.58 Hz ≈
+      <strong>
+       324 Hz
+      </strong>
+      ✓
+      <strong>
+       Answer: C
+      </strong>
+<br/>
+<br/>
+      Verify: f = n₂v₂/(2L₂) = 5 × 112.08/(2 × 0.866)
+      <br/>
+      f = 560.4/1.732 = 323.6 Hz ✓ (Matches!)</li>
+<li><strong>
+       Step 6: Count total nodes (Part b)
+      </strong>
+<br/>
+      Aluminum section: n₁ + 1 = 2 + 1 = 3 nodes (including both ends)
+      <br/>
+      Steel section: n₂ + 1 = 5 + 1 = 6 nodes (including both ends)
+      <br/>
+<br/>
+      Joint node is counted in both sections, so subtract 1:
+      <br/>
+      Total = 3 + 6 - 1 =
+      <strong>
+       8 nodes
+      </strong>
+      ✓
+      <strong>
+       Answer: C
+      </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Waves__Oscillations_244</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Wave Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A string is tied to a sinusoidal oscillator at one end and runs over a support at the other end, where it is stretched by a block of mass m. The separation between the oscillator and support is L = 1.20 m, and the oscillator frequency is fixed at f = 120 Hz. The amplitude of motion at the oscillator is small enough for that point to be considered a node. A node also exists at the support.
+    <br/>
+<br/>
+    A standing wave appears when the mass of the hanging block is 286.1 g or 447.0 g, but not for any intermediate mass.
+    <br/>
+<br/>
+<strong>
+     Question:
+    </strong>
+    What is the linear density μ of the string?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.625 g/m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0.845 g/m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.125 g/m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.685 g/m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Establish relationship between m, n, and μ
+      </strong>
+<br/>
+      Standing wave condition: nλ/2 = L
+      <br/>
+      λ = 2L/n
+      <br/>
+<br/>
+      Wave speed: v = fλ = f(2L/n)
+      <br/>
+      Also: v = √(mg/μ)
+      <br/>
+<br/>
+      Equating: f(2L/n) = √(mg/μ)
+      <br/>
+      Squaring: f²(4L²/n²) = mg/μ
+      <br/>
+      Therefore: μ = mgn²/(4L²f²)</li>
+<li><strong>
+       Step 2: Set up equation for two masses
+      </strong>
+<br/>
+      For both masses, μ is the same:
+      <br/>
+      m₁gn₁²/(4L²f²) = m₂gn₂²/(4L²f²)
+      <br/>
+<br/>
+      Simplifying: m₁n₁² = m₂n₂²
+      <br/>
+      0.2861n₁² = 0.4470n₂² ✓</li>
+<li><strong>
+       Step 3: Try adjacent harmonics (n₂ = n₁ - 1)
+      </strong>
+<br/>
+      Since m₂ &gt; m₁, we expect n₂ &lt; n₁ (heavier = lower harmonic)
+      <br/>
+<br/>
+      0.2861n₁² = 0.4470(n₁ - 1)²
+      <br/>
+      0.2861n₁² = 0.4470(n₁² - 2n₁ + 1)
+      <br/>
+      0.2861n₁² = 0.4470n₁² - 0.8940n₁ + 0.4470
+      <br/>
+      0 = 0.1609n₁² - 0.8940n₁ + 0.4470
+      <br/>
+<br/>
+      Using quadratic formula:
+      <br/>
+      n₁ = [0.8940 ± √(0.7992 - 0.2874)]/(0.3218)
+      <br/>
+      n₁ = [0.8940 ± √0.5118]/(0.3218)
+      <br/>
+      n₁ = [0.8940 ± 0.7154]/(0.3218)
+      <br/>
+<br/>
+      n₁ = 1.6094/0.3218 = 5.00 ✓
+      <br/>
+      Therefore: n₁ = 5, n₂ = 4 ✓</li>
+<li><strong>
+       Step 4: Calculate linear density
+      </strong>
+<br/>
+      Using m₁ = 286.1 g = 0.2861 kg, n₁ = 5:
+      <br/>
+<br/>
+      μ = m₁gn₁²/(4L²f²)
+      <br/>
+      μ = (0.2861 × 9.8 × 25)/(4 × 1.44 × 14400)
+      <br/>
+      μ = 70.0145/82944
+      <br/>
+      μ = 0.0008442 kg/m
+      <br/>
+      μ =
+      <strong>
+       0.844 g/m ≈ 0.845 g/m
+      </strong>
+      ✓
+      <strong>
+       Answer: B
+      </strong></li>
+<li><strong>
+       Step 5: Verify with second mass
+      </strong>
+<br/>
+      Using m₂ = 447.0 g = 0.4470 kg, n₂ = 4:
+      <br/>
+<br/>
+      μ = (0.4470 × 9.8 × 16)/(4 × 1.44 × 14400)
+      <br/>
+      μ = 70.1568/82944
+      <br/>
+      μ = 0.0008458 kg/m
+      <br/>
+      μ = 0.846 g/m ✓ (Close match confirms solution!)</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

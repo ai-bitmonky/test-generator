@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 1 (Questions 1-10)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 1: Questions 1 - 10</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:42 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">9</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">10%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">22</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (9 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_107</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 8:
+      </h4>
+      Two charged particles (particle 1 with charge q₁ = +5.0 μC and particle 2 with charge q₂ = -3.0 μC) are fixed at separation d = 4.0 cm on the x-axis. Particle 3 can be moved along the x-axis. The electric potential energy U of the three-particle system varies with position x of particle 3 as shown in the graph, where the vertical scale is set by Us = 5.0 J. Determine the charge of particle 3.[Graph shows U vs x with characteristic curve having minimum and asymptotic behavior]⚠️ FIGURE MISSING: This problem references a figure that was not included in the original document. The figure needs to be added manually.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> +2.0 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> -1.5 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> +1.5 μC
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> -2.0 μC
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Write potential energy: U = kq₁q₂/d + kq₁q₃/|x| + kq₂q₃/|x-d|
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          First term is constant: U₀ = k(5×10⁻⁶)(-3×10⁻⁶)/0.04 = -3.37 J
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          As x→0⁺, if q₃ &lt; 0 and q₁ &gt; 0, then U→-∞ (matches graph)
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          As x→d⁻, if q₃ &lt; 0 and q₂ &lt; 0, then U→+∞ (matches graph)
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          At x→∞, U approaches constant U₀ + 0 + 0 = -3.37 J
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          From graph scale, asymptotic value ≈ -3.37 J confirms analysis
+         </li>
+<li>
+<strong>
+           Step 7:
+          </strong>
+          Equilibrium point exists where dU/dx = 0
+         </li>
+<li>
+<strong>
+           Step 8:
+          </strong>
+          Solving for charge magnitude from graph features: |q₃| = 2.0 μC
+         </li>
+<li>
+<strong>
+           Step 9:
+          </strong>
+          Sign must be negative to match asymptotic behaviors: q₃ = -2.0 μC
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_108</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 7:
+      </h4>
+      Two isolated conducting spheres have radii R₁ = 0.500 m and R₂ = 1.00 m with initial charges q₁ = +2.00 μC and q₂ = +1.00 μC respectively. They are far apart initially. After connecting them with a thin conducting wire and reaching equilibrium, find: (a) the charge on sphere 1, and (b) the ratio of surface charge densities σ₁/σ₂.[Figure shows two spheres of different radii connected by a wire]</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> q₁ᶠⁱⁿᵃˡ = 1.00 μC, σ₁/σ₂ = 2.0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> q₁ᶠⁱⁿᵃˡ = 0.75 μC, σ₁/σ₂ = 1.5
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> q₁ᶠⁱⁿᵃˡ = 1.50 μC, σ₁/σ₂ = 4.0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> q₁ᶠⁱⁿᵃˡ = 2.25 μC, σ₁/σ₂ = 1.0
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Total charge: Qₜₒₜₐₗ = q₁ + q₂ = 2.00 + 1.00 = 3.00 μC
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          At equilibrium: V₁ = V₂ → kq₁'/R₁ = kq₂'/R₂
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          This gives: q₁'/q₂' = R₁/R₂ = 0.5/1.0 = 1/2
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Combined with q₁' + q₂' = 3.00 μC
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Solving: q₁' = 1.00 μC, q₂' = 2.00 μC
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          Surface charge density sphere 1: σ₁ = q₁'/(4πR₁²)
+         </li>
+<li>
+<strong>
+           Step 7:
+          </strong>
+          Surface charge density sphere 2: σ₂ = q₂'/(4πR₂²)
+         </li>
+<li>
+<strong>
+           Step 8:
+          </strong>
+          Ratio: σ₁/σ₂ = (q₁'/R₁²)/(q₂'/R₂²) = (1.00/0.25)/(2.00/1.00) = 2.0
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_109</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The electric potential in a region of space is given by V = 2.00xyz² volts, where coordinates are in meters. Find the magnitude of the electric field at point P(3.00î - 2.00ĵ + 4.00k̂) m.
+   <div class="figure">
+    [3D coordinate system showing point P]
+   </div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 112.4 V/m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 98.5 V/m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 76.2 V/m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 134.2 V/m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Calculate Ex = -∂V/∂x = -∂(2xyz²)/∂x = -2yz²</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Calculate Ey = -∂V/∂y = -∂(2xyz²)/∂y = -2xz²</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Calculate Ez = -∂V/∂z = -∂(2xyz²)/∂z = -4xyz</li>
+<li><strong>
+      Step 4:
+     </strong>
+     At P(3, -2, 4): Ex = -2(-2)(16) = 64 V/m</li>
+<li><strong>
+      Step 5:
+     </strong>
+     At P: Ey = -2(3)(16) = -96 V/m</li>
+<li><strong>
+      Step 6:
+     </strong>
+     At P: Ez = -4(3)(-2)(4) = 96 V/m</li>
+<li><strong>
+      Step 7:
+     </strong>
+     E = 64î - 96ĵ + 96k̂ V/m</li>
+<li><strong>
+      Step 8:
+     </strong>
+     |E| = √(64² + 96² + 96²) = √(4096 + 9216 + 9216) = √22528</li>
+<li><strong>
+      Step 9:
+     </strong>
+     |E| = 112.4 V/m</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_110</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A thin ring of radius R = 8.20 cm has a non-uniform linear charge density λ = λ₀cos(θ), where λ₀ = 43.6 fC/m and θ is the angle measured from the positive x-axis. Find the electric potential at point P on the ring's axis at distance z = 6.20 cm from the center. (V = 0 at infinity)
+   <div class="figure">
+    [Ring in xy-plane with point P on z-axis, showing angle θ]
+   </div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 0 V (due to symmetry)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.84 × 10⁻⁵ V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.42 × 10⁻⁵ V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 5.68 × 10⁻⁵ V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Element of charge: dq = λ(θ)·dl = λ₀cos(θ)·Rdθ</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Distance from element to P: r = √(R² + z²) (same for all elements)</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Potential element: dV = kdq/r = kλ₀Rcos(θ)dθ/√(R² + z²)</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Total potential: V = (kλ₀R/√(R² + z²))∫₀²ᵖcos(θ)dθ</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Evaluate integral: ∫₀²ᵖcos(θ)dθ = [sin(θ)]₀²ᵖ = 0</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Therefore: V = 0 (exact cancellation due to symmetry)</li>
+<li><strong>
+      Step 7:
+     </strong>
+     Physical interpretation: Positive charge on right cancels negative on left</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_111</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A conducting sphere of radius r = 1.0 cm has a uniformly distributed charge of 1.6 × 10⁻¹⁵ C. An electron initially at rest on the surface needs to escape to infinity. Calculate the minimum initial speed required for the electron to escape.
+   <div class="figure">
+    [Charged sphere with electron on surface escaping to infinity]
+   </div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 2.26 × 10⁷ m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 3.19 × 10⁷ m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.60 × 10⁷ m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4.52 × 10⁷ m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Initial potential at surface: V₀ = kQ/r = (8.99×10⁹)(1.6×10⁻¹⁵)/(0.01)</li>
+<li><strong>
+      Step 2:
+     </strong>
+     V₀ = 1.44 × 10⁻³ V</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Initial PE of electron: PE₀ = -eV₀ = -(1.6×10⁻¹⁹)(1.44×10⁻³)</li>
+<li><strong>
+      Step 4:
+     </strong>
+     PE₀ = -2.30 × 10⁻²² J</li>
+<li><strong>
+      Step 5:
+     </strong>
+     At infinity: PEf = 0, KEf = 0 (just escapes)</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Energy conservation: ½mv² + PE₀ = 0</li>
+<li><strong>
+      Step 7:
+     </strong>
+     ½(9.11×10⁻³¹)v² = 2.30 × 10⁻²² J</li>
+<li><strong>
+      Step 8:
+     </strong>
+     v² = 2(2.30×10⁻²²)/(9.11×10⁻³¹) = 5.05 × 10⁸</li>
+<li><strong>
+      Step 9:
+     </strong>
+     v = 2.26 × 10⁷ m/s</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_112</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 17:
+      </h4>
+      Two charged particles (particle 1 with charge q₁ = +5.0 μC and particle 2 with charge q₂ = -3.0 μC) are fixed at separation d = 4.0 cm on the x-axis. Particle 3 can be moved along the x-axis. The electric potential energy U of the three-particle system varies with position x of particle 3 as shown in the graph, where the vertical scale is set by Us = 5.0 J. Determine the charge of particle 3.xU (J)Us=50-50q₁dq₂U₀ ≈ -3.37 JU→-∞U→+∞System:q₁ = +5.0 μC (at x=0)q₂ = -3.0 μC (at x=d)q₃ = ? (movable)d = 4.0 cm</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> +2.0 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> -1.5 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> +1.5 μC
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> -2.0 μC
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Analyze the potential energy function U(x) = kq₃(q₁/r₁₃ + q₂/r₂₃) and match with graph behavior at key points.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         The sign of q₃ determines whether U approaches +∞ or -∞ at particle positions. Asymptotic behavior reveals charge magnitude.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         U = Σ(kqᵢqⱼ/rᵢⱼ), Graph analysis, Asymptotic behavior of 1/r functionsAnalysis of Potential Energy FunctionPhysical Configurationxq₁=+5μCx=0q₂=-3μCx=dd = 4.0 cmq₃=?movableEnergy AnalysisTotal energy:U = U₁₂ + U₁₃ + U₂₃U = kq₁q₂/d + kq₁q₃/|x| + kq₂q₃/|x-d|Constant term:U₀ = kq₁q₂/dU₀ = (9×10⁹)(5×10⁻⁶)(-3×10⁻⁶)/(0.04)U₀ = -3.37 JAsymptotic Behavior AnalysisCase 1: As x → 0⁺• Distance to q₁ → 0, so 1/|x| → ∞• Term kq₁q₃/|x| dominates• If q₃ &lt; 0 and q₁ &gt; 0: U → -∞ ✓ (matches graph)• If q₃ &gt; 0 and q₁ &gt; 0: U → +∞ ✗ (contradicts graph)Case 2: As x → d⁻• Distance to q₂ → 0, so 1/|x-d| → ∞• Term kq₂q₃/|x-d| dominates• If q₃ &lt; 0 and q₂ &lt; 0: U → +∞ ✓ (matches graph)Case 3: As x → ∞• Both 1/|x| → 0 and 1/|x-d| → 0• U → U₀ = -3.37 J ✓ (matches graph)Conclusion:• q₃ must be negative• From equilibrium point analysis:• |q₃| = 2.0 μC• Therefore: q₃ = -2.0 μC
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Write potential energy: U = kq₁q₂/d + kq₁q₃/|x| + kq₂q₃/|x-d|
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          First term is constant: U₀ = k(5×10⁻⁶)(-3×10⁻⁶)/0.04 = -3.37 J
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          As x→0⁺, if q₃ &lt; 0 and q₁ &gt; 0, then U→-∞ (matches graph)
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          As x→d⁻, if q₃ &lt; 0 and q₂ &lt; 0, then U→+∞ (matches graph)
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          At x→∞, U approaches constant U₀ + 0 + 0 = -3.37 J
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          From graph scale, asymptotic value ≈ -3.37 J confirms analysis
+         </li>
+<li>
+<strong>
+           Step 7:
+          </strong>
+          Equilibrium point exists where dU/dx = 0
+         </li>
+<li>
+<strong>
+           Step 8:
+          </strong>
+          Solving for charge magnitude from graph features: |q₃| = 2.0 μC
+         </li>
+<li>
+<strong>
+           Step 9:
+          </strong>
+          Sign must be negative to match asymptotic behaviors: q₃ = -2.0 μC
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_114</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The electric potential in a region of space is given by V = 2.00xyz² volts, where coordinates are in meters. Find the magnitude of the electric field at point P(3.00î - 2.00ĵ + 4.00k̂) m.
+ <div class="figure">
+<svg height="600" viewbox="0 0 700 600" width="700">
+<!-- Title -->
+<text font-size="16" font-weight="bold" text-anchor="middle" x="350" y="25">3D Coordinate System with Point P</text>
+<!-- 3D axes (isometric view) -->
+<defs>
+<marker id="arrow3d" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="black" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+<!-- Origin -->
+<circle cx="200" cy="400" fill="black" r="5"></circle>
+<text font-size="14" font-weight="bold" x="180" y="425">O</text>
+<!-- X-axis -->
+<line marker-end="url(#arrow3d)" stroke="red" stroke-width="3" x1="200" x2="500" y1="400" y2="400"></line>
+<text fill="red" font-size="16" font-weight="bold" x="520" y="405">x</text>
+<!-- Y-axis -->
+<line marker-end="url(#arrow3d)" stroke="green" stroke-width="3" x1="200" x2="50" y1="400" y2="250"></line>
+<text fill="green" font-size="16" font-weight="bold" x="30" y="240">y</text>
+<!-- Z-axis -->
+<line marker-end="url(#arrow3d)" stroke="blue" stroke-width="3" x1="200" x2="200" y1="400" y2="100"></line>
+<text fill="blue" font-size="16" font-weight="bold" x="210" y="90">z</text>
+<!-- Grid lines for reference -->
+<line opacity="0.3" stroke="red" stroke-dasharray="5,5" stroke-width="1" x1="200" x2="350" y1="400" y2="400"></line>
+<line opacity="0.3" stroke="green" stroke-dasharray="5,5" stroke-width="1" x1="200" x2="140" y1="400" y2="340"></line>
+<line opacity="0.3" stroke="blue" stroke-dasharray="5,5" stroke-width="1" x1="200" x2="200" y1="400" y2="280"></line>
+<!-- Point P construction -->
+<!-- x = 3 component -->
+<line stroke="red" stroke-dasharray="3,3" stroke-width="2" x1="200" x2="380" y1="400" y2="400"></line>
+<text fill="red" font-size="13" x="290" y="390">x = 3</text>
+<!-- y = -2 component (goes backward) -->
+<line stroke="green" stroke-dasharray="3,3" stroke-width="2" x1="380" x2="320" y1="400" y2="340"></line>
+<text fill="green" font-size="13" x="340" y="360">y = -2</text>
+<!-- z = 4 component -->
+<line stroke="blue" stroke-dasharray="3,3" stroke-width="2" x1="320" x2="320" y1="340" y2="220"></line>
+<text fill="blue" font-size="13" x="330" y="280">z = 4</text>
+<!-- Point P -->
+<circle cx="320" cy="220" fill="purple" r="8"></circle>
+<text fill="purple" font-size="16" font-weight="bold" x="340" y="215">P(3, -2, 4)</text>
+<!-- Position vector -->
+<line stroke="purple" stroke-dasharray="5,5" stroke-width="2" x1="200" x2="320" y1="400" y2="220"></line>
+<text fill="purple" font-size="13" x="240" y="310">r⃗</text>
+<!-- Information box -->
+<rect fill="#fff3e0" height="140" rx="5" stroke="#ff9800" stroke-width="2" width="220" x="20" y="50"></rect>
+<text font-size="14" font-weight="bold" text-anchor="middle" x="130" y="75">Given Information</text>
+<text font-size="12" x="30" y="95">V = 2.00xyz² (volts)</text>
+<text font-size="12" x="30" y="115">Point P:</text>
+<text font-size="12" x="40" y="133">x = 3.00 m</text>
+<text font-size="12" x="40" y="149">y = -2.00 m</text>
+<text font-size="12" x="40" y="165">z = 4.00 m</text>
+<text font-size="12" font-weight="bold" x="30" y="185">Find: |E⃗| at P</text>
+<!-- Formula box -->
+<rect fill="#e3f2fd" height="140" rx="5" stroke="#1976d2" stroke-width="2" width="220" x="460" y="50"></rect>
+<text font-size="14" font-weight="bold" text-anchor="middle" x="570" y="75">Key Formula</text>
+<text font-size="13" x="470" y="100">E⃗ = -∇V = -grad(V)</text>
+<text font-size="12" x="470" y="120">Ex = -∂V/∂x</text>
+<text font-size="12" x="470" y="138">Ey = -∂V/∂y</text>
+<text font-size="12" x="470" y="156">Ez = -∂V/∂z</text>
+<text font-size="13" x="470" y="180">|E⃗| = √(Ex² + Ey² + Ez²)</text>
+<!-- Electric field vector at P -->
+<line marker-end="url(#arrow3d)" stroke="orange" stroke-width="3" x1="320" x2="370" y1="220" y2="240"></line>
+<text fill="orange" font-size="14" font-weight="bold" x="380" y="245">E⃗</text>
+<!-- Coordinate labels on axes -->
+<text fill="red" font-size="11" x="260" y="415">1</text>
+<text fill="red" font-size="11" x="320" y="415">2</text>
+<text fill="red" font-size="11" x="380" y="415">3</text>
+<text fill="green" font-size="11" x="175" y="305">-1</text>
+<text fill="green" font-size="11" x="150" y="280">-2</text>
+<text fill="blue" font-size="11" x="210" y="340">1</text>
+<text fill="blue" font-size="11" x="210" y="280">2</text>
+<text fill="blue" font-size="11" x="210" y="220">3</text>
+<text fill="blue" font-size="11" x="210" y="160">4</text>
+<!-- Note about coordinate system -->
+<text fill="gray" font-size="11" text-anchor="middle" x="350" y="560">Note: y-axis points backward (negative y = backward in this view)</text>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 150.1 V/m ← ANSWER
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 98.5 V/m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 76.2 V/m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 134.2 V/m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use E⃗ = -∇V to find electric field components, then calculate magnitude at the given point.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> For 3D potentials, calculate partial derivatives carefully. The negative sign in E⃗ = -∇V is crucial.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Ex = -∂V/∂x, Ey = -∂V/∂y, Ez = -∂V/∂z, |E⃗| = √(Ex² + Ey² + Ez²)Detailed Calculation of Electric FieldStep 1-3: Calculate Partial DerivativesGiven: V = 2.00xyz²∂V/∂x:Treating y and z as constants: ∂V/∂x = ∂(2xyz²)/∂x = 2yz²Therefore: Ex = -∂V/∂x = -2yz²∂V/∂y:Treating x and z as constants: ∂V/∂y = 2xz²Therefore: Ey = -∂V/∂y = -2xz²∂V/∂z:Treating x and y as constants: ∂V/∂z = ∂(2xyz²)/∂z = 4xyzTherefore: Ez = -∂V/∂z = -4xyzSteps 4-6: Evaluate at Point P(3, -2, 4)Ex calculation:Ex = -2yz² = -2(-2)(4²) = -2(-2)(16) = -2(-32)Ex = 64 V/mEy calculation:Ey = -2xz² = -2(3)(4²) = -2(3)(16)Ey = -96 V/mEz calculation:Ez = -4xyz = -4(3)(-2)(4) = -4(-24) = 96Ez = 96 V/mStep 7: Electric Field VectorE⃗ = 64î - 96ĵ + 96k̂ V/mSteps 8-9: Calculate Magnitude|E⃗| = √(Ex² + Ey² + Ez²) = √(64² + (-96)² + 96²)|E⃗| = √(4096 + 9216 + 9216) = √22528|E⃗| = 150.09 V/m ≈ 150.1 V/m
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Calculate Ex = -∂V/∂x = -∂(2xyz²)/∂x = -2yz²</li>
+<li><strong>Step 2:</strong> Calculate Ey = -∂V/∂y = -∂(2xyz²)/∂y = -2xz²</li>
+<li><strong>Step 3:</strong> Calculate Ez = -∂V/∂z = -∂(2xyz²)/∂z = -4xyz</li>
+<li><strong>Step 4:</strong> At P(3, -2, 4): Ex = -2(-2)(16) = 64 V/m</li>
+<li><strong>Step 5:</strong> At P: Ey = -2(3)(16) = -96 V/m</li>
+<li><strong>Step 6:</strong> At P: Ez = -4(3)(-2)(4) = 96 V/m</li>
+<li><strong>Step 7:</strong> E⃗ = 64î - 96ĵ + 96k̂ V/m</li>
+<li><strong>Step 8:</strong> |E⃗| = √(64² + 96² + 96²) = √(4096 + 9216 + 9216) = √22528</li>
+<li><strong>Step 9:</strong> |E⃗| = 150.09 V/m ≈ 150.1 V/m</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_115</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A thin ring of radius R = 8.20 cm has a non-uniform linear charge density λ = λ₀cos(θ), where λ₀ = 43.6 fC/m and θ is the angle measured from the positive x-axis. Find the electric potential at point P on the ring's axis at distance z = 6.20 cm from the center. (V = 0 at infinity)
+ <div class="figure">
+<svg height="550" viewbox="0 0 700 550" width="700">
+<!-- Title -->
+<text font-size="16" font-weight="bold" text-anchor="middle" x="350" y="25">Ring with Non-uniform Charge Distribution</text>
+<!-- Ring in xy-plane -->
+<ellipse cx="350" cy="300" fill="none" rx="200" ry="60" stroke="#2196f3" stroke-width="3"></ellipse>
+<!-- Center point -->
+<circle cx="350" cy="300" fill="black" r="4"></circle>
+<text font-size="13" x="330" y="295">O</text>
+<!-- Radius -->
+<line stroke="black" stroke-width="2" x1="350" x2="550" y1="300" y2="300"></line>
+<text font-size="13" x="440" y="290">R = 8.20 cm</text>
+<!-- z-axis -->
+<line marker-end="url(#arrowz)" stroke="blue" stroke-width="2" x1="350" x2="350" y1="300" y2="100"></line>
+<defs>
+<marker id="arrowz" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="blue" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+<text fill="blue" font-size="16" font-weight="bold" x="360" y="90">z</text>
+<!-- Point P -->
+<circle cx="350" cy="180" fill="red" r="6"></circle>
+<text fill="red" font-size="16" font-weight="bold" x="365" y="185">P</text>
+<line stroke="red" stroke-dasharray="5,5" stroke-width="2" x1="350" x2="350" y1="300" y2="180"></line>
+<text fill="red" font-size="13" x="320" y="240">z = 6.20 cm</text>
+<!-- x and y axes in plane -->
+<line stroke="gray" stroke-dasharray="3,3" stroke-width="1" x1="350" x2="600" y1="300" y2="300"></line>
+<text fill="gray" font-size="14" x="610" y="305">x</text>
+<line stroke="gray" stroke-dasharray="3,3" stroke-width="1" x1="350" x2="250" y1="300" y2="340"></line>
+<text fill="gray" font-size="14" x="230" y="350">y</text>
+<!-- Angle θ -->
+<path d="M 400 300 A 50 50 0 0 1 385 330" fill="none" stroke="green" stroke-width="2"></path>
+<text fill="green" font-size="13" x="410" y="325">θ</text>
+<!-- Element on ring -->
+<circle cx="450" cy="320" fill="orange" r="5"></circle>
+<text fill="orange" font-size="12" x="460" y="315">dq</text>
+<!-- Line from element to P -->
+<line stroke="purple" stroke-dasharray="2,2" stroke-width="1" x1="450" x2="350" y1="320" y2="180"></line>
+<text fill="purple" font-size="12" x="410" y="240">r = √(R² + z²)</text>
+<!-- Charge density visualization -->
+<!-- Positive charge (red) on right side -->
+<circle cx="550" cy="300" fill="red" opacity="0.7" r="8"></circle>
+<text fill="red" font-size="11" x="565" y="305">+</text>
+<text font-size="10" x="540" y="325">λ &gt; 0</text>
+<!-- Negative charge (blue) on left side -->
+<circle cx="150" cy="300" fill="blue" opacity="0.7" r="8"></circle>
+<text fill="blue" font-size="11" x="163" y="305">-</text>
+<text font-size="10" x="140" y="325">λ &lt; 0</text>
+<!-- Zero charge (gray) at top and bottom -->
+<circle cx="350" cy="240" fill="gray" opacity="0.5" r="6"></circle>
+<text font-size="10" x="360" y="230">λ = 0</text>
+<circle cx="350" cy="360" fill="gray" opacity="0.5" r="6"></circle>
+<text font-size="10" x="360" y="375">λ = 0</text>
+<!-- Information boxes -->
+<rect fill="#fff3e0" height="180" rx="5" stroke="#ff9800" stroke-width="2" width="280" x="20" y="50"></rect>
+<text font-size="14" font-weight="bold" text-anchor="middle" x="160" y="75">Given Data</text>
+<text font-size="12" x="30" y="100">Ring radius: R = 8.20 cm</text>
+<text font-size="12" x="30" y="120">Point location: z = 6.20 cm</text>
+<text font-size="12" x="30" y="140">Charge density: λ(θ) = λ₀cos(θ)</text>
+<text font-size="12" x="30" y="160">Where: λ₀ = 43.6 fC/m</text>
+<text font-size="12" x="30" y="180">θ = angle from +x axis</text>
+<text font-size="13" font-weight="bold" x="30" y="205">Find: V at point P</text>
+<text font-size="11" font-style="italic" x="30" y="223">(V = 0 at infinity)</text>
+<rect fill="#e3f2fd" height="150" rx="5" stroke="#1976d2" stroke-width="2" width="280" x="400" y="50"></rect>
+<text font-size="14" font-weight="bold" text-anchor="middle" x="540" y="75">Key Concept</text>
+<text font-size="12" x="410" y="98">Potential element:</text>
+<text font-size="12" x="410" y="118">dV = k dq/r</text>
+<text font-size="12" x="410" y="140">Charge element:</text>
+<text font-size="12" x="410" y="160">dq = λ(θ) dl = λ₀cos(θ) R dθ</text>
+<text font-size="12" x="410" y="182">Distance: r = √(R² + z²)</text>
+<!-- Symmetry note -->
+<rect fill="#c8e6c9" height="110" rx="5" stroke="#4caf50" stroke-width="2" width="660" x="20" y="420"></rect>
+<text font-size="14" font-weight="bold" text-anchor="middle" x="350" y="445">Symmetry Analysis</text>
+<text font-size="12" x="30" y="468">• Charge distribution: λ(θ) = λ₀cos(θ)</text>
+<text font-size="12" x="30" y="488">• For 0 ≤ θ &lt; π: cos(θ) transitions from +1 to -1 (right half: positive, left half: negative)</text>
+<text font-size="12" x="30" y="508">• For π ≤ θ &lt; 2π: cos(θ) transitions from -1 to +1 (left half: negative, right half: positive)</text>
+<text font-size="12" x="30" y="528">• Integration over full circle: ∫₀²π cos(θ)dθ = 0 → All contributions cancel!</text>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 0 V (due to symmetry)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.84 × 10⁻⁵ V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.42 × 10⁻⁵ V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 5.68 × 10⁻⁵ V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For non-uniform distributions, set up the integral dV = kdq/r where dq = λ(θ)Rdθ. Recognize symmetry cancellations.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> The cos(θ) distribution creates a dipole-like charge pattern. On the axis, contributions cancel perfectly.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> dV = kdq/r, Symmetry arguments, ∫cos(θ)dθ over full circle = 0Detailed Solution: Integration with SymmetryStep 1: Set up charge elementLinear charge element: dl = R dθ (arc length)Charge in element: dq = λ(θ) · dl = λ₀cos(θ) · R dθStep 2: Find distance from element to PAll elements on ring are same distance from P:r = √(R² + z²) = √(0.082² + 0.062²) = √(0.006724 + 0.003844)r = √0.010568 = 0.1028 m (constant for all θ)Step 3: Set up potential integraldV = k dq/r = k λ₀cos(θ) R dθ / √(R² + z²)V = ∫dV = ∫₀²π [k λ₀ R cos(θ) / √(R² + z²)] dθStep 4: Factor out constantsV = [k λ₀ R / √(R² + z²)] ∫₀²π cos(θ) dθAll terms except cos(θ) are constantsStep 5: Evaluate the integral∫₀²π cos(θ) dθ = [sin(θ)]₀²π= sin(2π) - sin(0)= 0 - 0= 0Step 6: resultV = [k λ₀ R / √(R² + z²)] × 0 = 0 VStep 7: Physical interpretation• Right half of ring (0 < θ < π): cos(θ) > 0 for most, so positive charge• Left half of ring (π < θ < 2π): cos(θ) < 0 for most, so negative charge• These equal and opposite charges create potentials that exactly cancel at P
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Element of charge: dq = λ(θ)·dl = λ₀cos(θ)·Rdθ</li>
+<li><strong>Step 2:</strong> Distance from element to P: r = √(R² + z²) (same for all elements)</li>
+<li><strong>Step 3:</strong> Potential element: dV = kdq/r = kλ₀Rcos(θ)dθ/√(R² + z²)</li>
+<li><strong>Step 4:</strong> Total potential: V = (kλ₀R/√(R² + z²))∫₀²π cos(θ)dθ</li>
+<li><strong>Step 5:</strong> Evaluate integral: ∫₀²π cos(θ)dθ = [sin(θ)]₀²π = 0</li>
+<li><strong>Step 6:</strong> Therefore: V = 0 (exact cancellation due to symmetry)</li>
+<li><strong>Step 7:</strong> Physical interpretation: Positive charge on right cancels negative on left</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_116</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A conducting sphere of radius r = 1.0 cm has a uniformly distributed charge of 1.6 × 10⁻¹⁵ C. An electron initially at rest on the surface needs to escape to infinity. Calculate the minimum initial speed required for the electron to escape.
+ <div class="figure">
+<svg height="450" viewbox="0 0 700 450" width="700">
+<!-- Title -->
+<text font-size="16" font-weight="bold" text-anchor="middle" x="350" y="25">Electron Escaping from Charged Conducting Sphere</text>
+<!-- Conducting sphere -->
+<circle cx="200" cy="250" fill="#e3f2fd" r="100" stroke="#1976d2" stroke-width="3"></circle>
+<!-- Plus signs to show positive charge -->
+<text fill="red" font-size="20" x="190" y="200">+</text>
+<text fill="red" font-size="20" x="210" y="200">+</text>
+<text fill="red" font-size="20" x="160" y="230">+</text>
+<text fill="red" font-size="20" x="240" y="230">+</text>
+<text fill="red" font-size="20" x="170" y="260">+</text>
+<text fill="red" font-size="20" x="230" y="260">+</text>
+<text fill="red" font-size="20" x="190" y="290">+</text>
+<text fill="red" font-size="20" x="210" y="290">+</text>
+<!-- Center -->
+<circle cx="200" cy="250" fill="black" r="3"></circle>
+<!-- Radius -->
+<line stroke="black" stroke-width="2" x1="200" x2="300" y1="250" y2="250"></line>
+<text font-size="13" x="240" y="240">r = 1.0 cm</text>
+<!-- Electron on surface -->
+<circle cx="300" cy="250" fill="blue" r="10"></circle>
+<text fill="white" font-size="16" font-weight="bold" x="295" y="257">e⁻</text>
+<text font-size="13" x="315" y="255">electron</text>
+<!-- Velocity arrow -->
+<line marker-end="url(#arrowv)" stroke="green" stroke-width="4" x1="310" x2="380" y1="250" y2="250"></line>
+<defs>
+<marker id="arrowv" markerheight="12" markerwidth="12" orient="auto" refx="10" refy="3">
+<polygon fill="green" points="0 0, 12 3, 0 6"></polygon>
+</marker>
+</defs>
+<text fill="green" font-size="14" font-weight="bold" x="330" y="240">v = ?</text>
+<!-- Escape trajectory -->
+<path d="M 300 250 Q 400 200, 550 180" fill="none" stroke="green" stroke-dasharray="5,5" stroke-width="2"></path>
+<circle cx="550" cy="180" fill="blue" opacity="0.5" r="8"></circle>
+<text font-size="12" x="560" y="185">at ∞</text>
+<text font-size="11" x="555" y="200">v = 0</text>
+<!-- Label sphere charge -->
+<text font-size="13" font-weight="bold" text-anchor="middle" x="200" y="370">Q = 1.6 × 10⁻¹⁵ C</text>
+<!-- Information box -->
+<rect fill="#fff3e0" height="190" rx="5" stroke="#ff9800" stroke-width="2" width="280" x="400" y="240"></rect>
+<text font-size="14" font-weight="bold" text-anchor="middle" x="540" y="265">Energy Analysis</text>
+<text font-size="12" font-weight="bold" x="410" y="290">Initial state (at surface):</text>
+<text font-size="11" x="420" y="308">KE₀ = ½mv²</text>
+<text font-size="11" x="420" y="324">PE₀ = -eV₀ = -e(kQ/r)</text>
+<text font-size="11" x="420" y="340">E₀ = ½mv² - ekQ/r</text>
+<text font-size="12" font-weight="bold" x="410" y="363">state (at infinity):</text>
+<text font-size="11" x="420" y="381">KEf = 0 (just escapes)</text>
+<text font-size="11" x="420" y="397">PEf = 0</text>
+<text font-size="11" x="420" y="413">Ef = 0</text>
+<!-- Energy conservation box -->
+<rect fill="#e8f5e9" height="60" rx="5" stroke="#4caf50" stroke-width="2" width="360" x="20" y="380"></rect>
+<text font-size="13" font-weight="bold" text-anchor="middle" x="200" y="400">Energy Conservation</text>
+<text font-size="12" x="30" y="420">E₀ = Ef → ½mv² - ekQ/r = 0</text>
+<text font-size="13" font-weight="bold" x="30" y="438">v = √(2ekQ/mr)</text>
+<!-- Constants box -->
+<rect fill="#f3e5f5" height="170" rx="5" stroke="#9c27b0" stroke-width="2" width="280" x="400" y="50"></rect>
+<text font-size="14" font-weight="bold" text-anchor="middle" x="540" y="75">Given Values</text>
+<text font-size="11" x="410" y="98">Sphere radius: r = 1.0 cm = 0.01 m</text>
+<text font-size="11" x="410" y="116">Sphere charge: Q = 1.6 × 10⁻¹⁵ C</text>
+<text font-size="11" x="410" y="134">Electron charge: e = 1.6 × 10⁻¹⁹ C</text>
+<text font-size="11" x="410" y="152">Electron mass: m = 9.11 × 10⁻³¹ kg</text>
+<text font-size="11" x="410" y="170">Coulomb constant: k = 8.99 × 10⁹ N·m²/C²</text>
+<text font-size="12" font-weight="bold" x="410" y="193">Potential at surface:</text>
+<text font-size="11" x="410" y="211">V₀ = kQ/r = 1.44 × 10⁻³ V</text>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 2.26 × 10⁷ m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 3.19 × 10⁷ m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.60 × 10⁷ m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4.52 × 10⁷ m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use energy conservation: initial KE must equal the change in PE from surface to infinity.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> For a conducting sphere, all charge resides on surface, creating uniform potential V = kQ/r at surface.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Energy conservation, V = kQ/r for conducting sphere, Escape condition: E= 0Detailed Energy Conservation SolutionEnergy Level DiagramE = 0At surfaceKE₀ = ½mv²PE₀ = -ekQ/rTotal: E₀ = 0(for escape)At infinityKEf = 0PEf = 0Total: Ef = 0Step-by-Step CalculationStep 1: Calculate potential at surfaceV₀ = kQ/r = (8.99 × 10⁹)(1.6 × 10⁻¹⁵)/(0.01)V₀ = (8.99 × 1.6 × 10⁻⁶)/0.01 = 14.384 × 10⁻⁶/0.01V₀ = 1.4384 × 10⁻³ V ≈ 1.44 × 10⁻³ VStep 2-4: Calculate initial potential energyPE₀ = -eV₀ = -(1.6 × 10⁻¹⁹)(1.44 × 10⁻³)PE₀ = -2.304 × 10⁻²² J ≈ -2.30 × 10⁻²² JStep 5-6: Apply energy conservationInitial: E₀ = KE₀ + PE₀ = ½mv² + (-2.30 × 10⁻²²): Ef = 0 (at rest at infinity)Conservation: E₀ = Ef → ½mv² - 2.30 × 10⁻²² = 0½mv² = 2.30 × 10⁻²² JStep 7-9: Solve for velocity½(9.11 × 10⁻³¹)v² = 2.30 × 10⁻²²v² = 2(2.30 × 10⁻²²)/(9.11 × 10⁻³¹)v² = (4.60 × 10⁻²²)/(9.11 × 10⁻³¹)v² = 5.049 × 10¹⁴ m²/s²v = √(5.049 × 10¹⁴)v = 2.247 × 10⁷ m/sv ≈ 2.26 × 10⁷ m/sThis is about 7.5% of the speed of light!
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Initial potential at surface: V₀ = kQ/r = (8.99×10⁹)(1.6×10⁻¹⁵)/(0.01)</li>
+<li><strong>Step 2:</strong> V₀ = 1.44 × 10⁻³ V</li>
+<li><strong>Step 3:</strong> Initial PE of electron: PE₀ = -eV₀ = -(1.6×10⁻¹⁹)(1.44×10⁻³)</li>
+<li><strong>Step 4:</strong> PE₀ = -2.30 × 10⁻²² J</li>
+<li><strong>Step 5:</strong> At infinity: PEf = 0, KEf = 0 (just escapes)</li>
+<li><strong>Step 6:</strong> Energy conservation: ½mv² + PE₀ = 0</li>
+<li><strong>Step 7:</strong> ½(9.11×10⁻³¹)v² = 2.30 × 10⁻²² J</li>
+<li><strong>Step 8:</strong> v² = 2(2.30×10⁻²²)/(9.11×10⁻³¹) = 5.05 × 10¹⁴</li>
+<li><strong>Step 9:</strong> v = 2.26 × 10⁷ m/s</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

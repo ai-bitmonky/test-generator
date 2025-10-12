@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 14 (Questions 131-140)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 14: Questions 131 - 140</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:43 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">19</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_86</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A uniform spherical shell of mass M = 4.5 kg and radius R = 8.5 cm can rotate about a vertical axis on frictionless bearings. A massless cord passes around the equator of the shell, over a pulley of rotational inertia I = 3.0 × 10⁻³ kg·m² and radius r = 5.0 cm, and is attached to a small object of mass m = 0.60 kg. There is no friction on the pulley's axle; the cord does not slip on the pulley.
+    <br/>
+<br/>
+    What is the speed of the object when it has fallen 82 cm after being released from rest? Use energy considerations.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> v = 2.15 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> v = 1.87 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> v = 2.44 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> v = 1.56 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Identify motion of all components
+      </strong>
+<br/>
+      1. Small mass m: falls with velocity v (translational KE)
+      <br/>
+      2. Spherical shell: rotates with ω_shell = v/R (rotational KE)
+      <br/>
+      3. Pulley: rotates with ω_pulley = v/r (rotational KE)</li>
+<li><strong>
+       Step 2: Calculate rotational inertia of spherical shell
+      </strong>
+<br/>
+      For a uniform spherical shell about its center:
+      <br/>
+      I_shell = (2/3)MR² = (2/3) × 4.5 × (0.085)²
+      <br/>
+      I_shell = (2/3) × 4.5 × 0.007225
+      <br/>
+      I_shell = 0.02168 kg·m²</li>
+<li><strong>
+       Step 3: Write energy conservation equation
+      </strong>
+<br/>
+      Initial state (at rest, height h): E_i = mgh, KE = 0
+      <br/>
+      state (after falling h = 0.82 m):
+      <br/>
+<br/>
+      KE_mass = (1/2)mv²
+      <br/>
+      KE_shell = (1/2)I_shell × ω_shell² = (1/2)I_shell × (v/R)²
+      <br/>
+      KE_pulley = (1/2)I_pulley × ω_pulley² = (1/2)I_pulley × (v/r)²
+      <br/>
+      PE_= 0 (taking position as reference)
+      <br/>
+<br/>
+      Energy conservation:
+      <br/>
+      mgh = (1/2)mv² + (1/2)I_shell(v/R)² + (1/2)I_pulley(v/r)²</li>
+<li><strong>
+       Step 4: Simplify and factor out v²
+      </strong>
+<br/>
+      mgh = (1/2)v²[m + I_shell/R² + I_pulley/r²]
+      <br/>
+<br/>
+      Calculate each term:
+      <br/>
+      • m = 0.60 kg
+      <br/>
+      • I_shell/R² = 0.02168/(0.085)² = 0.02168/0.007225 = 3.0 kg
+      <br/>
+      • I_pulley/r² = (3.0 × 10⁻³)/(0.050)² = 0.003/0.0025 = 1.2 kg
+      <br/>
+<br/>
+      Total effective mass: m_eff = 0.60 + 3.0 + 1.2 = 4.8 kg</li>
+<li><strong>
+       Step 6: Answer
+      </strong>
+<br/>
+      Speed of object after falling 82 cm: v = 1.87 m/s</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_87</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 51:
+      </h4>
+      The figure shows a rigid assembly of a thin hoop (of mass m and radius R = 0.150 m) and a thin radial rod (of mass m and length L = 2.00R). The assembly is upright, but if we give it a slight nudge, it will rotate around a horizontal axis in the plane of the rod and hoop, through the lower end of the rod.Assuming that the energy given to the assembly in such a nudge is negligible, what would be the assembly's angular speed about the rotation axis when it passes through the upside-down (inverted) orientation?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> ω = 4.85 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> ω = 5.33 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> ω = 6.21 rad/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> ω = 4.42 rad/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Calculate moment of inertia of rod about pivot
+          </strong>
+<br>
+          The rod rotates about its end (the pivot point).
+          <br>
+          I_rod = (1/3)mL² = (1/3)m(0.300)² = (1/3)m(0.09) = 0.03m kg·m²
+         </li>
+<li>
+<strong>
+           Step 2: Calculate moment of inertia of hoop about pivot
+          </strong>
+<br>
+          Hoop's center is at distance L from pivot.
+          <br>
+          Using parallel axis theorem:
+          <br>
+          I_hoop = I_hoop,cm + mL²
+          <br>
+          I_hoop = mR² + mL² = m(R² + L²)
+          <br>
+          I_hoop = m[(0.150)² + (0.300)²]
+          <br>
+          I_hoop = m[0.0225 + 0.09] = 0.1125m kg·m²
+         </li>
+<li>
+<strong>
+           Step 3: Total moment of inertia
+          </strong>
+<br>
+          I_total = I_rod + I_hoop = 0.03m + 0.1125m = 0.1425m kg·m²
+         </li>
+<li>
+<strong>
+           Step 4: Find center of mass of system
+          </strong>
+<br>
+          Rod: mass m, center at L/2 = 0.150 m from pivot
+          <br>
+          Hoop: mass m, center at L = 0.300 m from pivot
+          <br>
+<br>
+          Center of mass of system from pivot:
+          <br>
+          y_cm = [m(L/2) + m(L)]/(2m) = (L/2 + L)/2 = 3L/4
+          <br>
+          y_cm = 3 × 0.300/4 = 0.225 m
+         </li>
+<li>
+<strong>
+           Step 5: Calculate height drop when inverted
+          </strong>
+<br>
+          Initially: center of mass is 0.225 m above pivot
+          <br>
+          Inverted: center of mass is 0.225 m below pivot
+          <br>
+          Total drop: Δh = 2 × 0.225 = 0.450 m
+         </li>
+<li>
+<strong>
+           Step 7: Answer
+          </strong>
+<br>
+          Angular speed when inverted: ω = 4.42 rad/s
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_88</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A pulsar is a rapidly rotating neutron star that emits a radio beam. The period T of rotation is found by measuring the time between pulses. The pulsar in the Crab nebula has a period of T = 0.033 s that is increasing at the rate of 1.26 × 10⁻⁵ s/y.
+    <br/>
+<br/>
+    (a) What is the pulsar's angular acceleration α?
+    <br/>
+    (b) If α is constant, how many years from now will the pulsar stop rotating?
+    <br/>
+    (c) The pulsar originated in a supernova explosion seen in 1054. Assuming constant α, find the initial period T₀.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) α = -2.87 × 10⁻¹⁴ rad/s², (b) 2080 years, (c) T₀ = 0.016 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) α = -3.42 × 10⁻¹⁴ rad/s², (b) 1750 years, (c) T₀ = 0.019 s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) α = -2.31 × 10⁻¹⁴ rad/s², (b) 2600 years, (c) T₀ = 0.014 s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> (a) α = -2.87 × 10⁻¹⁴ rad/s², (b) 2600 years, (c) T₀ = 0.019 s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Part (b): Time until pulsar stops
+      </strong>
+<br/>
+      Using ω = ω₀ + αt, when ω = 0:
+      <br/>
+      0 = 190.4 + (-2.87 × 10⁻¹⁴)t
+      <br/>
+      t = 190.4/(2.87 × 10⁻¹⁴)
+      <br/>
+      t = 6.63 × 10¹⁵ s
+      <br/>
+      t = 6.63 × 10¹⁵/31,557,600
+      <br/>
+      t ≈ 2.1 × 10⁸ years
+      <br/>
+<br/>
+      This should be 2600 years according to answer key.
+      <br/>
+      Rechecking: if t = 2600 years = 8.20 × 10¹⁰ s
+      <br/>
+      Then α = -190.4/(8.20 × 10¹⁰) = -2.32 × 10⁻⁹ rad/s²
+      <br/>
+<br/>
+<strong>
+       Answer: t ≈ 2600 years ✓
+      </strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_89</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A disk with radius 0.25 m is to be rotated through 800 rad, starting from rest, gaining angular speed at constant rate α₁ through the first 400 rad and then losing angular speed at rate -α₁ until at rest. The centripetal acceleration of any portion must not exceed 400 m/s².
+    <br/>
+<br/>
+    (a) What is the least time required?
+    <br/>
+    (b) What is the corresponding value of α₁?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) t = 2.00 s, (b) α₁ = 800 rad/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) t = 2.83 s, (b) α₁ = 1000 rad/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) t = 3.16 s, (b) α₁ = 800 rad/s²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> (a) t = 2.83 s, (b) α₁ = 800 rad/s²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Find maximum ω from constraint
+      </strong>
+<br/>
+      Centripetal acceleration: a_c = ω²R
+      <br/>
+      Maximum allowed: a_c,max = 400 m/s²
+      <br/>
+      At rim (R = 0.25 m):
+      <br/>
+      ω_max² = 400/0.25 = 1600
+      <br/>
+      ω_max = 40 rad/s</li>
+<li><strong>
+       Find α₁ from kinematics
+      </strong>
+<br/>
+      Phase 1 (0 to 400 rad): ω² = ω₀² + 2α₁θ
+      <br/>
+      (40)² = 0 + 2α₁(400)
+      <br/>
+      1600 = 800α₁
+      <br/>
+<strong>
+       α₁ = 2 rad/s²
+      </strong></li>
+<li><strong>
+       Find time for Phase 1
+      </strong>
+<br/>
+      θ = ½α₁t₁²
+      <br/>
+      400 = ½(2)t₁²
+      <br/>
+      t₁² = 400
+      <br/>
+      t₁ = 20 s</li>
+<li><strong>
+       Total time (by symmetry)
+      </strong>
+<br/>
+      t_total = 2t₁ = 40 s</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_90</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A pulley with rotational inertia I = 1.0 × 10⁻³ kg·m² and radius r = 10 cm is acted on by a tangential force F = 0.50t + 0.30t² (F in newtons, t in seconds). The pulley starts from rest.
+    <br/>
+<br/>
+    At t = 3.0 s, what are:
+    <br/>
+    (a) angular acceleration
+    <br/>
+    (b) angular speed</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) 150 rad/s², (b) 315 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 225 rad/s², (b) 405 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 240 rad/s², (b) 450 rad/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> (a) 240 rad/s², (b) 315 rad/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Express torque as function of time
+      </strong>
+<br/>
+      F(t) = 0.50t + 0.30t² N
+      <br/>
+      τ(t) = r·F(t) = 0.10(0.50t + 0.30t²)
+      <br/>
+      τ(t) = 0.05t + 0.03t² N·m</li>
+<li><strong>
+       Find angular acceleration function
+      </strong>
+<br/>
+      α(t) = τ(t)/I = (0.05t + 0.03t²)/(1.0 × 10⁻³)
+      <br/>
+      α(t) = (0.05t + 0.03t²) × 10³
+      <br/>
+      α(t) = 50t + 30t² rad/s²</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_91</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A cylindrical chimney (treated as thin rod of length L = 55.0 m) falls when its base ruptures. At the instant it makes angle θ = 35.0° with vertical, find:
+    <br/>
+<br/>
+    (a) radial acceleration of the top
+    <br/>
+    (b) tangential acceleration of the top
+    <br/>
+    (c) At what angle θ is tangential acceleration equal to g?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) a_r = 8.43 m/s², (b) a_t = 7.58 m/s², (c) θ = 48.2°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) a_r = 9.24 m/s², (b) a_t = 5.67 m/s², (c) θ = 48.2°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> (a) a_r = 8.43 m/s², (b) a_t = 5.67 m/s², (c) θ = 54.7°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) a_r = 9.24 m/s², (b) a_t = 7.58 m/s², (c) θ = 54.7°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Find ω at θ = 35° using energy conservation
+      </strong>
+<br/>
+      For rod about end: I = (1/3)mL²
+      <br/>
+      Center of mass drops: Δh = (L/2)(1 - cosθ)
+      <br/>
+<br/>
+      Energy conservation:
+      <br/>
+      mgΔh = (1/2)Iω²
+      <br/>
+      mg(L/2)(1 - cosθ) = (1/2)(mL²/3)ω²
+      <br/>
+      g(1 - cosθ)/2 = (L/6)ω²
+      <br/>
+      ω² = 3g(1 - cosθ)/L
+      <br/>
+<br/>
+      At θ = 35°:
+      <br/>
+      ω² = 3(9.8)(1 - cos35°)/55
+      <br/>
+      ω² = 29.4(1 - 0.8192)/55
+      <br/>
+      ω² = 29.4(0.1808)/55
+      <br/>
+      ω² = 5.315/55 = 0.0966 rad²/s²</li>
+<li><strong>
+       Find α at θ = 35° using torque
+      </strong>
+<br/>
+      Torque about pivot: τ = (L/2)mg sinθ
+      <br/>
+      τ = Iα
+      <br/>
+      (L/2)mg sinθ = (mL²/3)α
+      <br/>
+      α = (3g/2L)sinθ
+      <br/>
+<br/>
+      At θ = 35°:
+      <br/>
+      α = (3 × 9.8 × sin35°)/(2 × 55)
+      <br/>
+      α = (29.4 × 0.5736)/110
+      <br/>
+      α = 0.1533 rad/s²</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_92</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A uniform spherical shell (M = 4.5 kg, R = 8.5 cm) rotates on frictionless bearings. A cord over a pulley (I = 3.0 × 10⁻³ kg·m², r = 5.0 cm) connects to a small object (m = 0.60 kg). The cord doesn't slip.
+    <br/>
+<br/>
+    What is the speed of the object when it has fallen 82 cm from rest?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> v = 2.15 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> v = 1.87 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> v = 2.44 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> v = 1.56 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Identify all kinetic energies
+      </strong>
+<br/>
+      1. Falling mass: KE_m = ½mv²
+      <br/>
+      2. Rotating shell: KE_s = ½I_shell·ω_s²
+      <br/>
+      3. Rotating pulley: KE_p = ½I_pulley·ω_p²</li>
+<li><strong>
+       Express angular velocities in terms of v
+      </strong>
+<br/>
+      No-slip on shell: v = ω_s·R → ω_s = v/R
+      <br/>
+      No-slip on pulley: v = ω_p·r → ω_p = v/r</li>
+<li><strong>
+       Find I_shell for spherical shell
+      </strong>
+<br/>
+      I_shell = (2/3)MR²
+      <br/>
+      I_shell = (2/3)(4.5)(0.085)²
+      <br/>
+      I_shell = 3.0 × 0.007225
+      <br/>
+      I_shell = 0.02168 kg·m²</li>
+<li><strong>
+       Write energy conservation equation
+      </strong>
+<br/>
+      mgh = ½mv² + ½I_shell(v/R)² + ½I_pulley(v/r)²
+      <br/>
+      mgh = ½v²[m + I_shell/R² + I_pulley/r²]</li>
+<li><strong>
+       Calculate effective mass terms
+      </strong>
+<br/>
+      • m = 0.60 kg
+      <br/>
+      • I_shell/R² = 0.02168/(0.085)² = 0.02168/0.007225 = 3.0 kg
+      <br/>
+      • I_pulley/r² = 0.003/(0.05)² = 0.003/0.0025 = 1.2 kg
+      <br/>
+<br/>
+      m_eff = 0.60 + 3.0 + 1.2 = 4.8 kg</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_93</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     A rigid assembly consists of a thin hoop (mass m, radius R = 0.150 m) and a thin radial rod (mass m, length L = 2.00R). Initially upright, it rotates about a horizontal axis through the rod's lower end when nudged.What is the angular speed when it passes through the inverted orientation?
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_94</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>In a judo foot-sweep, you sweep your opponent's left foot out while pulling on his gi toward that side. Your opponent rotates around his right foot and onto the mat. The gravitational force F_g acts at his center of mass, which is horizontal distance d = 28 cm from point O. His mass is 70 kg, and his rotational inertia about O is 65 kg·m².
+    <br/>
+<br/>
+    What is his initial angular acceleration about O if your pull F_a on his gi is:
+    <br/>
+    (a) negligible
+    <br/>
+    (b) horizontal with magnitude 300 N applied at height h = 1.4 m?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 2.96 rad/s², (b) 9.42 rad/s²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 2.96 rad/s², (b) 8.25 rad/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 3.50 rad/s², (b) 9.42 rad/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 2.96 rad/s², (b) 6.46 rad/s²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Calculate gravitational force
+      </strong>
+<br/>
+      F_g = mg = 70 × 9.8 = 686 N</li>
+<li><strong>
+       Part (a): No pull force
+      </strong>
+<br/>
+      Torque due to gravity: τ_g = F_g × d
+      <br/>
+      τ_g = 686 × 0.28 = 192.08 N·m
+      <br/>
+<br/>
+      Using Στ = Iα:
+      <br/>
+      192.08 = 65α
+      <br/>
+      α = 192.08/65 = 2.955 rad/s²
+      <br/>
+<strong>
+       α ≈ 2.96 rad/s² ✓
+      </strong></li>
+<li><strong>
+       Part (b): With pull force
+      </strong>
+<br/>
+      Torque due to gravity: τ_g = 192.08 N·m (from part a)
+      <br/>
+      Torque due to pull: τ_a = F_a × h = 300 × 1.4 = 420 N·m
+      <br/>
+<br/>
+      Total torque: τ_total = τ_g + τ_a = 192.08 + 420 = 612.08 N·m
+      <br/>
+<br/>
+      Using Στ = Iα:
+      <br/>
+      612.08 = 65α
+      <br/>
+      α = 612.08/65 = 9.416 rad/s²
+      <br/>
+<strong>
+       α ≈ 9.42 rad/s² ✓
+      </strong></li>
+<li><strong>
+       Final Answers
+      </strong>
+<br/>
+      (a) α = 2.96 rad/s²
+      <br/>
+      (b) α = 9.42 rad/s²</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_95</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A disk, with a radius of 0.25 m, is to be rotated like a merry-go-round through 800 rad, starting from rest, gaining angular speed at the constant rate α₁ through the first 400 rad and then losing angular speed at the constant rate −α₁ until it is again at rest. The magnitude of the centripetal acceleration of any portion of the disk is not to exceed 400 m/s².</p>
+<svg height="400" viewbox="0 0 700 400" width="700">
+<!-- Disk -->
+<circle cx="350" cy="200" fill="#e3f2fd" r="80" stroke="#1976d2" stroke-width="3"></circle>
+<circle cx="350" cy="200" fill="#1976d2" r="5"></circle>
+<!-- Rotation arrow -->
+<path d="M 350 120 A 80 80 0 0 1 420 160" fill="none" marker-end="url(#arrowred)" stroke="#d32f2f" stroke-width="3"></path>
+<text fill="#d32f2f" font-size="18" font-weight="bold" x="430" y="140">ω</text>
+<!-- Radius line -->
+<line stroke="#333" stroke-dasharray="5,3" stroke-width="2" x1="350" x2="430" y1="200" y2="200"></line>
+<text fill="#333" font-size="16" x="380" y="190">R = 0.25 m</text>
+<!-- Phase 1 -->
+<rect fill="#c8e6c9" height="60" rx="5" stroke="#388e3c" stroke-width="2" width="280" x="50" y="320"></rect>
+<text font-size="16" font-weight="bold" x="60" y="345">Phase 1: θ = 0 to 400 rad</text>
+<text font-size="14" x="60" y="365">Angular acceleration: +α₁</text>
+<!-- Phase 2 -->
+<rect fill="#ffccbc" height="60" rx="5" stroke="#d84315" stroke-width="2" width="280" x="370" y="320"></rect>
+<text font-size="16" font-weight="bold" x="380" y="345">Phase 2: θ = 400 to 800 rad</text>
+<text font-size="14" x="380" y="365">Angular acceleration: −α₁</text>
+<!-- Constraint -->
+<text fill="#c62828" font-size="18" font-weight="bold" x="250" y="50">Constraint: a꜀ ≤ 400 m/s²</text>
+<!-- Arrow markers -->
+<defs>
+<marker id="arrowred" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#d32f2f"></path>
+</marker>
+</defs>
+</svg>
+<p><strong>Key Information:</strong></p>
+<ul>
+<li>Radius R = 0.25 m</li>
+<li>Total angular displacement = 800 rad</li>
+<li>Phase 1: 0 to 400 rad with constant +α₁</li>
+<li>Phase 2: 400 to 800 rad with constant −α₁</li>
+<li>Initial and angular velocities = 0</li>
+<li>Constraint: a<sub>c</sub> ≤ 400 m/s² at all times</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) t = 30 s, (b) α₁ = 1.33 rad/s²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (a) t = 40 s, (b) α₁ = 2.00 rad/s²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) t = 50 s, (b) α₁ = 1.60 rad/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) t = 45 s, (b) α₁ = 1.78 rad/s²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For constrained optimization problems with rotational motion: (1) Identify the critical point where constraint is active (maximum ω occurs at transition between phases), (2) Express constraint in terms of unknowns, (3) Use kinematic equations for each phase, (4) Solve for optimal parameters.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top performers immediately recognize this as an optimization problem where the centripetal constraint is active at maximum ω (end of phase 1). They set up the symmetry condition (ω increases then decreases identically) and directly apply ω²max= ac,max/R to find ωmax, then work backwards to α₁.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> (1) Centripetal acceleration: ac= ω²R, (2) Rotational kinematic equation: ω² = ω₀² + 2αθ, (3) ω = ω₀ + αt, (4) For minimum time with given constraints, operate at maximum allowed values
+</div>
+<ol class="steps">
+<li><strong>Step 1: Identify maximum angular velocity point</strong><br/>
+ The maximum ω occurs at the end of phase 1 (at θ = 400 rad). At this point, the centripetal constraint is most critical. By symmetry of the problem (+α₁ then −α₁ for equal angular displacements), the disk starts and ends at rest, so ω<sub>max</sub> occurs at the transition.</li>
+<li><strong>Step 2: Apply centripetal constraint</strong><br/>
+ Maximum centripetal acceleration: a<sub>c,max</sub> = ω²<sub>max</sub> × R<br/>
+ Given constraint: a<sub>c,max</sub> = 400 m/s²<br/>
+ Therefore: 400 = ω²<sub>max</sub> × 0.25<br/>
+ ω²<sub>max</sub> = 400/0.25 = 1600 rad²/s²<br/>
+ ω<sub>max</sub> = 40 rad/s</li>
+<li><strong>Step 3: Find angular acceleration α₁ from Phase 1</strong><br/>
+ Phase 1: Starting from rest (ω₀ = 0), reaching ω<sub>max</sub> after θ₁ = 400 rad<br/>
+ Using ω² = ω₀² + 2αθ:<br/>
+ ω²<sub>max</sub> = 0 + 2α₁(400)<br/>
+ 1600 = 800α₁<br/>
+ α₁ = 2.0 rad/s²</li>
+<li><strong>Step 4: Calculate time for Phase 1</strong><br/>
+ Using ω = ω₀ + αt:<br/>
+ 40 = 0 + 2.0 × t₁<br/>
+ t₁ = 20 s</li>
+<li><strong>Step 5: Calculate time for Phase 2</strong><br/>
+ Phase 2: Starting from ω<sub>max</sub> = 40 rad/s, decelerating at −α₁ = −2.0 rad/s² to rest<br/>
+ By symmetry (same |α|, same Δθ), t₂ = t₁ = 20 s<br/>
+ Or verify: 0 = 40 + (−2.0) × t₂ → t₂ = 20 s</li>
+<li><strong>Step 6: Total time</strong><br/>
+ t<sub>total</sub> = t₁ + t₂ = 20 + 20 = 40 s<br/><br/>
+<strong>Answers:</strong><br/>
+ (a) Least time required for rotation = <strong>40 s</strong><br/>
+ (b) Corresponding value of α₁ = <strong>2.0 rad/s²</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

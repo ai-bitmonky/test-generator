@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Before/After Correction Report - Mathematics (10 Questions)</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  line-height: 1.6;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+}
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.header h1 { font-size: 42px; margin-bottom: 15px; }
+.header .subtitle { font-size: 20px; opacity: 0.9; }
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+.summary-card {
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.summary-card.before { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+.summary-card.after { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.summary-card.fixed { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+.summary-card h3 { font-size: 14px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+.summary-card .value { font-size: 38px; font-weight: bold; }
+
+.question-card {
+  border: 3px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 30px;
+  margin: 30px 0;
+  background: #fafafa;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #3498db;
+}
+.question-num { font-size: 24px; font-weight: bold; color: #2c3e50; }
+.improvement {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  background: #27ae60;
+  color: white;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+.stat {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.stat-label { font-size: 12px; color: #7f8c8d; text-transform: uppercase; margin-bottom: 8px; }
+.stat-value { font-size: 28px; font-weight: bold; }
+.stat-value.before { color: #e74c3c; }
+.stat-value.after { color: #f39c12; }
+.stat-value.fixed { color: #27ae60; }
+
+.fixes-section {
+  background: #d4edda;
+  border-left: 5px solid #28a745;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+.fixes-section h4 { color: #155724; margin-bottom: 15px; }
+.fix-item {
+  padding: 8px 12px;
+  margin: 8px 0;
+  background: white;
+  border-radius: 6px;
+  border-left: 3px solid #28a745;
+}
+.fix-item:before { content: "✓ "; color: #28a745; font-weight: bold; margin-right: 8px; }
+
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 20px 0;
+}
+.before-col, .after-col {
+  padding: 20px;
+  border-radius: 8px;
+}
+.before-col {
+  background: #fff3cd;
+  border: 2px solid #ffc107;
+}
+.after-col {
+  background: #d4edda;
+  border: 2px solid #28a745;
+}
+.before-col h3 { color: #856404; margin-bottom: 15px; font-size: 20px; }
+.after-col h3 { color: #155724; margin-bottom: 15px; font-size: 20px; }
+
+.field {
+  margin: 15px 0;
+  padding: 15px;
+  background: white;
+  border-radius: 6px;
+}
+.field-label {
+  display: block;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+.field-value {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1.6;
+  font-family: 'Courier New', monospace;
+}
+.field-value.empty { color: #dc3545; font-style: italic; }
+
+.issues-list {
+  margin-top: 15px;
+}
+.issue-item {
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.issue-item.critical { background: #721c24; color: white; border-left: 4px solid #491217; }
+.issue-item.high { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; }
+.issue-item.medium { background: #fff3cd; color: #856404; border-left: 4px solid #ffc107; }
+
+.collapsible {
+  background: #3498db;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 15px;
+  transition: all 0.3s;
+}
+.collapsible:hover { background: #2980b9; }
+.collapsible:after { content: ' ▼'; float: right; }
+.collapsible.active:after { content: ' ▲'; }
+
+.content {
+  display: none;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  margin-top: 10px;
+  border: 2px solid #e0e0e0;
+}
+.content.show { display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🔧 Before/After Correction Report</h1>
+    <div class="subtitle">Mathematics - 10 Questions Processed</div>
+    <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">12/10/2025, 1:36:56 pm</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-card before">
+      <h3>Issues Before</h3>
+      <div class="value">67</div>
+    </div>
+    <div class="summary-card after">
+      <h3>Issues After</h3>
+      <div class="value">10</div>
+    </div>
+    <div class="summary-card fixed">
+      <h3>Issues Fixed</h3>
+      <div class="value">57</div>
+    </div>
+    <div class="summary-card fixed">
+      <h3>Success Rate</h3>
+      <div class="value">85%</div>
+    </div>
+  </div>
+
+  <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px;">
+    📝 Detailed Question-by-Question Analysis
+  </h2>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 1</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Set question type to Multiple Choice Single Answer</div><div class="fix-item">Assigned difficulty level: Complex</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Suggested archetype: Integration Problems</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              The line y = x + 1 divided the area between the curves y = cos x, 
+                -π/2 ≤ x ≤ π/2, and the x-axis into two regions which are in the ratio
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              D
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              MEDIUM
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value empty">
+              [Not Set]
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+&lt;h3&gt;Solution:&lt;/h3&gt;
+&lt;div class=&quot;step&quot;&gt;
+&lt;span class=&quot;step-number&quot;&gt;Step 1:&lt;/span&gt; Find the intersection point of y = cos x and y = x + 1
+                    &lt;div class=&quot;formula&quot;&gt;
+c...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item high">[HIGH] Question type not defined</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item medium">[MEDIUM] Question archetype/problem pattern not defined</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              The line y = x + 1 divided the area between the curves y = cos x, 
+                -π/2 ≤ x ≤ π/2, and the x-axis into two regions which are in the ratio
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              D
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Complex
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 2</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Set question type to Multiple Choice Single Answer</div><div class="fix-item">Assigned difficulty level: Complex</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Suggested archetype: Integration Problems</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              The area of the region {(x, y): 0 ≤ y ≤ x² + 1, 0 ≤ y ≤ x + 1, 0 ≤ x ≤ 2} is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              C
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              MEDIUM
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value empty">
+              [Not Set]
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+&lt;h3&gt;Solution:&lt;/h3&gt;
+&lt;div class=&quot;step&quot;&gt;
+&lt;span class=&quot;step-number&quot;&gt;Step 1:&lt;/span&gt; Understand the region. The region is bounded by:
+                    &lt;br/&gt;• Below: y ≥ 0
+         ...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item high">[HIGH] Question type not defined</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item medium">[MEDIUM] Question archetype/problem pattern not defined</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              The area of the region {(x, y): 0 ≤ y ≤ x² + 1, 0 ≤ y ≤ x + 1, 0 ≤ x ≤ 2} is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              C
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Complex
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 3</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Set question type to Multiple Choice Single Answer</div><div class="fix-item">Assigned difficulty level: Complex</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Suggested archetype: Integration Problems</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              The area of the region bounded by curves y = 1 - x², x + y + 1 = 0 and x - y - 1 = 0 is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              C
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              MEDIUM
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value empty">
+              [Not Set]
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+&lt;h3&gt;Solution:&lt;/h3&gt;
+&lt;div class=&quot;step&quot;&gt;
+&lt;span class=&quot;step-number&quot;&gt;Step 1:&lt;/span&gt; Identify the curves:
+                    &lt;br/&gt;• Parabola: y = 1 - x²
+                    &lt;br/&gt;• Li...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item high">[HIGH] Question type not defined</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item medium">[MEDIUM] Question archetype/problem pattern not defined</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              The area of the region bounded by curves y = 1 - x², x + y + 1 = 0 and x - y - 1 = 0 is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              C
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Complex
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 4</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Set question type to Multiple Choice Single Answer</div><div class="fix-item">Assigned difficulty level: Complex</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Suggested archetype: Integration Problems</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              The area bounded by the curves y² = 12x and x² = 12y is divided by the line x = 3 
+                in two parts. The area (in square units) of the larger part is:
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              A
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              MEDIUM
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value empty">
+              [Not Set]
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+&lt;h3&gt;Solution:&lt;/h3&gt;
+&lt;div class=&quot;step&quot;&gt;
+&lt;span class=&quot;step-number&quot;&gt;Step 1:&lt;/span&gt; Identify the curves:
+                    &lt;br/&gt;• Curve 1: y² = 12x (parabola opening right)
+       ...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item high">[HIGH] Question type not defined</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item medium">[MEDIUM] Question archetype/problem pattern not defined</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              The area bounded by the curves y² = 12x and x² = 12y is divided by the line x = 3 
+                in two parts. The area (in square units) of the larger part is:
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              A
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Complex
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 5</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Assigned difficulty level: Simple</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Added numbered step-by-step breakdown</div><div class="fix-item">Updated to specific type: Multiple Choice Single Answer</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              The number of ways of selecting 4 letters out of the letters of the word MINIMAL is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              C
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              HARD
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value ">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;h4&gt;Solution:&lt;/h4&gt;
+            MINIMAL has: M(2), I(2), N(1), A(1), L(1)&lt;br/&gt;
+            We have 5 distinct types of letters.&lt;br/&gt;&lt;br/&gt;
+&lt;strong&gt;Case 1: All 4 different&lt;/strong&gt;&lt;br/&gt;
+            Choos...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item high">[HIGH] Solution missing numbered step-by-step breakdown</div><div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              The number of ways of selecting 4 letters out of the letters of the word MINIMAL is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              C
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Simple
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div class=&quot;expert-insight...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 6</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Set question type to Multiple Choice Single Answer</div><div class="fix-item">Assigned difficulty level: Medium</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Suggested archetype: Integration Problems</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              The area (in square units) of the region {(x, y): y² ≥ 2x and x² + y² ≤ 4x, x ≥ 0, y ≥ 0} is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              B
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              MEDIUM
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value empty">
+              [Not Set]
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+&lt;h3&gt;Solution:&lt;/h3&gt;
+&lt;div class=&quot;step&quot;&gt;
+&lt;span class=&quot;step-number&quot;&gt;Step 1:&lt;/span&gt; Identify the curves:
+                    &lt;br/&gt;• y² ≥ 2x ⟹ region to the left of parabola y² = 2x
+ ...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item high">[HIGH] Question type not defined</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item medium">[MEDIUM] Question archetype/problem pattern not defined</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              The area (in square units) of the region {(x, y): y² ≥ 2x and x² + y² ≤ 4x, x ≥ 0, y ≥ 0} is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              B
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Medium
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 7</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Set question type to Multiple Choice Single Answer</div><div class="fix-item">Assigned difficulty level: Medium</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Suggested archetype: Integration Problems</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              The area (in square units) of the region described by 
+                A = {(x, y): y ≥ x² - 5x + 4, x + y ≥ 1, y ≤ 0} is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              A
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              MEDIUM
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value empty">
+              [Not Set]
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+&lt;h3&gt;Solution:&lt;/h3&gt;
+&lt;div class=&quot;step&quot;&gt;
+&lt;span class=&quot;step-number&quot;&gt;Step 1:&lt;/span&gt; Identify the constraints:
+                    &lt;br/&gt;• y ≥ x² - 5x + 4 (above parabola)
+            ...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item high">[HIGH] Question type not defined</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item medium">[MEDIUM] Question archetype/problem pattern not defined</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              The area (in square units) of the region described by 
+                A = {(x, y): y ≥ x² - 5x + 4, x + y ≥ 1, y ≤ 0} is
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              A
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Medium
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 8</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Set question type to Multiple Choice Single Answer</div><div class="fix-item">Assigned difficulty level: Medium</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Suggested archetype: Integration Problems</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              Find the area of the region described by the set {(x, y): x² ≤ y ≤ |x|}.
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              C
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              MEDIUM
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value empty">
+              [Not Set]
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+&lt;h3&gt;Solution:&lt;/h3&gt;
+&lt;div class=&quot;step&quot;&gt;
+&lt;span class=&quot;step-number&quot;&gt;Step 1:&lt;/span&gt; Understand the region:
+                    &lt;br/&gt;• Lower boundary: y = x²
+                    &lt;br/&gt;...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item high">[HIGH] Question type not defined</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item medium">[MEDIUM] Question archetype/problem pattern not defined</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              Find the area of the region described by the set {(x, y): x² ≤ y ≤ |x|}.
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              C
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Medium
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 9</div>
+      <div class="improvement">86% Improved (6/7 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">7</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">6</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">10</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (10):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Set question type to Multiple Choice Single Answer</div><div class="fix-item">Assigned difficulty level: Simple</div><div class="fix-item">Added universal Strategy section</div><div class="fix-item">Added Expert Insight section for toppers</div><div class="fix-item">Added Key Facts section (formulas/laws/theorems)</div><div class="fix-item">Suggested archetype: Integration Problems</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              If the line x = a bisects the area under the curve y = 1/(x²), 1 ≤ x ≤ 9, then a is equal to
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              A
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              MEDIUM
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value empty">
+              [Not Set]
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+&lt;h3&gt;Solution:&lt;/h3&gt;
+&lt;div class=&quot;step&quot;&gt;
+&lt;span class=&quot;step-number&quot;&gt;Step 1:&lt;/span&gt; Calculate total area:
+                    &lt;div class=&quot;formula&quot;&gt;
+Total Area = ∫[1 to 9] 1/x² dx
+   ...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (7):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item high">[HIGH] Question type not defined</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item high">[HIGH] Solution missing universal &quot;Strategy&quot; section</div><div class="issue-item high">[HIGH] Solution missing &quot;Expert Insight&quot; section for toppers</div><div class="issue-item high">[HIGH] Solution missing &quot;Key Facts&quot; (formulas/laws/theorems)</div><div class="issue-item medium">[MEDIUM] Question archetype/problem pattern not defined</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              If the line x = a bisects the area under the curve y = 1/(x²), 1 ≤ x ≤ 9, then a is equal to
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              A
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Simple
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              &lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;key-facts&quot;&gt;
+    &lt;strong&gt;Key Facts Used:&lt;/strong&gt;
+    [KEY FORMULAS/LAWS/THEOREMS NEEDED: List ALL formulas, laws, theorems, or identities required]
+  &lt;/div&gt;
+  &lt;div...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-header">
+      <div class="question-num">Question 10</div>
+      <div class="improvement">75% Improved (3/4 issues fixed)</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-label">Before</div>
+        <div class="stat-value before">4</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">After</div>
+        <div class="stat-value after">1</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixed</div>
+        <div class="stat-value fixed">3</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Fixes Applied</div>
+        <div class="stat-value">7</div>
+      </div>
+    </div>
+
+    <div class="fixes-section">
+      <h4>🔧 Fixes Applied (7):</h4>
+      <div class="fix-item">Added placeholder for option A</div><div class="fix-item">Added placeholder for option B</div><div class="fix-item">Added placeholder for option C</div><div class="fix-item">Added placeholder for option D</div><div class="fix-item">Assigned difficulty level: Simple</div><div class="fix-item">Created complete solution template with all 4 required sections</div><div class="fix-item">Updated to specific type: Multiple Choice Single Answer</div>
+    </div>
+
+    <button class="collapsible">📄 View Detailed Before/After Comparison</button>
+    <div class="content">
+      <div class="comparison">
+        <div class="before-col">
+          <h3>❌ BEFORE</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value ">
+              Consider the system of equationsx + y + z = 12x + 2y + 2z = 23x + 3y + 3z = kHere A = ⎡1 1 1⎤⎢2 2 2⎥⎣3 3 3⎦, 
+            B = ⎡1⎤⎢2⎥⎣k⎦, 
+            and adj A = ⎡0 0 0⎤⎢0 0 0⎥⎣0 0 0⎦Determine when the system has:(1) infinite number of solutions(2) no solution
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value empty">A: [Empty]</div>
+            <div class="field-value empty">B: [Empty]</div>
+            <div class="field-value empty">C: [Empty]</div>
+            <div class="field-value empty">D: [Empty]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value ">
+              A
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value empty">
+              HARD
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value ">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              [Empty]
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Issues Found (4):</span>
+            <div class="issue-item critical">[CRITICAL] Missing options: A, B, C, D</div><div class="issue-item medium">[MEDIUM] Difficulty must be one of: Simple, Medium, Complex</div><div class="issue-item critical">[CRITICAL] Solution is completely missing</div><div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+
+        <div class="after-col">
+          <h3>✅ AFTER</h3>
+
+          <div class="field">
+            <span class="field-label">Question Text:</span>
+            <div class="field-value">
+              Consider the system of equationsx + y + z = 12x + 2y + 2z = 23x + 3y + 3z = kHere A = ⎡1 1 1⎤⎢2 2 2⎥⎣3 3 3⎦, 
+            B = ⎡1⎤⎢2⎥⎣k⎦, 
+            and adj A = ⎡0 0 0⎤⎢0 0 0⎥⎣0 0 0⎦Determine when the system has:(1) infinite number of solutions(2) no solution
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options:</span>
+            <div class="field-value">A: [Option A needs to be created]</div>
+            <div class="field-value">B: [Option B needs to be created]</div>
+            <div class="field-value">C: [Option C needs to be created]</div>
+            <div class="field-value">D: [Option D needs to be created]</div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Correct Answer:</span>
+            <div class="field-value">
+              A
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Difficulty:</span>
+            <div class="field-value">
+              Simple
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Question Type:</span>
+            <div class="field-value">
+              Multiple Choice Single Answer
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Solution Preview:</span>
+            <div class="field-value">
+              
+&lt;div class=&quot;solution&quot;&gt;
+  &lt;div class=&quot;strategy&quot;&gt;
+    &lt;strong&gt;Strategy:&lt;/strong&gt;
+    [UNIVERSAL STRATEGY NEEDED: Describe the general approach to solve ALL similar Matrices problems. Focus on the metho...
+            </div>
+          </div>
+
+          <div class="issues-list">
+            <span class="field-label">Remaining Issues (1):</span>
+            <div class="issue-item medium">[MEDIUM] Question type too generic, should define specific problem pattern</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.collapsible').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.classList.toggle('active');
+    const content = this.nextElementSibling;
+    content.classList.toggle('show');
+  });
+});
+</script>
+</body>
+</html>

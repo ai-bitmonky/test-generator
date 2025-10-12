@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 4 (Questions 31-40)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 4: Questions 31 - 40</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:42 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">23</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_155</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Of the charge <i>Q</i> initially on a tiny sphere, a portion <i>q</i> is to be transferred to a second, nearby sphere. Both spheres can be treated as particles and are fixed with a certain separation. For what value of <i>q/Q</i> will the electrostatic force between the two spheres be maximized?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> <i>q/Q</i> = 0.25
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> <i>q/Q</i> = 0.50
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> <i>q/Q</i> = 0.67
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> <i>q/Q</i> = 0.75
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_156</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Of the charge <i>Q</i> on a tiny sphere, a fraction α is to be transferred to a second, nearby sphere. The spheres can be treated as particles.
+ <br/><br/>
+ (a) What value of α maximizes the magnitude <i>F</i> of the electrostatic force between the two spheres?
+ <br/>(b) What are the smaller and larger values of α that put <i>F</i> at half the maximum magnitude?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) α = 0.500, (b) smaller: 0.146, larger: 0.854
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) α = 0.333, (b) smaller: 0.125, larger: 0.875
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) α = 0.667, (b) smaller: 0.200, larger: 0.800
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) α = 0.500, (b) smaller: 0.250, larger: 0.750
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For optimization: (1) Express the force as a function of the variable, (2) Differentiate and set to zero to find the maximum, (3) To find values giving half maximum, set the force equal to half the maximum value and solve the resulting quadratic equation. The symmetry of the problem means there will be two solutions equidistant from the maximum.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Experienced problem-solvers recognize that the force function F ∝ α(1-α) is a parabola opening downward with maximum at α = 0.5. For half-maximum values, they know by symmetry these must be at equal distances from 0.5. The equation α(1-α) = c always has solutions symmetric about α = 0.5.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Coulomb's Law: F = kq₁q₂/r²• Optimization: dF/dα = 0 for extrema• Quadratic formula: α = [-b ± √(b² - 4ac)]/(2a)• Symmetry: If f(x) = x(1-x), then f(a) = f(1-a)
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Set up the charge distribution after transfer:
+ <br/>• First sphere receives α<i>Q</i>, so it has charge: α<i>Q</i>
+<br/>• Second sphere loses α<i>Q</i>, so it has charge: (1-α)<i>Q</i>
+<br/>• Note: 0 ≤ α ≤ 1</li>
+<li><strong>Step 2:</strong> Write the force as a function of α:
+ <br/>• F(α) = k[α<i>Q</i>][(1-α)<i>Q</i>]/r²
+ <br/>• F(α) = (k<i>Q</i>²/r²)α(1-α)
+ <br/>• F(α) = (k<i>Q</i>²/r²)(α - α²)</li>
+<li><strong>Step 3:</strong> Find the maximum by differentiation (part a):
+ <br/>• dF/dα = (k<i>Q</i>²/r²)(1 - 2α)
+ <br/>• Set dF/dα = 0: 1 - 2α = 0
+ <br/>• α = 1/2 = 0.500
+ <br/>• Verify maximum: d²F/dα² = -2k<i>Q</i>²/r² &lt; 0 ✓</li>
+<li><strong>Step 4:</strong> Calculate the maximum force:
+ <br/>• F_max = (k<i>Q</i>²/r²)(0.5)(0.5) = k<i>Q</i>²/(4r²)</li>
+<li><strong>Step 5:</strong> Set up equation for half-maximum force (part b):
+ <br/>• F = F_max/2
+ <br/>• (k<i>Q</i>²/r²)α(1-α) = (1/2) × k<i>Q</i>²/(4r²)
+ <br/>• α(1-α) = 1/8
+ <br/>• α - α² = 1/8
+ <br/>• α² - α + 1/8 = 0</li>
+<li><strong>Step 6:</strong> Solve using the quadratic formula:
+ <br/>• α = [1 ± √(1 - 4×1/8)]/2
+ <br/>• α = [1 ± √(1 - 1/2)]/2
+ <br/>• α = [1 ± √(1/2)]/2
+ <br/>• α = [1 ± 0.7071]/2</li>
+<li><strong>Step 7:</strong> Calculate both solutions:
+ <br/>• Smaller value: α₁ = (1 - 0.7071)/2 = 0.2929/2 = 0.146
+ <br/>• Larger value: α₂ = (1 + 0.7071)/2 = 1.7071/2 = 0.854</li>
+<li><strong>Step 8:</strong> Verify by symmetry:
+ <br/>• Note that 0.146 + 0.854 = 1.000 ✓
+ <br/>• Distance from maximum: |0.500 - 0.146| = 0.354 = |0.854 - 0.500| ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_157</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Of the charge Q initially on a tiny sphere, a portion q is to be transferred to a second, nearby sphere. Both spheres can be treated as particles and are fixed with a certain separation. For what value of q/Q will the electrostatic force between the two spheres be maximized?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) 1/4
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) 1/2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) 2/3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 3/4
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Set up the problem. Initially, sphere 1 has charge Q. After transfer, sphere 1 has charge (Q - q) and sphere 2 has charge q.</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Write the electrostatic force using Coulomb's law:
+     <br/>
+     F = k(Q - q)q/r²
+     <br/>
+     where k is Coulomb's constant and r is the fixed separation between spheres.</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Since k and r are constants, to maximize F, we need to maximize the function f(q) = (Q - q)q = Qq - q²</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Take the derivative with respect to q:
+     <br/>
+     df/dq = Q - 2q</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Set the derivative equal to zero to find critical points:
+     <br/>
+     Q - 2q = 0
+     <br/>
+     Q = 2q
+     <br/>
+     q = Q/2</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Verify this is a maximum by checking the second derivative:
+     <br/>
+     d²f/dq² = -2 &lt; 0, confirming it's a maximum.</li>
+<li><strong>
+      Step 7:
+     </strong>
+     Calculate the ratio:
+     <br/>
+     q/Q = (Q/2)/Q = 1/2</li>
+<li><strong>
+      Step 8:
+     </strong>
+     Physical interpretation: The force is maximized when the charge is equally distributed between the two spheres.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_158</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the electrostatic force F' to the initial force F?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) 1/4
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) 3/8
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) 1/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 5/8
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Initial setup. Let each sphere (1 and 2) have initial charge Q.
+     <br/>
+     Initial force: F = kQ²/r²</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Sphere 3 (initially neutral, charge = 0) touches sphere 1 (charge = Q).
+     <br/>
+     Total charge on 1 and 3 = Q + 0 = Q
+     <br/>
+     After contact, each has Q/2
+     <br/>
+     Sphere 1: Q/2, Sphere 2: Q, Sphere 3: Q/2</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Sphere 3 (now with Q/2) is removed from sphere 1 and touches sphere 2 (charge = Q).
+     <br/>
+     Total charge on 2 and 3 = Q + Q/2 = 3Q/2
+     <br/>
+     After contact, each has 3Q/4
+     <br/>
+     Sphere 1: Q/2, Sphere 2: 3Q/4, Sphere 3: 3Q/4</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Sphere 3 is removed. Calculate force between spheres 1 and 2:
+     <br/>
+     F' = k(Q/2)(3Q/4)/r² = k(3Q²/8)/r²</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Calculate the ratio:
+     <br/>
+     F'/F = [k(3Q²/8)/r²] / [kQ²/r²]
+     <br/>
+     F'/F = 3/8</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Physical interpretation: The sequential touching reduces the charge on sphere 1 to half while sphere 2 retains 3/4 of original charge, resulting in a force that is 3/8 of the original.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_159</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Two identical conducting spheres, fixed in place, attract each other with an electrostatic force of 0.108 N when their center-to-center separation is 50.0 cm. The spheres are then connected by a thin conducting wire. When the wire is removed, the spheres repel each other with an electrostatic force of 0.0360 N. Of the initial charges on the spheres, with a positive net charge, what were (a) the negative charge on one of them and (b) the positive charge on the other?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A) -1.00 μC and +3.00 μC
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B) -2.00 μC and +5.00 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) -1.50 μC and +4.50 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) -0.50 μC and +2.50 μC
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Define variables. Let sphere 1 have initial charge -q₁ (negative) and sphere 2 have +q₂ (positive), where q₁, q₂ &gt; 0.
+     <br/>
+     Given: r = 0.50 m, F_attract = 0.108 N, F_repel = 0.0360 N</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Write equation for initial attractive force:
+     <br/>
+     F_attract = kq₁q₂/r²
+     <br/>
+     0.108 = (9×10⁹)q₁q₂/(0.50)²
+     <br/>
+     0.108 = (9×10⁹)q₁q₂/0.25
+     <br/>
+     q₁q₂ = 0.108 × 0.25/(9×10⁹) = 3.0×10⁻¹² C²</li>
+<li><strong>
+      Step 3:
+     </strong>
+     After connection, charge distributes equally. Total charge = q₂ - q₁
+     <br/>
+     Each sphere gets: q_= (q₂ - q₁)/2</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Write equation for repulsive force:
+     <br/>
+     F_repel = k(q_)²/r²
+     <br/>
+     0.0360 = (9×10⁹)[(q₂ - q₁)/2]²/(0.50)²
+     <br/>
+     0.0360 = (9×10⁹)(q₂ - q₁)²/(4 × 0.25)
+     <br/>
+     (q₂ - q₁)² = 0.0360 × 1.0/(9×10⁹) = 4.0×10⁻¹² C²
+     <br/>
+     q₂ - q₁ = 2.0×10⁻⁶ C = 2.0 μC</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Solve the system of equations:
+     <br/>
+     Equation 1: q₁q₂ = 3.0×10⁻¹² C²
+     <br/>
+     Equation 2: q₂ - q₁ = 2.0×10⁻⁶ C
+     <br/>
+     From equation 2: q₂ = q₁ + 2.0×10⁻⁶</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Substitute into equation 1:
+     <br/>
+     q₁(q₁ + 2.0×10⁻⁶) = 3.0×10⁻¹²
+     <br/>
+     q₁² + 2.0×10⁻⁶q₁ - 3.0×10⁻¹² = 0</li>
+<li><strong>
+      Step 7:
+     </strong>
+     Use quadratic formula:
+     <br/>
+     q₁ = [-2.0×10⁻⁶ ± √((2.0×10⁻⁶)² + 4×3.0×10⁻¹²)] / 2
+     <br/>
+     q₁ = [-2.0×10⁻⁶ ± √(4.0×10⁻¹² + 12.0×10⁻¹²)] / 2
+     <br/>
+     q₁ = [-2.0×10⁻⁶ ± 4.0×10⁻⁶] / 2
+     <br/>
+     Taking positive root: q₁ = 1.0×10⁻⁶ C = 1.00 μC</li>
+<li><strong>
+      Step 8:
+     </strong>
+     Find q₂:
+     <br/>
+     q₂ = q₁ + 2.0×10⁻⁶ = 1.0×10⁻⁶ + 2.0×10⁻⁶ = 3.0×10⁻⁶ C = 3.00 μC</li>
+<li><strong>
+      Step 9:
+     </strong>
+     answer:
+     <br/>
+     (a) Negative charge = -1.00 μC
+     <br/>
+     (b) Positive charge = +3.00 μC</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_160</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 18:
+      </h4>
+      Four particles form a square with side length a = 5.0 cm. The charges are q₁ = -q₂ = 100 nC and q₃ = -q₄ = 200 nC, arranged at the corners as shown with particles 1 and 2 on the left side, and particles 3 and 4 on the right side (1 and 3 at bottom, 2 and 4 at top). What are the (a) x and (b) y components of the net electrostatic force on particle 3?1234aa</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) F_x = -0.0432 N, F_y = -0.0648 N
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) F_x = -0.0648 N, F_y = -0.0432 N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) F_x = 0.0432 N, F_y = 0.0648 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) F_x = 0.0648 N, F_y = 0.0432 N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Convert units and identify positions.
+          <br>
+          a = 5.0 cm = 0.05 m
+          <br>
+          q₁ = +100 nC = 1.0×10⁻⁷ C at position (0, 0)
+          <br>
+          q₂ = -100 nC = -1.0×10⁻⁷ C at position (0, a)
+          <br>
+          q₃ = +200 nC = 2.0×10⁻⁷ C at position (a, 0) - particle of interest
+          <br>
+          q₄ = -200 nC = -2.0×10⁻⁷ C at position (a, a)
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Calculate force F₁₃ from particle 1 on particle 3.
+          <br>
+          Distance: r₁₃ = a = 0.05 m (horizontal)
+          <br>
+          Both positive, so repulsive (force on 3 is to the right, +x direction)
+          <br>
+          F₁₃ = kq₁q₃/a² = (9×10⁹)(1.0×10⁻⁷)(2.0×10⁻⁷)/(0.05)²
+          <br>
+          F₁₃ = (9×10⁹)(2.0×10⁻¹⁴)/(2.5×10⁻³) = 0.072 N in +x direction
+          <br>
+          F₁₃ₓ = +0.072 N, F₁₃ᵧ = 0
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Calculate force F₄₃ from particle 4 on particle 3.
+          <br>
+          Distance: r₄₃ = a = 0.05 m (vertical)
+          <br>
+          Opposite charges (+200 nC and -200 nC), so attractive (force on 3 is upward, +y direction)
+          <br>
+          F₄₃ = k|q₄||q₃|/a² = (9×10⁹)(2.0×10⁻⁷)(2.0×10⁻⁷)/(0.05)²
+          <br>
+          F₄₃ = (9×10⁹)(4.0×10⁻¹⁴)/(2.5×10⁻³) = 0.144 N in +y direction
+          <br>
+          F₄₃ₓ = 0, F₄₃ᵧ = +0.144 N
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Calculate force F₂₃ from particle 2 on particle 3.
+          <br>
+          Distance: r₂₃ = a√2 = 0.05√2 m (diagonal)
+          <br>
+          Opposite charges, so attractive (force toward particle 2, at 135° from +x axis)
+          <br>
+          F₂₃ = k|q₂||q₃|/(a√2)² = (9×10⁹)(1.0×10⁻⁷)(2.0×10⁻⁷)/(0.05√2)²
+          <br>
+          F₂₃ = (9×10⁹)(2.0×10⁻¹⁴)/(5.0×10⁻³) = 0.036 N
+          <br>
+          Components (toward particle 2, which is upper-left from 3):
+          <br>
+          F₂₃ₓ = -F₂₃/√2 = -0.036/√2 = -0.0255 N
+          <br>
+          F₂₃ᵧ = +F₂₃/√2 = +0.036/√2 = +0.0255 N
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Sum all x-components:
+          <br>
+          F_net,x = F₁₃ₓ + F₄₃ₓ + F₂₃ₓ
+          <br>
+          F_net,x = 0.072 + 0 + (-0.0255) = 0.0465 N
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          Sum all y-components:
+          <br>
+          F_net,y = F₁₃ᵧ + F₄₃ᵧ + F₂₃ᵧ
+          <br>
+          F_net,y = 0 + 0.144 + 0.0255 = 0.1695 N
+         </li>
+<li>
+<strong>
+           Step 8:
+          </strong>
+          Recalculating forces on particle 3:
+          <br>
+          F₁₃: q₁=+100nC, q₃=+200nC, distance a, repulsive, force to right (+x)
+          <br>
+          F₁₃ = 0.072 N, components: (+0.072, 0)
+          <br>
+<br>
+          F₂₃: q₂=-100nC, q₃=+200nC, distance a√2, attractive toward q₂ (upper left from 3)
+          <br>
+          F₂₃ = 0.036 N at 135°, components: (-0.0255, +0.0255)
+          <br>
+<br>
+          F₄₃: q₄=-200nC, q₃=+200nC, distance a, attractive upward (+y)
+          <br>
+          F₄₃ = 0.144 N, components: (0, +0.144)
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_161</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A nonconducting spherical shell, with an inner radius of 4.0 cm and an outer radius of 6.0 cm, has charge spread nonuniformly through its volume between its inner and outer surfaces. The volume charge density ρ (charge per unit volume) is given by ρ = b/r, where r is the distance in meters from the center of the shell and b = 3.0 μC/m². What is the net charge in the shell?
+   <br/>
+<br/>
+<svg height="250" width="250" xmlns="http://www.w3.org/2000/svg">
+<circle cx="125" cy="125" fill="none" r="80" stroke="black" stroke-width="2">
+</circle>
+<circle cx="125" cy="125" fill="none" r="53" stroke="black" stroke-width="2">
+</circle>
+<circle cx="125" cy="125" fill="black" r="3">
+</circle>
+<line stroke="black" stroke-dasharray="3,3" stroke-width="1" x1="125" x2="125" y1="125" y2="45">
+</line>
+<line stroke="blue" stroke-width="2" x1="125" x2="178" y1="125" y2="125">
+</line>
+<line stroke="red" stroke-width="2" x1="125" x2="205" y1="125" y2="125">
+</line>
+<text fill="blue" font-size="12" x="145" y="120">
+     r_in=4cm
+    </text>
+<text fill="red" font-size="12" x="160" y="140">
+     r_out=6cm
+    </text>
+<text font-size="12" x="110" y="35">
+     ρ = b/r
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) 1.5 × 10⁻⁶ C
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) 2.5 × 10⁻⁶ C
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) 3.0 × 10⁻⁶ C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 4.5 × 10⁻⁶ C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Identify given information:
+     <br/>
+     Inner radius: r₁ = 4.0 cm = 0.04 m
+     <br/>
+     Outer radius: r₂ = 6.0 cm = 0.06 m
+     <br/>
+     Volume charge density: ρ(r) = b/r where b = 3.0 μC/m² = 3.0×10⁻⁶ C/m²</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Set up the integral for total charge. In spherical coordinates, for a spherical shell:
+     <br/>
+     Q = ∫∫∫ ρ dV
+     <br/>
+     where dV = 4πr² dr (volume element of spherical shell at radius r with thickness dr)</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Substitute the charge density:
+     <br/>
+     Q = ∫[r₁ to r₂] ρ(r) × 4πr² dr
+     <br/>
+     Q = ∫[r₁ to r₂] (b/r) × 4πr² dr
+     <br/>
+     Q = 4πb ∫[r₁ to r₂] r dr</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Evaluate the integral:
+     <br/>
+     ∫ r dr = r²/2
+     <br/>
+     Q = 4πb [r²/2]|[r₁ to r₂]
+     <br/>
+     Q = 4πb [(r₂²/2) - (r₁²/2)]
+     <br/>
+     Q = 2πb(r₂² - r₁²)</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Substitute numerical values:
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × [(0.06)² - (0.04)²]
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × [0.0036 - 0.0016]
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × 0.0020
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × (2.0×10⁻³)</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Calculate result:
+     <br/>
+     Q = 2π × 6.0×10⁻⁹
+     <br/>
+     Q = 12π×10⁻⁹
+     <br/>
+     Q ≈ 37.7×10⁻⁹ C
+     <br/>
+     Q ≈ 3.77×10⁻⁸ C = 0.0377 μC</li>
+<li><strong>
+      Step 9:
+     </strong>
+     calculation:
+     <br/>
+     r₂² - r₁² = (6×10⁻²)² - (4×10⁻²)² = 36×10⁻⁴ - 16×10⁻⁴ = 20×10⁻⁴ m²
+     <br/>
+     Q = 2π × (3.0×10⁻⁶) × (20×10⁻⁴)
+     <br/>
+     Q = 2π × 60×10⁻¹⁰
+     <br/>
+     Q = 120π×10⁻¹⁰
+     <br/>
+     Q = 377×10⁻¹⁰ C = 3.77×10⁻⁸ C</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_162</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A charge of 6.0 μC is to be split into two parts that are then separated by 3.0 cm. What is the maximum possible magnitude of the electrostatic force between those two parts?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) 81 N
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) 90 N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) 108 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 162 N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     From Problem 1, we know that force is maximized when the charge is split equally.
+     <br/>
+     Total charge Q = 6.0 μC = 6.0×10⁻⁶ C
+     <br/>
+     Each part: q₁ = q₂ = Q/2 = 3.0×10⁻⁶ C</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Given separation:
+     <br/>
+     r = 3.0 cm = 3.0×10⁻² m = 0.03 m</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Calculate maximum force using Coulomb's law:
+     <br/>
+     F_max = kq₁q₂/r²
+     <br/>
+     F_max = k(Q/2)(Q/2)/r²
+     <br/>
+     F_max = kQ²/(4r²)</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Substitute numerical values:
+     <br/>
+     F_max = (9×10⁹) × (6.0×10⁻⁶)² / (4 × (3.0×10⁻²)²)
+     <br/>
+     F_max = (9×10⁹) × (36×10⁻¹²) / (4 × 9×10⁻⁴)
+     <br/>
+     F_max = (9×10⁹) × (36×10⁻¹²) / (36×10⁻⁴)</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Simplify:
+     <br/>
+     F_max = (9 × 36 / 36) × 10⁹⁻¹²⁺⁴
+     <br/>
+     F_max = 9 × 10¹ N
+     <br/>
+     F_max = 90 N ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_163</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Of the charge Q initially on a tiny sphere, a portion q is to be transferred to a second, nearby sphere. Both spheres can be treated as particles and are fixed with a certain separation. For what value of q/Q will the electrostatic force between the two spheres be maximized?
+   <br/>
+<br/>
+<svg height="150" width="400" xmlns="http://www.w3.org/2000/svg">
+<!-- Initial state -->
+<text font-size="14" font-weight="bold" x="50" y="20">
+     Initial:
+    </text>
+<circle cx="100" cy="60" fill="#3498db" r="20" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="90" y="67">
+     Q
+    </text>
+<circle cx="200" cy="60" fill="#95a5a6" r="20" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="192" y="67">
+     0
+    </text>
+<line stroke="black" stroke-dasharray="5,5" stroke-width="1" x1="120" x2="180" y1="60" y2="60">
+</line>
+<text font-size="12" x="140" y="50">
+     r
+    </text>
+<!-- state -->
+<text font-size="14" font-weight="bold" x="50" y="120">
+     After transfer:
+    </text>
+<circle cx="100" cy="160" fill="#e67e22" r="20" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="12" font-weight="bold" x="80" y="167">
+     Q-q
+    </text>
+<circle cx="200" cy="160" fill="#27ae60" r="20" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="192" y="167">
+     q
+    </text>
+<line stroke="black" stroke-dasharray="5,5" stroke-width="1" x1="120" x2="180" y1="160" y2="160">
+</line>
+<text font-size="12" x="140" y="150">
+     r
+    </text>
+<text font-size="13" x="280" y="110">
+     Find q/Q for
+    </text>
+<text font-size="13" x="280" y="130">
+     maximum F
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) 1/4
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) 1/2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) 2/3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 3/4
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Set up the problem. Initially, sphere 1 has charge Q. After transfer, sphere 1 has charge (Q - q) and sphere 2 has charge q.</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Write the electrostatic force using Coulomb's law:
+     <br/>
+     F = k(Q - q)q/r²
+     <br/>
+     where k is Coulomb's constant and r is the fixed separation between spheres.</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Since k and r are constants, to maximize F, we need to maximize the function f(q) = (Q - q)q = Qq - q²</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Take the derivative with respect to q:
+     <br/>
+     df/dq = Q - 2q</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Set the derivative equal to zero to find critical points:
+     <br/>
+     Q - 2q = 0
+     <br/>
+     Q = 2q
+     <br/>
+     q = Q/2</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Verify this is a maximum by checking the second derivative:
+     <br/>
+     d²f/dq² = -2 &lt; 0, confirming it's a maximum.</li>
+<li><strong>
+      Step 7:
+     </strong>
+     Calculate the ratio:
+     <br/>
+     q/Q = (Q/2)/Q = 1/2</li>
+<li><strong>
+      Step 8:
+     </strong>
+     Physical interpretation: The force is maximized when the charge is equally distributed between the two spheres. This makes intuitive sense because the product of two numbers with a fixed sum is maximum when they are equal.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_164</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the electrostatic force F' to the initial force F?
+   <br/>
+<br/>
+<svg height="400" width="600" xmlns="http://www.w3.org/2000/svg">
+<!-- Initial state -->
+<text font-size="14" font-weight="bold" x="250" y="20">
+     Initial State
+    </text>
+<circle cx="100" cy="60" fill="#3498db" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="92" y="67">
+     Q
+    </text>
+<text font-size="12" x="85" y="100">
+     Sphere 1
+    </text>
+<circle cx="300" cy="60" fill="#3498db" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="292" y="67">
+     Q
+    </text>
+<text font-size="12" x="285" y="100">
+     Sphere 2
+    </text>
+<path d="M 125 60 L 275 60" marker-end="url(#arrow2)" stroke="#e74c3c" stroke-width="2">
+</path>
+<text fill="#e74c3c" font-size="12" font-weight="bold" x="190" y="55">
+     F
+    </text>
+<defs>
+<marker id="arrow2" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#e74c3c" points="0 0, 10 3, 0 6">
+</polygon>
+</marker>
+</defs>
+<!-- Step 1: Sphere 3 touches Sphere 1 -->
+<text font-size="14" font-weight="bold" x="220" y="150">
+     Step 1: Touch Sphere 1
+    </text>
+<circle cx="100" cy="190" fill="#e67e22" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="12" font-weight="bold" x="82" y="197">
+     Q/2
+    </text>
+<circle cx="150" cy="190" fill="#e67e22" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="12" font-weight="bold" x="132" y="197">
+     Q/2
+    </text>
+<text font-size="11" x="135" y="225">
+     Sphere 3
+    </text>
+<circle cx="300" cy="190" fill="#3498db" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="14" font-weight="bold" x="292" y="197">
+     Q
+    </text>
+<!-- Step 2: Sphere 3 touches Sphere 2 -->
+<text font-size="14" font-weight="bold" x="210" y="270">
+     Step 2: Touch Sphere 2
+    </text>
+<circle cx="100" cy="310" fill="#e67e22" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="12" font-weight="bold" x="82" y="317">
+     Q/2
+    </text>
+<circle cx="270" cy="310" fill="#27ae60" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="11" font-weight="bold" x="248" y="317">
+     3Q/4
+    </text>
+<circle cx="330" cy="310" fill="#27ae60" r="25" stroke="black" stroke-width="2">
+</circle>
+<text fill="white" font-size="11" font-weight="bold" x="308" y="317">
+     3Q/4
+    </text>
+<!-- state -->
+<text font-size="14" font-weight="bold" x="230" y="380">
+     : F' = 3F/8
+    </text>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A) 1/4
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B) 3/8
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C) 1/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D) 5/8
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+      Step 1:
+     </strong>
+     Initial setup. Let each sphere (1 and 2) have initial charge Q.
+     <br/>
+     Initial force: F = kQ²/r²</li>
+<li><strong>
+      Step 2:
+     </strong>
+     Sphere 3 (initially neutral, charge = 0) touches sphere 1 (charge = Q).
+     <br/>
+     Total charge on 1 and 3 = Q + 0 = Q
+     <br/>
+     After contact, each has Q/2
+     <br/>
+     Sphere 1: Q/2, Sphere 2: Q, Sphere 3: Q/2</li>
+<li><strong>
+      Step 3:
+     </strong>
+     Sphere 3 (now with Q/2) is removed from sphere 1 and touches sphere 2 (charge = Q).
+     <br/>
+     Total charge on 2 and 3 = Q + Q/2 = 3Q/2
+     <br/>
+     After contact, each has 3Q/4
+     <br/>
+     Sphere 1: Q/2, Sphere 2: 3Q/4, Sphere 3: 3Q/4</li>
+<li><strong>
+      Step 4:
+     </strong>
+     Sphere 3 is removed. Calculate force between spheres 1 and 2:
+     <br/>
+     F' = k(Q/2)(3Q/4)/r² = k(3Q²/8)/r²</li>
+<li><strong>
+      Step 5:
+     </strong>
+     Calculate the ratio:
+     <br/>
+     F'/F = [k(3Q²/8)/r²] / [kQ²/r²]
+     <br/>
+     F'/F = 3/8</li>
+<li><strong>
+      Step 6:
+     </strong>
+     Physical interpretation: The sequential touching reduces the charge on sphere 1 to half while sphere 2 retains 3/4 of original charge, resulting in a force that is 3/8 of the original.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

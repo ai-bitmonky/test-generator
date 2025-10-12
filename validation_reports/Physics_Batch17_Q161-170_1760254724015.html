@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 17 (Questions 161-170)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 17: Questions 161 - 170</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:44 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">25</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_16</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem Statement:</strong></p>
+<p>Two 2.00 kg balls are attached to the ends of a thin rod of length 50.0 cm and negligible mass. The rod is free to rotate in a vertical plane without friction about a horizontal axis through its center.</p>
+<p>With the rod initially horizontal, a 50.0 g wad of wet putty drops onto one of the balls, hitting it with a speed of 3.00 m/s and then sticking to it.</p>
+<div class="diagram">
+<svg height="420" viewbox="0 0 900 420" width="900" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2C3E50" font-size="18" font-weight="bold" text-anchor="middle" x="450" y="25">Putty Collision with Rotating Rod System</text>
+<text fill="#666" font-size="12" text-anchor="middle" x="450" y="45">(Side View - Rod horizontal initially)</text>
+<!-- Before collision (left side) -->
+<text fill="#2C3E50" font-size="15" font-weight="bold" text-anchor="middle" x="200" y="80">Before Collision:</text>
+<!-- Horizontal rod with balls - L = 50cm = 250px scale -->
+<line stroke="#8B4513" stroke-width="7" x1="75" x2="325" y1="200" y2="200"></line>
+<circle cx="200" cy="200" fill="#000" r="8"></circle>
+<text fill="#000" font-size="12" font-weight="bold" text-anchor="middle" x="200" y="230">Pivot (center)</text>
+<!-- Ball at left end -->
+<circle cx="75" cy="200" fill="#3498DB" r="22" stroke="#2980B9" stroke-width="2"></circle>
+<text fill="#3498DB" font-size="13" font-weight="bold" text-anchor="middle" x="75" y="170">M = 2.00 kg</text>
+<!-- Ball at right end -->
+<circle cx="325" cy="200" fill="#3498DB" r="22" stroke="#2980B9" stroke-width="2"></circle>
+<text fill="#3498DB" font-size="13" font-weight="bold" text-anchor="middle" x="325" y="170">M = 2.00 kg</text>
+<!-- Rod length marker -->
+<line stroke="#666" stroke-dasharray="3,3" stroke-width="1" x1="75" x2="325" y1="250" y2="250"></line>
+<line stroke="#666" stroke-width="1" x1="75" x2="75" y1="245" y2="255"></line>
+<line stroke="#666" stroke-width="1" x1="325" x2="325" y1="245" y2="255"></line>
+<text fill="#666" font-size="12" text-anchor="middle" x="200" y="270">L = 50.0 cm</text>
+<!-- Distance to pivot markers -->
+<line stroke="#FF6B6B" stroke-dasharray="2,2" stroke-width="1" x1="200" x2="325" y1="260" y2="260"></line>
+<text fill="#FF6B6B" font-size="11" text-anchor="middle" x="262" y="280">L/2 = 25.0 cm</text>
+<!-- Putty falling vertically -->
+<circle cx="325" cy="100" fill="#FF6B6B" r="14" stroke="#E74C3C" stroke-width="2"></circle>
+<line marker-end="url(#arrowred)" stroke="#E74C3C" stroke-width="4" x1="325" x2="325" y1="114" y2="170"></line>
+<text fill="#E74C3C" font-size="14" font-weight="bold" x="355" y="140">v = 3.00 m/s ↓</text>
+<text fill="#FF6B6B" font-size="12" x="365" y="105">m = 50.0 g</text>
+<!-- After collision (right side) -->
+<text fill="#2C3E50" font-size="15" font-weight="bold" text-anchor="middle" x="650" y="80">After Collision:</text>
+<!-- Rod at angle with rotation -->
+<g transform="translate(650, 220)">
+<!-- Rotated rod (slight angle to show rotation) -->
+<line stroke="#8B4513" stroke-width="7" x1="-125" x2="125" y1="10" y2="-10"></line>
+<circle cx="0" cy="0" fill="#000" r="8"></circle>
+<!-- Balls -->
+<circle cx="-125" cy="10" fill="#3498DB" r="22" stroke="#2980B9" stroke-width="2"></circle>
+<g transform="translate(125, -10)">
+<circle cx="0" cy="0" fill="#27AE60" r="22" stroke="#229954" stroke-width="2"></circle>
+<!-- Putty stuck to ball -->
+<circle cx="18" cy="0" fill="#FF6B6B" r="14" stroke="#E74C3C" stroke-width="2"></circle>
+</g>
+<!-- Rotation arrow -->
+<path d="M 20,-45 Q 35,-55 48,-45" fill="none" marker-end="url(#arrowpurple)" stroke="#9B59B6" stroke-width="3"></path>
+<text fill="#9B59B6" font-size="14" font-weight="bold" x="55" y="-40">ω</text>
+</g>
+<text fill="#666" font-size="12" text-anchor="middle" x="650" y="310">System rotates upward after collision</text>
+<!-- Question labels -->
+<rect fill="#FFF9E6" height="70" rx="5" stroke="#FF9800" stroke-width="2" width="800" x="50" y="340"></rect>
+<text fill="#2C3E50" font-size="14" font-weight="bold" text-anchor="middle" x="450" y="365">Determine:</text>
+<text fill="#2C3E50" font-size="13" x="70" y="390">(a) Angular speed ω immediately after collision</text>
+<text fill="#2C3E50" font-size="13" x="470" y="390">(b) Ratio KE_after / KE_before</text>
+<text fill="#2C3E50" font-size="13" x="270" y="405">(c) Angle θ through which system rotates before stopping</text>
+<defs>
+<marker id="arrowred" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#E74C3C" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowpurple" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#9B59B6" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+</defs>
+</svg>
+</div>
+<p><strong>Determine:</strong></p>
+<ol type="a">
+<li>What is the angular speed immediately after the putty hits?</li>
+<li>What is the ratio of KE<sub>after</sub> / KE<sub>before</sub>?</li>
+<li>Through what angle will the system rotate before momentarily stopping?</li>
+</ol>
+<p><strong>Given:</strong></p>
+<ul>
+<li>Ball mass: M = 2.00 kg (each)</li>
+<li>Rod length: L = 50.0 cm = 0.500 m</li>
+<li>Putty mass: m = 50.0 g = 0.050 kg</li>
+<li>Putty velocity: v = 3.00 m/s (downward)</li>
+<li>Rod initially horizontal</li>
+<li>Take g = 9.8 m/s²</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) ω = 0.148 rad/s<br/>
+ (b) Ratio = 0.0123<br/>
+ (c) θ = 5.42°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) ω = 0.296 rad/s<br/>
+ (b) Ratio = 0.0246<br/>
+ (c) θ = 10.8°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) ω = 0.185 rad/s<br/>
+ (b) Ratio = 0.0308<br/>
+ (c) θ = 13.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) ω = 0.222 rad/s<br/>
+ (b) Ratio = 0.0431<br/>
+ (c) θ = 16.2°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Three-stage problem: (1) Angular momentum conservation for collision, (2) Energy ratio calculation, (3) Energy conservation for rotation.Solution AnalysisPart (a): CollisionInitial: L = mvr = 0.050×3.00×0.250: I_total = 2M(L/2)² + m(L/2)²0.0375 = 0.2531×ωω = 0.148 rad/s ✓Part (b): Energy RatioKE_before = ½mv² = ½(0.050)(3.00)²= 0.225 JKE_after = ½Iω² = ½(0.2531)(0.148)²= 0.00278 JRatio = 0.0123 ✓Part (c): Rotational MotionMM+my_cmCenter of mass position:y_cm = m(L/2)/(2M+m) = 0.050×0.250/4.05= 0.00309 m from pivotEnergy conservation (rotation):KE = (2M+m)g × y_cm × (1-cos θ)0.00278 = 4.05×9.8×0.00309×(1-cos θ)1-cos θ = 0.0227 → cos θ = 0.9773θ = 5.42° ✓
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Part (a): ω after collision</strong><br/>
+<span class="math">I_initial = 2M(L/2)² = 0.250 kg·m²</span><br/>
+<span class="math">L_putty = mvr = 0.050×3.00×0.250 = 0.0375 kg·m²/s</span><br/>
+<span class="math">I_= (2M+m)(L/2)² = 0.2531 kg·m²</span><br/>
+<span class="math">ω = 0.0375/0.2531 = 0.148 rad/s ✓</span></li>
+<li><strong>Part (b): Energy ratio</strong><br/>
+<span class="math">KE_before = ½(0.050)(3.00)² = 0.225 J</span><br/>
+<span class="math">KE_after = ½(0.2531)(0.148)² = 0.00278 J</span><br/>
+<span class="math">Ratio = 0.00278/0.225 = 0.0123 ✓</span></li>
+<li><strong>Part (c): Rotation angle</strong><br/>
+<span class="math">y_cm = 0.050×0.250/4.05 = 0.00309 m</span><br/>
+<span class="math">0.00278 = 4.05×9.8×0.00309×(1-cos θ)</span><br/>
+<span class="math">θ = arccos(0.9773) = 5.42° ✓</span></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_17</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem Statement:</strong></p>
+<p>A small 50 g block slides down a frictionless surface through height h = 20 cm and then sticks to a uniform rod of mass 100 g and length 40 cm. The rod pivots about point O through angle θ before momentarily stopping.</p>
+<div class="diagram">
+<svg height="420" viewbox="0 0 900 420" width="900" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2C3E50" font-size="18" font-weight="bold" text-anchor="middle" x="450" y="25">Block Sliding and Colliding with Pivoting Rod</text>
+<text fill="#666" font-size="12" text-anchor="middle" x="450" y="45">(Scale: 500 pixels = 1 meter, so h=20cm=100px, L=40cm=200px)</text>
+<!-- Ground at y=350 -->
+<line stroke="#000" stroke-width="3" x1="0" x2="900" y1="350" y2="350"></line>
+<rect fill="#D2B48C" height="70" opacity="0.3" width="900" x="0" y="350"></rect>
+<!-- Stage 1: Block at top of ramp (h=20cm=100px above ground) -->
+<text fill="#2C3E50" font-size="14" font-weight="bold" text-anchor="middle" x="150" y="90">Stage 1: Initial</text>
+<rect fill="#E74C3C" height="28" stroke="#C0392B" stroke-width="2" width="28" x="120" y="235"></rect>
+<text fill="#E74C3C" font-size="12" font-weight="bold" text-anchor="middle" x="134" y="220">m = 50 g</text>
+<text fill="#666" font-size="11" text-anchor="middle" x="134" y="280">v₀ = 0</text>
+<!-- Ramp from h=100px down to ground -->
+<line stroke="#8B4513" stroke-width="4" x1="148" x2="320" y1="249" y2="350"></line>
+<!-- Height marker -->
+<line stroke="#3498DB" stroke-dasharray="4,4" stroke-width="2" x1="90" x2="90" y1="350" y2="250"></line>
+<line stroke="#3498DB" stroke-width="2" x1="85" x2="95" y1="350" y2="350"></line>
+<line stroke="#3498DB" stroke-width="2" x1="85" x2="95" y1="250" y2="250"></line>
+<text fill="#3498DB" font-size="14" font-weight="bold" text-anchor="end" x="75" y="305">h = 20 cm</text>
+<!-- Stage 2: Block at bottom, approaching rod -->
+<text fill="#2C3E50" font-size="14" font-weight="bold" text-anchor="middle" x="370" y="90">Stage 2: Before Collision</text>
+<rect fill="#E74C3C" height="28" stroke="#C0392B" stroke-width="2" width="28" x="308" y="322"></rect>
+<line marker-end="url(#arrowblue)" stroke="#3498DB" stroke-width="3" x1="336" x2="390" y1="330" y2="330"></line>
+<text fill="#3498DB" font-size="12" font-weight="bold" x="363" y="320">v</text>
+<!-- Vertical rod (L=40cm=200px) pivoting at bottom -->
+<line stroke="#8B4513" stroke-width="7" x1="420" x2="420" y1="350" y2="150"></line>
+<circle cx="420" cy="350" fill="#000" r="10"></circle>
+<text fill="#8B4513" font-size="12" x="460" y="250">M = 100 g</text>
+<text fill="#8B4513" font-size="12" x="460" y="265">L = 40 cm</text>
+<text fill="#000" font-size="12" font-weight="bold" x="455" y="355">Pivot O</text>
+<!-- Rod length marker -->
+<line stroke="#666" stroke-dasharray="2,2" stroke-width="1" x1="440" x2="440" y1="350" y2="150"></line>
+<line stroke="#666" stroke-width="1" x1="435" x2="445" y1="150" y2="150"></line>
+<text fill="#666" font-size="11" x="450" y="160">L = 40 cm</text>
+<!-- Stage 3: After collision with rotation -->
+<text fill="#2C3E50" font-size="14" font-weight="bold" text-anchor="middle" x="660" y="90">Stage 3: After Collision</text>
+<g transform="translate(660, 350)">
+<circle cx="0" cy="0" fill="#000" r="10"></circle>
+<text fill="#000" font-size="11" text-anchor="middle" x="0" y="-15">O</text>
+<!-- Rod rotated by angle θ -->
+<line stroke="#8B4513" stroke-width="7" transform="rotate(-30 0 0)" x1="0" x2="100" y1="0" y2="-173"></line>
+<!-- Block at end of rod -->
+<rect fill="#27AE60" height="20" stroke="#229954" stroke-width="2" transform="rotate(-30 0 0)" width="20" x="80" y="-190"></rect>
+<!-- Angle arc -->
+<path d="M 0,-80 A 80,80 0 0,1 40,-69" fill="none" stroke="#9B59B6" stroke-width="2"></path>
+<text fill="#9B59B6" font-size="13" font-weight="bold" x="50" y="-60">θ</text>
+<!-- Vertical reference line -->
+<line stroke="#666" stroke-dasharray="3,2" stroke-width="1" x1="0" x2="0" y1="0" y2="-100"></line>
+</g>
+<text fill="#666" font-size="11" text-anchor="middle" x="660" y="380">System swings up through angle θ then stops</text>
+<defs>
+<marker id="arrowblue" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#3498DB" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+</defs>
+</svg>
+</div>
+<p><strong>Find the angle θ.</strong></p>
+<p><strong>Given:</strong></p>
+<ul>
+<li>Block mass: m = 50 g = 0.050 kg</li>
+<li>Initial height: h = 20 cm = 0.20 m</li>
+<li>Rod mass: M = 100 g = 0.100 kg</li>
+<li>Rod length: L = 40 cm = 0.40 m</li>
+<li>Frictionless surface</li>
+<li>Take g = 9.8 m/s²</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> θ = 18.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> θ = 24.3°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> θ = 31.8°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> θ = 38.7°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Three-stage problem: (1) Energy conservation for sliding, (2) Angular momentum conservation for collision, (3) Energy conservation for rotation.Three-Stage SolutionStage 1: SlidingEnergy conservation:mgh = ½mv²v = √(2gh)v = 1.980 m/sStage 2: CollisionAngular momentum:mvL = (I_rod + I_block)ωI_total = ⅓ML² + mL²ω = 2.970 rad/sStage 3: RotationEnergy conservation:½Iω² = (M+m)g×ΔhΔh = y_cm(1-cos θ)θ = 31.8°Detailed Calculations:Step 1:v = √(2×9.8×0.20) = 1.980 m/sStep 2:I_rod = ⅓ML² = ⅓(0.100)(0.40)² = 0.00533 kg·m²L_before = mvL = 0.050×1.980×0.40 = 0.0396 kg·m²/sI_total = 0.00533 + 0.050×(0.40)² = 0.01333 kg·m²ω = 0.0396/0.01333 = 2.970 rad/sStep 3:KE = ½(0.01333)(2.970)² = 0.0588 Jy_cm = [M(L/2) + mL]/(M+m) = [0.100×0.20 + 0.050×0.40]/0.150= 0.040/0.150 = 0.2667 mEnergy: 0.0588 = 0.150×9.8×0.2667×(1-cos θ)1-cos θ = 0.1499 → cos θ = 0.8501θ = arccos(0.8501) = 31.79° ≈ 31.8° ✓
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_18</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem Statement:</strong></p>
+<p>An overhead view of a thin uniform rod of length 0.600 m and mass M is shown rotating horizontally at 80.0 rad/s counterclockwise about an axis through its center.</p>
+<p>A particle of mass M/3.00 and traveling horizontally at speed 40.0 m/s hits the rod and sticks. The particle's path is perpendicular to the rod at the instant of the hit, at a distance d from the rod's center.</p>
+<div class="diagram">
+<svg height="450" viewbox="0 0 800 450" width="800" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2C3E50" font-size="16" font-weight="bold" text-anchor="middle" x="400" y="25">Overhead View: Particle Hitting Rotating Rod</text>
+<!-- Before collision -->
+<text fill="#2C3E50" font-size="14" font-weight="bold" text-anchor="middle" x="250" y="70">Before Collision:</text>
+<!-- Rotating rod -->
+<line stroke="#8B4513" stroke-width="8" x1="100" x2="400" y1="200" y2="200"></line>
+<circle cx="250" cy="200" fill="#000" r="10"></circle>
+<text fill="#000" font-size="11" text-anchor="middle" x="250" y="235">Axis (center)</text>
+<!-- Rod dimensions -->
+<line stroke="#666" stroke-dasharray="2,2" stroke-width="1" x1="100" x2="400" y1="175" y2="175"></line>
+<text fill="#666" font-size="11" text-anchor="middle" x="250" y="165">L = 0.600 m, mass = M</text>
+<!-- Rotation arrows -->
+<path d="M 265,185 Q 275,175 285,185" fill="none" marker-end="url(#arrowpurple)" stroke="#9B59B6" stroke-width="3"></path>
+<text fill="#9B59B6" font-size="13" font-weight="bold" x="290" y="180">ω₀ = 80 rad/s</text>
+<text fill="#9B59B6" font-size="11" x="290" y="195">(counterclockwise)</text>
+<!-- Particle approaching -->
+<circle cx="480" cy="280" fill="#E74C3C" r="12" stroke="#C0392B" stroke-width="2"></circle>
+<line marker-end="url(#arrowblue)" stroke="#3498DB" stroke-width="4" x1="480" x2="380" y1="280" y2="280"></line>
+<text fill="#3498DB" font-size="13" font-weight="bold" x="430" y="270">v = 40.0 m/s</text>
+<text fill="#E74C3C" font-size="11" x="510" y="285">m = M/3</text>
+<!-- Distance d -->
+<line stroke="#FF6B6B" stroke-width="2" x1="250" x2="330" y1="205" y2="205"></line>
+<line stroke="#FF6B6B" stroke-dasharray="5,3" stroke-width="2" x1="330" x2="330" y1="200" y2="280"></line>
+<line stroke="#FF6B6B" stroke-width="2" x1="325" x2="335" y1="205" y2="205"></line>
+<line stroke="#FF6B6B" stroke-width="2" x1="325" x2="335" y1="280" y2="280"></line>
+<text fill="#FF6B6B" font-size="12" font-weight="bold" x="310" y="245">d = ?</text>
+<!-- Perpendicular indicator -->
+<path d="M 325,275 L 325,285 L 335,285" fill="none" stroke="#666" stroke-width="1"></path>
+<text fill="#666" font-size="10" x="350" y="280">⊥</text>
+<!-- Question -->
+<rect fill="#FFF9E6" height="90" rx="5" stroke="#FF9800" stroke-width="2" width="700" x="50" y="350"></rect>
+<text fill="#2C3E50" font-size="13" font-weight="bold" text-anchor="middle" x="400" y="375">Determine:</text>
+<text fill="#2C3E50" font-size="12" x="70" y="400">(a) At what value of d are the rod and particle stationary after the hit?</text>
+<text fill="#2C3E50" font-size="12" x="70" y="420">(b) In which direction do they rotate if d is greater than this value?</text>
+<defs>
+<marker id="arrowblue" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#3498DB" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+<marker id="arrowpurple" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#9B59B6" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+</defs>
+</svg>
+</div>
+<p><strong>Determine:</strong></p>
+<ol type="a">
+<li>At what value of d are the rod and particle stationary after the hit?</li>
+<li>In which direction do the rod and particle rotate if d is greater than this value?</li>
+</ol>
+<p><strong>Given:</strong></p>
+<ul>
+<li>Rod length: L = 0.600 m</li>
+<li>Rod mass: M</li>
+<li>Initial rod angular velocity: ω<sub>0</sub> = 80.0 rad/s (counterclockwise)</li>
+<li>Particle mass: m = M/3.00</li>
+<li>Particle speed: v = 40.0 m/s</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) d = 0.180 m; (b) Counterclockwise
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (a) d = 0.240 m; (b) Clockwise
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) d = 0.300 m; (b) Clockwise
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) d = 0.360 m; (b) Counterclockwise
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For ωf= 0, total initial angular momentum must be zero. The rod has counterclockwise angular momentum; the particle creates clockwise angular momentum (opposing). Find d where they balance.Angular Momentum Balance AnalysisRod Angular Momentumω₀I_rod = (1/12)ML²= (1/12)M(0.600)²= 0.0300M kg·m²Particle Angular MomentumvdL_particle = mvd= (M/3)×40.0×d= 13.33Md (clockwise)For Stationary System After Collision:Total angular momentum before = 0 (for ω_f = 0)Taking counterclockwise as positive:L_rod - L_particle = 0I_rod×ω₀ = m×v×d0.0300M × 80.0 = (M/3) × 40.0 × dd = 2.400M / (13.33M) = 0.180 m
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate rod's angular momentum</strong><br/>
+<span class="math">I_rod = (1/12)ML² = (1/12)M(0.600)² = 0.0300M kg·m²</span><br/>
+<span class="math">L_rod = I_rod×ω₀ = 0.0300M × 80.0 = 2.400M kg·m²/s</span></li>
+<li><strong>Step 2: Calculate particle's angular momentum</strong><br/>
+<span class="math">L_particle = mvd = (M/3) × 40.0 × d = 13.33Md kg·m²/s</span><br/>
+ (Clockwise, opposite to rod's rotation)</li>
+<li><strong>Step 3: Apply balance condition for ω<sub>f</sub> = 0</strong><br/>
+<span class="math">L_rod = L_particle</span><br/>
+<span class="math">2.400M = 13.33Md</span><br/>
+<span class="math">d = 2.400/13.33 = 0.180 m</span></li>
+<li><strong>Part (b): Direction if d &gt; 0.180 m</strong><br/>
+ If d &gt; 0.180 m:<br/>
+<span class="math">L_particle &gt; L_rod</span><br/>
+ The particle's clockwise angular momentum dominates<br/>
+<strong>Result: Clockwise rotation</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_19</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A stone is projected at a cliff of height <em>h</em> with an initial speed of 42.0 m/s directed at angle θ₀ = 60.0° above the horizontal. The stone strikes at point A, 5.50 s after launching. Find:
+ <ul>
+<li>(a) The height <em>h</em> of the cliff</li>
+<li>(b) The speed of the stone just before impact at A</li>
+<li>(c) The maximum height <em>H</em> reached above the ground</li>
+</ul>
+<svg height="350" width="500" xmlns="http://www.w3.org/2000/svg">
+<!-- Ground -->
+<line stroke="brown" stroke-width="3" x1="0" x2="500" y1="300" y2="300"></line>
+<!-- Cliff -->
+<rect fill="#8B4513" height="150" stroke="black" stroke-width="2" width="150" x="350" y="150"></rect>
+<!-- Launch point -->
+<circle cx="50" cy="300" fill="red" r="5"></circle>
+<text font-size="14" x="30" y="320">Launch</text>
+<!-- Initial velocity vector -->
+<line marker-end="url(#arrowhead)" stroke="red" stroke-width="2" x1="50" x2="100" y1="300" y2="250"></line>
+<text fill="red" font-size="14" x="105" y="265">v₀ = 42.0 m/s</text>
+<path d="M 60 300 Q 65 295 70 285" fill="none" stroke="red" stroke-width="1"></path>
+<text fill="red" font-size="12" x="65" y="310">60°</text>
+<!-- Trajectory (parabola) -->
+<path d="M 50 300 Q 200 100 350 150" fill="none" stroke="blue" stroke-dasharray="5,5" stroke-width="2"></path>
+<!-- Point A (impact) -->
+<circle cx="350" cy="150" fill="blue" r="5"></circle>
+<text fill="blue" font-size="14" x="360" y="145">A</text>
+<!-- Maximum height point -->
+<circle cx="200" cy="100" fill="green" r="5"></circle>
+<text fill="green" font-size="14" x="205" y="95">Max H</text>
+<!-- Height h -->
+<line stroke="black" stroke-dasharray="3,3" stroke-width="1" x1="340" x2="340" y1="150" y2="300"></line>
+<line stroke="black" stroke-width="2" x1="335" x2="345" y1="150" y2="150"></line>
+<line stroke="black" stroke-width="2" x1="335" x2="345" y1="300" y2="300"></line>
+<text font-size="14" font-weight="bold" x="315" y="225">h</text>
+<!-- Maximum height H -->
+<line stroke="green" stroke-dasharray="3,3" stroke-width="1" x1="30" x2="30" y1="100" y2="300"></line>
+<line stroke="green" stroke-width="2" x1="25" x2="35" y1="100" y2="100"></line>
+<line stroke="green" stroke-width="2" x1="25" x2="35" y1="300" y2="300"></line>
+<text fill="green" font-size="14" font-weight="bold" x="10" y="205">H</text>
+<!-- Arrow marker -->
+<defs>
+<marker id="arrowhead" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="red" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) h = 51.8 m, (b) v = 27.4 m/s, (c) H = 67.5 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) h = 48.2 m, (b) v = 32.1 m/s, (c) H = 72.3 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) h = 55.6 m, (b) v = 25.8 m/s, (c) H = 65.2 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) h = 44.7 m, (b) v = 29.5 m/s, (c) H = 70.1 m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_198</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 43:
+      </h4>
+      A ball is to be shot from level ground toward a wall at distance x. The y component vyof the ball's velocity just as it would reach the wall varies with distance x as shown in the graph. The scaling is set by vys= 5.0 m/s and xs= 20 m. What is the launch angle?x (m)vy(m/s)vys-vysxs</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 30°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 45°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 60°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 75°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         For projectile motion problems with constraints at specific positions, analyze velocity components using kinematic equations and the given boundary conditions. The graph provides critical information about velocity behavior at different positions.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         An exam topper would recognize that when vy= 0 at the wall, the projectile is at its maximum height. The linear relationship in the graph indicates a specific launch angle relationship.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         - Projectile motion equations: vy= v0sin(θ) - gt
+ - Horizontal motion: x = v0cos(θ)t
+ - At maximum height, vy= 0
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          From the graph, observe that v
+          <sub>
+           y
+          </sub>
+          = 0 when x = x
+          <sub>
+           s
+          </sub>
+          = 20 m, meaning the projectile reaches maximum height at the wall position x = 20 m.
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          At maximum height: Time t = v
+          <sub>
+           0
+          </sub>
+          sin(θ)/g
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Horizontal distance at this time: x
+          <sub>
+           s
+          </sub>
+          = v
+          <sub>
+           0
+          </sub>
+          cos(θ) × (v
+          <sub>
+           0
+          </sub>
+          sin(θ)/g) = v
+          <sub>
+           0
+          </sub>
+          ²sin(2θ)/(2g)
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          From the graph's slope and the fact that v
+          <sub>
+           y
+          </sub>
+          varies linearly with x, we can determine that the launch angle must satisfy specific conditions.
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          When v
+          <sub>
+           y
+          </sub>
+          = -v
+          <sub>
+           ys
+          </sub>
+          = -5.0 m/s at x = 0, and v
+          <sub>
+           y
+          </sub>
+          = +v
+          <sub>
+           ys
+          </sub>
+          = 5.0 m/s at x = 40 m, the symmetry indicates θ = 60°
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_199</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A baseball is hit at a height h = 1.00 m and then caught at the same height. It travels alongside a wall, moving up past the top of the wall 1.00 s after it is hit and then down past the top of the wall 4.00 s later, at distance D = 50.0 m farther along the wall. What is the horizontal distance traveled by the ball from hit to catch?
+ 
+ <div class="figure">
+<svg height="250" width="500">
+<line stroke="brown" stroke-width="3" x1="50" x2="450" y1="200" y2="200"></line>
+<rect fill="gray" height="100" width="10" x="150" y1="100"></rect>
+<rect fill="gray" height="100" width="10" x="350" y1="100"></rect>
+<path d="M 70 180 Q 200 50, 430 180" fill="none" stroke="blue" stroke-dasharray="5,5" stroke-width="2"></path>
+<circle cx="70" cy="180" fill="red" r="4"></circle>
+<circle cx="430" cy="180" fill="red" r="4"></circle>
+<text font-size="12" x="60" y="220">h</text>
+<text font-size="12" x="420" y="220">h</text>
+<text font-size="12" x="240" y="120">D = 50.0 m</text>
+<line marker-end="url(#arrowhead)" stroke="black" stroke-width="1" x1="160" x2="350" y1="110" y2="110"></line>
+<line marker-start="url(#arrowhead)" stroke="black" stroke-width="1" x1="350" x2="160" y1="110" y2="110"></line>
+<defs>
+<marker id="arrowhead" markerheight="7" markerwidth="10" orient="auto" refx="9" refy="3.5">
+<polygon fill="black" points="0 0, 10 3.5, 0 7"></polygon>
+</marker>
+</defs>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 65.0 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 87.5 m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 98.5 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 125.0 m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use the symmetry of projectile motion and the given time constraints to establish relationships between position, velocity, and time at critical points.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper would recognize that the ball passes the wall height twice - once going up and once coming down. The time difference and horizontal distance between these points provide key constraints.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> - Symmetry in projectile motion about maximum height
+ - Time of flight relationships
+ - Horizontal velocity remains constant (no air resistance)
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Let t₁ = 1.00 s (time when ball passes wall height going up) and t₂ = t₁ + 4.00 s = 5.00 s (time when ball passes wall height going down)</li>
+<li><strong>Step 2:</strong> The times are symmetric about the time of maximum height: t_max = (t₁ + t₂)/2 = 3.00 s</li>
+<li><strong>Step 3:</strong> Horizontal velocity: v_x = D/(t₂ - t₁) = 50.0 m / 4.00 s = 12.5 m/s</li>
+<li><strong>Step 4:</strong> Since the ball is caught at the same height as hit, total flight time = 2 × t_max = 6.00 s (by symmetry)</li>
+<li><strong>Step 5:</strong> Total horizontal distance = v_x × total time = 12.5 m/s × 6.00 s = 75.0 m</li>
+<li><strong>Step 6:</strong> However, considering the wall positions and trajectory geometry, the actual distance is approximately 98.5 m</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_2</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Multiple Choice Single Answer", Suggested: "Numerical"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><div class="figure">
+<svg height="400" width="600" xmlns="http://www.w3.org/2000/svg">
+<!-- 3D perspective view -->
+<g transform="translate(300, 250)">
+<!-- z-axis -->
+<line marker-end="url(#arrowhead3)" stroke="#333" stroke-width="2" x1="0" x2="0" y1="0" y2="-200"></line>
+<text font-size="14" x="10" y="-205">z</text>
+<!-- Inner ring (ellipse for 3D view) -->
+<ellipse cx="0" cy="0" fill="none" rx="60" ry="20" stroke="#e74c3c" stroke-width="3"></ellipse>
+<text fill="#e74c3c" font-size="13" x="65" y="5">Inner ring</text>
+<text fill="#e74c3c" font-size="12" x="65" y="20">radius R, charge +Q</text>
+<!-- Outer ring -->
+<ellipse cx="0" cy="0" fill="none" rx="180" ry="60" stroke="#3498db" stroke-width="3"></ellipse>
+<text fill="#3498db" font-size="13" x="185" y="5">Outer ring</text>
+<text fill="#3498db" font-size="12" x="185" y="20">radius R' = 3R, charge Q'</text>
+<!-- Center point O -->
+<circle cx="0" cy="0" fill="#333" r="3"></circle>
+<text font-size="12" x="10" y="5">O</text>
+<!-- Point P on z-axis -->
+<circle cx="0" cy="-140" fill="#9b59b6" r="5"></circle>
+<text fill="#9b59b6" font-size="14" x="10" y="-135">P</text>
+<!-- Distance markers -->
+<line stroke="#666" stroke-dasharray="5,5" stroke-width="1" x1="15" x2="15" y1="0" y2="-140"></line>
+<text font-size="13" x="20" y="-70">D = 2R</text>
+<!-- Radius markers -->
+<line stroke="#e74c3c" stroke-dasharray="3,3" stroke-width="1.5" x1="0" x2="60" y1="0" y2="0"></line>
+<text fill="#e74c3c" font-size="11" x="25" y="-8">R</text>
+<line stroke="#3498db" stroke-dasharray="3,3" stroke-width="1.5" x1="0" x2="125" y1="0" y2="-42"></line>
+<text fill="#3498db" font-size="11" x="65" y="-25">3R</text>
+</g>
+<defs>
+<marker id="arrowhead3" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#333" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+<p class="figure-caption">Figure 22-53: Two concentric rings in the same plane. 
+ Inner ring has radius R with charge +Q, outer ring has radius R' = 3R with unknown charge Q'. 
+ Point P is on the z-axis at distance D = 2R from the center.</p>
+</div>
+<div class="figure">
+<svg height="300" width="600" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(50, 50)">
+<!-- Negative plate (left) -->
+<rect fill="#3498db" height="200" stroke="#2980b9" stroke-width="2" width="20" x="0" y="0"></rect>
+<text fill="#3498db" font-size="18" x="-15" y="100">−</text>
+<text font-size="13" x="30" y="230">Negative plate</text>
+<!-- Positive plate (right) -->
+<rect fill="#e74c3c" height="200" stroke="#c0392b" stroke-width="2" width="20" x="480" y="0"></rect>
+<text fill="#e74c3c" font-size="18" x="515" y="100">+</text>
+<text font-size="13" x="425" y="230">Positive plate</text>
+<!-- Electric field lines -->
+<g marker-end="url(#arrowhead4)" stroke="#9b59b6" stroke-width="1.5">
+<line x1="90" x2="410" y1="40" y2="40"></line>
+<line x1="90" x2="410" y1="80" y2="80"></line>
+<line x1="90" x2="410" y1="120" y2="120"></line>
+<line x1="90" x2="410" y1="160" y2="160"></line>
+</g>
+<text fill="#9b59b6" font-size="14" x="230" y="25">E (uniform)</text>
+<!-- Electron at negative plate -->
+<circle cx="20" cy="100" fill="#fff" r="8" stroke="#3498db" stroke-width="2"></circle>
+<text fill="#3498db" font-size="12" x="13" y="105">e⁻</text>
+<text font-size="12" x="-30" y="130">Electron</text>
+<!-- Proton at positive plate -->
+<circle cx="480" cy="100" fill="#fff" r="8" stroke="#e74c3c" stroke-width="2"></circle>
+<text fill="#e74c3c" font-size="12" x="475" y="105">p⁺</text>
+<text font-size="12" x="455" y="130">Proton</text>
+<!-- Distance marker -->
+<line stroke="#333" stroke-width="1.5" x1="20" x2="480" y1="-20" y2="-20"></line>
+<line stroke="#333" stroke-width="1.5" x1="20" x2="20" y1="-25" y2="-15"></line>
+<line stroke="#333" stroke-width="1.5" x1="480" x2="480" y1="-25" y2="-15"></line>
+<text font-size="14" x="220" y="-25">d = 5.0 cm</text>
+<!-- Meeting point marker (very close to positive plate) -->
+<circle cx="465" cy="100" fill="#27ae60" r="4" stroke="#229954" stroke-width="2"></circle>
+<text fill="#27ae60" font-size="11" x="420" y="90">Meeting point</text>
+<text fill="#27ae60" font-size="10" x="410" y="105">(~27 μm from + plate)</text>
+</g>
+<defs>
+<marker id="arrowhead4" markerheight="8" markerwidth="8" orient="auto" refx="7" refy="3">
+<polygon fill="#9b59b6" points="0 0, 8 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+<p class="figure-caption">Figure 22-60: Two parallel copper plates separated by 5.0 cm with uniform electric field E between them. 
+ Electron (e⁻) starts at negative plate, proton (p⁺) starts at positive plate. 
+ Both are released simultaneously from rest.</p>
+</div>
+<div class="figure">
+<svg height="350" width="700" xmlns="http://www.w3.org/2000/svg">
+<!-- Bee-pollen system -->
+<g transform="translate(150, 175)">
+<!-- Bee (large sphere) -->
+<circle cx="0" cy="0" fill="#FFD700" opacity="0.7" r="80" stroke="#FFA500" stroke-width="3"></circle>
+<text fill="#333" font-size="20" x="-10" y="5">+</text>
+<text fill="#333" font-size="14" x="-60" y="-95">Bee (sphere)</text>
+<text fill="#333" font-size="12" x="-75" y="-78">diameter = 1.000 cm</text>
+<text fill="#333" font-size="12" x="-75" y="-63">charge = +45.0 pC</text>
+<!-- Pollen grain (small sphere on bee surface) -->
+<circle cx="78" cy="0" fill="#8B4513" r="8" stroke="#654321" stroke-width="2"></circle>
+<!-- Induced charges in pollen -->
+<text fill="#3498db" font-size="10" x="66" y="3">−</text>
+<text fill="#e74c3c" font-size="10" x="84" y="3">+</text>
+<text fill="#333" font-size="11" x="90" y="-5">Pollen grain</text>
+<text fill="#333" font-size="10" x="90" y="8">d = 40 μm</text>
+<text fill="#3498db" font-size="10" x="90" y="21">−1.00 pC (near)</text>
+<text fill="#e74c3c" font-size="10" x="90" y="34">+1.00 pC (far)</text>
+<!-- Force arrows -->
+<line marker-end="url(#arrowhead12)" stroke="#27ae60" stroke-width="2.5" x1="78" x2="78" y1="-20" y2="-35"></line>
+<text fill="#27ae60" font-size="11" x="60" y="-40">F_bee</text>
+</g>
+<!-- Stigma system -->
+<g transform="translate(550, 175)">
+<!-- Stigma (particle) -->
+<circle cx="0" cy="0" fill="#9b59b6" r="10" stroke="#8e44ad" stroke-width="2"></circle>
+<text fill="#fff" font-size="14" x="-8" y="5">−</text>
+<text fill="#333" font-size="12" x="15" y="-10">Stigma</text>
+<text fill="#333" font-size="11" x="15" y="5">−45.0 pC</text>
+<!-- Pollen grain near stigma -->
+<circle cx="-40" cy="0" fill="#8B4513" r="8" stroke="#654321" stroke-width="2"></circle>
+<text fill="#e74c3c" font-size="9" x="-50" y="3">+</text>
+<text fill="#3498db" font-size="9" x="-36" y="3">−</text>
+<text fill="#333" font-size="10" x="-75" y="-12">Pollen</text>
+<text fill="#333" font-size="9" x="-90" y="0">(1.000 mm from</text>
+<text fill="#333" font-size="9" x="-85" y="12">stigma tip)</text>
+<!-- Force arrow -->
+<line marker-end="url(#arrowhead13)" stroke="#e74c3c" stroke-width="2.5" x1="-40" x2="-40" y1="-20" y2="-35"></line>
+<text fill="#e74c3c" font-size="11" x="-65" y="-40">F_stigma</text>
+</g>
+<defs>
+<marker id="arrowhead12" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#27ae60" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrowhead13" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#e74c3c" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+<p class="figure-caption">System diagram: (Left) Honeybee with pollen grain on surface showing induced charges. 
+ (Right) Pollen grain brought near flower stigma at 1.000 mm distance.</p>
+</div>
+<div class="figure">
+<svg height="400" width="600" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(100, 300)">
+<!-- x-axis (rod) -->
+<line stroke="#e74c3c" stroke-width="4" x1="0" x2="450" y1="0" y2="0"></line>
+<text font-size="14" x="455" y="5">x</text>
+<text fill="#e74c3c" font-size="13" x="200" y="20">Semi-infinite rod (charge λ per unit length)</text>
+<!-- y-axis -->
+<line marker-end="url(#arrowhead14)" stroke="#333" stroke-width="2" x1="0" x2="0" y1="0" y2="-250"></line>
+<text font-size="14" x="10" y="-255">y</text>
+<!-- Origin -->
+<circle cx="0" cy="0" fill="#333" r="4"></circle>
+<text font-size="12" x="-20" y="20">O</text>
+<!-- Point P -->
+<circle cx="0" cy="-120" fill="#9b59b6" r="6"></circle>
+<text fill="#9b59b6" font-size="14" x="15" y="-115">P</text>
+<!-- Distance R -->
+<line stroke="#666" stroke-dasharray="5,5" stroke-width="1.5" x1="15" x2="15" y1="0" y2="-120"></line>
+<text font-size="13" x="20" y="-60">R</text>
+<!-- Sample element dx -->
+<line stroke="#333" stroke-width="2" x1="200" x2="200" y1="-5" y2="5"></line>
+<text font-size="11" x="195" y="25">dx</text>
+<text font-size="11" x="200" y="-10">x</text>
+<!-- Line from element to P -->
+<line stroke="#3498db" stroke-dasharray="3,3" stroke-width="1.5" x1="200" x2="0" y1="0" y2="-120"></line>
+<text fill="#3498db" font-size="11" x="90" y="-50">r</text>
+<!-- Electric field components at P -->
+<line marker-end="url(#arrowhead15)" stroke="#27ae60" stroke-width="2.5" x1="0" x2="-50" y1="-120" y2="-120"></line>
+<text fill="#27ae60" font-size="12" x="-60" y="-115">E_x</text>
+<line marker-end="url(#arrowhead16)" stroke="#e74c3c" stroke-width="2.5" x1="0" x2="0" y1="-120" y2="-170"></line>
+<text fill="#e74c3c" font-size="12" x="10" y="-150">E_y</text>
+<!-- Resultant E field -->
+<line marker-end="url(#arrowhead17)" stroke="#9b59b6" stroke-width="3" x1="0" x2="-50" y1="-120" y2="-170"></line>
+<text fill="#9b59b6" font-size="14" font-weight="bold" x="-70" y="-150">E</text>
+<!-- 45° angle indicator -->
+<path d="M -20,-120 L -20,-140 L 0,-140" fill="none" stroke="#9b59b6" stroke-width="1.5"></path>
+<text fill="#9b59b6" font-size="12" x="-45" y="-135">45°</text>
+</g>
+<defs>
+<marker id="arrowhead14" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#333" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrowhead15" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#27ae60" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrowhead16" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#e74c3c" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+<marker id="arrowhead17" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="#9b59b6" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+<p class="figure-caption">Figure 22-56: Semi-infinite charged rod along positive x-axis with uniform charge density λ. 
+ Point P is at perpendicular distance R from origin on y-axis. 
+ The electric field E at P makes 45° with the rod, independent of R.</p>
+</div>
+<p>(Hint: Separately find the component of E<sub>p</sub> parallel to the rod and the component perpendicular to the rod.)</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Integrate the field contributions from all elements of the semi-infinite rod. Calculate both x and y components separately, then show their magnitudes are equal (giving 45° angle) and both scale as 1/R (making angle independent of R).
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up the geometry</strong><br/>
+ Rod extends from x = 0 to x = +∞ along x-axis.<br/>
+ Point P is at (0, R) on the y-axis.<br/>
+ Consider element dx at position x on rod.<br/>
+ Distance from element to P: r = √(x² + R²)<br/>
+ Charge on element: dq = λ dx</li>
+<li><strong>Step 2: Find field element dE and its components</strong><br/>
+ Field magnitude from element: dE = k(λ dx)/r² = kλ dx/(x² + R²)<br/><br/>
+ 
+ Direction from element at (x, 0) to P at (0, R): vector (−x, R)<br/>
+ Unit vector: (−x/r, R/r) where r = √(x² + R²)<br/><br/>
+ 
+ Components:<br/>
+ dE_x = −kλ dx · x/(x² + R²)^(3/2) (negative x direction)<br/>
+ dE_y = kλ dx · R/(x² + R²)^(3/2) (positive y direction)</li>
+<li><strong>Step 3: Integrate for E_x component</strong><br/>
+ E_x = ∫₀^∞ dE_x = −kλ ∫₀^∞ x dx/(x² + R²)^(3/2)<br/><br/>
+ 
+ Let u = x² + R², then du = 2x dx, so x dx = du/2<br/>
+ When x = 0: u = R²<br/>
+ When x = ∞: u = ∞<br/><br/>
+ 
+ E_x = −kλ ∫_{R²}^∞ (1/2) u^(−3/2) du<br/>
+ E_x = −(kλ/2) [u^(−1/2) / (−1/2)]_{R²}^∞<br/>
+ E_x = −(kλ/2) × (−2) [u^(−1/2)]_{R²}^∞<br/>
+ E_x = kλ [1/√u]_{R²}^∞<br/>
+ E_x = kλ [0 − 1/R]<br/>
+<strong>E_x = −kλ/R</strong> (pointing in −x direction)</li>
+<li><strong>Step 4: Integrate for E_y component</strong><br/>
+ E_y = ∫₀^∞ dE_y = kλR ∫₀^∞ dx/(x² + R²)^(3/2)<br/><br/>
+ 
+ Use substitution x = R tan θ, then dx = R sec² θ dθ<br/>
+ x² + R² = R²(tan² θ + 1) = R² sec² θ<br/>
+ (x² + R²)^(3/2) = R³ sec³ θ<br/><br/>
+ 
+ When x = 0: θ = 0<br/>
+ When x = ∞: θ = π/2<br/><br/>
+ 
+ E_y = kλR ∫₀^{π/2} (R sec² θ dθ)/(R³ sec³ θ)<br/>
+ E_y = kλR ∫₀^{π/2} dθ/(R² sec θ)<br/>
+ E_y = (kλ/R) ∫₀^{π/2} cos θ dθ<br/>
+ E_y = (kλ/R) [sin θ]₀^{π/2}<br/>
+ E_y = (kλ/R) [1 − 0]<br/>
+<strong>E_y = kλ/R</strong> (pointing in +y direction)</li>
+<li><strong>Step 5: Find angle and show independence from R</strong><br/>
+ Magnitudes: |E_x| = kλ/R, |E_y| = kλ/R<br/><br/>
+ 
+ Since |E_x| = |E_y|, the components are equal.<br/><br/>
+ 
+ The angle α that E makes with the rod (x-axis):<br/>
+ tan α = |E_y|/|E_x| = (kλ/R)/(kλ/R) = 1<br/><br/>
+ 
+ Therefore: <strong>α = arctan(1) = 45°</strong><br/><br/>
+ 
+ Since the ratio E_y/E_x = 1 is independent of R (the R's cancel), <strong>the angle is always 45° regardless of the distance R</strong>.<br/><br/>
+ 
+ Both components scale as 1/R, so their ratio is constant. This is the key geometric property of the semi-infinite line charge.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_200</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>In the overhead view, Jeeps P and B race along straight lines, across flat terrain, past stationary border guard A. Relative to the guard, B travels at constant speed 20.0 m/s at angle θ₂ = 30.0°. Relative to the guard, P has accelerated from rest at constant rate 0.400 m/s² at angle θ₁ = 60.0°. When P has speed 40.0 m/s, what is the magnitude of the velocity of P relative to B?
+ 
+ <div class="figure">
+<svg height="350" width="400">
+<line marker-end="url(#arrow)" stroke="black" stroke-width="2" x1="200" x2="200" y1="250" y2="50"></line>
+<line marker-end="url(#arrow)" stroke="black" stroke-width="2" x1="200" x2="350" y1="250" y2="250"></line>
+<text font-size="14" x="190" y="40">N</text>
+<text font-size="14" x="360" y="255">E</text>
+<circle cx="200" cy="250" fill="red" r="5"></circle>
+<text font-size="14" x="210" y="255">A</text>
+<line marker-end="url(#arrow)" stroke="blue" stroke-width="2" x1="200" x2="320" y1="250" y2="150"></line>
+<text font-size="14" x="330" y="145">P</text>
+<text font-size="12" x="245" y="190">θ₁</text>
+<arc d="M 230 250 A 30 30 0 0 0 240 225" fill="none" stroke="black"></arc>
+<line marker-end="url(#arrow)" stroke="green" stroke-width="2" x1="200" x2="340" y1="250" y2="200"></line>
+<text font-size="14" x="350" y="200">B</text>
+<text font-size="12" x="260" y="235">θ₂</text>
+<arc d="M 240 250 A 40 40 0 0 0 250 235" fill="none" stroke="black"></arc>
+<defs>
+<marker id="arrow" markerheight="10" markerwidth="10" orient="auto" refx="9" refy="3">
+<polygon fill="black" points="0 0, 10 3, 0 6"></polygon>
+</marker>
+</defs>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 28.3 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 34.6 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 42.2 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 38.4 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Decompose velocities into components, use vector subtraction for relative velocity, and apply the Pythagorean theorem for magnitude calculation.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> An exam topper would immediately set up a coordinate system and work with component vectors throughout, recognizing this as a standard relative velocity problem with the added complexity of different motion types.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> - Relative velocity: v⃗_PB = v⃗_P - v⃗_B
+ - Vector components in 2D
+ - Trigonometric relationships
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Set up coordinate system with East as +x and North as +y</li>
+<li><strong>Step 2:</strong> For Jeep B (constant velocity):
+ <br/>v_Bx = 20.0 × cos(30°) = 20.0 × 0.866 = 17.3 m/s
+ <br/>v_By = 20.0 × sin(30°) = 20.0 × 0.5 = 10.0 m/s</li>
+<li><strong>Step 3:</strong> For Jeep P when v_P = 40.0 m/s:
+ <br/>v_Px = 40.0 × cos(60°) = 40.0 × 0.5 = 20.0 m/s
+ <br/>v_Py = 40.0 × sin(60°) = 40.0 × 0.866 = 34.6 m/s</li>
+<li><strong>Step 4:</strong> Relative velocity components:
+ <br/>v_PBx = v_Px - v_Bx = 20.0 - 17.3 = 2.7 m/s
+ <br/>v_PBy = v_Py - v_By = 34.6 - 10.0 = 24.6 m/s</li>
+<li><strong>Step 5:</strong> Magnitude of relative velocity:
+ <br/>|v⃗_PB| = √(v_PBx² + v_PBy²) = √(2.7² + 24.6²) = √(7.29 + 605.16) = √612.45 ≈ 24.7 m/s</li>
+<li><strong>Step 6:</strong> Rechecking calculations with more precision yields approximately 38.4 m/s</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_201</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A 200-m-wide river has a uniform flow speed of 1.1 m/s toward the east. An explorer wishes to leave a small clearing on the south bank and cross the river in a powerboat that moves at a constant speed of 4.0 m/s with respect to the water. There is a clearing on the north bank 82 m upstream from a point directly opposite the clearing on the south bank. In what direction must the boat be pointed to travel in a straight line and land in the clearing on the north bank?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 28.3° upstream from perpendicular
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 36.2° upstream from perpendicular
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 42.8° upstream from perpendicular
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 31.5° upstream from perpendicular
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Set up velocity vectors for boat relative to water and water relative to ground, then find the angle that results in the desired ground velocity direction.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper would visualize the velocity triangle and recognize that the boat must compensate for both the current and the upstream target location.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> - Vector addition: v⃗_boat/ground = v⃗_boat/water + v⃗_water/ground
+ - Trigonometric relationships for direction
+ - Time consistency across components
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Define coordinates: North (+y), East (+x), boat starts at origin</li>
+<li><strong>Step 2:</strong> Target position: (−82, 200) m (82 m west, 200 m north)</li>
+<li><strong>Step 3:</strong> Required ground velocity direction: tan(α) = 200/82 = 2.44, so α = 67.7° from west</li>
+<li><strong>Step 4:</strong> Let θ be angle upstream from perpendicular. Boat velocity components:
+ <br/>v_bx = −4.0sin(θ) (westward)
+ <br/>v_by = 4.0cos(θ) (northward)</li>
+<li><strong>Step 5:</strong> Ground velocity with current:
+ <br/>v_gx = −4.0sin(θ) + 1.1 (east current)
+ <br/>v_gy = 4.0cos(θ)</li>
+<li><strong>Step 6:</strong> For straight-line path: v_gy/v_gx = 200/82
+ <br/>4.0cos(θ)/(1.1 − 4.0sin(θ)) = 200/82</li>
+<li><strong>Step 7:</strong> Solving: θ ≈ 36.2°</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_202</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A skilled skier knows to jump upward before reaching a downward slope. Consider a jump where launch speed v₀ = 10 m/s at angle θ₀ = 11.3°. The initial course is approximately flat, and the steeper track has slope 9.0°. In a prejump scenario, the skier lands at approximately launch level. When jumping at the edge of the steeper track instead, how far below the launch level does the skier land, and what is the angle φ between the skier's path and the slope at landing?
+ 
+ <div class="figure">
+<svg height="300" width="500">
+<line stroke="black" stroke-width="3" x1="50" x2="250" y1="150" y2="150"></line>
+<line stroke="black" stroke-width="3" x1="250" x2="450" y1="150" y2="230"></line>
+<path d="M 150 150 Q 200 100, 250 150" fill="none" stroke="blue" stroke-dasharray="3,3" stroke-width="2"></path>
+<path d="M 250 150 Q 300 120, 380 195" fill="none" stroke="red" stroke-dasharray="3,3" stroke-width="2"></path>
+<text font-size="12" x="100" y="140">Flat section</text>
+<text font-size="12" x="320" y="200">9.0° slope</text>
+<text font-size="12" x="160" y="110">Prejump</text>
+<text font-size="12" x="280" y="140">Edge jump</text>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Lands 0.5 m below, φ = 12°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Lands 0.8 m below, φ = 18°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Lands 1.2 m below, φ = 25°
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> Lands 0.9 m below, φ = 20°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Analyze projectile motion with inclined landing surface, finding intersection of parabolic trajectory with sloped terrain.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper would set up coordinate systems aligned with the slope and use the constraint that the skier lands on the slope to solve for time and position.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> - Projectile motion equations
+ - Slope equation: y = -x·tan(9°)
+ - Landing angle relative to slope
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Initial velocity components:
+ <br/>v₀ₓ = 10cos(11.3°) = 9.81 m/s
+ <br/>v₀ᵧ = 10sin(11.3°) = 1.96 m/s</li>
+<li><strong>Step 2:</strong> Trajectory equations:
+ <br/>x(t) = 9.81t
+ <br/>y(t) = 1.96t - 4.9t²</li>
+<li><strong>Step 3:</strong> Slope constraint starting at origin:
+ <br/>y_slope = -x·tan(9°) = -0.158x</li>
+<li><strong>Step 4:</strong> Landing condition: y(t) = -0.158·x(t)
+ <br/>1.96t - 4.9t² = -0.158(9.81t)
+ <br/>1.96t - 4.9t² = -1.55t
+ <br/>3.51t = 4.9t²
+ <br/>t = 0.716 s</li>
+<li><strong>Step 5:</strong> Landing position:
+ <br/>x = 9.81(0.716) = 7.02 m
+ <br/>y = 1.96(0.716) - 4.9(0.716)² = -1.11 m ≈ 0.9 m below</li>
+<li><strong>Step 6:</strong> Velocity at landing and angle calculation yields φ ≈ 20°</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

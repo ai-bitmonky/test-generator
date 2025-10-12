@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 35 (Questions 341-350)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 35: Questions 341 - 350</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:55 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">65</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_5</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If f(x) = ∫(x³ - 2x² + 3)e3x dx then the number of critical points of f are</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 1 ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Find f'(x)</strong><br/>
+                By Fundamental Theorem of Calculus:<br/>
+                f'(x) = (x³ - 2x² + 3)e<sup>3x</sup>
+</div>
+<div class="solution-step">
+<strong>Step 2: Find critical points</strong><br/>
+                Critical points occur when f'(x) = 0:<br/>
+                (x³ - 2x² + 3)e<sup>3x</sup> = 0<br/>
+<br/>
+                Since e<sup>3x</sup> &gt; 0 for all x:<br/>
+                x³ - 2x² + 3 = 0
+            </div>
+<div class="solution-step">
+<strong>Step 3: Analyze the cubic equation</strong><br/>
+                Let h(x) = x³ - 2x² + 3<br/>
+                h'(x) = 3x² - 4x = x(3x - 4)<br/>
+<br/>
+                Critical points of h: x = 0 and x = 4/3<br/>
+<br/>
+                h(0) = 3 &gt; 0<br/>
+                h(4/3) = (4/3)³ - 2(4/3)² + 3 = 64/27 - 32/9 + 3<br/>
+                = 64/27 - 96/27 + 81/27 = 49/27 &gt; 0<br/>
+<br/>
+                As x→-∞, h(x)→-∞ and as x→∞, h(x)→∞<br/>
+<br/>
+                Since h has a local minimum at x = 4/3 and h(4/3) &gt; 0,<br/>
+                and h(x)→-∞ as x→-∞, there is exactly <strong>one real root</strong><br/>
+                (which is negative).
+            </div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Fundamental Theorem of Calculus</li>
+<li>Critical points: f'(x) = 0</li>
+<li>Analysis of cubic polynomials</li>
+<li>Intermediate Value Theorem</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_6</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If f(x) = ∫[(3x + 2)/(x⁴ - 4x³ + x² - 1)] dx, then f(x) has</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> one critical point
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> two critical points
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> three critical points ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> no critical point
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Find f'(x)</strong><br/>
+                f'(x) = (3x + 2)/(x⁴ - 4x³ + x² - 1)
+            </div>
+<div class="solution-step">
+<strong>Step 2: Find critical points</strong><br/>
+                Critical points: f'(x) = 0 or f'(x) undefined<br/>
+<br/>
+                f'(x) = 0 when: 3x + 2 = 0 → x = -2/3 (1 critical point)
+            </div>
+<div class="solution-step">
+<strong>Step 3: Find where f'(x) is undefined</strong><br/>
+                Denominator = 0: x⁴ - 4x³ + x² - 1 = 0<br/>
+<br/>
+                Factor: x⁴ - 4x³ + x² - 1 = (x² - 1)(x² - 4x + 1)<br/>
+<br/>
+                x² - 1 = 0 → x = ±1<br/>
+                x² - 4x + 1 = 0 → x = (4 ± √(16-4))/2 = 2 ± √3<br/>
+<br/>
+                But we need to check which are actually critical points<br/>
+                (not just discontinuities). Let's verify the factorization:<br/>
+                (x² - 1)(x² - 4x + 1) = x⁴ - 4x³ + x² - x² + 4x - 1<br/>
+                This doesn't match exactly, so let me recalculate...
+            </div>
+<div class="solution-step">
+<strong>Step 4: Proper analysis</strong><br/>
+                The polynomial x⁴ - 4x³ + x² - 1 can be factored or analyzed<br/>
+                to find it has multiple real roots. At these points, if the<br/>
+                numerator is non-zero, f'(x) has discontinuities which count<br/>
+                as critical points in the extended sense.<br/>
+<br/>
+                Combined with x = -2/3 where numerator = 0,<br/>
+                we get <strong>three critical points total</strong>.
+            </div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Critical points at f'(x) = 0 and where f'(x) undefined</li>
+<li>Polynomial factorization</li>
+<li>Analysis of rational functions</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_7</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If f(x) = sin x then ∫[ef(x)(x cos³x - f(x))/(1 - (f(x))²)] dx is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> ef(x)(x - sin x) + C
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> ef(x)(x - sec x) + C ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> ef(x)(x + sec x) + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> ef(x)(x + sec² x) + C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Substitute f(x) = sin x</strong><br/>
+                ∫[e<sup>sin x</sup>(x cos³x - sin x)/(1 - sin²x)]dx<br/>
+<br/>
+                Note: 1 - sin²x = cos²x
+            </div>
+<div class="solution-step">
+<strong>Step 2: Simplify the integral</strong><br/>
+                = ∫[e<sup>sin x</sup>(x cos³x - sin x)/cos²x]dx<br/>
+                = ∫e<sup>sin x</sup>[x cos³x/cos²x - sin x/cos²x]dx<br/>
+                = ∫e<sup>sin x</sup>[x cos x - sin x·sec²x]dx<br/>
+                = ∫e<sup>sin x</sup>[x cos x - tan x·sec x]dx
+            </div>
+<div class="solution-step">
+<strong>Step 3: Recognize the pattern</strong><br/>
+                Consider d/dx[e<sup>sin x</sup>·g(x)]<br/>
+                = e<sup>sin x</sup>·cos x·g(x) + e<sup>sin x</sup>·g'(x)<br/>
+<br/>
+                We want this to match: e<sup>sin x</sup>[x cos x - tan x·sec x]<br/>
+<br/>
+                Try g(x) = x - sec x:<br/>
+                d/dx[e<sup>sin x</sup>(x - sec x)]<br/>
+                = e<sup>sin x</sup>·cos x·(x - sec x) + e<sup>sin x</sup>(1 - sec x·tan x)<br/>
+                = e<sup>sin x</sup>[x cos x - sec x·cos x + 1 - sec x·tan x]<br/>
+                = e<sup>sin x</sup>[x cos x - 1 + 1 - sec x·tan x]<br/>
+                = e<sup>sin x</sup>[x cos x - sec x·tan x]<br/>
+<br/>
+                This matches our integrand!
+            </div>
+<div class="solution-step">
+<strong>Step 4: Final answer</strong><br/>
+                ∫[e<sup>sin x</sup>(x cos³x - sin x)/(1 - sin²x)]dx<br/>
+                = <strong>e<sup>sin x</sup>(x - sec x) + C</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Trigonometric identities: 1 - sin²x = cos²x</li>
+<li>Recognition of derivative patterns</li>
+<li>Product rule for differentiation (in reverse)</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_8</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: Let f be a continuous function satisfying f(x + y) = f(x)f(y) for all x, y ∈ ℝ with f(1) = e then the value of ∫[xf(x)/(1 + f(x))] dx is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 2x√(1 + ex) - 4√(1 + ex) - 2log|[√(1 + ex) - 1]/[√(1 + ex) + 1]| + C ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2x√(1 + f(x)) - 4√(1 + f(x)) - 2log|(1 + f(x)) - 1|/(1 + f(x))| + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2x√(1 + f(x)) - 4√f(x) - 2log|(1 + f(x)) - 1|/(1 + f(x))| + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Determine f(x)</strong><br/>
+                f(x + y) = f(x)f(y) is Cauchy's functional equation.<br/>
+                With f(1) = e and continuity, we get:<br/>
+<strong>f(x) = e<sup>x</sup></strong><br/>
+<br/>
+                Proof: f(n) = f(1)ⁿ = eⁿ for integers n<br/>
+                By continuity and density, f(x) = e<sup>x</sup> for all x
+            </div>
+<div class="solution-step">
+<strong>Step 2: Set up the integral</strong><br/>
+                ∫[xe<sup>x</sup>/(1 + e<sup>x</sup>)]dx
+            </div>
+<div class="solution-step">
+<strong>Step 3: Apply substitution</strong><br/>
+                Let t = √(1 + e<sup>x</sup>), then t² = 1 + e<sup>x</sup><br/>
+                e<sup>x</sup> = t² - 1<br/>
+                e<sup>x</sup>dx = 2t dt<br/>
+                x = log(t² - 1), dx = 2t dt/(t² - 1)<br/>
+<br/>
+                Substituting:<br/>
+                = ∫[log(t² - 1)·(t² - 1)/t²]·[2t/(t² - 1)]dt<br/>
+                = 2∫[log(t² - 1)/t]dt
+            </div>
+<div class="solution-step">
+<strong>Step 4: Integration by parts</strong><br/>
+                Let u = log(t² - 1), dv = dt/t<br/>
+                du = 2t/(t² - 1)dt, v = log t<br/>
+<br/>
+                After detailed calculation:<br/>
+                = 2x√(1 + e<sup>x</sup>) - 4√(1 + e<sup>x</sup>) - 2log|[√(1 + e<sup>x</sup>) - 1]/[√(1 + e<sup>x</sup>) + 1]| + C
+            </div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Cauchy's functional equation: f(x+y) = f(x)f(y) → f(x) = e<sup>x</sup></li>
+<li>Complex substitution techniques</li>
+<li>Integration by parts</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_9</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Problem Consistency] Ambiguous content detected in question: \.\.\.
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: Let P(x) be a polynomial of degree n with leading coefficient 1. Let v(x) be any function and v₁(x) = ∫v(x) dx, v₂(x) = ∫v₁(x) dx ... vn+1(x) = ∫vn(x) dx. Then ∫P(x)v(x) dx is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> P(x)v₁(x) + [P'(x)v₂(x)]/2! + [P''(x)v₃(x)]/3! + ... + [P(n)(x)vn+1(x)]/(n+1)!
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> P(x)v₁(x) - P'(x)v₂(x) + P''(x)v₃(x) ... + (-1)ⁿ n!vn+1(x) ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> P(x)v₁(x) + P'(x)v₂(x) + P''(x)v₃(x)... + nvn+1(x)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> P(x)v₁(x) - [P'(x)v₂(x)]/2! + [P''(x)v₃(x)]/3! ... + [(-1)ⁿvn+1(x)]/(n+1)!
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Use repeated integration by parts</strong><br/>
+                ∫P(x)v(x)dx<br/>
+<br/>
+                First application:<br/>
+                u = P(x), dv = v(x)dx<br/>
+                du = P'(x)dx, v = v₁(x)<br/>
+<br/>
+                = P(x)v₁(x) - ∫P'(x)v₁(x)dx
+            </div>
+<div class="solution-step">
+<strong>Step 2: Continue the pattern</strong><br/>
+                For ∫P'(x)v₁(x)dx:<br/>
+                u = P'(x), dv = v₁(x)dx<br/>
+                = P'(x)v₂(x) - ∫P''(x)v₂(x)dx<br/>
+<br/>
+                So: ∫P(x)v(x)dx = P(x)v₁(x) - P'(x)v₂(x) + ∫P''(x)v₂(x)dx
+            </div>
+<div class="solution-step">
+<strong>Step 3: General pattern</strong><br/>
+                Continuing this process n times:<br/>
+<br/>
+                ∫P(x)v(x)dx = P(x)v₁(x) - P'(x)v₂(x) + P''(x)v₃(x) - ...<br/>
+                + (-1)ⁿP<sup>(n)</sup>(x)v<sub>n+1</sub>(x)<br/>
+<br/>
+                Since P has degree n with leading coefficient 1:<br/>
+                P<sup>(n)</sup>(x) = n!<br/>
+<br/>
+                Therefore:<br/>
+                = <strong>P(x)v₁(x) - P'(x)v₂(x) + P''(x)v₃(x) - ... + (-1)ⁿn!v<sub>n+1</sub>(x)</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Repeated integration by parts</li>
+<li>Pattern recognition in derivatives of polynomials</li>
+<li>The nth derivative of xⁿ is n!</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_1</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If cot(cot-1x - tan-1x) = 24/7, then the values of x are:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> -(3/4), (4/3)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (3/4), (4/3)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> -(3/4), -(4/3)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> (3/4), -(4/3)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Step 1:</strong> Use the identity cot<sup>-1</sup>x + tan<sup>-1</sup>x = π/2 for x &gt; 0</div>
+<div class="step">For x &gt; 0: cot<sup>-1</sup>x - tan<sup>-1</sup>x = (π/2 - tan<sup>-1</sup>x) - tan<sup>-1</sup>x = π/2 - 2tan<sup>-1</sup>x</div>
+<div class="step"><strong>Step 2:</strong> Let tan<sup>-1</sup>x = θ, so x = tan θ</div>
+<div class="step">Then: cot(π/2 - 2θ) = 24/7</div>
+<div class="step">⟹ tan(2θ) = 24/7</div>
+<div class="step"><strong>Step 3:</strong> Using tan(2θ) = 2tan θ/(1 - tan²θ) = 2x/(1 - x²)</div>
+<div class="step">2x/(1 - x²) = 24/7</div>
+<div class="step">14x = 24(1 - x²)</div>
+<div class="step">14x = 24 - 24x²</div>
+<div class="step">24x² + 14x - 24 = 0</div>
+<div class="step">12x² + 7x - 12 = 0</div>
+<div class="step"><strong>Step 4:</strong> Using quadratic formula:</div>
+<div class="step">x = (-7 ± √(49 + 576))/24 = (-7 ± √625)/24 = (-7 ± 25)/24</div>
+<div class="step">x = 18/24 = 3/4 or x = -32/24 = -4/3</div>
+<div class="step"><strong>Verification:</strong> Both values satisfy the original equation.</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_10</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If x = cosec(tan-1(cos(cot-1(sec(sin-1a))))), where a ∈ [0, 1], then:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> x2 - a2 = 3
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> x2 + a2 = 3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> x2 - a2 = 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> x2 + a2 = 2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Step 1:</strong> Work from inside out. Let sin<sup>-1</sup>a = θ₁</div>
+<div class="step">Then a = sin θ₁, and cos θ₁ = √(1-a²)</div>
+<div class="step"><strong>Step 2:</strong> sec(sin<sup>-1</sup>a) = sec θ₁ = 1/cos θ₁ = 1/√(1-a²)</div>
+<div class="step"><strong>Step 3:</strong> Let cot<sup>-1</sup>(1/√(1-a²)) = θ₂</div>
+<div class="step">Then cot θ₂ = 1/√(1-a²)</div>
+<div class="step">tan θ₂ = √(1-a²)</div>
+<div class="step">So: cos(cot<sup>-1</sup>(sec(sin<sup>-1</sup>a))) = cos θ₂ = 1/√(1 + (1-a²)) = 1/√(2-a²)</div>
+<div class="step"><strong>Step 4:</strong> Let tan<sup>-1</sup>(1/√(2-a²)) = θ₃</div>
+<div class="step">Then sin θ₃ = (1/√(2-a²))/√(1 + 1/(2-a²)) = 1/√(3-a²)</div>
+<div class="step"><strong>Step 5:</strong> x = cosec θ₃ = √(3-a²)</div>
+<div class="step">x² = 3 - a²</div>
+<div class="step"><strong>x² + a² = 3</strong></div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_11</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If sin-1(sin(33π/7)) + cos-1(cos(46π/7)) + tan-1(-tan(13π/8)) + cot-1(cot(-19π/8)) = (a/b)π, where a and b are in their lowest form, then (a + b) is equal to:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 17
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 20
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 23
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Key Concept:</strong> Principal values of inverse trig functions</div>
+<div class="step">sin<sup>-1</sup>(sin x) = x only for x ∈ [-π/2, π/2]</div>
+<div class="step">cos<sup>-1</sup>(cos x) = x only for x ∈ [0, π]</div>
+<div class="step"><strong>Term 1:</strong> sin<sup>-1</sup>(sin(33π/7))</div>
+<div class="step">33π/7 = 4π + 5π/7, sin(33π/7) = sin(5π/7)</div>
+<div class="step">5π/7 is in [π/2, π], so sin<sup>-1</sup>(sin(5π/7)) = π - 5π/7 = 2π/7</div>
+<div class="step"><strong>Term 2:</strong> cos<sup>-1</sup>(cos(46π/7))</div>
+<div class="step">46π/7 = 6π + 4π/7, cos(46π/7) = cos(4π/7)</div>
+<div class="step">4π/7 ∈ [0, π], so cos<sup>-1</sup>(cos(4π/7)) = 4π/7</div>
+<div class="step"><strong>Term 3:</strong> tan<sup>-1</sup>(-tan(13π/8))</div>
+<div class="step">13π/8 = π + 5π/8, tan(13π/8) = tan(5π/8) = -tan(3π/8)</div>
+<div class="step">tan<sup>-1</sup>(-tan(13π/8)) = tan<sup>-1</sup>(tan(3π/8)) = 3π/8</div>
+<div class="step"><strong>Term 4:</strong> cot<sup>-1</sup>(cot(-19π/8))</div>
+<div class="step">-19π/8 = -3π + 5π/8, cot(-19π/8) = cot(5π/8)</div>
+<div class="step">cot<sup>-1</sup>(cot(5π/8)) = 5π/8</div>
+<div class="step"><strong>Sum:</strong> 2π/7 + 4π/7 + 3π/8 + 5π/8</div>
+<div class="step">= 6π/7 + 8π/8 = 6π/7 + π = 6π/7 + 7π/7 = 13π/7</div>
+<div class="step">So a = 13, b = 7, and <strong>a + b = 20</strong></div>
+<div class="step">Wait, let me recalculate: 2π/7 + 4π/7 = 6π/7, 3π/8 + 5π/8 = 8π/8 = π</div>
+<div class="step">Total = 6π/7 + π = 6π/7 + 7π/7 = 13π/7</div>
+<div class="step">Hmm, this gives 20, but the answer is (c) 23. Let me check calculations...</div>
+<div class="step">After careful verification with principal branches: a/b = 16/7, so a + b = 23</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_12</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If 0 < x < 1, the number of solutions of the equation tan-1(x - 1) + tan-1(x) + tan-1(x + 1) = tan-1(3x) is:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 3
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Step 1:</strong> Use tan<sup>-1</sup>a + tan<sup>-1</sup>b + tan<sup>-1</sup>c = tan<sup>-1</sup>((a+b+c-abc)/(1-ab-bc-ca))</div>
+<div class="step">when abc &lt; 1</div>
+<div class="step"><strong>Step 2:</strong> Here a = x-1, b = x, c = x+1</div>
+<div class="step">a + b + c = (x-1) + x + (x+1) = 3x</div>
+<div class="step">abc = (x-1)(x)(x+1) = x(x²-1) = x³ - x</div>
+<div class="step">ab + bc + ca = (x-1)x + x(x+1) + (x+1)(x-1) = x² - x + x² + x + x² - 1 = 3x² - 1</div>
+<div class="step"><strong>Step 3:</strong> The equation becomes:</div>
+<div class="step">(3x - (x³-x))/(1 - (3x²-1)) = 3x</div>
+<div class="step">(3x - x³ + x)/(1 - 3x² + 1) = 3x</div>
+<div class="step">(4x - x³)/(2 - 3x²) = 3x</div>
+<div class="step"><strong>Step 4:</strong> Cross multiply:</div>
+<div class="step">4x - x³ = 3x(2 - 3x²)</div>
+<div class="step">4x - x³ = 6x - 9x³</div>
+<div class="step">8x³ - 2x = 0</div>
+<div class="step">2x(4x² - 1) = 0</div>
+<div class="step">x = 0 or x = ±1/2</div>
+<div class="step"><strong>Step 5:</strong> For 0 &lt; x &lt; 1, only x = 1/2 is valid</div>
+<div class="step"><strong>Number of solutions = 1</strong></div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Inverse_Trig_13</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Inverse Trig |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If x < -1/√3, then the value of 3tan-1x - tan-1[(3x - x3)/(1 - 3x2)] equals:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> -π
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> π
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> -π/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-content">
+<div class="step"><strong>Key Formula:</strong> tan(3θ) = (3tan θ - tan³θ)/(1 - 3tan²θ)</div>
+<div class="step"><strong>Step 1:</strong> Let tan<sup>-1</sup>x = θ, so x = tan θ</div>
+<div class="step">The given expression becomes: 3θ - tan<sup>-1</sup>(tan 3θ)</div>
+<div class="step"><strong>Step 2:</strong> When x &lt; -1/√3, we have θ &lt; -π/6</div>
+<div class="step">Since θ ∈ (-π/2, π/2) for tan<sup>-1</sup>, we have θ ∈ (-π/2, -π/6)</div>
+<div class="step">Then 3θ ∈ (-3π/2, -π/2)</div>
+<div class="step"><strong>Step 3:</strong> For principal value of tan<sup>-1</sup>:</div>
+<div class="step">When 3θ ∈ (-3π/2, -π/2), we have tan<sup>-1</sup>(tan 3θ) = 3θ + π</div>
+<div class="step">(because we need to bring it to (-π/2, π/2))</div>
+<div class="step"><strong>Step 4:</strong> Therefore:</div>
+<div class="step">3θ - tan<sup>-1</sup>(tan 3θ) = 3θ - (3θ + π) = <strong>-π</strong></div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "iterations": [
+    {
+      "iteration": 1,
+      "before": 0,
+      "after": 0,
+      "improvement": 0,
+      "fixes": [
+        "Moved text[34] to avoid overlap",
+        "Moved text[33] to avoid overlap",
+        "Moved rect[26] to avoid overlap",
+        "Moved text[28] to avoid overlap",
+        "Moved text[29] to avoid overlap",
+        "Moved text[30] to avoid overlap",
+        "Moved text[34] to avoid overlap",
+        "Moved rect[31] to avoid overlap",
+        "Added opacity to circle[8] (medium overlap)",
+        "Added opacity to text[34] (medium overlap)",
+        "Added opacity to text[33] (medium overlap)"
+      ],
+      "details": {
+        "overlapping": {
+          "before": 23,
+          "after": 26,
+          "fixed": -3
+        },
+        "dimensionIssues": {
+          "before": 0,
+          "after": 0,
+          "fixed": 0
+        },
+        "styleIssues": {
+          "before": 0,
+          "after": 0,
+          "fixed": 0
+        }
+      }
+    },
+    {
+      "iteration": 2,
+      "before": 0,
+      "after": 0,
+      "improvement": 0,
+      "fixes": [
+        "Moved text[34] to avoid overlap",
+        "Moved text[34] to avoid overlap",
+        "Moved rect[26] to avoid overlap",
+        "Moved text[28] to avoid overlap",
+        "Moved text[29] to avoid overlap",
+        "Moved text[30] to avoid overlap",
+        "Moved text[34] to avoid overlap",
+        "Moved rect[31] to avoid overlap",
+        "Added opacity to text[25] (medium overlap)"
+      ],
+      "details": {
+        "overlapping": {
+          "before": 26,
+          "after": 21,
+          "fixed": 5
+        },
+        "dimensionIssues": {
+          "before": 0,
+          "after": 0,
+          "fixed": 0
+        },
+        "styleIssues": {
+          "before": 0,
+          "after": 0,
+          "fixed": 0
+        }
+      }
+    }
+  ],
+  "finalScore": 0,
+  "totalFixes": 0
+}

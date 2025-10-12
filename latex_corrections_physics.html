@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Physics Questions - LaTeX Corrections</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      }
+    };
+  </script>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #667eea;
+      margin-bottom: 10px;
+      font-size: 2.5em;
+      border-bottom: 4px solid #667eea;
+      padding-bottom: 15px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+
+    .summary {
+      background: #f8f9fa;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      border-left: 5px solid #667eea;
+    }
+
+    .summary h2 {
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .stat-label {
+      color: #666;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+
+    .question-card {
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .question-number {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .meta-tag {
+      background: #667eea;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-size: 0.85em;
+    }
+
+    .question-text {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid #667eea;
+    }
+
+    .question-text strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .question-text p {
+      color: #555;
+      font-size: 1.05em;
+    }
+
+    .options-section {
+      margin-bottom: 20px;
+    }
+
+    .options-section > strong {
+      display: block;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .options-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .option {
+      display: flex;
+      gap: 12px;
+      padding: 15px;
+      background: #f8f9fa;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .option:hover {
+      border-color: #667eea;
+      background: #f0f4ff;
+    }
+
+    .option.correct {
+      background: #d4edda;
+      border-color: #28a745;
+    }
+
+    .option-label {
+      font-weight: bold;
+      color: #667eea;
+      min-width: 25px;
+    }
+
+    .option.correct .option-label {
+      color: #28a745;
+    }
+
+    .option-text {
+      flex: 1;
+      color: #555;
+    }
+
+    .correct-answer {
+      background: #d4edda;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid #28a745;
+    }
+
+    .correct-answer strong {
+      color: #155724;
+    }
+
+    .answer-highlight {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #28a745;
+      margin-left: 10px;
+    }
+
+    .solution-section {
+      background: #fff3cd;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #ffc107;
+    }
+
+    .solution-section > strong {
+      display: block;
+      margin-bottom: 15px;
+      color: #856404;
+    }
+
+    .solution-content {
+      color: #555;
+    }
+
+    .warning {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #dc3545;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      background: #d1ecf1;
+      color: #0c5460;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #17a2b8;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+<h1>Physics Questions - LaTeX Corrections</h1>
+<div class="subtitle">Questions extracted for LaTeX issue correction</div>
+<div class="summary">
+<h2>📊 Summary</h2>
+<div class="stat-grid">
+<div class="stat-card">
+<div class="stat-number">8</div>
+<div class="stat-label">Total Questions</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">8</div>
+<div class="stat-label">With Options</div>
+</div>
+<div class="stat-card">
+<div class="stat-number">0</div>
+<div class="stat-label">Need Manual Fix</div>
+</div>
+</div>
+</div>
+<div class="questions-container">
+<div class="question-card">
+<div class="question-header">
+<span class="question-number">Question 1</span>
+<div class="meta-tags">
+<span class="meta-tag">ID: Electromagnetism_172</span>
+<span class="meta-tag">Topic: Electric Fields</span>
+<span class="meta-tag">Chapter: Electromagnetism</span>
+<span class="meta-tag">Difficulty: MEDIUM</span>
+</div>
+</div>
+<div class="question-text">
+<strong>Question:</strong>
+<p>An electric dipole with dipole moment $p$ and rotational inertia $I$ is placed in a uniform electric field of magnitude $E$. Find an expression for the oscillation frequency of the dipole for small amplitudes of oscillation about its equilibrium position.E−q+qpEquilibrium−q+qθDisplaced by θ</p>
+</div>
+<div class="options-section">
+<strong>Options:</strong>
+<div class="options-grid">
+<div class="option">
+<span class="option-label">A.</span>
+<span class="option-text">$f = \frac{1}{2\pi}\sqrt{\frac{pE}{2I}}$</span>
+</div>
+<div class="option">
+<span class="option-label">B.</span>
+<span class="option-text">$f = \frac{1}{2\pi}\sqrt{\frac{pE}{I}}$</span>
+</div>
+<div class="option">
+<span class="option-label">C.</span>
+<span class="option-text">$f = \frac{1}{2\pi}\sqrt{\frac{2pE}{I}}$</span>
+</div>
+<div class="option">
+<span class="option-label">D.</span>
+<span class="option-text">$f = \frac{1}{2\pi}\sqrt{\frac{pE}{4I}}$</span>
+</div>
+</div>
+</div>
+<div class="correct-answer">
+<strong>Correct Answer:</strong> <span class="answer-highlight">B</span>
+</div>
+<div class="solution-section">
+<strong>💡 Solution:</strong>
+<div class="solution-content">
+<div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Find the torque on the dipole as a function of displacement angle, use small angle approximation to linearize the equation of motion, identify it as SHM, and extract the angular frequency.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A top student immediately recognizes this as a classic SHM derivation problem. They write $\tau = I\alpha$, use $\tau = -p E \sin\theta \approx -pE\theta$ for small angles, identify the form $\alpha = -\omega^2\theta$, and extract $\omega = \sqrt{pE/I}$. From there, $f = \omega/2\pi$ is immediate.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 1. Torque on dipole: $\tau = p \times E = pE\sin\theta$2. Rotational dynamics: $\tau = I\alpha = I\frac{d^2\theta}{dt^2}$3. Small angle approximation: $\sin\theta \approx \theta$ for $\theta \ll 1$4. SHM condition: $\frac{d^2\theta}{dt^2} = -\omega^2\theta$5. Frequency: $f = \frac{\omega}{2\pi}$
+</div>
+<ol class="steps">
+<li><strong>Step 1: Write torque on the dipole</strong>
+<p>When a dipole makes angle $\theta$ with the electric field, the torque is:</p>
+<div class="formula">
+ $\vec{\tau} = \vec{p} \times \vec{E}$<br/>
+<br/>
+ $\tau = pE\sin\theta$
+ </div>
+<p>The torque acts to restore the dipole toward alignment with the field (equilibrium position where $\theta = 0$). Therefore, the restoring torque is:</p>
+<div class="formula">
+ $\tau = -pE\sin\theta$
+ </div>
+<p>(Negative sign indicates restoring nature)</p></li>
+<li><strong>Step 2: Apply small angle approximation</strong>
+<p>For small oscillations, $\theta \ll 1$ rad, so:</p>
+<div class="formula">
+ $\sin\theta \approx \theta$<br/>
+<br/>
+ $\tau \approx -pE\theta$
+ </div></li>
+<li><strong>Step 3: Write equation of rotational motion</strong>
+<p>Using Newton's second law for rotation:</p>
+<div class="formula">
+ $\tau = I\alpha = I\frac{d^2\theta}{dt^2}$<br/>
+<br/>
+ $-pE\theta = I\frac{d^2\theta}{dt^2}$<br/>
+<br/>
+ $\frac{d^2\theta}{dt^2} = -\frac{pE}{I}\theta$
+ </div></li>
+<li><strong>Step 4: Identify as SHM</strong>
+<p>The equation has the form of simple harmonic motion:</p>
+<div class="formula">
+ $\frac{d^2\theta}{dt^2} = -\omega^2\theta$
+ </div>
+<p>Comparing with our equation:</p>
+<div class="formula">
+ $\omega^2 = \frac{pE}{I}$<br/>
+<br/>
+ $\omega = \sqrt{\frac{pE}{I}}$
+ </div></li>
+<li><strong>Step 5: Find the frequency</strong>
+<p>The angular frequency $\omega$ is related to frequency $f$ by:</p>
+<div class="formula">
+ $\omega = 2\pi f$<br/>
+<br/>
+ $f = \frac{\omega}{2\pi} = \frac{1}{2\pi}\sqrt{\frac{pE}{I}}$
+ </div>
+<p>This matches option B. ✓</p></li>
+<li><strong>Step 6: Physical interpretation</strong>
+<p>The frequency increases when:</p>
+<ul>
+<li>Dipole moment $p$ is larger (stronger restoring torque)</li>
+<li>Electric field $E$ is stronger (stronger restoring torque)</li>
+<li>Rotational inertia $I$ is smaller (easier to accelerate)</li>
+</ul>
+<p>This is analogous to a torsional pendulum where $pE$ plays the role of the torsional spring constant.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="question-card">
+<div class="question-header">
+<span class="question-number">Question 2</span>
+<div class="meta-tags">
+<span class="meta-tag">ID: Physics_1</span>
+<span class="meta-tag">Topic: Electric Fields</span>
+<span class="meta-tag">Chapter: Physics</span>
+<span class="meta-tag">Difficulty: MEDIUM</span>
+</div>
+</div>
+<div class="question-text">
+<strong>Question:</strong>
+<p>[Figure shows: A semi-infinite rod lies along positive x-axis starting from origin. Point P is at perpendicular distance R from the origin on the y-axis. The rod extends from origin to +∞ along x-axis.](Hint: Separately find the component of Epparallel to the rod and the component perpendicular to the rod.)</p>
+</div>
+<div class="options-section">
+<strong>Options:</strong>
+<div class="options-grid">
+<div class="option">
+<span class="option-label">A.</span>
+<span class="option-text">Angle = 45° with rod, independent of R (correct proof required)</span>
+</div>
+<div class="option">
+<span class="option-label">B.</span>
+<span class="option-text">Angle = 60° with rod, depends on R</span>
+</div>
+<div class="option">
+<span class="option-label">C.</span>
+<span class="option-text">Angle = 45° with rod, depends on R</span>
+</div>
+<div class="option">
+<span class="option-label">D.</span>
+<span class="option-text">Angle = 30° with rod, independent of R</span>
+</div>
+</div>
+</div>
+<div class="correct-answer">
+<strong>Correct Answer:</strong> <span class="answer-highlight">A</span>
+</div>
+<div class="solution-section">
+<strong>💡 Solution:</strong>
+<div class="solution-content">
+<div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use integration to find the electric field components at point P from the semi-infinite rod. Calculate both the parallel (x-component) and perpendicular (y-component) components of the field. Show that these components are equal, which means the resultant makes 45° with the rod. Demonstrate that the ratio of components is independent of R.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Expert students recognize this as a classic electrostatics problem with beautiful geometric symmetry. The key insight is that for a semi-infinite rod, the field components have a special relationship. The independence of R is a consequence of the scaling of both components with 1/R. The 45° angle emerges from the specific geometry of "semi-infinite" extent.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> dE = k(λdx)/r² for field from element dx; Geometric relations: r² = x² + R²; Component decomposition: dE_x = dE cos θ, dE_y = dE sin θ; Integration techniques; tan(45°) = 1
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up the geometry and field element</strong><br/>
+ Place origin at the start of the rod, with rod extending along positive x-axis from 0 to ∞.<br/>
+ Point P is at (0, R) on the y-axis.<br/>
+ 
+ Consider a small element dx at position x on the rod.<br/>
+ Distance from element to P: r = √(x² + R²)<br/>
+ Charge on element: dq = λ dx<br/>
+ 
+ Electric field magnitude from element: dE = k(λ dx)/r² = k(λ dx)/(x² + R²)</li>
+<li><strong>Step 2: Find components of dE</strong><br/>
+ The field dE points from the element toward P (since we assume λ &gt; 0, field points away).<br/>
+ Direction from element at (x, 0) to P at (0, R): vector (-x, R)<br/>
+ Unit vector: (-x/r, R/r) where r = √(x² + R²)<br/>
+ 
+ Components of dE:<br/>
+ dE_x = -k(λ dx)(x)/(x² + R²)^(3/2) (negative x direction)<br/>
+ dE_y = k(λ dx)(R)/(x² + R²)^(3/2) (positive y direction)</li>
+<li><strong>Step 3: Integrate to find E_x component</strong><br/>
+ E_x = ∫₀^∞ dE_x = -kλ ∫₀^∞ x dx/(x² + R²)^(3/2)<br/>
+ 
+ Let u = x² + R², then du = 2x dx, so x dx = du/2<br/>
+ When x = 0: u = R²<br/>
+ When x = ∞: u = ∞<br/>
+ 
+ E_x = -kλ ∫_{R²}^∞ (1/2) u^(-3/2) du<br/>
+ E_x = -(kλ/2) [u^(-1/2)/(-1/2)]_{R²}^∞<br/>
+ E_x = -(kλ/2) × (-2) [u^(-1/2)]_{R²}^∞<br/>
+ E_x = kλ [1/√u]_{R²}^∞<br/>
+ E_x = kλ [0 - 1/R]<br/>
+ E_x = -kλ/R (pointing in negative x direction)</li>
+<li><strong>Step 4: Integrate to find E_y component</strong><br/>
+ E_y = ∫₀^∞ dE_y = kλR ∫₀^∞ dx/(x² + R²)^(3/2)<br/>
+ 
+ This is a standard integral. Let x = R tan θ, then dx = R sec² θ dθ<br/>
+ x² + R² = R²(tan² θ + 1) = R² sec² θ<br/>
+ (x² + R²)^(3/2) = R³ sec³ θ<br/>
+ 
+ When x = 0: θ = 0<br/>
+ When x = ∞: θ = π/2<br/>
+ 
+ E_y = kλR ∫₀^{π/2} (R sec² θ dθ)/(R³ sec³ θ)<br/>
+ E_y = kλR ∫₀^{π/2} dθ/(R² sec θ)<br/>
+ E_y = (kλ/R) ∫₀^{π/2} cos θ dθ<br/>
+ E_y = (kλ/R) [sin θ]₀^{π/2}<br/>
+ E_y = (kλ/R) [1 - 0]<br/>
+ E_y = kλ/R (pointing in positive y direction)</li>
+<li><strong>Step 5: Find angle and show independence from R</strong><br/>
+ E_x = -kλ/R (magnitude kλ/R, pointing left)<br/>
+ E_y = kλ/R (pointing up)<br/>
+ 
+ Magnitude of components: |E_x| = |E_y| = kλ/R<br/>
+ 
+ The angle α that the field makes with the rod (x-axis) is:<br/>
+ tan α = |E_y|/|E_x| = (kλ/R)/(kλ/R) = 1<br/>
+ 
+ Therefore: α = arctan(1) = 45°<br/>
+<strong>Key Result:</strong> The ratio E_y/E_x = 1 is independent of R because both components scale as 1/R. Thus, the angle is always 45° regardless of the distance R from the rod. The field vector points at 135° from the positive x-axis (or 45° from the rod, measured from the perpendicular).</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="question-card">
+<div class="question-header">
+<span class="question-number">Question 3</span>
+<div class="meta-tags">
+<span class="meta-tag">ID: Electromagnetism_217</span>
+<span class="meta-tag">Topic: Electrostatics</span>
+<span class="meta-tag">Chapter: Electromagnetism</span>
+<span class="meta-tag">Difficulty: MEDIUM</span>
+</div>
+</div>
+<div class="question-text">
+<strong>Question:</strong>
+<p>A solid insulating sphere of radius $a = 2.00$ cm is concentric with a spherical conducting shell of inner radius $b = 2.00a$ and outer radius $c = 2.40a$. The solid sphere has a net uniform charge $q_1 = +5.00$ fC uniformly distributed throughout its volume; the conducting shell has a net charge $q_2 = -q_1$. What is the magnitude of the electric field at radial distance $r = 2.30a$ from the center?</p>
+</div>
+<div class="options-section">
+<strong>Options:</strong>
+<div class="options-grid">
+<div class="option">
+<span class="option-label">A.</span>
+<span class="option-text">0 N/C</span>
+</div>
+<div class="option">
+<span class="option-label">B.</span>
+<span class="option-text">2.81 N/C</span>
+</div>
+<div class="option">
+<span class="option-label">C.</span>
+<span class="option-text">4.52 N/C</span>
+</div>
+<div class="option">
+<span class="option-label">D.</span>
+<span class="option-text">1.96 N/C</span>
+</div>
+</div>
+</div>
+<div class="correct-answer">
+<strong>Correct Answer:</strong> <span class="answer-highlight">A</span>
+</div>
+<div class="solution-section">
+<strong>💡 Solution:</strong>
+<div class="solution-content">
+<div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For concentric spheres with conducting shells: (1) Identify all regions, (2) Apply Gauss's law in each region, (3) For conductors, E = 0 inside and charges redistribute on surfaces, (4) Use charge conservation for conductor surfaces.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A JEE topper recognizes that inside a conductor (between inner and outer radii of conducting shell), the electric field is always zero regardless of external charges. This is a fundamental property that eliminates complex calculations.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Electric field inside a conductor = 0Gauss's law: $\oint \vec{E} \cdot d\vec{A} = q_{enc}/\epsilon_0$Charge conservation on conductor surfaces
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Identify the regions:
+ <ul>
+<li>Region 1: $r &lt; a$ (inside solid sphere)</li>
+<li>Region 2: $a &lt; r &lt; b = 2a$ (between sphere and shell)</li>
+<li>Region 3: $b &lt; r &lt; c = 2.4a$ (inside conductor)</li>
+<li>Region 4: $r &gt; c$ (outside everything)</li>
+</ul></li>
+<li><strong>Step 2:</strong> The point at $r = 2.30a$ lies in Region 3 (inside the conductor).</li>
+<li><strong>Step 3:</strong> Inside any conductor in electrostatic equilibrium, the electric field is zero.</li>
+<li><strong>Step 4:</strong> Therefore, $E = 0$ N/C at $r = 2.30a$.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="question-card">
+<div class="question-header">
+<span class="question-number">Question 4</span>
+<div class="meta-tags">
+<span class="meta-tag">ID: Electromagnetism_218</span>
+<span class="meta-tag">Topic: Electrostatics</span>
+<span class="meta-tag">Chapter: Electromagnetism</span>
+<span class="meta-tag">Difficulty: MEDIUM</span>
+</div>
+</div>
+<div class="question-text">
+<strong>Question:</strong>
+<p>The volume charge density of a solid nonconducting sphere of radius $R = 5.60$ cm varies with radial distance $r$ as given by $\rho = (14.1 \text{ pC/m}^3)r/R$. What is the magnitude of the electric field at $r = R/2.00$?</p>
+</div>
+<div class="options-section">
+<strong>Options:</strong>
+<div class="options-grid">
+<div class="option">
+<span class="option-label">A.</span>
+<span class="option-text">3.32 × 10⁻² N/C</span>
+</div>
+<div class="option">
+<span class="option-label">B.</span>
+<span class="option-text">1.66 × 10⁻² N/C</span>
+</div>
+<div class="option">
+<span class="option-label">C.</span>
+<span class="option-text">6.64 × 10⁻² N/C</span>
+</div>
+<div class="option">
+<span class="option-label">D.</span>
+<span class="option-text">8.30 × 10⁻³ N/C</span>
+</div>
+</div>
+</div>
+<div class="correct-answer">
+<strong>Correct Answer:</strong> <span class="answer-highlight">B</span>
+</div>
+<div class="solution-section">
+<strong>💡 Solution:</strong>
+<div class="solution-content">
+<div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For non-uniform charge density: (1) Set up Gaussian surface at radius r, (2) Calculate enclosed charge by integration, (3) Apply Gauss's law to find E(r), (4) Substitute specific radius value.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> JEE toppers quickly identify that charge density linear in r requires integration of r³ for enclosed charge. They memorize that $\int_0^r r' \cdot 4\pi r'^2 dr' = \pi r^4$.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Gauss's law for spherical symmetryVolume element in spherical coordinates: $dV = 4\pi r^2 dr$Integration of polynomial functions
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Given: $\rho = \rho_0 \frac{r}{R}$ where $\rho_0 = 14.1$ pC/m³</li>
+<li><strong>Step 2:</strong> Calculate charge enclosed within radius r:
+ \[q_{enc} = \int_0^r \rho \cdot 4\pi r'^2 dr' = \int_0^r \frac{\rho_0 r'}{R} \cdot 4\pi r'^2 dr'\]
+ \[q_{enc} = \frac{4\pi\rho_0}{R} \int_0^r r'^3 dr' = \frac{4\pi\rho_0}{R} \cdot \frac{r^4}{4} = \frac{\pi\rho_0 r^4}{R}\]</li>
+<li><strong>Step 3:</strong> Apply Gauss's law:
+ \[E \cdot 4\pi r^2 = \frac{q_{enc}}{\epsilon_0} = \frac{\pi\rho_0 r^4}{R\epsilon_0}\]
+ \[E = \frac{\rho_0 r^2}{4R\epsilon_0}\]</li>
+<li><strong>Step 4:</strong> At $r = R/2$:
+ \[E = \frac{\rho_0 (R/2)^2}{4R\epsilon_0} = \frac{\rho_0 R}{16\epsilon_0}\]</li>
+<li><strong>Step 5:</strong> Substituting values:
+ \[E = \frac{(14.1 \times 10^{-12}) \times (0.056)}{16 \times (8.85 \times 10^{-12})} = 1.66 \times 10^{-2} \text{ N/C}\]</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="question-card">
+<div class="question-header">
+<span class="question-number">Question 5</span>
+<div class="meta-tags">
+<span class="meta-tag">ID: Electromagnetism_219</span>
+<span class="meta-tag">Topic: Electrostatics</span>
+<span class="meta-tag">Chapter: Electromagnetism</span>
+<span class="meta-tag">Difficulty: MEDIUM</span>
+</div>
+</div>
+<div class="question-text">
+<strong>Question:</strong>
+<p>In a chocolate powder factory, negatively charged powder flows through a cylindrical pipe of radius $R = 5.0$ cm with uniform volume charge density $\rho = -1.1 \times 10^{-3}$ C/m³. Electrical breakdown (sparking) occurs when the electric field magnitude reaches 3.0 × 10⁶ N/C. At what radial distance from the pipe center does the maximum electric field occur, and what is its value?</p>
+</div>
+<div class="options-section">
+<strong>Options:</strong>
+<div class="options-grid">
+<div class="option">
+<span class="option-label">A.</span>
+<span class="option-text">Maximum E = 2.5 × 10⁶ N/C at r = 4.5 cm (No sparking)</span>
+</div>
+<div class="option">
+<span class="option-label">B.</span>
+<span class="option-text">Maximum E = 3.1 × 10⁶ N/C at r = 5.0 cm (Sparking occurs)</span>
+</div>
+<div class="option">
+<span class="option-label">C.</span>
+<span class="option-text">Maximum E = 1.8 × 10⁶ N/C at r = 3.0 cm (No sparking)</span>
+</div>
+<div class="option">
+<span class="option-label">D.</span>
+<span class="option-text">Maximum E = 3.5 × 10⁶ N/C at r = 5.0 cm (Sparking occurs)</span>
+</div>
+</div>
+</div>
+<div class="correct-answer">
+<strong>Correct Answer:</strong> <span class="answer-highlight">B</span>
+</div>
+<div class="solution-section">
+<strong>💡 Solution:</strong>
+<div class="solution-content">
+<div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For cylindrical charge distributions: (1) Apply Gauss's law with cylindrical surface, (2) Find E(r) for r &lt; R and r &gt; R, (3) Determine where E is maximum, (4) Check against breakdown threshold.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Expert problem solvers immediately recognize that for uniform volume charge in a cylinder, the field increases linearly with r inside and decreases as 1/r outside, making the surface (r = R) the location of maximum field.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Gauss's law for cylindrical symmetry: $E \cdot 2\pi r L = q_{enc}/\epsilon_0$Electric breakdown threshold conceptField continuity at boundaries
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> For a uniformly charged cylinder with charge density ρ, using Gauss's law with cylindrical Gaussian surface of radius r and length L:</li>
+<li><strong>Step 2:</strong> For r &lt; R (inside the pipe):
+ \[q_{enc} = \rho \cdot \pi r^2 L\]
+ \[E \cdot 2\pi r L = \frac{\rho \pi r^2 L}{\epsilon_0}\]
+ \[E = \frac{\rho r}{2\epsilon_0}\]</li>
+<li><strong>Step 3:</strong> The field increases linearly with r inside, reaching maximum at r = R:
+ \[E_{max} = \frac{|\rho| R}{2\epsilon_0} = \frac{(1.1 \times 10^{-3}) \times (0.05)}{2 \times (8.85 \times 10^{-12})}\]</li>
+<li><strong>Step 4:</strong> Calculate:
+ \[E_{max} = \frac{5.5 \times 10^{-5}}{1.77 \times 10^{-11}} = 3.1 \times 10^{6} \text{ N/C}\]</li>
+<li><strong>Step 5:</strong> Since 3.1 × 10⁶ N/C &gt; 3.0 × 10⁶ N/C (breakdown threshold), sparking will occur at the pipe surface.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="question-card">
+<div class="question-header">
+<span class="question-number">Question 6</span>
+<div class="meta-tags">
+<span class="meta-tag">ID: Electromagnetism_220</span>
+<span class="meta-tag">Topic: Electrostatics</span>
+<span class="meta-tag">Chapter: Electromagnetism</span>
+<span class="meta-tag">Difficulty: MEDIUM</span>
+</div>
+</div>
+<div class="question-text">
+<strong>Question:</strong>
+<p>A nonconducting solid sphere of radius R has uniform volume charge density ρ. A spherical cavity of radius R/3 is created with its center at distance R/2 from the sphere's center. What is the magnitude of the electric field at the center of the cavity?</p>
+</div>
+<div class="options-section">
+<strong>Options:</strong>
+<div class="options-grid">
+<div class="option">
+<span class="option-label">A.</span>
+<span class="option-text">$\frac{\rho R}{6\epsilon_0}$</span>
+</div>
+<div class="option">
+<span class="option-label">B.</span>
+<span class="option-text">$\frac{\rho R}{9\epsilon_0}$</span>
+</div>
+<div class="option">
+<span class="option-label">C.</span>
+<span class="option-text">$\frac{\rho R}{12\epsilon_0}$</span>
+</div>
+<div class="option">
+<span class="option-label">D.</span>
+<span class="option-text">$\frac{\rho R}{3\epsilon_0}$</span>
+</div>
+</div>
+</div>
+<div class="correct-answer">
+<strong>Correct Answer:</strong> <span class="answer-highlight">A</span>
+</div>
+<div class="solution-section">
+<strong>💡 Solution:</strong>
+<div class="solution-content">
+<div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use superposition: (1) Field from complete sphere, (2) Subtract field from removed sphere material, (3) The result shows uniform field inside cavity equal to field from dipole-like configuration.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top performers know that a cavity in a uniformly charged sphere creates a uniform field inside the cavity, with magnitude proportional to the displacement vector from sphere center to cavity center.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Superposition principleField inside uniformly charged sphere: $\vec{E} = \frac{\rho\vec{r}}{3\epsilon_0}$Vector addition of electric fields
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Use superposition: cavity = complete sphere - sphere of cavity material</li>
+<li><strong>Step 2:</strong> Field from complete sphere at cavity center (distance R/2 from sphere center):
+ \[\vec{E}_1 = \frac{\rho \vec{r}_1}{3\epsilon_0} = \frac{\rho (R/2)}{3\epsilon_0} = \frac{\rho R}{6\epsilon_0}\] (directed radially outward)</li>
+<li><strong>Step 3:</strong> Field from removed cavity material (treated as sphere at cavity center):
+ \[\vec{E}_2 = 0\] (at the center of this removed sphere)</li>
+<li><strong>Step 4:</strong> Net field at cavity center:
+ \[\vec{E}_{net} = \vec{E}_1 - \vec{E}_2 = \frac{\rho R}{6\epsilon_0}\]</li>
+<li><strong>Step 5:</strong> The field is uniform throughout the cavity and equals $\frac{\rho \vec{a}}{3\epsilon_0}$ where $\vec{a}$ is the vector from sphere center to cavity center.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="question-card">
+<div class="question-header">
+<span class="question-number">Question 7</span>
+<div class="meta-tags">
+<span class="meta-tag">ID: Physics_213</span>
+<span class="meta-tag">Topic: General</span>
+<span class="meta-tag">Chapter: Physics</span>
+<span class="meta-tag">Difficulty: MEDIUM</span>
+</div>
+</div>
+<div class="question-text">
+<strong>Question:</strong>
+<p>Figure 22-53 shows two concentric rings, of radiiRandR′= 3.00R, that lie on the same plane. PointPlies on the central z axis, at distanceD= 2.00Rfrom the center of the rings. The smaller ring has uniformly distributed chargeQ. In terms ofQ, what is the uniformly distributed charge on the larger ring if the net electric field atPis zero?P (D=2R)RR′=3R</p>
+</div>
+<div class="options-section">
+<strong>Options:</strong>
+<div class="options-grid">
+<div class="option">
+<span class="option-label">A.</span>
+<span class="option-text"><code>Q′ = −(13/5)^{3/2} · Q ≈ −4.192 Q</code></span>
+</div>
+<div class="option">
+<span class="option-label">B.</span>
+<span class="option-text"><code>Q′ = −(5/13)^{3/2} · Q ≈ −0.238 Q</code></span>
+</div>
+<div class="option">
+<span class="option-label">C.</span>
+<span class="option-text"><code>Q′ = −(13/5) · Q = −2.6 Q</code></span>
+</div>
+<div class="option">
+<span class="option-label">D.</span>
+<span class="option-text"><code>Q′ = + (13/5)^{3/2} · Q ≈ +4.192 Q</code></span>
+</div>
+</div>
+</div>
+<div class="correct-answer">
+<strong>Correct Answer:</strong> <span class="answer-highlight">A</span>
+</div>
+<div class="solution-section">
+<strong>💡 Solution:</strong>
+<div class="solution-content">
+<div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use ring-axis fieldE(z)=k z Q/(z²+R²)^{3/2}; set the algebraic sum from both rings to zero atz=D.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> When cancelling fields on axis, charges must have opposite signs if radii differ; reduce to a clean ratio of two geometry factors.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Ring field on axis; superposition;R′=3R,D=2R.
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Set <code>k D [ Q/(D²+R²)^{3/2} + Q′/(D²+R′²)^{3/2} ] = 0</code> → bracket must vanish.</li>
+<li><strong>Step 2:</strong> Solve for <code>Q′ = −Q · (D²+R′²)^{3/2}/(D²+R²)^{3/2}</code>.</li>
+<li><strong>Step 3:</strong> Insert numbers: <code>D²+R²=5R²</code>, <code>D²+R′²=13R²</code> → <code>Q′ = −Q · (13/5)^{3/2} ≈ −4.192Q</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="question-card">
+<div class="question-header">
+<span class="question-number">Question 8</span>
+<div class="meta-tags">
+<span class="meta-tag">ID: Physics_212</span>
+<span class="meta-tag">Topic: General</span>
+<span class="meta-tag">Chapter: Physics</span>
+<span class="meta-tag">Difficulty: MEDIUM</span>
+</div>
+</div>
+<div class="question-text">
+<strong>Question:</strong>
+<p>Figure 22-48. A thin nonconducting rod with a uniform distribution of positive chargeQis bent into a complete circle of radiusR. The central perpendicular axis through the ring is a z axis, with the origin at the center of the ring. What is the magnitude of the electric field due to the rod at (a)z= 0 and (b)z= ∞? (c) In terms ofR, at what positive value ofzis that magnitude maximum? (d) IfR= 2.00 cm andQ= 4.00 mC, what is the maximum magnitude?O+zR</p>
+</div>
+<div class="options-section">
+<strong>Options:</strong>
+<div class="options-grid">
+<div class="option">
+<span class="option-label">A.</span>
+<span class="option-text">(a) 0; (b) 0; (c) <code>z = R/√2</code>; (d) <code>3.46 × 10¹⁰ N/C</code></span>
+</div>
+<div class="option">
+<span class="option-label">B.</span>
+<span class="option-text">(a) 0; (b) 0; (c) <code>z = R</code>; (d) <code>1.73 × 10¹⁰ N/C</code></span>
+</div>
+<div class="option">
+<span class="option-label">C.</span>
+<span class="option-text">(a) nonzero; (b) 0; (c) <code>z = R/2</code>; (d) <code>6.92 × 10¹⁰ N/C</code></span>
+</div>
+<div class="option">
+<span class="option-label">D.</span>
+<span class="option-text">(a) 0; (b) nonzero; (c) <code>z = √2 R</code>; (d) <code>8.99 × 10⁹ N/C</code></span>
+</div>
+</div>
+</div>
+<div class="correct-answer">
+<strong>Correct Answer:</strong> <span class="answer-highlight">A</span>
+</div>
+<div class="solution-section">
+<strong>💡 Solution:</strong>
+<div class="solution-content">
+<div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use the standard ring-axis field, then optimizeE(z)by setting dE/dz=0. Evaluate numbers carefully.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Symmetry forcesE=0 at the center and points radially on axis; the extremum occurs whenz=R/√2, a classic result worth memorizing.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> E(z) = (1/4π ε₀) · (Q z)/(R²+z²)^{3/2}on axis of a ring; calculus optimization.
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> From symmetry, (a) <code>E(0)=0</code>; (b) <code>E(∞)=0</code>.</li>
+<li><strong>Step 2:</strong> Differentiate <code>E(z)</code> and set to zero → <code>R² − 2z² = 0 ⇒ z = R/√2</code>.</li>
+<li><strong>Step 3:</strong> Maximum value: <code>E_max = (1/4π ε₀) · Q · (2 / (3^{3/2} R²))</code>.</li>
+<li><strong>Step 4:</strong> Numerics with <code>Q=4.00×10⁻³ C, R=0.0200 m, 1/4π ε₀=8.9876×10⁹</code> → <code>E_max ≈ 3.46×10¹⁰ N/C</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

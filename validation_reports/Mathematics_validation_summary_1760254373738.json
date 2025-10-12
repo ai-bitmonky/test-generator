@@ -1,0 +1,278 @@
+{
+  "subject": "Mathematics",
+  "timestamp": "2025-10-12T07:32:53.758Z",
+  "totalQuestions": 433,
+  "questionsWithIssues": 433,
+  "passRate": "0.0",
+  "criticalCount": 109,
+  "highCount": 570,
+  "mediumCount": 1623,
+  "lowCount": 2,
+  "totalBatches": 44,
+  "batchSummaries": [
+    {
+      "batchNum": 1,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 2,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 3,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 4,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 5,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 6,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 7,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 8,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 9,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 10,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 11,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 12,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 13,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 14,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 15,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 16,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 17,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 18,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 19,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 20,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 21,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 22,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 23,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 24,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 25,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 26,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 27,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 28,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 29,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 30,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 31,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 32,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 33,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 34,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 35,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 36,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 37,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 38,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 39,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 40,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 41,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 42,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 43,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 44,
+      "questionsProcessed": 3,
+      "questionsWithIssues": 3,
+      "passRate": "0.0"
+    }
+  ]
+}

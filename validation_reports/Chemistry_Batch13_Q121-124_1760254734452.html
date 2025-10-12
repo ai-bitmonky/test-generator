@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry - Batch 13 (Questions 121-124)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Chemistry</h1>
+      <div class="batch-info">Batch 13: Questions 121 - 124</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:54 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">4</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">4</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">13</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (4 of 4)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_rc_mukherjee_electro_Q2</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Complex pH-Dependent Electrochemical Cells |
+        <strong>Type:</strong> Integration of Multiple Equilibria
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Integration of Multiple Equilibria", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    Chlorine gas undergoes disproportionation in water to form hypochlorous acid and chloride ions. The reaction becomes spontaneous above a certain pH. Calculate the critical pH at which the potential for the disproportionation changes from negative to positive, given:
+    <br><br>
+    Disproportionation reaction: Cl₂ + H₂O → HOCl + H⁺ + Cl⁻
+    <br>E°(Cl₂/Cl⁻) = +1.36 V
+    <br>E°(HOCl/Cl₂) = +1.63 V
+    <br>Temperature = 25°C
+    <br>All species except H⁺ are at 1.0 M concentration
+    <br><br>
+    <div class="diagram">
+        <svg width="450" height="250">
+            <circle cx="225" cy="100" r="50" fill="#fff3e0" stroke="#ff9800" stroke-width="2"></circle>
+            <text x="225" y="105" text-anchor="middle" font-size="16" font-weight="bold">Cl₂</text>
+            <path d="M 175 100 L 100 50" stroke="#388e3c" stroke-width="2" marker-end="url(#arrowgreen)"></path>
+            <path d="M 275 100 L 350 50" stroke="#d32f2f" stroke-width="2" marker-end="url(#arrowred)"></path>
+            <text x="80" y="40" font-size="14">Cl⁻ (Reduction)</text>
+            <text x="320" y="40" font-size="14">HOCl (Oxidation)</text>
+            <defs>
+                <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#388e3c"></path>
+                </marker>
+                <marker id="arrowred" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#d32f2f"></path>
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> pH = 3.8
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> pH = 4.6
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> pH = 5.2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> pH = 6.1
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><strong>Strategy:</strong> Set up the cell with the higher E° electrode as cathode. Find pH where E<sub>cell</sub> = 0 for the reverse of disproportionation.
+    <br><strong>Expert Insight:</strong> In disproportionation problems, the species with higher reduction potential acts as the oxidizing agent (cathode).
+    <br><strong>Key facts used:</strong> Nernst equation with pH dependence, E<sub>cell</sub> = 0 at equilibrium
+    <ol>
+        <li><strong>Step 1:</strong> Write half-cell reactions:
+            <br>Reduction: 2HOCl + 2H⁺ + 2e⁻ → Cl₂ + 2H₂O; E° = +1.63 V
+            <br>Oxidation: 2Cl⁻ → Cl₂ + 2e⁻; E° = -1.36 V</li>
+        <li><strong>Step 2:</strong> Cell reaction (reverse of disproportionation):
+            <br>2HOCl + 2H⁺ + 2Cl⁻ → 2H₂O + 2Cl₂</li>
+        <li><strong>Step 3:</strong> Apply Nernst equation at equilibrium (E<sub>cell</sub> = 0):
+            <br>0 = E° - (0.0591/2) log{1/[H⁺]²[Cl⁻]²}</li>
+        <li><strong>Step 4:</strong> Calculate E°<sub>cell</sub>:
+            <br>E°<sub>cell</sub> = 1.63 - 1.36 = 0.27 V</li>
+        <li><strong>Step 5:</strong> Solve for [H⁺]:
+            <br>0.27 = (0.0591/2) log{1/[H⁺]²}
+            <br>0.27 = -0.0591 log[H⁺]
+            <br>pH = -log[H⁺] = 0.27/0.0591 = 4.57 ≈ 4.6</li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_rc_mukherjee_electro_Q3</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Complex pH-Dependent Electrochemical Cells |
+        <strong>Type:</strong> Integration of Multiple Equilibria
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Integration of Multiple Equilibria", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    A galvanic cell employs the reaction:
+    <br>Hg₂²⁺(aq) + H₂(g) → 2Hg(l) + 2H⁺(aq)
+    <br><br>
+    The EMF of the cell is 0.65 V at 25°C. If 0.5 g of H₂ gas is consumed in the cell reaction, what is the maximum electrical work (in kJ) that can be obtained from this cell?
+    <br><br>
+    <div class="diagram">
+        <svg width="500" height="200">
+            <rect x="50" y="50" width="150" height="100" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"></rect>
+            <rect x="300" y="50" width="150" height="100" fill="#fce4ec" stroke="#e91e63" stroke-width="2"></rect>
+            <line x1="200" y1="100" x2="300" y2="100" stroke="#666" stroke-width="2"></line>
+            <text x="125" y="90" text-anchor="middle" font-size="14">H₂|H⁺</text>
+            <text x="125" y="110" text-anchor="middle" font-size="12">(Anode)</text>
+            <text x="375" y="90" text-anchor="middle" font-size="14">Hg₂²⁺|Hg</text>
+            <text x="375" y="110" text-anchor="middle" font-size="12">(Cathode)</text>
+            <text x="250" y="90" text-anchor="middle" font-size="12">||</text>
+            <text x="250" y="180" text-anchor="middle" font-size="14">E</text></svg><sub>cell</sub> = 0.65 V
+        
+    </div>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 15.6 kJ
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 31.2 kJ
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 62.4 kJ
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 7.8 kJ
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><strong>Strategy:</strong> Use W<sub>max</sub> = -nFE to calculate work per mole, then scale to given mass of H₂.
+    <br><strong>Expert Insight:</strong> Maximum work in electrochemical cells equals the Gibbs energy change. Always track molar ratios carefully.
+    <br><strong>Key facts used:</strong> W<sub>max</sub> = -nFE = -ΔG, Faraday constant = 96500 C/mol
+    <ol>
+        <li><strong>Step 1:</strong> Identify electron transfer:
+            <br>From the balanced equation: H₂ → 2H⁺ + 2e⁻
+            <br>n = 2 electrons per mole of H₂</li>
+        <li><strong>Step 2:</strong> Calculate work for 1 mole H₂:
+            <br>W<sub>max</sub> = -nFE = -2 × 96500 × 0.65
+            <br>W<sub>max</sub> = -125,450 J/mol = -125.45 kJ/mol</li>
+        <li><strong>Step 3:</strong> Calculate moles of H₂:
+            <br>Moles = mass/molar mass = 0.5 g / 2 g/mol = 0.25 mol</li>
+        <li><strong>Step 4:</strong> Calculate total work:
+            <br>Total work = 0.25 mol × 125.45 kJ/mol
+            <br>Total work = 31.36 kJ ≈ 31.2 kJ</li>
+        <li><strong>Step 5:</strong> The negative sign indicates work done by the system (favorable process)</li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_rc_mukherjee_electro_Q4</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Complex pH-Dependent Electrochemical Cells |
+        <strong>Type:</strong> Integration of Multiple Equilibria
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Integration of Multiple Equilibria", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    Calculate the solubility product (K<sub>sp</sub>) of silver bromide (AgBr) at 25°C using the following standard electrode potentials:
+    <br><br>
+    Ag⁺(aq) + e⁻ → Ag(s); E° = +0.80 V
+    <br>AgBr(s) + e⁻ → Ag(s) + Br⁻(aq); E° = +0.07 V
+    <br><br>
+    Also calculate the Gibbs free energy change (ΔG°) at 25°C for the dissolution:
+    <br>AgBr(s) ⇌ Ag⁺(aq) + Br⁻(aq)
+    <br><br>
+    <div class="diagram">
+        <svg width="400" height="250">
+            <rect x="100" y="50" width="200" height="100" fill="#fff8e1" stroke="#ffc107" stroke-width="2"></rect>
+            <text x="200" y="100" text-anchor="middle" font-size="16">AgBr(s)</text>
+            <path d="M 150 150 L 100 200" stroke="#2196f3" stroke-width="2"></path>
+            <path d="M 250 150 L 300 200" stroke="#2196f3" stroke-width="2"></path>
+            <text x="80" y="220" font-size="14">Ag⁺(aq)</text>
+            <text x="280" y="220" font-size="14">Br⁻(aq)</text>
+            <text x="200" y="30" text-anchor="middle" font-size="14" font-weight="bold">K</text></svg><sub>sp</sub> = ?
+        
+    </div>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Ksp = 2.2 × 10⁻¹³, ΔG° = +72.5 kJ/mol
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Ksp = 4.5 × 10⁻¹³, ΔG° = +70.5 kJ/mol
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Ksp = 8.7 × 10⁻¹⁴, ΔG° = +75.2 kJ/mol
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Ksp = 1.6 × 10⁻¹²,  ΔG° = +67.8 kJ/mol
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><strong>Strategy:</strong> Construct a cell reaction where AgBr dissolution is the overall process. Use E°<sub>cell</sub> to find K<sub>sp</sub>.
+    <br><strong>Expert Insight:</strong> Combine half-cell reactions to eliminate common species (Ag metal) and obtain the desired equilibrium.
+    <br><strong>Key facts used:</strong> E° = (0.0591/n) log K at 25°C, ΔG° = -RT ln K = -nFE°
+    <ol>
+        <li><strong>Step 1:</strong> Write the relevant half-cell reactions:
+            <br>Ag⁺ + e⁻ → Ag; E° = +0.80 V
+            <br>AgBr + e⁻ → Ag + Br⁻; E° = +0.07 V</li>
+        <li><strong>Step 2:</strong> Reverse the first equation:
+            <br>Ag → Ag⁺ + e⁻; E° = -0.80 V</li>
+        <li><strong>Step 3:</strong> Add to get the overall reaction:
+            <br>AgBr(s) → Ag⁺(aq) + Br⁻(aq)
+            <br>E°<sub>cell</sub> = 0.07 + (-0.80) = -0.73 V</li>
+        <li><strong>Step 4:</strong> Apply the equilibrium relationship:
+            <br>At equilibrium: E°<sub>cell</sub> = (0.0591/n) log K<sub>sp</sub>
+            <br>-0.73 = (0.0591/1) log K<sub>sp</sub>
+            <br>log K<sub>sp</sub> = -0.73/0.0591 = -12.35</li>
+        <li><strong>Step 5:</strong> Calculate K<sub>sp</sub> and ΔG°:
+            <br>K<sub>sp</sub> = 10^(-12.35) = 4.47 × 10⁻¹³ ≈ 4.5 × 10⁻¹³
+            <br>ΔG° = -RT ln K = -nFE° = -(1)(96500)(-0.73)
+            <br>ΔG° = 70,445 J/mol ≈ 70.5 kJ/mol</li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_rc_mukherjee_electro_Q5</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Complex pH-Dependent Electrochemical Cells |
+        <strong>Type:</strong> Integration of Multiple Equilibria
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Integration of Multiple Equilibria", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    Calculate the EMF at 25°C of the following electrochemical cell:
+    <br>H₂(g, 1 atm)|H⁺(aq)||OH⁻(aq)|O₂(g, 1 atm)
+    <br><br>
+    Given:
+    <br>(i) H₂ + ½O₂ → H₂O; ΔG° = -226.8 kJ/mol
+    <br>(ii) H₂O ⇌ H⁺ + OH⁻; ΔG° = 76.2 kJ/mol
+    <br><br>
+    The cell operates under standard conditions except for [H⁺] and [OH⁻] concentrations.
+    <br><br>
+    <div class="diagram">
+        <svg width="500" height="200">
+            <rect x="50" y="50" width="150" height="100" fill="#e8f5e9" stroke="#4caf50" stroke-width="2"></rect>
+            <rect x="300" y="50" width="150" height="100" fill="#ffebee" stroke="#f44336" stroke-width="2"></rect>
+            <line x1="200" y1="100" x2="300" y2="100" stroke="#666" stroke-width="2" stroke-dasharray="5,5"></line>
+            <text x="125" y="80" text-anchor="middle" font-size="14">H₂(g)</text>
+            <text x="125" y="100" text-anchor="middle" font-size="14">H⁺(aq)</text>
+            <text x="375" y="80" text-anchor="middle" font-size="14">O₂(g)</text>
+            <text x="375" y="100" text-anchor="middle" font-size="14">OH⁻(aq)</text>
+            <text x="250" y="90" text-anchor="middle" font-size="16">||</text>
+            <text x="125" y="130" text-anchor="middle" font-size="12">(Anode)</text>
+            <text x="375" y="130" text-anchor="middle" font-size="12">(Cathode)</text>
+        </svg>
+    </div>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.98 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1.09 V
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 1.21 V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.35 V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    <br><strong>Strategy:</strong> Combine thermodynamic data to find E° for the cell reaction, then apply Nernst equation with K<sub>w</sub>.
+    <br><strong>Expert Insight:</strong> This problem requires understanding that H⁺ and OH⁻ concentrations are related through K<sub>w</sub> at equilibrium.
+    <br><strong>Key facts used:</strong> ΔG° = -nFE°, K<sub>w</sub> = [H⁺][OH⁻] = 10⁻¹⁴ at 25°C
+    <ol>
+        <li><strong>Step 1:</strong> Write the electrode reactions:
+            <br>Anode: H₂ → 2H⁺ + 2e⁻
+            <br>Cathode: ½O₂ + H₂O + 2e⁻ → 2OH⁻</li>
+        <li><strong>Step 2:</strong> Overall cell reaction:
+            <br>H₂ + ½O₂ + H₂O → 2H⁺ + 2OH⁻</li>
+        <li><strong>Step 3:</strong> Calculate ΔG° for cell reaction:
+            <br>From (i) × 2: 2H₂ + O₂ → 2H₂O; ΔG° = -453.6 kJ
+            <br>From (ii) × 2: 2H₂O → 2H⁺ + 2OH⁻; ΔG° = +152.4 kJ
+            <br>Net: H₂ + ½O₂ + H₂O → 2H⁺ + 2OH⁻
+            <br>ΔG°<sub>cell</sub> = -226.8 + 2(76.2) = -74.4 kJ/mol</li>
+        <li><strong>Step 4:</strong> Calculate E°<sub>cell</sub>:
+            <br>E°<sub>cell</sub> = -ΔG°/(nF) = 74,400/(2 × 96,500) = 0.3853 V</li>
+        <li><strong>Step 5:</strong> Apply Nernst equation:
+            <br>E<sub>cell</sub> = E° - (0.0591/2) log([H⁺]²[OH⁻]²)
+            <br>E<sub>cell</sub> = 0.3853 - (0.0591/2) log(K<sub>w</sub>²)
+            <br>E<sub>cell</sub> = 0.3853 - (0.0591/2) log(10⁻²⁸)
+            <br>E<sub>cell</sub> = 0.3853 + 0.8274 = 1.2127 V ≈ 1.21 V</li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

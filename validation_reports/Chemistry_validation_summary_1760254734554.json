@@ -1,0 +1,92 @@
+{
+  "subject": "Chemistry",
+  "timestamp": "2025-10-12T07:38:54.558Z",
+  "totalQuestions": 124,
+  "questionsWithIssues": 124,
+  "passRate": "0.0",
+  "criticalCount": 0,
+  "highCount": 108,
+  "mediumCount": 164,
+  "lowCount": 124,
+  "totalBatches": 13,
+  "batchSummaries": [
+    {
+      "batchNum": 1,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 2,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 3,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 4,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 5,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 6,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 7,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 8,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 9,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 10,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 11,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 12,
+      "questionsProcessed": 10,
+      "questionsWithIssues": 10,
+      "passRate": "0.0"
+    },
+    {
+      "batchNum": 13,
+      "questionsProcessed": 4,
+      "questionsWithIssues": 4,
+      "passRate": "0.0"
+    }
+  ]
+}

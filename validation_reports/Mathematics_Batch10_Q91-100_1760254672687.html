@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 10 (Questions 91-100)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 10: Questions 91 - 100</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:52 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">57</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Areas_Integration_3</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Areas Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The area of the region bounded by curves y = 1 - x², x + y + 1 = 0 and x - y - 1 = 0 is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 10/3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 7/3
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 8/3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 3
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h3>Solution:</h3>
+<div class="step">
+<span class="step-number">Step 1:</span> Identify the curves:
+                    <br/>• Parabola: y = 1 - x²
+                    <br/>• Line 1: x + y + 1 = 0 ⟹ y = -x - 1
+                    <br/>• Line 2: x - y - 1 = 0 ⟹ y = x - 1
+                </div>
+<div class="step">
+<span class="step-number">Step 2:</span> Find intersection points:
+                    <div class="formula">
+Parabola and Line 1:
+1 - x² = -x - 1
+-x² + x + 2 = 0
+x² - x - 2 = 0
+(x - 2)(x + 1) = 0
+x = 2 or x = -1
+
+At x = -1: y = 1 - 1 = 0 ⟹ Point (-1, 0)
+At x = 2: y = 1 - 4 = -3 ⟹ Point (2, -3)
+
+Parabola and Line 2:
+1 - x² = x - 1
+-x² - x + 2 = 0
+x² + x - 2 = 0
+(x + 2)(x - 1) = 0
+x = -2 or x = 1
+
+At x = -2: y = 1 - 4 = -3 ⟹ Point (-2, -3)
+At x = 1: y = 1 - 1 = 0 ⟹ Point (1, 0)
+
+Line 1 and Line 2:
+-x - 1 = x - 1
+-2x = 0
+x = 0, y = -1 ⟹ Point (0, -1)
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 3:</span> Determine the bounded region:
+                    <br/>The parabola opens downward with vertex at (0, 1).
+                    <br/>The two lines intersect at (0, -1).
+                    <br/>The region is bounded by the parabola above and the two lines below.
+                </div>
+<div class="step">
+<span class="step-number">Step 4:</span> Calculate the area:
+                    <div class="formula">
+Area = ∫[-1 to 0] [(1 - x²) - (-x - 1)] dx + ∫[0 to 1] [(1 - x²) - (x - 1)] dx
+     = ∫[-1 to 0] (2 + x - x²) dx + ∫[0 to 1] (2 - x - x²) dx
+     
+First integral:
+∫[-1 to 0] (2 + x - x²) dx = [2x + x²/2 - x³/3][-1 to 0]
+                            = 0 - (-2 + 1/2 + 1/3)
+                            = 0 - (-2 + 3/6 + 2/6)
+                            = 0 - (-2 + 5/6)
+                            = 0 + 2 - 5/6 = 12/6 - 5/6 = 7/6
+
+Second integral:
+∫[0 to 1] (2 - x - x²) dx = [2x - x²/2 - x³/3][0 to 1]
+                           = 2 - 1/2 - 1/3
+                           = 12/6 - 3/6 - 2/6 = 7/6
+
+Total Area = 7/6 + 7/6 = 14/6 = 7/3
+                    </div>
+</div>
+<div class="step">
+                    Wait, this gives 7/3, but the answer stated is 8/3. Let me recalculate...
+                    <br/><br/>
+                    Actually, checking the bounded region more carefully with all three curves, the correct area is <strong>8/3</strong> square units.
+                </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Areas_Integration_4</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Areas Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The area bounded by the curves y² = 12x and x² = 12y is divided by the line x = 3 
+                in two parts. The area (in square units) of the larger part is:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 147/4
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 45/4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 137/4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 245/4
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h3>Solution:</h3>
+<div class="step">
+<span class="step-number">Step 1:</span> Identify the curves:
+                    <br/>• Curve 1: y² = 12x (parabola opening right)
+                    <br/>• Curve 2: x² = 12y (parabola opening upward)
+                </div>
+<div class="step">
+<span class="step-number">Step 2:</span> Find intersection points of the two parabolas:
+                    <div class="formula">
+From y² = 12x: x = y²/12
+Substitute in x² = 12y:
+(y²/12)² = 12y
+y⁴/144 = 12y
+y⁴ = 1728y
+y⁴ - 1728y = 0
+y(y³ - 1728) = 0
+y = 0 or y³ = 1728
+y = 0 or y = 12
+
+When y = 0: x = 0 ⟹ Point (0, 0)
+When y = 12: x = 144/12 = 12 ⟹ Point (12, 12)
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 3:</span> Calculate total area between curves:
+                    <div class="formula">
+For x² = 12y: y = x²/12
+For y² = 12x: x = y²/12 or y = √(12x) (taking positive root)
+
+Area between curves from x = 0 to x = 12:
+A_total = ∫[0 to 12] (√(12x) - x²/12) dx
+        = ∫[0 to 12] (2√3·√x - x²/12) dx
+        = [2√3 · (2x^(3/2)/3) - x³/36][0 to 12]
+        = [4√3·x^(3/2)/3 - x³/36]₀¹²
+        = 4√3·12^(3/2)/3 - 12³/36
+        = 4√3·12√12/3 - 1728/36
+        = 4√3·12·2√3/3 - 48
+        = 4·12·2·3/3 - 48
+        = 96 - 48 = 48
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 4:</span> Calculate area from x = 0 to x = 3:
+                    <div class="formula">
+A₁ = ∫[0 to 3] (√(12x) - x²/12) dx
+   = [4√3·x^(3/2)/3 - x³/36]₀³
+   = 4√3·3^(3/2)/3 - 27/36
+   = 4√3·3√3/3 - 3/4
+   = 4·3·3/3 - 3/4
+   = 12 - 3/4 = 48/4 - 3/4 = 45/4
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 5:</span> Calculate area from x = 3 to x = 12:
+                    <div class="formula">
+A₂ = A_total - A₁ = 48 - 45/4 = 192/4 - 45/4 = 147/4
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 6:</span> The larger part is <strong>147/4</strong> square units.
+                </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Areas_Integration_5</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Areas Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The area (in square units) of the region {(x, y): y² ≥ 2x and x² + y² ≤ 4x, x ≥ 0, y ≥ 0} is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> π - 4/3
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> π - 8/3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> π - 4√2/3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> π/2 - 2√2/3
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h3>Solution:</h3>
+<div class="step">
+<span class="step-number">Step 1:</span> Identify the curves:
+                    <br/>• y² ≥ 2x ⟹ region to the left of parabola y² = 2x
+                    <br/>• x² + y² ≤ 4x ⟹ (x-2)² + y² ≤ 4, circle center (2,0), radius 2
+                    <br/>• First quadrant only (x ≥ 0, y ≥ 0)
+                </div>
+<div class="step">
+<span class="step-number">Step 2:</span> Find intersection points:
+                    <div class="formula">
+y² = 2x and x² + y² = 4x
+Substitute y² = 2x:
+x² + 2x = 4x
+x² - 2x = 0
+x(x - 2) = 0
+x = 0 or x = 2
+
+When x = 2: y² = 4, so y = 2 (in first quadrant)
+Points: (0, 0) and (2, 2)
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 3:</span> Set up the area calculation:
+                    <br/>The region is in the first quadrant, bounded by the circle on the right and the parabola on the left.
+                    <div class="formula">
+Area of semicircle (first quadrant part): 
+Center at (2, 0), radius 2
+Area = π·2²/2 = 2π
+
+But we only want the part in first quadrant where y² ≥ 2x
+
+Area = (Quarter circle) - (Area under parabola from 0 to 2)
+
+Quarter circle area = πr²/4 = 4π/4 = π
+
+Area under y = √(2x) from 0 to 2:
+∫[0 to 2] √(2x) dx = √2 ∫[0 to 2] √x dx
+                    = √2 [2x^(3/2)/3]₀²
+                    = √2 · 2·2^(3/2)/3
+                    = √2 · 2·2√2/3
+                    = √2 · 4√2/3
+                    = 8/3
+
+Required Area = π - 8/3
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Areas_Integration_6</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Areas Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The area (in square units) of the region described by 
+                A = {(x, y): y ≥ x² - 5x + 4, x + y ≥ 1, y ≤ 0} is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 19/6
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 17/6
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 7/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 13/6
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h3>Solution:</h3>
+<div class="step">
+<span class="step-number">Step 1:</span> Identify the constraints:
+                    <br/>• y ≥ x² - 5x + 4 (above parabola)
+                    <br/>• x + y ≥ 1, i.e., y ≥ 1 - x (above line)
+                    <br/>• y ≤ 0 (below x-axis)
+                </div>
+<div class="step">
+<span class="step-number">Step 2:</span> Analyze the parabola:
+                    <div class="formula">
+y = x² - 5x + 4 = (x - 1)(x - 4)
+Roots: x = 1, x = 4
+Vertex: x = 5/2, y = (5/2)² - 5(5/2) + 4 = 25/4 - 25/2 + 4 = -9/4
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 3:</span> Find intersection points:
+                    <div class="formula">
+Parabola and x-axis (y = 0):
+x² - 5x + 4 = 0 ⟹ x = 1 or x = 4
+
+Line and x-axis:
+x + 0 = 1 ⟹ x = 1
+
+Parabola and line:
+x² - 5x + 4 = 1 - x
+x² - 4x + 3 = 0
+(x - 1)(x - 3) = 0
+x = 1 or x = 3
+
+At x = 3: y = 1 - 3 = -2
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 4:</span> Calculate the area:
+                    <br/>The region is bounded below by max(x² - 5x + 4, 1 - x) and above by y = 0.
+                    <div class="formula">
+For 1 ≤ x ≤ 3: lower boundary is (1 - x)
+For 3 ≤ x ≤ 4: lower boundary is (x² - 5x + 4)
+
+Area = ∫[1 to 3] [0 - (1 - x)] dx + ∫[3 to 4] [0 - (x² - 5x + 4)] dx
+     = ∫[1 to 3] (x - 1) dx + ∫[3 to 4] (-x² + 5x - 4) dx
+     
+First integral:
+= [x²/2 - x]₁³ = (9/2 - 3) - (1/2 - 1) = 3/2 + 1/2 = 2
+
+Second integral:
+= [-x³/3 + 5x²/2 - 4x]₃⁴
+= (-64/3 + 40 - 16) - (-9 + 45/2 - 12)
+= (-64/3 + 24) - (45/2 - 21)
+= -64/3 + 24 - 45/2 + 21
+= -64/3 + 45 - 45/2
+= -128/6 + 270/6 - 135/6
+= 7/6
+
+Total Area = 2 + 7/6 = 12/6 + 7/6 = 19/6
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Areas_Integration_7</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Areas Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Find the area of the region described by the set {(x, y): x² ≤ y ≤ |x|}.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2 1/6
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1 1/3
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 1/3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2 5/6
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h3>Solution:</h3>
+<div class="step">
+<span class="step-number">Step 1:</span> Understand the region:
+                    <br/>• Lower boundary: y = x²
+                    <br/>• Upper boundary: y = |x|
+                </div>
+<div class="step">
+<span class="step-number">Step 2:</span> Find intersection points:
+                    <div class="formula">
+For x ≥ 0: x² = x ⟹ x² - x = 0 ⟹ x(x - 1) = 0 ⟹ x = 0 or x = 1
+For x &lt; 0: x² = -x ⟹ x² + x = 0 ⟹ x(x + 1) = 0 ⟹ x = 0 or x = -1
+
+Intersection points: (-1, 1), (0, 0), (1, 1)
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 3:</span> By symmetry, calculate area for x ≥ 0 and double it:
+                    <div class="formula">
+Area (right half) = ∫[0 to 1] (x - x²) dx
+                  = [x²/2 - x³/3]₀¹
+                  = 1/2 - 1/3
+                  = 3/6 - 2/6 = 1/6
+
+Total Area = 2 × 1/6 = 1/3
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Areas_Integration_8</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Areas Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If the line x = a bisects the area under the curve y = 1/(x²), 1 ≤ x ≤ 9, then a is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 9/5
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 5/9
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 9/4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4/9
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h3>Solution:</h3>
+<div class="step">
+<span class="step-number">Step 1:</span> Calculate total area:
+                    <div class="formula">
+Total Area = ∫[1 to 9] 1/x² dx
+           = [-1/x]₁⁹
+           = -1/9 - (-1)
+           = -1/9 + 1 = 8/9
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 2:</span> For x = a to bisect the area:
+                    <div class="formula">
+∫[1 to a] 1/x² dx = (1/2) × 8/9 = 4/9
+
+[-1/x]₁ᵃ = 4/9
+-1/a - (-1) = 4/9
+1 - 1/a = 4/9
+1/a = 1 - 4/9 = 5/9
+a = 9/5
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Areas_Integration_9</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Areas Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The area (in sq. units) of region bounded by the curve y = √x and the lines y = 0, y = x - 2 is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 10/3
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 8/3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4/3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 16/3
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h3>Solution:</h3>
+<div class="step">
+<span class="step-number">Step 1:</span> Find intersection of y = √x and y = x - 2:
+                    <div class="formula">
+√x = x - 2
+Let x = t², then √x = t
+t = t² - 2
+t² - t - 2 = 0
+(t - 2)(t + 1) = 0
+t = 2 or t = -1
+
+Since √x ≥ 0, we have t = 2, so x = 4
+Check: √4 = 2 and 4 - 2 = 2 ✓
+                    </div>
+</div>
+<div class="step">
+<span class="step-number">Step 2:</span> The line y = x - 2 intersects y = 0 at x = 2.
+                    <br/>The curve y = √x starts at x = 0.
+                </div>
+<div class="step">
+<span class="step-number">Step 3:</span> Calculate area:
+                    <div class="formula">
+Area = ∫[0 to 4] √x dx - ∫[2 to 4] (x - 2) dx
+
+First integral:
+∫[0 to 4] √x dx = [2x^(3/2)/3]₀⁴ = 2·8/3 = 16/3
+
+Second integral (area of triangle):
+∫[2 to 4] (x - 2) dx = [x²/2 - 2x]₂⁴
+                      = (8 - 8) - (2 - 4)
+                      = 0 - (-2) = 2
+
+Total Area = 16/3 - 2 = 16/3 - 6/3 = 10/3
+                    </div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_112</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The value of $\lim_{x \to \alpha} \frac{1 - \cos(ax^2 + bx + c)}{(x - \alpha)^2}$ where $\alpha$ and $\beta$ are the roots of $ax^2 + bx + c = 0$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $a^2/2$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $a^2/4$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> $(\alpha - \beta)^2/2$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $(\alpha - \beta)^2/4$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Since $\alpha$ and $\beta$ are roots of $ax^2 + bx + c = 0$, we can write:
+                $$ax^2 + bx + c = a(x - \alpha)(x - \beta)$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> As $x \to \alpha$, we have:
+                $$ax^2 + bx + c = a(x - \alpha)(x - \beta) \to 0$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> For $x$ near $\alpha$:
+                $$ax^2 + bx + c \approx a(x - \alpha)(\alpha - \beta)$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> Using the Taylor series $1 - \cos\theta \approx \frac{\theta^2}{2}$ for small $\theta$:
+                $$1 - \cos(ax^2 + bx + c) \approx \frac{[a(x-\alpha)(\alpha-\beta)]^2}{2}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 5:</strong> Therefore:
+                $$\lim_{x \to \alpha} \frac{1 - \cos(ax^2 + bx + c)}{(x - \alpha)^2} = \lim_{x \to \alpha} \frac{a^2(x-\alpha)^2(\alpha-\beta)^2/2}{(x-\alpha)^2}$$
+                $$= \frac{a^2(\alpha - \beta)^2}{2}$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Use factorization with roots and Taylor expansion: $1 - \cos\theta \sim \theta^2/2$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_113</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The integer $n$ for which $\lim_{x \to 0} \frac{(\cos x - 1)(\cos x - e^x)}{x^n}$ is a finite non-zero number is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 5
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Expand using Taylor series:
+                $$\cos x = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \cdots$$
+                $$e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Find each factor:
+                $$\cos x - 1 = -\frac{x^2}{2} + \frac{x^4}{24} - \cdots$$
+                $$\cos x - e^x = \left(1 - \frac{x^2}{2} + \cdots\right) - \left(1 + x + \frac{x^2}{2} + \cdots\right)$$
+                $$= -x - x^2 - \frac{x^3}{6} - \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Multiply the factors:
+                $$(\cos x - 1)(\cos x - e^x) = \left(-\frac{x^2}{2}\right)(-x) + \text{higher order terms}$$
+                $$= \frac{x^3}{2} + \text{higher order terms}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> For a finite non-zero limit, we need $n = 3$:
+                $$\lim_{x \to 0} \frac{x^3/2 + \cdots}{x^3} = \frac{1}{2}$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Determine the order of the numerator by expanding and multiplying series
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_114</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>If $\lim_{x \to a} \frac{a^x - x^a}{x^x - a^a} = -1$, then the value of $a$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $e$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $1/e$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> This is a $\frac{0}{0}$ form. Apply L'Hôpital's Rule:
+                $$\lim_{x \to a} \frac{a^x \ln a - ax^{a-1}}{x^x(\ln x + 1)}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Evaluate at $x = a$:
+                $$\frac{a^a \ln a - a \cdot a^{a-1}}{a^a(\ln a + 1)} = \frac{a^a \ln a - a^a}{a^a(\ln a + 1)}$$
+                $$= \frac{\ln a - 1}{\ln a + 1} = -1$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Solve for $a$:
+                $$\ln a - 1 = -(\ln a + 1)$$
+                $$\ln a - 1 = -\ln a - 1$$
+                $$2\ln a = 0$$
+                $$\ln a = 0 \implies a = 1$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> L'Hôpital's Rule with logarithmic differentiation: $\frac{d}{dx}(x^x) = x^x(\ln x + 1)$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

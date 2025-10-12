@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 11 (Questions 101-110)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 11: Questions 101 - 110</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:52 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">53</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_115</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>$\lim_{x \to 0} \left[\frac{e^x + e^{-x} - 2}{x^2}\right]^{1/x^2}$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> $e$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $e^2$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $e^{1/2}$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Expand $e^x + e^{-x}$:
+                $$e^x + e^{-x} = 2 + \frac{2x^2}{2!} + \frac{2x^4}{4!} + \cdots = 2 + x^2 + \frac{x^4}{12} + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Find the base:
+                $$\frac{e^x + e^{-x} - 2}{x^2} = \frac{x^2 + x^4/12 + \cdots}{x^2} = 1 + \frac{x^2}{12} + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> This is a $1^\infty$ form. Use the formula $\lim (1 + f(x))^{g(x)} = e^{\lim f(x) \cdot g(x)}$:
+                $$\lim_{x \to 0} \left(1 + \frac{x^2}{12} + \cdots\right)^{1/x^2}$$
+                $$= \exp\left(\lim_{x \to 0} \frac{x^2/12 + \cdots}{x^2}\right) = \exp\left(\frac{1}{12}\right) = e^{1/12}$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> For $1^\infty$ forms: $\lim (1 + u)^{1/v} = e^{\lim u/v}$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_116</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>If $\lim_{x \to \infty} \left[\frac{x^2 + 1}{x + 1} - ax - b\right] = 0$, then</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $a = 1, b = 0$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> $a = 1, b = -1$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $a = 2, b = -1$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $a = 0, b = 1$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Perform polynomial division:
+                $$\frac{x^2 + 1}{x + 1} = x - 1 + \frac{2}{x + 1}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Substitute into the limit:
+                $$\lim_{x \to \infty} \left[x - 1 + \frac{2}{x+1} - ax - b\right] = 0$$
+                $$= \lim_{x \to \infty} \left[(1-a)x + (-1-b) + \frac{2}{x+1}\right] = 0$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> For the limit to be zero:
+                <ul>
+<li>Coefficient of $x$ must be 0: $1 - a = 0 \implies a = 1$</li>
+<li>Constant term must be 0: $-1 - b = 0 \implies b = -1$</li>
+</ul>
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Polynomial division and comparison of coefficients
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_117</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $f(x) = g(x) \cdot \frac{e^{1/x} - 1}{e^{1/x} + 1}$, where $g$ is a continuous function. Then $\lim_{x \to 0} f(x)$ exists if</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Does not exist
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $\infty$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Analyze the behavior of $\frac{e^{1/x} - 1}{e^{1/x} + 1}$ as $x \to 0$:
+                <ul>
+<li>As $x \to 0^+$: $\frac{1}{x} \to +\infty$, so $e^{1/x} \to \infty$</li>
+<li>Thus $\frac{e^{1/x} - 1}{e^{1/x} + 1} \to \frac{\infty}{\infty} = 1$</li>
+</ul>
+</div>
+<div class="step">
+<strong>Step 2:</strong> As $x \to 0^-$:
+                <ul>
+<li>$\frac{1}{x} \to -\infty$, so $e^{1/x} \to 0$</li>
+<li>Thus $\frac{e^{1/x} - 1}{e^{1/x} + 1} \to \frac{0-1}{0+1} = -1$</li>
+</ul>
+</div>
+<div class="step">
+<strong>Step 3:</strong> For the limit to exist, we need:
+                $$\lim_{x \to 0^+} f(x) = \lim_{x \to 0^-} f(x)$$
+                $$g(0) \cdot 1 = g(0) \cdot (-1)$$
+                This is only possible if $g(0) = 0$.
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> Since $g$ is continuous and $g(0) = 0$, we must have $g(x) = xh(x)$ where $h(x)$ is continuous (polynomial).
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> One-sided limits must match; requires $g(0) = 0$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_118</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The value of $f(0)$, so that the function $f(x) = \frac{\sqrt{a^2 - ax + x^2} - \sqrt{a^2 + ax + x^2}}{\sqrt{a + x} - \sqrt{a - x}}$, $a > 0$, becomes continuous for all $x$ in $[-a, a]$, is given by</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> $\sqrt{a}$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $-2\sqrt{a}$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $-\sqrt{a}$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $a$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> At $x = 0$, both numerator and denominator are 0 (indeterminate form).
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Rationalize the numerator by multiplying by conjugate:
+                $$\frac{\sqrt{a^2 - ax + x^2} - \sqrt{a^2 + ax + x^2}}{\sqrt{a + x} - \sqrt{a - x}} \cdot \frac{\sqrt{a^2 - ax + x^2} + \sqrt{a^2 + ax + x^2}}{\sqrt{a^2 - ax + x^2} + \sqrt{a^2 + ax + x^2}}$$
+                $$= \frac{(a^2 - ax + x^2) - (a^2 + ax + x^2)}{(\sqrt{a+x} - \sqrt{a-x})(\sqrt{a^2-ax+x^2} + \sqrt{a^2+ax+x^2})}$$
+                $$= \frac{-2ax}{(\sqrt{a+x} - \sqrt{a-x})(\sqrt{a^2-ax+x^2} + \sqrt{a^2+ax+x^2})}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Rationalize the denominator factor:
+                $$\sqrt{a+x} - \sqrt{a-x} = \frac{(a+x) - (a-x)}{\sqrt{a+x} + \sqrt{a-x}} = \frac{2x}{\sqrt{a+x} + \sqrt{a-x}}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> Substitute and simplify:
+                $$\lim_{x \to 0} \frac{-2ax \cdot (\sqrt{a+x} + \sqrt{a-x})}{2x \cdot (\sqrt{a^2-ax+x^2} + \sqrt{a^2+ax+x^2})}$$
+                $$= \lim_{x \to 0} \frac{-a(\sqrt{a+x} + \sqrt{a-x})}{\sqrt{a^2-ax+x^2} + \sqrt{a^2+ax+x^2}}$$
+                $$= \frac{-a \cdot 2\sqrt{a}}{2a} = -\sqrt{a}$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Double rationalization technique for nested radicals
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_119</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>If $f(x) = \frac{2^{256x} - 7}{5(32x)^{1/5} - 2}$ for $x \neq 0$, then for $f$ to be continuous on $[-1, 1]$, $f(0)$ is equal to</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 32
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 48
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 64
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 128
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Rewrite the expression:
+                $$2^{256x} = (2^8)^{32x} = 256^{32x}$$
+                $$32x = (2^5)x$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Let $u = 32x$. As $x \to 0$, $u \to 0$:
+                $$\lim_{x \to 0} \frac{256^{32x} - 7}{5(32x)^{1/5} - 2}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Use substitution and L'Hôpital's Rule or series expansion.
+                Let $a^u = 1 + u\ln a + \frac{(u\ln a)^2}{2} + \cdots$
+                $$256^u - 7 = 256 + u \cdot 256\ln 256 + \cdots - 7$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> For $u = 32x$ small:
+                $$256^{32x} \approx 1 + 32x \ln 256 = 1 + 32x \cdot 8\ln 2$$
+            
+
+</div>
+<div class="step">
+<strong>Step 5:</strong> After applying L'Hôpital's rule (or careful substitution), we get:
+                $$f(0) = 2^6 = 64$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Recognize powers of 2: $256 = 2^8$, $32 = 2^5$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_120</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $f(x) = \frac{x(1 + a\cos x) - b\sin x}{x^3}$, $x \neq 0$, and $f(0) = 1$. The values of $a$ and $b$ so that $f$ is a continuous function are</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $2.0$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $0.5$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> $1$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $0.0$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Expand using Taylor series:
+                $$\cos x = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \cdots$$
+                $$\sin x = x - \frac{x^3}{6} + \frac{x^5}{120} - \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Expand the numerator:
+                $$x(1 + a\cos x) - b\sin x$$
+                $$= x + ax\cos x - b\sin x$$
+                $$= x + ax\left(1 - \frac{x^2}{2} + \cdots\right) - b\left(x - \frac{x^3}{6} + \cdots\right)$$
+                $$= x + ax - \frac{ax^3}{2} - bx + \frac{bx^3}{6} + \cdots$$
+                $$= x(1 + a - b) + x^3\left(-\frac{a}{2} + \frac{b}{6}\right) + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> For continuity at $x = 0$:
+                <ul>
+<li>The coefficient of $x$ must be 0: $1 + a - b = 0 \implies a - b = -1$</li>
+<li>The coefficient of $x^3$ must equal 1 (since $f(0) = 1$):
+                    $$-\frac{a}{2} + \frac{b}{6} = 1$$
+                    $$-3a + b = 6$$</li>
+</ul>
+</div>
+<div class="step">
+<strong>Step 4:</strong> Solve the system:
+                $$a - b = -1 \implies b = a + 1$$
+                $$-3a + (a + 1) = 6$$
+                $$-2a = 5 \implies a = -\frac{5}{2}$$
+                $$b = -\frac{5}{2} + 1 = -\frac{3}{2}$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Match coefficients in Taylor expansion for continuity
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_121</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>$f(x) = \frac{3}{x^2} \sin 2x^2$ if $x < 0$$f(x) = \frac{x^2 + 2x + c}{1 - 3x^2}$ if $x \geq 0$, $x \neq 1/\sqrt{3}$$f(x) = 0$ if $x = 1/\sqrt{3}$Then in order that $f$ be continuous at $x = 0$, the value of $c$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 6
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 12
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Find left-hand limit as $x \to 0^-$:
+                $$\lim_{x \to 0^-} f(x) = \lim_{x \to 0^-} \frac{3}{x^2} \sin 2x^2$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Use $\sin\theta \approx \theta$ for small $\theta$:
+                $$\lim_{x \to 0^-} \frac{3}{x^2} \cdot 2x^2 = \lim_{x \to 0^-} 6 = 6$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Find right-hand limit as $x \to 0^+$:
+                $$\lim_{x \to 0^+} f(x) = \lim_{x \to 0^+} \frac{x^2 + 2x + c}{1 - 3x^2} = \frac{0 + 0 + c}{1 - 0} = c$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> For continuity at $x = 0$:
+                $$\lim_{x \to 0^-} f(x) = \lim_{x \to 0^+} f(x)$$
+                $$6 = c$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Left and right limits must be equal: $\sin\theta \sim \theta$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_122</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The function $f(x) = (\sin 2x)^{\tan^2 2x}$ is not defined at $x = \pi/4$. The value of $f(\pi/4)$ so that $f$ is continuous at $x = \pi/4$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $e^{-1}$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> $e$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $e^2$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> At $x = \pi/4$:
+                $$\sin(2 \cdot \pi/4) = \sin(\pi/2) = 1$$
+                $$\tan(2 \cdot \pi/4) = \tan(\pi/2) \to \infty$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> This is of the form $1^\infty$. Let $y = (\sin 2x)^{\tan^2 2x}$.
+                Taking logarithm:
+                $$\ln y = \tan^2 2x \cdot \ln(\sin 2x)$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> As $x \to \pi/4$:
+                Let $h = x - \pi/4$, so $x = \pi/4 + h$ where $h \to 0$.
+                $$\sin 2x = \sin(\pi/2 + 2h) = \cos 2h = 1 - 2\sin^2 h \approx 1 - 2h^2$$
+                $$\tan 2x = \tan(\pi/2 + 2h) = -\cot 2h \approx -\frac{1}{2h}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> Evaluate the limit:
+                $$\lim_{h \to 0} \frac{1}{4h^2} \ln(1 - 2h^2) = \lim_{h \to 0} \frac{-2h^2}{4h^2} = -\frac{1}{2}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 5:</strong> Wait, let me recalculate more carefully. At $x = \pi/4$:
+                Actually, using L'Hôpital and proper limits, we get:
+                $$\lim_{x \to \pi/4} \ln f(x) = 0$$
+                Therefore $f(\pi/4) = e^0 = 1$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> For $1^\infty$ forms, use $\lim (f(x))^{g(x)} = e^{\lim g(x)[\ln f(x)]}$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_123</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Options Validator] Duplicate options detected
+            </div>
+            
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>Let $f(x) = \frac{\log(1 + x + x^2) + \log(1 - x + x^2)}{\sec x - \cos x}$, $x \neq 0$. Then the value of $f(0)$ so that $f$ is continuous at $x = 0$ is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> $4.0$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $1.0$
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> $2$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $1.0$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Simplify the numerator:
+                $$\log(1 + x + x^2) + \log(1 - x + x^2) = \log[(1 + x + x^2)(1 - x + x^2)]$$
+                $$= \log(1 + x^4)$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> Expand using Taylor series:
+                $$\log(1 + x^4) \approx x^4 \text{ for small } x$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Simplify the denominator:
+                $$\sec x - \cos x = \frac{1}{\cos x} - \cos x = \frac{1 - \cos^2 x}{\cos x} = \frac{\sin^2 x}{\cos x}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> For small $x$:
+                $$\sin^2 x \approx x^2, \quad \cos x \approx 1$$
+                $$\sec x - \cos x \approx x^2$$
+            
+
+</div>
+<div class="step">
+<strong>Step 5:</strong> Actually, more careful expansion:
+                $$\sec x = 1 + \frac{x^2}{2} + \cdots, \quad \cos x = 1 - \frac{x^2}{2} + \cdots$$
+                $$\sec x - \cos x = x^2 + \cdots$$
+            
+
+</div>
+<div class="step">
+<strong>Step 6:</strong> Wait, let me be more precise:
+                Using proper series expansion and evaluating the limit gives:
+                $$f(0) = 2$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Simplify logarithms and use series expansions
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Calculus_124</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Limits |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The value of $k$ ($k > 0$) for which the function$f(x) = \frac{(e^x - 1)^4}{\sin(x^2/k^2) \log(1 + x^2/2)}$, $x \neq 0$; $f(0) = 8$may be a continuous function is</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 8
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<div class="step">
+<strong>Step 1:</strong> Use Taylor series for small $x$:
+                $$e^x - 1 \approx x$$
+                $$(e^x - 1)^4 \approx x^4$$
+            
+
+</div>
+<div class="step">
+<strong>Step 2:</strong> For the denominator:
+                $$\sin\left(\frac{x^2}{k^2}\right) \approx \frac{x^2}{k^2}$$
+                $$\log\left(1 + \frac{x^2}{2}\right) \approx \frac{x^2}{2}$$
+            
+
+</div>
+<div class="step">
+<strong>Step 3:</strong> Evaluate the limit:
+                $$\lim_{x \to 0} \frac{x^4}{\frac{x^2}{k^2} \cdot \frac{x^2}{2}} = \lim_{x \to 0} \frac{x^4}{\frac{x^4}{2k^2}} = 2k^2$$
+            
+
+</div>
+<div class="step">
+<strong>Step 4:</strong> For continuity:
+                $$2k^2 = 8$$
+                $$k^2 = 4$$
+                $$k = 2 \quad (k &gt; 0)$$
+            
+
+</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Standard limits: $(e^x - 1)/x \to 1$, $\sin x/x \to 1$, $\log(1+x)/x \to 1$
+            
+
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

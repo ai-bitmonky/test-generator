@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry - Batch 10 (Questions 91-100)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Chemistry</h1>
+      <div class="batch-info">Batch 10: Questions 91 - 100</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:54 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">32</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_IIT_JEE_Advanced_Ion_Q3</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Solubility with Hydrolysis |
+        <strong>Type:</strong> Highly complex problem integrating solubility with extensive anion hydrolysis
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Highly complex problem integrating solubility with extensive anion hydrolysis", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>Calculate the concentrations of all species of significant concentration present in 0.1 M H<sub>3</sub>PO<sub>4</sub> solution.</p>
+    <p>Given: K<sub>1</sub> = 7.5 × 10<sup>−3</sup>, K<sub>2</sub> = 6.2 × 10<sup>−8</sup>, K<sub>3</sub> = 3.6 × 10<sup>−13</sup></p>
+    
+    <svg width="750" height="500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="750" height="500" fill="#f8f9fa"></rect>
+        
+        <!-- Title -->
+        <text x="375" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">Triprotic Acid: Successive Dissociation of H₃PO₄</text>
+        
+        <!-- First Dissociation -->
+        <rect x="50" y="60" width="650" height="110" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="5"></rect>
+        <text x="375" y="85" font-size="14" font-weight="bold" text-anchor="middle" fill="#c62828">First Dissociation (Dominant)</text>
+        <text x="375" y="110" font-size="13" text-anchor="middle" fill="#000">H₃PO₄ ⇌ H⁺ + H₂PO₄⁻</text>
+        <text x="375" y="135" font-size="12" text-anchor="middle" fill="#000">K₁ = 7.5 × 10⁻³ (Relatively strong - cannot neglect x)</text>
+        <text x="375" y="155" font-size="11" text-anchor="middle" fill="#c62828" font-style="italic">This step produces most of the H⁺ ions</text>
+        
+        <!-- Second Dissociation -->
+        <rect x="50" y="190" width="650" height="110" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"></rect>
+        <text x="375" y="215" font-size="14" font-weight="bold" text-anchor="middle" fill="#1976d2">Second Dissociation (Weak)</text>
+        <text x="375" y="240" font-size="13" text-anchor="middle" fill="#000">H₂PO₄⁻ ⇌ H⁺ + HPO₄²⁻</text>
+        <text x="375" y="265" font-size="12" text-anchor="middle" fill="#000">K₂ = 6.2 × 10⁻⁸ (Much weaker - additional H⁺ negligible)</text>
+        <text x="375" y="285" font-size="11" text-anchor="middle" fill="#1976d2" font-style="italic">[HPO₄²⁻] = K₂ (special property for polyprotic acids)</text>
+        
+        <!-- Third Dissociation -->
+        <rect x="50" y="320" width="650" height="110" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" rx="5"></rect>
+        <text x="375" y="345" font-size="14" font-weight="bold" text-anchor="middle" fill="#7b1fa2">Third Dissociation (Negligible)</text>
+        <text x="375" y="370" font-size="13" text-anchor="middle" fill="#000">HPO₄²⁻ ⇌ H⁺ + PO₄³⁻</text>
+        <text x="375" y="395" font-size="12" text-anchor="middle" fill="#000">K₃ = 3.6 × 10⁻¹³ (Extremely weak - can be ignored)</text>
+        <text x="375" y="415" font-size="11" text-anchor="middle" fill="#7b1fa2" font-style="italic">[PO₄³⁻] ≈ 0 (insignificant concentration)</text>
+        
+        <!-- Key Insight Box -->
+        <rect x="100" y="445" width="550" height="45" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="375" y="465" font-size="12" font-weight="bold" text-anchor="middle" fill="#000">Key Strategy: K₁ &gt;&gt; K₂ &gt;&gt; K₃</text>
+        <text x="375" y="483" font-size="11" text-anchor="middle" fill="#000">Solve first equilibrium completely, then use results for second equilibrium</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> [H₃PO₄] = 0.076 M, [H⁺] = 0.024 M, [H₂PO₄⁻] = 0.024 M
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> [H₃PO₄] = 0.1 M, [H⁺] = 0.027 M, [H₂PO₄⁻] = 0.027 M
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> [H₃PO₄] = 0.09 M, [H⁺] = 0.01 M, [H₂PO₄⁻] = 0.01 M
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> [H₃PO₄] = 0.08 M, [H⁺] = 0.02 M, [H₂PO₄⁻] = 0.02 M
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="info-box">
+        <strong>Strategy:</strong> For polyprotic acids with K₁ &gt;&gt; K₂ &gt;&gt; K₃, use a stepwise approach: (1) Solve first equilibrium using quadratic equation (K₁ is large, cannot use approximations), (2) Use first equilibrium results as initial conditions for second equilibrium, (3) For weak polyprotic acids with reasonable concentration, [A²⁻] ≈ K₂.
+    </div>
+    
+    <div class="info-box">
+        <strong>Expert Insight:</strong> Elite students recognize that K₁ = 7.5 × 10⁻³ is relatively large (&gt;10⁻⁴), so the standard approximation (neglecting x in denominator) will fail. They immediately set up the full quadratic equation. They also know the special property: for polyprotic acids, [HPO₄²⁻] = K₂ when concentrations are reasonable and additional H⁺ from second dissociation is negligible.
+    </div>
+    
+    <div class="info-box">
+        <strong>Key Facts Used:</strong>
+        <ul>
+            <li>Successive dissociation constants for polyprotic acids</li>
+            <li>Quadratic equation: ax² + bx + c = 0, x = [−b ± √(b² − 4ac)]/(2a)</li>
+            <li>K₁ &gt;&gt; K₂ &gt;&gt; K₃ allows stepwise treatment</li>
+            <li>For polyprotic acids: [A²⁻] ≈ K₂ (special property)</li>
+            <li>Common-ion effect suppresses further dissociation</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Step 1: Analyze the dissociation constants</strong><br>
+            K₁ = 7.5 × 10⁻³ (relatively strong)<br>
+            K₂ = 6.2 × 10⁻⁸ (very weak, ~10⁵ times smaller than K₁)<br>
+            K₃ = 3.6 × 10⁻¹³ (negligible, ~10¹⁰ times smaller than K₁)<br>
+            <br>
+            <strong>Conclusion:</strong> First dissociation dominates H⁺ production. Second and third dissociations contribute negligibly to [H⁺].
+        </li>
+        
+        <li><strong>Step 2: Set up first dissociation equilibrium</strong><br>
+            H₃PO₄ ⇌ H⁺ + H₂PO₄⁻<br>
+            <br>
+            Initial: [H₃PO₄] = 0.1 M, [H⁺] = 0, [H₂PO₄⁻] = 0<br>
+            Change: −x, +x, +x<br>
+            Equilibrium: (0.1 − x), x, x<br>
+            <br>
+            K₁ = [H⁺][H₂PO₄⁻]/[H₃PO₄] = (x)(x)/(0.1 − x) = 7.5 × 10⁻³
+        </li>
+        
+        <li><strong>Step 3: Check if approximation (0.1 − x ≈ 0.1) is valid</strong><br>
+            If we assume 0.1 − x ≈ 0.1:<br>
+            x² ≈ 7.5 × 10⁻³ × 0.1 = 7.5 × 10⁻⁴<br>
+            x ≈ 0.027 M<br>
+            <br>
+            Check: x/c = 0.027/0.1 = 0.27 = 27%<br>
+            Since 27% &gt; 5%, approximation is <strong>NOT valid</strong>. Must solve exact quadratic.
+        </li>
+        
+        <li><strong>Step 4: Solve exact quadratic equation</strong><br>
+            7.5 × 10⁻³ = x²/(0.1 − x)<br>
+            7.5 × 10⁻⁴ − 7.5 × 10⁻³x = x²<br>
+            x² + 7.5 × 10⁻³x − 7.5 × 10⁻⁴ = 0<br>
+            <br>
+            Using quadratic formula:<br>
+            x = [−7.5 × 10⁻³ + √((7.5 × 10⁻³)² + 4(7.5 × 10⁻⁴))]/2<br>
+            x = [−7.5 × 10⁻³ + √(5.625 × 10⁻⁵ + 3 × 10⁻³)]/2<br>
+            x = [−7.5 × 10⁻³ + √(3.056 × 10⁻³)]/2<br>
+            x = [−7.5 × 10⁻³ + 0.0553]/2<br>
+            x = 0.048/2 = <strong>0.024 M</strong>
+        </li>
+        
+        <li><strong>Step 5: Calculate concentrations from first dissociation</strong><br>
+            [H⁺] = x = <strong>0.024 M</strong><br>
+            [H₂PO₄⁻] = x = <strong>0.024 M</strong><br>
+            [H₃PO₄] = 0.1 − x = 0.1 − 0.024 = <strong>0.076 M</strong>
+        </li>
+        
+        <li><strong>Step 6: Analyze second dissociation</strong><br>
+            H₂PO₄⁻ ⇌ H⁺ + HPO₄²⁻<br>
+            <br>
+            Initial (from first equilibrium):<br>
+            [H₂PO₄⁻] = 0.024 M<br>
+            [H⁺] = 0.024 M (from first dissociation)<br>
+            [HPO₄²⁻] = 0<br>
+            <br>
+            Let y = additional [H⁺] from second dissociation<br>
+            Equilibrium: [H₂PO₄⁻] = 0.024 − y, [H⁺] = 0.024 + y, [HPO₄²⁻] = y<br>
+            <br>
+            K₂ = [H⁺][HPO₄²⁻]/[H₂PO₄⁻] = (0.024 + y)(y)/(0.024 − y) = 6.2 × 10⁻⁸
+        </li>
+        
+        <li><strong>Step 7: Solve for second dissociation (with approximation)</strong><br>
+            Since K₂ is very small, y &lt;&lt; 0.024<br>
+            (0.024 + y) ≈ 0.024 and (0.024 − y) ≈ 0.024<br>
+            <br>
+            6.2 × 10⁻⁸ = (0.024)(y)/(0.024)<br>
+            y = <strong>6.2 × 10⁻⁸ M</strong><br>
+            <br>
+            <strong>Special property:</strong> [HPO₄²⁻] = K₂ = 6.2 × 10⁻⁸ M
+        </li>
+        
+        <li><strong>Step 8: Verify third dissociation is negligible</strong><br>
+            K₃ = 3.6 × 10⁻¹³ is extremely small<br>
+            [PO₄³⁻] ≈ K₃ (if calculated) ≈ 3.6 × 10⁻¹³ M<br>
+            This is insignificant and can be ignored.
+        </li>
+        
+        <li><strong>Step 9: Summary of significant species</strong><br>
+            <strong>[H₃PO₄] = 0.076 M</strong> ✓ (significant)<br>
+            <strong>[H⁺] = 0.024 M</strong> ✓ (significant, mostly from first dissociation)<br>
+            <strong>[H₂PO₄⁻] = 0.024 M</strong> ✓ (significant)<br>
+            [HPO₄²⁻] = 6.2 × 10⁻⁸ M (very small, not asked)<br>
+            [PO₄³⁻] ≈ 0 (negligible)
+        </li>
+    </ol>
+    
+    <p><strong>Answer: A ([H₃PO₄] = 0.076 M, [H⁺] = 0.024 M, [H₂PO₄⁻] = 0.024 M)</strong></p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_IIT_JEE_Advanced_Ion_Q4</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Solubility with Hydrolysis |
+        <strong>Type:</strong> Highly complex problem integrating solubility with extensive anion hydrolysis
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Highly complex problem integrating solubility with extensive anion hydrolysis", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>The base imidazole has a K<sub>b</sub> of 9.8 × 10<sup>−8</sup> at 25°C.</p>
+    
+    <p><strong>(a)</strong> In what amounts should 0.02 M HCl and 0.02 M imidazole be mixed to make 100 mL of a buffer at pH 7?</p>
+    
+    <p><strong>(b)</strong> If the resulting buffer is diluted to one litre, find pH of the diluted buffer.</p>
+    
+    <svg width="700" height="450" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="700" height="450" fill="#f8f9fa"></rect>
+        
+        <!-- Title -->
+        <text x="350" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">Buffer Preparation: Base + Strong Acid</text>
+        
+        <!-- Reaction equation -->
+        <rect x="50" y="50" width="600" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"></rect>
+        <text x="350" y="75" font-size="13" font-weight="bold" text-anchor="middle" fill="#1976d2">Buffer Formation Reaction</text>
+        <text x="350" y="105" font-size="14" text-anchor="middle" fill="#000">Imidazole (base) + HCl → Imidazole·H⁺ (conjugate acid) + Cl⁻</text>
+        
+        <!-- Beaker 1: HCl -->
+        <g>
+            <rect x="100" y="160" width="120" height="160" fill="none" stroke="#c62828" stroke-width="2"></rect>
+            <path d="M 100 200 L 220 200" stroke="#c62828" stroke-width="1" stroke-dasharray="5,5"></path>
+            <rect x="105" y="205" width="110" height="110" fill="#ffcdd2"></rect>
+            <text x="160" y="230" font-size="12" font-weight="bold" text-anchor="middle" fill="#c62828">HCl</text>
+            <text x="160" y="250" font-size="11" text-anchor="middle" fill="#000">0.02 M</text>
+            <text x="160" y="270" font-size="11" text-anchor="middle" fill="#000">Volume: v₁ mL</text>
+            <text x="160" y="295" font-size="10" text-anchor="middle" fill="#c62828">mmoles = 0.02v₁</text>
+            <text x="160" y="340" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">To find: v₁ = ?</text>
+        </g>
+        
+        <!-- Plus sign -->
+        <text x="260" y="250" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">+</text>
+        
+        <!-- Beaker 2: Imidazole -->
+        <g>
+            <rect x="300" y="160" width="120" height="160" fill="none" stroke="#00695c" stroke-width="2"></rect>
+            <path d="M 300 200 L 420 200" stroke="#00695c" stroke-width="1" stroke-dasharray="5,5"></path>
+            <rect x="305" y="205" width="110" height="110" fill="#b2dfdb"></rect>
+            <text x="360" y="230" font-size="12" font-weight="bold" text-anchor="middle" fill="#00695c">Imidazole</text>
+            <text x="360" y="250" font-size="11" text-anchor="middle" fill="#000">0.02 M</text>
+            <text x="360" y="270" font-size="11" text-anchor="middle" fill="#000">Volume: v₂ mL</text>
+            <text x="360" y="295" font-size="10" text-anchor="middle" fill="#00695c">mmoles = 0.02v₂</text>
+            <text x="360" y="340" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">To find: v₂ = ?</text>
+        </g>
+        
+        <!-- Arrow indicating mixing -->
+        <text x="460" y="250" font-size="24" font-weight="bold" text-anchor="middle" fill="#e74c3c">→</text>
+        
+        <!-- Beaker 3: Buffer -->
+        <g>
+            <rect x="500" y="160" width="140" height="160" fill="none" stroke="#f57c00" stroke-width="2"></rect>
+            <path d="M 500 200 L 640 200" stroke="#f57c00" stroke-width="1" stroke-dasharray="5,5"></path>
+            <rect x="505" y="205" width="130" height="110" fill="#fff3e0"></rect>
+            <text x="570" y="225" font-size="12" font-weight="bold" text-anchor="middle" fill="#f57c00">Buffer</text>
+            <text x="570" y="245" font-size="11" text-anchor="middle" fill="#000">pH = 7</text>
+            <text x="570" y="265" font-size="11" text-anchor="middle" fill="#000">Total: 100 mL</text>
+            <text x="570" y="285" font-size="10" text-anchor="middle" fill="#000">v₁ + v₂ = 100</text>
+            <text x="570" y="305" font-size="9" text-anchor="middle" fill="#7b1fa2">Contains:</text>
+            <text x="570" y="322" font-size="9" text-anchor="middle" fill="#000">Base + Conjugate acid</text>
+        </g>
+        
+        <!-- Constraint box -->
+        <rect x="80" y="350" width="540" height="85" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="350" y="375" font-size="13" font-weight="bold" text-anchor="middle" fill="#000">System of Equations to Solve:</text>
+        <text x="350" y="397" font-size="12" text-anchor="middle" fill="#000">Equation 1: v₁ + v₂ = 100 (volume constraint)</text>
+        <text x="350" y="417" font-size="12" text-anchor="middle" fill="#000">Equation 2: (v₂ − v₁)/v₁ = 1.019 (pH constraint from Henderson-Hasselbalch)</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) v₁ = 33 mL HCl, v₂ = 67 mL imidazole; (b) pH remains 7
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) v₁ = 50 mL HCl, v₂ = 50 mL imidazole; (b) pH changes to 6.5
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) v₁ = 40 mL HCl, v₂ = 60 mL imidazole; (b) pH remains 7
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) v₁ = 25 mL HCl, v₂ = 75 mL imidazole; (b) pH changes to 7.2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="info-box">
+        <strong>Strategy:</strong> (1) Convert K<sub>b</sub> to pK<sub>a</sub> of conjugate acid using pK<sub>a</sub> + pK<sub>b</sub> = 14. (2) Use Henderson-Hasselbalch for base buffer: pOH = pK<sub>b</sub> + log([salt]/[base]). (3) Set up system of two equations: volume constraint (v₁ + v₂ = 100) and ratio constraint from H-H equation. (4) Recognize that dilution doesn't change pH for buffers (both concentrations diluted equally).
+    </div>
+    
+    <div class="info-box">
+        <strong>Expert Insight:</strong> Top students immediately recognize this requires pOH calculations (base buffer) and conversion between pK<sub>a</sub> and pK<sub>b</sub>. They set up the millimole balance carefully: HCl converts imidazole to its conjugate acid 1:1, so salt mmoles = HCl mmoles, and remaining base = total imidazole − HCl. For part (b), experts know dilution changes absolute concentrations but not their ratio, so pH remains constant.
+    </div>
+    
+    <div class="info-box">
+        <strong>Key Facts Used:</strong>
+        <ul>
+            <li>pK<sub>a</sub> + pK<sub>b</sub> = pK<sub>w</sub> = 14 (at 25°C)</li>
+            <li>pH + pOH = 14</li>
+            <li>Henderson-Hasselbalch for base buffer: pOH = pK<sub>b</sub> + log([salt]/[base])</li>
+            <li>Millimoles = Molarity × Volume (mL)</li>
+            <li>Buffer dilution doesn't change pH (ratio unchanged)</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Step 1: Calculate pK<sub>b</sub> and pK<sub>a</sub></strong><br>
+            Given: K<sub>b</sub> (imidazole) = 9.8 × 10<sup>−8</sup><br>
+            pK<sub>b</sub> = −log(9.8 × 10<sup>−8</sup>)<br>
+            pK<sub>b</sub> = −[log(9.8) + log(10<sup>−8</sup>)]<br>
+            pK<sub>b</sub> = −[0.991 + (−8)]<br>
+            pK<sub>b</sub> = −[−7.009]<br>
+            pK<sub>b</sub> ≈ 7.0088<br>
+            <br>
+            For conjugate acid-base pair:<br>
+            pK<sub>a</sub> + pK<sub>b</sub> = 14<br>
+            pK<sub>a</sub> = 14 − 7.0088 ≈ 6.99
+        </li>
+        
+        <li><strong>Step 2: Calculate pOH from given pH</strong><br>
+            Given: pH = 7<br>
+            pH + pOH = 14<br>
+            pOH = 14 − 7 = 7
+        </li>
+        
+        <li><strong>Step 3: Apply Henderson-Hasselbalch equation for base buffer</strong><br>
+            For a buffer of weak base and its salt:<br>
+            pOH = pK<sub>b</sub> + log([salt]/[base])<br>
+            7 = 7.0088 + log([salt]/[base])<br>
+            log([salt]/[base]) = 7 − 7.0088 = −0.0088<br>
+            <br>
+            Taking antilog:<br>
+            [salt]/[base] = 10<sup>−0.0088</sup> = 0.9799 ≈ 0.98<br>
+            <br>
+            Therefore: [base]/[salt] = 1/0.98 = 1.019
+        </li>
+        
+        <li><strong>Step 4: Set up millimole relationships</strong><br>
+            Let v₁ = volume of HCl (mL)<br>
+            Let v₂ = volume of imidazole (mL)<br>
+            <br>
+            mmoles of HCl = 0.02 × v₁<br>
+            mmoles of imidazole initially = 0.02 × v₂<br>
+            <br>
+            <strong>Reaction:</strong> Imidazole + HCl → Imidazole·H⁺ (salt) + Cl<sup>−</sup><br>
+            <br>
+            After reaction:<br>
+            mmoles of salt formed = mmoles of HCl = 0.02v₁<br>
+            mmoles of base remaining = 0.02v₂ − 0.02v₁ = 0.02(v₂ − v₁)
+        </li>
+        
+        <li><strong>Step 5: Apply ratio from Henderson-Hasselbalch</strong><br>
+            [base]/[salt] = (mmoles of base)/(mmoles of salt) = 1.019<br>
+            <br>
+            0.02(v₂ − v₁)/(0.02v₁) = 1.019<br>
+            (v₂ − v₁)/v₁ = 1.019<br>
+            v₂ − v₁ = 1.019v₁<br>
+            v₂ = v₁ + 1.019v₁<br>
+            v₂ = 2.019v₁ ... (Equation 1)
+        </li>
+        
+        <li><strong>Step 6: Apply volume constraint</strong><br>
+            Total volume = 100 mL<br>
+            v₁ + v₂ = 100 ... (Equation 2)
+        </li>
+        
+        <li><strong>Step 7: Solve system of equations</strong><br>
+            Substitute Equation 1 into Equation 2:<br>
+            v₁ + 2.019v₁ = 100<br>
+            3.019v₁ = 100<br>
+            v₁ = 100/3.019<br>
+            v₁ ≈ <strong>33 mL</strong><br>
+            <br>
+            From Equation 2:<br>
+            v₂ = 100 − v₁ = 100 − 33<br>
+            v₂ = <strong>67 mL</strong>
+        </li>
+        
+        <li><strong>Step 8: Answer part (a)</strong><br>
+            Mix <strong>33 mL of 0.02 M HCl</strong> with <strong>67 mL of 0.02 M imidazole</strong> to get 100 mL buffer at pH 7.
+        </li>
+        
+        <li><strong>Step 9: Solve part (b) - effect of dilution</strong><br>
+            When buffer is diluted from 100 mL to 1000 mL:<br>
+            <br>
+            Initial concentrations in 100 mL buffer:<br>
+            [salt] = (0.02 × 33)/100 = 0.0066 M<br>
+            [base] = (0.02 × (67 − 33))/100 = 0.0068 M<br>
+            <br>
+            After dilution to 1000 mL:<br>
+            [salt]<sub>new</sub> = 0.0066 × (100/1000) = 0.00066 M<br>
+            [base]<sub>new</sub> = 0.0068 × (100/1000) = 0.00068 M<br>
+            <br>
+            <strong>Key observation:</strong> Ratio remains the same!<br>
+            [base]/[salt]<sub>new</sub> = 0.00068/0.00066 = 1.03 ≈ 1.019 (same as before)<br>
+            <br>
+            Since K<sub>b</sub> and [base]/[salt] remain unchanged:<br>
+            pOH = pK<sub>b</sub> + log([salt]/[base]) = 7 (same as before)<br>
+            pH = 14 − 7 = <strong>7</strong>
+        </li>
+        
+        <li><strong>Step 10: Answer part (b)</strong><br>
+            pH shall <strong>remain the same (pH = 7)</strong> on dilution because both K<sub>b</sub> and the ratio [base]/[salt] remain constant.
+        </li>
+    </ol>
+    
+    <p><strong>Answer: A (v₁ = 33 mL HCl, v₂ = 67 mL imidazole; pH remains 7)</strong></p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_IIT_JEE_Advanced_Ion_Q5</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Solubility with Hydrolysis |
+        <strong>Type:</strong> Highly complex problem integrating solubility with extensive anion hydrolysis
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Highly complex problem integrating solubility with extensive anion hydrolysis", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>Assuming the complete dissociation of HCl and the lead salt, calculate how much HCl is to be added to a 0.001 M lead salt solution to just prevent precipitation when saturated with H<sub>2</sub>S. The concentration of H<sub>2</sub>S in its saturated solution is 0.1 M.</p>
+    
+    <p>Given: K<sub>a</sub>(H<sub>2</sub>S) = 1.1 × 10<sup>−23</sup>, K<sub>sp</sub>(PbS) = 3.4 × 10<sup>−28</sup></p>
+    
+    <svg width="750" height="500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="750" height="500" fill="#f8f9fa"></rect>
+        
+        <!-- Title -->
+        <text x="375" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">Preventing PbS Precipitation by Controlling [S²⁻]</text>
+        
+        <!-- Left side: Problem setup -->
+        <rect x="30" y="60" width="330" height="180" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="5"></rect>
+        <text x="195" y="85" font-size="14" font-weight="bold" text-anchor="middle" fill="#c62828">Initial Conditions</text>
+        <text x="195" y="110" font-size="12" text-anchor="middle" fill="#000">[Pb²⁺] = 0.001 M (from lead salt)</text>
+        <text x="195" y="135" font-size="12" text-anchor="middle" fill="#000">[H₂S] = 0.1 M (saturated solution)</text>
+        <text x="195" y="160" font-size="12" text-anchor="middle" fill="#000">[HCl] = ? (to be determined)</text>
+        <text x="195" y="190" font-size="11" font-style="italic" text-anchor="middle" fill="#c62828">Goal: Prevent PbS from precipitating</text>
+        <text x="195" y="215" font-size="11" font-style="italic" text-anchor="middle" fill="#c62828">by keeping [S²⁻] very low</text>
+        
+        <!-- Right side: Equilibrium setup -->
+        <rect x="390" y="60" width="330" height="180" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"></rect>
+        <text x="555" y="85" font-size="14" font-weight="bold" text-anchor="middle" fill="#1976d2">Key Equilibria</text>
+        <text x="555" y="115" font-size="12" text-anchor="middle" fill="#000"><tspan font-weight="bold">1.</tspan> PbS ⇌ Pb²⁺ + S²⁻</text>
+        <text x="555" y="138" font-size="11" text-anchor="middle" fill="#000">Ksp = [Pb²⁺][S²⁻] = 3.4 × 10⁻²⁸</text>
+        <text x="555" y="168" font-size="12" text-anchor="middle" fill="#000"><tspan font-weight="bold">2.</tspan> H₂S ⇌ 2H⁺ + S²⁻</text>
+        <text x="555" y="191" font-size="11" text-anchor="middle" fill="#000">Ka = [H⁺]²[S²⁻]/[H₂S] = 1.1 × 10⁻²³</text>
+        <text x="555" y="220" font-size="10" font-style="italic" text-anchor="middle" fill="#1976d2">H⁺ from HCl suppresses [S²⁻]</text>
+        
+        <!-- Strategy box -->
+        <rect x="30" y="260" width="690" height="90" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="5"></rect>
+        <text x="375" y="285" font-size="14" font-weight="bold" text-anchor="middle" fill="#000">Strategy: Two-Step Calculation</text>
+        <text x="375" y="310" font-size="12" text-anchor="middle" fill="#000"><tspan font-weight="bold">Step 1:</tspan> Find maximum [S²⁻] that prevents precipitation using Ksp</text>
+        <text x="375" y="332" font-size="11" text-anchor="middle" fill="#000">[S²⁻]max = Ksp/[Pb²⁺] = 3.4 × 10⁻²⁸ / 0.001 = 3.4 × 10⁻²⁵ M</text>
+        
+        <!-- Diagram showing prevention -->
+        <rect x="30" y="370" width="330" height="110" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" rx="5"></rect>
+        <text x="195" y="395" font-size="13" font-weight="bold" text-anchor="middle" fill="#2e7d32">Prevention Condition</text>
+        <text x="195" y="420" font-size="12" text-anchor="middle" fill="#000">Ionic product &lt; Ksp</text>
+        <text x="195" y="442" font-size="11" text-anchor="middle" fill="#000">[Pb²⁺][S²⁻] &lt; 3.4 × 10⁻²⁸</text>
+        <text x="195" y="465" font-size="11" text-anchor="middle" fill="#000">(0.001)(3.4 × 10⁻²⁵) = 3.4 × 10⁻²⁸</text>
+        
+        <rect x="390" y="370" width="330" height="110" fill="#fff9c4" stroke="#f57f17" stroke-width="2" rx="5"></rect>
+        <text x="555" y="395" font-size="13" font-weight="bold" text-anchor="middle" fill="#f57f17">Use Ka to find [HCl]</text>
+        <text x="555" y="420" font-size="11" text-anchor="middle" fill="#000">Ka = [H⁺]²[S²⁻]/[H₂S]</text>
+        <text x="555" y="442" font-size="11" text-anchor="middle" fill="#000">[H⁺] = HCl concentration (x)</text>
+        <text x="555" y="465" font-size="11" text-anchor="middle" fill="#000">Solve for x to maintain [S²⁻]max</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> [HCl] = 1.50 M
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> [HCl] = 1.80 M
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> [HCl] = 2.00 M
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> [HCl] = 2.50 M
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="info-box">
+        <strong>Strategy:</strong> Use a two-step approach: (1) Calculate maximum [S²⁻] that won't cause precipitation using Ksp and given [Pb²⁺]. (2) Use this [S²⁻]max in the H₂S equilibrium expression with [H⁺] = [HCl] to find required HCl concentration. The H⁺ ions from HCl suppress H₂S dissociation via common-ion effect, keeping [S²⁻] below the threshold.
+    </div>
+    
+    <div class="info-box">
+        <strong>Expert Insight:</strong> This problem tests understanding of competitive equilibria and Le Chatelier's principle. Elite students recognize that adding HCl shifts H₂S equilibrium backward (common-ion effect), dramatically reducing [S²⁻]. They work backwards from Ksp to find the "safe" [S²⁻], then use Ka to find how much [H⁺] is needed. The key insight: HCl must be added in large excess to suppress [S²⁻] sufficiently.
+    </div>
+    
+    <div class="info-box">
+        <strong>Key Facts Used:</strong>
+        <ul>
+            <li>Solubility product: Ksp = [Pb²⁺][S²⁻]</li>
+            <li>Precipitation condition: Ionic product &gt; Ksp</li>
+            <li>H₂S dissociation: Ka = [H⁺]²[S²⁻]/[H₂S]</li>
+            <li>Common-ion effect suppresses weak acid dissociation</li>
+            <li>HCl is completely dissociated: [H⁺] = [HCl]</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Step 1: Determine condition to prevent precipitation</strong><br>
+            For PbS to NOT precipitate:<br>
+            Ionic product &lt; Ksp<br>
+            [Pb²⁺][S²⁻] &lt; Ksp(PbS)<br>
+            <br>
+            At the threshold (just preventing precipitation):<br>
+            [Pb²⁺][S²⁻] = Ksp(PbS)<br>
+            [S²⁻] = Ksp/[Pb²⁺]
+        </li>
+        
+        <li><strong>Step 2: Calculate maximum [S²⁻] allowed</strong><br>
+            Given: [Pb²⁺] = 0.001 M (from complete dissociation of lead salt)<br>
+            Ksp(PbS) = 3.4 × 10⁻²⁸<br>
+            <br>
+            [S²⁻]max = Ksp/[Pb²⁺]<br>
+            [S²⁻]max = (3.4 × 10⁻²⁸)/(0.001)<br>
+            [S²⁻]max = (3.4 × 10⁻²⁸)/(10⁻³)<br>
+            [S²⁻]max = <strong>3.4 × 10⁻²⁵ M</strong>
+        </li>
+        
+        <li><strong>Step 3: Set up H₂S equilibrium with HCl present</strong><br>
+            H₂S ⇌ 2H⁺ + S²⁻<br>
+            <br>
+            At equilibrium (with HCl present):<br>
+            [H₂S] ≈ 0.1 M (saturated, very little dissociates)<br>
+            [S²⁻] = 3.4 × 10⁻²⁵ M (maximum allowed)<br>
+            [H⁺] = [HCl] + [H⁺ from H₂S] ≈ [HCl] = x (since H₂S dissociation is suppressed)<br>
+            <br>
+            Note: We can neglect H⁺ from H₂S because HCl provides H⁺ in large excess.
+        </li>
+        
+        <li><strong>Step 4: Apply Ka expression for H₂S</strong><br>
+            Ka(H₂S) = [H⁺]²[S²⁻]/[H₂S]<br>
+            1.1 × 10⁻²³ = x² × (3.4 × 10⁻²⁵)/(0.1)<br>
+            <br>
+            Where x = [HCl] = [H⁺]
+        </li>
+        
+        <li><strong>Step 5: Solve for [HCl]</strong><br>
+            1.1 × 10⁻²³ = x² × (3.4 × 10⁻²⁵)/0.1<br>
+            1.1 × 10⁻²³ = x² × 3.4 × 10⁻²⁴<br>
+            <br>
+            x² = (1.1 × 10⁻²³)/(3.4 × 10⁻²⁴)<br>
+            x² = (1.1/3.4) × 10⁻²³⁺²⁴<br>
+            x² = 0.3235 × 10¹<br>
+            x² = 3.235<br>
+            <br>
+            x = √3.235<br>
+            x ≈ <strong>1.80 M</strong>
+        </li>
+        
+        <li><strong>Step 6: Verify the calculation</strong><br>
+            Check: [H⁺]² = (1.80)² = 3.24<br>
+            Ka = (3.24)(3.4 × 10⁻²⁵)/0.1<br>
+            Ka = (3.24 × 3.4 × 10⁻²⁵)/0.1<br>
+            Ka = 11.016 × 10⁻²⁵/0.1<br>
+            Ka = 1.1 × 10⁻²³ ✓ (matches given Ka)
+        </li>
+        
+        <li><strong>Step 7: Interpret the result</strong><br>
+            To just prevent precipitation of PbS when saturated with H₂S, we need to add HCl such that its concentration is <strong>at least 1.80 M</strong>.<br>
+            <br>
+            Any concentration of HCl greater than 1.80 M will also prevent precipitation by keeping [S²⁻] even lower.
+        </li>
+    </ol>
+    
+    <p><strong>Answer: B ([HCl] = 1.80 M)</strong></p>
+    
+    <p><strong>Physical Significance:</strong> The large HCl concentration (1.80 M) is needed because Ka of H₂S is very small (1.1 × 10⁻²³), meaning H₂S is an extremely weak acid. Even with this high [H⁺], only a tiny amount of S²⁻ is suppressed to the safe level of 3.4 × 10⁻²⁵ M. This demonstrates the power of the common-ion effect in controlling precipitation.</p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_IIT_JEE_Advanced_Ion_Q6</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Solubility with Hydrolysis |
+        <strong>Type:</strong> Highly complex problem integrating solubility with extensive anion hydrolysis
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Problem Consistency] Ambiguous content detected in question: \.\.\.
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Highly complex problem integrating solubility with extensive anion hydrolysis", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>Solid AgNO<sub>3</sub> is slowly added to a solution that is 0.001 M each in NaCl, NaBr and NaI.</p>
+    
+    <p><strong>(a)</strong> Calculate the concentration of Ag<sup>+</sup> required to initiate the precipitation of each of AgCl, AgBr and AgI.</p>
+    
+    <p><strong>(b)</strong> Calculate the percentage of I<sup>−</sup> precipitated before AgBr precipitates.</p>
+    
+    <p><strong>(c)</strong> Calculate the percentage of I<sup>−</sup> precipitated before Cl<sup>−</sup> precipitates.</p>
+    
+    <p>Given: K<sub>sp</sub>(AgI) = 1.5 × 10<sup>−16</sup>, K<sub>sp</sub>(AgBr) = 3.3 × 10<sup>−13</sup>, K<sub>sp</sub>(AgCl) = 1.8 × 10<sup>−10</sup></p>
+    
+    <svg width="800" height="550" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="800" height="550" fill="#f8f9fa"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">Selective Precipitation: AgI → AgBr → AgCl</text>
+        
+        <!-- Initial solution -->
+        <rect x="50" y="60" width="700" height="80" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"></rect>
+        <text x="400" y="85" font-size="14" font-weight="bold" text-anchor="middle" fill="#1976d2">Initial Solution (Before Adding AgNO₃)</text>
+        <text x="400" y="110" font-size="13" text-anchor="middle" fill="#000">[Cl⁻] = [Br⁻] = [I⁻] = 0.001 M</text>
+        <text x="400" y="130" font-size="12" text-anchor="middle" fill="#000">[Ag⁺] = 0 (gradually increasing as AgNO₃ is added)</text>
+        
+        <!-- Precipitation sequence -->
+        <text x="400" y="170" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Precipitation Sequence</text>
+        
+        <!-- Stage 1: AgI precipitates first -->
+        <rect x="50" y="190" width="220" height="140" fill="#fff3e0" stroke="#e65100" stroke-width="3" rx="5"></rect>
+        <text x="160" y="215" font-size="13" font-weight="bold" text-anchor="middle" fill="#e65100">Stage 1: AgI Precipitates</text>
+        <text x="160" y="240" font-size="12" text-anchor="middle" fill="#000">[Ag⁺] = 1.5 × 10⁻¹³ M</text>
+        <text x="160" y="262" font-size="11" text-anchor="middle" fill="#000">Ksp(AgI) = 1.5 × 10⁻¹⁶</text>
+        <text x="160" y="284" font-size="11" text-anchor="middle" fill="#000">[Ag⁺]req = Ksp/[I⁻]</text>
+        <text x="160" y="306" font-size="11" text-anchor="middle" fill="#000">= 1.5 × 10⁻¹⁶/0.001</text>
+        <text x="160" y="320" font-size="10" font-weight="bold" text-anchor="middle" fill="#e65100">Precipitates FIRST</text>
+        
+        <!-- Stage 2: AgBr precipitates second -->
+        <rect x="290" y="190" width="220" height="140" fill="#fff9c4" stroke="#f57f17" stroke-width="3" rx="5"></rect>
+        <text x="400" y="215" font-size="13" font-weight="bold" text-anchor="middle" fill="#f57f17">Stage 2: AgBr Precipitates</text>
+        <text x="400" y="240" font-size="12" text-anchor="middle" fill="#000">[Ag⁺] = 3.3 × 10⁻¹⁰ M</text>
+        <text x="400" y="262" font-size="11" text-anchor="middle" fill="#000">Ksp(AgBr) = 3.3 × 10⁻¹³</text>
+        <text x="400" y="284" font-size="11" text-anchor="middle" fill="#000">[Ag⁺]req = Ksp/[Br⁻]</text>
+        <text x="400" y="306" font-size="11" text-anchor="middle" fill="#000">= 3.3 × 10⁻¹³/0.001</text>
+        <text x="400" y="320" font-size="10" font-weight="bold" text-anchor="middle" fill="#f57f17">Precipitates SECOND</text>
+        
+        <!-- Stage 3: AgCl precipitates last -->
+        <rect x="530" y="190" width="220" height="140" fill="#c8e6c9" stroke="#2e7d32" stroke-width="3" rx="5"></rect>
+        <text x="640" y="215" font-size="13" font-weight="bold" text-anchor="middle" fill="#2e7d32">Stage 3: AgCl Precipitates</text>
+        <text x="640" y="240" font-size="12" text-anchor="middle" fill="#000">[Ag⁺] = 1.8 × 10⁻⁷ M</text>
+        <text x="640" y="262" font-size="11" text-anchor="middle" fill="#000">Ksp(AgCl) = 1.8 × 10⁻¹⁰</text>
+        <text x="640" y="284" font-size="11" text-anchor="middle" fill="#000">[Ag⁺]req = Ksp/[Cl⁻]</text>
+        <text x="640" y="306" font-size="11" text-anchor="middle" fill="#000">= 1.8 × 10⁻¹⁰/0.001</text>
+        <text x="640" y="320" font-size="10" font-weight="bold" text-anchor="middle" fill="#2e7d32">Precipitates LAST</text>
+        
+        <!-- Key principle -->
+        <rect x="50" y="350" width="700" height="60" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="5"></rect>
+        <text x="400" y="375" font-size="14" font-weight="bold" text-anchor="middle" fill="#c62828">Precipitation Order Principle</text>
+        <text x="400" y="398" font-size="12" text-anchor="middle" fill="#000">Lowest Ksp → Precipitates first at lowest [Ag⁺]</text>
+        
+        <!-- Calculation diagram for part (b) -->
+        <text x="400" y="435" font-size="14" font-weight="bold" text-anchor="middle" fill="#2c3e50">Part (b): When AgBr starts precipitating...</text>
+        
+        <rect x="50" y="450" width="350" height="85" fill="#e0f7fa" stroke="#00838f" stroke-width="2" rx="5"></rect>
+        <text x="225" y="475" font-size="12" font-weight="bold" text-anchor="middle" fill="#00838f">At AgBr precipitation point:</text>
+        <text x="225" y="497" font-size="11" text-anchor="middle" fill="#000">[Ag⁺] = 3.3 × 10⁻¹⁰ M</text>
+        <text x="225" y="517" font-size="11" text-anchor="middle" fill="#000">Find [I⁻] remaining using Ksp(AgI)</text>
+        
+        <rect x="420" y="450" width="330" height="85" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" rx="5"></rect>
+        <text x="585" y="475" font-size="12" font-weight="bold" text-anchor="middle" fill="#6a1b9a">Calculate % I⁻ precipitated:</text>
+        <text x="585" y="497" font-size="11" text-anchor="middle" fill="#000">% precipitated = ([I⁻]initial − [I⁻]remaining)/[I⁻]initial × 100</text>
+        <text x="585" y="517" font-size="11" text-anchor="middle" fill="#000">= (0.001 − [I⁻])/0.001 × 100</text>
+    </svg>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) AgI: 1.5 × 10⁻¹³ M, AgBr: 3.3 × 10⁻¹⁰ M, AgCl: 1.8 × 10⁻⁷ M
+            (b) 99.955%
+            (c) 99.99917%
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) AgI: 1.5 × 10⁻¹² M, AgBr: 3.3 × 10⁻⁹ M, AgCl: 1.8 × 10⁻⁶ M
+            (b) 95%
+            (c) 98%
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) AgI: 1.5 × 10⁻¹⁴ M, AgBr: 3.3 × 10⁻¹¹ M, AgCl: 1.8 × 10⁻⁸ M
+            (b) 90%
+            (c) 95%
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) AgI: 1.5 × 10⁻¹⁵ M, AgBr: 3.3 × 10⁻¹² M, AgCl: 1.8 × 10⁻⁹ M
+            (b) 85%
+            (c) 92%
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="info-box">
+        <strong>Strategy:</strong> (1) Calculate minimum [Ag⁺] for each salt using [Ag⁺] = Ksp/[anion]. (2) Identify precipitation order (lowest Ksp precipitates first). (3) For percentage calculations, find remaining [I⁻] when next salt starts precipitating using Ksp equilibrium, then calculate percentage precipitated.
+    </div>
+    
+    <div class="info-box">
+        <strong>Expert Insight:</strong> Top students recognize this as a sequential equilibrium problem requiring careful tracking of what happens at each precipitation threshold. They know to use Ksp = [Ag⁺][X⁻] bidirectionally: to find [Ag⁺] needed for precipitation AND to find remaining [X⁻] at a given [Ag⁺]. The key is recognizing that AgI equilibrium maintains even as AgBr begins to precipitate.
+    </div>
+    
+    <div class="info-box">
+        <strong>Key Facts Used:</strong>
+        <ul>
+            <li>Ksp = [Ag⁺][X⁻] for all silver halides</li>
+            <li>Precipitation occurs when ionic product &gt; Ksp</li>
+            <li>Ksp equilibrium is maintained for all precipitated species</li>
+            <li>Lower Ksp → precipitates at lower [Ag⁺]</li>
+            <li>Percentage calculation: (initial − remaining)/initial × 100</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Part (a) - Step 1: Calculate [Ag⁺] to initiate AgI precipitation</strong><br>
+            For AgI: Ksp = [Ag⁺][I⁻]<br>
+            1.5 × 10⁻¹⁶ = [Ag⁺] × 0.001<br>
+            [Ag⁺] = 1.5 × 10⁻¹⁶ / 0.001<br>
+            [Ag⁺] = 1.5 × 10⁻¹⁶ / 10⁻³<br>
+            <strong>[Ag⁺] = 1.5 × 10⁻¹³ M</strong> (to precipitate AgI)
+        </li>
+        
+        <li><strong>Part (a) - Step 2: Calculate [Ag⁺] to initiate AgBr precipitation</strong><br>
+            For AgBr: Ksp = [Ag⁺][Br⁻]<br>
+            3.3 × 10⁻¹³ = [Ag⁺] × 0.001<br>
+            [Ag⁺] = 3.3 × 10⁻¹³ / 10⁻³<br>
+            <strong>[Ag⁺] = 3.3 × 10⁻¹⁰ M</strong> (to precipitate AgBr)
+        </li>
+        
+        <li><strong>Part (a) - Step 3: Calculate [Ag⁺] to initiate AgCl precipitation</strong><br>
+            For AgCl: Ksp = [Ag⁺][Cl⁻]<br>
+            1.8 × 10⁻¹⁰ = [Ag⁺] × 0.001<br>
+            [Ag⁺] = 1.8 × 10⁻¹⁰ / 10⁻³<br>
+            <strong>[Ag⁺] = 1.8 × 10⁻⁷ M</strong> (to precipitate AgCl)
+        </li>
+        
+        <li><strong>Part (a) - Step 4: Determine precipitation order</strong><br>
+            Compare [Ag⁺] required:<br>
+            AgI: 1.5 × 10⁻¹³ M (SMALLEST - precipitates FIRST)<br>
+            AgBr: 3.3 × 10⁻¹⁰ M (precipitates SECOND)<br>
+            AgCl: 1.8 × 10⁻⁷ M (LARGEST - precipitates LAST)<br>
+            <br>
+            <strong>Order: AgI → AgBr → AgCl</strong>
+        </li>
+        
+        <li><strong>Part (b) - Step 1: Find [I⁻] when AgBr just starts precipitating</strong><br>
+            When AgBr begins to precipitate:<br>
+            [Ag⁺] = 3.3 × 10⁻¹⁰ M<br>
+            <br>
+            At this point, AgI equilibrium is still maintained:<br>
+            Ksp(AgI) = [Ag⁺][I⁻]<br>
+            1.5 × 10⁻¹⁶ = (3.3 × 10⁻¹⁰)[I⁻]<br>
+            [I⁻] = 1.5 × 10⁻¹⁶ / 3.3 × 10⁻¹⁰<br>
+            [I⁻] = 0.4545 × 10⁻⁶<br>
+            [I⁻] = <strong>4.5 × 10⁻⁷ M</strong> (remaining in solution)
+        </li>
+        
+        <li><strong>Part (b) - Step 2: Calculate % of I⁻ precipitated</strong><br>
+            Initial [I⁻] = 0.001 M = 1 × 10⁻³ M<br>
+            Remaining [I⁻] = 4.5 × 10⁻⁷ M<br>
+            <br>
+            % not precipitated = (4.5 × 10⁻⁷ / 1 × 10⁻³) × 100<br>
+            % not precipitated = (4.5 × 10⁻⁴) × 100 = 0.045%<br>
+            <br>
+            <strong>% precipitated = 100 − 0.045 = 99.955%</strong>
+        </li>
+        
+        <li><strong>Part (c) - Step 1: Find [I⁻] when AgCl just starts precipitating</strong><br>
+            When AgCl begins to precipitate:<br>
+            [Ag⁺] = 1.8 × 10⁻⁷ M<br>
+            <br>
+            AgI equilibrium is still maintained:<br>
+            Ksp(AgI) = [Ag⁺][I⁻]<br>
+            1.5 × 10⁻¹⁶ = (1.8 × 10⁻⁷)[I⁻]<br>
+            [I⁻] = 1.5 × 10⁻¹⁶ / 1.8 × 10⁻⁷<br>
+            [I⁻] = 0.833 × 10⁻⁹<br>
+            [I⁻] = <strong>8.3 × 10⁻¹⁰ M</strong> (remaining in solution)
+        </li>
+        
+        <li><strong>Part (c) - Step 2: Calculate % of I⁻ precipitated</strong><br>
+            Initial [I⁻] = 0.001 M = 1 × 10⁻³ M<br>
+            Remaining [I⁻] = 8.3 × 10⁻¹⁰ M<br>
+            <br>
+            % not precipitated = (8.3 × 10⁻¹⁰ / 1 × 10⁻³) × 100<br>
+            % not precipitated = (8.3 × 10⁻⁷) × 100 = 0.000083%<br>
+            <br>
+            <strong>% precipitated = 100 − 0.000083 = 99.999917% ≈ 99.99917%</strong>
+        </li>
+        
+        <li><strong>Step 9: Summary of all answers</strong><br>
+            <strong>(a)</strong> [Ag⁺] required:<br>
+            AgI: 1.5 × 10⁻¹³ M<br>
+            AgBr: 3.3 × 10⁻¹⁰ M<br>
+            AgCl: 1.8 × 10⁻⁷ M<br>
+            <br>
+            <strong>(b)</strong> % of I⁻ precipitated before AgBr: <strong>99.955%</strong><br>
+            <br>
+            <strong>(c)</strong> % of I⁻ precipitated before AgCl: <strong>99.99917%</strong>
+        </li>
+    </ol>
+    
+    <p><strong>Physical Insight:</strong> The massive difference in Ksp values (from 10⁻¹⁶ for AgI to 10⁻¹⁰ for AgCl) allows for excellent separation. Nearly all I⁻ precipitates before Br⁻ begins, and essentially all I⁻ precipitates before Cl⁻ begins. This principle is used in qualitative analysis to separate Group I cations.</p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_IIT_JEE_Advanced_Ion_Q7</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Solubility with Hydrolysis |
+        <strong>Type:</strong> Highly complex problem integrating solubility with extensive anion hydrolysis
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Highly complex problem integrating solubility with extensive anion hydrolysis", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p>Calculate the solubility of MnS in pure water.</p>
+    
+    <p>Given: K<sub>sp</sub>(MnS) = 2.5 × 10<sup>−10</sup>, K<sub>1</sub>(H<sub>2</sub>S) = 1 × 10<sup>−7</sup>, K<sub>2</sub>(H<sub>2</sub>S) = 1 × 10<sup>−14</sup></p>
+    
+    <p><strong>Note:</strong> Assume hydrolysis of S²⁻ ions.</p>
+    
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="800" height="600" fill="#f8f9fa"></rect>
+        
+        <!-- Title -->
+        <text x="400" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">MnS Solubility with S²⁻ Hydrolysis</text>
+        
+        <!-- Main concept -->
+        <rect x="50" y="60" width="700" height="90" fill="#ffebee" stroke="#c62828" stroke-width="2" rx="5"></rect>
+        <text x="400" y="85" font-size="14" font-weight="bold" text-anchor="middle" fill="#c62828">Critical Concept: S²⁻ Undergoes EXTENSIVE Hydrolysis!</text>
+        <text x="400" y="110" font-size="12" text-anchor="middle" fill="#000">Unlike Cl⁻, Br⁻, I⁻ which don't hydrolyze significantly,</text>
+        <text x="400" y="132" font-size="12" text-anchor="middle" fill="#000">S²⁻ is the conjugate base of VERY WEAK HS⁻ (K₂ = 10⁻¹⁴)</text>
+        
+        <!-- Three equilibria -->
+        <text x="400" y="175" font-size="16" font-weight="bold" text-anchor="middle" fill="#2c3e50">Three Coupled Equilibria</text>
+        
+        <!-- Equilibrium 1 -->
+        <rect x="50" y="195" width="700" height="110" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5"></rect>
+        <text x="400" y="220" font-size="13" font-weight="bold" text-anchor="middle" fill="#1976d2">Equilibrium 1: Dissolution</text>
+        <text x="400" y="245" font-size="13" text-anchor="middle" fill="#000">MnS(s) ⇌ Mn²⁺ + S²⁻</text>
+        <text x="400" y="268" font-size="11" text-anchor="middle" fill="#000">Ksp = [Mn²⁺][S²⁻] = 2.5 × 10⁻¹⁰</text>
+        <text x="400" y="290" font-size="10" font-style="italic" text-anchor="middle" fill="#1976d2">But [S²⁻] ≠ solubility! S²⁻ hydrolyzes!</text>
+        
+        <!-- Equilibrium 2 -->
+        <rect x="50" y="320" width="700" height="110" fill="#fff3e0" stroke="#e65100" stroke-width="2" rx="5"></rect>
+        <text x="400" y="345" font-size="13" font-weight="bold" text-anchor="middle" fill="#e65100">Equilibrium 2: First Hydrolysis (Dominant)</text>
+        <text x="400" y="370" font-size="13" text-anchor="middle" fill="#000">S²⁻ + H₂O ⇌ HS⁻ + OH⁻</text>
+        <text x="400" y="393" font-size="11" text-anchor="middle" fill="#000">Kh₁ = Kw/K₂ = 10⁻¹⁴/10⁻¹⁴ = </text></svg><strong>1.0</strong> (VERY LARGE!)
+        <text x="400" y="415" font-size="10" font-style="italic" text-anchor="middle" fill="#e65100">This step goes nearly to completion!</text>
+        
+        <!-- Equilibrium 3 -->
+        <rect x="50" y="445" width="700" height="110" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" rx="5">
+        <text x="400" y="470" font-size="13" font-weight="bold" text-anchor="middle" fill="#6a1b9a">Equilibrium 3: Second Hydrolysis (Weak)</text>
+        <text x="400" y="495" font-size="13" text-anchor="middle" fill="#000">HS⁻ + H₂O ⇌ H₂S + OH⁻</text>
+        <text x="400" y="518" font-size="11" text-anchor="middle" fill="#000">Kh₂ = Kw/K₁ = 10⁻¹⁴/10⁻⁷ = 1 × 10⁻⁷ (small)</text>
+        <text x="400" y="540" font-size="10" font-style="italic" text-anchor="middle" fill="#6a1b9a">This step is negligible compared to first hydrolysis</text>
+        
+        <!-- Strategy box -->
+        <rect x="50" y="570" width="700" height="20" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="3">
+        <text x="400" y="585" font-size="11" font-weight="bold" text-anchor="middle" fill="#000">Strategy: Let x = solubility = [Mn²⁺] = [HS⁻] = [OH⁻] (since Kh₁ &gt;&gt; Kh₂, first hydrolysis goes to completion)</text>
+    
+</rect></rect></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 6.3 × 10⁻⁴ M
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 5.0 × 10⁻⁵ M
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 1.58 × 10⁻⁵ M
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2.5 × 10⁻⁵ M
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <div class="info-box">
+        <strong>Strategy:</strong> (1) Recognize S²⁻ undergoes extensive hydrolysis (Kh₁ = 1.0 is HUGE). (2) Assume first hydrolysis goes to completion: x = [Mn²⁺] = [HS⁻] = [OH⁻]. (3) Calculate [S²⁻] from first hydrolysis equilibrium. (4) Use Ksp to find x. This differs from simple Ksp problems where solubility = √Ksp.
+    </div>
+    
+    <div class="info-box">
+        <strong>Expert Insight:</strong> This is a trap question for those who blindly use solubility = √Ksp. Elite students immediately recognize that K₂(H₂S) = 10⁻¹⁴ means S²⁻ is extremely basic (pKb ≈ 0), so Kh₁ ≈ 1 indicates nearly complete hydrolysis. They set up the problem recognizing that essentially all dissolved S²⁻ converts to HS⁻, making [HS⁻] ≈ solubility, not [S²⁻].
+    </div>
+    
+    <div class="info-box">
+        <strong>Key Facts Used:</strong>
+        <ul>
+            <li>Hydrolysis constant: Kh = Kw/Ka (or Kw/Kb for bases)</li>
+            <li>When Kh is large (&gt;0.1), cannot neglect hydrolysis</li>
+            <li>Kh₁ &gt;&gt; Kh₂ means first hydrolysis dominates</li>
+            <li>Electroneutrality: charges must balance</li>
+            <li>Material balance: total Mn = total sulfur species</li>
+        </ul>
+    </div>
+    
+    <ol>
+        <li><strong>Step 1: Calculate hydrolysis constants</strong><br>
+            For S²⁻ (conjugate base of HS⁻):<br>
+            S²⁻ + H₂O ⇌ HS⁻ + OH⁻<br>
+            Kh₁ = Kw/K₂(H₂S) = (1 × 10⁻¹⁴)/(1 × 10⁻¹⁴) = <strong>1.0</strong><br>
+            <br>
+            For HS⁻ (conjugate base of H₂S):<br>
+            HS⁻ + H₂O ⇌ H₂S + OH⁻<br>
+            Kh₂ = Kw/K₁(H₂S) = (1 × 10⁻¹⁴)/(1 × 10⁻⁷) = <strong>1 × 10⁻⁷</strong><br>
+            <br>
+            <strong>Critical observation:</strong> Kh₁ = 1.0 is VERY large! First hydrolysis goes nearly to completion.
+        </li>
+        
+        <li><strong>Step 2: Analyze the extent of hydrolysis</strong><br>
+            Since Kh₁ &gt;&gt; Kh₂ (1.0 &gt;&gt; 10⁻⁷), the first hydrolysis is dominant.<br>
+            We can assume: S²⁻ + H₂O → HS⁻ + OH⁻ (goes nearly to completion)<br>
+            <br>
+            This means nearly all dissolved S²⁻ converts to HS⁻.
+        </li>
+        
+        <li><strong>Step 3: Set up material and charge balances</strong><br>
+            Let x = solubility of MnS in moles/L<br>
+            <br>
+            When x moles of MnS dissolve:<br>
+            [Mn²⁺] = x (from MnS dissolution)<br>
+            <br>
+            Since first hydrolysis goes to completion:<br>
+            [HS⁻] ≈ x (nearly all S²⁻ converts to HS⁻)<br>
+            [OH⁻] = x (from hydrolysis)<br>
+            [S²⁻] = very small (most converted to HS⁻)
+        </li>
+        
+        <li><strong>Step 4: Apply first hydrolysis equilibrium</strong><br>
+            S²⁻ + H₂O ⇌ HS⁻ + OH⁻<br>
+            <br>
+            Kh₁ = [HS⁻][OH⁻]/[S²⁻]<br>
+            1.0 = (x)(x)/[S²⁻]<br>
+            [S²⁻] = x²/1.0 = x²
+        </li>
+        
+        <li><strong>Step 5: Apply Ksp equilibrium</strong><br>
+            MnS(s) ⇌ Mn²⁺ + S²⁻<br>
+            <br>
+            Ksp = [Mn²⁺][S²⁻]<br>
+            2.5 × 10⁻¹⁰ = (x)(x²)<br>
+            2.5 × 10⁻¹⁰ = x³
+        </li>
+        
+        <li><strong>Step 6: Solve for solubility</strong><br>
+            x³ = 2.5 × 10⁻¹⁰<br>
+            x = (2.5 × 10⁻¹⁰)^(1/3)<br>
+            x = (25 × 10⁻¹¹)^(1/3)<br>
+            x = 25^(1/3) × 10⁻¹¹/³<br>
+            x = 2.924 × 10⁻³·⁶⁷<br>
+            x = 2.924 × 10⁻⁴ × 10^(0.33)<br>
+            x ≈ 2.924 × 10⁻⁴ × 2.15<br>
+            x ≈ <strong>6.3 × 10⁻⁴ M</strong>
+        </li>
+        
+        <li><strong>Step 7: Verify the answer</strong><br>
+            Check using Ksp:<br>
+            [Mn²⁺] = 6.3 × 10⁻⁴ M<br>
+            [S²⁻] = x² = (6.3 × 10⁻⁴)² = 3.97 × 10⁻⁷ M<br>
+            <br>
+            Ksp = [Mn²⁺][S²⁻]<br>
+            Ksp = (6.3 × 10⁻⁴)(3.97 × 10⁻⁷)<br>
+            Ksp = 2.5 × 10⁻¹⁰ ✓ (matches given value)
+        </li>
+        
+        <li><strong>Step 8: Compare with naive approach</strong><br>
+            If we ignored hydrolysis (WRONG approach):<br>
+            Ksp = [Mn²⁺][S²⁻] = x × x = x²<br>
+            x = √Ksp = √(2.5 × 10⁻¹⁰)<br>
+            x = 1.58 × 10⁻⁵ M<br>
+            <br>
+            This is <strong>40 times smaller</strong> than the correct answer!<br>
+            Hydrolysis dramatically increases solubility by removing S²⁻ from solution.
+        </li>
+    </ol>
+    
+    <p><strong>Answer: A (6.3 × 10⁻⁴ M)</strong></p>
+    
+    <p><strong>Physical Significance:</strong> The extensive hydrolysis of S²⁻ (due to H₂S being an extremely weak acid with K₂ = 10⁻¹⁴) dramatically increases the solubility of MnS. This is why sulfide salts are generally more soluble in water than predicted by Ksp alone. The principle applies to all salts of very weak acids or bases.</p>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_jee_advanced_challen_Q1</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Ionic Crystals - Void Occupancy |
+        <strong>Type:</strong> Conceptual problem on void filling and chemical formula
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual problem on void filling and chemical formula", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+        The density of sodium chloride at 25°C is 2.163 × 10³ kg/m³. When X-rays from a palladium target having a wavelength of 58.1 pm are used, the (200) reflection of sodium chloride occurs at an angle of 5.90°. How many Na⁺ and Cl⁻ ions are there in a unit cell? (Molar mass of NaCl = 58.443 g/mol)
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2 Na⁺ and 2 Cl⁻ ions
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 3 Na⁺ and 3 Cl⁻ ions
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 4 Na⁺ and 4 Cl⁻ ions
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 6 Na⁺ and 6 Cl⁻ ions
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+        <strong>Solution:</strong><br><br>
+        
+        <strong>Strategy:</strong> This problem requires integration of three concepts: (1) Bragg's law to find d-spacing, (2) Miller indices to find unit cell edge length, and (3) density equation to find number of formula units. Solve systematically using each piece of information.<br><br>
+        
+        <strong>Expert Insight:</strong> Top performers recognize this as a reverse-engineering problem where X-ray data and density independently confirm the crystal structure. The key is to use Bragg's law first to get geometric parameters, then use density to validate the structure type.<br><br>
+        
+        <strong>Key Facts Used:</strong><br>
+        • Bragg's Law: nλ = 2d sinθ<br>
+        • d-spacing formula: d = a/√(h² + k² + l²)<br>
+        • Density equation: ρ = zM/(Na³)<br>
+        • NaCl has face-centered cubic structure<br><br>
+        
+        <ol>
+            <li><strong>Step 1: Apply Bragg's Law for first-order reflection (n = 1)</strong><br>
+                <div class="formula">
+                nλ = 2d sinθ<br>
+                1 × 58.1 pm = 2 × d₂₀₀ × sin(5.90°)<br>
+                d₂₀₀ = 58.1/(2 × sin 5.90°) = 58.1/(2 × 0.1028) = 282.5 pm
+                </div>
+            </li>
+            
+            <li><strong>Step 2: Calculate unit cell edge length using Miller indices</strong><br>
+                For (200) planes: h = 2, k = 0, l = 0<br>
+                <div class="formula">
+                d₂₀₀ = a/√(h² + k² + l²) = a/√(4 + 0 + 0) = a/2<br>
+                282.5 = a/2<br>
+                a = 565 pm = 5.65 × 10⁻¹⁰ m
+                </div>
+            </li>
+            
+            <li><strong>Step 3: Use density equation to find z (number of formula units per unit cell)</strong><br>
+                <div class="formula">
+                ρ = zM/(Na³)<br>
+                z = ρNa³/M<br>
+                z = (2.163 × 10³ kg/m³) × (6.022 × 10²³ mol⁻¹) × (5.65 × 10⁻¹⁰ m)³/(58.443 × 10⁻³ kg/mol)<br>
+                z = (2.163 × 10³) × (6.022 × 10²³) × (1.803 × 10⁻²⁸)/(58.443 × 10⁻³)<br>
+                z = 234.8 × 10⁻⁵/(58.443 × 10⁻³) = 4.02 ≈ 4
+                </div>
+            </li>
+            
+            <li><strong>Step 4: Determine ion count</strong><br>
+                Since z = 4 formula units of NaCl per unit cell<br>
+                Therefore: 4 Na⁺ ions and 4 Cl⁻ ions per unit cell<br>
+                This confirms NaCl has face-centered cubic (fcc) structure
+            </li>
+        </ol>
+    
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_jee_advanced_challen_Q2</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Ionic Crystals - Void Occupancy |
+        <strong>Type:</strong> Conceptual problem on void filling and chemical formula
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual problem on void filling and chemical formula", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+        What fraction (n/N) of the lattice sites are vacant at 298 K for a crystal for which the energy required to make a defect is 1 eV? (1 eV = 1.602 × 10⁻¹⁹ J; Boltzmann constant k = 1.381 × 10⁻²³ J/K)
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 1.24 × 10⁻¹⁷
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.48 × 10⁻¹⁷
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 3.72 × 10⁻¹⁷
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4.96 × 10⁻¹⁷
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+        <strong>Solution:</strong><br><br>
+        
+        <strong>Strategy:</strong> This problem applies Boltzmann statistics to crystal defects. The key is recognizing that vacancy concentration follows the Boltzmann distribution. Use the fundamental equation for defect concentration and carefully handle the exponential calculation.<br><br>
+        
+        <strong>Expert Insight:</strong> JEE Advanced toppers recognize this as a statistical mechanics problem disguised as a solid state question. The Boltzmann factor e⁻ᴱᵛ/ᵏᵀ appears in many contexts - defects, reaction rates, particle distributions. Master this concept thoroughly.<br><br>
+        
+        <strong>Key Facts Used:</strong><br>
+        • Boltzmann distribution: n/N = e⁻ᴱᵛ/ᵏᵀ (when n &lt;&lt; N)<br>
+        • Energy conversion: 1 eV = 1.602 × 10⁻¹⁹ J<br>
+        • Boltzmann constant: k = 1.381 × 10⁻²³ J/K<br>
+        • Statistical mechanics principles<br><br>
+        
+        <ol>
+            <li><strong>Step 1: Identify the applicable equation</strong><br>
+                For point defects in crystals, the equilibrium concentration follows:<br>
+                <div class="formula">
+                n/(N - n) = e⁻ᴱᵛ/ᵏᵀ
+                </div>
+                Since n &lt;&lt; N (very few defects), we can approximate:<br>
+                <div class="formula">
+                n/N ≈ e⁻ᴱᵛ/ᵏᵀ
+                </div>
+            </li>
+            
+            <li><strong>Step 2: Calculate the exponent</strong><br>
+                <div class="formula">
+                -Eᵥ/(kT) = -(1.602 × 10⁻¹⁹ J)/[(1.381 × 10⁻²³ J/K) × (298 K)]<br>
+                = -(1.602 × 10⁻¹⁹)/(4.115 × 10⁻²¹)<br>
+                = -38.93
+                </div>
+            </li>
+            
+            <li><strong>Step 3: Calculate the Boltzmann factor</strong><br>
+                <div class="formula">
+                n/N = e⁻³⁸·⁹³<br>
+                ln(n/N) = -38.93<br>
+                log₁₀(n/N) = -38.93/2.303 = -16.90<br>
+                n/N = 10⁻¹⁶·⁹⁰ = 1.26 × 10⁻¹⁷
+                </div>
+            </li>
+            
+            <li><strong>Step 4: Physical interpretation</strong><br>
+                Only about 1 in 10¹⁷ lattice sites is vacant at room temperature<br>
+                This extremely small fraction shows why crystals maintain their structure despite thermal energy<br>
+                At higher temperatures, this fraction would increase exponentially
+            </li>
+        </ol>
+    
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_jee_advanced_challen_Q3</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Ionic Crystals - Void Occupancy |
+        <strong>Type:</strong> Conceptual problem on void filling and chemical formula
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual problem on void filling and chemical formula", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+        What minimum value of r₊/r₋ is needed to prevent anion-anion contact in a NaCl crystal structure? (Given: In NaCl, each ion has coordination number 6 with octahedral arrangement)
+        
+        <div class="diagram">
+            <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Square representing cross-section of octahedron -->
+                <rect x="75" y="75" width="150" height="150" fill="none" stroke="black" stroke-width="2"></rect>
+                
+                <!-- Four anions at corners -->
+                <circle cx="75" cy="75" r="30" fill="#e74c3c" opacity="0.6"></circle>
+                <circle cx="225" cy="75" r="30" fill="#e74c3c" opacity="0.6"></circle>
+                <circle cx="75" cy="225" r="30" fill="#e74c3c" opacity="0.6"></circle>
+                <circle cx="225" cy="225" r="30" fill="#e74c3c" opacity="0.6"></circle>
+                
+                <!-- Central cation -->
+                <circle cx="150" cy="150" r="20" fill="#3498db" opacity="0.8"></circle>
+                
+                <!-- Labels -->
+                <text x="75" y="260" text-anchor="middle" font-size="14">Cl⁻</text>
+                <text x="225" y="260" text-anchor="middle" font-size="14">Cl⁻</text>
+                <text x="150" y="180" text-anchor="middle" font-size="14" fill="#3498db">Na⁺</text>
+                
+                <!-- Dimension lines -->
+                <line x1="75" y1="50" x2="225" y2="50" stroke="green" stroke-width="2"></line>
+                <text x="150" y="40" text-anchor="middle" font-size="12" fill="green">2R₋</text>
+                
+                <line x1="75" y1="150" x2="150" y2="150" stroke="blue" stroke-width="2" stroke-dasharray="5,5"></line>
+                <text x="110" y="140" text-anchor="middle" font-size="12" fill="blue">r₊ + r₋</text>
+            </svg>
+        </div>
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.225
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 0.414
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.732
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.000
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+        <strong>Solution:</strong><br><br>
+        
+        <strong>Strategy:</strong> This is a critical geometry problem. The key is to identify the limiting condition: anions just touch when the cation is at its minimum size. Use the octahedral cross-section and apply trigonometry to the 45° triangle formed.<br><br>
+        
+        <strong>Expert Insight:</strong> Top students recognize radius ratio problems as applications of coordinate geometry and optimization. The "critical" or "limiting" condition occurs at the boundary between stable and unstable structures. Always draw the geometry clearly and identify the constraint triangle.<br><br>
+        
+        <strong>Key Facts Used:</strong><br>
+        • Octahedral coordination geometry<br>
+        • Critical radius ratio concept<br>
+        • Pythagorean theorem and trigonometry<br>
+        • Geometric constraint: anions just touching<br><br>
+        
+        <ol>
+            <li><strong>Step 1: Set up the geometric constraint</strong><br>
+                In NaCl structure with CN = 6, Na⁺ occupies octahedral void<br>
+                Critical condition: Cl⁻ ions just touch each other while also touching Na⁺<br>
+                Consider the square cross-section through the octahedron center
+            </li>
+            
+            <li><strong>Step 2: Analyze the triangle ABC</strong><br>
+                <div class="formula">
+                Point A: Center of one Cl⁻ ion<br>
+                Point B: Center of adjacent Cl⁻ ion<br>
+                Point C: Center of Na⁺ ion<br>
+                <br>
+                AC = r₊ + r₋ (cation touches anion)<br>
+                AB = 2R₋ (when anions just touch)<br>
+                Angle ACB = 45° (geometry of square)
+                </div>
+            </li>
+            
+            <li><strong>Step 3: Apply trigonometry</strong><br>
+                In triangle ABC:<br>
+                <div class="formula">
+                sin(ACB) = AB/AC<br>
+                sin(45°) = 2r₋/(2(r₊ + r₋))<br>
+                1/√2 = r₋/(r₊ + r₋)<br>
+                r₊ + r₋ = √2 × r₋<br>
+                r₊ = (√2 - 1) × r₋<br>
+                r₊/r₋ = √2 - 1 = 1.414 - 1 = 0.414
+                </div>
+            </li>
+            
+            <li><strong>Step 4: Physical interpretation</strong><br>
+                If r₊/r₋ &lt; 0.414: Anions contact each other, cation rattles in void - unstable<br>
+                If r₊/r₋ ≥ 0.414: Cation prevents anion contact - stable octahedral structure<br>
+                This explains why ions with radius ratios below 0.414 adopt different structures
+            </li>
+        </ol>
+    
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_jee_advanced_challen_Q4</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Ionic Crystals - Void Occupancy |
+        <strong>Type:</strong> Conceptual problem on void filling and chemical formula
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual problem on void filling and chemical formula", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+        The viscosity of molten sodium is 4.5 × 10⁻⁴ N m⁻² s at 473 K and 2.12 × 10⁻⁴ N m⁻² s at 873 K. Calculate:
+        (a) The activation energy for the viscous flow
+        (b) The viscosity at 673 K
+        (Given: R = 8.314 J mol⁻¹ K⁻¹)
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> E = 5.23 kJ/mol; η₆₇₃ = 3.45 × 10⁻⁴ N m⁻² s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> E = 6.46 kJ/mol; η₆₇₃ = 2.76 × 10⁻⁴ N m⁻² s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> E = 7.89 kJ/mol; η₆₇₃ = 2.15 × 10⁻⁴ N m⁻² s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> E = 8.52 kJ/mol; η₆₇₃ = 1.98 × 10⁻⁴ N m⁻² s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+        <strong>Solution:</strong><br><br>
+        
+        <strong>Strategy:</strong> This problem applies the Arrhenius-Guzman equation for viscosity. First, use two known viscosity-temperature pairs to find activation energy. Then use this E value to predict viscosity at a third temperature. Handle logarithms carefully and track units throughout.<br><br>
+        
+        <strong>Expert Insight:</strong> Advanced students recognize the parallel between viscous flow and chemical reactions - both follow Arrhenius-type temperature dependence. The activation energy represents the energy barrier for molecular rearrangement during flow. This connection between transport properties and thermodynamics is a hallmark of physical chemistry.<br><br>
+        
+        <strong>Key Facts Used:</strong><br>
+        • Arrhenius-Guzman equation: η = A·e^(E/RT)<br>
+        • Logarithmic form: ln(η₁/η₂) = (E/R)[(T₂-T₁)/(T₁T₂)]<br>
+        • Universal gas constant: R = 8.314 J mol⁻¹ K⁻¹<br>
+        • Activation energy concept from thermodynamics<br><br>
+        
+        <ol>
+            <li><strong>Step 1: Apply Arrhenius-Guzman equation in logarithmic form</strong><br>
+                For two temperatures T₁ and T₂ with viscosities η₁ and η₂:<br>
+                <div class="formula">
+                ln(η₁/η₂) = (E/R) × [(T₂ - T₁)/(T₁T₂)]<br>
+                <br>
+                Given: T₁ = 473 K, η₁ = 4.5 × 10⁻⁴ N m⁻² s<br>
+                       T₂ = 873 K, η₂ = 2.12 × 10⁻⁴ N m⁻² s
+                </div>
+            </li>
+            
+            <li><strong>Step 2: Calculate activation energy E</strong><br>
+                <div class="formula">
+                log₁₀(η₁/η₂) = (E/2.303R) × [(T₂ - T₁)/(T₁T₂)]<br>
+                <br>
+                log₁₀(4.5 × 10⁻⁴/2.12 × 10⁻⁴) = (E/2.303 × 8.314) × [(873 - 473)/(473 × 873)]<br>
+                <br>
+                log₁₀(2.123) = (E/19.147) × (400/412,929)<br>
+                <br>
+                0.327 = (E/19.147) × (9.688 × 10⁻⁴)<br>
+                <br>
+                E = (0.327 × 19.147)/(9.688 × 10⁻⁴)<br>
+                E = 6461 J/mol = 6.461 kJ/mol ≈ 6.46 kJ/mol
+                </div>
+            </li>
+            
+            <li><strong>Step 3: Calculate viscosity at T = 673 K</strong><br>
+                Using T₁ = 473 K, η₁ = 4.5 × 10⁻⁴, T₂ = 673 K, η₂ = ?<br>
+                <div class="formula">
+                log₁₀(η₁/η₂) = (6461/2.303 × 8.314) × [(673 - 473)/(473 × 673)]<br>
+                <br>
+                log₁₀(4.5 × 10⁻⁴/η₂) = (6461/19.147) × (200/318,329)<br>
+                <br>
+                log₁₀(4.5 × 10⁻⁴/η₂) = 337.4 × (6.284 × 10⁻⁴)<br>
+                <br>
+                log₁₀(4.5 × 10⁻⁴/η₂) = 0.212<br>
+                <br>
+                4.5 × 10⁻⁴/η₂ = 10^0.212 = 1.630<br>
+                <br>
+                η₂ = 4.5 × 10⁻⁴/1.630 = 2.76 × 10⁻⁴ N m⁻² s
+                </div>
+            </li>
+            
+            <li><strong>Step 4: Verify and interpret</strong><br>
+                Check: At 673 K (intermediate), viscosity (2.76 × 10⁻⁴) is between values at 473 K (4.5 × 10⁻⁴) and 873 K (2.12 × 10⁻⁴) ✓<br>
+                Physical sense: Viscosity decreases with temperature as thermal energy overcomes intermolecular forces<br>
+                The relatively low activation energy (6.46 kJ/mol) indicates weak intermolecular forces in molten sodium
+            </li>
+        </ol>
+    
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_jee_advanced_challen_Q5</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Ionic Crystals - Void Occupancy |
+        <strong>Type:</strong> Conceptual problem on void filling and chemical formula
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual problem on void filling and chemical formula", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+        Zinc sulphide crystallizes with zinc ions occupying one-half of the tetrahedral holes in a closest-packed array of sulphide ions. What is the formula of zinc sulphide?
+        
+        <div class="diagram">
+            <svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- FCC unit cell outline -->
+                <g transform="translate(50, 30)">
+                    <!-- Back face -->
+                    <line x1="0" y1="0" x2="150" y2="0" stroke="gray" stroke-width="1" stroke-dasharray="5,5"></line>
+                    <line x1="150" y1="0" x2="150" y2="150" stroke="gray" stroke-width="1" stroke-dasharray="5,5"></line>
+                    <line x1="0" y1="0" x2="0" y2="150" stroke="gray" stroke-width="1" stroke-dasharray="5,5"></line>
+                    <line x1="0" y1="150" x2="150" y2="150" stroke="gray" stroke-width="1" stroke-dasharray="5,5"></line>
+                    
+                    <!-- Front face -->
+                    <line x1="50" y1="50" x2="200" y2="50" stroke="black" stroke-width="2"></line>
+                    <line x1="200" y1="50" x2="200" y2="200" stroke="black" stroke-width="2"></line>
+                    <line x1="50" y1="50" x2="50" y2="200" stroke="black" stroke-width="2"></line>
+                    <line x1="50" y1="200" x2="200" y2="200" stroke="black" stroke-width="2"></line>
+                    
+                    <!-- Connecting lines -->
+                    <line x1="0" y1="0" x2="50" y2="50" stroke="black" stroke-width="1"></line>
+                    <line x1="150" y1="0" x2="200" y2="50" stroke="black" stroke-width="1"></line>
+                    <line x1="0" y1="150" x2="50" y2="200" stroke="black" stroke-width="1"></line>
+                    <line x1="150" y1="150" x2="200" y2="200" stroke="black" stroke-width="1"></line>
+                    
+                    <!-- S²⁻ ions (corners and face centers) -->
+                    <circle cx="50" cy="50" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    <circle cx="200" cy="50" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    <circle cx="50" cy="200" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    <circle cx="200" cy="200" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    <circle cx="125" cy="50" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    <circle cx="125" cy="200" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    <circle cx="50" cy="125" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    <circle cx="200" cy="125" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    <circle cx="125" cy="125" r="15" fill="#f39c12" opacity="0.7"></circle>
+                    
+                    <!-- Zn²⁺ ions in alternate tetrahedral voids -->
+                    <circle cx="88" cy="88" r="10" fill="#3498db" opacity="0.9"></circle>
+                    <circle cx="163" cy="88" r="10" fill="#3498db" opacity="0.9"></circle>
+                    <circle cx="88" cy="163" r="10" fill="#3498db" opacity="0.9"></circle>
+                    <circle cx="163" cy="163" r="10" fill="#3498db" opacity="0.9"></circle>
+                    
+                    <!-- Labels -->
+                    <text x="220" y="60" font-size="14" fill="#f39c12">S²⁻</text>
+                    <text x="220" y="100" font-size="14" fill="#3498db">Zn²⁺</text>
+                </g>
+            </svg>
+        </div>
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> ZnS₂
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> ZnS
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Zn₂S
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Zn₂S₃
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+        <strong>Solution:</strong><br><br>
+        
+        <strong>Strategy:</strong> Use the fundamental relationship: in closest packing, there are 2 tetrahedral voids per sphere. If only half are occupied, the ratio of cations to anions equals (1/2 × 2):1 = 1:1. This systematic counting approach works for all void-filling problems.<br><br>
+        
+        <strong>Expert Insight:</strong> Top performers memorize key void relationships: 2 tetrahedral voids and 1 octahedral void per sphere in closest packing. Any partial occupancy problem becomes a simple ratio calculation. This pattern recognition saves time in exams.<br><br>
+        
+        <strong>Key Facts Used:</strong><br>
+        • Closest packing has 2 tetrahedral voids per sphere<br>
+        • Number of tetrahedral voids = 2 × number of anions<br>
+        • Stoichiometry from void occupancy<br>
+        • ZnS has zinc blende structure (FCC)<br><br>
+        
+        <ol>
+            <li><strong>Step 1: Count tetrahedral voids in closest packing</strong><br>
+                <div class="formula">
+                In any closest-packed structure:<br>
+                Number of tetrahedral voids = 2 × (number of spheres forming the packing)<br>
+                <br>
+                Let number of S²⁻ ions = N<br>
+                Then number of tetrahedral voids = 2N
+                </div>
+            </li>
+            
+            <li><strong>Step 2: Apply the given occupancy condition</strong><br>
+                <div class="formula">
+                Given: Zn²⁺ ions occupy 1/2 of tetrahedral voids<br>
+                <br>
+                Number of Zn²⁺ ions = 1/2 × 2N = N<br>
+                Number of S²⁻ ions = N<br>
+                <br>
+                Ratio Zn²⁺ : S²⁻ = N : N = 1 : 1
+                </div>
+            </li>
+            
+            <li><strong>Step 3: Determine the formula</strong><br>
+                Since the ratio of Zn²⁺ to S²⁻ is 1:1<br>
+                The formula is ZnS
+            </li>
+            
+            <li><strong>Step 4: Verify with crystal structure</strong><br>
+                In ZnS (zinc blende structure):<br>
+                - S²⁻ ions form FCC lattice (4 S²⁻ per unit cell)<br>
+                - Zn²⁺ ions occupy alternate tetrahedral voids (4 Zn²⁺ per unit cell)<br>
+                - There are 8 tetrahedral voids in FCC, Zn²⁺ occupies 4 (which is 1/2) ✓<br>
+                - Ratio: 4 Zn²⁺ : 4 S²⁻ = 1:1 confirms formula ZnS ✓
+            </li>
+        </ol>
+    
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 24 (Questions 231-240)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 24: Questions 231 - 240</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:54 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">58</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Combinatorics_161</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Permutations and Combinations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let <i>a</i>ₙ = number of <i>n</i>-digit positive integers formed by the digits 0, 1 or both such that no consecutive digits in them is 0. Let <i>b</i>ₙ = number of such <i>n</i>-digit integers ending with digit 1, and <i>c</i>ₙ = the number of such <i>n</i>-digit integers ending with digit 0, then for <i>n</i> ≥ 3,</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> aₙ =bₙ₋₁ +cₙ₋₂
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> aₙ =bₙ₋₁ +cₙ₋₁
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> aₙ =bₙ₋₂ +cₙ₋₁
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> aₙ =bₙ +cₙ
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+            By definition:<br/>
+            - <i>a</i>ₙ = total <i>n</i>-digit numbers with no consecutive 0s<br/>
+            - <i>b</i>ₙ = such numbers ending in 1<br/>
+            - <i>c</i>ₙ = such numbers ending in 0<br/><br/>
+            
+            Every <i>n</i>-digit number must end in either 1 or 0.<br/>
+            Therefore: <i>a</i>ₙ = <i>b</i>ₙ + <i>c</i>ₙ<br/><br/>
+            
+            This is true by the fundamental principle of counting - we partition all valid numbers into two disjoint sets based on their last digit.<br/><br/>
+            
+            Answer: <strong>(d) <i>a</i>ₙ = <i>b</i>ₙ + <i>c</i>ₙ</strong>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Combinatorics_162</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Permutations and Combinations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The number of seven digit integers, with sum of the digits equal to 10 and formed by using the digits 1, 2 and 3 only, is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 55
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 66
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 77
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 88
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+            Let x₁ = number of 1's, x₂ = number of 2's, x₃ = number of 3's<br/><br/>
+            
+            Constraints:<br/>
+            x₁ + x₂ + x₃ = 7 (seven digits total)<br/>
+            1·x₁ + 2·x₂ + 3·x₃ = 10 (sum equals 10)<br/><br/>
+            
+            From the first equation: x₁ = 7 − x₂ − x₃<br/>
+            Substituting into the second:<br/>
+            (7 − x₂ − x₃) + 2x₂ + 3x₃ = 10<br/>
+            7 + x₂ + 2x₃ = 10<br/>
+            x₂ + 2x₃ = 3<br/><br/>
+            
+            Solutions:<br/>
+            - x₃ = 0, x₂ = 3, x₁ = 4: (4 ones, 3 twos, 0 threes)<br/>
+              Arrangements: 7!/(4!3!) = 35<br/><br/>
+            
+            - x₃ = 1, x₂ = 1, x₁ = 5: (5 ones, 1 two, 1 three)<br/>
+              Arrangements: 7!/(5!1!1!) = 42<br/><br/>
+            
+            Total = 35 + 42 = <strong>77</strong>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Combinatorics_163</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Permutations and Combinations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let <i>S</i> = {1, 2, 3, 4}. The total number of unordered pairs of disjoint subsets of <i>S</i> is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 25
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 34
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 42
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 41
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+            For each element in <i>S</i>, it can:<br/>
+            - Belong to first subset<br/>
+            - Belong to second subset<br/>
+            - Belong to neither<br/><br/>
+            
+            Total ordered pairs of disjoint subsets = 3⁴ = 81<br/><br/>
+            
+            For unordered pairs {A, B}:<br/>
+            - Most pairs (A, B) and (B, A) are counted twice<br/>
+            - Exception: (∅, ∅) which appears once<br/><br/>
+            
+            Number of unordered pairs = (81 − 1)/2 + 1<br/>
+            = 80/2 + 1<br/>
+            = 40 + 1<br/>
+            = <strong>41</strong>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Combinatorics_164</div>
+        <div class="badge medium">medium - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Permutations and Combinations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>How many different words can be formed by jumbling the letters in the word MISSISSIPPI in which no two S are adjacent?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (8)(⁶C₄)(⁷C₄)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (6)(7)(⁸C₄)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (6)(8)(⁷C₄)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> (7)(⁶C₄)(⁸C₄)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+            MISSISSIPPI has: M(1), I(4), S(4), P(2) = 11 letters<br/><br/>
+<strong>Step 1:</strong> Arrange non-S letters (M, I, I, I, I, P, P)<br/>
+            Number of arrangements = 7!/(4!·2!·1!) = 5040/48 = 105<br/><br/>
+<strong>Step 2:</strong> Create gaps for S's<br/>
+            7 non-S letters create 8 positions (gaps): _M_I_I_I_I_P_P_<br/><br/>
+<strong>Step 3:</strong> Choose 4 of these 8 positions for the 4 S's<br/>
+            Ways = C(8, 4) = 70<br/><br/>
+            
+            Total = 105 × 70 = 7350<br/><br/>
+            
+            Expressing 105 in terms of combinations:<br/>
+            105 = 7!/(4!2!) = (7 × 6 × 5)/(2 × 1) = 7 × 15 = 7 × ⁶C₄<br/><br/>
+            
+            Therefore: 7 × ⁶C₄ × ⁸C₄ = 7 × 15 × 70 = <strong>7350</strong><br/><br/>
+            
+            Answer: <strong>(d) 7 × ⁶C₄ × ⁸C₄</strong>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Combinatorics_165</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Permutations and Combinations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let <i>n</i> ≥ 2 be an integer. Take <i>n</i> distinct points on a circle and join each pair of points by a line segment. Colour the line segment joining every pair of adjacent points by blue and rest by red. If the number of red and blue line segments are equal then value of <i>n</i> is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 4
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 5
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 6
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 7
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+            Total line segments joining <i>n</i> points = C(<i>n</i>, 2) = <i>n</i>(<i>n</i>−1)/2<br/><br/>
+            
+            Blue segments (adjacent pairs on circle) = <i>n</i><br/><br/>
+            
+            Red segments (non-adjacent pairs) = C(<i>n</i>, 2) − <i>n</i><br/>
+            = <i>n</i>(<i>n</i>−1)/2 − <i>n</i><br/>
+            = <i>n</i>[(<i>n</i>−1)/2 − 1]<br/>
+            = <i>n</i>(<i>n</i>−3)/2<br/><br/>
+            
+            For equal numbers:<br/>
+            Blue = Red<br/>
+<i>n</i> = <i>n</i>(<i>n</i>−3)/2<br/>
+            2 = <i>n</i> − 3<br/>
+<i>n</i> = <strong>5</strong>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Combinatorics_166</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Permutations and Combinations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If <i>r</i>, <i>s</i>, <i>t</i> are prime numbers and <i>p</i>, <i>q</i> are natural numbers such that LCM of <i>p</i>, <i>q</i> is <i>r</i>² <i>s</i>⁴ <i>t</i>², then the number of ordered pairs (<i>p</i>, <i>q</i>) is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 252
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 254
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 225
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 224
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+            LCM(<i>p</i>, <i>q</i>) = <i>r</i>² <i>s</i>⁴ <i>t</i>²<br/><br/>
+            
+            For each prime power in the LCM, max(exponent in <i>p</i>, exponent in <i>q</i>) equals that power.<br/><br/>
+<strong>For r²:</strong> max(exp of <i>r</i> in <i>p</i>, exp of <i>r</i> in <i>q</i>) = 2<br/>
+            Possible exponent pairs (a, b) where max(a, b) = 2:<br/>
+            (0,2), (1,2), (2,2), (2,1), (2,0) = 5 pairs<br/><br/>
+<strong>For s⁴:</strong> max(exp of <i>s</i> in <i>p</i>, exp of <i>s</i> in <i>q</i>) = 4<br/>
+            Possible pairs where max(a, b) = 4:<br/>
+            (0,4), (1,4), (2,4), (3,4), (4,4), (4,3), (4,2), (4,1), (4,0) = 9 pairs<br/><br/>
+<strong>For t²:</strong> max(exp of <i>t</i> in <i>p</i>, exp of <i>t</i> in <i>q</i>) = 2<br/>
+            Possible pairs = 5 (same as for <i>r</i>²)<br/><br/>
+            
+            Total ordered pairs = 5 × 9 × 5 = <strong>225</strong>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Combinatorics_167</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Permutations and Combinations |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Problem Consistency] Ambiguous content detected in question: \.\.\.
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The greatest common divisor of ³¹C₃, ³¹C₅, ..., ³¹C₂₉ is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 31
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 17
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+            We need to find GCD of ³¹C₃, ³¹C₅, ³¹C₇, ..., ³¹C₂₉ (all odd-indexed binomial coefficients from 3 to 29).<br/><br/>
+<strong>Key fact:</strong> Since 31 is prime, by Lucas's theorem and properties of binomial coefficients:<br/>
+            ³¹Cₖ = 31!/(k!(31−k)!)<br/><br/>
+            
+            For 0 &lt; k &lt; 31, since 31 is prime:<br/>
+            ³¹Cₖ ≡ 0 (mod 31)<br/><br/>
+            
+            This means 31 divides every ³¹Cₖ for 1 ≤ k ≤ 30.<br/><br/>
+            
+            To verify 31 is the GCD (not a larger multiple of 31):<br/>
+            Consider ³¹C₃ = 31 × 30 × 29 / (3 × 2 × 1) = 31 × 5 × 29 = 31 × 145<br/><br/>
+            
+            Since gcd(145, 31) = 1, we need to check if 31 is the highest common factor.<br/>
+            After checking the pattern of these binomial coefficients, the GCD is <strong>31</strong>.
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_13</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If the two circles (x - 5/2)² + (y + 3)² + 1 = 0 and (x - a/2)² + (y - 1/2)² - 1 = 0 intersect orthogonally, then the value of <em>a</em> is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 6/5
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 5/6
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> -6/5
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> -5/6
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<p><strong>Given circles:</strong></p>
+<div class="formula">
+                Circle 1: (x - 5/2)² + (y + 3)² = -1
+            </div>
+<p>This appears to have an error in the problem statement. It should be:</p>
+<div class="formula">
+                Circle 1: (x - 5/2)² + (y + 3)² = 1<br/>
+                Center C₁ = (5/2, -3), radius r₁ = 1
+            </div>
+<div class="formula">
+                Circle 2: (x - a/2)² + (y - 1/2)² = 1<br/>
+                Center C₂ = (a/2, 1/2), radius r₂ = 1
+            </div>
+<h4>Orthogonality Condition:</h4>
+<p>Two circles intersect orthogonally if:</p>
+<div class="formula">
+                2g₁g₂ + 2f₁f₂ = c₁ + c₂
+            </div>
+<p>Or equivalently, if the distance between centers satisfies:</p>
+<div class="formula">
+                d² = r₁² + r₂²
+            </div>
+<p>Where d is the distance between centers:</p>
+<div class="formula">
+                d² = (a/2 - 5/2)² + (1/2 - (-3))²<br/>
+                d² = ((a-5)/2)² + (7/2)²<br/>
+                d² = (a-5)²/4 + 49/4
+            </div>
+<p>Applying orthogonality condition:</p>
+<div class="formula">
+                (a-5)²/4 + 49/4 = 1² + 1²<br/>
+                (a-5)² + 49 = 8<br/>
+                (a-5)² = -41
+            </div>
+<p>This gives imaginary result. Using the standard formula for orthogonal circles:</p>
+<div class="formula">
+                2(g₁g₂ + f₁f₂) = c₁ + c₂
+            </div>
+<p>After proper calculation with the corrected equation:</p>
+<div class="formula">
+<strong>a = 5/6</strong>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_14</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution missing step-by-step breakdown
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The locus of the point from which mutually perpendicular tangents can be drawn to the circle x² + y² = 36 is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> x² + y² = 42
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> x² + y² = 48
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> x² + y² = 60
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> x² + y² = 72
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<p><strong>Concept: Director Circle</strong></p>
+<p>The locus of the point from which two perpendicular tangents can be drawn to a circle is called the director circle.</p>
+<p><strong>Given circle:</strong></p>
+<div class="formula">
+                x² + y² = 36<br/>
+                Center: (0, 0), radius r = 6
+            </div>
+<h4>Director Circle Formula:</h4>
+<p>For a circle x² + y² = r², the director circle is:</p>
+<div class="formula">
+                x² + y² = 2r²
+            </div>
+<h4>Applying the formula:</h4>
+<div class="formula">
+                x² + y² = 2(36)<br/>
+                x² + y² = 72
+            </div>
+<p><strong>Why this works:</strong></p>
+<p>If tangents from point P(h, k) to the circle x² + y² = r² are perpendicular, then the angle between the tangents is 90°. This means the distance from P to the center equals √2 times the radius.</p>
+<div class="formula">
+                √(h² + k²) = r√2<br/>
+                h² + k² = 2r²
+            </div>
+<p>Therefore, the locus is <strong>x² + y² = 72</strong></p>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_15</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The locus of the middle points of the chords of the circle x² + y² = 4a² which subtend a right angle at the centre of the circle is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> x + y = 2a
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> x² + y² = a²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> x² + y² = 2a²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> x² + y² = x + y
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <h4>Solution:</h4>
+<p><strong>Given circle:</strong></p>
+<div class="formula">
+                x² + y² = 4a²<br/>
+                Center: O(0, 0), radius: r = 2a
+            </div>
+<h4>Analysis:</h4>
+<p>Let M(h, k) be the midpoint of chord AB that subtends a right angle at the center O.</p>
+<p>Let the endpoints of the chord be A and B.</p>
+<p><strong>Step 1:</strong> Since M is the midpoint of AB, OM ⊥ AB</p>
+<p>If OM = d, then by Pythagorean theorem in triangle OAM:</p>
+<div class="formula">
+                OA² = OM² + AM²<br/>
+                (2a)² = d² + AM²<br/>
+                AM² = 4a² - d²
+            </div>
+<p><strong>Step 2:</strong> Since ∠AOB = 90° and M is midpoint of AB:</p>
+<p>In triangle OAB with right angle at O:</p>
+<div class="formula">
+                AB² = OA² + OB² = (2a)² + (2a)² = 8a²<br/>
+                AB = 2a√2
+            </div>
+<p>Since M is the midpoint:</p>
+<div class="formula">
+                AM = AB/2 = a√2
+            </div>
+<p><strong>Step 3:</strong> From AM² = 4a² - d²:</p>
+<div class="formula">
+                (a√2)² = 4a² - d²<br/>
+                2a² = 4a² - d²<br/>
+                d² = 2a²
+            </div>
+<p>Since d² = h² + k² (distance from origin to M):</p>
+<div class="formula">
+<strong>x² + y² = 2a²</strong>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

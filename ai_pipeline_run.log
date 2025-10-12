@@ -1,0 +1,255 @@
+⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217
+[dotenv@17.2.3] injecting env (2) from .env.local -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+🤖 AI-Enhanced Self-Correcting Pipeline (Schema-Fixed)
+
+📚 Subject: Mathematics
+🎯 Processing first 10 questions with issues
+🧠 Using Claude AI for intelligent content generation
+
+📥 Fetched 100 questions
+
+======================================================================
+📝 Processing: Areas_Integration_1
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Areas_Integration_2
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Areas_Integration_3
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Areas_Integration_4
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Combinatorics_153
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Areas_Integration_5
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Areas_Integration_6
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Areas_Integration_7
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Areas_Integration_8
+======================================================================
+
+📊 Found 5 issues
+  🤖 Using Claude AI to generate content...
+
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 5 issues
+   After:  0 issues
+   Fixed:  5
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+📝 Processing: Algebra_130
+======================================================================
+
+📊 Found 7 issues
+  🤖 Using Claude AI to generate content...
+
+     🎯 Generating complete option set with AI...
+     🔍 Inferring specific question type...
+     📚 Generating universal strategy...
+     🎓 Generating expert insight...
+     📐 Generating key facts...
+     ⚠️  Solution completely missing - needs manual input
+
+🔍 Re-validating...
+
+📈 Results:
+   Before: 7 issues
+   After:  0 issues
+   Fixed:  7
+
+💾 Updating database...
+   ✅ Updated successfully
+
+
+======================================================================
+✅ AI-Enhanced Pipeline Complete
+======================================================================
+
+📄 Report: ai_fixed_reports/ai_fixed_Mathematics_1760259702618.json
+
+📊 Summary:
+   Processed: 10 questions
+   Issues before: 52
+   Issues after: 0
+   Fixes applied: 52
+   Success rate: 100.0%
+

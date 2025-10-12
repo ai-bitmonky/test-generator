@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-10-12T07:26:41.973Z",
+  "totalQuestions": 249,
+  "questionsWithIssues": 243,
+  "passRate": "2.4",
+  "criticalCount": 38,
+  "highCount": 208,
+  "mediumCount": 253,
+  "lowCount": 5
+}

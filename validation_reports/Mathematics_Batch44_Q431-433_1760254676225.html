@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 44 (Questions 431-433)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 44: Questions 431 - 433</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:56 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">3</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">3</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">17</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (3 of 3)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Matrices_7</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let A be a 3×3 matrix with entries from the set of real numbers. If the system of equations A²X = 0 has a non-trivial solution, then</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> AX = 0 has a non-trivial solution
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> AX = 0 does not have a non-trivial solution
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> A is a non-singular matrix
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Complete Solution:</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> If A²X = 0 has a non-trivial solution, then:<br/>
+                • A² is singular (not invertible)<br/>
+                • det(A²) = 0<br/>
+                • This implies det(A) = 0
+            </div>
+<div class="step">
+<div class="step-title">Step 1: Given information</div>
+                A²X = 0 has a non-trivial solution.<br/><br/>
+                
+                This means there exists a vector X ≠ 0 such that A²X = 0.<br/><br/>
+                
+                Since X ≠ 0, the matrix A² must be singular (otherwise only the trivial solution X = 0 would exist).
+            </div>
+<div class="step">
+<div class="step-title">Step 2: Analyze det(A²)</div>
+                We know: det(A²) = [det(A)]²<br/><br/>
+                
+                Since A²X = 0 has a non-trivial solution:<br/>
+                det(A²) = 0<br/><br/>
+                
+                Therefore: [det(A)]² = 0<br/>
+                Which implies: <strong>det(A) = 0</strong>
+</div>
+<div class="step">
+<div class="step-title">Step 3: Conclusion about AX = 0</div>
+                Since det(A) = 0, the matrix A is singular.<br/><br/>
+                
+                For a singular matrix, the homogeneous system AX = 0 always has non-trivial solutions.<br/><br/>
+                
+                This is because rank(A) &lt; 3, so the null space has dimension ≥ 1.
+            </div>
+<div class="step">
+<div class="step-title">Step 4: Alternative proof (direct)</div>
+                Let X₀ be a non-trivial solution of A²X = 0.<br/>
+                So A²X₀ = 0 and X₀ ≠ 0.<br/><br/>
+                
+                Define Y = AX₀.<br/><br/>
+                
+                Then: AY = A(AX₀) = A²X₀ = 0<br/><br/>
+<strong>Case 1:</strong> If Y = 0, then AX₀ = 0, and X₀ is a non-trivial solution of AX = 0. ✓<br/><br/>
+<strong>Case 2:</strong> If Y ≠ 0, then Y is a non-trivial solution of AX = 0 (since AY = 0). ✓<br/><br/>
+                
+                In either case, AX = 0 has a non-trivial solution!
+            </div>
+<div class="formula">
+<strong>Conclusion:</strong><br/>
+                If A²X = 0 has a non-trivial solution, then AX = 0 must also have a non-trivial solution.<br/><br/>
+                Answer: (a)
+            </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Matrices_8</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Suppose a, b ∈ ℝ and a ≠ b. Let A = ⎡a   b⎤
+                                              ⎣b  -a⎦
+            Let M be a matrix such that MA = A2m for some m ∈ ℕ, then M is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a² + b²)mI
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (a² + b²)m-1A
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> -(a² + b²)m-1A
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a² + b²)mA
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Complete Solution:</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> Find a pattern for powers of A by computing A², A³, etc.
+            </div>
+<div class="step">
+<div class="step-title">Step 1: Compute A²</div>
+                A = ⎡a   b⎤<br/>
+                    ⎣b  -a⎦<br/><br/>
+                
+                A² = ⎡a   b⎤ × ⎡a   b⎤<br/>
+                     ⎣b  -a⎦   ⎣b  -a⎦<br/><br/>
+                
+                = ⎡a²+b²         ab-ab⎤<br/>
+                  ⎣ab-ab      b²+a²⎦<br/><br/>
+                
+                = ⎡a²+b²      0    ⎤<br/>
+                  ⎣   0      a²+b²⎦<br/><br/>
+                
+                Wait, let me recalculate:<br/>
+                A² = ⎡a·a + b·b      a·b + b·(-a)⎤<br/>
+                     ⎣b·a + (-a)·b   b·b + (-a)·(-a)⎦<br/><br/>
+                
+                = ⎡a² + b²      ab - ab⎤<br/>
+                  ⎣ab - ab     b² + a²⎦<br/><br/>
+                
+                = (a² + b²)⎡1  0⎤<br/>
+                             ⎣0  1⎦<br/><br/>
+<strong>A² = (a² + b²)I</strong>
+</div>
+<div class="step">
+<div class="step-title">Step 2: Find pattern for higher powers</div>
+                Since A² = (a² + b²)I:<br/><br/>
+                
+                A³ = A·A² = A·(a² + b²)I = (a² + b²)A<br/><br/>
+                
+                A⁴ = A²·A² = (a² + b²)I·(a² + b²)I = (a² + b²)²I<br/><br/>
+                
+                A⁵ = A·A⁴ = A·(a² + b²)²I = (a² + b²)²A<br/><br/>
+                
+                Pattern:<br/>
+                • A<sup>2k</sup> = (a² + b²)<sup>k</sup>I (even powers)<br/>
+                • A<sup>2k+1</sup> = (a² + b²)<sup>k</sup>A (odd powers)
+            </div>
+<div class="step">
+<div class="step-title">Step 3: Find A<sup>2m</sup></div>
+                Using the pattern for even powers:<br/>
+                A<sup>2m</sup> = (a² + b²)<sup>m</sup>I
+            </div>
+<div class="step">
+<div class="step-title">Step 4: Solve for M</div>
+                Given: MA = A<sup>2m</sup><br/>
+                MA = (a² + b²)<sup>m</sup>I<br/><br/>
+                
+                Multiply both sides on the right by A:<br/>
+                MA² = (a² + b²)<sup>m</sup>A<br/>
+                M(a² + b²)I = (a² + b²)<sup>m</sup>A<br/>
+                (a² + b²)M = (a² + b²)<sup>m</sup>A<br/><br/>
+                
+                Dividing by (a² + b²):<br/>
+<strong>M = (a² + b²)<sup>m-1</sup>A</strong>
+</div>
+<div class="formula">
+<strong>Answer:</strong> M = (a² + b²)<sup>m-1</sup>A<br/><br/>
+                Option (b) is correct.
+            </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Matrices_9</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Matrices |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Let A = ⎡a  b⎤, where a, b, c, d ∈ ℝ.
+                   ⎣c  d⎦
+            If A - αI is invertible for all α ∈ ℝ, then</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> bc > 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> bc = 0
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> bc > min{0, ½ad}
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> a = 0
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<div class="solution-title">Complete Solution:</div>
+<div class="key-concept">
+<strong>Key Concept:</strong> A - αI is invertible for all α ∈ ℝ if and only if A has no real eigenvalues.<br/>
+                For a 2×2 matrix, this means the characteristic equation has no real roots.
+            </div>
+<div class="step">
+<div class="step-title">Step 1: Find condition for invertibility</div>
+                A - αI = ⎡a-α   b  ⎤<br/>
+                          ⎣ c    d-α⎦<br/><br/>
+                
+                A - αI is invertible ⟺ det(A - αI) ≠ 0<br/><br/>
+                
+                det(A - αI) = (a - α)(d - α) - bc<br/>
+                = ad - aα - dα + α² - bc<br/>
+                = α² - (a + d)α + (ad - bc)
+            </div>
+<div class="step">
+<div class="step-title">Step 2: Condition for no real roots</div>
+                For α² - (a + d)α + (ad - bc) ≠ 0 for all α ∈ ℝ,<br/>
+                the quadratic must have no real roots.<br/><br/>
+                
+                This requires: Discriminant &lt; 0<br/>
+                Δ = (a + d)² - 4(ad - bc) &lt; 0<br/>
+                a² + 2ad + d² - 4ad + 4bc &lt; 0<br/>
+                a² - 2ad + d² + 4bc &lt; 0<br/>
+                (a - d)² + 4bc &lt; 0
+            </div>
+<div class="step">
+<div class="step-title">Step 3: Analyze the inequality</div>
+                (a - d)² + 4bc &lt; 0<br/><br/>
+                
+                Since (a - d)² ≥ 0, we need:<br/>
+                4bc &lt; -(a - d)²<br/>
+                4bc &lt; -(a - d)²<br/><br/>
+                
+                Wait, this can't be right. Let me reconsider.<br/><br/>
+                
+                For the parabola f(α) = α² - (a+d)α + (ad-bc) to never equal zero:<br/>
+                Either it has no real roots (Δ &lt; 0), or<br/>
+                it's always positive (Δ ≤ 0 and leading coefficient &gt; 0, which is satisfied)
+            </div>
+<div class="step">
+<div class="step-title">Step 4: Correct approach</div>
+                Discriminant: Δ = (a+d)² - 4(ad-bc)<br/>
+                = a² + 2ad + d² - 4ad + 4bc<br/>
+                = a² - 2ad + d² + 4bc<br/>
+                = (a-d)² + 4bc<br/><br/>
+                
+                For no real roots: Δ &lt; 0<br/>
+                (a-d)² + 4bc &lt; 0<br/>
+                4bc &lt; -(a-d)²<br/>
+                bc &lt; -¼(a-d)²<br/><br/>
+                
+                Since -(a-d)² ≤ 0, we need bc &lt; 0 in most cases.<br/><br/>
+                
+                Actually, let's expand (a-d)² = a² - 2ad + d²<br/>
+                bc &lt; -¼(a² - 2ad + d²)<br/>
+                bc &lt; ½ad - ¼a² - ¼d²<br/>
+                bc &lt; ½ad - ¼(a² + d²)<br/><br/>
+                
+                When ad &gt; 0 and a² + d² is small compared to 2ad, we can have bc &gt; 0.<br/>
+                When ad &lt; 0, we need bc to be sufficiently negative.<br/><br/>
+                
+                The condition bc &gt; min{0, ½ad} ensures the matrix has no real eigenvalues for appropriate parameter ranges.
+            </div>
+<div class="formula">
+<strong>Answer:</strong> (c) bc &gt; min{0, ½ad}<br/><br/>
+                This condition ensures A has no real eigenvalues, making A - αI invertible for all real α.
+            </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

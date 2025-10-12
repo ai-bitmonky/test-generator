@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry - Batch 1 (Questions 1-10)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Chemistry</h1>
+      <div class="batch-info">Batch 1: Questions 1 - 10</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:53 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">30</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_0e6bd7bb_Q1</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Colligative Properties and Electrolyte Dissociation |
+        <strong>Type:</strong> Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    Liquids A and B form ideal solution over the entire range of composition. At temperature T, equimolar binary solution of liquids A and B has vapour pressure 45 torr. At the same temperature, a new solution of A and B having mole fraction x<sub>A</sub> and x<sub>B</sub>, respectively, has vapour pressure of 22.5 torr. The value of x<sub>A</sub>/x<sub>B</sub> in the new solution is:
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.5
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 9.5
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 19
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong><br><br>
+    
+    <strong>Strategy:</strong> For ideal solutions, apply Raoult's law P = x<sub>A</sub>P°<sub>A</sub> + x<sub>B</sub>P°<sub>B</sub> for both scenarios. Use the equimolar condition to establish a relationship between P°<sub>A</sub> and P°<sub>B</sub>, then solve for the composition of the second solution using algebraic manipulation.<br><br>
+    
+    <strong>Expert Insight:</strong> A topper recognizes this as a system where the equimolar solution provides the constraint P°<sub>A</sub> + P°<sub>B</sub> = 90, then uses this to express one variable in terms of the other. The halving of vapor pressure (from 45 to 22.5 torr) suggests one component dominates, leading to a large mole fraction ratio.<br><br>
+    
+    <strong>Key facts used:</strong> Raoult's Law: P<sub>total</sub> = x<sub>A</sub>P°<sub>A</sub> + x<sub>B</sub>P°<sub>B</sub>; x<sub>A</sub> + x<sub>B</sub> = 1; Algebraic manipulation<br><br>
+    
+    <ol>
+        <li><strong>Step 1: Apply Raoult's law to equimolar solution</strong><br>
+        For equimolar solution: x<sub>A</sub> = x<sub>B</sub> = 0.5<br>
+        P<sub>1</sub> = 0.5P°<sub>A</sub> + 0.5P°<sub>B</sub> = 45 torr<br>
+        Multiplying by 2: P°<sub>A</sub> + P°<sub>B</sub> = 90 torr ... (1)</li>
+        
+        <li><strong>Step 2: Apply Raoult's law to the new solution</strong><br>
+        P<sub>2</sub> = x<sub>A</sub>P°<sub>A</sub> + x<sub>B</sub>P°<sub>B</sub> = 22.5 torr<br>
+        Since x<sub>B</sub> = 1 - x<sub>A</sub>:<br>
+        22.5 = x<sub>A</sub>P°<sub>A</sub> + (1 - x<sub>A</sub>)P°<sub>B</sub><br>
+        22.5 = x<sub>A</sub>P°<sub>A</sub> + P°<sub>B</sub> - x<sub>A</sub>P°<sub>B</sub><br>
+        22.5 = x<sub>A</sub>(P°<sub>A</sub> - P°<sub>B</sub>) + P°<sub>B</sub> ... (2)</li>
+        
+        <li><strong>Step 3: Express x<sub>A</sub> in terms of vapor pressures</strong><br>
+        From equation (2): x<sub>A</sub> = (22.5 - P°<sub>B</sub>)/(P°<sub>A</sub> - P°<sub>B</sub>)<br>
+        From equation (1): P°<sub>A</sub> = 90 - P°<sub>B</sub><br>
+        Substituting: x<sub>A</sub> = (22.5 - P°<sub>B</sub>)/(90 - P°<sub>B</sub> - P°<sub>B</sub>)<br>
+        x<sub>A</sub> = (22.5 - P°<sub>B</sub>)/(90 - 2P°<sub>B</sub>) ... (3)</li>
+        
+        <li><strong>Step 4: Find the value of P°<sub>B</sub> using x<sub>A</sub>/x<sub>B</sub> relationship</strong><br>
+        Let x<sub>A</sub>/x<sub>B</sub> = r, then x<sub>A</sub> = r/(r+1) and x<sub>B</sub> = 1/(r+1)<br>
+        Substituting in equation (3):<br>
+        r/(r+1) = (22.5 - P°<sub>B</sub>)/(90 - 2P°<sub>B</sub>)<br>
+        Testing with answer options, if r = 19:<br>
+        x<sub>A</sub> = 19/20 = 0.95, x<sub>B</sub> = 1/20 = 0.05</li>
+        
+        <li><strong>Step 5: Verify the answer</strong><br>
+        From equation (3): 0.95 = (22.5 - P°<sub>B</sub>)/(90 - 2P°<sub>B</sub>)<br>
+        0.95(90 - 2P°<sub>B</sub>) = 22.5 - P°<sub>B</sub><br>
+        85.5 - 1.9P°<sub>B</sub> = 22.5 - P°<sub>B</sub><br>
+        63 = 0.9P°<sub>B</sub><br>
+        P°<sub>B</sub> = 70 torr, therefore P°<sub>A</sub> = 20 torr<br><br>
+        Verification for equimolar: 0.5(20) + 0.5(70) = 45 ✓<br>
+        Verification for new solution: 0.95(20) + 0.05(70) = 19 + 3.5 = 22.5 ✓<br><br>
+        <strong>Answer: x<sub>A</sub>/x<sub>B</sub> = 19</strong></li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_0e6bd7bb_Q2</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Colligative Properties and Electrolyte Dissociation |
+        <strong>Type:</strong> Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    The plot given below shows P-T curves for two solvents X and Y and isomolal solution of NaCl in these solvents. NaCl completely dissociates in both the solvents.
+    <br><br>
+    Curve 1: Solvent X<br>
+    Curve 2: Solution of NaCl in solvent X<br>
+    Curve 3: Solvent Y<br>
+    Curve 4: Solution of NaCl in solvent Y
+    
+    <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Axes -->
+        <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2"></line>
+        <line x1="50" y1="350" x2="50" y2="50" stroke="black" stroke-width="2"></line>
+        
+        <!-- Labels -->
+        <text x="300" y="385" text-anchor="middle" font-size="16">Temperature (K) →</text>
+        <text x="20" y="200" text-anchor="middle" font-size="16" transform="rotate(-90 20 200)">Pressure (atm) →</text>
+        
+        <!-- Curve 1: Solvent X (lower boiling point) -->
+        <path d="M 100 330 Q 200 300 300 280 Q 400 265 500 255" stroke="blue" stroke-width="2" fill="none"></path>
+        <text x="510" y="250" font-size="14" fill="blue">1</text>
+        <circle cx="380" cy="270" r="3" fill="blue"></circle>
+        <text x="385" y="265" font-size="12">360 K</text>
+        
+        <!-- Curve 2: NaCl solution in X (elevated BP) -->
+        <path d="M 100 320 Q 200 290 300 270 Q 400 255 500 245" stroke="darkblue" stroke-width="2" fill="none" stroke-dasharray="5,5"></path>
+        <text x="510" y="240" font-size="14" fill="darkblue">2</text>
+        <circle cx="380" cy="260" r="3" fill="darkblue"></circle>
+        <text x="385" y="255" font-size="12">362 K</text>
+        
+        <!-- Curve 3: Solvent Y (higher boiling point) -->
+        <path d="M 100 280 Q 200 250 300 230 Q 400 215 500 205" stroke="red" stroke-width="2" fill="none"></path>
+        <text x="510" y="200" font-size="14" fill="red">3</text>
+        <circle cx="380" cy="220" r="3" fill="red"></circle>
+        <text x="385" y="215" font-size="12">367 K</text>
+        
+        <!-- Curve 4: NaCl solution in Y (elevated BP) -->
+        <path d="M 100 270 Q 200 240 300 220 Q 400 205 500 195" stroke="darkred" stroke-width="2" fill="none" stroke-dasharray="5,5"></path>
+        <text x="510" y="190" font-size="14" fill="darkred">4</text>
+        <circle cx="380" cy="210" r="3" fill="darkred"></circle>
+        <text x="385" y="205" font-size="12">368 K</text>
+        
+        <!-- Atmospheric pressure line -->
+        <line x1="50" y1="270" x2="550" y2="270" stroke="gray" stroke-width="1" stroke-dasharray="3,3"></line>
+        <text x="30" y="275" font-size="12">1 atm</text>
+    </svg>
+    <br>
+    On addition of equal number of moles of a nonvolatile solute S in equal amount (in kg) of these solvents, the elevation in boiling point of solvent X is three times that of solvent Y. Solute S is known to undergo dimerization in these solvents. If the degree of dimerization is 0.7 in solvent Y, what is the degree of dimerization in solvent X?
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 0.05
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 0.10
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.20
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0.35
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong><br><br>
+    
+    <strong>Strategy:</strong> First, extract ebullioscopic constants from NaCl data (using ΔT<sub>b</sub> = iK<sub>b</sub>m with i=2 for complete dissociation). Then apply the van't Hoff factor for dimerization (2A ⇌ A<sub>2</sub>) where i = 1 - α/2 for solute S, and use the given ratio ΔT<sub>bx</sub>/ΔT<sub>by</sub> = 3 to solve for degree of dimerization in X.<br><br>
+    
+    <strong>Expert Insight:</strong> A topper immediately recognizes that the P-T curve provides K<sub>b</sub> ratio information through NaCl (i=2). The key insight is that larger K<sub>b</sub> in X combined with equal molality and the 3:1 ΔT ratio can only be achieved if solute S associates more (lower i) in X than in Y, making α<sub>X</sub> &lt; α<sub>Y</sub>.<br><br>
+    
+    <strong>Key facts used:</strong> ΔT<sub>b</sub> = iK<sub>b</sub>m; For complete dissociation NaCl: i = 2; For dimerization (2A ⇌ A<sub>2</sub>): i = 1 - α/2 where α is degree of dimerization<br><br>
+    
+    <ol>
+        <li><strong>Step 1: Determine K<sub>b</sub> values from NaCl data</strong><br>
+        From the P-T diagram at 1 atm:<br>
+        For solvent X: T<sub>b</sub>(pure) = 360 K, T<sub>b</sub>(NaCl solution) = 362 K<br>
+        ΔT<sub>bx</sub>(NaCl) = 362 - 360 = 2 K<br>
+        For solvent Y: T<sub>b</sub>(pure) = 367 K, T<sub>b</sub>(NaCl solution) = 368 K<br>
+        ΔT<sub>by</sub>(NaCl) = 368 - 367 = 1 K<br><br>
+        Since NaCl completely dissociates: Na⁺ + Cl⁻, i = 2<br>
+        Let molality of NaCl = m (same for both as stated "isomolal")<br>
+        ΔT<sub>bx</sub> = 2 × K<sub>bx</sub> × m = 2K<sub>bx</sub>m = 2<br>
+        ΔT<sub>by</sub> = 2 × K<sub>by</sub> × m = 2K<sub>by</sub>m = 1<br>
+        Therefore: K<sub>bx</sub>/K<sub>by</sub> = 2/1 = 2</li>
+        
+        <li><strong>Step 2: Set up equations for solute S with dimerization</strong><br>
+        For dimerization: 2A ⇌ A<sub>2</sub><br>
+        Initial moles: n, Final: n(1-α), Associated moles: nα/2<br>
+        Total moles after association = n(1-α) + nα/2 = n(1 - α/2)<br>
+        van't Hoff factor: i = [n(1 - α/2)]/n = 1 - α/2<br><br>
+        In solvent X: i<sub>X</sub> = 1 - α<sub>X</sub>/2<br>
+        In solvent Y: i<sub>Y</sub> = 1 - α<sub>Y</sub>/2 = 1 - 0.7/2 = 1 - 0.35 = 0.65</li>
+        
+        <li><strong>Step 3: Apply the elevation in boiling point formula</strong><br>
+        ΔT<sub>bx</sub>(S) = i<sub>X</sub> × K<sub>bx</sub> × m<sub>S</sub><br>
+        ΔT<sub>by</sub>(S) = i<sub>Y</sub> × K<sub>by</sub> × m<sub>S</sub><br>
+        where m<sub>S</sub> is the same molality of S in both solvents (equal moles in equal kg)</li>
+        
+        <li><strong>Step 4: Use the given ratio condition</strong><br>
+        Given: ΔT<sub>bx</sub>(S) = 3 × ΔT<sub>by</sub>(S)<br>
+        i<sub>X</sub> × K<sub>bx</sub> × m<sub>S</sub> = 3 × i<sub>Y</sub> × K<sub>by</sub> × m<sub>S</sub><br>
+        i<sub>X</sub> × K<sub>bx</sub> = 3 × i<sub>Y</sub> × K<sub>by</sub><br>
+        i<sub>X</sub>/i<sub>Y</sub> = 3 × (K<sub>by</sub>/K<sub>bx</sub>) = 3 × (1/2) = 3/2</li>
+        
+        <li><strong>Step 5: Calculate degree of dimerization in X</strong><br>
+        i<sub>X</sub> = (3/2) × i<sub>Y</sub> = (3/2) × 0.65 = 0.975<br>
+        1 - α<sub>X</sub>/2 = 0.975<br>
+        α<sub>X</sub>/2 = 1 - 0.975 = 0.025<br>
+        α<sub>X</sub> = 0.05<br><br>
+        <strong>Answer: Degree of dimerization in X = 0.05</strong></li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_0e6bd7bb_Q3</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Colligative Properties and Electrolyte Dissociation |
+        <strong>Type:</strong> Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    A gas mixture of 3.67 litres of ethylene (C<sub>2</sub>H<sub>4</sub>) and methane (CH<sub>4</sub>) on complete combustion at 25°C produces 6.11 litres of CO<sub>2</sub>. Find out the amount of heat evolved on burning one litre of the gas mixture. The heats of combustion of ethylene and methane are -1423 kJ/mol and -891 kJ/mol respectively at 25°C. (All volumes measured at same T and P)
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 387.0 kJ
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 456.3 kJ
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 509.0 kJ
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 618.5 kJ
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong><br><br>
+    
+    <strong>Strategy:</strong> Use POAC (Principle of Atom Conservation) for carbon atoms to find composition of the mixture. Apply stoichiometry to relate volumes (same as moles at constant T,P). Convert volumes at 25°C using gas laws. Calculate heat from each component using their heats of combustion and stoichiometric ratios.<br><br>
+    
+    <strong>Expert Insight:</strong> A topper immediately applies POAC for C atoms since both gases contain C and produce CO<sub>2</sub>. The key is recognizing that C<sub>2</sub>H<sub>4</sub> gives 2 moles CO<sub>2</sub> while CH<sub>4</sub> gives 1 mole, creating a simple linear equation. Then use the molar volume at 25°C (not STP!) to convert heat per mole to heat per litre.<br><br>
+    
+    <strong>Key facts used:</strong> POAC for C atoms; V ∝ n at constant T,P; Molar volume at T K = 22.4 × (T/273) L; Thermochemical equations and ΔH values<br><br>
+    
+    <ol>
+        <li><strong>Step 1: Set up the combustion equations</strong><br>
+        C<sub>2</sub>H<sub>4</sub> + 3O<sub>2</sub> → 2CO<sub>2</sub> + 2H<sub>2</sub>O; ΔH = -1423 kJ/mol<br>
+        CH<sub>4</sub> + 2O<sub>2</sub> → CO<sub>2</sub> + 2H<sub>2</sub>O; ΔH = -891 kJ/mol</li>
+        
+        <li><strong>Step 2: Apply POAC for carbon atoms to find composition</strong><br>
+        Let volume of C<sub>2</sub>H<sub>4</sub> = x litres<br>
+        Then volume of CH<sub>4</sub> = (3.67 - x) litres<br>
+        Total volume = 3.67 L<br><br>
+        At same T and P, volume ratio = mole ratio<br>
+        Moles of C<sub>2</sub>H<sub>4</sub> = x moles<br>
+        Moles of CH<sub>4</sub> = (3.67 - x) moles<br><br>
+        Carbon atoms from C<sub>2</sub>H<sub>4</sub>: 2x<br>
+        Carbon atoms from CH<sub>4</sub>: 1(3.67 - x) = 3.67 - x<br>
+        Total C atoms = Total CO<sub>2</sub> produced<br>
+        2x + (3.67 - x) = 6.11<br>
+        x + 3.67 = 6.11<br>
+        x = 2.44 litres (C<sub>2</sub>H<sub>4</sub>)<br>
+        Volume of CH<sub>4</sub> = 3.67 - 2.44 = 1.23 litres</li>
+        
+        <li><strong>Step 3: Calculate composition in 1 litre of mixture</strong><br>
+        Volume fraction of C<sub>2</sub>H<sub>4</sub> = 2.44/3.67 = 0.665<br>
+        Volume fraction of CH<sub>4</sub> = 1.23/3.67 = 0.335<br><br>
+        In 1 litre mixture:<br>
+        C<sub>2</sub>H<sub>4</sub> = 0.665 L<br>
+        CH<sub>4</sub> = 0.335 L</li>
+        
+        <li><strong>Step 4: Calculate molar volume at 25°C (298 K)</strong><br>
+        Molar volume at 273 K (STP) = 22.4 L<br>
+        Molar volume at 298 K = 22.4 × (298/273) = 22.4 × 1.0915 = 24.45 L/mol</li>
+        
+        <li><strong>Step 5: Calculate heat evolved from each component</strong><br>
+        Heat from C<sub>2</sub>H<sub>4</sub>:<br>
+        Moles in 0.665 L = 0.665/24.45 = 0.0272 mol<br>
+        Heat = 0.0272 × 1423 = 38.7 kJ<br><br>
+        Heat from CH<sub>4</sub>:<br>
+        Moles in 0.335 L = 0.335/24.45 = 0.0137 mol<br>
+        Heat = 0.0137 × 891 = 12.2 kJ<br><br>
+        <strong>Total heat evolved per litre = 38.7 + 12.2 = 50.9 kJ ≈ 509 kJ</strong><br><br>
+        Alternative calculation:<br>
+        Heat = (0.665 × 1423)/24.45 + (0.335 × 891)/24.45<br>
+        Heat = 946.3/24.45 + 298.5/24.45 = 38.7 + 12.2 = 50.9 kJ</li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_0e6bd7bb_Q4</div>
+        <div class="badge medium">medium - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Colligative Properties and Electrolyte Dissociation |
+        <strong>Type:</strong> Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    An intimate mixture of ferric oxide (Fe<sub>2</sub>O<sub>3</sub>) and aluminium (Al) is used as solid rocket fuel. Calculate:<br>
+    (a) Fuel value per gram of the mixture<br>
+    (b) Fuel value per cc of the mixture<br><br>
+    Given data:<br>
+    ΔH<sub>f</sub>(Al<sub>2</sub>O<sub>3</sub>) = -399 kcal/mol<br>
+    ΔH<sub>f</sub>(Fe<sub>2</sub>O<sub>3</sub>) = -199 kcal/mol<br>
+    Density of Fe<sub>2</sub>O<sub>3</sub> = 5.2 g/cc<br>
+    Density of Al = 2.7 g/cc<br>
+    [Atomic masses: Fe = 56, Al = 27, O = 16]
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 0.934 kcal/g, 3.94 kcal/cc
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1.245 kcal/g, 4.82 kcal/cc
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.785 kcal/g, 3.15 kcal/cc
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.567 kcal/g, 5.23 kcal/cc
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong><br><br>
+    
+    <strong>Strategy:</strong> First write formation equations for both oxides and apply Hess's law (subtraction method) to get the thermite reaction. Calculate stoichiometric mixture composition from balanced equation. Determine mass and volume of reactants, then compute gravimetric and volumetric fuel values.<br><br>
+    
+    <strong>Expert Insight:</strong> A topper immediately recognizes the thermite reaction (highly exothermic Al + Fe<sub>2</sub>O<sub>3</sub> → Al<sub>2</sub>O<sub>3</sub> + Fe) and uses Hess's law by subtracting formation equations. The key is working with exact stoichiometric proportions (2Al + Fe<sub>2</sub>O<sub>3</sub>) for maximum energy release and calculating both mass-based and volume-based fuel values separately.<br><br>
+    
+    <strong>Key facts used:</strong> Hess's Law: ΔH<sub>rxn</sub> = ΣΔH<sub>f</sub>(products) - ΣΔH<sub>f</sub>(reactants); Density = mass/volume; Fuel value calculations require stoichiometric mixture; Molecular weights: Fe<sub>2</sub>O<sub>3</sub> = 160, Al<sub>2</sub>O<sub>3</sub> = 102, Al = 27<br><br>
+    
+    <ol>
+        <li><strong>Step 1: Write formation equations and apply Hess's law</strong><br>
+        Formation of Al<sub>2</sub>O<sub>3</sub>:<br>
+        2Al(s) + (3/2)O<sub>2</sub>(g) → Al<sub>2</sub>O<sub>3</sub>(s); ΔH = -399 kcal ... (i)<br><br>
+        Formation of Fe<sub>2</sub>O<sub>3</sub>:<br>
+        2Fe(s) + (3/2)O<sub>2</sub>(g) → Fe<sub>2</sub>O<sub>3</sub>(s); ΔH = -199 kcal ... (ii)<br><br>
+        Subtracting equation (ii) from equation (i): [(i) - (ii)]<br>
+        2Al(s) - 2Fe(s) + Fe<sub>2</sub>O<sub>3</sub>(s) - Al<sub>2</sub>O<sub>3</sub>(s) → 0<br>
+        Rearranging:<br>
+        <strong>2Al + Fe<sub>2</sub>O<sub>3</sub> → Al<sub>2</sub>O<sub>3</sub> + 2Fe</strong><br>
+        ΔH = ΔH<sub>f</sub>(Al<sub>2</sub>O<sub>3</sub>) - ΔH<sub>f</sub>(Fe<sub>2</sub>O<sub>3</sub>)<br>
+        ΔH = (-399) - (-199) = -200 kcal</li>
+        
+        <li><strong>Step 2: Calculate mass of stoichiometric mixture</strong><br>
+        From balanced equation: 2 mol Al + 1 mol Fe<sub>2</sub>O<sub>3</sub><br>
+        Mass of 2 mol Al = 2 × 27 = 54 g<br>
+        Mass of 1 mol Fe<sub>2</sub>O<sub>3</sub> = 2(56) + 3(16) = 112 + 48 = 160 g<br>
+        <strong>Total mass of mixture = 54 + 160 = 214 g</strong><br><br>
+        This mixture releases 200 kcal of energy</li>
+        
+        <li><strong>Step 3: Calculate fuel value per gram</strong><br>
+        Fuel value per gram = Energy released / Total mass<br>
+        = 200 kcal / 214 g<br>
+        = <strong>0.9345 kcal/g ≈ 0.934 kcal/g</strong></li>
+        
+        <li><strong>Step 4: Calculate volume of stoichiometric mixture</strong><br>
+        Volume of 2 mol (54 g) Al = mass/density = 54/2.7 = <strong>20 cc</strong><br>
+        Volume of 1 mol (160 g) Fe<sub>2</sub>O<sub>3</sub> = 160/5.2 = <strong>30.77 cc</strong><br>
+        <strong>Total volume of mixture = 20 + 30.77 = 50.77 cc ≈ 50.8 cc</strong></li>
+        
+        <li><strong>Step 5: Calculate fuel value per cc</strong><br>
+        Fuel value per cc = Energy released / Total volume<br>
+        = 200 kcal / 50.77 cc<br>
+        = <strong>3.94 kcal/cc</strong><br><br>
+        <strong>Answer: (a) 0.934 kcal/g, (b) 3.94 kcal/cc</strong></li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_0e6bd7bb_Q5</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Colligative Properties and Electrolyte Dissociation |
+        <strong>Type:</strong> Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    If the freezing point of 0.01 molal aqueous solution of a cobalt(III) chloride-ammonia complex (which behaves as a strong electrolyte) is -0.0558°C, determine the number of chloride(s) in the coordination sphere of the complex.<br><br>
+    [K<sub>f</sub> of water = 1.86 K kg mol<sup>-1</sup>]
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 0
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong><br><br>
+    
+    <strong>Strategy:</strong> Calculate van't Hoff factor (i) from observed freezing point depression. Use i to determine the number of ions produced upon dissociation. Apply coordination chemistry principles to identify which Co(III)-NH<sub>3</sub>-Cl complex produces this number of particles. Test various formulations systematically.<br><br>
+    
+    <strong>Expert Insight:</strong> A topper immediately calculates i from the ratio of observed to calculated ΔT<sub>f</sub>. Recognizing i = 3 means total 3 particles form, suggesting one complex cation and two free anions. For Co(III) with coordination number 6, this points to [Co(NH<sub>3</sub>)<sub>5</sub>Cl]Cl<sub>2</sub> where only 1 Cl is in the coordination sphere.<br><br>
+    
+    <strong>Key facts used:</strong> ΔT<sub>f</sub> = iK<sub>f</sub>m; van't Hoff factor i = (observed ΔT<sub>f</sub>)/(calculated ΔT<sub>f</sub>); Co(III) coordination number = 6; Werner's theory of coordination compounds; Strong electrolyte dissociates completely<br><br>
+    
+    <ol>
+        <li><strong>Step 1: Calculate theoretical freezing point depression (without dissociation)</strong><br>
+        For a non-electrolyte: ΔT<sub>f</sub> = K<sub>f</sub> × m<br>
+        ΔT<sub>f</sub>(calculated) = 1.86 × 0.01 = 0.0186°C<br>
+        This would be the depression if the complex did not dissociate (i = 1)</li>
+        
+        <li><strong>Step 2: Calculate van't Hoff factor from observed data</strong><br>
+        Observed ΔT<sub>f</sub> = 0.0558°C (given)<br>
+        van't Hoff factor: i = ΔT<sub>f</sub>(observed) / ΔT<sub>f</sub>(calculated)<br>
+        i = 0.0558 / 0.0186<br>
+        <strong>i = 3</strong><br><br>
+        This means each formula unit produces 3 particles upon dissociation</li>
+        
+        <li><strong>Step 3: Interpret the van't Hoff factor for coordination complex</strong><br>
+        Since i = 3, the complex dissociates into 3 ions total.<br>
+        For a Co(III) complex with NH<sub>3</sub> and Cl ligands:<br>
+        - Co(III) has coordination number = 6<br>
+        - NH<sub>3</sub> is neutral ligand<br>
+        - Cl can be either in coordination sphere or as counter ion<br><br>
+        General formula: [Co(NH<sub>3</sub>)<sub>6-x</sub>Cl<sub>x</sub>]Cl<sub>3-x</sub><br>
+        This must dissociate into 3 total particles</li>
+        
+        <li><strong>Step 4: Test possible formulations</strong><br>
+        <strong>Case 1:</strong> x = 3 (3 Cl in sphere)<br>
+        [Co(NH<sub>3</sub>)<sub>3</sub>Cl<sub>3</sub>] → 1 particle (neutral, no dissociation) ✗<br><br>
+        
+        <strong>Case 2:</strong> x = 2 (2 Cl in sphere)<br>
+        [Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]Cl → [Co(NH<sub>3</sub>)<sub>4</sub>Cl<sub>2</sub>]<sup>+</sup> + Cl<sup>-</sup> = 2 particles ✗<br><br>
+        
+        <strong>Case 3:</strong> x = 1 (1 Cl in sphere)<br>
+        [Co(NH<sub>3</sub>)<sub>5</sub>Cl]Cl<sub>2</sub> → [Co(NH<sub>3</sub>)<sub>5</sub>Cl]<sup>2+</sup> + 2Cl<sup>-</sup> = 3 particles ✓<br><br>
+        
+        <strong>Case 4:</strong> x = 0 (0 Cl in sphere)<br>
+        [Co(NH<sub>3</sub>)<sub>6</sub>]Cl<sub>3</sub> → [Co(NH<sub>3</sub>)<sub>6</sub>]<sup>3+</sup> + 3Cl<sup>-</sup> = 4 particles ✗</li>
+        
+        <li><strong>Step 5: Confirm the structure</strong><br>
+        The only structure giving i = 3 is:<br>
+        <strong>[Co(NH<sub>3</sub>)<sub>5</sub>Cl]Cl<sub>2</sub></strong><br><br>
+        Dissociation: [Co(NH<sub>3</sub>)<sub>5</sub>Cl]<sup>2+</sup> + 2Cl<sup>-</sup><br>
+        Number of particles = 1 (complex cation) + 2 (chloride ions) = 3 ✓<br><br>
+        <strong>Number of chlorides in coordination sphere = 1</strong></li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_0e6bd7bb_Q6</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Colligative Properties and Electrolyte Dissociation |
+        <strong>Type:</strong> Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    The mole fraction of a solute in a solution is 0.1. At 298 K, the molarity of this solution is the same as its molality. The density of this solution at 298 K is 2.0 g/cm<sup>3</sup>. What is the ratio of the molecular weights of the solute and solvent (M<sub>solute</sub>/M<sub>solvent</sub>)?
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 3
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 6
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 9
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 12
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong><br><br>
+    
+    <strong>Strategy:</strong> Use the constraint that molarity = molality to establish relationship between solution composition and density. Express both molarity and molality in terms of moles (n<sub>1</sub>, n<sub>2</sub>) and molecular weights (M<sub>1</sub>, M<sub>2</sub>). Use mole fraction equation as additional constraint. Solve the system of equations to find M<sub>1</sub>/M<sub>2</sub>.<br><br>
+    
+    <strong>Expert Insight:</strong> A topper recognizes that when M = m, a special relationship exists between density and composition. The key insight is to express both concentration measures in terms of n<sub>1</sub> and n<sub>2</sub>, then use the given mole fraction x<sub>1</sub> = 0.1 and density to create solvable equations. The large density (2 g/cm³) compared to water hints at a significant molecular weight difference.<br><br>
+    
+    <strong>Key facts used:</strong> Mole fraction x<sub>1</sub> = n<sub>1</sub>/(n<sub>1</sub>+n<sub>2</sub>); Molality m = n<sub>1</sub>×1000/(n<sub>2</sub>M<sub>2</sub>); Molarity M = n<sub>1</sub>/(V in L); Density d = mass/volume; M = m condition<br><br>
+    
+    <ol>
+        <li><strong>Step 1: Express mole fraction condition</strong><br>
+        Given: x<sub>1</sub> = 0.1 where subscript 1 = solute, 2 = solvent<br>
+        x<sub>1</sub> = n<sub>1</sub>/(n<sub>1</sub> + n<sub>2</sub>) = 0.1<br>
+        n<sub>1</sub> = 0.1(n<sub>1</sub> + n<sub>2</sub>)<br>
+        n<sub>1</sub> = 0.1n<sub>1</sub> + 0.1n<sub>2</sub><br>
+        0.9n<sub>1</sub> = 0.1n<sub>2</sub><br>
+        <strong>n<sub>2</sub> = 9n<sub>1</sub></strong> ... (1)</li>
+        
+        <li><strong>Step 2: Write molality expression</strong><br>
+        Molality (m) = moles of solute / kg of solvent<br>
+        m = n<sub>1</sub> / (mass of solvent in kg)<br>
+        Mass of solvent = n<sub>2</sub> × M<sub>2</sub> grams<br>
+        m = n<sub>1</sub> / (n<sub>2</sub>M<sub>2</sub>/1000)<br>
+        <strong>m = 1000n<sub>1</sub>/(n<sub>2</sub>M<sub>2</sub>)</strong> ... (2)</li>
+        
+        <li><strong>Step 3: Write molarity expression using density</strong><br>
+        Molarity (M) = moles of solute / volume of solution in L<br>
+        Total mass of solution = n<sub>1</sub>M<sub>1</sub> + n<sub>2</sub>M<sub>2</sub> grams<br>
+        Volume of solution = mass/density = (n<sub>1</sub>M<sub>1</sub> + n<sub>2</sub>M<sub>2</sub>)/d cm³<br>
+        Volume in L = (n<sub>1</sub>M<sub>1</sub> + n<sub>2</sub>M<sub>2</sub>)/(1000d)<br>
+        M = n<sub>1</sub> / [(n<sub>1</sub>M<sub>1</sub> + n<sub>2</sub>M<sub>2</sub>)/(1000d)]<br>
+        <strong>M = 1000dn<sub>1</sub>/(n<sub>1</sub>M<sub>1</sub> + n<sub>2</sub>M<sub>2</sub>)</strong> ... (3)</li>
+        
+        <li><strong>Step 4: Apply condition that Molarity = Molality</strong><br>
+        From (2) and (3): m = M<br>
+        1000n<sub>1</sub>/(n<sub>2</sub>M<sub>2</sub>) = 1000dn<sub>1</sub>/(n<sub>1</sub>M<sub>1</sub> + n<sub>2</sub>M<sub>2</sub>)<br>
+        Canceling 1000n<sub>1</sub>:<br>
+        1/(n<sub>2</sub>M<sub>2</sub>) = d/(n<sub>1</sub>M<sub>1</sub> + n<sub>2</sub>M<sub>2</sub>)<br>
+        n<sub>1</sub>M<sub>1</sub> + n<sub>2</sub>M<sub>2</sub> = d × n<sub>2</sub>M<sub>2</sub><br>
+        n<sub>1</sub>M<sub>1</sub> = n<sub>2</sub>M<sub>2</sub>(d - 1)<br>
+        <strong>M<sub>1</sub>/M<sub>2</sub> = n<sub>2</sub>(d - 1)/n<sub>1</sub></strong> ... (4)</li>
+        
+        <li><strong>Step 5: Substitute n<sub>2</sub> = 9n<sub>1</sub> and solve</strong><br>
+        From equation (4) and using n<sub>2</sub> = 9n<sub>1</sub> and d = 2.0 g/cm³:<br>
+        M<sub>1</sub>/M<sub>2</sub> = (9n<sub>1</sub>)(2.0 - 1)/n<sub>1</sub><br>
+        M<sub>1</sub>/M<sub>2</sub> = 9 × 1<br>
+        <strong>M<sub>1</sub>/M<sub>2</sub> = 9</strong><br><br>
+        Verification: With n<sub>2</sub> = 9n<sub>1</sub> (from x<sub>1</sub> = 0.1), the molecular weight ratio of 9 ensures that molarity equals molality when density is 2.0 g/cm³.<br><br>
+        <strong>Answer: M<sub>solute</sub>/M<sub>solvent</sub> = 9</strong></li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_0e6bd7bb_Q7</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Colligative Properties and Electrolyte Dissociation |
+        <strong>Type:</strong> Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    From the following thermochemical data:<br><br>
+    C(s) + ½O<sub>2</sub>(g) → CO(g); ΔH = -110 kJ<br>
+    C(s) + H<sub>2</sub>O(g) → CO(g) + H<sub>2</sub>(g); ΔH = +132 kJ<br><br>
+    Calculate the mole composition (mole ratio) of the mixture of steam (H<sub>2</sub>O) and oxygen (O<sub>2</sub>) that should be passed over coke at 1273 K such that the reaction temperature remains constant (i.e., total enthalpy change is zero).
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> O2 : H2O = 1 : 1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> O2 : H2O = 0.6 : 1
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> O2 : H2O = 1 : 0.6
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> O2 : H2O = 2 : 1
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong><br><br>
+    
+    <strong>Strategy:</strong> Identify one reaction as exothermic (releases heat) and the other as endothermic (absorbs heat). For constant temperature operation, heat released must equal heat absorbed. Set up energy balance equation based on stoichiometry of each reaction and solve for the mole ratio of reactants.<br><br>
+    
+    <strong>Expert Insight:</strong> A topper immediately recognizes this as an autothermal reactor problem where exothermic oxidation (C + ½O<sub>2</sub>) provides heat for endothermic gasification (C + H<sub>2</sub>O). The key insight is that per mole of each reaction, energy must balance: n₁(-110) + n₂(+132) = 0, giving the ratio. Then convert to reactant (O<sub>2</sub> and H<sub>2</sub>O) ratio.<br><br>
+    
+    <strong>Key facts used:</strong> For constant T, ΔH<sub>total</sub> = 0; Energy balance: Heat released = Heat absorbed; Stoichiometry relates moles of reactions to moles of reactants<br><br>
+    
+    <ol>
+        <li><strong>Step 1: Identify nature of reactions</strong><br>
+        Reaction 1: C(s) + ½O<sub>2</sub>(g) → CO(g); ΔH₁ = -110 kJ (exothermic, releases heat)<br>
+        Reaction 2: C(s) + H<sub>2</sub>O(g) → CO(g) + H<sub>2</sub>(g); ΔH₂ = +132 kJ (endothermic, absorbs heat)<br><br>
+        For temperature to remain constant, the heat evolved by reaction 1 must be consumed by reaction 2.</li>
+        
+        <li><strong>Step 2: Set up energy balance</strong><br>
+        Let n₁ = extent of reaction 1 (moles)<br>
+        Let n₂ = extent of reaction 2 (moles)<br><br>
+        Heat released by reaction 1 = n₁ × 110 kJ<br>
+        Heat absorbed by reaction 2 = n₂ × 132 kJ<br><br>
+        For constant temperature:<br>
+        Heat released = Heat absorbed<br>
+        n₁ × 110 = n₂ × 132<br>
+        <strong>n₁/n₂ = 132/110 = 1.2 = 6/5</strong></li>
+        
+        <li><strong>Step 3: Relate reaction extents to reactant consumption</strong><br>
+        From reaction 1: n₁ moles of C consumes (n₁/2) moles of O<sub>2</sub><br>
+        From reaction 2: n₂ moles of C consumes n₂ moles of H<sub>2</sub>O<br><br>
+        Moles of O<sub>2</sub> required = n₁/2<br>
+        Moles of H<sub>2</sub>O required = n₂</li>
+        
+        <li><strong>Step 4: Calculate mole ratio of O<sub>2</sub> to H<sub>2</sub>O</strong><br>
+        Ratio = (n₁/2) : n₂<br>
+        Using n₁/n₂ = 6/5:<br>
+        Ratio = (6/5)/2 : 1<br>
+        Ratio = 6/10 : 1<br>
+        Ratio = 0.6 : 1<br>
+        <strong>O<sub>2</sub> : H<sub>2</sub>O = 0.6 : 1</strong></li>
+        
+        <li><strong>Step 5: Verify the energy balance</strong><br>
+        If 0.6 moles O<sub>2</sub> and 1 mole H<sub>2</sub>O are used:<br>
+        - From reaction 1: 0.6 moles O<sub>2</sub> → 1.2 moles of reaction 1<br>
+          (since ½ mol O₂ per reaction)<br>
+          Heat released = 1.2 × 110 = 132 kJ<br>
+        - From reaction 2: 1 mole H<sub>2</sub>O → 1 mole of reaction 2<br>
+          Heat absorbed = 1 × 132 = 132 kJ<br><br>
+        Heat released = Heat absorbed ✓<br><br>
+        <strong>Answer: O<sub>2</sub> : H<sub>2</sub>O = 0.6 : 1 or 3 : 5</strong></li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_0e6bd7bb_Q8</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Colligative Properties and Electrolyte Dissociation |
+        <strong>Type:</strong> Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Conceptual application problem requiring calculation of van't Hoff factor for partial dissociation o", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    MX<sub>2</sub> dissociates into M<sup>2+</sup> and X<sup>-</sup> ions in an aqueous solution, with a degree of dissociation (α) of 0.5. What is the ratio of the observed depression of freezing point of the aqueous solution to the value of the depression of freezing point in the absence of ionic dissociation?
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.5
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 2.0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2.5
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 3.0
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong><br><br>
+    
+    <strong>Strategy:</strong> Determine the van't Hoff factor (i) for MX<sub>2</sub> dissociation using the formula i = 1 + α(n-1) where n is the number of ions formed per formula unit. The ratio of observed to calculated (no dissociation) freezing point depression equals the van't Hoff factor. Calculate i for given α = 0.5.<br><br>
+    
+    <strong>Expert Insight:</strong> A topper recognizes MX<sub>2</sub> → M<sup>2+</sup> + 2X<sup>-</sup> gives n=3 total ions. With partial dissociation α=0.5, half the MX<sub>2</sub> remains undissociated. The van't Hoff factor formula i = 1 + α(n-1) directly gives the answer as the ratio ΔT<sub>f(obs)</sub>/ΔT<sub>f(calc)</sub> = i.<br><br>
+    
+    <strong>Key facts used:</strong> van't Hoff factor i = ΔT<sub>f(obs)</sub>/ΔT<sub>f(calc)</sub>; For AB<sub>n</sub> type: i = 1 + α(n-1); MX<sub>2</sub> → M<sup>2+</sup> + 2X<sup>-</sup> (n=3); ΔT<sub>f</sub> = iK<sub>f</sub>m<br><br>
+    
+    <ol>
+        <li><strong>Step 1: Write the dissociation equation</strong><br>
+        MX<sub>2</sub> → M<sup>2+</sup> + 2X<sup>-</sup><br><br>
+        Note: Despite the charges shown (M<sup>2+</sup> and X<sup>-</sup>), the stoichiometry shows MX<sub>2</sub> produces 1 M ion and 2 X ions, so total n = 3 ions per formula unit.</li>
+        
+        <li><strong>Step 2: Analyze the dissociation with degree α</strong><br>
+        Initial moles of MX<sub>2</sub> = 1<br>
+        Degree of dissociation α = 0.5<br><br>
+        At equilibrium:<br>
+        - Undissociated MX<sub>2</sub> = 1 - α = 1 - 0.5 = 0.5 moles<br>
+        - M<sup>2+</sup> ions formed = α = 0.5 moles<br>
+        - X<sup>-</sup> ions formed = 2α = 2(0.5) = 1.0 moles<br><br>
+        Total particles = (1-α) + α + 2α = 1 + 2α<br>
+        Total particles = 1 + 2(0.5) = 1 + 1 = 2</li>
+        
+        <li><strong>Step 3: Calculate van't Hoff factor</strong><br>
+        van't Hoff factor: i = (total particles after dissociation)/(initial particles)<br>
+        i = (1 + 2α)/1 = 1 + 2α<br><br>
+        Alternatively, using general formula for AB<sub>n</sub> type:<br>
+        i = 1 + α(n - 1)<br>
+        where n = total number of ions formed per formula unit = 3 (1 M<sup>2+</sup> + 2 X<sup>-</sup>)<br><br>
+        i = 1 + 0.5(3 - 1)<br>
+        i = 1 + 0.5(2)<br>
+        <strong>i = 1 + 1 = 2</strong></li>
+        
+        <li><strong>Step 4: Relate van't Hoff factor to freezing point depression</strong><br>
+        Depression with dissociation: ΔT<sub>f(obs)</sub> = i × K<sub>f</sub> × m<br>
+        Depression without dissociation (i=1): ΔT<sub>f(calc)</sub> = 1 × K<sub>f</sub> × m<br><br>
+        Ratio = ΔT<sub>f(obs)</sub>/ΔT<sub>f(calc)</sub><br>
+        Ratio = (i × K<sub>f</sub> × m)/(K<sub>f</sub> × m)<br>
+        <strong>Ratio = i = 2</strong></li>
+        
+        <li><strong>Step 5: Verify the answer</strong><br>
+        Physical interpretation: With 50% dissociation of MX<sub>2</sub> into 3 ions:<br>
+        - 0.5 units remain as MX<sub>2</sub> (0.5 particles)<br>
+        - 0.5 units dissociate into 0.5 M<sup>2+</sup> + 1.0 X<sup>-</sup> (1.5 particles)<br>
+        - Total = 0.5 + 1.5 = 2.0 particles<br><br>
+        Original particles (no dissociation) = 1<br>
+        Ratio of particles = 2/1 = 2 ✓<br><br>
+        <strong>Answer: ΔT<sub>f(obs)</sub>/ΔT<sub>f(calc)</sub> = 2</strong></li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_2a3fa75c_Q1</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Multi-Step Gas Analysis and Formula Determination |
+        <strong>Type:</strong> Multi-concept integration involving gas volume calculations, chemical reactions with metals, and mol
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Multi-concept integration involving gas volume calculations, chemical reactions with metals, and mol", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p><strong>Problem Statement:</strong></p>
+    <p>2.180 g of a sample contains a mixture of XO and XO<sub>2</sub> which are completely oxidised to XO<sub>4</sub><sup>2-</sup> by 0.015 mole of K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>. Calculate the atomic weight of X if 0.0187 mole of XO<sub>4</sub><sup>2-</sup> is formed.</p>
+    
+    <div class="diagram">
+        <svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+            <!-- Reaction scheme -->
+            <text x="50" y="30" font-size="16" font-weight="bold" fill="#1976D2">Oxidation Reactions:</text>
+            
+            <!-- XO2 oxidation -->
+            <rect x="40" y="50" width="150" height="60" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" rx="5"></rect>
+            <text x="115" y="75" text-anchor="middle" font-size="14" font-weight="bold">XO</text>
+            <text x="115" y="95" text-anchor="middle" font-size="12">(+2 oxidation state)</text>
+            
+            <path d="M 200 80 L 250 80" stroke="#D32F2F" stroke-width="2" marker-end="url(#arrowred)"></path>
+            <text x="225" y="70" text-anchor="middle" font-size="11" fill="#D32F2F">Oxidation</text>
+            
+            <rect x="260" y="50" width="150" height="60" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2" rx="5"></rect>
+            <text x="335" y="75" text-anchor="middle" font-size="14" font-weight="bold">XO<tspan baseline-shift="sub">4</tspan><tspan baseline-shift="super">2-</tspan></text>
+            <text x="335" y="95" text-anchor="middle" font-size="12">(+7 oxidation state)</text>
+            
+            <!-- X2O3 oxidation -->
+            <rect x="40" y="140" width="150" height="60" fill="#FFF3E0" stroke="#FF9800" stroke-width="2" rx="5"></rect>
+            <text x="115" y="165" text-anchor="middle" font-size="14" font-weight="bold">X<tspan baseline-shift="sub">2</tspan>O<tspan baseline-shift="sub">3</tspan></text>
+            <text x="115" y="185" text-anchor="middle" font-size="12">(+6 oxidation state)</text>
+            
+            <path d="M 200 170 L 250 170" stroke="#D32F2F" stroke-width="2" marker-end="url(#arrowred)"></path>
+            <text x="225" y="160" text-anchor="middle" font-size="11" fill="#D32F2F">Oxidation</text>
+            
+            <rect x="260" y="140" width="150" height="60" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2" rx="5"></rect>
+            <text x="335" y="165" text-anchor="middle" font-size="14" font-weight="bold">XO<tspan baseline-shift="sub">4</tspan><tspan baseline-shift="super">2-</tspan></text>
+            <text x="335" y="185" text-anchor="middle" font-size="12">(+7 oxidation state)</text>
+            
+            <!-- Oxidizing agent -->
+            <rect x="450" y="95" width="140" height="70" fill="#FFEBEE" stroke="#D32F2F" stroke-width="2" rx="5"></rect>
+            <text x="520" y="120" text-anchor="middle" font-size="13" font-weight="bold">K<tspan baseline-shift="sub">2</tspan>Cr<tspan baseline-shift="sub">2</tspan>O<tspan baseline-shift="sub">7</tspan></text>
+            <text x="520" y="140" text-anchor="middle" font-size="11">Oxidizing Agent</text>
+            <text x="520" y="155" text-anchor="middle" font-size="10">0.015 mole</text>
+            
+            <!-- Arrow markers -->
+            <defs>
+                <marker id="arrowred" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#D32F2F"></path>
+                </marker>
+            </defs>
+            
+            <!-- Bottom info -->
+            <text x="300" y="240" text-anchor="middle" font-size="12" font-weight="bold">Total XO<tspan baseline-shift="sub">4</tspan><tspan baseline-shift="super">2-</tspan> formed = 0.0187 mole</text>
+            <text x="300" y="260" text-anchor="middle" font-size="12" font-weight="bold">Total sample mass = 2.180 g</text>
+        </svg>
+    </div>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A = 51
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> A = 56
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> A = 99
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> A = 120
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <p><strong>Strategy:</strong> This problem requires (1) determining equivalent weights based on oxidation state changes, (2) applying equivalence principle for redox reactions, (3) applying POAC (Principle of Atom Conservation) for X atoms, and (4) solving simultaneous equations. The key is to track both the mass balance and the atom conservation.</p>
+    
+    <p><strong>Expert Insight:</strong> A JEE topper would immediately recognize this as a two-equation problem requiring POAC. They would first write the oxidation number changes (XO: +2→+7, X<sub>2</sub>O<sub>3</sub>: +6→+14 for 2X atoms), then set up equations for equivalents and atom conservation, solving simultaneously. The trick is not getting confused with the oxidation states per atom vs per formula unit.</p>
+    
+    <p><strong>Key Formulas/Laws/Theorems Used:</strong></p>
+    <ul>
+        <li>Equivalent weight = (Molecular weight) / (Change in oxidation number)</li>
+        <li>Number of equivalents = (Weight in g) / (Equivalent weight)</li>
+        <li>POAC: Atoms of an element are conserved in a chemical reaction</li>
+        <li>In redox: Equivalents of oxidizing agent = Equivalents of reducing agents</li>
+        <li>Number of moles = (Weight in g) / (Molecular weight)</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Determine oxidation states and equivalent weights</strong>
+            <br>Let the atomic weight of X be A.
+            <br><br>For XO → XO<sub>4</sub><sup>2-</sup>:
+            <br>Oxidation state of X changes from +2 to +7 (change = 5)
+            <br>Molecular weight of XO = A + 16
+            <br>Equivalent weight of XO = (A + 16)/5
+            <br><br>For X<sub>2</sub>O<sub>3</sub> → 2XO<sub>4</sub><sup>2-</sup>:
+            <br>For 2 X atoms: (+6) × 2 to (+7) × 2, total change = (14 - 12) = 2 per X, but 4 per X<sub>2</sub>O<sub>3</sub> molecule
+            <br>Actually: Each X goes from +3 to +7, change = 4 per X atom, so 8 per X<sub>2</sub>O<sub>3</sub> molecule
+            <br>Molecular weight of X<sub>2</sub>O<sub>3</sub> = 2A + 48
+            <br>Equivalent weight of X<sub>2</sub>O<sub>3</sub> = (2A + 48)/8
+        </li>
+        
+        <li><strong>Step 2: Apply redox equivalence principle</strong>
+            <br>K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> → 2Cr<sup>3+</sup>
+            <br>Oxidation state change: 2Cr from +6 each to +3 each
+            <br>Total change per K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> = 2 × 3 = 6
+            <br><br>Number of equivalents of K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub> = 0.015 × 6 = 0.09
+            <br><br>Since both XO and X<sub>2</sub>O<sub>3</sub> are oxidized:
+            <br>Equivalents of XO + Equivalents of X<sub>2</sub>O<sub>3</sub> = 0.09
+            <br><br>Let weight of XO = x grams, then weight of X<sub>2</sub>O<sub>3</sub> = (2.18 - x) grams
+            <br><br>x/[(A + 16)/5] + (2.18 - x)/[(2A + 48)/8] = 0.09
+            <br><br>Simplifying:
+            <br>5x/(A + 16) + 8(2.18 - x)/(2A + 48) = 0.09 ... equation (1)
+        </li>
+        
+        <li><strong>Step 3: Apply POAC for X atoms</strong>
+            <br>Total XO + X<sub>2</sub>O<sub>3</sub> → Total XO<sub>4</sub><sup>2-</sup>
+            <br><br>Moles of X in XO + Moles of X in X<sub>2</sub>O<sub>3</sub> = Moles of X in XO<sub>4</sub><sup>2-</sup>
+            <br><br>1 × (moles of XO) + 2 × (moles of X<sub>2</sub>O<sub>3</sub>) = 1 × (moles of XO<sub>4</sub><sup>2-</sup>)
+            <br><br>x/(A + 16) + 2(2.18 - x)/(2A + 48) = 0.0187
+            <br><br>Simplifying:
+            <br>x/(A + 16) + (2.18 - x)/(A + 24) = 0.0187 ... equation (2)
+        </li>
+        
+        <li><strong>Step 4: Solve equations (1) and (2) simultaneously</strong>
+            <br>From equation (1): 5x/(A + 16) + 8(2.18 - x)/(2A + 48) = 0.09
+            <br>From equation (2): x/(A + 16) + (2.18 - x)/(A + 24) = 0.0187
+            <br><br>Let's test A = 99:
+            <br>Equation (2): x/115 + (2.18 - x)/123 = 0.0187
+            <br>123x + 115(2.18 - x) = 0.0187 × 115 × 123
+            <br>123x + 250.7 - 115x = 264.92
+            <br>8x = 14.22
+            <br>x ≈ 1.78 g
+            <br><br>Check in equation (1):
+            <br>5(1.78)/115 + 8(2.18 - 1.78)/(2×99 + 48) = 5(1.78)/115 + 8(0.4)/246
+            <br>= 0.0774 + 0.0130 = 0.0904 ≈ 0.09 ✓
+        </li>
+        
+        <li><strong>Step 5: Verify the answer</strong>
+            <br>With A = 99 and x ≈ 1.78 g:
+            <br>Moles of XO = 1.78/115 ≈ 0.0155 mole
+            <br>Moles of X<sub>2</sub>O<sub>3</sub> = 0.4/246 ≈ 0.0016 mole
+            <br>Total moles of X = 0.0155 + 2(0.0016) = 0.0187 mole ✓
+            <br><br><strong>Therefore, the atomic weight of X is 99 (likely Technetium or an analogous element)</strong>
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Chem_2a3fa75c_Q2</div>
+        <div class="badge high">high - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Chemistry |
+        <strong>Topic:</strong> Multi-Step Gas Analysis and Formula Determination |
+        <strong>Type:</strong> Multi-concept integration involving gas volume calculations, chemical reactions with metals, and mol
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Multi-concept integration involving gas volume calculations, chemical reactions with metals, and mol", Suggested: "Multiple Choice Single Answer"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+    <p><strong>Problem Statement:</strong></p>
+    <p>A polyvalent metal weighing 0.1 g and having atomic weight 51 reacted with dilute H<sub>2</sub>SO<sub>4</sub> to give 43.9 mL of hydrogen at STP. The solution containing the metal in this lower oxidation state was found to require 58.8 mL of 0.1 N permanganate for complete oxidation. What are the valencies (oxidation states) of the metal in its lower and higher oxidation states?</p>
+    
+    <div class="diagram">
+        <svg width="700" height="350" xmlns="http://www.w3.org/2000/svg">
+            <!-- Title -->
+            <text x="350" y="25" font-size="18" font-weight="bold" fill="#1976D2" text-anchor="middle">Two-Step Oxidation Process</text>
+            
+            <!-- Step 1: Reaction with H2SO4 -->
+            <rect x="50" y="50" width="200" height="100" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" rx="5"></rect>
+            <text x="150" y="75" text-anchor="middle" font-size="14" font-weight="bold">Step 1: Metal + H<tspan baseline-shift="sub">2</tspan>SO<tspan baseline-shift="sub">4</tspan></text>
+            <text x="150" y="95" text-anchor="middle" font-size="12">Metal (M) → M<tspan baseline-shift="super">X+</tspan></text>
+            <text x="150" y="112" text-anchor="middle" font-size="11">H<tspan baseline-shift="super">+</tspan> → H<tspan baseline-shift="sub">2</tspan> (43.9 mL at STP)</text>
+            <text x="150" y="130" text-anchor="middle" font-size="10" fill="#D32F2F">Lower oxidation state = X</text>
+            
+            <!-- Arrow 1 -->
+            <path d="M 260 100 L 320 100" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowgreen)"></path>
+            <text x="290" y="90" text-anchor="middle" font-size="11" font-weight="bold" fill="#4CAF50">Oxidation</text>
+            
+            <!-- Step 2: Reaction with KMnO4 -->
+            <rect x="330" y="50" width="220" height="100" fill="#FFF3E0" stroke="#FF9800" stroke-width="2" rx="5"></rect>
+            <text x="440" y="75" text-anchor="middle" font-size="14" font-weight="bold">Step 2: M<tspan baseline-shift="super">X+</tspan> + KMnO<tspan baseline-shift="sub">4</tspan></text>
+            <text x="440" y="95" text-anchor="middle" font-size="12">M<tspan baseline-shift="super">X+</tspan> → M<tspan baseline-shift="super">Y+</tspan></text>
+            <text x="440" y="112" text-anchor="middle" font-size="11">58.8 mL of 0.1 N KMnO<tspan baseline-shift="sub">4</tspan></text>
+            <text x="440" y="130" text-anchor="middle" font-size="10" fill="#D32F2F">Higher oxidation state = Y</text>
+            
+            <!-- Data box -->
+            <rect x="100" y="180" width="500" height="140" fill="#F5F5F5" stroke="#666" stroke-width="1" rx="5"></rect>
+            <text x="350" y="205" text-anchor="middle" font-size="14" font-weight="bold">Given Data:</text>
+            <text x="120" y="230" font-size="12">• Mass of metal = 0.1 g</text>
+            <text x="120" y="250" font-size="12">• Atomic weight of metal = 51</text>
+            <text x="120" y="270" font-size="12">• Volume of H<tspan baseline-shift="sub">2</tspan> evolved = 43.9 mL at STP</text>
+            <text x="120" y="290" font-size="12">• Volume of 0.1 N KMnO<tspan baseline-shift="sub">4</tspan> used = 58.8 mL</text>
+            <text x="120" y="310" font-size="12">• 1 equivalent of H<tspan baseline-shift="sub">2</tspan> occupies 11200 mL at STP</text>
+            
+            <!-- Arrow markers -->
+            <defs>
+                <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#4CAF50"></path>
+                </marker>
+            </defs>
+        </svg>
+    </div>
+</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Lower oxidation state = +1, Higher oxidation state = +3
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Lower oxidation state = +2, Higher oxidation state = +5
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Lower oxidation state = +2, Higher oxidation state = +4
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Lower oxidation state = +3, Higher oxidation state = +6
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+    <strong>Solution:</strong>
+    
+    <p><strong>Strategy:</strong> For polyvalent metal problems: (1) Use hydrogen gas volume to find lower oxidation state via equivalence principle, (2) Use KMnO<sub>4</sub> titration data to find higher oxidation state, (3) Remember that equivalent weight = (Atomic weight)/(oxidation state) for metals in their ionic forms. Work systematically through both reactions.</p>
+    
+    <p><strong>Expert Insight:</strong> A top JEE candidate would immediately recognize this as a two-stage oxidation problem. They'd use the H<sub>2</sub> gas volume (43.9 mL ≈ 11200/255 mL, suggesting ~1/255 equivalents) to quickly find the lower oxidation state, then use KMnO<sub>4</sub> normality equation to find the change in oxidation state. The key insight is that the same amount of metal participates in both reactions.</p>
+    
+    <p><strong>Key Formulas/Laws/Theorems Used:</strong></p>
+    <ul>
+        <li>Number of equivalents = Weight (g) / Equivalent weight</li>
+        <li>Equivalent weight of metal = Atomic weight / Valency</li>
+        <li>1 equivalent of H<sub>2</sub> at STP occupies 11200 mL</li>
+        <li>Milliequivalents (m.e.) = Normality × Volume (mL)</li>
+        <li>In redox: Equivalents of oxidizing agent = Equivalents of reducing agent</li>
+    </ul>
+    
+    <ol>
+        <li><strong>Step 1: Determine lower oxidation state (X) from H<sub>2</sub> evolution</strong>
+            <br>Let the lower oxidation number of the metal be X.
+            <br><br>Reaction: M + H<sub>2</sub>SO<sub>4</sub> → M<sup>X+</sup> + H<sub>2</sub>
+            <br><br>Equivalent weight of metal in lower oxidation state = 51/X
+            <br><br>Number of equivalents of metal = 0.1/(51/X) = 0.1X/51
+            <br><br>Number of equivalents of H<sub>2</sub> produced = 43.9/11200
+            <br>(Since 1 equivalent of H<sub>2</sub> occupies 11200 mL at STP)
+            <br><br>By equivalence principle:
+            <br>Number of equivalents of metal = Number of equivalents of H<sub>2</sub>
+            <br>0.1X/51 = 43.9/11200
+            <br>X = (43.9 × 51)/(11200 × 0.1)
+            <br>X = 2238.9/1120
+            <br>X ≈ 2
+            <br><br><strong>Therefore, lower oxidation state = +2</strong>
+        </li>
+        
+        <li><strong>Step 2: Determine higher oxidation state (Y) from KMnO<sub>4</sub> titration</strong>
+            <br>The metal is now oxidized from +2 to higher oxidation state Y.
+            <br><br>Equivalent weight of metal for this change = 51/(Y - 2)
+            <br>(Change in oxidation number = Y - 2)
+            <br><br>Number of equivalents of metal = 0.1/[51/(Y-2)] = 0.1(Y-2)/51
+            <br><br>Milliequivalents of KMnO<sub>4</sub> used = Normality × Volume (mL)
+            <br>= 0.1 × 58.8 = 5.88 m.e. = 0.00588 equivalents
+            <br><br>By equivalence principle:
+            <br>Equivalents of metal = Equivalents of KMnO<sub>4</sub>
+            <br>0.1(Y-2)/51 = 0.00588
+            <br>0.1(Y-2) = 0.00588 × 51
+            <br>0.1(Y-2) = 0.29988
+            <br>Y - 2 = 2.9988 ≈ 3
+            <br>Y = 5
+            <br><br><strong>Therefore, higher oxidation state = +5</strong>
+        </li>
+        
+        <li><strong>Step 3: Verify the answer</strong>
+            <br>Check Step 1:
+            <br>Equivalents of metal = 0.1 × 2 / 51 = 0.2/51 ≈ 0.00392
+            <br>Equivalents of H<sub>2</sub> = 43.9/11200 ≈ 0.00392 ✓
+            <br><br>Check Step 2:
+            <br>Equivalents of metal for oxidation = 0.1 × (5-2) / 51 = 0.3/51 ≈ 0.00588
+            <br>Equivalents of KMnO<sub>4</sub> = 0.1 × 58.8 / 1000 = 0.00588 ✓
+            <br><br><strong>Answer: Lower oxidation state = +2, Higher oxidation state = +5</strong>
+            <br>(This is characteristic of Vanadium: V<sup>2+</sup> → V<sup>5+</sup>)
+        </li>
+    </ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

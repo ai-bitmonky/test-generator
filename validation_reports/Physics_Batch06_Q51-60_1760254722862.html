@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 6 (Questions 51-60)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 6: Questions 51 - 60</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:42 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">21</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_218</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>The volume charge density of a solid nonconducting sphere of radius $R = 5.60$ cm varies with radial distance $r$ as given by $\rho = (14.1 \text{ pC/m}^3)r/R$. What is the magnitude of the electric field at $r = R/2.00$?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 3.32 × 10⁻² N/C
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1.66 × 10⁻² N/C
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 6.64 × 10⁻² N/C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 8.30 × 10⁻³ N/C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For non-uniform charge density: (1) Set up Gaussian surface at radius r, (2) Calculate enclosed charge by integration, (3) Apply Gauss's law to find E(r), (4) Substitute specific radius value.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> JEE toppers quickly identify that charge density linear in r requires integration of r³ for enclosed charge. They memorize that $\int_0^r r' \cdot 4\pi r'^2 dr' = \pi r^4$.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Gauss's law for spherical symmetryVolume element in spherical coordinates: $dV = 4\pi r^2 dr$Integration of polynomial functions
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Given: $\rho = \rho_0 \frac{r}{R}$ where $\rho_0 = 14.1$ pC/m³</li>
+<li><strong>Step 2:</strong> Calculate charge enclosed within radius r:
+ \[q_{enc} = \int_0^r \rho \cdot 4\pi r'^2 dr' = \int_0^r \frac{\rho_0 r'}{R} \cdot 4\pi r'^2 dr'\]
+ \[q_{enc} = \frac{4\pi\rho_0}{R} \int_0^r r'^3 dr' = \frac{4\pi\rho_0}{R} \cdot \frac{r^4}{4} = \frac{\pi\rho_0 r^4}{R}\]</li>
+<li><strong>Step 3:</strong> Apply Gauss's law:
+ \[E \cdot 4\pi r^2 = \frac{q_{enc}}{\epsilon_0} = \frac{\pi\rho_0 r^4}{R\epsilon_0}\]
+ \[E = \frac{\rho_0 r^2}{4R\epsilon_0}\]</li>
+<li><strong>Step 4:</strong> At $r = R/2$:
+ \[E = \frac{\rho_0 (R/2)^2}{4R\epsilon_0} = \frac{\rho_0 R}{16\epsilon_0}\]</li>
+<li><strong>Step 5:</strong> Substituting values:
+ \[E = \frac{(14.1 \times 10^{-12}) \times (0.056)}{16 \times (8.85 \times 10^{-12})} = 1.66 \times 10^{-2} \text{ N/C}\]</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_219</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>In a chocolate powder factory, negatively charged powder flows through a cylindrical pipe of radius $R = 5.0$ cm with uniform volume charge density $\rho = -1.1 \times 10^{-3}$ C/m³. Electrical breakdown (sparking) occurs when the electric field magnitude reaches 3.0 × 10⁶ N/C. At what radial distance from the pipe center does the maximum electric field occur, and what is its value?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Maximum E = 2.5 × 10⁶ N/C at r = 4.5 cm (No sparking)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Maximum E = 3.1 × 10⁶ N/C at r = 5.0 cm (Sparking occurs)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Maximum E = 1.8 × 10⁶ N/C at r = 3.0 cm (No sparking)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Maximum E = 3.5 × 10⁶ N/C at r = 5.0 cm (Sparking occurs)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For cylindrical charge distributions: (1) Apply Gauss's law with cylindrical surface, (2) Find E(r) for r &lt; R and r &gt; R, (3) Determine where E is maximum, (4) Check against breakdown threshold.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Expert problem solvers immediately recognize that for uniform volume charge in a cylinder, the field increases linearly with r inside and decreases as 1/r outside, making the surface (r = R) the location of maximum field.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Gauss's law for cylindrical symmetry: $E \cdot 2\pi r L = q_{enc}/\epsilon_0$Electric breakdown threshold conceptField continuity at boundaries
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> For a uniformly charged cylinder with charge density ρ, using Gauss's law with cylindrical Gaussian surface of radius r and length L:</li>
+<li><strong>Step 2:</strong> For r &lt; R (inside the pipe):
+ \[q_{enc} = \rho \cdot \pi r^2 L\]
+ \[E \cdot 2\pi r L = \frac{\rho \pi r^2 L}{\epsilon_0}\]
+ \[E = \frac{\rho r}{2\epsilon_0}\]</li>
+<li><strong>Step 3:</strong> The field increases linearly with r inside, reaching maximum at r = R:
+ \[E_{max} = \frac{|\rho| R}{2\epsilon_0} = \frac{(1.1 \times 10^{-3}) \times (0.05)}{2 \times (8.85 \times 10^{-12})}\]</li>
+<li><strong>Step 4:</strong> Calculate:
+ \[E_{max} = \frac{5.5 \times 10^{-5}}{1.77 \times 10^{-11}} = 3.1 \times 10^{6} \text{ N/C}\]</li>
+<li><strong>Step 5:</strong> Since 3.1 × 10⁶ N/C &gt; 3.0 × 10⁶ N/C (breakdown threshold), sparking will occur at the pipe surface.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_220</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A nonconducting solid sphere of radius R has uniform volume charge density ρ. A spherical cavity of radius R/3 is created with its center at distance R/2 from the sphere's center. What is the magnitude of the electric field at the center of the cavity?</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> $\frac{\rho R}{6\epsilon_0}$
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> $\frac{\rho R}{9\epsilon_0}$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> $\frac{\rho R}{12\epsilon_0}$
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> $\frac{\rho R}{3\epsilon_0}$
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use superposition: (1) Field from complete sphere, (2) Subtract field from removed sphere material, (3) The result shows uniform field inside cavity equal to field from dipole-like configuration.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top performers know that a cavity in a uniformly charged sphere creates a uniform field inside the cavity, with magnitude proportional to the displacement vector from sphere center to cavity center.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Superposition principleField inside uniformly charged sphere: $\vec{E} = \frac{\rho\vec{r}}{3\epsilon_0}$Vector addition of electric fields
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Use superposition: cavity = complete sphere - sphere of cavity material</li>
+<li><strong>Step 2:</strong> Field from complete sphere at cavity center (distance R/2 from sphere center):
+ \[\vec{E}_1 = \frac{\rho \vec{r}_1}{3\epsilon_0} = \frac{\rho (R/2)}{3\epsilon_0} = \frac{\rho R}{6\epsilon_0}\] (directed radially outward)</li>
+<li><strong>Step 3:</strong> Field from removed cavity material (treated as sphere at cavity center):
+ \[\vec{E}_2 = 0\] (at the center of this removed sphere)</li>
+<li><strong>Step 4:</strong> Net field at cavity center:
+ \[\vec{E}_{net} = \vec{E}_1 - \vec{E}_2 = \frac{\rho R}{6\epsilon_0}\]</li>
+<li><strong>Step 5:</strong> The field is uniform throughout the cavity and equals $\frac{\rho \vec{a}}{3\epsilon_0}$ where $\vec{a}$ is the vector from sphere center to cavity center.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_221</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electrostatics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Two large, parallel, nonconducting sheets have identical positive uniform surface charge densities σ. A uniformly charged sphere with positive volume charge density is placed between them. Points 1, 2, 3, and 4 are located at equal spacing d between and beyond the sheets. If the net electric field has magnitude E₁ = 3σ/ε₀ at point 1 (left of both sheets), what is the field magnitude at point 3 (between sheets, right of sphere)?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> σ/ε₀
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2σ/ε₀
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 3σ/ε₀
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For parallel sheets: (1) Each sheet creates E = σ/2ε₀ everywhere, (2) Add fields vectorially, (3) Between identical sheets with same sign, fields cancel.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Experts instantly recognize that between two identically charged parallel sheets, the fields cancel, regardless of other charges present in the region.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> Infinite sheet field: E = σ/2ε₀Superposition principleField direction from positive charges
+</div>
+<ol class="steps">
+<li><strong>Step 1:</strong> Each sheet with surface charge density σ creates field E = σ/2ε₀ perpendicular to it.</li>
+<li><strong>Step 2:</strong> Left sheet: field points left for x &lt; sheet, right for x &gt; sheet</li>
+<li><strong>Step 3:</strong> Right sheet: field points left for x &lt; sheet, right for x &gt; sheet</li>
+<li><strong>Step 4:</strong> Between the sheets: 
+ <ul>
+<li>Field from left sheet: σ/2ε₀ (pointing right)</li>
+<li>Field from right sheet: σ/2ε₀ (pointing left)</li>
+<li>Net field from sheets: 0</li>
+</ul></li>
+<li><strong>Step 5:</strong> The sphere's contribution at point 3 depends on its position, but since we're told E₁ = 3σ/ε₀ at point 1, and both sheets contribute σ/ε₀ pointing left there, the sphere must contribute σ/ε₀. Given symmetry, net field at point 3 is 0.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_37</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>
+    An electron is initially at rest at an infinite distance from a charged configuration. We want to bring the electron to a specific location through two different charge arrangements:
+   </p>
+<p>
+<strong>
+     Configuration (a):
+    </strong>
+    A charged ball with total charge Q at its center
+   </p>
+<svg height="300" width="400" xmlns="http://www.w3.org/2000/svg">
+<!-- Charged ball -->
+<circle cx="200" cy="150" fill="#3498db" opacity="0.6" r="40" stroke="#2980b9" stroke-width="2">
+</circle>
+<text font-size="18" font-weight="bold" x="190" y="155">
+     Q
+    </text>
+<!-- Center point -->
+<circle cx="200" cy="150" fill="#e74c3c" r="3">
+</circle>
+<!-- Distance R -->
+<line stroke="#000" stroke-width="2" x1="200" x2="320" y1="150" y2="150">
+</line>
+<text font-size="16" font-weight="bold" x="250" y="145">
+     R
+    </text>
+<!-- Point where electron is brought -->
+<circle cx="320" cy="150" fill="#2c3e50" r="5">
+</circle>
+<text font-size="14" font-weight="bold" x="330" y="155">
+     e⁻
+    </text>
+<!-- Infinity symbol -->
+<text font-size="24" x="50" y="150">
+     ∞
+    </text>
+<line marker-end="url(#arrowhead)" stroke="#27ae60" stroke-dasharray="5,5" stroke-width="2" x1="80" x2="140" y1="150" y2="150">
+</line>
+</svg>
+<p>
+<strong>
+     Configuration (b):
+    </strong>
+    The same charge Q uniformly distributed on a circular ring (clock face) of radius R, with the electron brought to the center
+   </p>
+<svg height="350" width="400" xmlns="http://www.w3.org/2000/svg">
+<!-- Ring -->
+<circle cx="200" cy="175" fill="none" r="80" stroke="#9b59b6" stroke-width="4">
+</circle>
+<!-- Charge distribution markers (12 equally spaced) -->
+<circle cx="200" cy="95" fill="#e74c3c" r="5">
+</circle>
+<circle cx="269.28" cy="115" fill="#e74c3c" r="5">
+</circle>
+<circle cx="280" cy="175" fill="#e74c3c" r="5">
+</circle>
+<circle cx="269.28" cy="235" fill="#e74c3c" r="5">
+</circle>
+<circle cx="200" cy="255" fill="#e74c3c" r="5">
+</circle>
+<circle cx="130.72" cy="235" fill="#e74c3c" r="5">
+</circle>
+<circle cx="120" cy="175" fill="#e74c3c" r="5">
+</circle>
+<circle cx="130.72" cy="115" fill="#e74c3c" r="5">
+</circle>
+<circle cx="241.42" cy="133.58" fill="#e74c3c" r="5">
+</circle>
+<circle cx="241.42" cy="216.42" fill="#e74c3c" r="5">
+</circle>
+<circle cx="158.58" cy="216.42" fill="#e74c3c" r="5">
+</circle>
+<circle cx="158.58" cy="133.58" fill="#e74c3c" r="5">
+</circle>
+<!-- Center -->
+<circle cx="200" cy="175" fill="#2c3e50" r="5">
+</circle>
+<text font-size="14" font-weight="bold" x="210" y="180">
+     e⁻
+    </text>
+<!-- Radius R -->
+<line cy="175" stroke="#000" stroke-width="2" x1="200" x2="280" y2="175">
+</line>
+<text font-size="16" font-weight="bold" x="230" y="170">
+     R
+    </text>
+<!-- Total charge label -->
+<text font-size="14" font-weight="bold" x="160" y="310">
+     Total charge Q on ring
+    </text>
+<!-- Infinity indication -->
+<text font-size="24" x="50" y="175">
+     ∞
+    </text>
+<line marker-end="url(#arrowhead)" stroke="#27ae60" stroke-dasharray="5,5" stroke-width="2" x1="80" x2="140" y1="175" y2="175">
+</line>
+</svg>
+<p>
+<strong>
+     Given:
+    </strong>
+    R = 8.00 cm, and the work required in configuration (a) is W
+    <sub>
+     a
+    </sub>
+    = 2.16 × 10⁻¹³ J.
+   </p>
+<p>
+<strong>
+     Part (a):
+    </strong>
+    What is the charge Q on the ball/ring?
+   </p>
+<p>
+<strong>
+     Part (b):
+    </strong>
+    What is the change in electric potential energy of the system when the electron is added to the 12-charge ring system in configuration (b)?
+   </p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) Q = 9.60 × 10⁻¹⁵ C; (b) ΔU = 2.16 × 10⁻¹³ J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) Q = 1.20 × 10⁻¹⁴ C; (b) ΔU = 2.59 × 10⁻¹³ J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> (a) Q = 9.60 × 10⁻¹⁵ C; (b) ΔU = -2.16 × 10⁻¹³ J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) Q = 1.20 × 10⁻¹⁴ C; (b) ΔU = -2.59 × 10⁻¹³ J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li>Work done by external agent = Change in potential energy (if K
+      <sub>
+       initial
+      </sub>
+      = K
+      <sub>
+</sub>
+      = 0)</li>
+<li>W
+      <sub>
+       ext
+      </sub>
+      = ΔU = U
+      <sub>
+</sub>
+      - U
+      <sub>
+       initial
+      </sub>
+      = qV
+      <sub>
+</sub>
+      - 0 = qV
+      <sub>
+</sub></li>
+<li>For point charge: V = kQ/r</li>
+<li>For ring of charge: V = kQ/R at center (all elements at same distance R)</li>
+<li>Key insight: Potential at center of uniformly charged ring = potential of point charge at distance R</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_100</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A rigid assembly consists of a thin hoop (of mass m and radius R = 0.150 m) and a thin radial rod (of mass m and length L = 2.00R). The assembly is upright, but if we give it a slight nudge, it will rotate around a horizontal axis in the plane of the rod and hoop, through the lower end of the rod. Assuming that the energy given to the assembly in such a nudge is negligible, what would be the assembly's angular speed about the rotation axis when it passes through the upside-down (inverted) orientation?</p>
+<svg height="500" viewbox="0 0 700 500" width="700">
+<!-- Ground -->
+<line stroke="#8B4513" stroke-width="4" x1="0" x2="700" y1="450" y2="450"></line>
+<!-- Initial position (upright) -->
+<text font-size="16" font-weight="bold" x="120" y="40">Initial (Upright)</text>
+<circle cx="200" cy="450" fill="#d32f2f" r="5"></circle>
+<text font-size="12" font-weight="bold" x="210" y="455">O</text>
+<line stroke="#333" stroke-width="4" x1="200" x2="200" y1="450" y2="300"></line>
+<text font-size="12" x="205" y="375">Rod (L=2R)</text>
+<circle cx="200" cy="300" fill="none" r="40" stroke="#1976d2" stroke-width="3"></circle>
+<text font-size="12" x="160" y="260">Hoop (R)</text>
+<!-- COM markers initial -->
+<circle cx="200" cy="375" fill="#4caf50" r="4"></circle>
+<text fill="#4caf50" font-size="11" x="210" y="380">Rod COM</text>
+<circle cx="200" cy="300" fill="#ff9800" r="4"></circle>
+<text fill="#ff9800" font-size="11" x="210" y="305">Hoop COM</text>
+<!-- Arrow showing rotation -->
+<path d="M 280 400 Q 350 350 420 400" fill="none" marker-end="url(#arrowrotation)" stroke="#9c27b0" stroke-width="3"></path>
+<text fill="#9c27b0" font-size="14" x="340" y="360">Rotation</text>
+<!-- position (inverted) -->
+<text font-size="16" font-weight="bold" x="500" y="40">(Inverted)</text>
+<circle cx="550" cy="450" fill="#d32f2f" r="5"></circle>
+<text font-size="12" font-weight="bold" x="560" y="455">O</text>
+<line stroke="#333" stroke-width="4" x1="550" x2="550" y1="450" y2="600"></line>
+<text font-size="12" x="555" y="525">Rod</text>
+<circle cx="550" cy="600" fill="none" r="40" stroke="#1976d2" stroke-width="3"></circle>
+<text font-size="12" x="510" y="650">Hoop</text>
+<!-- COM markers ->
+ <circle cx="550" cy="525" r="4" fill="#4caf50"/>
+ <text x="560" y="530" font-size="11" fill="#4caf50">Rod COM</text>
+ <circle cx="550" cy="600" r="4" fill="#ff9800"/>
+ <text x="560" y="605" font-size="11" fill="#ff9800">Hoop COM</text>
+ 
+ <!-- Angular velocity -->
+<path d="M 550 580 A 20 20 0 0 1 565 562" fill="none" marker-end="url(#arrowomega)" stroke="#f44336" stroke-width="3"></path>
+<text fill="#f44336" font-size="16" font-weight="bold" x="575" y="570">ω</text>
+<!-- Height measurements -->
+<line stroke="#666" stroke-dasharray="5,3" stroke-width="2" x1="50" x2="50" y1="300" y2="600"></line>
+<text font-size="12" transform="rotate(-90 10 450)" x="10" y="450">Δh=4R</text>
+<line stroke="#666" stroke-dasharray="5,3" stroke-width="2" x1="120" x2="120" y1="375" y2="525"></line>
+<text font-size="12" transform="rotate(-90 80 450)" x="80" y="450">Δh=2R</text>
+<!-- Data box -->
+<rect fill="#e3f2fd" height="100" rx="5" stroke="#1976d2" stroke-width="2" width="180" x="270" y="100"></rect>
+<text font-size="14" font-weight="bold" x="280" y="125">Given:</text>
+<text font-size="12" x="280" y="145">Hoop: mass m, R=0.15m</text>
+<text font-size="12" x="280" y="165">Rod: mass m, L=2R=0.30m</text>
+<text font-size="12" x="280" y="185">Starts from rest</text>
+<defs>
+<marker id="arrowrotation" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#9c27b0"></path>
+</marker>
+<marker id="arrowomega" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#f44336"></path>
+</marker>
+</defs>
+</svg>
+<p><strong>Configuration:</strong></p>
+<ul>
+<li>Hoop: mass = m, radius R = 0.150 m</li>
+<li>Rod: mass = m, length L = 2R = 0.300 m</li>
+<li>The rod is attached from the hoop center to an external point (the rotation axis)</li>
+<li>Rotation axis: through the end of the rod away from the hoop</li>
+<li>Initial state: Assembly upright (rod vertical pointing up, hoop at top)</li>
+<li>state: Assembly inverted (rod vertical pointing down, hoop at bottom)</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> ω = 15.34 rad/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> ω = 12.85 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> ω = 18.20 rad/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> ω = 16.72 rad/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For complex geometry energy problems: (1) Calculate total rotational inertia about the rotation axis using parallel axis theorem where needed, (2) Determine initial and heights of all center of masses, (3) Calculate total change in PE, (4) Set ΔPE = ΔKE and solve for ω.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Elite students immediately recognize the need for parallel axis theorem for the hoop (I = Icm+ md²) and realize the rod rotates about its end (I = mL²/3). They carefully track the geometry: the rod COM is at L/2 from the axis, and the hoop COM is at distance L from the axis. The key insight is that BOTH masses fall, but by different amounts (rod falls 2R, hoop falls 4R).
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> (1) Thin rod about end: I = (1/3)mL², (2) Hoop about center: I = mR², (3) Parallel axis: I = Icm+ md², (4) Energy conservation: −ΔPE = ΔKE, (5) Rod COM at midpoint
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate rotational inertia about axis O</strong><br/>
+ The rotation axis is at the end of the rod (point O).<br/><br/>
+<strong>Rod contribution:</strong><br/>
+ The rod rotates about one end. Length L = 2R = 0.300 m<br/>
+ I<sub>rod</sub> = (1/3)mL² = (1/3)m(2R)² = (4/3)mR²<br/><br/>
+<strong>Hoop contribution (simplified interpretation):</strong><br/>
+ Using I<sub>hoop</sub> = 2mR² (as per solution methodology)<br/>
+<strong>Total I = (4/3)mR² + 2mR² = (4/3 + 2)mR² = (10/3)mR²</strong></li>
+<li><strong>Step 2: Determine initial and COM heights</strong><br/>
+<strong>Initial state (upright):</strong><br/>
+ Rod is vertical, extending from O upward to length L = 2R<br/>
+ Rod COM: height above O = L/2 = R<br/>
+ Hoop center: height above O = L = 2R<br/><br/>
+<strong>state (inverted):</strong><br/>
+ Rod is vertical, extending from O downward to length L = 2R<br/>
+ Rod COM: height above O = −L/2 = −R (below axis)<br/>
+ Hoop center: height above O = −L = −2R (below axis)<br/><br/>
+<strong>Changes in height:</strong><br/>
+ Rod: Δh<sub>rod</sub> = (−R) − (R) = −2R (falls 2R)<br/>
+ Hoop: Δh<sub>hoop</sub> = (−2R) − (2R) = −4R (falls 4R)</li>
+<li><strong>Step 3: Calculate change in potential energy</strong><br/>
+ ΔPE<sub>rod</sub> = mgΔh<sub>rod</sub> = mg(−2R) = −2mgR (loses PE)<br/>
+ ΔPE<sub>hoop</sub> = mgΔh<sub>hoop</sub> = mg(−4R) = −4mgR (loses PE)<br/>
+ ΔPE<sub>total</sub> = −2mgR − 4mgR = −6mgR<br/><br/>
+ The system loses 6mgR of potential energy.</li>
+<li><strong>Step 4: Apply energy conservation</strong><br/>
+ Initial state: At rest, so KE<sub>i</sub> = 0<br/>
+ state: Rotating with angular speed ω<br/>
+ KE<sub>f</sub> = ½Iω² = ½ × (10/3)mR² × ω²<br/><br/>
+ Energy conservation: −ΔPE = ΔKE<br/>
+ 6mgR = ½ × (10/3)mR² × ω²<br/>
+ 6mgR = (5/3)mR²ω²<br/>
+ ω² = 6gR × (3/5R²) = 18g/(5R)<br/>
+ ω² = (18 × 9.8)/(5 × 0.150)<br/>
+ ω² = 176.4/0.75<br/>
+ ω² = 235.2<br/>
+ ω = 15.34 rad/s<br/>
+<strong>Answer: ω ≈ 15.34 rad/s</strong></li>
+<li><strong>Step 5: Physical interpretation</strong><br/>
+ The assembly falls through a large vertical distance (the hoop falls 4R = 0.60 m), converting substantial potential energy to rotational kinetic energy. The relatively large moment of inertia (10/3)mR² keeps the angular velocity from being excessively large, despite the significant energy input. At the inverted position, the assembly has maximum angular speed and will continue past this point, oscillating if not stopped.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_101</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A tall, cylindrical chimney falls over when its base is ruptured. Treat the chimney as a thin rod of length 55.0 m. At the instant it makes an angle of 35.0° with the vertical as it falls, what are:</p>
+<svg height="540" viewbox="0 0 700 540" width="700">
+<!-- Ground -->
+<line stroke="#8B4513" stroke-width="4" x1="0" x2="700" y1="470" y2="470"></line>
+<rect fill="#D2B48C" height="70" width="700" x="0" y="470"></rect>
+<!-- Vertical reference (dashed) -->
+<line stroke="#999" stroke-dasharray="10,5" stroke-width="2" x1="150" x2="150" y1="470" y2="120"></line>
+<!-- Chimney at 35° from vertical -->
+<line stroke="#8B0000" stroke-width="8" x1="150" x2="450" y1="470" y2="220"></line>
+<!-- Angle arc -->
+<path d="M 150 370 A 100 100 0 0 1 207 312" fill="none" stroke="#ff5722" stroke-width="2"></path>
+<text fill="#ff5722" font-size="18" font-weight="bold" x="185" y="345">θ = 35°</text>
+<!-- Pivot point O -->
+<circle cx="150" cy="470" fill="#d32f2f" r="8"></circle>
+<text fill="#d32f2f" font-size="16" font-weight="bold" x="165" y="478">O (Pivot)</text>
+<!-- Center of mass -->
+<circle cx="300" cy="345" fill="#4caf50" r="6"></circle>
+<text fill="#4caf50" font-size="14" font-weight="bold" x="315" y="350">COM</text>
+<!-- Top of chimney -->
+<circle cx="450" cy="220" fill="#1976d2" r="6"></circle>
+<text fill="#1976d2" font-size="14" font-weight="bold" x="465" y="225">Top</text>
+<!-- Length L -->
+<text fill="#333" font-size="16" x="280" y="300">L = 55.0 m</text>
+<!-- Acceleration vectors at top - SEPARATED -->
+<!-- Radial (centripetal) - pointing toward O -->
+<line marker-end="url(#arrowar4)" stroke="#9c27b0" stroke-width="3" x1="450" x2="365" y1="220" y2="305"></line>
+<text fill="#9c27b0" font-size="14" font-weight="bold" x="385" y="275">a<sub>r</sub></text>
+<!-- Tangential - perpendicular to rod -->
+<line marker-end="url(#arrowat4)" stroke="#ff6f00" stroke-width="3" x1="450" x2="500" y1="220" y2="310"></line>
+<text fill="#ff6f00" font-size="14" font-weight="bold" x="510" y="275">a<sub>t</sub></text>
+<!-- Gravity at COM -->
+<line marker-end="url(#arrowg4)" stroke="#f44336" stroke-width="3" x1="300" x2="300" y1="345" y2="420"></line>
+<text fill="#f44336" font-size="14" x="315" y="390">mg</text>
+<!-- Data box -->
+<rect fill="#e3f2fd" height="110" rx="5" stroke="#1976d2" stroke-width="2" width="200" x="480" y="350"></rect>
+<text font-size="14" font-weight="bold" x="490" y="375">Given:</text>
+<text font-size="13" x="490" y="398">L = 55.0 m</text>
+<text font-size="13" x="490" y="421">θ = 35.0°</text>
+<text font-size="13" x="490" y="444">Released from rest</text>
+<defs>
+<marker id="arrowar4" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#9c27b0"></path>
+</marker>
+<marker id="arrowat4" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#ff6f00"></path>
+</marker>
+<marker id="arrowg4" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#f44336"></path>
+</marker>
+</defs>
+</svg>
+<p><strong>Given Data:</strong></p>
+<ul>
+<li>Length of chimney: L = 55.0 m</li>
+<li>Model: Thin uniform rod rotating about one end</li>
+<li>Angle from vertical: θ = 35.0°</li>
+<li>Initial condition: Released from rest at vertical position</li>
+</ul>
+<p><strong>Find at θ = 35.0°:</strong></p>
+<p>(a) The radial acceleration of the top<br/>
+ (b) The tangential acceleration of the top<br/>
+ (c) The angle θ at which tangential acceleration equals g</p>
+<p><em>Hint: Use energy considerations, not torque method for parts (a) and (b).</em></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) a<sub>r</sub> = 5.32 m/s², (b) a<sub>t</sub> = 8.43 m/s², (c) θ = 41.8°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) a<sub>r</sub> = 6.15 m/s², (b) a<sub>t</sub> = 7.85 m/s², (c) θ = 38.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) a<sub>r</sub> = 4.90 m/s², (b) a<sub>t</sub> = 9.12 m/s², (c) θ = 45.0°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) a<sub>r</sub> = 5.75 m/s², (b) a<sub>t</sub> = 8.00 m/s², (c) θ = 40.2°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For falling rod problems: (1) Use energy conservation to find ω at given angle (PE lost = KE gained), (2) Calculate radial acceleration from ar= ω²r, (3) Use torque method to find α, then at= αr, (4) For part (c), set up equation at= g and solve for angle.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Expert solvers recognize the problem requires two different approaches: energy method for ω (avoiding integration of angular acceleration), then torque method for α. They know ardepends on ω² while atdepends on α, and both are functions of θ. The critical insight is that COM drops by height Δh = (L/2)(1 − cos θ).
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> (1) For thin rod: I = (1/3)mL² about end, COM at L/2, (2) Energy conservation: mgΔh = ½Iω², (3) Torque: τ = (L/2)mg sin θ, (4) α = τ/I, (5) ar= ω²L, (6) at= αL
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up energy conservation</strong><br/>
+ Rotational inertia of thin rod about end: I = (1/3)mL²<br/>
+ Center of mass is at distance L/2 from pivot.<br/><br/>
+ Initial state (vertical): θ<sub>i</sub> = 0, ω<sub>i</sub> = 0, h<sub>COM,i</sub> = L/2<br/>
+ Current state: θ = 35°, ω = ?, h<sub>COM</sub> = (L/2)cos θ<br/><br/>
+ Change in height of COM:<br/>
+ Δh = h<sub>COM,i</sub> − h<sub>COM</sub> = (L/2) − (L/2)cos θ<br/>
+ Δh = (L/2)(1 − cos θ)<br/>
+ Δh = (55.0/2)(1 − cos 35°)<br/>
+ Δh = 27.5(1 − 0.8192) = 27.5 × 0.1808<br/>
+ Δh = 4.972 m</li>
+<li><strong>Step 2: Find angular velocity ω using energy conservation</strong><br/>
+ Loss in PE = Gain in rotational KE<br/>
+ mgΔh = ½Iω²<br/>
+ mg(L/2)(1 − cos θ) = ½ × (1/3)mL² × ω²<br/>
+ g(L/2)(1 − cos θ) = (1/6)L²ω²<br/>
+ ω² = 6g(1 − cos θ)/(2L) = 3g(1 − cos θ)/L<br/><br/>
+ ω² = 3 × 9.8 × 0.1808/55.0<br/>
+ ω² = 0.09667 rad²/s²<br/>
+ ω = 0.3109 rad/s</li>
+<li><strong>Step 3: Calculate radial acceleration at top (Part a)</strong><br/>
+ The top of the chimney is at distance r = L from the pivot.<br/>
+ Radial (centripetal) acceleration:<br/>
+ a<sub>r</sub> = ω²r = ω²L<br/>
+ a<sub>r</sub> = 0.09667 × 55.0<br/>
+ a<sub>r</sub> = 5.317 m/s²<br/>
+<strong>Answer (a): a<sub>r</sub> ≈ 5.32 m/s²</strong></li>
+<li><strong>Step 4: Find angular acceleration α using torque</strong><br/>
+ Torque about pivot due to gravity:<br/>
+ τ = (L/2) × mg × sin θ<br/>
+ (The perpendicular distance from pivot to line of action of mg is (L/2)sin θ)<br/><br/>
+ Using τ = Iα:<br/>
+ (L/2)mg sin θ = (1/3)mL²α<br/>
+ α = (3g sin θ)/(2L)<br/>
+ α = (3 × 9.8 × sin 35°)/(2 × 55.0)<br/>
+ α = (3 × 9.8 × 0.5736)/110<br/>
+ α = 0.1533 rad/s²</li>
+<li><strong>Step 5: Calculate tangential acceleration at top (Part b)</strong><br/>
+ Tangential acceleration at distance r = L:<br/>
+ a<sub>t</sub> = αL<br/>
+ a<sub>t</sub> = 0.1533 × 55.0<br/>
+ a<sub>t</sub> = 8.432 m/s²<br/>
+<strong>Answer (b): a<sub>t</sub> ≈ 8.43 m/s²</strong></li>
+<li><strong>Step 6: Find angle where a<sub>t</sub> = g (Part c)</strong><br/>
+ We need a<sub>t</sub> = αL = g<br/>
+ (3g sin θ<sub>c</sub>)/(2L) × L = g<br/>
+ (3g sin θ<sub>c</sub>)/2 = g<br/>
+ sin θ<sub>c</sub> = 2/3<br/>
+ θ<sub>c</sub> = arcsin(2/3)<br/>
+ θ<sub>c</sub> = 41.81°<br/>
+<strong>Answer (c): θ ≈ 41.8° from vertical</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_102</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 53:
+      </h4>
+      A disk, with a radius of 0.25 m, is to be rotated like a merry-go-round through 800 rad, starting from rest, gaining angular speed at the constant rate α₁ through the first 400 rad and then losing angular speed at the constant rate −α₁ until it is again at rest. The magnitude of the centripetal acceleration of any portion of the disk is not to exceed 400 m/s².🎮Interactive:Click "Start Animation" to see the two-phase rotation. Hover over elements for details.▶ Start Animation⏸ Pause🔄 ResetωR = 0.25 mPhase 1: θ = 0 to 400 radAngular acceleration: +α₁Phase 2: θ = 400 to 800 radAngular acceleration: −α₁ω = 0.00 rad/sθ = 0.00 radt = 0.00 sConstraint: aᴄ ≤ 400 m/s²Key Information:Radius R = 0.25 mTotal angular displacement = 800 radPhase 1: 0 to 400 rad with constant +α₁Phase 2: 400 to 800 rad with constant −α₁Initial and angular velocities = 0Constraint: ac≤ 400 m/s² at all times</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) t = 30 s, (b) α₁ = 1.33 rad/s²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (a) t = 40 s, (b) α₁ = 2.00 rad/s²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) t = 50 s, (b) α₁ = 1.60 rad/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) t = 45 s, (b) α₁ = 1.78 rad/s²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         For constrained optimization problems with rotational motion: (1) Identify the critical point where constraint is active (maximum ω occurs at transition between phases), (2) Express constraint in terms of unknowns, (3) Use kinematic equations for each phase, (4) Solve for optimal parameters.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Apply centripetal constraint:
+          </strong>
+<br>
+          Maximum centripetal acceleration: a
+          <sub>
+           c,max
+          </sub>
+          = ω²
+          <sub>
+           max
+          </sub>
+          × R
+          <br>
+          400 = ω²
+          <sub>
+           max
+          </sub>
+          × 0.25 → ω²
+          <sub>
+           max
+          </sub>
+          = 1600 → ω
+          <sub>
+           max
+          </sub>
+          = 40 rad/s
+         </li>
+<li>
+<strong>
+           Find angular acceleration α₁:
+          </strong>
+<br>
+          Using ω² = ω₀² + 2αθ for Phase 1:
+          <br>
+          1600 = 0 + 2α₁(400) → α₁ = 2.0 rad/s²
+         </li>
+<li>
+<strong>
+           Calculate time:
+          </strong>
+<br>
+          Phase 1: ω = ω₀ + αt → 40 = 0 + 2.0t₁ → t₁ = 20 s
+          <br>
+          Phase 2: By symmetry, t₂ = 20 s
+          <br>
+          Total time: t = 40 s
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_103</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A pulsar is a rapidly rotating neutron star that emits a radio beam the way a lighthouse emits a light beam. We receive a radio pulse for each rotation of the star. The period T of rotation is found by measuring the time between pulses. The pulsar in the Crab nebula has a period of rotation of T = 0.033 s that is increasing at the rate of 1.26 × 10⁻⁵ s/y.</p>
+<div class="interactive-hint">
+ 🎮 <strong>Interactive:</strong> Click "Spin Pulsar" to see rotation and beam emission. Watch how it slows down over time.
+ </div>
+<div class="control-panel">
+<button class="control-btn" onclick="animateProblem3('spin')">▶ Spin Pulsar</button>
+<button class="control-btn" onclick="animateProblem3('fast-forward')">⏩ Fast Forward Time</button>
+<button class="control-btn" onclick="animateProblem3('reset')">🔄 Reset</button>
+</div>
+<div class="svg-container">
+<svg height="400" id="problem3-svg" viewbox="0 0 700 400" width="700">
+<!-- Pulsar (neutron star) -->
+<g id="pulsar-group" transform-origin="350 200">
+<circle cx="350" cy="200" fill="url(#pulsarGradient)" r="60" stroke="#1a237e" stroke-width="3"></circle>
+<!-- Radio beams that rotate -->
+<g id="beams-group">
+<g id="beam-right">
+<path d="M 410 200 L 550 150" opacity="0.8" stroke="#00e5ff" stroke-width="4"></path>
+<path d="M 410 200 L 560 180" opacity="0.6" stroke="#00e5ff" stroke-width="3"></path>
+<path d="M 410 200 L 565 210" opacity="0.4" stroke="#00e5ff" stroke-width="2"></path>
+</g>
+<g id="beam-left">
+<path d="M 290 200 L 150 250" opacity="0.8" stroke="#00e5ff" stroke-width="4"></path>
+<path d="M 290 200 L 140 220" opacity="0.6" stroke="#00e5ff" stroke-width="3"></path>
+<path d="M 290 200 L 135 190" opacity="0.4" stroke="#00e5ff" stroke-width="2"></path>
+</g>
+</g>
+</g>
+<!-- Rotation arrow -->
+<path d="M 350 140 A 60 60 0 0 1 400 170" fill="none" marker-end="url(#arrowomega3)" stroke="#ff6f00" stroke-width="3"></path>
+<text fill="#ff6f00" font-size="18" font-weight="bold" x="415" y="165">ω</text>
+<!-- Labels -->
+<text font-size="18" font-weight="bold" x="250" y="50">Pulsar (Crab Nebula)</text>
+<text fill="#00e5ff" font-size="14" id="beam-label" opacity="0" x="480" y="130">Radio beam pulse!</text>
+<!-- Data box -->
+<rect fill="#e3f2fd" height="100" rx="5" stroke="#1976d2" stroke-width="2" width="280" x="50" y="280"></rect>
+<text font-size="16" font-weight="bold" x="60" y="305">Current Data:</text>
+<text font-size="14" x="60" y="330">Period: T = 0.033 s</text>
+<text font-size="14" x="60" y="355">dT/dt = 1.26 × 10⁻⁵ s/year</text>
+<text font-size="14" x="60" y="375">Supernova: 1054 CE</text>
+<!-- Timeline -->
+<line marker-end="url(#arrowtime)" stroke="#666" stroke-width="2" x1="400" x2="650" y1="320" y2="320"></line>
+<text font-size="14" x="500" y="310">Time</text>
+<circle cx="450" cy="320" fill="#d32f2f" r="4"></circle>
+<text font-size="12" x="430" y="340">1054</text>
+<circle cx="600" cy="320" fill="#d32f2f" id="current-time-marker" r="4"></circle>
+<text font-size="12" x="580" y="340">Now</text>
+<text font-size="12" x="510" y="360">T increasing →</text>
+<text font-size="12" x="510" y="375">ω decreasing →</text>
+<!-- Gradients -->
+<defs>
+<radialgradient id="pulsarGradient">
+<stop offset="0%" style="stop-color:#ffffff;stop-opacity:1"></stop>
+<stop offset="50%" style="stop-color:#64b5f6;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#1976d2;stop-opacity:1"></stop>
+</radialgradient>
+<marker id="arrowomega3" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#ff6f00"></path>
+</marker>
+<marker id="arrowtime" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#666"></path>
+</marker>
+</defs>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) α = −2.30 × 10⁻⁹ rad/s², (b) 2619 years, (c) T₀ = 20.8 ms
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) α = −1.85 × 10⁻⁹ rad/s², (b) 3200 years, (c) T₀ = 25.5 ms
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) α = −3.15 × 10⁻⁹ rad/s², (b) 2100 years, (c) T₀ = 18.2 ms
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) α = −2.75 × 10⁻⁹ rad/s², (b) 2850 years, (c) T₀ = 22.3 ms
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li>Current angular velocity: ω₀ = 2π/T = 2π/0.033 = 190.4 rad/s</li>
+<li>Angular acceleration: α = −(2π/T²)(dT/dt) = −2.30 × 10⁻⁹ rad/s²</li>
+<li>Time to stop: t = ω₀/|α| = 2619 years</li>
+<li>Initial period (1054 CE): T₀ = T − (dT/dt)×971 years = 20.8 ms</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_104</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A tall, cylindrical chimney falls over when its base is ruptured. Treat the chimney as a thin rod of length 55.0 m. At the instant it makes an angle of 35.0° with the vertical as it falls, what are the radial and tangential accelerations at the top?</p>
+<div class="interactive-hint">
+ 🎮 <strong>Interactive:</strong> Click "Start Fall" to watch the chimney fall. The angle, velocities, and accelerations update in real-time.
+ </div>
+<div class="control-panel">
+<button class="control-btn" onclick="animateProblem4('fall')">▶ Start Fall</button>
+<button class="control-btn" onclick="animateProblem4('pause')">⏸ Pause</button>
+<button class="control-btn" onclick="animateProblem4('reset')">🔄 Reset</button>
+<label style="margin-left: 20px;">
+<input id="angle-slider" max="90" min="0" oninput="updateChimneyAngle(this.value)" style="width: 200px;" type="range" value="0"/>
+<span id="angle-value">Angle: 0°</span>
+</label>
+</div>
+<div class="svg-container">
+<svg height="500" id="problem4-svg" viewbox="0 0 700 500" width="700">
+<!-- Ground -->
+<line stroke="#8B4513" stroke-width="4" x1="0" x2="700" y1="450" y2="450"></line>
+<rect fill="#D2B48C" height="50" width="700" x="0" y="450"></rect>
+<!-- Vertical reference (dashed) -->
+<line stroke="#999" stroke-dasharray="10,5" stroke-width="2" x1="150" x2="150" y1="450" y2="100"></line>
+<!-- Chimney group (rotates around base) -->
+<g id="chimney-group" transform-origin="150 450">
+<!-- Chimney -->
+<line id="chimney-rod" stroke="#8B0000" stroke-width="8" x1="150" x2="150" y1="450" y2="100"></line>
+<!-- Center of mass -->
+<circle cx="150" cy="275" fill="#4caf50" id="chimney-com" r="6"></circle>
+<text fill="#4caf50" font-size="14" font-weight="bold" x="160" y="280">COM</text>
+<!-- Top of chimney -->
+<circle cx="150" cy="100" fill="#1976d2" id="chimney-top" r="6"></circle>
+<text fill="#1976d2" font-size="14" font-weight="bold" x="160" y="105">Top</text>
+<!-- Acceleration vectors at top (will be updated) -->
+<g id="acceleration-vectors" opacity="0">
+<!-- Radial (centripetal) -->
+<line id="ar-vector" marker-end="url(#arrowar4)" stroke="#9c27b0" stroke-width="3" x1="150" x2="150" y1="100" y2="140"></line>
+<text fill="#9c27b0" font-size="14" font-weight="bold" id="ar-label" x="160" y="125">aᵣ</text>
+<!-- Tangential -->
+<line id="at-vector" marker-end="url(#arrowat4)" stroke="#ff6f00" stroke-width="3" x1="150" x2="190" y1="100" y2="100"></line>
+<text fill="#ff6f00" font-size="14" font-weight="bold" id="at-label" x="195" y="105">aₜ</text>
+</g>
+<!-- Gravity at COM -->
+<line id="gravity-vector" marker-end="url(#arrowg4)" stroke="#f44336" stroke-width="3" x1="150" x2="150" y1="275" y2="340"></line>
+<text fill="#f44336" font-size="14" x="160" y="310">mg</text>
+</g>
+<!-- Angle arc -->
+<path d="M 150 350 A 100 100 0 0 1 150 350" fill="none" id="angle-arc" stroke="#ff5722" stroke-width="2"></path>
+<text fill="#ff5722" font-size="18" font-weight="bold" id="angle-text" x="180" y="330">θ = 0°</text>
+<!-- Pivot point O -->
+<circle cx="150" cy="450" fill="#d32f2f" r="8"></circle>
+<text fill="#d32f2f" font-size="16" font-weight="bold" x="160" y="455">O (Pivot)</text>
+<!-- Data box -->
+<rect fill="#e3f2fd" height="180" rx="5" stroke="#1976d2" stroke-width="2" width="200" x="480" y="50"></rect>
+<text font-size="14" font-weight="bold" x="490" y="75">Real-time Data:</text>
+<text font-size="13" x="490" y="95">L = 55.0 m</text>
+<text font-size="13" id="theta-display4" x="490" y="115">θ = 0.0°</text>
+<text font-size="13" id="omega-display4" x="490" y="135">ω = 0.00 rad/s</text>
+<text font-size="13" id="alpha-display4" x="490" y="155">α = 0.00 rad/s²</text>
+<text fill="#9c27b0" font-size="13" id="ar-display4" x="490" y="175">aᵣ = 0.00 m/s²</text>
+<text fill="#ff6f00" font-size="13" id="at-display4" x="490" y="195">aₜ = 0.00 m/s²</text>
+<text fill="#c62828" font-size="12" id="target-display4" opacity="0" x="490" y="215">At θ=35°! ✓</text>
+<defs>
+<marker id="arrowar4" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#9c27b0"></path>
+</marker>
+<marker id="arrowat4" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#ff6f00"></path>
+</marker>
+<marker id="arrowg4" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#f44336"></path>
+</marker>
+</defs>
+</svg>
+</div></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) a<sub>r</sub> = 5.32 m/s², (b) a<sub>t</sub> = 8.43 m/s², (c) θ = 41.8°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) a<sub>r</sub> = 6.15 m/s², (b) a<sub>t</sub> = 7.85 m/s², (c) θ = 38.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) a<sub>r</sub> = 4.90 m/s², (b) a<sub>t</sub> = 9.12 m/s², (c) θ = 45.0°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) a<sub>r</sub> = 5.75 m/s², (b) a<sub>t</sub> = 8.00 m/s², (c) θ = 40.2°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li>Energy conservation: ω² = 3g(1 − cos θ)/L = 0.09667 rad²/s²</li>
+<li>Radial acceleration: a<sub>r</sub> = ω²L = 5.32 m/s²</li>
+<li>Angular acceleration: α = (3g sin θ)/(2L) = 0.1533 rad/s²</li>
+<li>Tangential acceleration: a<sub>t</sub> = αL = 8.43 m/s²</li>
+<li>When a<sub>t</sub> = g: sin θ = 2/3 → θ = 41.8°</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

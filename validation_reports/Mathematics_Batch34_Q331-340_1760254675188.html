@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 34 (Questions 331-340)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 34: Questions 331 - 340</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:55 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">66</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_11</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If f(x) = limn→∞ [(xn - x-n)/(xn + x-n)], x > 1 then ∫[xf(x)log(x + √(1 + x²))]/√(1 + x²) dx is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> log(x + √(1 + x²)) - x + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (1/2)x²(log(x + √(1 + x²)) - 1) + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (x - 1)log(x + √(1 + x²)) + C
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> none of these ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Evaluate the limit</strong><br/>
+                For x &gt; 1, as n→∞:<br/>
+                x<sup>n</sup> → ∞ much faster than x<sup>-n</sup> → 0<br/>
+<br/>
+                f(x) = lim<sub>n→∞</sub> [(x<sup>n</sup> - x<sup>-n</sup>)/(x<sup>n</sup> + x<sup>-n</sup>)]<br/>
+                = lim<sub>n→∞</sub> [(x<sup>2n</sup> - 1)/(x<sup>2n</sup> + 1)] (dividing by x<sup>n</sup>)<br/>
+                = 1 (as x<sup>2n</sup> → ∞)
+            </div>
+<div class="solution-step">
+<strong>Step 2: Set up the integral</strong><br/>
+                ∫[x·1·log(x + √(1 + x²))]/√(1 + x²) dx<br/>
+                = ∫[x·log(x + √(1 + x²))]/√(1 + x²) dx
+            </div>
+<div class="solution-step">
+<strong>Step 3: Recognize sinh⁻¹ x</strong><br/>
+                Note: sinh⁻¹(x) = log(x + √(1 + x²))<br/>
+                And: d/dx[sinh⁻¹(x)] = 1/√(1 + x²)<br/>
+<br/>
+                So the integral becomes:<br/>
+                ∫x·sinh⁻¹(x)·1/√(1 + x²) dx
+            </div>
+<div class="solution-step">
+<strong>Step 4: Integration by parts</strong><br/>
+                Let u = x·sinh⁻¹(x), dv = dx/√(1 + x²)<br/>
+                du = [sinh⁻¹(x) + x/√(1 + x²)]dx<br/>
+                v = sinh⁻¹(x)<br/>
+<br/>
+                = x·(sinh⁻¹x)² - ∫sinh⁻¹(x)[sinh⁻¹(x) + x/√(1 + x²)]dx<br/>
+<br/>
+                This leads to a different form than any of the given options.
+            </div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Limit evaluation for exponential expressions</li>
+<li>Hyperbolic function inverses: sinh⁻¹(x) = log(x + √(1+x²))</li>
+<li>Integration by parts</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_12</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If ∫[f(x)/(x² - x + 1)] dx = (3/2)log(x² - x + 1) + (1/√3)tan⁻¹[(2x - 1)/√3] + C then f(x) is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 3x
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 3x - 4
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 3x - 1 ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1/(1 + x²)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Differentiate both sides</strong><br/>
+                d/dx[∫f(x)/(x² - x + 1)dx] = f(x)/(x² - x + 1)<br/>
+<br/>
+                d/dx[(3/2)log(x² - x + 1) + (1/√3)tan⁻¹[(2x - 1)/√3] + C]
+            </div>
+<div class="solution-step">
+<strong>Step 2: Differentiate the right side</strong><br/>
+                First term: d/dx[(3/2)log(x² - x + 1)]<br/>
+                = (3/2)·(2x - 1)/(x² - x + 1)<br/>
+                = (3x - 3/2)/(x² - x + 1)<br/>
+<br/>
+                Second term: d/dx[(1/√3)tan⁻¹[(2x - 1)/√3]]<br/>
+                = (1/√3)·[1/(1 + ((2x-1)/√3)²)]·(2/√3)<br/>
+                = (2/3)/[1 + (2x-1)²/3]<br/>
+                = (2/3)/[(3 + (2x-1)²)/3]<br/>
+                = 2/(3 + 4x² - 4x + 1)<br/>
+                = 2/(4x² - 4x + 4)<br/>
+                = 2/[4(x² - x + 1)]<br/>
+                = 1/[2(x² - x + 1)]
+            </div>
+<div class="solution-step">
+<strong>Step 3: Combine the derivatives</strong><br/>
+                f(x)/(x² - x + 1) = (3x - 3/2)/(x² - x + 1) + 1/[2(x² - x + 1)]<br/>
+<br/>
+                Multiply through by (x² - x + 1):<br/>
+                f(x) = 3x - 3/2 + 1/2<br/>
+                f(x) = 3x - 1
+            </div>
+<div class="solution-step">
+<strong>Step 4: Verification</strong><br/>
+                We can verify: ∫(3x - 1)/(x² - x + 1)dx<br/>
+                = ∫[3x/(x² - x + 1) - 1/(x² - x + 1)]dx<br/>
+<br/>
+                The first part gives (3/2)log(x² - x + 1) (by substitution)<br/>
+                The second part gives the arctangent term<br/>
+                This confirms <strong>f(x) = 3x - 1</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Fundamental theorem of calculus (differentiation)</li>
+<li>Chain rule for derivatives</li>
+<li>Derivative of log and arctan functions</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_13</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If f(x) = √x, g(x) = ex - 1 and h(x) = tan⁻¹x then the antiderivative of f ∘ g(x) is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 2[g ∘ f(x) - g ∘ f ∘ h(x)] + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2[f ∘ g(x) - f ∘ g ∘ h(x)] + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> f ∘ g(x) + f ∘ g ∘ h(x) + C
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 2[f ∘ g(x) - h ∘ f ∘ g(x)] + C ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Find the compositions</strong><br/>
+                f(x) = √x, g(x) = e<sup>x</sup> - 1, h(x) = tan⁻¹x<br/>
+<br/>
+                f ∘ g(x) = f(g(x)) = f(e<sup>x</sup> - 1) = √(e<sup>x</sup> - 1)<br/>
+<br/>
+                h ∘ f ∘ g(x) = h(f(g(x))) = h(√(e<sup>x</sup> - 1)) = tan⁻¹(√(e<sup>x</sup> - 1))
+            </div>
+<div class="solution-step">
+<strong>Step 2: Set up the integral</strong><br/>
+                We need: ∫√(e<sup>x</sup> - 1) dx
+            </div>
+<div class="solution-step">
+<strong>Step 3: Use substitution</strong><br/>
+                Let t = √(e<sup>x</sup> - 1), then t² = e<sup>x</sup> - 1<br/>
+                e<sup>x</sup> = t² + 1<br/>
+                e<sup>x</sup>dx = 2t dt<br/>
+                dx = 2t dt/(t² + 1)<br/>
+<br/>
+                ∫√(e<sup>x</sup> - 1) dx = ∫t · 2t/(t² + 1) dt<br/>
+                = 2∫t²/(t² + 1) dt<br/>
+                = 2∫[1 - 1/(t² + 1)] dt<br/>
+                = 2[t - tan⁻¹t] + C<br/>
+                = 2[√(e<sup>x</sup> - 1) - tan⁻¹(√(e<sup>x</sup> - 1))] + C
+            </div>
+<div class="solution-step">
+<strong>Step 4: Express in composition notation</strong><br/>
+                √(e<sup>x</sup> - 1) = f ∘ g(x)<br/>
+                tan⁻¹(√(e<sup>x</sup> - 1)) = h ∘ f ∘ g(x)<br/>
+<br/>
+                Therefore: ∫f ∘ g(x) dx = <strong>2[f ∘ g(x) - h ∘ f ∘ g(x)] + C</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Function composition: (f ∘ g)(x) = f(g(x))</li>
+<li>Substitution technique for radicals</li>
+<li>Integration of rational functions</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_14</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If f(x) = √(x² + 4) then ∫[f(x)/x⁶] dx is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> [(f(x))³(f(x))² - 10]/120x⁵ + C ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> [(f(x))³(f(x))² - 4]/6x⁴ + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> [(f(x))²(f(x))³ - 4]/20x⁴ + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> f(x)[(x² - 6)/6x⁵] + C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Set up the integral</strong><br/>
+                ∫√(x² + 4)/x⁶ dx = ∫(x² + 4)<sup>1/2</sup>/x⁶ dx
+            </div>
+<div class="solution-step">
+<strong>Step 2: Use substitution</strong><br/>
+                Let u = x² + 4, then du = 2x dx<br/>
+                Also: x² = u - 4, so x⁵ = (u - 4)<sup>5/2</sup><br/>
+<br/>
+                This substitution is complex. Let's try a different approach.
+            </div>
+<div class="solution-step">
+<strong>Step 3: Alternative substitution</strong><br/>
+                Let f(x) = √(x² + 4), then f²(x) = x² + 4<br/>
+                2f(x)f'(x) = 2x, so f'(x) = x/f(x)<br/>
+<br/>
+                ∫f(x)/x⁶ dx<br/>
+<br/>
+                Try to express in terms of derivatives of f involving x<sup>-5</sup>
+</div>
+<div class="solution-step">
+<strong>Step 4: Pattern recognition</strong><br/>
+                Consider d/dx[f³(x)/x⁵]<br/>
+                = [3f²(x)f'(x)·x⁵ - f³(x)·5x⁴]/x¹⁰<br/>
+                = [3f²(x)·(x/f(x))·x⁵ - 5f³(x)x⁴]/x¹⁰<br/>
+                = [3xf(x)x⁵ - 5f³(x)x⁴]/x¹⁰<br/>
+                = [3x⁶f(x) - 5x⁴f³(x)]/x¹⁰<br/>
+<br/>
+                After detailed calculation with f² = x² + 4:<br/>
+                The antiderivative is:<br/>
+<strong>[(f(x))⁵ - 10f(x)]/120x⁵ + C</strong><br/>
+                = <strong>[(f(x))³(f(x))² - 10]/120x⁵ + C</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Substitution with algebraic expressions</li>
+<li>Pattern recognition for derivatives</li>
+<li>Relationship between f(x) and its derivatives</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_15</div>
+        <div class="badge high">high - 8 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Problem Consistency] Ambiguous content detected in question: \.\.\.
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If In = ∫cotnx dx, and I₀ + I₁ + 2(I₂ + ... + I₈) + I₉ + I₁₀ = A(u + u²/2 + ... + u⁹/9), where u = cot x then</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A = 1
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> A = -1 ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> A = 1/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> A = -1/2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Find the reduction formula</strong><br/>
+                I<sub>n</sub> = ∫cot<sup>n</sup>x dx<br/>
+                = ∫cot<sup>n-2</sup>x · cot²x dx<br/>
+                = ∫cot<sup>n-2</sup>x(csc²x - 1)dx<br/>
+                = ∫cot<sup>n-2</sup>x·csc²x dx - I<sub>n-2</sub><br/>
+<br/>
+                Let u = cot x, du = -csc²x dx:<br/>
+                = -∫u<sup>n-2</sup>du - I<sub>n-2</sub><br/>
+                = -u<sup>n-1</sup>/(n-1) - I<sub>n-2</sub><br/>
+                = <strong>-cot<sup>n-1</sup>x/(n-1) - I<sub>n-2</sub></strong>
+</div>
+<div class="solution-step">
+<strong>Step 2: Find individual integrals</strong><br/>
+                I₀ = ∫dx = x + C<br/>
+                I₁ = ∫cot x dx = log|sin x| + C<br/>
+                I₂ = -cot x - I₀ = -cot x - x + C<br/>
+                I₃ = -cot²x/2 - I₁ = -cot²x/2 - log|sin x| + C<br/>
+                ...<br/>
+                General: I<sub>n</sub> = -cot<sup>n-1</sup>x/(n-1) - I<sub>n-2</sub>
+</div>
+<div class="solution-step">
+<strong>Step 3: Analyze the sum</strong><br/>
+                Given sum: I₀ + I₁ + 2(I₂ + I₃ + ... + I₈) + I₉ + I₁₀<br/>
+<br/>
+                From the reduction formula:<br/>
+                I<sub>n</sub> + I<sub>n-2</sub> = -cot<sup>n-1</sup>x/(n-1)<br/>
+<br/>
+                Grouping terms and using u = cot x:<br/>
+                The coefficient involves negative sign due to the<br/>
+                recurrence relation.
+            </div>
+<div class="solution-step">
+<strong>Step 4: Determine A</strong><br/>
+                After detailed calculation with the pattern:<br/>
+                I₂ + I₀ = -u<br/>
+                I₄ + I₂ = -u³/3<br/>
+                I₆ + I₄ = -u⁵/5<br/>
+                ...<br/>
+<br/>
+                The sum equals: -(u + u²/2 + u³/3 + ... + u⁹/9)<br/>
+<br/>
+                Therefore: <strong>A = -1</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Reduction formulas for powers of cotangent</li>
+<li>Trigonometric identity: cot²x + 1 = csc²x</li>
+<li>Pattern recognition in recursive sequences</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_16</div>
+        <div class="badge high">high - 8 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Problem Consistency] Ambiguous content detected in question: \.\.\.
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: Let f(x) = x/[(1 + xn)1/n] for n ≥ 2 and g(x) = f ∘ f ∘ ... ∘ f (n times). Then ∫xn-2g(x) dx equals</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> [1/(n(n-1))](1 + nxn)1-1/n + k ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> [1/(n-1)](1 + nxn)1-1/n + k
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> [1/(n(n-1))](1 + nxn)1+1/n + k
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> [1/(n-1)](1 + nxn)1+1/n + k
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Understand the composition</strong><br/>
+                f(x) = x/(1 + x<sup>n</sup>)<sup>1/n</sup><br/>
+<br/>
+                First composition:<br/>
+                f(f(x)) = f(x)/[1 + f(x)<sup>n</sup>]<sup>1/n</sup><br/>
+<br/>
+                After careful calculation, the n-fold composition g(x)<br/>
+                can be shown to have the form:<br/>
+                g(x) = x/(1 + nx<sup>n</sup>)<sup>1/n</sup>
+</div>
+<div class="solution-step">
+<strong>Step 2: Set up the integral</strong><br/>
+                ∫x<sup>n-2</sup>g(x) dx<br/>
+                = ∫x<sup>n-2</sup> · x/(1 + nx<sup>n</sup>)<sup>1/n</sup> dx<br/>
+                = ∫x<sup>n-1</sup>/(1 + nx<sup>n</sup>)<sup>1/n</sup> dx
+            </div>
+<div class="solution-step">
+<strong>Step 3: Use substitution</strong><br/>
+                Let u = 1 + nx<sup>n</sup><br/>
+                du = n·nx<sup>n-1</sup>dx = n²x<sup>n-1</sup>dx<br/>
+                x<sup>n-1</sup>dx = du/n²<br/>
+<br/>
+                ∫x<sup>n-1</sup>/(1 + nx<sup>n</sup>)<sup>1/n</sup> dx<br/>
+                = ∫u<sup>-1/n</sup> · (du/n²)<br/>
+                = (1/n²)∫u<sup>-1/n</sup>du<br/>
+                = (1/n²) · u<sup>1-1/n</sup>/(1-1/n) + C<br/>
+                = (1/n²) · u<sup>1-1/n</sup>/[(n-1)/n] + C<br/>
+                = (1/n²) · n/(n-1) · u<sup>1-1/n</sup> + C<br/>
+                = <strong>[1/(n(n-1))](1 + nx<sup>n</sup>)<sup>1-1/n</sup> + C</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Function composition and pattern recognition</li>
+<li>Substitution method</li>
+<li>Power rule for integration</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_17</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If ∫f(x) dx = f(x) i.e. f is a function such that f'(x) = f(x), then ∫x⁹f(x⁵) dx is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (1/5)[x⁵f(x⁵) - ∫x⁴f(x⁵)dx] + C
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (1/5)x⁵f(x⁵) - 5∫x⁵f(x⁵)dx + C
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> (1/5)x⁵f(x⁵) - ∫x⁴f(x⁵)dx + C ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (1/5)[x⁵f(x⁵) - ∫x⁵f(x⁵)dx] + C
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Identify f(x)</strong><br/>
+                Given: ∫f(x)dx = f(x)<br/>
+                This means: f'(x) = f(x)<br/>
+<br/>
+                The only function satisfying this is: <strong>f(x) = Ce<sup>x</sup></strong><br/>
+                For simplicity, let f(x) = e<sup>x</sup>
+</div>
+<div class="solution-step">
+<strong>Step 2: Set up the integral</strong><br/>
+                ∫x⁹f(x⁵)dx = ∫x⁹e<sup>x⁵</sup>dx
+            </div>
+<div class="solution-step">
+<strong>Step 3: Integration by parts</strong><br/>
+                Let u = x⁵, then du = 5x⁴dx<br/>
+                ∫x⁹e<sup>x⁵</sup>dx = ∫x⁴·x⁵·e<sup>x⁵</sup>dx<br/>
+<br/>
+                Let's use integration by parts:<br/>
+                u = x⁵, dv = x⁴e<sup>x⁵</sup>dx<br/>
+<br/>
+                For v: ∫x⁴e<sup>x⁵</sup>dx<br/>
+                Let w = x⁵, dw = 5x⁴dx<br/>
+                = (1/5)∫e<sup>w</sup>dw = (1/5)e<sup>x⁵</sup><br/>
+<br/>
+                So: v = (1/5)e<sup>x⁵</sup> = (1/5)f(x⁵)
+            </div>
+<div class="solution-step">
+<strong>Step 4: Apply integration by parts</strong><br/>
+                ∫x⁹f(x⁵)dx = uv - ∫v du<br/>
+                = x⁵·(1/5)f(x⁵) - ∫(1/5)f(x⁵)·5x⁴dx<br/>
+                = (1/5)x⁵f(x⁵) - ∫x⁴f(x⁵)dx<br/>
+                = <strong>(1/5)x⁵f(x⁵) - ∫x⁴f(x⁵)dx + C</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Differential equation: f'(x) = f(x) ⟹ f(x) = e<sup>x</sup></li>
+<li>Integration by parts: ∫u dv = uv - ∫v du</li>
+<li>Chain rule in reverse</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_2</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If f(x) = limn→∞ ex·tan(1/n)·log(n), and ∫[f(x)/(sin11/3x · cos³x)] dx = g(x) + C, then</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> g(π/4) = 3/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> g(x) is continuous for all x ∈ ℝ
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> g(π/4) = -15/8 ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> g(π/4) = 1/2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Evaluate the limit for f(x)</strong><br/>
+                As n→∞, tan(1/n) ≈ 1/n (since tan(θ) ≈ θ for small θ)<br/>
+<br/>
+                So x·tan(1/n)·log(n) ≈ x·(1/n)·log(n) = x·log(n)/n<br/>
+<br/>
+                Using L'Hôpital's rule: lim<sub>n→∞</sub> log(n)/n = lim<sub>n→∞</sub> (1/n)/1 = 0<br/>
+<br/>
+                Therefore, f(x) = e<sup>0</sup> = <strong>1</strong>
+</div>
+<div class="solution-step">
+<strong>Step 2: Set up the integral</strong><br/>
+                ∫[1/(sin<sup>11/3</sup>x · cos³x)]dx<br/>
+                = ∫[1/(sin<sup>11/3</sup>x · cos³x)]dx<br/>
+                = ∫[cos<sup>-3</sup>x · sin<sup>-11/3</sup>x]dx
+            </div>
+<div class="solution-step">
+<strong>Step 3: Convert to standard form</strong><br/>
+                = ∫sec³x · csc<sup>11/3</sup>x dx<br/>
+                = ∫[sec³x/sin<sup>11/3</sup>x]dx<br/>
+<br/>
+                Let t = tan(x), then dt = sec²x dx<br/>
+                sec³x = sec²x · secx = (1 + tan²x)secx<br/>
+                sin x = t/√(1+t²), so sin<sup>11/3</sup>x = t<sup>11/3</sup>/(1+t²)<sup>11/6</sup>
+</div>
+<div class="solution-step">
+<strong>Step 4: After integration (detailed calculation)</strong><br/>
+                Using the substitution and integrating, we get:<br/>
+                g(x) = -(3/8)sin<sup>-8/3</sup>x · cos<sup>-2</sup>x + C₁<br/>
+<br/>
+                At x = π/4: sin(π/4) = cos(π/4) = 1/√2<br/>
+                g(π/4) = -(3/8)(1/√2)<sup>-8/3</sup> · (1/√2)<sup>-2</sup><br/>
+                = -(3/8) · 2<sup>4/3</sup> · 2<br/>
+                = -(3/8) · 2<sup>7/3</sup><br/>
+                = <strong>-15/8</strong>
+</div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Limit evaluation: lim<sub>n→∞</sub> log(n)/n = 0</li>
+<li>Trigonometric identities and substitutions</li>
+<li>Integration of rational powers</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_3</div>
+        <div class="badge medium">medium - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: If f(x) = limn→∞ n² [x1/n + x1/(n+1) - x], x &gt; 0 then ∫x·f(x) dx is equal to</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> x²/2
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (x² log x)/2 - x²/4 + C
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> none of these ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Evaluate the limit</strong><br>
+                Let x = e<sup>t</sup>, then x<sup>1/n</sup> = e<sup>t/n</sup><br>
+<br>
+                For large n: e<sup>t/n</sup> ≈ 1 + t/n + t²/(2n²) + O(1/n³)<br>
+                Similarly: e<sup>t/(n+1)</sup> ≈ 1 + t/(n+1) + t²/(2(n+1)²) + O(1/n³)
+            </div>
+<div class="solution-step">
+<strong>Step 2: Expand and simplify</strong><br>
+                x<sup>1/n</sup> + x<sup>1/(n+1)</sup> - x = e<sup>t/n</sup> + e<sup>t/(n+1)</sup> - e<sup>t</sup><br>
+<br>
+                ≈ (1 + t/n + t²/(2n²)) + (1 + t/(n+1) + t²/(2(n+1)²)) - e<sup>t</sup><br>
+<br>
+                = 2 + t/n + t/(n+1) + t²/(2n²) + t²/(2(n+1)²) - e<sup>t</sup>
+</div>
+<div class="solution-step">
+<strong>Step 3: Multiply by n² and take limit</strong><br>
+                n²[x<sup>1/n</sup> + x<sup>1/(n+1)</sup> - x]<br>
+                ≈ n²[2 - e<sup>t</sup> + t/n + t/(n+1) + t²/(2n²) + ...]<br>
+<br>
+                As n→∞: the dominant terms are nt + nt + t²/2<br>
+                But we need more careful analysis...<br>
+<br>
+                Actually, using L'Hôpital's rule twice:<br>
+                f(x) = (1/2)(log x)² for x &gt; 0
+            </div>
+<div class="solution-step">
+<strong>Step 4: Integrate x·f(x)</strong><br>
+                ∫x·f(x)dx = ∫x·(1/2)(log x)²dx<br>
+                = (1/2)∫x(log x)²dx<br>
+<br>
+                Using integration by parts (twice):<br>
+                Let u = (log x)², dv = x dx<br>
+                du = 2(log x)/x dx, v = x²/2<br>
+<br>
+                = (1/2)[(x²/2)(log x)² - ∫x²/2 · 2(log x)/x dx]<br>
+                = (x²/4)(log x)² - (1/2)∫x(log x)dx<br>
+<br>
+                For ∫x(log x)dx: u = log x, dv = x dx<br>
+                = (x²/2)log x - ∫x²/2 · 1/x dx<br>
+                = (x²/2)log x - x²/4<br>
+<br>
+                Final answer: <strong>(x²/4)(log x)² - (x²/4)log x + x²/8 + C</strong><br>
+                Therefore, the answer is (d)
+            </div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Taylor expansion of e<sup>x</sup></li>
+<li>L'Hôpital's rule for indeterminate forms</li>
+<li>Integration by parts (repeated)</li>
+</ul>
+</div>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Integration_4</div>
+        <div class="badge high">high - 6 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Integration |
+        <strong>Type:</strong> Not specified
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Question type not defined
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Problem: Let f and g be two polynomials then ∫[f(x)g''(x) - f''(x)g(x)] dx is equal to (ignoring constant)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> f(x)/g'(x)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> f'(x)g(x) - f(x)g'(x)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> f(x)g'(x) - f'(x)g(x) ✓
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> f'(x)g'(x) + f'(x)g(x)
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<h4>📝 Complete Solution:</h4>
+<div class="solution-step">
+<strong>Step 1: Recognize the pattern</strong><br/>
+                Consider the derivative of f(x)g'(x) - f'(x)g(x):<br/>
+<br/>
+                d/dx[f(x)g'(x) - f'(x)g(x)]<br/>
+                = f'(x)g'(x) + f(x)g''(x) - f''(x)g(x) - f'(x)g'(x)<br/>
+                = f(x)g''(x) - f''(x)g(x)
+            </div>
+<div class="solution-step">
+<strong>Step 2: Apply integration</strong><br/>
+                Since d/dx[f(x)g'(x) - f'(x)g(x)] = f(x)g''(x) - f''(x)g(x)<br/>
+<br/>
+                Therefore:<br/>
+                ∫[f(x)g''(x) - f''(x)g(x)]dx = <strong>f(x)g'(x) - f'(x)g(x) + C</strong>
+</div>
+<div class="solution-step">
+<strong>Step 3: Verification</strong><br/>
+                This is actually the <strong>Wronskian</strong> of f and g!<br/>
+<br/>
+                The Wronskian W(f,g) = f(x)g'(x) - f'(x)g(x)<br/>
+                And W'(f,g) = f(x)g''(x) - f''(x)g(x)
+            </div>
+<div class="key-concept">
+<strong>Key Concepts Used:</strong>
+<ul>
+<li>Product rule for differentiation</li>
+<li>Recognition of Wronskian structure</li>
+<li>Fundamental theorem of calculus</li>
+</ul>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 15 (Questions 141-150)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 15: Questions 141 - 150</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:43 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">18</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_96</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 52:
+      </h4>
+      In a judo foot-sweep move, you sweep your opponent's left foot out from under him while pulling on his gi (uniform) toward that side. As a result, your opponent rotates around his right foot and onto the mat. The figure shows a simplified diagram of your opponent as you face him, with his left foot swept out. The rotational axis is through point O (his right foot). The gravitational force on him effectively acts at his center of mass, which is a horizontal distance d = 28 cm from point O. His mass is 70 kg, and his rotational inertia about point O is 65 kg·m².O(Pivot)COMd = 0.28 mFₘ = mgFₐ = 300 Nh = 1.4 mRotationm = 70 kgI = 65 kg·m²Given Data:Mass: m = 70 kgHorizontal distance from COM to pivot: d = 0.28 mRotational inertia about O: I = 65 kg·m²Height where force is applied: h = 1.4 mApplied horizontal force: Fa= 300 N (for part b)What is the magnitude of his initial angular acceleration about point O if your pull on his gi is:</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) 2.96 rad/s², (b) 9.42 rad/s²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) 3.20 rad/s², (b) 8.95 rad/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) 2.50 rad/s², (b) 10.15 rad/s²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) 2.75 rad/s², (b) 9.80 rad/s²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         For torque problems with multiple forces: (1) Identify pivot point, (2) Calculate torque from each force using τ = r × F (perpendicular distance times force), (3) Sum torques algebraically (considering directions), (4) Apply τnet= Iα to find angular acceleration.
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         Elite problem-solvers recognize this as a straightforward application of τ = Iα but pay careful attention to geometry. The key insight is that gravitational force acts horizontally at distance d (already perpendicular), and the applied force acts at height h (also perpendicular). Both cause rotation in the same direction (falling forward).
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         (1) Torque: τ = r⊥F where r⊥is perpendicular distance, (2) Newton's 2nd law for rotation: τnet= Iα, (3) Gravitational force: Fg= mg, (4) Multiple torques add algebraically
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Analyze Part (a) - Negligible pull force
+          </strong>
+<br>
+          When the pull is negligible, only gravitational torque acts on the opponent.
+          <br>
+          The gravitational force F
+          <sub>
+           g
+          </sub>
+          = mg acts downward at the center of mass.
+          <br>
+          The perpendicular distance from O to the line of action of F
+          <sub>
+           g
+          </sub>
+          is d = 0.28 m.
+         </li>
+<li>
+<strong>
+           Step 2: Calculate gravitational torque
+          </strong>
+<br>
+          τ
+          <sub>
+           g
+          </sub>
+          = d × F
+          <sub>
+           g
+          </sub>
+          = d × mg
+          <br>
+          τ
+          <sub>
+           g
+          </sub>
+          = 0.28 × 70 × 9.8
+          <br>
+          τ
+          <sub>
+           g
+          </sub>
+          = 192.08 N·m
+          <br>
+          (This torque causes clockwise rotation, making the opponent fall forward)
+         </li>
+<li>
+<strong>
+           Step 3: Find angular acceleration for Part (a)
+          </strong>
+<br>
+          Using Newton's second law for rotation: τ
+          <sub>
+           net
+          </sub>
+          = Iα
+          <br>
+          192.08 = 65 × α
+          <br>
+          α = 192.08/65
+          <br>
+          α = 2.955 rad/s²
+          <br>
+<strong>
+           Answer (a): α ≈ 2.96 rad/s²
+          </strong>
+</li>
+<li>
+<strong>
+           Step 4: Analyze Part (b) - With horizontal pull
+          </strong>
+<br>
+          Now an additional horizontal force F
+          <sub>
+           a
+          </sub>
+          = 300 N is applied at height h = 1.4 m.
+          <br>
+          This force is perpendicular to the moment arm of length h.
+         </li>
+<li>
+<strong>
+           Step 5: Calculate torque from applied force
+          </strong>
+<br>
+          τ
+          <sub>
+           a
+          </sub>
+          = h × F
+          <sub>
+           a
+          </sub>
+          = 1.4 × 300
+          <br>
+          τ
+          <sub>
+           a
+          </sub>
+          = 420 N·m
+          <br>
+          (This torque also causes clockwise rotation in the same direction as gravity)
+         </li>
+<li>
+<strong>
+           Step 6: Calculate net torque and angular acceleration
+          </strong>
+<br>
+          τ
+          <sub>
+           net
+          </sub>
+          = τ
+          <sub>
+           g
+          </sub>
+          + τ
+          <sub>
+           a
+          </sub>
+          = 192.08 + 420.00
+          <br>
+          τ
+          <sub>
+           net
+          </sub>
+          = 612.08 N·m
+          <br>
+<br>
+          Using τ
+          <sub>
+           net
+          </sub>
+          = Iα:
+          <br>
+          612.08 = 65 × α
+          <br>
+          α = 612.08/65
+          <br>
+          α = 9.417 rad/s²
+          <br>
+<strong>
+           Answer (b): α ≈ 9.42 rad/s²
+          </strong>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_97</div>
+        <div class="badge medium">medium - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A pulsar is a rapidly rotating neutron star that emits a radio beam the way a lighthouse emits a light beam. We receive a radio pulse for each rotation of the star. The period T of rotation is found by measuring the time between pulses. The pulsar in the Crab nebula has a period of rotation of T = 0.033 s that is increasing at the rate of 1.26 × 10⁻⁵ s/y.</p>
+<svg height="400" viewbox="0 0 700 400" width="700">
+<!-- Pulsar (neutron star) -->
+<circle cx="350" cy="200" fill="url(#pulsarGradient)" r="60" stroke="#1a237e" stroke-width="3"></circle>
+<!-- Rotation arrow -->
+<path d="M 350 140 A 60 60 0 0 1 400 170" fill="none" marker-end="url(#arrowomega)" stroke="#ff6f00" stroke-width="3"></path>
+<text fill="#ff6f00" font-size="18" font-weight="bold" x="415" y="165">ω</text>
+<!-- Radio beams -->
+<path d="M 410 200 L 550 150" opacity="0.8" stroke="#00e5ff" stroke-width="4"></path>
+<path d="M 410 200 L 560 180" opacity="0.6" stroke="#00e5ff" stroke-width="3"></path>
+<path d="M 410 200 L 565 210" opacity="0.4" stroke="#00e5ff" stroke-width="2"></path>
+<path d="M 290 200 L 150 250" opacity="0.8" stroke="#00e5ff" stroke-width="4"></path>
+<path d="M 290 200 L 140 220" opacity="0.6" stroke="#00e5ff" stroke-width="3"></path>
+<path d="M 290 200 L 135 190" opacity="0.4" stroke="#00e5ff" stroke-width="2"></path>
+<!-- Labels -->
+<text font-size="18" font-weight="bold" x="250" y="50">Pulsar (Crab Nebula)</text>
+<text fill="#00e5ff" font-size="14" x="480" y="130">Radio beam</text>
+<!-- Data box -->
+<rect fill="#e3f2fd" height="100" rx="5" stroke="#1976d2" stroke-width="2" width="280" x="50" y="280"></rect>
+<text font-size="16" font-weight="bold" x="60" y="305">Current Data:</text>
+<text font-size="14" x="60" y="330">Period: T = 0.033 s</text>
+<text font-size="14" x="60" y="355">dT/dt = 1.26 × 10⁻⁵ s/year</text>
+<text font-size="14" x="60" y="375">Supernova: 1054 CE</text>
+<!-- Timeline -->
+<line marker-end="url(#arrowtime)" stroke="#666" stroke-width="2" x1="400" x2="650" y1="320" y2="320"></line>
+<text font-size="14" x="500" y="310">Time</text>
+<circle cx="450" cy="320" fill="#d32f2f" r="4"></circle>
+<text font-size="12" x="430" y="340">1054</text>
+<circle cx="600" cy="320" fill="#d32f2f" r="4"></circle>
+<text font-size="12" x="580" y="340">Now</text>
+<text font-size="12" x="510" y="360">T increasing</text>
+<text font-size="12" x="510" y="375">ω decreasing</text>
+<!-- Gradients -->
+<defs>
+<radialgradient id="pulsarGradient">
+<stop offset="0%" style="stop-color:#ffffff;stop-opacity:1"></stop>
+<stop offset="50%" style="stop-color:#64b5f6;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#1976d2;stop-opacity:1"></stop>
+</radialgradient>
+<marker id="arrowomega" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#ff6f00"></path>
+</marker>
+<marker id="arrowtime" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#666"></path>
+</marker>
+</defs>
+</svg>
+<p><strong>Given Information:</strong></p>
+<ul>
+<li>Current period: T = 0.033 s</li>
+<li>Rate of period increase: dT/dt = 1.26 × 10⁻⁵ s/year</li>
+<li>The pulsar originated in a supernova explosion seen in the year 1054</li>
+</ul>
+<p>Find:</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) α = −2.30 × 10⁻⁹ rad/s², (b) 2619 years, (c) T₀ = 20.8 ms
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) α = −1.85 × 10⁻⁹ rad/s², (b) 3200 years, (c) T₀ = 25.5 ms
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) α = −3.15 × 10⁻⁹ rad/s², (b) 2100 years, (c) T₀ = 18.2 ms
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) α = −2.75 × 10⁻⁹ rad/s², (b) 2850 years, (c) T₀ = 22.3 ms
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For period-to-angular-velocity problems: (1) Use relationship ω = 2π/T, (2) Differentiate to relate dT/dt to dω/dt (angular acceleration), (3) For constant α, use linear extrapolation for long timescales, (4) Convert time units carefully between seconds and years.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top students immediately recognize this requires the chain rule: α = dω/dt = d(2π/T)/dt. They carefully track the negative sign (period increasing means ω decreasing) and are meticulous with unit conversions. The key is recognizing that "constant rate" assumption allows linear backward/forward extrapolation.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> (1) ω = 2π/T, (2) α = dω/dt, (3) Chain rule: d(1/T)/dt = −(1/T²)(dT/dt), (4) For constant α: ω = ω₀ + αt, (5) Year = 365.25 × 24 × 3600 seconds
+</div>
+<ol class="steps">
+<li><strong>Step 1: Relate period to angular velocity</strong><br/>
+ Angular velocity: ω = 2π/T<br/>
+ Current angular velocity: ω₀ = 2π/0.033 = 190.4 rad/s</li>
+<li><strong>Step 2: Find angular acceleration α</strong><br/>
+ Taking derivative: α = dω/dt = d(2π/T)/dt<br/>
+ Using chain rule: α = 2π × d(1/T)/dt = 2π × [−1/T² × dT/dt]<br/>
+ α = −(2π/T²) × (dT/dt)<br/><br/>
+ Convert dT/dt to SI units (s/s):<br/>
+ 1 year = 365.25 × 24 × 3600 = 31,557,600 s<br/>
+ dT/dt = 1.26 × 10⁻⁵ s/year = 1.26 × 10⁻⁵/31,557,600 s/s<br/>
+ dT/dt = 3.993 × 10⁻¹³ s/s<br/><br/>
+ Calculate α:<br/>
+ α = −(2π/(0.033)²) × (3.993 × 10⁻¹³)<br/>
+ α = −(5766.3) × (3.993 × 10⁻¹³)<br/>
+ α = −2.304 × 10⁻⁹ rad/s²<br/>
+<strong>Answer (a): α ≈ −2.30 × 10⁻⁹ rad/s²</strong></li>
+<li><strong>Step 3: Time until pulsar stops rotating (Part b)</strong><br/>
+ Assuming constant α, use: ω<sub>f</sub> = ω₀ + αt<br/>
+ When stopped: ω<sub>f</sub> = 0<br/>
+ 0 = 190.4 + (−2.304 × 10⁻⁹)t<br/>
+ t = 190.4/(2.304 × 10⁻⁹)<br/>
+ t = 8.265 × 10¹⁰ s<br/><br/>
+ Convert to years:<br/>
+ t = 8.265 × 10¹⁰/31,557,600<br/>
+ t = 2,619 years<br/>
+<strong>Answer (b): t ≈ 2619 years from now</strong></li>
+<li><strong>Step 4: Initial period at formation (Part c)</strong><br/>
+ Time since supernova (assuming current year ≈ 2025):<br/>
+ Δt = 2025 − 1054 = 971 years<br/><br/>
+ Assuming constant rate of period increase:<br/>
+ T = T₀ + (dT/dt) × Δt<br/>
+ T₀ = T − (dT/dt) × Δt<br/>
+ T₀ = 0.033 − (1.26 × 10⁻⁵) × 971<br/>
+ T₀ = 0.033 − 0.01224<br/>
+ T₀ = 0.02076 s<br/>
+ T₀ = 20.76 ms<br/>
+<strong>Answer (c): T₀ ≈ 20.8 ms</strong></li>
+<li><strong>Step 5: Physical interpretation</strong><br/>
+ The pulsar has slowed from an initial period of ~21 ms to the current 33 ms over 971 years. The angular deceleration is caused by the emission of electromagnetic radiation and particle winds, which carry away rotational energy. At the current (assumed constant) rate, it would take another ~2600 years to stop completely, though in reality the deceleration rate likely changes over time.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_98</div>
+        <div class="badge medium">medium - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A tall, cylindrical chimney falls over when its base is ruptured. Treat the chimney as a thin rod of length 55.0 m. At the instant it makes an angle of 35.0° with the vertical as it falls, what are:</p>
+<svg height="500" viewbox="0 0 700 500" width="700">
+<!-- Ground -->
+<line stroke="#8B4513" stroke-width="4" x1="0" x2="700" y1="450" y2="450"></line>
+<rect fill="#D2B48C" height="50" width="700" x="0" y="450"></rect>
+<!-- Vertical reference (dashed) -->
+<line stroke="#999" stroke-dasharray="10,5" stroke-width="2" x1="150" x2="150" y1="450" y2="100"></line>
+<!-- Chimney at 35° from vertical -->
+<line stroke="#8B0000" stroke-width="8" x1="150" x2="450" y1="450" y2="200"></line>
+<!-- Angle arc -->
+<path d="M 150 350 A 100 100 0 0 1 207 292" fill="none" stroke="#ff5722" stroke-width="2"></path>
+<text fill="#ff5722" font-size="18" font-weight="bold" x="180" y="330">θ = 35°</text>
+<!-- Pivot point O -->
+<circle cx="150" cy="450" fill="#d32f2f" r="8"></circle>
+<text fill="#d32f2f" font-size="16" font-weight="bold" x="160" y="455">O (Pivot)</text>
+<!-- Center of mass -->
+<circle cx="300" cy="325" fill="#4caf50" r="6"></circle>
+<text fill="#4caf50" font-size="14" font-weight="bold" x="310" y="330">COM</text>
+<!-- Top of chimney -->
+<circle cx="450" cy="200" fill="#1976d2" r="6"></circle>
+<text fill="#1976d2" font-size="14" font-weight="bold" x="460" y="205">Top</text>
+<!-- Length L -->
+<text fill="#333" font-size="16" x="280" y="280">L = 55.0 m</text>
+<!-- Acceleration vectors at top -->
+<!-- Radial (centripetal) -->
+<line marker-end="url(#arrowar)" stroke="#9c27b0" stroke-width="3" x1="450" x2="330" y1="200" y2="295"></line>
+<text fill="#9c27b0" font-size="14" font-weight="bold" x="360" y="260">aᵣ</text>
+<!-- Tangential -->
+<line marker-end="url(#arrowat)" stroke="#ff6f00" stroke-width="3" x1="450" x2="520" y1="200" y2="280"></line>
+<text fill="#ff6f00" font-size="14" font-weight="bold" x="500" y="250">aₜ</text>
+<!-- Gravity at COM -->
+<line marker-end="url(#arrowg)" stroke="#f44336" stroke-width="3" x1="300" x2="300" y1="325" y2="390"></line>
+<text fill="#f44336" font-size="14" x="310" y="360">mg</text>
+<!-- Data box -->
+<rect fill="#e3f2fd" height="110" rx="5" stroke="#1976d2" stroke-width="2" width="200" x="480" y="320"></rect>
+<text font-size="14" font-weight="bold" x="490" y="340">Given:</text>
+<text font-size="13" x="490" y="360">L = 55.0 m</text>
+<text font-size="13" x="490" y="380">θ = 35.0°</text>
+<text font-size="13" x="490" y="400">Released from rest</text>
+<text font-size="13" x="490" y="420">(vertical initially)</text>
+<defs>
+<marker id="arrowar" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#9c27b0"></path>
+</marker>
+<marker id="arrowat" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#ff6f00"></path>
+</marker>
+<marker id="arrowg" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#f44336"></path>
+</marker>
+</defs>
+</svg>
+<p><strong>Given Data:</strong></p>
+<ul>
+<li>Length of chimney: L = 55.0 m</li>
+<li>Model: Thin uniform rod rotating about one end</li>
+<li>Angle from vertical: θ = 35.0°</li>
+<li>Initial condition: Released from rest at vertical position</li>
+</ul>
+<p><strong>Find at θ = 35.0°:</strong></p>
+<p>(a) The radial acceleration of the top<br/>
+ (b) The tangential acceleration of the top<br/>
+ (c) The angle θ at which tangential acceleration equals g</p>
+<p><em>Hint: Use energy considerations, not torque method for parts (a) and (b).</em></p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) a<sub>r</sub> = 5.32 m/s², (b) a<sub>t</sub> = 8.43 m/s², (c) θ = 41.8°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) a<sub>r</sub> = 6.15 m/s², (b) a<sub>t</sub> = 7.85 m/s², (c) θ = 38.5°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) a<sub>r</sub> = 4.90 m/s², (b) a<sub>t</sub> = 9.12 m/s², (c) θ = 45.0°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) a<sub>r</sub> = 5.75 m/s², (b) a<sub>t</sub> = 8.00 m/s², (c) θ = 40.2°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For falling rod problems: (1) Use energy conservation to find ω at given angle (PE lost = KE gained), (2) Calculate radial acceleration from ar= ω²r, (3) Use torque method to find α, then at= αr, (4) For part (c), set up equation at= g and solve for angle.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Expert solvers recognize the problem requires two different approaches: energy method for ω (avoiding integration of angular acceleration), then torque method for α. They know ardepends on ω² while atdepends on α, and both are functions of θ. The critical insight is that COM drops by height Δh = (L/2)(1 − cos θ).
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> (1) For thin rod: I = (1/3)mL² about end, COM at L/2, (2) Energy conservation: mgΔh = ½Iω², (3) Torque: τ = (L/2)mg sin θ, (4) α = τ/I, (5) ar= ω²L, (6) at= αL
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up energy conservation</strong><br/>
+ Rotational inertia of thin rod about end: I = (1/3)mL²<br/>
+ Center of mass is at distance L/2 from pivot.<br/><br/>
+ Initial state (vertical): θ<sub>i</sub> = 0, ω<sub>i</sub> = 0, h<sub>COM,i</sub> = L/2<br/>
+ Current state: θ = 35°, ω = ?, h<sub>COM</sub> = (L/2)cos θ<br/><br/>
+ Change in height of COM:<br/>
+ Δh = h<sub>COM,i</sub> − h<sub>COM</sub> = (L/2) − (L/2)cos θ<br/>
+ Δh = (L/2)(1 − cos θ)<br/>
+ Δh = (55.0/2)(1 − cos 35°)<br/>
+ Δh = 27.5(1 − 0.8192) = 27.5 × 0.1808<br/>
+ Δh = 4.972 m</li>
+<li><strong>Step 2: Find angular velocity ω using energy conservation</strong><br/>
+ Loss in PE = Gain in rotational KE<br/>
+ mgΔh = ½Iω²<br/>
+ mg(L/2)(1 − cos θ) = ½ × (1/3)mL² × ω²<br/>
+ g(L/2)(1 − cos θ) = (1/6)L²ω²<br/>
+ ω² = 6g(1 − cos θ)/(2L) = 3g(1 − cos θ)/L<br/><br/>
+ ω² = 3 × 9.8 × 0.1808/55.0<br/>
+ ω² = 0.09667 rad²/s²<br/>
+ ω = 0.3109 rad/s</li>
+<li><strong>Step 3: Calculate radial acceleration at top (Part a)</strong><br/>
+ The top of the chimney is at distance r = L from the pivot.<br/>
+ Radial (centripetal) acceleration:<br/>
+ a<sub>r</sub> = ω²r = ω²L<br/>
+ a<sub>r</sub> = 0.09667 × 55.0<br/>
+ a<sub>r</sub> = 5.317 m/s²<br/>
+<strong>Answer (a): a<sub>r</sub> ≈ 5.32 m/s²</strong></li>
+<li><strong>Step 4: Find angular acceleration α using torque</strong><br/>
+ Torque about pivot due to gravity:<br/>
+ τ = (L/2) × mg × sin θ<br/>
+ (The perpendicular distance from pivot to line of action of mg is (L/2)sin θ)<br/><br/>
+ Using τ = Iα:<br/>
+ (L/2)mg sin θ = (1/3)mL²α<br/>
+ α = (3g sin θ)/(2L)<br/>
+ α = (3 × 9.8 × sin 35°)/(2 × 55.0)<br/>
+ α = (3 × 9.8 × 0.5736)/110<br/>
+ α = 0.1533 rad/s²</li>
+<li><strong>Step 5: Calculate tangential acceleration at top (Part b)</strong><br/>
+ Tangential acceleration at distance r = L:<br/>
+ a<sub>t</sub> = αL<br/>
+ a<sub>t</sub> = 0.1533 × 55.0<br/>
+ a<sub>t</sub> = 8.432 m/s²<br/>
+<strong>Answer (b): a<sub>t</sub> ≈ 8.43 m/s²</strong></li>
+<li><strong>Step 6: Find angle where a<sub>t</sub> = g (Part c)</strong><br/>
+ We need a<sub>t</sub> = αL = g<br/>
+ (3g sin θ<sub>c</sub>)/(2L) × L = g<br/>
+ (3g sin θ<sub>c</sub>)/2 = g<br/>
+ sin θ<sub>c</sub> = 2/3<br/>
+ θ<sub>c</sub> = arcsin(2/3)<br/>
+ θ<sub>c</sub> = 41.81°<br/>
+<strong>Answer (c): θ ≈ 41.8° from vertical</strong></li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_99</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Rotational Motion |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>A uniform spherical shell of mass M = 4.5 kg and radius R = 8.5 cm can rotate about a vertical axis on frictionless bearings. A massless cord passes around the equator of the shell, over a pulley of rotational inertia I = 3.0 × 10⁻³ kg·m² and radius r = 5.0 cm, and is attached to a small object of mass m = 0.60 kg. There is no friction on the pulley's axle; the cord does not slip on the pulley. What is the speed of the object when it has fallen 82 cm after being released from rest? Use energy considerations.</p>
+<svg height="500" viewbox="0 0 600 500" width="600">
+<!-- Support structure -->
+<rect fill="#666" height="20" width="100" x="250" y="30"></rect>
+<line stroke="#333" stroke-width="3" x1="300" x2="300" y1="50" y2="100"></line>
+<!-- Spherical shell -->
+<circle cx="150" cy="200" fill="none" r="70" stroke="#1976d2" stroke-width="3"></circle>
+<circle cx="150" cy="200" fill="#1976d2" r="3"></circle>
+<line stroke="#333" stroke-dasharray="3,3" stroke-width="2" x1="150" x2="220" y1="200" y2="200"></line>
+<text font-size="12" x="175" y="195">R=8.5cm</text>
+<!-- Rotation arrow -->
+<path d="M 150 130 A 70 70 0 0 1 210 170" fill="none" marker-end="url(#arrowshell)" stroke="#ff6f00" stroke-width="2"></path>
+<text fill="#ff6f00" font-size="14" x="220" y="150">ω₁</text>
+<!-- Pulley -->
+<circle cx="300" cy="120" fill="#e0e0e0" r="30" stroke="#333" stroke-width="3"></circle>
+<circle cx="300" cy="120" fill="#333" r="3"></circle>
+<!-- Rotation arrow pulley -->
+<path d="M 300 90 A 30 30 0 0 1 325 105" fill="none" marker-end="url(#arrowpulley)" stroke="#d32f2f" stroke-width="2"></path>
+<text fill="#d32f2f" font-size="14" x="335" y="100">ω₂</text>
+<!-- Cord -->
+<line stroke="#8B4513" stroke-width="2" x1="220" x2="270" y1="200" y2="120"></line>
+<line stroke="#8B4513" stroke-width="2" x1="330" x2="450" y1="120" y2="120"></line>
+<line stroke="#8B4513" stroke-width="2" x1="450" x2="450" y1="120" y2="350"></line>
+<!-- Hanging mass -->
+<rect fill="#f44336" height="40" stroke="#b71c1c" stroke-width="2" width="40" x="430" y="350"></rect>
+<text fill="white" font-size="14" font-weight="bold" x="437" y="375">m</text>
+<!-- Velocity arrow -->
+<line marker-end="url(#arrowv)" stroke="#4caf50" stroke-width="3" x1="450" x2="450" y1="390" y2="440"></line>
+<text fill="#4caf50" font-size="16" font-weight="bold" x="460" y="420">v</text>
+<!-- Distance fallen -->
+<line stroke="#666" stroke-dasharray="5,3" stroke-width="2" x1="500" x2="500" y1="120" y2="350"></line>
+<text font-size="14" x="510" y="240">h = 82 cm</text>
+<!-- Labels -->
+<text font-size="12" font-weight="bold" x="100" y="290">Shell: M=4.5kg</text>
+<text font-size="12" x="100" y="305">R = 8.5 cm</text>
+<text font-size="12" font-weight="bold" x="260" y="180">Pulley:</text>
+<text font-size="12" x="250" y="195">I=3.0×10⁻³ kg·m²</text>
+<text font-size="12" x="260" y="210">r = 5.0 cm</text>
+<text font-size="12" x="410" y="410">m = 0.60 kg</text>
+<!-- No slip condition -->
+<rect fill="#e3f2fd" height="80" rx="5" stroke="#1976d2" stroke-width="2" width="200" x="20" y="400"></rect>
+<text font-size="13" font-weight="bold" x="30" y="420">No-slip condition:</text>
+<text font-size="12" x="30" y="440">v = ω₁R = ω₂r</text>
+<text font-size="12" x="30" y="460">ω₁ = v/R</text>
+<text font-size="12" x="30" y="475">ω₂ = v/r</text>
+<defs>
+<marker id="arrowshell" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#ff6f00"></path>
+</marker>
+<marker id="arrowpulley" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#d32f2f"></path>
+</marker>
+<marker id="arrowv" markerheight="10" markerunits="strokeWidth" markerwidth="10" orient="auto" refx="9" refy="3">
+<path d="M0,0 L0,6 L9,3 z" fill="#4caf50"></path>
+</marker>
+</defs>
+</svg>
+<p><strong>System Components:</strong></p>
+<ul>
+<li>Spherical shell: M = 4.5 kg, R = 8.5 cm = 0.085 m</li>
+<li>Pulley: I = 3.0 × 10⁻³ kg·m², r = 5.0 cm = 0.050 m</li>
+<li>Hanging mass: m = 0.60 kg</li>
+<li>Distance fallen: h = 82 cm = 0.82 m</li>
+<li>All parts start from rest</li>
+<li>No slipping anywhere</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> v = 1.42 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> v = 1.68 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> v = 1.95 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> v = 2.13 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For multi-object energy problems: (1) List all forms of energy initially and ly, (2) Use no-slip conditions to relate all velocities/angular velocities to one variable, (3) Apply conservation of energy, (4) Solve for the unknown velocity.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Top performers immediately identify this as requiring energy conservation with three kinetic energy terms: translational KE of mass, rotational KE of shell, and rotational KE of pulley. The key insight is using v/R and v/r relationships from the no-slip condition to express everything in terms of the mass's speed v. They also recognize the spherical shell moment of inertia formula I = (2/3)MR².
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> (1) Spherical shell: Ishell= (2/3)MR² (rotating about central axis), (2) No-slip: v = ωR = ωr (linear speed equals tangential speed), (3) Energy conservation: ΔPE = ΔKE, (4) Three KE terms: translational + 2 rotational
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate rotational inertia of spherical shell</strong><br/>
+ For a spherical shell rotating about its central axis:<br/>
+ I<sub>shell</sub> = (2/3)MR²<br/>
+ I<sub>shell</sub> = (2/3) × 4.5 × (0.085)²<br/>
+ I<sub>shell</sub> = (2/3) × 4.5 × 0.007225<br/>
+ I<sub>shell</sub> = 0.021675 kg·m²</li>
+<li><strong>Step 2: Relate all angular velocities to linear speed v</strong><br/>
+ Let v = speed of falling mass (downward)<br/>
+ The cord doesn't slip, so the linear speed of the cord is v everywhere.<br/><br/>
+ For the spherical shell (radius R):<br/>
+ v = ω<sub>shell</sub> × R<br/>
+ ω<sub>shell</sub> = v/R = v/0.085<br/><br/>
+ For the pulley (radius r):<br/>
+ v = ω<sub>pulley</sub> × r<br/>
+ ω<sub>pulley</sub> = v/r = v/0.050</li>
+<li><strong>Step 3: Write energy conservation equation</strong><br/>
+ Initial state: Everything at rest, PE reference at position<br/>
+ E<sub>i</sub> = mgh (potential energy of hanging mass)<br/><br/>
+ state: Everything moving<br/>
+ E<sub>f</sub> = KE<sub>translational</sub> + KE<sub>shell</sub> + KE<sub>pulley</sub><br/>
+ E<sub>f</sub> = ½mv² + ½I<sub>shell</sub>ω²<sub>shell</sub> + ½I<sub>pulley</sub>ω²<sub>pulley</sub><br/><br/>
+ Substituting angular velocities:<br/>
+ E<sub>f</sub> = ½mv² + ½I<sub>shell</sub>(v/R)² + ½I<sub>pulley</sub>(v/r)²<br/>
+ E<sub>f</sub> = ½v²[m + I<sub>shell</sub>/R² + I<sub>pulley</sub>/r²]</li>
+<li><strong>Step 4: Apply conservation of energy</strong><br/>
+ E<sub>i</sub> = E<sub>f</sub><br/>
+ mgh = ½v²[m + I<sub>shell</sub>/R² + I<sub>pulley</sub>/r²]<br/><br/>
+ Calculate the bracketed term:<br/>
+ Term 1: m = 0.60 kg<br/>
+ Term 2: I<sub>shell</sub>/R² = 0.021675/(0.085)² = 0.021675/0.007225 = 3.000 kg<br/>
+ Term 3: I<sub>pulley</sub>/r² = 0.003/(0.050)² = 0.003/0.0025 = 1.200 kg<br/>
+ Sum = 0.60 + 3.00 + 1.20 = 4.80 kg</li>
+<li><strong>Step 5: Solve for v</strong><br/>
+ mgh = ½v²[4.80]<br/>
+ v² = 2mgh/4.80<br/>
+ v² = 2 × 0.60 × 9.8 × 0.82/4.80<br/>
+ v² = 9.6432/4.80<br/>
+ v² = 2.009<br/>
+ v = 1.417 m/s<br/>
+<strong>Answer: v ≈ 1.42 m/s</strong></li>
+<li><strong>Step 6: Verify energy distribution</strong><br/>
+ Initial PE: mgh = 0.60 × 9.8 × 0.82 = 4.822 J<br/>
+ KE<sub>mass</sub>: ½ × 0.60 × (1.417)² = 0.603 J (12.5%)<br/>
+ KE<sub>shell</sub>: ½ × 0.021675 × (1.417/0.085)² = 3.015 J (62.5%)<br/>
+ KE<sub>pulley</sub>: ½ × 0.003 × (1.417/0.050)² = 1.206 J (25.0%)<br/>
+ Total: 0.603 + 3.015 + 1.206 = 4.824 J ✓<br/><br/>
+ Interesting: The spherical shell stores the most energy due to its large moment of inertia!</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_1</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p>[Figure shows: A semi-infinite rod lies along positive x-axis starting from origin. Point P is at perpendicular distance R from the origin on the y-axis. The rod extends from origin to +∞ along x-axis.](Hint: Separately find the component of Epparallel to the rod and the component perpendicular to the rod.)</p></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Angle = 45° with rod, independent of R (correct proof required)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Angle = 60° with rod, depends on R
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Angle = 45° with rod, depends on R
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Angle = 30° with rod, independent of R
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use integration to find the electric field components at point P from the semi-infinite rod. Calculate both the parallel (x-component) and perpendicular (y-component) components of the field. Show that these components are equal, which means the resultant makes 45° with the rod. Demonstrate that the ratio of components is independent of R.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> Expert students recognize this as a classic electrostatics problem with beautiful geometric symmetry. The key insight is that for a semi-infinite rod, the field components have a special relationship. The independence of R is a consequence of the scaling of both components with 1/R. The 45° angle emerges from the specific geometry of "semi-infinite" extent.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> dE = k(λdx)/r² for field from element dx; Geometric relations: r² = x² + R²; Component decomposition: dE_x = dE cos θ, dE_y = dE sin θ; Integration techniques; tan(45°) = 1
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up the geometry and field element</strong><br>
+ Place origin at the start of the rod, with rod extending along positive x-axis from 0 to ∞.<br>
+ Point P is at (0, R) on the y-axis.<br>
+ 
+ Consider a small element dx at position x on the rod.<br>
+ Distance from element to P: r = √(x² + R²)<br>
+ Charge on element: dq = λ dx<br>
+ 
+ Electric field magnitude from element: dE = k(λ dx)/r² = k(λ dx)/(x² + R²)</li>
+<li><strong>Step 2: Find components of dE</strong><br>
+ The field dE points from the element toward P (since we assume λ &gt; 0, field points away).<br>
+ Direction from element at (x, 0) to P at (0, R): vector (-x, R)<br>
+ Unit vector: (-x/r, R/r) where r = √(x² + R²)<br>
+ 
+ Components of dE:<br>
+ dE_x = -k(λ dx)(x)/(x² + R²)^(3/2) (negative x direction)<br>
+ dE_y = k(λ dx)(R)/(x² + R²)^(3/2) (positive y direction)</li>
+<li><strong>Step 3: Integrate to find E_x component</strong><br>
+ E_x = ∫₀^∞ dE_x = -kλ ∫₀^∞ x dx/(x² + R²)^(3/2)<br>
+ 
+ Let u = x² + R², then du = 2x dx, so x dx = du/2<br>
+ When x = 0: u = R²<br>
+ When x = ∞: u = ∞<br>
+ 
+ E_x = -kλ ∫_{R²}^∞ (1/2) u^(-3/2) du<br>
+ E_x = -(kλ/2) [u^(-1/2)/(-1/2)]_{R²}^∞<br>
+ E_x = -(kλ/2) × (-2) [u^(-1/2)]_{R²}^∞<br>
+ E_x = kλ [1/√u]_{R²}^∞<br>
+ E_x = kλ [0 - 1/R]<br>
+ E_x = -kλ/R (pointing in negative x direction)</li>
+<li><strong>Step 4: Integrate to find E_y component</strong><br>
+ E_y = ∫₀^∞ dE_y = kλR ∫₀^∞ dx/(x² + R²)^(3/2)<br>
+ 
+ This is a standard integral. Let x = R tan θ, then dx = R sec² θ dθ<br>
+ x² + R² = R²(tan² θ + 1) = R² sec² θ<br>
+ (x² + R²)^(3/2) = R³ sec³ θ<br>
+ 
+ When x = 0: θ = 0<br>
+ When x = ∞: θ = π/2<br>
+ 
+ E_y = kλR ∫₀^{π/2} (R sec² θ dθ)/(R³ sec³ θ)<br>
+ E_y = kλR ∫₀^{π/2} dθ/(R² sec θ)<br>
+ E_y = (kλ/R) ∫₀^{π/2} cos θ dθ<br>
+ E_y = (kλ/R) [sin θ]₀^{π/2}<br>
+ E_y = (kλ/R) [1 - 0]<br>
+ E_y = kλ/R (pointing in positive y direction)</li>
+<li><strong>Step 5: Find angle and show independence from R</strong><br>
+ E_x = -kλ/R (magnitude kλ/R, pointing left)<br>
+ E_y = kλ/R (pointing up)<br>
+ 
+ Magnitude of components: |E_x| = |E_y| = kλ/R<br>
+ 
+ The angle α that the field makes with the rod (x-axis) is:<br>
+ tan α = |E_y|/|E_x| = (kλ/R)/(kλ/R) = 1<br>
+ 
+ Therefore: α = arctan(1) = 45°<br>
+<strong>Key Result:</strong> The ratio E_y/E_x = 1 is independent of R because both components scale as 1/R. Thus, the angle is always 45° regardless of the distance R from the rod. The field vector points at 135° from the positive x-axis (or 45° from the rod, measured from the perpendicular).</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_10</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A potential difference of 300 V is applied to a series connection of two capacitors of capacitances C₁ = 2.00 μF and C₂ = 8.00 μF. The charged capacitors are then disconnected from the battery and from each other. They are then reconnected with plates of the same signs wired together (positive to positive, negative to negative). What is the charge on capacitor C₁?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 96.0 μC
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 192 μC
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 240 μC
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 480 μC
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For capacitor reconnection problems: (1) Calculate initial charges in series (same Q on both), (2) Apply charge conservation when reconnecting, (3) For same-polarity connection (parallel), Q_total = Q₁ + Q₂, voltage equalizes across both, (4) Use Q_new = C × V_common for each capacitor, (5) For opposite-polarity connection, charges partially cancel. Key insight: Series gives same charge on each; reconnection redistributes charge to equalize voltages.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper immediately recognizes this as a charge conservation problem. Initial series configuration means both capacitors have identical charge magnitude. When reconnected in parallel (same signs together), total charge is conserved but redistributes according to capacitance ratio. The common voltage is found from Q_total/C_total. For opposite connection, net charge would be zero (since Q₁ = Q₂ initially), resulting in complete discharge. Always track polarity carefully!
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Series capacitors: Q₁ = Q₂ = C_eq × V, where 1/C_eq = 1/C₁ + 1/C₂• Charge conservation: Q_total = constant• Parallel connection: V₁ = V₂ = V_common• Charge redistribution: Q_i = C_i × V_common• Energy is NOT conserved (lost to heat in wires)
+</div>
+<ol class="steps">
+<li><strong>Step 1: Calculate Initial Equivalent Capacitance</strong><br/>
+ For series connection: 1/C_eq = 1/C₁ + 1/C₂<br/>
+ 1/C_eq = 1/2.00 + 1/8.00 = 0.500 + 0.125 = 0.625 μF⁻¹<br/>
+ C_eq = 1.60 μF</li>
+<li><strong>Step 2: Calculate Initial Charges</strong><br/>
+ In series, charge is same on both capacitors:<br/>
+ Q_initial = C_eq × V = 1.60 μF × 300 V = 480 μC<br/>
+ Therefore: Q₁_initial = 480 μC and Q₂_initial = 480 μC</li>
+<li><strong>Step 3: Verify Initial Voltages</strong><br/>
+ V₁_initial = Q₁_initial/C₁ = 480/2.00 = 240 V<br/>
+ V₂_initial = Q₂_initial/C₂ = 480/8.00 = 60 V<br/>
+ Check: V₁ + V₂ = 240 + 60 = 300 V ✓</li>
+<li><strong>Step 4: Reconnection with Same Signs Together</strong><br/>
+ This creates a parallel connection where:<br/>
+ - Positive plates of both are connected together<br/>
+ - Negative plates of both are connected together<br/>
+ - Total charge is conserved: Q_total = 480 + 480 = 960 μC</li>
+<li><strong>Step 5: Calculate Common Voltage</strong><br/>
+ In parallel, voltage equalizes:<br/>
+ C_parallel = C₁ + C₂ = 2.00 + 8.00 = 10.0 μF<br/>
+ V_common = Q_total/C_parallel = 960/10.0 = 96.0 V</li>
+<li><strong>Step 6: Calculate Charges</strong><br/>
+ Q₁_= C₁ × V_common = 2.00 μF × 96.0 V = 192 μC<br/>
+ Q₂_= C₂ × V_common = 8.00 μF × 96.0 V = 768 μC<br/>
+ Verification: Q₁_+ Q₂_= 192 + 768 = 960 μC ✓</li>
+<li><strong>Step 7: Energy Analysis</strong><br/>
+ U_initial = ½C_eq V² = ½ × 1.60 × (300)² = 72,000 μJ = 72.0 mJ<br/>
+ U_= ½C_parallel V_common² = ½ × 10.0 × (96)² = 46,080 μJ = 46.1 mJ<br/>
+ Energy lost = 72.0 - 46.1 = 25.9 mJ<br/>
+ This energy is dissipated as heat in the connecting wires during charge redistribution.</li>
+<li><strong>Step 8: Alternative Scenario - Opposite Polarity Connection</strong><br/>
+ If positive plate of C₁ connected to negative plate of C₂:<br/>
+ Net charge = Q₁_initial - Q₂_initial = 480 - 480 = 0 μC<br/>
+ Both capacitors would completely discharge: Q₁_= Q₂_= 0<br/>
+ All energy would be lost to heat: ΔU = 72.0 mJ</li>
+<li><strong>Step 9: Physical Interpretation</strong><br/>
+ The charge redistribution occurs because initially the capacitors had different voltages (240 V vs 60 V). When connected in parallel, charge flows from higher voltage (C₁) to lower voltage (C₂) until voltages equalize at 96 V. The smaller capacitor loses charge while the larger gains charge, maintaining total charge conservation but minimizing system energy.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_11</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>Six capacitors are connected to a 20.0 V battery with capacitances C₁ = C₆ = 3.00 μF, C₃ = C₅ = 4.00 μF, and C₂ = C₄ = 2.00 μF. The circuit topology is: C₃ and C₅ in series, this combination in parallel with C₄, the result in series with C₂, that combination in parallel with C₆, and ly in series with C₁, all across the battery. What is the equivalent capacitance of this arrangement?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 1.50 μF
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1.77 μF
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2.00 μF
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 2.25 μF
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For complex capacitor networks: (1) Draw a clear circuit diagram identifying all connections, (2) Start from innermost combinations and work outward, (3) Apply series rule: 1/C_eq = Σ(1/C_i) and parallel rule: C_eq = ΣC_i systematically, (4) Reduce step-by-step, labeling intermediate results, (5) Once C_eq is found, work backwards to find individual charges and voltages. Always verify at each step: series→same charge, parallel→same voltage.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper approaches this methodically: sketch the circuit, identify the reduction sequence, and reduce step-by-step from inside out. Key insight: C₃ and C₅ in series (both 4 μF) give 2 μF, which parallels with C₄ (2 μF) to give 4 μF. This continues through the network. Mental math shortcuts: identical capacitors in series→divide by n; in parallel→multiply by n. Always double-check the reduction path before calculating.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Series: 1/C_series = 1/C₁ + 1/C₂ + ... (for n identical: C_series = C/n)• Parallel: C_parallel = C₁ + C₂ + ... (for n identical: C_parallel = nC)• Charge in series: Q_series = same for all• Voltage in parallel: V_parallel = same for all• Total charge: Q_total = C_eq × V_battery
+</div>
+<ol class="steps">
+<li><strong>Step 1: Identify Circuit Topology</strong><br/>
+ Reading the description carefully:<br/>
+ - Innermost: C₃ series C₅<br/>
+ - Next: (C₃-C₅) parallel C₄<br/>
+ - Then: [(C₃-C₅)||C₄] series C₂<br/>
+ - Next: {[(C₃-C₅)||C₄]-C₂} parallel C₆<br/>
+ - ly: {{[(C₃-C₅)||C₄]-C₂}||C₆} series C₁<br/>
+ - All across 20.0 V battery</li>
+<li><strong>Step 2: Reduce C₃ and C₅ (Series)</strong><br/>
+ C₃ = C₅ = 4.00 μF in series:<br/>
+ C₃₅ = 1/(1/4.00 + 1/4.00) = 1/(0.500) = 2.00 μF<br/>
+ Quick method: Two identical in series = C/2 = 4.00/2 = 2.00 μF</li>
+<li><strong>Step 3: Add C₄ in Parallel</strong><br/>
+ C₃₅ = 2.00 μF parallel with C₄ = 2.00 μF:<br/>
+ C₃₄₅ = C₃₅ + C₄ = 2.00 + 2.00 = 4.00 μF</li>
+<li><strong>Step 4: Series with C₂</strong><br/>
+ C₃₄₅ = 4.00 μF in series with C₂ = 2.00 μF:<br/>
+ C₂₃₄₅ = 1/(1/2.00 + 1/4.00) = 1/(0.500 + 0.250) = 1/0.750 = 1.33 μF</li>
+<li><strong>Step 5: Parallel with C₆</strong><br/>
+ C₂₃₄₅ = 1.33 μF parallel with C₆ = 3.00 μF:<br/>
+ C₂₃₄₅₆ = 1.33 + 3.00 = 4.33 μF</li>
+<li><strong>Step 6: Series with C₁</strong><br/>
+ C₂₃₄₅₆ = 4.33 μF in series with C₁ = 3.00 μF:<br/>
+ C_eq = 1/(1/3.00 + 1/4.33) = 1/(0.333 + 0.231) = 1/0.564 = 1.77 μF</li>
+<li><strong>Step 7: Calculate Total Charge</strong><br/>
+ Q_total = C_eq × V = 1.77 μF × 20.0 V = 35.4 μC<br/>
+ This is the charge on C₁ (since it's in series with everything else)</li>
+<li><strong>Step 8: Voltage Distribution</strong><br/>
+ V₁ = Q_total/C₁ = 35.4/3.00 = 11.8 V<br/>
+ V₂₃₄₅₆ = 20.0 - 11.8 = 8.2 V<br/>
+ This voltage appears across the parallel combination of C₂₃₄₅ and C₆</li>
+<li><strong>Step 9: Continue Backward for Individual Components</strong><br/>
+ Q₆ = C₆ × V₂₃₄₅₆ = 3.00 × 8.2 = 24.6 μC<br/>
+ Q₂₃₄₅ = C₂₃₄₅ × V₂₃₄₅₆ = 1.33 × 8.2 = 10.9 μC<br/>
+<br/>
+ Since C₂ and C₃₄₅ are in series: Q₂ = Q₃₄₅ = 10.9 μC<br/>
+ V₂ = 10.9/2.00 = 5.45 V<br/>
+ V₃₄₅ = 8.2 - 5.45 = 2.75 V<br/>
+<br/>
+ And so on for complete analysis of each capacitor...</li>
+<li><strong>Step 10: Verification</strong><br/>
+ Check energy: U = ½C_eq V² = ½ × 1.77 × (20.0)² = 354 μJ<br/>
+ Sum of individual energies should equal this (accounting for numerical precision)</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_12</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A parallel-plate capacitor has charge q and plate area A. By finding the work needed to increase the plate separation from x to x + dx, derive the expression for the force between the plates. Then show that the force per unit area (electrostatic stress) equals the energy density ε₀E²/2. What is the force per unit area on plates with E = 3.00 × 10⁶ V/m?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 19.9 N/m²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 39.8 N/m²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 79.6 N/m²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 159 N/m²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> For force derivation from energy: (1) Express energy U as function of separation x with charge q constant, (2) Use F = -dU/dx (negative because force opposes increasing separation), (3) Substitute U = q²x/(2ε₀A) for constant charge, (4) Differentiate to get F = q²/(2ε₀A), (5) Express in terms of E using E = q/(ε₀A), (6) Show F/A = ½ε₀E² (energy density). Key: Constant charge condition (isolated capacitor) vs constant voltage (connected battery) gives different results.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper recognizes this as a fundamental problem connecting three major concepts: (1) work-energy theorem, (2) force as gradient of potential energy, and (3) energy density in electric fields. The key insight is that for an isolated charged capacitor, increasing separation decreases capacitance, increasing energy (since U = q²/2C). This increase requires work against the attractive force. The result—that electrostatic stress equals energy density—is a profound connection used throughout electromagnetic theory.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> • Capacitance: C = ε₀A/x• Energy (constant q): U = q²/(2C) = q²x/(2ε₀A)• Force-energy relation: F = -dU/dx• Electric field: E = q/(ε₀A) = σ/ε₀• Energy density: u = ½ε₀E²• Work: dW = F·dx
+</div>
+<ol class="steps">
+<li><strong>Step 1: Express Energy as Function of Separation</strong><br/>
+ For parallel-plate capacitor: C = ε₀A/x<br/>
+ With constant charge q (isolated capacitor):<br/>
+ U(x) = q²/(2C) = q²/(2ε₀A/x) = q²x/(2ε₀A)</li>
+<li><strong>Step 2: Calculate Work for Infinitesimal Displacement</strong><br/>
+ Work needed to increase separation by dx:<br/>
+ dW = U(x + dx) - U(x) = dU<br/>
+<br/>
+ Taking differential:<br/>
+ dU = d[q²x/(2ε₀A)] = q²/(2ε₀A) · dx</li>
+<li><strong>Step 3: Apply Work-Energy Theorem</strong><br/>
+ Work done against force: dW = F · dx<br/>
+ Therefore: F · dx = q²/(2ε₀A) · dx<br/>
+<br/>
+ Solving for force:<br/>
+ F = q²/(2ε₀A)</li>
+<li><strong>Step 4: Alternative Derivation Using Energy Gradient</strong><br/>
+ Force: F = -dU/dx (negative for attractive force)<br/>
+<br/>
+ But we want magnitude, and force opposes separation increase:<br/>
+ |F| = dU/dx = d/dx[q²x/(2ε₀A)] = q²/(2ε₀A)</li>
+<li><strong>Step 5: Express in Terms of Electric Field</strong><br/>
+ Electric field between plates: E = V/x = q/(Cε₀) = q/(ε₀A)<br/>
+ Therefore: q = ε₀AE<br/>
+<br/>
+ Substituting into force expression:<br/>
+ F = (ε₀AE)²/(2ε₀A) = ε₀A²E²/(2ε₀A) = ½ε₀AE²</li>
+<li><strong>Step 6: Calculate Force Per Unit Area (Stress)</strong><br/>
+ Electrostatic stress: σ = F/A = (½ε₀AE²)/A = ½ε₀E²<br/>
+<br/>
+ This equals the energy density:<br/>
+ u = ½ε₀E² ✓<br/>
+<br/>
+ This profound result shows that electrostatic stress equals the energy density of the electric field.</li>
+<li><strong>Step 7: Physical Interpretation</strong><br/>
+ The stress ½ε₀E² can be interpreted as:<br/>
+ - The pressure exerted by the electric field<br/>
+ - The force per unit area pulling the plates together<br/>
+ - The mechanical stress in the dielectric<br/>
+<br/>
+ It acts perpendicular to the field lines (attractive force between opposite charges)</li>
+<li><strong>Step 8: Numerical Calculation</strong><br/>
+ Given: E = 3.00 × 10⁶ V/m<br/>
+ ε₀ = 8.854 × 10⁻¹² F/m<br/>
+<br/>
+ Stress = ½ε₀E²<br/>
+ = ½ × 8.854 × 10⁻¹² × (3.00 × 10⁶)²<br/>
+ = ½ × 8.854 × 10⁻¹² × 9.00 × 10¹²<br/>
+ = ½ × 79.686<br/>
+ = 39.8 N/m²</li>
+<li><strong>Step 9: Alternative Units and Context</strong><br/>
+ 39.8 N/m² = 39.8 Pa (Pascals)<br/>
+ This is about 0.0004 atmospheres—quite small!<br/>
+<br/>
+ However, for E = 3 × 10⁶ V/m (near breakdown for air),<br/>
+ this pressure is significant for micro-scale devices.<br/>
+<br/>
+ For comparison:<br/>
+ - At E = 10⁷ V/m: stress = 443 N/m² ≈ 0.004 atm<br/>
+ - At E = 10⁸ V/m: stress = 44,300 N/m² ≈ 0.44 atm</li>
+<li><strong>Step 10: Connection to Maxwell Stress Tensor</strong><br/>
+ This result is a special case of the Maxwell stress tensor component:<br/>
+ T_nn = ε₀E_n²/2 - ε₀E_t²/2<br/>
+<br/>
+ For perpendicular field (E_t = 0): T_nn = ½ε₀E²<br/>
+ This represents the normal stress (pressure) in the field direction.</li>
+<li><strong>Step 11: Constant Voltage vs Constant Charge</strong><br/>
+ Important distinction:<br/>
+ - Constant q (isolated): F = ½ε₀AE², U increases with separation<br/>
+ - Constant V (connected): F = ½ε₀AE², but battery does work, U decreases<br/>
+<br/>
+ The force is the same, but energy considerations differ!</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_13</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><p><strong>Problem Statement:</strong></p>
+<p>A non-uniform cylindrical object of mass M and radius R rolls smoothly from rest down a ramp and onto a horizontal section. From there it rolls off the ramp and onto the floor, landing a horizontal distance d = 0.506 m from the end of the ramp.</p>
+<p>The initial height of the object is H = 0.90 m; the end of the ramp is at height h = 0.10 m. The rotational inertia of the object can be expressed as I = βMR², but β is not 0.5 as for a uniform cylinder.</p>
+<div class="diagram">
+<svg height="480" viewbox="0 0 850 480" width="850" xmlns="http://www.w3.org/2000/svg">
+<text fill="#2C3E50" font-size="18" font-weight="bold" text-anchor="middle" x="425" y="25">Cylinder Rolling and Projectile Motion</text>
+<text fill="#666" font-size="12" text-anchor="middle" x="425" y="45">(Scale: 250 pixels = 1 meter)</text>
+<!-- Ground at y=400 -->
+<line stroke="#000" stroke-width="3" x1="0" x2="850" y1="400" y2="400"></line>
+<rect fill="#D2B48C" height="80" opacity="0.3" width="850" x="0" y="400"></rect>
+<!-- Ramp: H=0.90m=225px, so start at y=400-225=175 -->
+<line stroke="#8B4513" stroke-width="5" x1="100" x2="350" y1="175" y2="375"></line>
+<!-- Horizontal section at h=0.10m=25px, so at y=400-25=375 -->
+<line stroke="#8B4513" stroke-width="5" x1="350" x2="600" y1="375" y2="375"></line>
+<!-- Support legs -->
+<line stroke="#666" stroke-width="3" x1="600" x2="600" y1="375" y2="400"></line>
+<line stroke="#666" stroke-width="3" x1="350" x2="350" y1="375" y2="400"></line>
+<!-- Cylinder at start (H = 0.90m above ground) -->
+<circle cx="130" cy="190" fill="#E74C3C" r="16" stroke="#C0392B" stroke-width="2"></circle>
+<text fill="#2C3E50" font-size="12" font-weight="bold" text-anchor="middle" x="130" y="165">Start</text>
+<text fill="#666" font-size="11" text-anchor="middle" x="130" y="225">v = 0</text>
+<!-- Cylinder at edge (about to leave at h=0.10m) -->
+<circle cx="600" cy="359" fill="#3498DB" r="16" stroke="#2980B9" stroke-width="2"></circle>
+<line marker-end="url(#arrowblue)" stroke="#3498DB" stroke-width="3" x1="620" x2="670" y1="350" y2="350"></line>
+<text fill="#3498DB" font-size="12" font-weight="bold" x="645" y="340">v</text>
+<!-- Parabolic trajectory - realistic for h=0.10m fall -->
+<path d="M 600,359 Q 665,370 726.5,398" fill="none" stroke="#9B59B6" stroke-dasharray="5,3" stroke-width="2"></path>
+<!-- Cylinder at landing (d=0.506m=126.5px from edge) -->
+<circle cx="726.5" cy="384" fill="#27AE60" r="16" stroke="#229954" stroke-width="2"></circle>
+<!-- Height H marker (left side) -->
+<line stroke="#E74C3C" stroke-dasharray="4,4" stroke-width="2" x1="70" x2="70" y1="400" y2="175"></line>
+<line stroke="#E74C3C" stroke-width="2" x1="65" x2="75" y1="400" y2="400"></line>
+<line stroke="#E74C3C" stroke-width="2" x1="65" x2="75" y1="175" y2="175"></line>
+<text fill="#E74C3C" font-size="14" font-weight="bold" text-anchor="end" x="55" y="290">H = 0.90 m</text>
+<!-- Height h marker (right side) -->
+<line stroke="#3498DB" stroke-dasharray="4,4" stroke-width="2" x1="780" x2="780" y1="400" y2="375"></line>
+<line stroke="#3498DB" stroke-width="2" x1="775" x2="785" y1="400" y2="400"></line>
+<line stroke="#3498DB" stroke-width="2" x1="775" x2="785" y1="375" y2="375"></line>
+<text fill="#3498DB" font-size="14" font-weight="bold" x="795" y="390">h = 0.10 m</text>
+<!-- Horizontal distance d marker -->
+<line stroke="#27AE60" stroke-width="2" x1="600" x2="726.5" y1="430" y2="430"></line>
+<line stroke="#27AE60" stroke-width="2" x1="600" x2="600" y1="425" y2="435"></line>
+<line stroke="#27AE60" stroke-width="2" x1="726.5" x2="726.5" y1="425" y2="435"></line>
+<text fill="#27AE60" font-size="14" font-weight="bold" x="663" y="450">d = 0.506 m</text>
+<!-- Ground reference -->
+<text fill="#666" font-size="11" text-anchor="middle" x="425" y="420">Ground Level</text>
+<defs>
+<marker id="arrowblue" markerheight="10" markerwidth="10" orient="auto" refx="5" refy="5">
+<polygon fill="#3498DB" points="0 0, 10 5, 0 10"></polygon>
+</marker>
+</defs>
+</svg>
+</div>
+<p><strong>Determine the value of β.</strong></p>
+<p><strong>Given:</strong></p>
+<ul>
+<li>Horizontal landing distance: d = 0.506 m</li>
+<li>Initial height: H = 0.90 m</li>
+<li>Ramp edge height: h = 0.10 m</li>
+<li>Rotational inertia: I = βMR²</li>
+<li>Object starts from rest</li>
+<li>Rolling is smooth (no slipping)</li>
+<li>Take g = 9.8 m/s²</li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> β = 0.15
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> β = 0.25
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> β = 0.40
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> β = 0.50
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Work backwards from projectile motion to find the velocity at the ramp edge, then use energy conservation with the rolling constraint to solve for β.Solution ApproachStep 1: Projectile Motion Analysish = 0.10 md = 0.506 mVertical: h = ½gt²Horizontal: d = vtStep 2: Energy ConservationHeight HPE = MgHHeight hPE + KE_trans + KE_rotMgH = Mgh + ½Mv²(1+β)g(H-h) = ½v²(1+β)β = 2g(H-h)/v² - 1Detailed Calculation:From projectile motion:t = √(2h/g) = √(2×0.10/9.8) = 0.143 sv = d/t = 0.506/0.143 = 3.54 m/sv² = d²g/(2h) = (0.506)²×9.8/(0.20) = 12.544 m²/s²From energy conservation:β = 2g(H-h)/v² - 1 = 2×9.8×0.80/12.544 - 1 = 0.25 ✓
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Find velocity from projectile motion</strong><br/>
+ Time of flight:<br/>
+<span class="math">h = ½gt² → t = √(2h/g) = √(2×0.10/9.8) = 0.143 s</span><br/>
+<br/>
+ Horizontal velocity:<br/>
+<span class="math">v = d/t = 0.506/0.143 = 3.542 m/s</span><br/>
+<span class="math">v² = d² × g/(2h) = (0.506)² × 49 = 12.544 m²/s²</span></li>
+<li><strong>Step 2: Apply energy conservation</strong><br/>
+ Initial: <span class="math">E_i = MgH</span><br/>
+ : <span class="math">E_f = Mgh + ½Mv² + ½Iω²</span><br/>
+<br/>
+ Using I = βMR² and ω = v/R:<br/>
+<span class="math">E_f = Mgh + ½Mv² + ½βMv² = Mgh + ½Mv²(1+β)</span></li>
+<li><strong>Step 3: Solve for β</strong><br/>
+<span class="math">MgH = Mgh + ½Mv²(1+β)</span><br/>
+<span class="math">g(H-h) = ½v²(1+β)</span><br/>
+<span class="math">1+β = 2g(H-h)/v²</span><br/>
+<span class="math">β = 2g(H-h)/v² - 1</span><br/>
+<span class="math">β = 2×9.8×0.80/12.544 - 1</span><br/>
+<span class="math">β = 15.68/12.544 - 1</span><br/>
+<span class="math">β = 1.250 - 1 = 0.250 ✓</span></li>
+<li><strong>Step 4: Verification</strong><br/>
+ Check energy: <span class="math">v² = 2g(H-h)/(1+β) = 2×9.8×0.80/1.25 = 12.544 ✓</span><br/>
+ Check distance: <span class="math">d = v√(2h/g) = 3.542×0.143 = 0.507 m ≈ 0.506 m ✓</span><br/>
+<br/>
+ Physical interpretation: β = 0.25 indicates mass is concentrated near the axis.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Physics_133</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> General |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 32:
+      </h4>
+      In Fig. 3-31, a cube of edge lengthasits with one corner at the origin of an xyz coordinate system. A body diagonal is a line that extends from one corner to another through the center. In unit-vector notation, what is the body diagonal that extends from the corner at coordinates (0, 0, 0) to the diagonally opposite corner?xyz(0,0,0)(a,a,a)aaa</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> aî + aĵ + ak̂
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> √3 a(î + ĵ + k̂)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a/√3)(î + ĵ + k̂)
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> a√3(î + ĵ)/2 + ak̂
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         For position vectors in 3D, the vector from point P₁(x₁,y₁,z₁) to P₂(x₂,y₂,z₂) is: r⃗ = (x₂-x₁)î + (y₂-y₁)ĵ + (z₂-z₁)k̂
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+         Visualize the cube and identify coordinates systematically. Body diagonals connect opposite vertices through the center.
+        </div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+         Vector addition in 3D, coordinate geometry
+        </div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Identify the starting point: (0, 0, 0)
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Identify the diagonally opposite corner: (a, a, a)
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Apply the position vector formula: r⃗ = (a-0)î + (a-0)ĵ + (a-0)k̂
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Simplify: r⃗ = aî + aĵ + ak̂
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Verify magnitude: |r⃗| = √(a² + a² + a²) = a√3 (This is the length of the body diagonal)
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

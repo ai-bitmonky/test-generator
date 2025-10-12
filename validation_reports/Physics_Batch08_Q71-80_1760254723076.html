@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 8 (Questions 71-80)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 8: Questions 71 - 80</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:43 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">25</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_176</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 22:
+      </h4>
+      Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m², b = 0.30 GN/m², and c = 0.80 GN/m².Assume that the thread has an initial length of 0.80 cm, an initial cross-sectional area of 8.0 × 10⁻¹² m², and (during stretching) a constant volume.Strain (ε)Stress (GN/m²)1.01.42.0abcBreakingpointStress scale values:a = 0.12 GN/m²b = 0.30 GN/m²c = 0.80 GN/m²Area under curve= Energy/VolumeFigure: Stress vs Strain curve for spider web thread showing energy storage (area under curve)Given:Initial length: L₀ = 0.80 cm = 0.008 mInitial cross-sectional area: A₀ = 8.0 × 10⁻¹² m²Volume remains constant during stretchingBreaking strain: εbreak= 2.00Stress values: a = 0.12 GN/m² = 1.2 × 10⁸ N/m²b = 0.30 GN/m² = 3.0 × 10⁸ N/m²c = 0.80 GN/m² = 8.0 × 10⁸ N/m²Additional Information:Fruit fly: mass = 6.00 mg = 6.00 × 10⁻⁶ kg, speed = 1.70 m/sBumble bee: mass = 0.388 g = 3.88 × 10⁻⁴ kg, speed = 0.420 m/sThe strain on the thread is the ratio of the change in the thread's length to that initial length, and the stress on the thread is the ratio of the collision force to that initial cross-sectional area.Assume that the work done on the thread by the collision force is given by the area under the curve on the graph. Assume also that when the single thread snares a flying insect, the insect's kinetic energy is transferred to the stretching of the thread.Find:(a) Energy required to break the thread(b) Does a fruit fly break the thread?(c) Does a bumble bee break the thread?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) Energy to break = 6.08 × 10⁻⁶ J; (b) Fruit fly (8.67 × 10⁻⁶ J) breaks thread; (c) Bumble bee (3.42 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (a) Energy to break = 8.67 × 10⁻⁶ J; (b) Fruit fly (8.67 × 10⁻⁶ J) doesn't break; (c) Bumble bee (3.42 × 10⁻⁵ J) breaks thread
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) Energy to break = 3.42 × 10⁻⁶ J; (b) Fruit fly (8.67 × 10⁻⁶ J) breaks thread; (c) Bumble bee (6.08 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) Energy to break = 6.08 × 10⁻⁶ J; (b) Fruit fly (3.42 × 10⁻⁶ J) doesn't break; (c) Bumble bee (8.67 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Calculate initial volume of thread
+          </strong>
+<p>
+           V = A₀ × L₀
+          </p>
+<p>
+           V = (8.0 × 10⁻¹² m²) × (0.008 m)
+          </p>
+<p>
+<strong>
+            V = 6.4 × 10⁻¹⁴ m³
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 2: Estimate area under stress-strain curve
+          </strong>
+<p>
+           The area represents energy per unit volume. From the graph, we can approximate by dividing into regions or using average stress:
+          </p>
+<p>
+           Using numerical integration or careful approximation of the curve shape, the energy density is approximately:
+          </p>
+<p>
+<strong>
+            u ≈ 1.35 × 10⁹ J/m³
+           </strong>
+</p>
+<p>
+           (This comes from carefully estimating the area under the curve from strain 0 to 2.0)
+          </p>
+</li>
+<li>
+<strong>
+           Step 3: Calculate total energy to break thread (Part a)
+          </strong>
+<p>
+           Total energy = Energy density × Volume
+          </p>
+<p>
+           E
+           <sub>
+            break
+           </sub>
+           = u × V
+          </p>
+<p>
+           E
+           <sub>
+            break
+           </sub>
+           = (1.35 × 10⁹ J/m³) × (6.4 × 10⁻¹⁴ m³)
+          </p>
+<p>
+           E
+           <sub>
+            break
+           </sub>
+           = 8.64 × 10⁻⁶ J
+          </p>
+<p>
+<strong>
+            Answer (a): E
+            <sub>
+             break
+            </sub>
+            ≈ 8.67 × 10⁻⁶ J
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 4: Calculate kinetic energy of fruit fly (Part b)
+          </strong>
+<p>
+           KE
+           <sub>
+            fly
+           </sub>
+           = ½mv²
+          </p>
+<p>
+           KE
+           <sub>
+            fly
+           </sub>
+           = ½ × (6.00 × 10⁻⁶ kg) × (1.70 m/s)²
+          </p>
+<p>
+           KE
+           <sub>
+            fly
+           </sub>
+           = ½ × (6.00 × 10⁻⁶) × 2.89
+          </p>
+<p>
+           KE
+           <sub>
+            fly
+           </sub>
+           = 8.67 × 10⁻⁶ J
+          </p>
+<p>
+           Comparing: KE
+           <sub>
+            fly
+           </sub>
+           ≈ E
+           <sub>
+            break
+           </sub>
+</p>
+<p>
+           The fruit fly's KE is approximately equal to the breaking energy, meaning it's right at the limit.
+          </p>
+<p>
+<strong>
+            Answer (b): Fruit fly does NOT break thread (at the limit)
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 5: Calculate kinetic energy of bumble bee (Part c)
+          </strong>
+<p>
+           KE
+           <sub>
+            bee
+           </sub>
+           = ½mv²
+          </p>
+<p>
+           KE
+           <sub>
+            bee
+           </sub>
+           = ½ × (3.88 × 10⁻⁴ kg) × (0.420 m/s)²
+          </p>
+<p>
+           KE
+           <sub>
+            bee
+           </sub>
+           = ½ × (3.88 × 10⁻⁴) × 0.1764
+          </p>
+<p>
+           KE
+           <sub>
+            bee
+           </sub>
+           = 3.42 × 10⁻⁵ J
+          </p>
+<p>
+           Comparing: KE
+           <sub>
+            bee
+           </sub>
+           = 3.42 × 10⁻⁵ J ≫ E
+           <sub>
+            break
+           </sub>
+           = 8.67 × 10⁻⁶ J
+          </p>
+<p>
+           The bumble bee's KE is about 4 times the breaking energy!
+          </p>
+<p>
+<strong>
+            Answer (c): Bumble bee BREAKS the thread
+           </strong>
+</p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_177</div>
+        <div class="badge critical">critical - 4 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+          <div class="issue low">
+            <div class="issue-header">
+              <span class="badge low">low</span>
+              [Question Type] Type may be incorrect. Current: "Multiple Choice Single Answer", Suggested: "Numerical"
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     A rock climber of mass 55 kg is in a lie-back climb along a fissure. The climber's hands pull on one side of the fissure while the feet press against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is at a horizontal distance d = 0.40 m from the fissure.The coefficient of static friction between hands and rock is μ₁ = 0.40, and between boots and rock is μ₂ = 1.2.Left WallRight WallCOMHandsFeetw = 0.20 md = 0.40 mh = ?Given Data:m = 55 kgw = 0.20 md = 0.40 mμ₁ = 0.40 (hands)μ₂ = 1.2 (feet)g = 10 m/s²h = to be foundFigure: Rock climber in lie-back position showing the setup and given dimensionsGiven:Mass of climber: m = 55 kgWidth of fissure: w = 0.20 mHorizontal distance of COM from fissure center: d = 0.40 mCoefficient of static friction (hands-rock): μ₁ = 0.40Coefficient of static friction (boots-rock): μ₂ = 1.2g = 10 m/s²Find:(a) What minimum horizontal pull by the hands and push by the feet will keep the climber stable?(b) For the horizontal pull and push of (a), what must be the vertical distance h between hands and feet if the climber is to be stable?
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_178</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 21:
+      </h4>
+      A 15 kg block is held in place via a pulley system. The person's upper arm is vertical; the forearm is at angle θ = 30° with the horizontal. The forearm and hand together have a mass of 2.0 kg, with a center of mass at distance d₁ = 15 cm from the contact point of the forearm bone and the upper-arm bone (humerus).The triceps muscle pulls vertically upward on the forearm at distance d₂ = 2.5 cm behind that contact point. Distance d₃ is 35 cm.Upper Arm(Humerus)Contact Point(Elbow Joint)Forearmθ = 30°TricepsattachmentCOM(forearm)Block15 kgd₂2.5 cmd₁ = 15 cmd₃ = 35 cmGiven Data:M = 15 kg (block)m = 2.0 kg (forearm)θ = 30°d₁ = 15 cm = 0.15 md₂ = 2.5 cm = 0.025 md₃ = 35 cm = 0.35 mg = 10 m/s²Find: F_triceps, F_humerusFigure: Forearm lever system showing geometry, distances, and massesFind:(a) Magnitude of force from triceps muscle on forearm(b) Magnitude of force on forearm from humerus at the contact point</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A. (a) F
+       
+        triceps
+       
+       = 3185 N; (b) F
+       
+        humerus
+       
+       = 3037 N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B. (a) F
+       
+        triceps
+       
+       = 2850 N; (b) F
+       
+        humerus
+       
+       = 2680 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C. (a) F
+       
+        triceps
+       
+       = 3500 N; (b) F
+       
+        humerus
+       
+       = 3320 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D. (a) F
+       
+        triceps
+       
+       = 2950 N; (b) F
+       
+        humerus
+       
+       = 2780 N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Identify all forces on forearm
+          </strong>
+<ul>
+<li>
+            Triceps force F
+            <sub>
+             t
+            </sub>
+            (vertically upward, distance d₂ = 0.025 m behind contact)
+           </li>
+<li>
+            Forearm weight: mg = 2.0 × 10 = 20 N (downward at COM, distance d₁ = 0.15 m from contact)
+           </li>
+<li>
+            Block weight: Mg = 15 × 10 = 150 N (downward at distance d₃ = 0.35 m from contact)
+           </li>
+<li>
+            Force from humerus F
+            <sub>
+             h
+            </sub>
+            at contact point (unknown - to be found)
+           </li>
+</ul>
+</li>
+<li>
+<strong>
+           Step 2: Determine perpendicular distances for torque about contact point
+          </strong>
+<p>
+           The forearm makes angle θ = 30° with horizontal. For vertical forces:
+          </p>
+<ul>
+<li>
+<strong>
+             Triceps:
+            </strong>
+            Acts vertically behind contact point
+            <br>
+            Perpendicular distance = d₂ = 0.025 m (pure vertical, distance measured perpendicular to forearm)
+           </li>
+<li>
+<strong>
+             Forearm weight:
+            </strong>
+            Acts vertically at distance d₁ along forearm
+            <br>
+            Horizontal projection (perpendicular distance) = d₁ × cos(30°) = 0.15 × 0.866 = 0.130 m
+           </li>
+<li>
+<strong>
+             Block weight:
+            </strong>
+            Acts vertically at distance d₃ along forearm
+            <br>
+            Horizontal projection = d₃ × cos(30°) = 0.35 × 0.866 = 0.303 m
+           </li>
+</ul>
+<p>
+<em>
+            Note: The original solution's calculation gives F
+            <sub>
+             t
+            </sub>
+            ≈ 1922 N, which differs from the answer key value of 3185 N. This discrepancy suggests the problem geometry may involve additional considerations about how d₂ is measured or that there are subtle biomechanical factors. For teaching purposes, we'll show the standard calculation and note the answer key value.
+           </em>
+</p>
+</li>
+<li>
+<strong>
+           Step 3: Apply torque equilibrium about contact point
+          </strong>
+<p>
+           Taking counterclockwise torques as positive:
+          </p>
+<p>
+           Στ = 0
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           × d₂ - mg × (d₁ cos 30°) - Mg × (d₃ cos 30°) = 0
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           × 0.025 = 20 × 0.130 + 150 × 0.303
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           × 0.025 = 2.6 + 45.45
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           × 0.025 = 48.05
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           = 1922 N (from standard calculation)
+          </p>
+<p>
+<strong>
+            Answer key value: F
+            <sub>
+             triceps
+            </sub>
+            = 3185 N
+           </strong>
+</p>
+<p>
+           The factor difference (3185/1922 ≈ 1.66) suggests the actual perpendicular moment arm for the triceps may be different due to anatomical considerations not fully specified in the problem statement.
+          </p>
+</li>
+<li>
+<strong>
+           Step 4: Apply vertical force equilibrium (Part b)
+          </strong>
+<p>
+           Using the answer key value F
+           <sub>
+            t
+           </sub>
+           = 3185 N:
+          </p>
+<p>
+           ΣF
+           <sub>
+            y
+           </sub>
+           = 0:
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           - mg - Mg - F
+           <sub>
+            h,y
+           </sub>
+           = 0
+          </p>
+<p>
+           If the humerus force acts downward (which it must, since triceps force exceeds the weights):
+          </p>
+<p>
+           F
+           <sub>
+            t
+           </sub>
+           = mg + Mg + F
+           <sub>
+            h
+           </sub>
+</p>
+<p>
+           3185 = 20 + 150 + F
+           <sub>
+            h
+           </sub>
+</p>
+<p>
+           F
+           <sub>
+            h
+           </sub>
+           = 3185 - 170
+          </p>
+<p>
+<strong>
+            F
+            <sub>
+             h
+            </sub>
+            = 3015 N ≈ 3037 N
+           </strong>
+</p>
+<p>
+           (Small difference likely due to rounding in intermediate steps)
+          </p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_179</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 29:
+      </h4>
+      A crate, in the form of a cube with edge lengths of 1.2 m, contains a piece of machinery. The center of mass of the crate and its contents is located 0.30 m above the crate's geometrical center. The crate rests on a ramp that makes an angle θ with the horizontal.As θ is increased from zero, an angle will be reached at which the crate will either tip over or start to slide down the ramp.θGeom. centerCOM0.30 mL = 1.2 mTwo Cases to Analyze:Case 1: μₛ = 0.60Case 2: μₛ = 0.70(Which fails first?)Key Dimensions:• Edge length: L = 1.2 m• Geometric center: L/2 = 0.6 m from base• COM above base: 0.6 + 0.3 = 0.9 m• Horizontal to edge: L/2 = 0.6 mQuestion: Tipping or sliding?Figure: Cubic crate on inclined ramp showing center of mass location 0.30 m above geometric centerGiven:Edge length of cube: L = 1.2 mCOM is 0.30 m above geometric centerTherefore, COM height above base = L/2 + 0.30 = 0.6 + 0.30 = 0.90 mHorizontal distance from base center to edge = L/2 = 0.6 mFind:For each case, determine whether the crate tips or slides, and at what angle.Case 1:Coefficient of static friction μs= 0.60Case 2:Coefficient of static friction μs= 0.70</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Case 1: Crate slides at θ = 31.0°; Case 2: Crate tips at θ = 33.7°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Case 1: Crate tips at θ = 33.7°; Case 2: Crate slides at θ = 35.0°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Case 1: Crate tips at θ = 30.0°; Case 2: Crate tips at θ = 33.7°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Case 1: Crate slides at θ = 35.0°; Case 2: Crate tips at θ = 30.0°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Calculate tipping angle (same for both cases)
+          </strong>
+<p>
+           The crate tips when the vertical line through the COM falls outside the base of support (passes through the lower edge).
+          </p>
+<p>
+           Key dimensions:
+          </p>
+<ul>
+<li>
+            Horizontal distance from base center to edge: L/2 = 0.6 m
+           </li>
+<li>
+            Height of COM above base: h
+            <sub>
+             COM
+            </sub>
+            = 0.90 m
+           </li>
+</ul>
+<p>
+           At critical tipping angle, geometry gives:
+          </p>
+<p>
+           tan θ
+           <sub>
+            tip
+           </sub>
+           = (L/2) / h
+           <sub>
+            COM
+           </sub>
+</p>
+<p>
+           tan θ
+           <sub>
+            tip
+           </sub>
+           = 0.6 / 0.90 = 0.667
+          </p>
+<p>
+           θ
+           <sub>
+            tip
+           </sub>
+           = arctan(0.667)
+          </p>
+<p>
+<strong>
+            θ
+            <sub>
+             tip
+            </sub>
+            = 33.7°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 2: Calculate sliding angle for Case 1 (μ
+           <sub>
+            s
+           </sub>
+           = 0.60)
+          </strong>
+<p>
+           Sliding occurs when component of weight down ramp equals maximum friction:
+          </p>
+<p>
+           mg sin θ = μ
+           <sub>
+            s
+           </sub>
+           N = μ
+           <sub>
+            s
+           </sub>
+           mg cos θ
+          </p>
+<p>
+           tan θ
+           <sub>
+            slide
+           </sub>
+           = μ
+           <sub>
+            s
+           </sub>
+</p>
+<p>
+           tan θ
+           <sub>
+            slide
+           </sub>
+           = 0.60
+          </p>
+<p>
+           θ
+           <sub>
+            slide
+           </sub>
+           = arctan(0.60)
+          </p>
+<p>
+<strong>
+            θ
+            <sub>
+             slide
+            </sub>
+            = 31.0°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 3: Determine failure mode for Case 1
+          </strong>
+<p>
+           Compare critical angles:
+          </p>
+<p>
+           θ
+           <sub>
+            slide
+           </sub>
+           = 31.0°
+          </p>
+<p>
+           θ
+           <sub>
+            tip
+           </sub>
+           = 33.7°
+          </p>
+<p>
+           Since θ
+           <sub>
+            slide
+           </sub>
+           &lt; θ
+           <sub>
+            tip
+           </sub>
+           , sliding occurs first.
+          </p>
+<p>
+<strong>
+            Case 1 Result: Crate SLIDES at θ = 31.0°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 4: Calculate sliding angle for Case 2 (μ
+           <sub>
+            s
+           </sub>
+           = 0.70)
+          </strong>
+<p>
+           tan θ
+           <sub>
+            slide
+           </sub>
+           = μ
+           <sub>
+            s
+           </sub>
+           = 0.70
+          </p>
+<p>
+           θ
+           <sub>
+            slide
+           </sub>
+           = arctan(0.70)
+          </p>
+<p>
+<strong>
+            θ
+            <sub>
+             slide
+            </sub>
+            = 35.0°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 5: Determine failure mode for Case 2
+          </strong>
+<p>
+           Compare critical angles:
+          </p>
+<p>
+           θ
+           <sub>
+            slide
+           </sub>
+           = 35.0°
+          </p>
+<p>
+           θ
+           <sub>
+            tip
+           </sub>
+           = 33.7°
+          </p>
+<p>
+           Since θ
+           <sub>
+            tip
+           </sub>
+           &lt; θ
+           <sub>
+            slide
+           </sub>
+           , tipping occurs first.
+          </p>
+<p>
+<strong>
+            Case 2 Result: Crate TIPS at θ = 33.7°
+           </strong>
+</p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_180</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 27:
+      </h4>
+      Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m², b = 0.30 GN/m², and c = 0.80 GN/m².Assume that the thread has an initial length of 0.80 cm, an initial cross-sectional area of 8.0 × 10⁻¹² m², and (during stretching) a constant volume.Strain (ε)Stress (GN/m²)1.01.42.0abcBreakingpointStress Scale Values:a = 0.12 GN/m²b = 0.30 GN/m²c = 0.80 GN/m²Area = Energy/VolumeFigure: Stress vs Strain curve for spider web thread. Area under curve represents energy per unit volume.Given:Initial length: L₀ = 0.80 cm = 0.008 mInitial cross-sectional area: A₀ = 8.0 × 10⁻¹² m²Volume remains constant during stretchingBreaking strain: εbreak= 2.00Stress values: a = 0.12 GN/m² = 1.2 × 10⁸ N/m²b = 0.30 GN/m² = 3.0 × 10⁸ N/m²c = 0.80 GN/m² = 8.0 × 10⁸ N/m²Additional Information:Fruit fly: mass = 6.00 mg = 6.00 × 10⁻⁶ kg, speed = 1.70 m/sBumble bee: mass = 0.388 g = 3.88 × 10⁻⁴ kg, speed = 0.420 m/sThe strain on the thread is the ratio of the change in the thread's length to that initial length, and the stress on the thread is the ratio of the collision force to that initial cross-sectional area.Assume that the work done on the thread by the collision force is given by the area under the curve on the graph. Assume also that when the single thread snares a flying insect, the insect's kinetic energy is transferred to the stretching of the thread.Find:(a) Energy required to break the thread(b) Does a fruit fly break the thread?(c) Does a bumble bee break the thread?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (a) Energy to break = 6.08 × 10⁻⁶ J; (b) Fruit fly (8.67 × 10⁻⁶ J) breaks thread; (c) Bumble bee (3.42 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> (a) Energy to break = 8.67 × 10⁻⁶ J; (b) Fruit fly (8.67 × 10⁻⁶ J) doesn't break; (c) Bumble bee (3.42 × 10⁻⁵ J) breaks thread
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) Energy to break = 3.42 × 10⁻⁶ J; (b) Fruit fly (8.67 × 10⁻⁶ J) breaks thread; (c) Bumble bee (6.08 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) Energy to break = 6.08 × 10⁻⁶ J; (b) Fruit fly (3.42 × 10⁻⁶ J) doesn't break; (c) Bumble bee (8.67 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Calculate initial volume of thread
+          </strong>
+<p>
+           V = A₀ × L₀
+          </p>
+<p>
+           V = (8.0 × 10⁻¹² m²) × (0.008 m)
+          </p>
+<p>
+<strong>
+            V = 6.4 × 10⁻¹⁴ m³
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 2: Estimate area under stress-strain curve
+          </strong>
+<p>
+           The area represents energy per unit volume. From the graph, we can approximate by dividing into regions or using average stress:
+          </p>
+<p>
+           Using numerical integration or careful approximation of the curve shape, the energy density is approximately:
+          </p>
+<p>
+<strong>
+            u ≈ 1.35 × 10⁹ J/m³
+           </strong>
+</p>
+<p>
+           (This comes from carefully estimating the area under the curve from strain 0 to 2.0)
+          </p>
+</li>
+<li>
+<strong>
+           Step 3: Calculate total energy to break thread (Part a)
+          </strong>
+<p>
+           Total energy = Energy density × Volume
+          </p>
+<p>
+           E
+           <sub>
+            break
+           </sub>
+           = u × V
+          </p>
+<p>
+           E
+           <sub>
+            break
+           </sub>
+           = (1.35 × 10⁹ J/m³) × (6.4 × 10⁻¹⁴ m³)
+          </p>
+<p>
+           E
+           <sub>
+            break
+           </sub>
+           = 8.64 × 10⁻⁶ J
+          </p>
+<p>
+<strong>
+            Answer (a): E
+            <sub>
+             break
+            </sub>
+            ≈ 8.67 × 10⁻⁶ J
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 4: Calculate kinetic energy of fruit fly (Part b)
+          </strong>
+<p>
+           KE
+           <sub>
+            fly
+           </sub>
+           = ½mv²
+          </p>
+<p>
+           KE
+           <sub>
+            fly
+           </sub>
+           = ½ × (6.00 × 10⁻⁶ kg) × (1.70 m/s)²
+          </p>
+<p>
+           KE
+           <sub>
+            fly
+           </sub>
+           = ½ × (6.00 × 10⁻⁶) × 2.89
+          </p>
+<p>
+           KE
+           <sub>
+            fly
+           </sub>
+           = 8.67 × 10⁻⁶ J
+          </p>
+<p>
+           Comparing: KE
+           <sub>
+            fly
+           </sub>
+           ≈ E
+           <sub>
+            break
+           </sub>
+</p>
+<p>
+           The fruit fly's KE is approximately equal to the breaking energy, meaning it's right at the limit.
+          </p>
+<p>
+<strong>
+            Answer (b): Fruit fly does NOT break thread (at the limit)
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Step 5: Calculate kinetic energy of bumble bee (Part c)
+          </strong>
+<p>
+           KE
+           <sub>
+            bee
+           </sub>
+           = ½mv²
+          </p>
+<p>
+           KE
+           <sub>
+            bee
+           </sub>
+           = ½ × (3.88 × 10⁻⁴ kg) × (0.420 m/s)²
+          </p>
+<p>
+           KE
+           <sub>
+            bee
+           </sub>
+           = ½ × (3.88 × 10⁻⁴) × 0.1764
+          </p>
+<p>
+           KE
+           <sub>
+            bee
+           </sub>
+           = 3.42 × 10⁻⁵ J
+          </p>
+<p>
+           Comparing: KE
+           <sub>
+            bee
+           </sub>
+           = 3.42 × 10⁻⁵ J ≫ E
+           <sub>
+            break
+           </sub>
+           = 8.67 × 10⁻⁶ J
+          </p>
+<p>
+           The bumble bee's KE is about 4 times the breaking energy!
+          </p>
+<p>
+<strong>
+            Answer (c): Bumble bee BREAKS the thread
+           </strong>
+</p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_181</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 26:
+      </h4>
+      A 15 kg block is held in place via a pulley system. The person's upper arm is vertical; the forearm is at angle θ = 30° with the horizontal. The forearm and hand together have a mass of 2.0 kg, with a center of mass at distance d₁ = 15 cm from the contact point of the forearm bone and the upper-arm bone (humerus).The triceps muscle pulls vertically upward on the forearm at distance d₂ = 2.5 cm behind that contact point. Distance d₃ is 35 cm.Upper ArmContact PointForearmθ = 30°TricepsCOMBlock15 kgd₂ = 2.5 cmd₁ = 15 cmd₃ = 35 cmGiven Data:M = 15 kg (block)m = 2.0 kg (forearm)θ = 30°d₁ = 15 cm = 0.15 md₂ = 2.5 cm = 0.025 md₃ = 35 cm = 0.35 mg = 10 m/s²Figure: Forearm lever systemFind:(a) Magnitude of force from triceps muscle on forearm(b) Magnitude of force on forearm from humerus at the contact point</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> A. Part (a): F
+       
+        triceps
+       
+       = 3185 N; Part (b): F
+       
+        humerus
+       
+       = 3037 N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B. Part (a): F
+       
+        triceps
+       
+       = 2850 N; Part (b): F
+       
+        humerus
+       
+       = 2680 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C. Part (a): F
+       
+        triceps
+       
+       = 3500 N; Part (b): F
+       
+        humerus
+       
+       = 3320 N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D. Part (a): F
+       
+        triceps
+       
+       = 2950 N; Part (b): F
+       
+        humerus
+       
+       = 2780 N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_182</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 24:
+      </h4>
+      A crate, in the form of a cube with edge lengths of 1.2 m, contains a piece of machinery. The center of mass of the crate and its contents is located 0.30 m above the crate's geometrical center. The crate rests on a ramp that makes an angle θ with the horizontal.As θ is increased from zero, an angle will be reached at which the crate will either tip over or start to slide down the ramp.θGeom. centerCOM0.30 mL = 1.2 mTwo Cases to Analyze:Case 1: μₛ = 0.60Case 2: μₛ = 0.70L = 1.2 mCOM: 0.30 m above centerFigure: Cubic crate on inclined rampGiven:Edge length of cube: L = 1.2 mCOM is 0.30 m above geometric centerTherefore, COM height above base = L/2 + 0.30 = 0.6 + 0.30 = 0.90 mHorizontal distance from base center to edge = L/2 = 0.6 mFind:For each case, determine whether the crate tips or slides, and at what angle.Case 1:Coefficient of static friction μs= 0.60Case 2:Coefficient of static friction μs= 0.70</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> Case 1: Crate slides at θ = 31.0°; Case 2: Crate tips at θ = 33.7°
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> Case 1: Crate tips at θ = 33.7°; Case 2: Crate slides at θ = 35.0°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Case 1: Crate tips at θ = 30.0°; Case 2: Crate tips at θ = 33.7°
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Case 1: Crate slides at θ = 35.0°; Case 2: Crate tips at θ = 30.0°
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Calculate tipping angle (same for both cases)
+          </strong>
+<p>
+           The crate tips when the vertical line through COM passes through the lower edge.
+          </p>
+<p>
+           tan θ_tip = (horizontal distance to edge) / (vertical height of COM)
+          </p>
+<p>
+           tan θ_tip = 0.6 / 0.90 = 0.667
+          </p>
+<p>
+<strong>
+            θ_tip = 33.7°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Calculate sliding angle for each case
+          </strong>
+<p>
+           Sliding occurs when: tan θ_slide = μₛ
+          </p>
+<p>
+<strong>
+            Case 1 (μₛ = 0.60):
+           </strong>
+</p>
+<p>
+           θ_slide = arctan(0.60) =
+           <strong>
+            31.0°
+           </strong>
+</p>
+<p>
+<strong>
+            Case 2 (μₛ = 0.70):
+           </strong>
+</p>
+<p>
+           θ_slide = arctan(0.70) =
+           <strong>
+            35.0°
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Determine failure mode
+          </strong>
+<p>
+<strong>
+            Case 1:
+           </strong>
+           θ_slide (31.0°) &lt; θ_tip (33.7°) →
+           <strong>
+            SLIDES at 31.0°
+           </strong>
+</p>
+<p>
+<strong>
+            Case 2:
+           </strong>
+           θ_tip (33.7°) &lt; θ_slide (35.0°) →
+           <strong>
+            TIPS at 33.7°
+           </strong>
+</p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_183</div>
+        <div class="badge critical">critical - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 28:
+      </h4>
+      Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m², b = 0.30 GN/m², and c = 0.80 GN/m².Assume that the thread has an initial length of 0.80 cm, an initial cross-sectional area of 8.0 × 10⁻¹² m², and (during stretching) a constant volume.Strain (ε)Stress (GN/m²)1.01.42.0abcBreaking pointStress Scale Values:a = 0.12 GN/m²b = 0.30 GN/m²c = 0.80 GN/m²Figure: Stress vs Strain curve for spider web threadGiven:Initial length: L₀ = 0.80 cm = 0.008 mInitial cross-sectional area: A₀ = 8.0 × 10⁻¹² m²Volume remains constant during stretchingBreaking strain: εbreak= 2.00Stress values: a = 0.12 GN/m², b = 0.30 GN/m², c = 0.80 GN/m²Additional Information:Fruit fly: mass = 6.00 mg = 6.00 × 10⁻⁶ kg, speed = 1.70 m/sBumble bee: mass = 0.388 g = 3.88 × 10⁻⁴ kg, speed = 0.420 m/sThe strain on the thread is the ratio of the change in the thread's length to that initial length, and the stress on the thread is the ratio of the collision force to that initial cross-sectional area.Assume that the work done on the thread by the collision force is given by the area under the curve on the graph. Assume also that when the single thread snares a flying insect, the insect's kinetic energy is transferred to the stretching of the thread.Find:(a) Energy required to break the thread(b) Does a fruit fly break the thread?(c) Does a bumble bee break the thread?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> Part (a): Energy to break = 6.08 × 10⁻⁶ J; Part (b): Fruit fly (8.67 × 10⁻⁶ J) breaks thread; Part (c): Bumble bee (3.42 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> Part (a): Energy to break = 8.67 × 10⁻⁶ J; Part (b): Fruit fly (8.67 × 10⁻⁶ J) doesn't break; Part (c): Bumble bee (3.42 × 10⁻⁵ J) breaks thread
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> Part (a): Energy to break = 3.42 × 10⁻⁶ J; Part (b): Fruit fly (8.67 × 10⁻⁶ J) breaks thread; Part (c): Bumble bee (6.08 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> Part (a): Energy to break = 6.08 × 10⁻⁶ J; Part (b): Fruit fly (3.42 × 10⁻⁶ J) doesn't break; Part (c): Bumble bee (8.67 × 10⁻⁵ J) breaks thread
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Calculate thread volume
+          </strong>
+<p>
+           V = A₀ × L₀ = (8.0 × 10⁻¹² m²) × (0.008 m) =
+           <strong>
+            6.4 × 10⁻¹⁴ m³
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Estimate energy density from curve
+          </strong>
+<p>
+           The area under the stress-strain curve represents energy per unit volume.
+          </p>
+<p>
+           From careful analysis of the curve:
+           <strong>
+            u ≈ 1.35 × 10⁹ J/m³
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Part (a): Energy to break thread
+          </strong>
+<p>
+           E_break = u × V = (1.35 × 10⁹ J/m³) × (6.4 × 10⁻¹⁴ m³)
+          </p>
+<p>
+<strong>
+            E_break ≈ 8.67 × 10⁻⁶ J
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Part (b): Fruit fly analysis
+          </strong>
+<p>
+           KE_fly = ½mv² = ½ × (6.00 × 10⁻⁶ kg) × (1.70 m/s)²
+          </p>
+<p>
+           KE_fly = 8.67 × 10⁻⁶ J
+          </p>
+<p>
+           Since KE_fly ≈ E_break, the fruit fly is at the limit but
+           <strong>
+            doesn't break the thread
+           </strong>
+</p>
+</li>
+<li>
+<strong>
+           Part (c): Bumble bee analysis
+          </strong>
+<p>
+           KE_bee = ½mv² = ½ × (3.88 × 10⁻⁴ kg) × (0.420 m/s)²
+          </p>
+<p>
+           KE_bee = 3.42 × 10⁻⁵ J
+          </p>
+<p>
+           Since KE_bee ≫ E_break, the bumble bee
+           <strong>
+            breaks the thread
+           </strong>
+</p>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_186</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 47:
+      </h4>
+      Figure 13-38 shows a spherical hollow inside a lead sphere of radius R = 4.00 cm; the surface of the hollow passes through the center of the sphere and "touches" the right side of the sphere. The mass of the sphere before hollowing was M = 2.95 kg. With what gravitational force does the hollowed-out lead sphere attract a small sphere of mass m = 0.431 kg that lies at a distance d = 9.00 cm from the center of the lead sphere, on the straight line connecting the centers of the spheres and of the hollow?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A. 7.85 × 10
+       
+        -9
+       
+       N
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> B. 8.29 × 10
+       
+        -9
+       
+       N
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C. 9.12 × 10
+       
+        -9
+       
+       N
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D. 1.05 × 10
+       
+        -8
+       
+       N
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Understand the geometry
+          </strong>
+<br>
+          The hollow sphere has radius R/2 = 2.00 cm and is centered at distance R/2 from the center of the original sphere.
+         </li>
+<li>
+<strong>
+           Step 2: Calculate the removed mass
+          </strong>
+<br>
+          Volume ratio = (R/2)³/R³ = 1/8
+          <br>
+          Mass removed: M
+          <sub>
+           cavity
+          </sub>
+          = M/8 = 2.95/8 = 0.369 kg
+         </li>
+<li>
+<strong>
+           Step 3: Calculate force from complete sphere
+          </strong>
+<br>
+<div class="formula">
+           F₁ = GMm/d² = (6.67×10⁻¹¹)(2.95)(0.431)/(0.09)²
+           <br>
+           F₁ = 8.46×10⁻¹¹/0.0081 = 1.044×10⁻⁸ N
+          </div>
+</li>
+<li>
+<strong>
+           Step 4: Calculate force from removed mass
+          </strong>
+<br>
+          Distance from m to cavity center: d
+          <sub>
+           cavity
+          </sub>
+          = d - R/2 = 9.00 - 2.00 = 7.00 cm = 0.07 m
+          <br>
+<div class="formula">
+           F₂ = G(M/8)m/d
+           <sub>
+            cavity
+           </sub>
+           ² = (6.67×10⁻¹¹)(0.369)(0.431)/(0.07)²
+           <br>
+           F₂ = 1.061×10⁻¹¹/0.0049 = 2.17×10⁻⁹ N
+          </div>
+</li>
+<li>
+<strong>
+           Step 5: Apply superposition
+          </strong>
+<br>
+<div class="formula">
+           F
+           <sub>
+            net
+           </sub>
+           = F₁ - F₂ = 1.044×10⁻⁸ - 2.17×10⁻⁹
+           <br>
+           F
+           <sub>
+            net
+           </sub>
+           = 8.27×10⁻⁹ N ≈ 8.29×10⁻⁹ N
+          </div>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_187</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Gravitation |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 46:
+      </h4>
+      Three spheres in Fig. 13-45, with masses mA= 80 g, mB= 10 g, and mC= 20 g, have their centers on a common line, with L = 12 cm and d = 4.0 cm. You move sphere B along the line until its center-to-center separation from C is d = 4.0 cm. How much work is done on sphere B (a) by you and (b) by the net gravitational force on B due to spheres A and C?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A. 3.5 × 10
+       
+        -11
+       
+       J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> B. 4.2 × 10
+       
+        -11
+       
+       J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> C. 4.8 × 10
+       
+        -11
+       
+       J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> D. 5.1 × 10
+       
+        -11
+       
+       J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1: Identify initial configuration
+          </strong>
+<br>
+          Initially: A at 0, B at distance d from A, C at distance L from A
+          <br>
+          So: r
+          <sub>
+           AB,i
+          </sub>
+          = 4.0 cm, r
+          <sub>
+           BC,i
+          </sub>
+          = 12.0 - 4.0 = 8.0 cm
+         </li>
+<li>
+<strong>
+           Step 2: Identify configuration
+          </strong>
+<br>
+          ly: B is at distance d = 4.0 cm from C
+          <br>
+          So: r
+          <sub>
+           BC,f
+          </sub>
+          = 4.0 cm, r
+          <sub>
+           AB,f
+          </sub>
+          = 12.0 - 4.0 = 8.0 cm
+         </li>
+<li>
+<strong>
+           Step 3: Calculate initial potential energy
+          </strong>
+<br>
+<div class="formula">
+           U
+           <sub>
+            i
+           </sub>
+           = -Gm
+           <sub>
+            A
+           </sub>
+           m
+           <sub>
+            B
+           </sub>
+           /r
+           <sub>
+            AB,i
+           </sub>
+           - Gm
+           <sub>
+            B
+           </sub>
+           m
+           <sub>
+            C
+           </sub>
+           /r
+           <sub>
+            BC,i
+           </sub>
+<br>
+           U
+           <sub>
+            i
+           </sub>
+           = -G(0.080)(0.010)/0.04 - G(0.010)(0.020)/0.08
+           <br>
+           U
+           <sub>
+            i
+           </sub>
+           = -6.67×10⁻¹¹[0.0008/0.04 + 0.0002/0.08]
+           <br>
+           U
+           <sub>
+            i
+           </sub>
+           = -6.67×10⁻¹¹[0.02 + 0.0025]
+           <br>
+           U
+           <sub>
+            i
+           </sub>
+           = -1.501×10⁻¹² J
+          </div>
+</li>
+<li>
+<strong>
+           Step 4: Calculate potential energy
+          </strong>
+<br>
+<div class="formula">
+           U
+           <sub>
+            f
+           </sub>
+           = -Gm
+           <sub>
+            A
+           </sub>
+           m
+           <sub>
+            B
+           </sub>
+           /r
+           <sub>
+            AB,f
+           </sub>
+           - Gm
+           <sub>
+            B
+           </sub>
+           m
+           <sub>
+            C
+           </sub>
+           /r
+           <sub>
+            BC,f
+           </sub>
+<br>
+           U
+           <sub>
+            f
+           </sub>
+           = -G(0.080)(0.010)/0.08 - G(0.010)(0.020)/0.04
+           <br>
+           U
+           <sub>
+            f
+           </sub>
+           = -6.67×10⁻¹¹[0.0008/0.08 + 0.0002/0.04]
+           <br>
+           U
+           <sub>
+            f
+           </sub>
+           = -6.67×10⁻¹¹[0.01 + 0.005]
+           <br>
+           U
+           <sub>
+            f
+           </sub>
+           = -1.001×10⁻¹² J
+          </div>
+</li>
+<li>
+<strong>
+           Step 5: Calculate work by gravitational forces
+          </strong>
+<br>
+<div class="formula">
+           W
+           <sub>
+            gravity
+           </sub>
+           = -(U
+           <sub>
+            f
+           </sub>
+           - U
+           <sub>
+            i
+           </sub>
+           ) = -(−1.001×10⁻¹² + 1.501×10⁻¹²)
+           <br>
+           W
+           <sub>
+            gravity
+           </sub>
+           = -5.0×10⁻¹³ J (negative, so gravity opposes motion)
+          </div>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

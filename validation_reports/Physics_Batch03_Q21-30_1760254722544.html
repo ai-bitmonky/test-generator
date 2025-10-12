@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 3 (Questions 21-30)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 3: Questions 21 - 30</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:42 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">25</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_128</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 4:
+      </h4>
+      A parallel-plate capacitor of plate area A = 10.5 cm² and plate separation 2d = 7.12 mm is configured as follows: The left half is filled with dielectric κ₁ = 21.0. The right half is divided into two regions - top with κ₂ = 42.0 and bottom with κ₃ = 58.0. Calculate the total capacitance.[Left half: uniform κ₁; Right half: top quarter κ₂, bottom quarter κ₃]</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> C = 41.6 pF
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> C = 38.2 pF
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C = 45.8 pF
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> C = 35.4 pF
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Left half capacitor: C₁ = κ₁ε₀(A/2)/(2d) = 21 × ε₀A/(4d)
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Right top quarter: C₂ = κ₂ε₀(A/4)/(2d) = 42 × ε₀A/(8d)
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Right bottom quarter: C₃ = κ₃ε₀(A/4)/(2d) = 58 × ε₀A/(8d)
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Total: C = C₁ + C₂ + C₃ = ε₀A/(4d) × [21 + 21 + 29] = 71ε₀A/(4d)
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Substituting values: C = 71 × 8.85×10⁻¹² × 10.5×10⁻⁴ / (4 × 3.56×10⁻³)
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          C = 41.6 pF
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_129</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 16:
+      </h4>
+      In the figure shown, two charges q₁ = +4e and q₂ = -2e are fixed in place. A third charge Q = +16e is to be brought from infinity to point P along the dashed line. Point P is at distance d = 1.40 cm from q₁ at angle θ₁ = 43° and at distance 2.00d from q₂ at angle θ₂ = 60°. Calculate the work required to bring charge Q from infinity to point P.[Figure shows two fixed charges and point P with specified angles and distances]⚠️ FIGURE MISSING: This problem references a figure that was not included in the original document. The figure needs to be added manually.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 5.26 × 10⁻²⁷ J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 3.94 × 10⁻²⁷ J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 6.57 × 10⁻²⁷ J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4.21 × 10⁻²⁷ J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Calculate distance from P to q₁: r₁ = d = 1.40 cm = 0.014 m
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Calculate distance from P to q₂: r₂ = 2.00d = 2.80 cm = 0.028 m
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Find potential at P due to q₁: V₁ = kq₁/r₁ = k(4e)/0.014
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Find potential at P due to q₂: V₂ = kq₂/r₂ = k(-2e)/0.028
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Total potential at P: Vₚ = V₁ + V₂ = k(4e/0.014 - 2e/0.028) = k(4e/0.014 - e/0.014) = 3ke/0.014
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          Work done: W = QVₚ = (16e)(3ke/0.014) = 48ke²/0.014
+         </li>
+<li>
+<strong>
+           Step 7:
+          </strong>
+          Substituting values: W = 48 × (8.99 × 10⁹) × (1.6 × 10⁻¹⁹)² / 0.014 = 3.94 × 10⁻²⁷ J
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_130</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 15:
+      </h4>
+      A uniformly charged plastic disk of radius R = 64.0 cm with surface charge density σ = 7.73 fC/m² has three quadrants removed, leaving only one quadrant. Find the electric potential at point P on the central axis of the original disk at distance D = 25.9 cm from the center. (Take V = 0 at infinity)[Figure shows a quarter disk with point P on the axis]</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 4.52 × 10⁻⁵ V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1.13 × 10⁻⁵ V
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 2.26 × 10⁻⁵ V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 9.04 × 10⁻⁶ V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Element of charge: dq = σ dA = σ r dr dθ
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Distance from element to P: r' = √(r² + D²)
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Potential element: dV = k σ r dr dθ / √(r² + D²)
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Set integration limits: r from 0 to R, θ from 0 to π/2 (one quadrant)
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          V = k σ ∫₀^(π/2) dθ ∫₀^R r dr / √(r² + D²)
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          Angular integral gives π/2
+         </li>
+<li>
+<strong>
+           Step 7:
+          </strong>
+          Radial integral: ∫₀^R r dr / √(r² + D²) = [√(r² + D²)]₀^R = √(R² + D²) - D
+         </li>
+<li>
+<strong>
+           Step 8:
+          </strong>
+          V = (πkσ/2)[√(R² + D²) - D]
+         </li>
+<li>
+<strong>
+           Step 9:
+          </strong>
+          Substituting values: V = (π × 8.99×10⁹ × 7.73×10⁻¹⁵ / 2)[√(0.64² + 0.259²) - 0.259]
+         </li>
+<li>
+<strong>
+           Step 10:
+          </strong>
+          V = 2.26 × 10⁻⁵ V
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_131</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 12:
+      </h4>
+      An electron is released from rest on the axis of an electric dipole at distance 7.0d from the dipole center on the positive side, where the dipole has charge ±e and separation d = 20 pm. Find the electron's speed when it reaches a point 5.0d from the dipole center.[Figure shows an electric dipole with +e and -e charges separated by distance d]</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 8.42 × 10⁵ m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1.19 × 10⁶ m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 6.31 × 10⁵ m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 9.73 × 10⁵ m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Calculate dipole moment: p = ed = (1.6×10⁻¹⁹)(20×10⁻¹²) = 3.2×10⁻³⁰ C·m
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Initial potential (electron at r₁ = 7d): V₁ = kp/(7d)² = kp/49d²
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          potential (electron at r₂ = 5d): V₂ = kp/(5d)² = kp/25d²
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Change in potential: ΔV = V₂ - V₁ = kp(1/25d² - 1/49d²)
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          ΔV = kp × 24/(25×49×d²) = 24kp/(1225d²)
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          Change in PE of electron: ΔPE = -eΔV (negative charge)
+         </li>
+<li>
+<strong>
+           Step 7:
+          </strong>
+          By conservation of energy: ½mv² = -ΔPE = eΔV
+         </li>
+<li>
+<strong>
+           Step 8:
+          </strong>
+          v² = 2eΔV/m = 2e × 24kp/(1225md²)
+         </li>
+<li>
+<strong>
+           Step 9:
+          </strong>
+          Substituting all values: v = 1.19 × 10⁶ m/s
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_132</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Figure Validator] Figure mentioned in problem but no visual element found
+            </div>
+            <div class="issue-details">Details: Question references a figure but question_html has no SVG, image, or figure tag</div>
+            <div class="issue-details">Field: <code>question_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 11:
+      </h4>
+      A rectangular array of charged particles is fixed in place with distance a = 39.0 cm. The charges are: corner 1: -q₁, corner 2: +4q₂, corner 3: +2q₁, corner 4: +2q₁, corner 5: +4q₂, corner 6: -3q₁, where q₁ = 3.40 pC and q₂ = 6.00 pC. Find the net electric potential at the rectangle's center. (V = 0 at infinity)[Figure shows a rectangular array with 6 charged particles at specific positions]</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 3.47 V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.89 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4.15 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.73 V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Step 1:
+          </strong>
+          Identify rectangle dimensions and center position
+         </li>
+<li>
+<strong>
+           Step 2:
+          </strong>
+          Calculate distance from each corner to center: r_corner = a√2/2
+         </li>
+<li>
+<strong>
+           Step 3:
+          </strong>
+          Calculate distance from midpoints to center: r_mid = a/2
+         </li>
+<li>
+<strong>
+           Step 4:
+          </strong>
+          Sum potentials from corners: V_corners = k/r_corner × [−q₁ + 4q₂ + 2q₁ + 2q₁]
+         </li>
+<li>
+<strong>
+           Step 5:
+          </strong>
+          Sum potentials from midpoints: V_mids = k/r_mid × [4q₂ − 3q₁]
+         </li>
+<li>
+<strong>
+           Step 6:
+          </strong>
+          Total potential: V = V_corners + V_mids
+         </li>
+<li>
+<strong>
+           Step 7:
+          </strong>
+          Substituting values: V = 3.47 V
+         </li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_138</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Capacitance |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 3:
+      </h4>
+      A parallel-plate capacitor has plate area A = 10.5 cm² and plate separation d = 7.12 mm. The region between the plates is filled with dielectrics in a specific configuration:Left half:Uniformly filled with dielectric κ₁ = 21.0Right half:Divided into two equal parts:Top section: dielectric κ₂ = 42.0Bottom section: dielectric κ₃ = 58.0Top Plate (+)κ₁ = 21.0(Left Half)Area = A/2 = 5.25 cm²κ₂ = 42.0(Right Top Quarter)Area = A/4 = 2.625 cm²κ₃ = 58.0(Right Bottom Quarter)Area = A/4 = 2.625 cm²Bottom Plate (-)d = 7.12 mm← Left Half →← Right Half →Figure 7:Cross-sectional view showing dielectric configuration (looking from the side)Equivalent CircuitC₁κ₁A/(2d)C₂κ₂A/(4d)C₃κ₃A/(4d)Three capacitorsin parallelCtotal= C₁ + C₂ + C₃Figure 8:Equivalent circuit showing three parallel capacitorsCalculate the total capacitance of this configuration.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> C = 46.4 pF
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> C = 38.2 pF
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> C = 45.8 pF
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> C = 35.4 pF
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+         Treat as three capacitors in parallel:C₁: Left half with area A/2, separation d, dielectric κ₁C₂: Right top quarter with area A/4, separation d, dielectric κ₂C₃: Right bottom quarter with area A/4, separation d, dielectric κ₃
+        </div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+<li>
+<strong>
+           Calculate C₁ (left half):
+          </strong>
+<br>
+          C₁ = κ₁ε₀(A/2)/d
+          <br>
+          C₁ = 21.0 × (8.85 × 10⁻¹²) × (10.5 × 10⁻⁴ / 2) / (7.12 × 10⁻³)
+          <br>
+          C₁ = 21.0 × 8.85 × 10⁻¹² × 5.25 × 10⁻⁵ / 7.12 × 10⁻³
+          <br>
+          C₁ = 21.0 × 8.85 × 5.25 / 7.12 × 10⁻¹⁴
+          <br>
+          C₁ = 976.5 / 7.12 × 10⁻¹⁴
+          <br>
+          C₁ = 137.15 × 10⁻¹⁴ F =
+          <strong>
+           13.72 pF
+          </strong>
+</li>
+<li>
+<strong>
+           Calculate C₂ (right top quarter):
+          </strong>
+<br>
+          C₂ = κ₂ε₀(A/4)/d
+          <br>
+          C₂ = 42.0 × (8.85 × 10⁻¹²) × (10.5 × 10⁻⁴ / 4) / (7.12 × 10⁻³)
+          <br>
+          C₂ = 42.0 × 8.85 × 10⁻¹² × 2.625 × 10⁻⁵ / 7.12 × 10⁻³
+          <br>
+          C₂ = 42.0 × 8.85 × 2.625 / 7.12 × 10⁻¹⁴
+          <br>
+          C₂ = 976.5 / 7.12 × 10⁻¹⁴
+          <br>
+          C₂ = 137.15 × 10⁻¹⁴ F =
+          <strong>
+           13.72 pF
+          </strong>
+<br>
+<br>
+          Note: C₂ = C₁ because κ₂ × (A/4) = κ₁ × (A/2)
+          <br>
+          42 × (1/4) = 21 × (1/2) = 10.5 ✓
+         </li>
+<li>
+<strong>
+           Calculate C₃ (right bottom quarter):
+          </strong>
+<br>
+          C₃ = κ₃ε₀(A/4)/d
+          <br>
+          C₃ = 58.0 × (8.85 × 10⁻¹²) × (10.5 × 10⁻⁴ / 4) / (7.12 × 10⁻³)
+          <br>
+          C₃ = 58.0 × 8.85 × 2.625 / 7.12 × 10⁻¹⁴
+          <br>
+          C₃ = 1348.275 / 7.12 × 10⁻¹⁴
+          <br>
+          C₃ = 189.37 × 10⁻¹⁴ F =
+          <strong>
+           18.94 pF
+          </strong>
+</li>
+<li>
+<strong>
+           Total capacitance (parallel):
+          </strong>
+<br>
+          C
+          <sub>
+           total
+          </sub>
+          = C₁ + C₂ + C₃
+          <br>
+          C
+          <sub>
+           total
+          </sub>
+          = 13.72 + 13.72 + 18.94
+          <br>
+          C
+          <sub>
+           total
+          </sub>
+          =
+          <strong>
+           46.38 pF ≈ 46.4 pF
+          </strong>
+</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_139</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><h4>
+       Question 10:
+      </h4>
+      In the figure shown, two charges q₁ = +4e and q₂ = -2e are fixed in place. A third charge Q = +16e is to be brought from infinity to point P along the dashed line. Point P is at distance d = 1.40 cm from q₁ and at distance 2.00d from q₂. Calculate the work required to bring charge Q from infinity to point P.Given:q₁ = +4e = +4(1.6 × 10⁻¹⁹ C) = +6.4 × 10⁻¹⁹ Cq₂ = -2e = -2(1.6 × 10⁻¹⁹ C) = -3.2 × 10⁻¹⁹ CQ = +16e = +16(1.6 × 10⁻¹⁹ C) = +2.56 × 10⁻¹⁸ Cd = 1.40 cm = 0.014 mDistance from P to q₁: r₁ = d = 0.014 mDistance from P to q₂: r₂ = 2.00d = 0.028 m⚠️ FIGURE MISSING: This problem references a figure that was not included in the original document. The figure needs to be added manually.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 5.26 × 10⁻²⁷ J
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 3.94 × 10⁻²⁷ J
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 6.57 × 10⁻²⁷ J
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 4.21 × 10⁻²⁷ J
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            
+<strong>
+         Solution:
+        </strong>
+<div class="strategy">
+<strong>
+          Strategy:
+         </strong>
+</div>
+<div class="expert-insight">
+<strong>
+          Expert Insight:
+         </strong>
+</div>
+<div class="key-facts">
+<strong>
+          Key Facts Used:
+         </strong>
+</div>
+<ol class="steps">
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_140</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A uniformly charged plastic disk of radius R = 64.0 cm with surface charge density σ = 7.73 fC/m² has three quadrants removed, leaving only one quadrant. Find the electric potential at point P on the central axis of the original disk at distance D = 25.9 cm from the center. (Take V = 0 at infinity)
+   <br/>
+<br/>
+<strong>
+    Given:
+   </strong>
+<ul>
+<li>
+     R = 64.0 cm = 0.640 m
+    </li>
+<li>
+     σ = 7.73 fC/m² = 7.73 × 10⁻¹⁵ C/m²
+    </li>
+<li>
+     D = 25.9 cm = 0.259 m
+    </li>
+<li>
+     Only one quadrant (1/4 of full disk) remains
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 4.52 × 10⁻⁵ V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 1.13 × 10⁻⁵ V
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 2.26 × 10⁻⁵ V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 9.04 × 10⁻⁶ V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_141</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>An electron is released from rest on the axis of an electric dipole at distance 7.0d from the dipole center on the positive side, where the dipole has charge ±e and separation d = 20 pm. Find the electron's speed when it reaches a point 5.0d from the dipole center.
+   <br/>
+<br/>
+<strong>
+    Given:
+   </strong>
+<ul>
+<li>
+     Dipole charges: +e and -e
+    </li>
+<li>
+     Dipole separation: d = 20 pm = 20 × 10⁻¹² m
+    </li>
+<li>
+     Initial position: r₁ = 7.0d = 1.4 × 10⁻¹⁰ m
+    </li>
+<li>
+     position: r₂ = 5.0d = 1.0 × 10⁻¹⁰ m
+    </li>
+<li>
+     Electron mass: m
+     <sub>
+      e
+     </sub>
+     = 9.109 × 10⁻³¹ kg
+    </li>
+<li>
+     Electron charge: -e = -1.6 × 10⁻¹⁹ C
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 8.42 × 10⁵ m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 1.19 × 10⁶ m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 6.31 × 10⁵ m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 9.73 × 10⁵ m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Electromagnetism_142</div>
+        <div class="badge high">high - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Electric Fields |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A rectangular array of charged particles is fixed in place with distance a = 39.0 cm. The array consists of 6 charged particles: 4 at the corners and 2 at the midpoints of the longer sides. The charges are positioned as follows:
+   <ul>
+<li>
+     Corner 1 (top-left): q₁ = -q where q = 3.40 pC
+    </li>
+<li>
+     Midpoint (top): q₂ = +4Q where Q = 6.00 pC
+    </li>
+<li>
+     Corner 2 (top-right): q₃ = +2q
+    </li>
+<li>
+     Corner 3 (bottom-left): q₄ = +2q
+    </li>
+<li>
+     Midpoint (bottom): q₅ = +4Q
+    </li>
+<li>
+     Corner 4 (bottom-right): q₆ = -3q
+    </li>
+</ul>
+   Rectangle dimensions: width = 2a, height = a
+   <br/>
+   Find the net electric potential at the rectangle's center. (V = 0 at infinity)
+   <br/>
+<br/>
+<strong>
+    Given:
+   </strong>
+<ul>
+<li>
+     q = 3.40 pC = 3.40 × 10⁻¹² C
+    </li>
+<li>
+     Q = 6.00 pC = 6.00 × 10⁻¹² C
+    </li>
+<li>
+     a = 39.0 cm = 0.390 m
+    </li>
+</ul></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 3.47 V
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 2.89 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 4.15 V
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.73 V
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

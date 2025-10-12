@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics - Batch 12 (Questions 111-120)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Physics</h1>
+      <div class="batch-info">Batch 12: Questions 111 - 120</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:08:43 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">9</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">10%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">16</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (9 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_47</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Equilibrium and Elasticity |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     In the figure, a 55 kg rock climber is in a lie-back climb along a fissure, with hands pulling on one side of the fissure and feet pressed against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is a horizontal distance d = 0.40 m from the fissure. The coefficient of static friction between hands and rock is μ₁ = 0.40, and between boots and rock is μ₂ = 1.2.What is the least horizontal pull by the hands and push by the feet that will keep the climber stable?⚠️ FIGURE MISSING: This problem references a figure that was not included in the original document. The figure needs to be added manually.
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_50</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Fluid Mechanics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>Mountain Roots:</strong> In analyzing certain geological features, it is often appropriate to assume that the pressure at some horizontal level of compensation, deep inside Earth, is the same over a large region and is equal to the pressure due to the gravitational force on the overlying material. Thus, the pressure on the level of compensation is given by the fluid pressure formula. This model requires that mountains have roots of continental rock extending into the denser mantle. Consider a mountain of height H = 6.0 km on a continent of thickness T = 32 km. The continental rock has a density of 2.9 g/cm³, and beneath this rock the mantle has a density of 3.3 g/cm³. Calculate the depth D of the root.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> 43.5 km
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 38.0 km
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 11.5 km
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 6.0 km
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Use the principle of isostasy - pressure at the compensation level must be equal at two different vertical columns (one under the mountain, one under normal continent). Set up pressure equations for both columns and equate them. The depth y of compensation level cancels out.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> This is a classic isostasy problem. A topper immediately recognizes that the mountain "floats" on the denser mantle just like an iceberg floats in water. The key insight is that equilibrium requires equal pressures at depth, leading to a root that extends into the mantle. The calculation is straightforward once the physical principle is understood.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Set up pressure equation at point a (under mountain)</strong><br/>
+ At compensation level under the mountain:<br/>
+ p_a = ρ_c × g × (H + T + D)<br/>
+ p_a = 2900 × g × (6 + 32 + D) = 2900g(38 + D)</li>
+<li><strong>Step 2: Set up pressure equation at point b (normal continent)</strong><br/>
+ At compensation level under normal continent:<br/>
+ p_b = ρ_c × g × T + ρ_m × g × D<br/>
+ p_b = 2900 × g × 32 + 3300 × g × D<br/>
+ p_b = g(92,800 + 3300D)</li>
+<li><strong>Step 3: Apply isostasy condition</strong><br/>
+ For equilibrium: p_a = p_b<br/>
+ 2900g(38 + D) = g(92,800 + 3300D)<br/>
+ 110,200 + 2900D = 92,800 + 3300D</li>
+<li><strong>Step 4: Solve for D</strong><br/>
+ 110,200 - 92,800 = 3300D - 2900D<br/>
+ 17,400 = 400D<br/>
+ D = 17,400/400 = 43.5 km</li>
+<li><strong>Step 5: Physical interpretation</strong><br/>
+ The mountain root extends <strong>43.5 km</strong> below the normal continent base, creating a total crustal thickness of 32 + 43.5 = 75.5 km under the mountain. This demonstrates that mountains are supported by buoyancy, similar to icebergs.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_51</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Fluid Mechanics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>Dam Forces and Torque:</strong> Water stands at depth D = 35.0 m behind the vertical upstream face of a dam of width W = 314 m. Find (a) the net horizontal force on the dam from the gauge pressure of the water and (b) the net torque due to that force about a horizontal line through O parallel to the (long) width of the dam. This torque tends to rotate the dam around that line, which would cause the dam to fail. (c) Find the moment arm of the torque.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) F = 1.89 × 10⁹ N, (b) τ = 2.20 × 10¹⁰ N⋅m, (c) r = 11.7 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) F = 3.78 × 10⁹ N, (b) τ = 4.40 × 10¹⁰ N⋅m, (c) r = 11.7 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) F = 1.89 × 10⁹ N, (b) τ = 4.40 × 10¹⁰ N⋅m, (c) r = 23.3 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) F = 1.89 × 10⁹ N, (b) τ = 1.47 × 10¹⁰ N⋅m, (c) r = 7.8 m
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> The pressure varies linearly with depth, so we integrate to find total force. For torque, we need to integrate pressure × area × moment arm. Alternatively, use the fact that the resultant force acts at the centroid of the pressure distribution (triangular), which is at 2D/3 from the top.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper quickly identifies this as a distributed load problem. The key insight is that the pressure distribution is triangular, and for such distributions, the resultant force acts at the centroid. This shortcut avoids integration: the moment arm is D/3 from the bottom (or 2D/3 from the top).
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Find total horizontal force</strong><br/>
+ Pressure at depth h below surface: p(h) = ρgh<br/>
+ Force on strip of height dh at depth h: dF = p(h) × W × dh = ρghW dh<br/>
+ Total force: F = ∫₀ᴰ ρghW dh = ρgW[h²/2]₀ᴰ<br/>
+ F = (1000)(9.8)(314)(35.0²/2)<br/>
+ F = 1000 × 9.8 × 314 × 612.5<br/>
+ F = 1.89 × 10⁹ N</li>
+<li><strong>Step 2: Find torque about point O (at bottom)</strong><br/>
+ Moment arm for strip at depth h from surface is (D - h) from O<br/>
+ dτ = (D - h) × dF = (D - h) × ρghW dh<br/>
+ τ = ∫₀ᴰ (D - h)ρghW dh = ρgW ∫₀ᴰ (Dh - h²) dh<br/>
+ τ = ρgW[Dh²/2 - h³/3]₀ᴰ<br/>
+ τ = ρgW(D³/2 - D³/3) = ρgWD³/6<br/>
+ τ = (1000)(9.8)(314)(35.0³/6)<br/>
+ τ = 1000 × 9.8 × 314 × 7145.83<br/>
+ τ = 2.20 × 10¹⁰ N⋅m</li>
+<li><strong>Step 3: Find moment arm</strong><br/>
+ Using τ = F × r:<br/>
+ r = τ/F = (2.20 × 10¹⁰)/(1.89 × 10⁹)<br/>
+ r = 11.7 m<br/>
+ This is D/3 from the bottom, confirming our result. The center of pressure is at depth 2D/3 = 23.3 m from the surface.</li>
+<li><strong>Step 4: Verification</strong><br/>
+ Alternative approach: Average pressure = ρgD/2 at centroid (2D/3 from top)<br/>
+ F = (average pressure) × Area = (ρgD/2) × (WD) = ρgWD²/2 ✓<br/>
+ Moment arm from bottom = D/3 ✓</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_52</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Fluid Mechanics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>T-Rex Fossil Density Determination:</strong> When researchers find a reasonably complete fossil of a dinosaur, they can determine the mass and weight of the living dinosaur with a scale model sculpted from plastic and based on the dimensions of the fossil bones. The scale of the model is 1/20; that is, lengths are 1/20 actual length, areas are (1/20)² actual areas, and volumes are (1/20)³ actual volumes. First, the model is suspended from one arm of a balance and weights are added to the other arm until equilibrium is reached. Then the model is fully submerged in water and enough weights are removed from the second arm to reestablish equilibrium. For a model of a particular T. rex fossil, 637.76 g had to be removed to reestablish equilibrium. What was the volume of (a) the model and (b) the actual T. rex? (c) If the density of T. rex was approximately the density of water, what was its mass?</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> (a) V_model = 637.76 cm³, (b) V_actual = 5.10 × 10⁶ cm³, (c) m_actual = 5100 kg
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (a) V_model = 318.88 cm³, (b) V_actual = 2.55 × 10⁶ cm³, (c) m_actual = 2550 kg
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (a) V_model = 1275.52 cm³, (b) V_actual = 1.02 × 10⁷ cm³, (c) m_actual = 10,200 kg
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (a) V_model = 637.76 cm³, (b) V_actual = 2.55 × 10⁶ cm³, (c) m_actual = 2550 kg
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> When the model is submerged, the weight removed equals the buoyant force. Use Archimedes' principle: buoyant force equals the weight of displaced water. The volume of the model equals the volume of water displaced. Then apply scaling laws to find the actual T. rex volume.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> A topper immediately recognizes this as a two-part problem: (1) buoyancy to find model volume, (2) scaling to find actual volume. The key insight is that the weight removed equals the buoyant force, which equals the weight of displaced water. Since 637.76 g of weight was removed, 637.76 g of water was displaced, giving the model's volume directly.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Understand the equilibrium conditions</strong><br/>
+ Initially: Weight_model = Weight_added<br/>
+ After submersion: Weight_model = Weight_remaining + Buoyant_force<br/>
+ Subtracting: 0 = Weight_removed - Buoyant_force<br/>
+ Therefore: Weight_removed = Buoyant_force</li>
+<li><strong>Step 2: Calculate model volume</strong><br/>
+ Weight removed = 637.76 g = mass of water displaced<br/>
+ Since ρ_water = 1 g/cm³:<br/>
+ V_model = mass_water/ρ_water = 637.76/1 = 637.76 cm³</li>
+<li><strong>Step 3: Apply scaling law for volume</strong><br/>
+ Linear scale factor = 1/20<br/>
+ Volume scale factor = (1/20)³ = 1/8000<br/>
+ V_actual = V_model × 8000<br/>
+ V_actual = 637.76 × 8000 = 5,102,080 cm³<br/>
+ V_actual ≈ 5.10 × 10⁶ cm³ = 5.10 m³</li>
+<li><strong>Step 4: Calculate mass if density equals water</strong><br/>
+ If ρ_T.rex = ρ_water = 1000 kg/m³:<br/>
+ m_actual = ρ × V = 1000 × 5.10 = 5100 kg</li>
+<li><strong>Step 5: Verify reasonableness</strong><br/>
+ A T. rex mass of 5100 kg (about 5 metric tons) is reasonable for a large theropod dinosaur, consistent with paleontological estimates.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_53</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Fluid Mechanics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>Pitot Tube:</strong> A pitot tube is used to determine the airspeed of an airplane. It consists of an outer tube with a number of small holes B that allow air into the tube; that tube is connected to one arm of a U-tube. The other arm of the U-tube is connected to hole A at the front end of the device, which points in the direction the plane is headed. At A the air becomes stagnant so that v_A = 0. At B, however, the speed of the air presumably equals the airspeed v of the plane. The tube contains alcohol and the level difference h is 26.0 cm. What is the plane's speed relative to the air? The density of the air is 1.03 kg/m³ and that of alcohol is 810 kg/m³.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 45.2 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 64.0 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 90.4 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 128 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> Apply Bernoulli's equation between points A (stagnant) and B (moving at plane speed). The pressure difference causes the height difference in the manometer. Relate pressure difference to height difference, then solve for velocity.
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> This is a classic Bernoulli application. A topper immediately identifies: (1) At point A, kinetic energy is zero (stagnant point), (2) At point B, flow is at plane speed, (3) The height term is negligible for air (same elevation), (4) Pressure difference equals ρ_alcohol × g × h. The problem reduces to converting pressure head to velocity.
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>Step 1: Apply Bernoulli between A and B</strong><br/>
+ At same elevation: p_A + 0 = p_B + (1/2)ρ_air × v²<br/>
+ p_A - p_B = (1/2)ρ_air × v²<br/>
+ Δp = (1/2)ρ_air × v²</li>
+<li><strong>Step 2: Relate pressure difference to manometer reading</strong><br/>
+ The pressure difference is measured by alcohol column:<br/>
+ Δp = ρ_alcohol × g × h<br/>
+ Δp = 810 × 9.8 × 0.26 = 2063.28 Pa</li>
+<li><strong>Step 3: Solve for velocity</strong><br/>
+ (1/2)ρ_air × v² = ρ_alcohol × g × h<br/>
+ v² = (2 × ρ_alcohol × g × h)/ρ_air<br/>
+ v² = (2 × 810 × 9.8 × 0.26)/1.03<br/>
+ v² = 4126.56/1.03 = 4006.4<br/>
+ v = 63.3 m/s ≈ 64.0 m/s</li>
+<li><strong>Step 4: Alternative formula derivation</strong><br/>
+ From part (a) of problem, the general formula is:<br/>
+ v = √(2ρgh/ρ_air) where ρ is manometer liquid density<br/>
+ This formula is derived exactly as we did above.</li>
+<li><strong>Step 5: Physical interpretation</strong><br/>
+ At 64 m/s ≈ 230 km/h, this is a reasonable speed for a small aircraft. The pitot tube converts kinetic energy of moving air to pressure energy at the stagnation point, allowing speed measurement.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_54</div>
+        <div class="badge high">high - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Fluid Mechanics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>
+     Ball Emerging from Water:
+    </strong>
+    Suppose that you release a small ball from rest at a depth of 0.600 m below the surface in a pool of water. If the density of the ball is 0.300 that of water and if the drag force on the ball from the water is negligible, how high above the water surface will the ball shoot as it emerges from the water? (Neglect any transfer of energy to the splashing and waves produced by the emerging ball.)</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.280 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 0.420 m
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 0.840 m
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> 1.400 m
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Identify all forces and their work
+      </strong>
+<br/>
+      Let V = volume of ball, taking water surface as reference level (PE = 0)
+      <br/>
+<br/>
+<strong>
+       Underwater phase (depth d = 0.6 m to surface):
+      </strong>
+<br/>
+      • Buoyant force: F
+      <sub>
+       b
+      </sub>
+      = ρ
+      <sub>
+       water
+      </sub>
+      × V × g (upward)
+      <br/>
+      • Weight: W = 0.3ρ
+      <sub>
+       water
+      </sub>
+      × V × g (downward)
+      <br/>
+<br/>
+<strong>
+       Air phase (surface to height h):
+      </strong>
+<br/>
+      • Only weight acts: W = 0.3ρ
+      <sub>
+       water
+      </sub>
+      × V × g (downward)</li>
+<li><strong>
+       Step 2: Calculate work by each force over entire path
+      </strong>
+<br/>
+      From release (at depth d) to maximum height (h above surface):
+      <br/>
+<br/>
+<strong>
+       Work by buoyancy (only in water, through distance d):
+      </strong>
+<br/>
+      W
+      <sub>
+       buoyancy
+      </sub>
+      = F
+      <sub>
+       b
+      </sub>
+      × d = ρVg × 0.6
+      <br/>
+<br/>
+<strong>
+       Work by gravity (through water + air, total distance d + h):
+      </strong>
+<br/>
+      W
+      <sub>
+       gravity
+      </sub>
+      = -mg × (d + h) = -0.3ρVg × (0.6 + h)
+      <br/>
+      (Negative because gravity opposes upward displacement)</li>
+<li><strong>
+       Step 3: Apply work-energy theorem
+      </strong>
+<br/>
+      W
+      <sub>
+       net
+      </sub>
+      = ΔKE = KE
+      <sub>
+</sub>
+      - KE
+      <sub>
+       initial
+      </sub>
+<br/>
+      Since ball starts at rest (v₁ = 0) and ends at rest at maximum height (v₃ = 0):
+      <br/>
+      W
+      <sub>
+       net
+      </sub>
+      = 0
+      <br/>
+<br/>
+      Therefore:
+      <br/>
+      W
+      <sub>
+       buoyancy
+      </sub>
+      + W
+      <sub>
+       gravity
+      </sub>
+      = 0
+      <br/>
+      ρVg(0.6) - 0.3ρVg(0.6 + h) = 0</li>
+<li><strong>
+       Step 4: Solve for h
+      </strong>
+<br/>
+      ρVg(0.6) = 0.3ρVg(0.6 + h)
+      <br/>
+      Dividing both sides by ρVg:
+      <br/>
+      0.6 = 0.3(0.6 + h)
+      <br/>
+      0.6 = 0.18 + 0.3h
+      <br/>
+      0.6 - 0.18 = 0.3h
+      <br/>
+      0.42 = 0.3h
+      <br/>
+      h = 0.42/0.3 =
+      <strong>
+       1.4 m = 1.400 m
+      </strong></li>
+<li><strong>
+       Step 5: Alternative verification using kinematics
+      </strong>
+<br/>
+      We can verify this by finding the speed at the surface first:
+      <br/>
+<br/>
+      Net upward force underwater: F
+      <sub>
+       net
+      </sub>
+      = ρVg - 0.3ρVg = 0.7ρVg
+      <br/>
+      Mass: m = 0.3ρV
+      <br/>
+      Acceleration: a = F
+      <sub>
+       net
+      </sub>
+      /m = 0.7ρVg/(0.3ρV) = (7/3)g = 2.333g
+      <br/>
+<br/>
+      Speed at surface: v² = 2ad = 2(2.333g)(0.6) = 2.8g
+      <br/>
+      v² = 2.8 × 9.8 = 27.44 m²/s²
+      <br/>
+<br/>
+      Height in air: h = v²/(2g) = 27.44/(2×9.8) = 27.44/19.6 = 1.4 m ✓</li>
+<li><strong>
+       Step 6: Physical interpretation
+      </strong>
+<br/>
+      The ball rises to 1.4 m above the surface - more than twice its initial depth! This is because the ball is very buoyant (density only 30% of water), so the net upward force in water (0.7ρVg) significantly exceeds the downward force in air (0.3ρVg). The ball gains substantial kinetic energy while underwater, which then converts to potential energy in the air phase.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_55</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Fluid Mechanics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>
+     Iron Ball and Floating Cylinder:
+    </strong>
+    An iron ball is suspended by thread of negligible mass from an upright cylinder that floats partially submerged in water. The cylinder has a height of 6.00 cm, a face area of 12.0 cm² on the top and bottom, and a density of 0.30 g/cm³, and 2.00 cm of its height is above the water surface. What is the radius of the iron ball? (Density of iron = 7.87 g/cm³)
+    <br/>
+<br/>
+<em>
+     Note: The iron ball is suspended below the cylinder and is fully submerged in the water.
+    </em></div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 0.50 cm
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> 0.82 cm
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> 1.00 cm
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 1.20 cm
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Identify system and given data
+      </strong>
+<br/>
+      Cylinder: height h = 6.00 cm, area A = 12.0 cm²
+      <br/>
+      Height above water = 2.00 cm
+      <br/>
+      Height submerged = 6.00 - 2.00 = 4.00 cm
+      <br/>
+      ρ
+      <sub>
+       cyl
+      </sub>
+      = 0.30 g/cm³, ρ
+      <sub>
+       Fe
+      </sub>
+      = 7.87 g/cm³, ρ
+      <sub>
+       water
+      </sub>
+      = 1.00 g/cm³
+      <br/>
+<br/>
+<strong>
+       Key: The iron ball is also submerged in water, so it experiences buoyancy!
+      </strong></li>
+<li><strong>
+       Step 2: Calculate cylinder volume and mass
+      </strong>
+<br/>
+      V
+      <sub>
+       cyl
+      </sub>
+      = A × h = 12.0 × 6.00 = 72.0 cm³
+      <br/>
+      m
+      <sub>
+       cyl
+      </sub>
+      = ρ
+      <sub>
+       cyl
+      </sub>
+      × V
+      <sub>
+       cyl
+      </sub>
+      = 0.30 × 72.0 = 21.6 g</li>
+<li><strong>
+       Step 3: Calculate buoyant forces
+      </strong>
+<br/>
+<strong>
+       On cylinder:
+      </strong>
+<br/>
+      V
+      <sub>
+       cyl,submerged
+      </sub>
+      = A × h
+      <sub>
+       sub
+      </sub>
+      = 12.0 × 4.00 = 48.0 cm³
+      <br/>
+      F
+      <sub>
+       b,cyl
+      </sub>
+      = ρ
+      <sub>
+       water
+      </sub>
+      × V
+      <sub>
+       cyl,submerged
+      </sub>
+      × g = 1.00 × 48.0 × g
+      <br/>
+      (In mass units: buoyancy supports 48.0 g)
+      <br/>
+<br/>
+<strong>
+       On ball (also submerged):
+      </strong>
+<br/>
+      V
+      <sub>
+       ball
+      </sub>
+      = (4/3)πr³
+      <br/>
+      F
+      <sub>
+       b,ball
+      </sub>
+      = ρ
+      <sub>
+       water
+      </sub>
+      × V
+      <sub>
+       ball
+      </sub>
+      × g = 1.00 × (4/3)πr³ × g
+      <br/>
+      (In mass units: buoyancy supports (4/3)πr³ g)</li>
+<li><strong>
+       Step 4: Apply equilibrium condition
+      </strong>
+<br/>
+      Total buoyant force = Total weight
+      <br/>
+      F
+      <sub>
+       b,cyl
+      </sub>
+      + F
+      <sub>
+       b,ball
+      </sub>
+      = W
+      <sub>
+       cyl
+      </sub>
+      + W
+      <sub>
+       ball
+      </sub>
+<br/>
+<br/>
+      In mass units (dividing by g):
+      <br/>
+      48.0 + (4/3)πr³ = 21.6 + 7.87 × (4/3)πr³
+      <br/>
+      48.0 - 21.6 = 7.87 × (4/3)πr³ - (4/3)πr³
+      <br/>
+      26.4 = (4/3)πr³(7.87 - 1.00)
+      <br/>
+      26.4 = (4/3)πr³ × 6.87
+      <br/>
+      26.4 = 6.87 × 4.189 × r³
+      <br/>
+      26.4 = 28.78 × r³</li>
+<li><strong>
+       Step 5: Solve for ball radius
+      </strong>
+<br/>
+      r³ = 26.4/28.78 = 0.917
+      <br/>
+      r = (0.917)^(1/3) = 0.971 cm ≈
+      <strong>
+       1.00 cm
+      </strong>
+<br/>
+<br/>
+<strong>
+       Verification:
+      </strong>
+<br/>
+      If r = 1.00 cm:
+      <br/>
+      V
+      <sub>
+       ball
+      </sub>
+      = (4/3)π(1.00)³ = 4.189 cm³
+      <br/>
+      m
+      <sub>
+       ball
+      </sub>
+      = 7.87 × 4.189 = 32.97 g
+      <br/>
+      Buoyancy on ball = 1.00 × 4.189 = 4.189 g equivalent
+      <br/>
+<br/>
+      Total weight = 21.6 + 32.97 = 54.57 g
+      <br/>
+      Total buoyancy = 48.0 + 4.19 = 52.19 g equivalent
+      <br/>
+<br/>
+      Close enough given rounding! The slight discrepancy is due to rounding r to exactly 1.00 cm.</li>
+<li><strong>
+       Step 6: Physical interpretation
+      </strong>
+<br/>
+      The system reaches equilibrium with the cylinder 4 cm submerged (2/3 of its height) and a 1.00 cm radius iron ball suspended below in the water. The iron ball is very dense (7.87 g/cm³), so it contributes significant weight. However, because it's also submerged, it experiences buoyancy that partially offsets its weight. The net effect is that the cylinder must be more deeply submerged than it would be without the ball to provide the additional buoyancy needed for equilibrium.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_56</div>
+        <div class="badge high">high - 1 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Fluid Mechanics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div><strong>
+     Pitot Tube:
+    </strong>
+    A pitot tube is used to determine the airspeed of an airplane. It consists of an outer tube with a number of small holes B that allow air into the tube; that tube is connected to one arm of a U-tube. The other arm of the U-tube is connected to hole A at the front end of the device, which points in the direction the plane is headed. At A the air becomes stagnant so that v
+    <sub>
+     A
+    </sub>
+    = 0. At B, however, the speed of the air presumably equals the airspeed v of the plane. The tube contains alcohol and the level difference h is 26.0 cm. What is the plane's speed relative to the air? The density of the air is 1.03 kg/m³ and that of alcohol is 810 kg/m³.</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> 45.2 m/s
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> 64.0 m/s
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 90.4 m/s
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> 128 m/s
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution">
+<strong>Solution:</strong>
+<div class="strategy">
+<strong>Strategy:</strong> 
+</div>
+<div class="expert-insight">
+<strong>Expert Insight:</strong> 
+</div>
+<div class="key-facts">
+<strong>Key Facts Used:</strong> 
+</div>
+<ol class="steps">
+<li><strong>
+       Step 1: Apply Bernoulli between A and B
+      </strong>
+<br/>
+      At same elevation (gravitational terms cancel):
+      <br/>
+      p
+      <sub>
+       A
+      </sub>
+      + (1/2)ρ
+      <sub>
+       air
+      </sub>
+      × 0² = p
+      <sub>
+       B
+      </sub>
+      + (1/2)ρ
+      <sub>
+       air
+      </sub>
+      × v²
+      <br/>
+      p
+      <sub>
+       A
+      </sub>
+      - p
+      <sub>
+       B
+      </sub>
+      = (1/2)ρ
+      <sub>
+       air
+      </sub>
+      × v²
+      <br/>
+      Δp = (1/2)ρ
+      <sub>
+       air
+      </sub>
+      × v²</li>
+<li><strong>
+       Step 2: Relate pressure difference to manometer reading
+      </strong>
+<br/>
+      The pressure difference is measured by the alcohol column height difference:
+      <br/>
+      Δp = ρ
+      <sub>
+       alcohol
+      </sub>
+      × g × h
+      <br/>
+      Δp = 810 × 9.8 × 0.26
+      <br/>
+      Δp = 2063.28 Pa</li>
+<li><strong>
+       Step 3: Solve for velocity
+      </strong>
+<br/>
+      Equating the two expressions for Δp:
+      <br/>
+      (1/2)ρ
+      <sub>
+       air
+      </sub>
+      × v² = ρ
+      <sub>
+       alcohol
+      </sub>
+      × g × h
+      <br/>
+      v² = (2 × ρ
+      <sub>
+       alcohol
+      </sub>
+      × g × h)/ρ
+      <sub>
+       air
+      </sub>
+<br/>
+      v² = (2 × 810 × 9.8 × 0.26)/1.03
+      <br/>
+      v² = 4126.56/1.03
+      <br/>
+      v² = 4006.37
+      <br/>
+      v = 63.3 m/s ≈
+      <strong>
+       64.0 m/s
+      </strong></li>
+<li><strong>
+       Step 4: Alternative formula derivation
+      </strong>
+<br/>
+      The general formula for a pitot tube is:
+      <br/>
+      v = √(2ρ
+      <sub>
+       liquid
+      </sub>
+      gh/ρ
+      <sub>
+       air
+      </sub>
+      )
+      <br/>
+      where ρ
+      <sub>
+       liquid
+      </sub>
+      is the manometer liquid density.
+      <br/>
+      This formula is derived exactly as we did above.</li>
+<li><strong>
+       Step 5: Physical interpretation
+      </strong>
+<br/>
+      At 64 m/s ≈ 230 km/h ≈ 143 mph, this is a reasonable speed for a small aircraft or the approach speed of a larger aircraft. The pitot tube is a remarkably simple yet effective device: it converts the kinetic energy of moving air into pressure energy at the stagnation point. The pressure difference is then measured by a liquid manometer, allowing determination of airspeed. This principle has been used in aviation since the early 1900s.</li>
+</ol>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Mechanics_58</div>
+        <div class="badge critical">critical - 3 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Physics |
+        <strong>Topic:</strong> Fluid Mechanics |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Options Validator] Missing options: a, b, c, d
+            </div>
+            <div class="issue-details">Details: Found only: </div>
+            <div class="issue-details">Field: <code>options</code></div>
+          </div>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Question Type] Type is "Multiple Choice" but insufficient options
+            </div>
+            
+            <div class="issue-details">Field: <code>question_type</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>
+     Work in Variable Radius Pipe:Water flows steadily from the left pipe section (radius r₁ = 2.00R), through the middle section (radius R), and into the right section (radius r₃ = 3.00R). The speed of the water in the middle section is 0.500 m/s. What is the net work done on 0.400 m³ of the water as it moves from the left section to the right section?
+    </div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

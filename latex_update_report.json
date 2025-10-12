@@ -1,0 +1,157 @@
+{
+  "timestamp": "2025-10-12T02:22:46.493Z",
+  "mathematics": {
+    "total": 43,
+    "results": {
+      "inserted": 0,
+      "deleted": 0,
+      "failed": 25,
+      "skipped": 18,
+      "errors": [
+        {
+          "id": "Mathematics_277",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_283",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_279",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_271",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_265",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_266",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_267",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_268",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_269",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_270",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_273",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_274",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_291",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_275",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_276",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_278",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_290",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_288",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_287",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_286",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_285",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_284",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_282",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_272",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Mathematics_281",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        }
+      ]
+    }
+  },
+  "physics": {
+    "total": 8,
+    "results": {
+      "inserted": 0,
+      "deleted": 0,
+      "failed": 8,
+      "skipped": 0,
+      "errors": [
+        {
+          "id": "Electromagnetism_172",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Physics_1",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Electromagnetism_217",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Electromagnetism_218",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Electromagnetism_219",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Electromagnetism_220",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Physics_213",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        },
+        {
+          "id": "Physics_212",
+          "error": "Could not find the 'option_a' column of 'questions' in the schema cache"
+        }
+      ]
+    }
+  }
+}

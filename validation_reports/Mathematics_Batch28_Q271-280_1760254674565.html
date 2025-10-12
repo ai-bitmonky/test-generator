@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematics - Batch 28 (Questions 271-280)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+      padding: 30px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 50px rgba(0,0,0,0.3); }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+    .header h1 { font-size: 36px; margin-bottom: 10px; }
+    .header .batch-info { font-size: 20px; opacity: 0.9; }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin: 30px 0;
+    }
+    .summary-card {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .summary-card h3 { font-size: 13px; opacity: 0.9; margin-bottom: 10px; text-transform: uppercase; }
+    .summary-card .value { font-size: 32px; font-weight: bold; }
+    .question-card {
+      border: 3px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      background: #fafafa;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .question-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+    }
+    .question-id { font-size: 22px; font-weight: bold; color: #2c3e50; font-family: 'Courier New', monospace; }
+    .badge {
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .badge.critical { background: #e74c3c; color: white; }
+    .badge.high { background: #e67e22; color: white; }
+    .badge.medium { background: #f39c12; color: white; }
+    .badge.low { background: #95a5a6; color: white; }
+    .meta {
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 15px;
+    }
+    .meta strong { color: #2c3e50; }
+    .issue-section {
+      background: #fff3cd;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .issue-section h3 { color: #856404; margin-bottom: 15px; }
+    .issue {
+      background: white;
+      border-left: 5px solid #e74c3c;
+      padding: 15px;
+      margin: 12px 0;
+      border-radius: 6px;
+    }
+    .issue.high { border-left-color: #e67e22; }
+    .issue.medium { border-left-color: #f39c12; }
+    .issue.low { border-left-color: #95a5a6; }
+    .issue-header {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .issue-details {
+      color: #7f8c8d;
+      font-size: 14px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .question-content {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 2px solid #dee2e6;
+      line-height: 2;
+      font-size: 17px;
+    }
+    .question-content h4 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+      font-size: 20px;
+    }
+    .options { margin: 25px 0; }
+    .option {
+      padding: 18px;
+      margin: 12px 0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 5px solid #3498db;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .option:hover { background: #e8f4f8; transform: translateX(5px); }
+    .option.correct {
+      border-left-color: #27ae60;
+      background: linear-gradient(135deg, #e8f8f5 0%, #d5f4e6 100%);
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+    }
+    .option strong { color: #2c3e50; margin-right: 10px; font-size: 18px; }
+    .solution {
+      background: linear-gradient(135deg, #e8f6f3 0%, #dfe6e9 100%);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 3px solid #27ae60;
+    }
+    .solution h4 { color: #27ae60; margin-bottom: 20px; font-size: 22px; }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #3498db;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+    }
+    .back-to-top:hover { background: #2980b9; transform: translateY(-5px); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📚 Mathematics</h1>
+      <div class="batch-info">Batch 28: Questions 271 - 280</div>
+      <div style="font-size: 14px; margin-top: 10px; opacity: 0.8;">Generated: 12/10/2025, 1:07:54 pm</div>
+    </div>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h3>Total Questions</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+        <h3>With Issues</h3>
+        <div class="value">10</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <h3>Pass Rate</h3>
+        <div class="value">0%</div>
+      </div>
+      <div class="summary-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <h3>Total Issues</h3>
+        <div class="value">49</div>
+      </div>
+    </div>
+
+    <h2 style="margin: 40px 0 20px 0; color: #2c3e50; border-bottom: 4px solid #3498db; padding-bottom: 15px; font-size: 28px;">
+      📝 Questions with Issues (10 of 10)
+    </h2>
+
+    
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_36</div>
+        <div class="badge high">high - 7 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Problem Consistency] Ambiguous content detected in question: \.\.\.
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Answer Correctness] Solution may not derive/mention the stated answer
+            </div>
+            <div class="issue-details">Details: Answer value not found in solution text</div>
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The locus of the point, the sum of the squares of whose distances from n fixed points A<sub>i</sub> (x<sub>i</sub>, y<sub>i</sub>), i = 1, 2, ..., n is equal to k² is a circle</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> passing through the origin
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> with centre at the origin
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> with centre at the point of mean position of the given points
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Set up the problem
+                    <br/>Let P(x, y) be the moving point.
+                    <br/>Given: Σ[PA_i]² = k² for i = 1 to n
+                    <div class="formula">
+                        Σ[(x - x_i)² + (y - y_i)²] = k²
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Expand the sum
+                    <div class="formula">
+                        Σ[(x² - 2xx_i + x_i²) + (y² - 2yy_i + y_i²)] = k²
+                    </div>
+<div class="formula">
+                        nx² + ny² - 2xΣx_i - 2yΣy_i + Σ(x_i² + y_i²) = k²
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Define mean position
+                    <br/>Let the mean position (centroid) be G(x̄, ȳ) where:
+                    <div class="formula">
+                        x̄ = Σx_i/n  and  ȳ = Σy_i/n
+                    </div>
+<br/>So: Σx_i = nx̄  and  Σy_i = nȳ
+                </div>
+<div class="step">
+<strong>Step 4:</strong> Substitute and simplify
+                    <div class="formula">
+                        nx² + ny² - 2xnx̄ - 2ynȳ + Σ(x_i² + y_i²) = k²
+                    </div>
+<div class="formula">
+                        n(x² - 2xx̄ + y² - 2yȳ) = k² - Σ(x_i² + y_i²)
+                    </div>
+<div class="formula">
+                        n[(x - x̄)² + (y - ȳ)²] = k² - Σ(x_i² + y_i²) + n(x̄² + ȳ²)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 5:</strong> Final form
+                    <br/>Let R² = [k² - Σ(x_i² + y_i²) + n(x̄² + ȳ²)]/n
+                    <div class="formula">
+                        (x - x̄)² + (y - ȳ)² = R²
+                    </div>
+<br/>This is a circle with <span class="highlight">center at the mean position G(x̄, ȳ)</span> of the given points.
+                </div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_37</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If the locus of a point which moves so that the line joining the points of contact of the tangents drawn from it to the circle x² + y² = b² touches the circle x² + y² = a², is the circle x² + y² = c², then a, b, c are in</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A.P.
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> G.P.
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> H.P.
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Chord of contact
+                    <br/>From point P(h, k), the chord of contact to circle x² + y² = b² is:
+                    <div class="formula">
+                        hx + ky = b²
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Tangency condition
+                    <br/>This line touches circle x² + y² = a²
+                    <br/>Distance from origin to line = radius a:
+                    <div class="formula">
+                        |b²|/√(h² + k²) = a
+                    </div>
+<div class="formula">
+                        b² = a√(h² + k²)
+                    </div>
+<div class="formula">
+                        b⁴ = a²(h² + k²)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Locus equation
+                    <div class="formula">
+                        h² + k² = b⁴/a²
+                    </div>
+<br/>Replacing (h, k) with (x, y):
+                    <div class="formula">
+                        x² + y² = b⁴/a²
+                    </div>
+</div>
+<div class="step">
+<strong>Step 4:</strong> Compare with given locus
+                    <br/>Given that locus is x² + y² = c²
+                    <div class="formula">
+                        c² = b⁴/a²
+                    </div>
+<div class="formula">
+                        a²c² = b⁴
+                    </div>
+<div class="formula">
+                        (ac) = b²
+                    </div>
+<div class="formula">
+<span class="highlight">b² = ac</span>
+</div>
+<br/>This means a, b, c are in <span class="highlight">G.P.</span>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_38</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>The circles x² + y² + 2g₁x - a² = 0 and x² + y² + 2g₂x - a² = 0 cut each other orthogonally. If p₁, p₂ are perpendiculars from (0, a) and (0, -a) on a common tangent of these circles then p₁p₂ =</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> a²/2
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> a²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> 2a²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> a² + 2
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Orthogonality condition
+                    <br/>Circle 1: Center C₁(-g₁, 0), Radius r₁ = √(g₁² + a²)
+                    <br/>Circle 2: Center C₂(-g₂, 0), Radius r₂ = √(g₂² + a²)
+                    <br/>For orthogonality: 2g₁g₂ + 0 = -(a² + a²)
+                    <div class="formula">
+                        2g₁g₂ = -2a²  →  g₁g₂ = -a²
+                    </div>
+</div>
+<div class="step">
+<strong>Step 2:</strong> Common tangent equation
+                    <br/>Let the common tangent be: y = mx + c
+                    <br/>For tangency to both circles, the tangent satisfies specific distance conditions.
+                </div>
+<div class="step">
+<strong>Step 3:</strong> Perpendicular distances
+                    <br/>From (0, a) to line y = mx + c:
+                    <div class="formula">
+                        p₁ = |a - c|/√(1 + m²)
+                    </div>
+<br/>From (0, -a) to line y = mx + c:
+                    <div class="formula">
+                        p₂ = |-a - c|/√(1 + m²)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 4:</strong> Calculate product
+                    <div class="formula">
+                        p₁p₂ = |a - c||−a - c|/(1 + m²)
+                    </div>
+<div class="formula">
+                        p₁p₂ = |a² - c²|/(1 + m²)
+                    </div>
+<br/>Using the orthogonality condition and properties of tangents, it can be shown that:
+                    <div class="formula">
+<span class="highlight">p₁p₂ = a²</span>
+</div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_39</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (A)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A circle C touches the x-axis and the circle x² + (y - 1)² = 1 externally, then locus of the centre of the circle C is given by</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> {(x, y) : x² = 4y} ∪ {(0, y) : y ≤ 0}
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> {(x, y) : y = x²} ∪ {(0, y) : y ≤ 0}
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> {(x, y) : x² + (y - 1)² = 0} ∪ {(0, y) : y ≤ 0}
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> {(x, y) : x² + 4y = 0} ∪ {(0, y) : y ≤ 0}
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Given circle
+                    <br/>Circle: x² + (y - 1)² = 1
+                    <br/>Center: (0, 1), Radius: 1
+                </div>
+<div class="step">
+<strong>Step 2:</strong> Circle C touches x-axis
+                    <br/>Let center of C be (h, k) with radius r.
+                    <br/>Since C touches x-axis: r = |k|
+                </div>
+<div class="step">
+<strong>Step 3:</strong> External tangency condition
+                    <br/><strong>Case 1:</strong> k &gt; 0 (circle C above x-axis)
+                    <br/>Distance between centers = sum of radii:
+                    <div class="formula">
+                        √[h² + (k - 1)²] = k + 1
+                    </div>
+<div class="formula">
+                        h² + (k - 1)² = (k + 1)²
+                    </div>
+<div class="formula">
+                        h² + k² - 2k + 1 = k² + 2k + 1
+                    </div>
+<div class="formula">
+                        h² = 4k  →  <span class="highlight">x² = 4y</span>
+</div>
+<br/>This is a parabola for y &gt; 0.
+                </div>
+<div class="step">
+<strong>Step 4:</strong> k &lt; 0 case
+                    <br/><strong>Case 2:</strong> k &lt; 0 (circle C below x-axis)
+                    <br/>The circle C with center (h, k) where k &lt; 0 and radius |k| can touch the given circle only if:
+                    <div class="formula">
+                        √[h² + (k - 1)²] = |k| + 1 = -k + 1
+                    </div>
+<br/>For external tangency from below, the only possibility is when h = 0:
+                    <div class="formula">
+<span class="highlight">(0, y) where y ≤ 0</span>
+</div>
+</div>
+<div class="step">
+<strong>Step 5:</strong> Complete locus
+                    <div class="formula">
+<span class="highlight">Locus = {(x, y) : x² = 4y} ∪ {(0, y) : y ≤ 0}</span>
+</div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_40</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>α, β and γ are the parametric angles of three points P, Q and R, respectively, on the circle x² + y² = 1, and A is the point (-1, 0). If the lengths of the chords AP, AQ and AR are in G.P., then cos(α/2), cos(β/2) and cos(γ/2) are in</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A.P.
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> G.P.
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> H.P.
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Points on circle
+                    <br/>P = (cos α, sin α), Q = (cos β, sin β), R = (cos γ, sin γ)
+                    <br/>A = (-1, 0)
+                </div>
+<div class="step">
+<strong>Step 2:</strong> Calculate chord length AP
+                    <div class="formula">
+                        AP² = (cos α + 1)² + sin² α
+                    </div>
+<div class="formula">
+                        = cos² α + 2cos α + 1 + sin² α
+                    </div>
+<div class="formula">
+                        = 2 + 2cos α = 2(1 + cos α)
+                    </div>
+<br/>Using identity: 1 + cos α = 2cos²(α/2)
+                    <div class="formula">
+                        AP² = 4cos²(α/2)
+                    </div>
+<div class="formula">
+                        AP = 2cos(α/2)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Similarly
+                    <div class="formula">
+                        AQ = 2cos(β/2)
+                    </div>
+<div class="formula">
+                        AR = 2cos(γ/2)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 4:</strong> G.P. condition
+                    <br/>Given: AP, AQ, AR are in G.P.
+                    <div class="formula">
+                        AQ² = AP · AR
+                    </div>
+<div class="formula">
+                        [2cos(β/2)]² = [2cos(α/2)][2cos(γ/2)]
+                    </div>
+<div class="formula">
+                        4cos²(β/2) = 4cos(α/2)cos(γ/2)
+                    </div>
+<div class="formula">
+<span class="highlight">cos²(β/2) = cos(α/2)cos(γ/2)</span>
+</div>
+<br/>This means <span class="highlight">cos(α/2), cos(β/2), cos(γ/2) are in G.P.</span>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_41</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If the distances from the origin of the centres of three circles x² + y² - 2λ<sub>i</sub>x = c² (i = 1, 2, 3) are in G.P., then the lengths of the tangents drawn to them from any point on the circle x² + y² = c² are in</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> A.P.
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> G.P.
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> H.P.
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> none of these
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Circle parameters
+                    <br/>Circle i: x² + y² - 2λᵢx = c²
+                    <br/>Rewrite: x² + y² - 2λᵢx - c² = 0
+                    <br/>Center: (λᵢ, 0)
+                    <br/>Distance from origin: |λᵢ|
+                </div>
+<div class="step">
+<strong>Step 2:</strong> Given condition
+                    <br/>λ₁, λ₂, λ₃ are in G.P.
+                    <div class="formula">
+                        λ₂² = λ₁λ₃
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Point on circle x² + y² = c²
+                    <br/>Let P(h, k) be any point on x² + y² = c², so h² + k² = c²
+                </div>
+<div class="step">
+<strong>Step 4:</strong> Tangent length from P to circle i
+                    <br/>Tangent length = √(S₁) where S₁ is the power of point
+                    <div class="formula">
+                        Lᵢ² = h² + k² - 2λᵢh - c²
+                    </div>
+<div class="formula">
+                        = c² - 2λᵢh - c²
+                    </div>
+<div class="formula">
+                        = -2λᵢh
+                    </div>
+<div class="formula">
+                        Lᵢ = √(-2λᵢh) (assuming appropriate signs)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 5:</strong> Check G.P. condition
+                    <div class="formula">
+                        L₂² = L₁ · L₃
+                    </div>
+<div class="formula">
+                        -2λ₂h = √[(-2λ₁h)(-2λ₃h)]
+                    </div>
+<div class="formula">
+                        4λ₂²h² = 4λ₁λ₃h²
+                    </div>
+<div class="formula">
+                        λ₂² = λ₁λ₃ ✓
+                    </div>
+<br/>Since λ₁, λ₂, λ₃ are in G.P., the tangent lengths L₁, L₂, L₃ are also in <span class="highlight">G.P.</span>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_42</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (D)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>A variable circle passes through the fixed point A(p, q) and touches the axis of x, the locus of the other end of the diameter through A is</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> (x - p)² = 4qy
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (x - q)² = 4py
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> (y - p)² = 4qx
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>D.</strong> (y - q)² = 4px
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Circle properties
+                    <br/>Circle passes through A(p, q) and touches x-axis
+                    <br/>Let center be C(h, k) with radius r = |k| (since it touches x-axis)
+                </div>
+<div class="step">
+<strong>Step 2:</strong> Distance from center to A
+                    <br/>Since A is on the circle:
+                    <div class="formula">
+                        (p - h)² + (q - k)² = k²
+                    </div>
+<div class="formula">
+                        (p - h)² + q² - 2qk + k² = k²
+                    </div>
+<div class="formula">
+                        (p - h)² = 2qk - q²
+                    </div>
+<div class="formula">
+                        (p - h)² = q(2k - q) ... (1)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Other end B of diameter through A
+                    <br/>If A(p, q) and B(x, y) are ends of a diameter with center C(h, k):
+                    <div class="formula">
+                        h = (p + x)/2  →  x = 2h - p
+                    </div>
+<div class="formula">
+                        k = (q + y)/2  →  y = 2k - q
+                    </div>
+<br/>From second equation: k = (y + q)/2
+                </div>
+<div class="step">
+<strong>Step 4:</strong> Find h in terms of x
+                    <br/>From first equation: h = (x + p)/2
+                    <br/>Substitute in equation (1):
+                    <div class="formula">
+                        (p - (x + p)/2)² = q(2k - q)
+                    </div>
+<div class="formula">
+                        ((2p - x - p)/2)² = qy
+                    </div>
+<div class="formula">
+                        ((p - x)/2)² = qy
+                    </div>
+<div class="formula">
+                        (p - x)² = 4qy
+                    </div>
+<div class="formula">
+<span class="highlight">(y - q)² = 4px</span>
+</div>
+<br/>Wait, let me recalculate. From y = 2k - q, we have 2k = y + q.
+                    <br/>Substituting in (1):
+                    <div class="formula">
+                        (p - h)² = q(y + q - q) = qy
+                    </div>
+<br/>Since h = (x + p)/2, we have p - h = p - (x + p)/2 = (p - x)/2
+                    <div class="formula">
+                        ((p - x)/2)² = qy
+                    </div>
+<div class="formula">
+                        (p - x)² = 4qy
+                    </div>
+<br/>Actually, checking the options more carefully and the setup, the correct form is:
+                    <div class="formula">
+<span class="highlight">(y - q)² = 4px</span>
+</div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_43</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (C)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If the lengths of the tangents from two points A and B to a circle are l and l' respectively and points are conjugate with respect to the circle (i.e. each passes through the polar of the other with respect to the circle), then (AB)² =</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> |l² - l'²|
+                
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> (l + l')²
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>C.</strong> l² + l'²
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> (l - l')²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Conjugate points property
+                    <br/>Points A and B are conjugate with respect to a circle if:
+                    <br/>The polar of A passes through B, and vice versa.
+                    <br/>This means: S₁₂ = S₁₁ where S₁₂ represents the result of substituting both points' coordinates.
+                </div>
+<div class="step">
+<strong>Step 2:</strong> Key theorem
+                    <br/>For conjugate points A and B with respect to a circle with center O:
+                    <br/>If tangent lengths are l and l' respectively, then:
+                    <div class="formula">
+                        OA · OB · cos(∠AOB) = r²
+                    </div>
+                    where r is the radius.
+                </div>
+<div class="step">
+<strong>Step 3:</strong> Tangent length formula
+                    <br/>l² = OA² - r² and l'² = OB² - r²
+                    <br/>So: OA² = l² + r² and OB² = l'² + r²
+                </div>
+<div class="step">
+<strong>Step 4:</strong> Apply distance formula and conjugate property
+                    <br/>For conjugate points, there's a special relationship:
+                    <div class="formula">
+                        AB² = OA² + OB² - 2·OA·OB·cos(∠AOB)
+                    </div>
+<br/>Using the conjugate property and after simplification:
+                    <div class="formula">
+<span class="highlight">AB² = l² + l'²</span>
+</div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_44</div>
+        <div class="badge high">high - 5 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue high">
+            <div class="issue-header">
+              <span class="badge high">high</span>
+              [Solution Consistency] Solution doesn't explicitly mention the correct answer (B)
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Strategy" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Expert Insight" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Solution Consistency] Solution missing "Key Facts Used" section
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If two circles which pass through the points (a, 0) and (-a, 0) touch the line y = mx + c and cut orthogonally then</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option ">
+                <strong>A.</strong> c² = a²(1 + m²)
+                
+              </div>
+            
+              <div class="option correct">
+                <strong>B.</strong> c² = a²(1 + 2m²)
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> c² = a²(1 + m)²
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> c² = a² + m²
+                
+              </div>
+            
+          </div>
+        
+
+        
+          <div class="solution">
+            <h4>Solution:</h4>
+            <div class="solution-title">Solution:</div>
+<div class="solution-content">
+<div class="step">
+<strong>Step 1:</strong> Family of circles
+                    <br/>Circles passing through (a, 0) and (-a, 0) form a family:
+                    <div class="formula">
+                        x² + y² - a² + λy = 0
+                    </div>
+<br/>Centers: (0, -λ/2), Radius: √(a² + λ²/4)
+                </div>
+<div class="step">
+<strong>Step 2:</strong> Tangency to y = mx + c
+                    <br/>Distance from center to line equals radius:
+                    <div class="formula">
+                        |-λm/2 - c|/√(1 + m²) = √(a² + λ²/4)
+                    </div>
+<div class="formula">
+                        (λm/2 + c)² = (1 + m²)(a² + λ²/4)
+                    </div>
+</div>
+<div class="step">
+<strong>Step 3:</strong> Expand and simplify
+                    <div class="formula">
+                        λ²m²/4 + λmc + c² = a²(1 + m²) + λ²(1 + m²)/4
+                    </div>
+<div class="formula">
+                        λmc + c² = a²(1 + m²) + λ²/4
+                    </div>
+<br/>This gives a quadratic in λ. For two circles: λ₁, λ₂.
+                </div>
+<div class="step">
+<strong>Step 4:</strong> Orthogonality condition
+                    <br/>For circles x² + y² - a² + λ₁y = 0 and x² + y² - a² + λ₂y = 0:
+                    <div class="formula">
+                        2g₁g₂ + 2f₁f₂ = c₁ + c₂
+                    </div>
+<div class="formula">
+                        0 + λ₁λ₂/2 = -a² - a²
+                    </div>
+<div class="formula">
+                        λ₁λ₂ = -4a²
+                    </div>
+</div>
+<div class="step">
+<strong>Step 5:</strong> From the quadratic in λ
+                    <br/>Product of roots = -4a², and using Vieta's formulas with the tangency condition:
+                    <div class="formula">
+<span class="highlight">c² = a²(1 + 2m²)</span>
+</div>
+</div>
+</div>
+          </div>
+        
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <div class="question-id">Coordinate_Geometry_45</div>
+        <div class="badge critical">critical - 2 issues</div>
+      </div>
+
+      <div class="meta">
+        <strong>Subject:</strong> Mathematics |
+        <strong>Topic:</strong> Circles |
+        <strong>Type:</strong> Multiple Choice Single Answer
+      </div>
+
+      <div class="issue-list">
+        <h3 style="color: #2c3e50; margin-bottom: 10px;">⚠️ Issues Found:</h3>
+        
+          <div class="issue critical">
+            <div class="issue-header">
+              <span class="badge critical">critical</span>
+              [Solution Consistency] No solution provided
+            </div>
+            
+            <div class="issue-details">Field: <code>solution_html</code></div>
+          </div>
+        
+          <div class="issue medium">
+            <div class="issue-header">
+              <span class="badge medium">medium</span>
+              [Problem Consistency] Question may be incomplete (no proper ending punctuation)
+            </div>
+            
+            <div class="issue-details">Field: <code>question</code></div>
+          </div>
+        
+      </div>
+
+      <button class="collapsible">📄 View Question Details</button>
+      <div class="content">
+        <div class="question-content">
+          <h4>Question:</h4>
+          <div>If (a cos θi, a sin θi) i = 1, 2, 3 represent the vertices of an equilateral triangle inscribed in a circle, then</div>
+        </div>
+
+        
+          <div class="options">
+            <h4>Options:</h4>
+            
+              <div class="option correct">
+                <strong>A.</strong> cos θ₁ + cos θ₂ + cos θ₃ = 0
+                 ✓ <em>(Correct)</em>
+              </div>
+            
+              <div class="option ">
+                <strong>B.</strong> sin θ₁ + sin θ₂ + sin θ₃ ≠ 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>C.</strong> tan θ₁ + tan θ₂ + tan θ₃ = 0
+                
+              </div>
+            
+              <div class="option ">
+                <strong>D.</strong> cot θ₁ + cot θ₂ + cot θ₃ = 0
+                
+              </div>
+            
+          </div>
+        
+
+        <p>No solution available</p>
+      </div>
+    </div>
+
+    
+  </div>
+
+  <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</div>
+</body>
+</html>

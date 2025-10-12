@@ -1169,6 +1169,10 @@ export default function TestGenerator() {
               <strong>Tip:</strong> You can flag questions you find confusing and replace them with new ones from the same topic!
             </div>
 
+            <div className="flagged-info" style={{ backgroundColor: '#fff3cd', borderLeft: '4px solid #ffc107', marginTop: '10px' }}>
+              <strong>Note:</strong> All figures in this test are only indicative and may not be accurate.
+            </div>
+
             {!testSubmitted && showStopwatch && (
               <div className="stopwatch-container">
                 <button

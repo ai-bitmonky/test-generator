@@ -1,0 +1,42 @@
+[
+  {
+    "num": 1,
+    "snippet": "Question 1:Statement-1:Letf:R\u2192Rbe a real valued function satisfying |f(x) \u2212f(y)| \u2264A|x\u2212y|\u03b1, for some constantAand \u03b1 > 1, for everyx,y\u2208Rthenfis constant function.Statement-2:f\u2032(x) = 0 for allx\u2208Rthenfis a constant function."
+  },
+  {
+    "num": 2,
+    "snippet": "Question 2:If cos-1(x/2) + cos-1(y/3) = \u03b8, then 9x2- 12xy cos \u03b8 + 4y2is equal to"
+  },
+  {
+    "num": 3,
+    "snippet": "Question 3:The value of cot[\u03a3n=119cot-1(1+\u03a3p=1n2p)] is:"
+  },
+  {
+    "num": 4,
+    "snippet": "Question 4:If f(x) = 2 tan-1x + sin-1[2x/(1+x2)], x > 1, then f(5) is equal to:"
+  },
+  {
+    "num": 5,
+    "snippet": "Question 5:Let tan-1y = tan-1x + tan-1[2x/(1-x2)] where |x| < 1/\u221a3, then a value of y is:"
+  },
+  {
+    "num": 6,
+    "snippet": "Question 6:Statement I:The equation (sin-1x)3+ (cos-1x)3- a\u03c03= 0 has a solution for all a \u2265 1/32Statement II:sin-1x + cos-1x = \u03c0/2 and 0 \u2264 (sin-1x - \u03c0/4)2\u2264 9\u03c02/16"
+  },
+  {
+    "num": 7,
+    "snippet": "Question 7:If S = tan-1[1/(x2+x+1)] + tan-1[1/(x2+3x+3)] + ... + tan-1[1/((x+19)(x+20)+1)], then tan S is equal to"
+  },
+  {
+    "num": 8,
+    "snippet": "Question 8:If x, y, z are in A.P and tan-1x, tan-1y, tan-1z are also in A.P, then"
+  },
+  {
+    "num": 9,
+    "snippet": "Question 9:If cos-1x - cos-1(y/2) = \u03b1, then 4x2- 4xy cos \u03b1 + y2is equal to"
+  },
+  {
+    "num": 10,
+    "snippet": "Question 10:The trigonometric equation sin-1x = 2 sin-1a has a solution for"
+  }
+]
