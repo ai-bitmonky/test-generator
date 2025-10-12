@@ -591,6 +591,104 @@ Do NOT include any explanations before or after the SVG code.`;
 
     return { needsFigure: false };
   }
+
+  // ============================================================================
+  // Formatting Cleanup Methods
+  // ============================================================================
+
+  /**
+   * Clean HTML entities in options (μ<sub>s</sub> → μₛ)
+   */
+  async cleanOptions(options) {
+    const optionsStr = JSON.stringify(options);
+
+    // Check if has HTML entities
+    if (!optionsStr.includes('<sub>') && !optionsStr.includes('<sup>') &&
+        !optionsStr.includes('<strong>') && !optionsStr.includes('<em>') &&
+        !optionsStr.includes('<br')) {
+      return options; // No issues
+    }
+
+    const prompt = `Convert these multiple choice options from HTML to clean plain text with proper Unicode characters.
+
+Options (JSON): ${optionsStr}
+
+Rules:
+1. Replace <sub> with Unicode subscripts (₀₁₂₃₄₅₆₇₈₉ ₐ ₑ ᵢ ₒ ᵤ ₓ)
+2. Replace <sup> with Unicode superscripts (⁰¹²³⁴⁵⁶⁷⁸⁹)
+3. Remove all HTML tags (<strong>, <em>, <br/>, etc.)
+4. Keep the JSON structure with keys a, b, c, d
+5. Preserve all mathematical notation and units
+6. Use proper Unicode for Greek letters (μ, α, β, γ, δ, etc.)
+
+Provide ONLY the cleaned JSON object, no explanation.`;
+
+    const result = await this.call(prompt, 1000);
+    if (!result) return options;
+
+    try {
+      // Extract JSON from response
+      const jsonMatch = result.match(/\{[\s\S]*\}/);
+      if (jsonMatch) {
+        const cleaned = JSON.parse(jsonMatch[0]);
+        return cleaned;
+      }
+    } catch (e) {
+      console.error('     ⚠️ Failed to parse cleaned options');
+    }
+
+    return options;
+  }
+
+  /**
+   * Fix combined words (KWorkTransferWCarnotRefrigeratorK → K Work Transfer W Carnot Refrigerator K)
+   */
+  async fixCombinedWords(text) {
+    // Check for combined words pattern (multiple capital letters with mixed case)
+    const combinedPattern = /[A-Z]{2,}[a-z]+[A-Z][a-z]+[A-Z]/;
+    if (!combinedPattern.test(text)) {
+      return text; // No issues
+    }
+
+    const prompt = `Fix the combined words in this text by adding proper spaces between words.
+
+Text: ${text}
+
+The text contains words stuck together without spaces (like "KWorkTransferWCarnotRefrigeratorK" should be "K Work Transfer W Carnot Refrigerator K").
+
+Rules:
+1. Add spaces between distinct words
+2. Preserve technical terms and abbreviations
+3. Keep mathematical notation intact
+4. Maintain the original meaning
+5. Do NOT change correct compound words or technical terms
+
+Provide ONLY the corrected text, no explanation.`;
+
+    const result = await this.call(prompt, 1500);
+    return result || text;
+  }
+
+  /**
+   * Remove figure missing warnings
+   */
+  removeFigureWarning(text) {
+    if (!text) return text;
+
+    // Remove various forms of figure warnings
+    let cleaned = text;
+
+    // Remove full warning blocks
+    cleaned = cleaned.replace(/⚠️\s*FIGURE MISSING:.*?The figure needs to be added manually\./gi, '');
+    cleaned = cleaned.replace(/\[FIGURE NEEDED:.*?\]/gi, '');
+    cleaned = cleaned.replace(/⚠️.*?figure.*?not included.*?document.*?\./gi, '');
+    cleaned = cleaned.replace(/FIGURE MISSING:.*?document\./gi, '');
+
+    // Clean up extra whitespace
+    cleaned = cleaned.replace(/\s{2,}/g, ' ').trim();
+
+    return cleaned;
+  }
 }
 
 // ============================================================================
@@ -919,6 +1017,48 @@ class AIEnhancedFixer {
 
         fixes.push(`Detected missing figure: ${figureCheck.figureType} - SVG generation failed, description stored`);
         console.log('     ⚠️ SVG generation failed - description stored for manual creation');
+      }
+    }
+
+    // NEW: Clean HTML entities in options (μ<sub>s</sub> → μₛ)
+    if (fixed.options) {
+      const optionsStr = JSON.stringify(fixed.options);
+      if (optionsStr.includes('<sub>') || optionsStr.includes('<sup>') ||
+          optionsStr.includes('<strong>') || optionsStr.includes('<em>')) {
+        console.log('     🧹 Cleaning HTML entities in options...');
+        const cleaned = await this.ai.cleanOptions(fixed.options);
+        if (JSON.stringify(cleaned) !== JSON.stringify(fixed.options)) {
+          fixed.options = cleaned;
+          fixes.push('Cleaned HTML formatting in options');
+          console.log('     ✅ Options cleaned (HTML → Unicode)');
+        }
+      }
+    }
+
+    // NEW: Fix combined words in question (KWorkTransferWCarnotRefrigeratorK)
+    if (fixed.question) {
+      const combinedPattern = /[A-Z]{2,}[a-z]+[A-Z][a-z]+[A-Z]/;
+      if (combinedPattern.test(fixed.question)) {
+        console.log('     🧹 Separating combined words in question...');
+        const separated = await this.ai.fixCombinedWords(fixed.question);
+        if (separated !== fixed.question) {
+          fixed.question = separated;
+          fixes.push('Separated combined words in question');
+          console.log('     ✅ Combined words separated');
+        }
+      }
+    }
+
+    // NEW: Remove figure missing warnings
+    if (fixed.question &&
+        (fixed.question.includes('⚠️ FIGURE MISSING') ||
+         fixed.question.includes('FIGURE MISSING'))) {
+      console.log('     🧹 Removing figure warning from question...');
+      const cleaned = this.ai.removeFigureWarning(fixed.question);
+      if (cleaned !== fixed.question) {
+        fixed.question = cleaned;
+        fixes.push('Removed figure missing warning');
+        console.log('     ✅ Figure warning removed');
       }
     }
 
