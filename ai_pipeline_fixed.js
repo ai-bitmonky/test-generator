@@ -1087,7 +1087,7 @@ class AIFixedOrchestrator {
       .from('questions')
       .select('*')
       .eq('subject', CONFIG.subject)
-      .limit(100);
+      .limit(CONFIG.testLimit);
 
     if (error) {
       console.error('❌ Error fetching questions:', error);
@@ -1166,7 +1166,7 @@ class AIFixedOrchestrator {
       console.log('\n');
 
       // Delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 5000));
     }
 
     this.generateReport(results);
