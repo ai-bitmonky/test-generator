@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#ffffff"/>
+
+<defs>
+  <!-- SMALL sharp arrows (5x5 pixels) -->
+  <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
+  </marker>
+  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
+  </marker>
+  <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
+  </marker>
+
+  <!-- Charge pattern -->
+  <pattern id="chargePattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="12" cy="12" r="2.5" fill="#3498db" opacity="0.2"/>
+    <circle cx="28" cy="12" r="2.5" fill="#3498db" opacity="0.2"/>
+    <circle cx="20" cy="28" r="2.5" fill="#3498db" opacity="0.2"/>
+    <text x="20" y="22" font-size="13" fill="#2980b9" text-anchor="middle" opacity="0.3">+</text>
+  </pattern>
+</defs>
+
+<!-- Title -->
+<text x="800.0" y="65" text-anchor="middle" font-size="36" font-weight="600" fill="#2c3e50">
+  Uniformly Charged Sphere with Spherical Cavity
+</text>
+
+<!-- ============ DIAGRAM ============ -->
+
+<!-- Sphere -->
+<circle cx="400.0" cy="500.0" r="180"
+        fill="url(#chargePattern)" stroke="#2980b9" stroke-width="4"/>
+
+<!-- Cavity -->
+<circle cx="486.93332436601617" cy="523.2937140592269" r="70"
+        fill="white" stroke="#e67e22" stroke-width="4" stroke-dasharray="18,9"/>
+
+<!-- Points -->
+<circle cx="400.0" cy="500.0" r="6" fill="#2c3e50"/>
+<circle cx="486.93332436601617" cy="523.2937140592269" r="6" fill="#e74c3c"/>
+<circle cx="504.6109938956798" cy="505.61604452956317" r="6" fill="#9b59b6"/>
+
+<!-- Vector a (O to C) -->
+<line x1="406.7614807840235" y1="501.8117333157177" x2="417.38666487320324" y2="504.6587428118454"
+      stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+
+<!-- Vector r (O to P) -->
+<line x1="406.98993446284226" y1="500.37525485362653" x2="492.628249102236" y2="504.9727504947748"
+      stroke="#9b59b6" stroke-width="4" stroke-dasharray="18,9" marker-end="url(#arrowPurple)"/>
+
+<!-- Electric field lines -->
+<line x1="441.93332436601617" y1="483.2937140592269" x2="521.9333243660162" y2="483.2937140592269" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+<line x1="441.93332436601617" y1="523.2937140592269" x2="521.9333243660162" y2="523.2937140592269" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+<line x1="441.93332436601617" y1="563.2937140592269" x2="521.9333243660162" y2="563.2937140592269" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+
+<!-- ============ LABELS ============ -->
+
+<!-- Point labels -->
+<text x="350.0" y="510.0" font-size="32" font-weight="bold" fill="#2c3e50">O</text>
+<text x="320.0" y="538.0" font-size="15" fill="#7f8c8d">(sphere center)</text>
+
+<text x="511.93332436601617" y="428.2937140592269" font-size="32" font-weight="bold" fill="#e74c3c">C</text>
+<text x="486.93332436601617" y="456.2937140592269" font-size="15" fill="#7f8c8d">(cavity center)</text>
+
+<text x="529.6109938956798" y="510.61604452956317" font-size="32" font-weight="bold" fill="#9b59b6">P</text>
+<text x="519.6109938956798" y="538.6160445295632" font-size="15" fill="#7f8c8d">(test point)</text>
+
+<!-- Vector labels -->
+<text x="433.11390037890726" y="550.2838900811762" font-size="36" font-weight="bold" fill="#e74c3c" font-style="italic">a</text>
+<text x="457.11390037890726" y="541.2838900811762" font-size="24" fill="#e74c3c">→</text>
+
+<text x="449.62510513622175" y="552.7361255707976" font-size="36" font-weight="bold" fill="#9b59b6" font-style="italic">r</text>
+<text x="471.62510513622175" y="543.7361255707976" font-size="24" fill="#9b59b6">→</text>
+
+<text x="486.93332436601617" y="398.2937140592269" font-size="34" font-weight="bold" fill="#27ae60" font-style="italic">E</text>
+<text x="510.93332436601617" y="389.2937140592269" font-size="22" fill="#27ae60">→</text>
+<text x="534.9333243660162" y="398.2937140592269" font-size="19" fill="#27ae60">(uniform)</text>
+
+<!-- Diagram labels -->
+<text x="250.0" y="280.0" font-size="23" font-weight="bold" fill="#2980b9">Uniformly Charged</text>
+<text x="290.0" y="305.0" font-size="23" font-weight="bold" fill="#2980b9">Sphere (ρ)</text>
+
+<text x="576.9333243660162" y="598.2937140592269" font-size="22" font-weight="bold" fill="#e67e22">Spherical Cavity</text>
+<text x="598.9333243660162" y="623.2937140592269" font-size="17" fill="#7f8c8d">(hollow region)</text>
+
+<!-- ============ FORMULAS (RIGHT SIDE) ============ -->
+
+<text x="1000" y="210" font-size="27" font-weight="bold" fill="#16a085">Part (a): Field at P in sphere</text>
+
+<text x="1200" y="295" text-anchor="middle" font-size="50" font-weight="bold" fill="#16a085">
+  <tspan font-style="italic">E</tspan><tspan font-size="36" dy="-16">→</tspan><tspan dy="16"> = </tspan>
+  <tspan font-style="italic">ρr</tspan><tspan font-size="36" dy="-16">→</tspan><tspan dy="16">/(3ε₀)</tspan>
+</text>
+
+<text x="1000" y="370" font-size="20" fill="#34495e">• Independent of R</text>
+<text x="1000" y="400" font-size="20" fill="#34495e">• Proportional to r</text>
+<text x="1000" y="430" font-size="20" fill="#34495e">• Radial direction</text>
+
+<line x1="1000" y1="480" x2="1550" y2="480" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
+
+<text x="1000" y="555" font-size="27" font-weight="bold" fill="#c0392b">Part (b): Field in cavity (UNIFORM)</text>
+
+<text x="1200" y="640" text-anchor="middle" font-size="50" font-weight="bold" fill="#c0392b">
+  <tspan font-style="italic">E</tspan><tspan font-size="36" dy="-16">→</tspan><tspan dy="16"> = </tspan>
+  <tspan font-style="italic">ρa</tspan><tspan font-size="36" dy="-16">→</tspan><tspan dy="16">/(3ε₀)</tspan>
+</text>
+
+<text x="1000" y="715" font-size="21" font-weight="bold" fill="#8e44ad">★ Key Result:</text>
+<text x="1000" y="750" font-size="20" fill="#34495e">• UNIFORM field everywhere</text>
+<text x="1000" y="780" font-size="20" fill="#34495e">• Independent of cavity size</text>
+<text x="1000" y="810" font-size="20" fill="#34495e">• Parallel to </text>
+<text x="1168" y="810" font-size="20" fill="#34495e" font-style="italic">a</text>
+<text x="1184" y="802" font-size="16" fill="#34495e">→</text>
+
+<text x="1000" y="865" font-size="20" fill="#7f8c8d" font-style="italic">Superposition principle</text>
+
+<!-- ============ LEGEND ============ -->
+
+<text x="120" y="875" font-size="24" font-weight="bold" fill="#34495e">Legend:</text>
+
+<line x1="120" y1="920" x2="210" y2="920" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+<text x="225" y="928" font-size="20" fill="#2c3e50">
+  <tspan font-style="italic">a</tspan><tspan font-size="16" dy="-6">→</tspan><tspan dy="6"> = O to C</tspan>
+</text>
+
+<line x1="450" y1="920" x2="540" y2="920" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
+<text x="555" y="928" font-size="20" fill="#2c3e50">
+  <tspan font-style="italic">r</tspan><tspan font-size="16" dy="-6">→</tspan><tspan dy="6"> = O to P</tspan>
+</text>
+
+<line x1="780" y1="920" x2="870" y2="920" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
+<text x="885" y="928" font-size="20" fill="#2c3e50">
+  <tspan font-style="italic">E</tspan><tspan font-size="16" dy="-6">→</tspan><tspan dy="6"> = Electric field</tspan>
+</text>
+
+</svg>

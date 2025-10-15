@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300">
+  <!-- Background -->
+  <rect fill="#f8f9fa" width="800" height="300"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">
+    Three Capacitors in Series Circuit
+  </text>
+
+  <!-- ========== INITIAL CONFIGURATION ========== -->
+  <g id="initial-config">
+    <text x="400" y="60" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+      Initial Configuration
+    </text>
+
+    <!-- Battery (left side) -->
+    <g id="battery">
+      <!-- Negative terminal (shorter line) -->
+      <line x1="80" y1="130" x2="80" y2="145" stroke="#000" stroke-width="4"/>
+      <!-- Positive terminal (longer line) -->
+      <line x1="80" y1="155" x2="80" y2="170" stroke="#000" stroke-width="4"/>
+      <!-- Battery label -->
+      <text x="80" y="190" text-anchor="middle" font-size="14" font-weight="bold" fill="#e74c3c">V = 100 V</text>
+      <!-- Polarity markers -->
+      <text x="65" y="125" font-size="16" font-weight="bold" fill="#e74c3c">−</text>
+      <text x="65" y="180" font-size="16" font-weight="bold" fill="#e74c3c">+</text>
+    </g>
+
+    <!-- Wire from battery positive to C1 -->
+    <line x1="80" y1="170" x2="80" y2="200" stroke="#000" stroke-width="2"/>
+    <line x1="80" y1="200" x2="150" y2="200" stroke="#000" stroke-width="2"/>
+
+    <!-- Capacitor C1 -->
+    <g id="C1">
+      <!-- Left plate -->
+      <line x1="150" y1="180" x2="150" y2="220" stroke="#000" stroke-width="4"/>
+      <!-- Right plate -->
+      <line x1="180" y1="180" x2="180" y2="220" stroke="#000" stroke-width="4"/>
+      <!-- Capacitor box -->
+      <rect x="145" y="175" width="40" height="50" fill="none" stroke="#3498db" stroke-width="2" rx="4"/>
+      <!-- Label -->
+      <text x="165" y="245" text-anchor="middle" font-size="14" font-weight="bold" fill="#3498db">C₁</text>
+      <text x="165" y="260" text-anchor="middle" font-size="12" fill="#2c3e50">10.0 μF</text>
+      <!-- Charge indicators -->
+      <circle cx="148" cy="190" r="2" fill="#e74c3c"/>
+      <circle cx="148" cy="200" r="2" fill="#e74c3c"/>
+      <circle cx="148" cy="210" r="2" fill="#e74c3c"/>
+      <text x="138" y="200" font-size="12" fill="#e74c3c">+</text>
+
+      <circle cx="182" cy="190" r="2" fill="#3498db"/>
+      <circle cx="182" cy="200" r="2" fill="#3498db"/>
+      <circle cx="182" cy="210" r="2" fill="#3498db"/>
+      <text x="192" y="200" font-size="12" fill="#3498db">−</text>
+    </g>
+
+    <!-- Wire from C1 to C2 -->
+    <line x1="180" y1="200" x2="250" y2="200" stroke="#000" stroke-width="2"/>
+
+    <!-- Capacitor C2 -->
+    <g id="C2">
+      <!-- Left plate -->
+      <line x1="250" y1="180" x2="250" y2="220" stroke="#000" stroke-width="4"/>
+      <!-- Right plate -->
+      <line x1="280" y1="180" x2="280" y2="220" stroke="#000" stroke-width="4"/>
+      <!-- Capacitor box -->
+      <rect x="245" y="175" width="40" height="50" fill="none" stroke="#27ae60" stroke-width="2" rx="4"/>
+      <!-- Label -->
+      <text x="265" y="245" text-anchor="middle" font-size="14" font-weight="bold" fill="#27ae60">C₂</text>
+      <text x="265" y="260" text-anchor="middle" font-size="12" fill="#2c3e50">5.00 μF</text>
+      <!-- Charge indicators -->
+      <circle cx="248" cy="190" r="2" fill="#e74c3c"/>
+      <circle cx="248" cy="200" r="2" fill="#e74c3c"/>
+      <circle cx="248" cy="210" r="2" fill="#e74c3c"/>
+      <text x="238" y="200" font-size="12" fill="#e74c3c">+</text>
+
+      <circle cx="282" cy="190" r="2" fill="#3498db"/>
+      <circle cx="282" cy="200" r="2" fill="#3498db"/>
+      <circle cx="282" cy="210" r="2" fill="#3498db"/>
+      <text x="292" y="200" font-size="12" fill="#3498db">−</text>
+    </g>
+
+    <!-- Wire from C2 to C3 -->
+    <line x1="280" y1="200" x2="350" y2="200" stroke="#000" stroke-width="2"/>
+
+    <!-- Capacitor C3 -->
+    <g id="C3">
+      <!-- Left plate -->
+      <line x1="350" y1="180" x2="350" y2="220" stroke="#000" stroke-width="4"/>
+      <!-- Right plate -->
+      <line x1="380" y1="180" x2="380" y2="220" stroke="#000" stroke-width="4"/>
+      <!-- Capacitor box -->
+      <rect x="345" y="175" width="40" height="50" fill="none" stroke="#9b59b6" stroke-width="2" rx="4"/>
+      <!-- Label -->
+      <text x="365" y="245" text-anchor="middle" font-size="14" font-weight="bold" fill="#9b59b6">C₃</text>
+      <text x="365" y="260" text-anchor="middle" font-size="12" fill="#2c3e50">4.00 μF</text>
+      <!-- Charge indicators -->
+      <circle cx="348" cy="190" r="2" fill="#e74c3c"/>
+      <circle cx="348" cy="200" r="2" fill="#e74c3c"/>
+      <circle cx="348" cy="210" r="2" fill="#e74c3c"/>
+      <text x="338" y="200" font-size="12" fill="#e74c3c">+</text>
+
+      <circle cx="382" cy="190" r="2" fill="#3498db"/>
+      <circle cx="382" cy="200" r="2" fill="#3498db"/>
+      <circle cx="382" cy="210" r="2" fill="#3498db"/>
+      <text x="392" y="200" font-size="12" fill="#3498db">−</text>
+    </g>
+
+    <!-- Wire from C3 back to battery -->
+    <line x1="380" y1="200" x2="450" y2="200" stroke="#000" stroke-width="2"/>
+    <line x1="450" y1="200" x2="450" y2="140" stroke="#000" stroke-width="2"/>
+    <line x1="450" y1="140" x2="80" y2="140" stroke="#000" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+{
+  "total_questions": 249,
+  "total_files": 5,
+  "questions_per_file": 50,
+  "topics": [
+    "Capacitance",
+    "Electric Fields",
+    "Electrostatics",
+    "Entropy",
+    "Equilibrium and Elasticity",
+    "Fluid Mechanics",
+    "General",
+    "Gravitation",
+    "Rotational Motion",
+    "Simple Harmonic Motion",
+    "Wave Motion"
+  ],
+  "difficulties": {
+    "HARD": 160,
+    "MEDIUM": 89
+  },
+  "export_date": "2025-10-13T17:22:34.159Z"
+}

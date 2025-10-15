@@ -1,0 +1,889 @@
+====================================================================================================
+COMPREHENSIVE SVG DIAGRAM ANALYSIS REPORT
+====================================================================================================
+
+Checking ALL SVG diagrams in physics HTML files for potential issues...
+====================================================================================================
+
+
+####################################################################################################
+FILE: physics_questions_01_of_05.html
+####################################################################################################
+
+==========================================================================================
+Question 1 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 2 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 3 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 4 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 5 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 6 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 7 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 8 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 9 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 10 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 11 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 12 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 13 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 14 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 15 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 16 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 17 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 18 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 19 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 20 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 21 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 22 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 23 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 24 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 25 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 26 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 27 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 28 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 29 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 30 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 31 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 32 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 33 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 34 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 35 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 36 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 37 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 38 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 39 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 40 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 41 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 42 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 43 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 44 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 45 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 46 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 47 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 48 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 49 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+==========================================================================================
+Question 50 - Looks OK
+==========================================================================================
+
+Question Text (excerpt):
+  Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A. Task: (a) By finding the work needed to increase the plate separation from x to x + dx, determine the force F between the plates. (Hint: Use the relation dW = F·dx) (b) Show that the force per unit area (the electrostatic stress) acting on either plate equals the energy density u = ε₀E²/2 between the plates. Given rel...
+
+SVG Analysis:
+  • Total text labels in SVG: 19
+  • Sample labels: Lower Plate (−q), Upper Plate (+q), E, x, dx
+    ... and 14 more
+
+✓ No obvious issues detected
+
+
+####################################################################################################
+FILE: physics_questions_02_of_05.html
+####################################################################################################
+
+==========================================================================================
+Question 51 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 52 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 53 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 54 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 55 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 56 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 57 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 58 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 59 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+==========================================================================================
+Question 60 *** POTENTIAL ISSUES FOUND ***
+==========================================================================================
+
+Question Text (excerpt):
+  Identical isolated conducting spheres 1 and 2 have equal charges and are separated by a distance that is large compared with their diameters. The electrostatic force acting on sphere 2 due to sphere 1 is F. Suppose now that a third identical sphere 3, having an insulating handle and initially neutral, is touched first to sphere 1, then to sphere 2, and ly removed. What is the ratio F'/F of the ele...
+
+SVG Analysis:
+  • Total text labels in SVG: 14
+  • Sample labels: Initial State, Q, Sphere 1, Q, Sphere 2
+    ... and 9 more
+
+⚠️  POTENTIAL ISSUES:
+  ❌ Keyword 'distance' in question but not found in SVG labels
+
+
+####################################################################################################
+FILE: physics_questions_03_of_05.html
+####################################################################################################
+
+
+####################################################################################################
+FILE: physics_questions_04_of_05.html
+####################################################################################################
+
+
+####################################################################################################
+FILE: physics_questions_05_of_05.html
+####################################################################################################
+
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+Total SVG diagrams checked: 60
+Diagrams with potential issues: 10
+====================================================================================================

@@ -1,0 +1,59 @@
+QUESTION 14 SVG REDRAW - VERIFICATION REPORT
+=============================================
+
+FILE: physics_questions_01_of_05.html
+LOCATION: Lines 7165-7284
+QUESTION HEADER: "Question 28" (contains Question 14 content about bee and pollen)
+
+NEW SVG STRUCTURE VERIFIED:
+✓ ViewBox: 0 0 800 500 (wider format for two scenarios)
+✓ Title: "Question 14: Bee and Pollen Electrostatics"
+✓ Vertical dividing line separating scenarios
+
+LEFT SCENARIO (Lines 7181-7228):
+✓ Title: "Scenario 1: Bee with Pollen"
+✓ Honeybee sphere (r=80, golden color #FFD700)
+  - Charge: +45.0 pC (red + symbol)
+  - Diameter labeled: 1.000 cm
+✓ Pollen grain on surface (r=12, pale goldenrod)
+  - Near charge: −1.00 pC (blue, labeled "near")
+  - Far charge: +1.00 pC (red, labeled "far")
+  - Diameter labeled: 40.0 μm
+✓ Force arrow Fbee (orange, pointing to pollen)
+✓ Labels: "Bee (sphere)" and "Pollen grain"
+
+RIGHT SCENARIO (Lines 7230-7273):
+✓ Title: "Scenario 2: Pollen near Stigma"
+✓ Pollen grain (same size, with induced charges)
+  - Diameter labeled: 40.0 μm
+✓ Stigma tip (green circle, r=15)
+  - Charge: −45.0 pC (blue − symbol)
+  - Label: "Stigma tip"
+✓ Distance dimension: 1.000 mm (with measurement line)
+✓ Force arrow Fstigma (blue, pointing toward stigma)
+
+LEGEND BOX (Lines 7276-7283):
+✓ Title: "Key Information"
+✓ Bee specifications: Q = +45.0 pC, d = 1.000 cm
+✓ Pollen specifications: induced charges (−1.00 pC near, +1.00 pC far), d = 40.0 μm
+✓ Stigma specifications: Q = −45.0 pC
+✓ Distance: 1.000 mm
+
+COLOR CODING:
+✓ Positive charges: Red (#cc0000)
+✓ Negative charges: Blue (#0066cc)
+✓ Bee: Gold (#FFD700)
+✓ Pollen: Pale goldenrod (#F0E68C)
+✓ Stigma: Green (#228B22)
+✓ Force arrows: Orange (#ff6600) for Fbee, Blue (#0066ff) for Fstigma
+
+ALL REQUIREMENTS MET:
+✓ Two scenarios clearly separated
+✓ All dimensions labeled (1.000 cm, 40.0 μm, 1.000 mm)
+✓ All charges labeled (+45.0 pC, −1.00 pC, +1.00 pC, −45.0 pC)
+✓ Induced charges shown with proper signs
+✓ Force arrows clearly labeled (Fbee, Fstigma)
+✓ Color coding for positive/negative charges
+✓ Professional appearance with legend
+
+STATUS: ✅ COMPLETE AND VERIFIED
