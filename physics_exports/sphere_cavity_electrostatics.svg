@@ -40,54 +40,54 @@
 <text x="580" y="568" font-size="44" font-weight="bold" fill="#e74c3c">C</text>
 <text x="598" y="653" font-size="44" font-weight="bold" fill="#9b59b6">P</text>
 <g id="given-info">
-  <text x="1000" y="250" font-size="28" font-weight="bold" fill="#16a085">Given Information:</text>
+  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
 
-  <text x="1020" y="300" font-size="22" fill="#34495e">• Sphere has uniform volume charge density ρ</text>
-  <text x="1020" y="335" font-size="22" fill="#34495e">• Spherical cavity is located within the sphere</text>
-  <text x="1020" y="370" font-size="22" fill="#34495e">• O = center of sphere</text>
-  <text x="1020" y="405" font-size="22" fill="#34495e">• C = center of cavity</text>
-  <text x="1020" y="440" font-size="22" fill="#34495e">• P = test point inside cavity</text>
+  <text x="1020" y="300" font-size="26" fill="#34495e">• Sphere has uniform volume charge density ρ</text>
+  <text x="1020" y="340" font-size="26" fill="#34495e">• Spherical cavity is located within the sphere</text>
+  <text x="1020" y="380" font-size="26" fill="#34495e">• O = center of sphere</text>
+  <text x="1020" y="420" font-size="26" fill="#34495e">• C = center of cavity</text>
+  <text x="1020" y="460" font-size="26" fill="#34495e">• P = test point inside cavity</text>
 
   <!-- Vector a with overhead arrow -->
-  <text x="1020" y="475" font-size="22" fill="#34495e">• </text>
-  <text x="1035" y="475" font-size="22" font-style="italic" fill="#34495e">a</text>
-  <path d="M 1033 462 L 1045 462 L 1043 460 M 1045 462 L 1043 464" stroke="#34495e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <text x="1048" y="475" font-size="22" fill="#34495e"> = displacement vector from O to C</text>
+  <text x="1020" y="500" font-size="26" fill="#34495e">• </text>
+  <text x="1035" y="500" font-size="26" font-style="italic" fill="#34495e">a</text>
+  <path d="M 1033 483 L 1045 483 L 1043 481 M 1045 483 L 1043 485" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="1048" y="500" font-size="26" fill="#34495e"> = displacement vector from O to C</text>
 
   <!-- Vector r with overhead arrow -->
-  <text x="1020" y="510" font-size="22" fill="#34495e">• </text>
-  <text x="1035" y="510" font-size="22" font-style="italic" fill="#34495e">r</text>
-  <path d="M 1033 497 L 1043 497 L 1041 495 M 1043 497 L 1041 499" stroke="#34495e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <text x="1046" y="510" font-size="22" fill="#34495e"> = position vector from O to P</text>
+  <text x="1020" y="540" font-size="26" fill="#34495e">• </text>
+  <text x="1035" y="540" font-size="26" font-style="italic" fill="#34495e">r</text>
+  <path d="M 1033 523 L 1043 523 L 1041 521 M 1043 523 L 1041 525" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="1046" y="540" font-size="26" fill="#34495e"> = position vector from O to P</text>
 
   <!-- Vector E with overhead arrow -->
-  <text x="1020" y="545" font-size="22" fill="#34495e">• </text>
-  <text x="1035" y="545" font-size="22" font-style="italic" fill="#34495e">E</text>
-  <path d="M 1033 532 L 1047 532 L 1045 530 M 1047 532 L 1045 534" stroke="#34495e" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <text x="1050" y="545" font-size="22" fill="#34495e"> = electric field (shown as green arrows)</text>
+  <text x="1020" y="580" font-size="26" fill="#34495e">• </text>
+  <text x="1035" y="580" font-size="26" font-style="italic" fill="#34495e">E</text>
+  <path d="M 1033 563 L 1047 563 L 1045 561 M 1047 563 L 1045 565" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="1050" y="580" font-size="26" fill="#34495e"> = electric field (shown as green arrows)</text>
 </g>
 <g id="legend">
-  <text x="1000" y="620" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
+  <text x="1000" y="660" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
 
-  <line x1="1020" y1="665" x2="1110" y2="665" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <line x1="1020" y1="705" x2="1110" y2="705" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
   <g>
-    <text x="1125" y="673" font-size="26" fill="#2c3e50" font-style="italic">a</text>
-    <path d="M 1121 656 L 1135 656 L 1133 654 M 1135 656 L 1133 658" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="1140" y="673" font-size="26" fill="#2c3e50"> = O to C (displacement)</text>
+    <text x="1125" y="713" font-size="26" fill="#2c3e50" font-style="italic">a</text>
+    <path d="M 1121 696 L 1135 696 L 1133 694 M 1135 696 L 1133 698" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="1140" y="713" font-size="26" fill="#2c3e50"> = O to C (displacement)</text>
   </g>
 
-  <line x1="1020" y1="710" x2="1110" y2="710" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
+  <line x1="1020" y1="750" x2="1110" y2="750" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
   <g>
-    <text x="1125" y="718" font-size="26" fill="#2c3e50" font-style="italic">r</text>
-    <path d="M 1121 701 L 1133 701 L 1131 699 M 1133 701 L 1131 703" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="1138" y="718" font-size="26" fill="#2c3e50"> = O to P (position)</text>
+    <text x="1125" y="758" font-size="26" fill="#2c3e50" font-style="italic">r</text>
+    <path d="M 1121 741 L 1133 741 L 1131 739 M 1133 741 L 1131 743" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="1138" y="758" font-size="26" fill="#2c3e50"> = O to P (position)</text>
   </g>
 
-  <line x1="1020" y1="755" x2="1110" y2="755" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <line x1="1020" y1="795" x2="1110" y2="795" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
   <g>
-    <text x="1125" y="763" font-size="26" fill="#2c3e50" font-style="italic">E</text>
-    <path d="M 1121 746 L 1135 746 L 1133 744 M 1135 746 L 1133 748" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="1140" y="763" font-size="26" fill="#2c3e50"> = Electric field</text>
+    <text x="1125" y="803" font-size="26" fill="#2c3e50" font-style="italic">E</text>
+    <path d="M 1121 786 L 1135 786 L 1133 784 M 1135 786 L 1133 788" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="1140" y="803" font-size="26" fill="#2c3e50"> = Electric field</text>
   </g>
 </g>
 </svg>
