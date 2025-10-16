@@ -164,6 +164,25 @@ class SVGVerifier:
         if len(svg_content) < 500:
             issues.append("SVG content too small - may be incomplete")
 
+        # Check 6: Regression check - legend should not overlap with given info
+        given_info_match = re.search(r'<g id="given-info">(.*?)</g>', svg_content, re.DOTALL)
+        legend_match = re.search(r'<g id="legend">.*?<text x="\d+" y="(\d+)"', svg_content)
+
+        if given_info_match and legend_match:
+            # Find last given info item position
+            given_items = re.findall(r'y="(\d+)"', given_info_match.group(1))
+            if given_items:
+                last_given_y = int(given_items[-1])
+                legend_y = int(legend_match.group(1))
+
+                if legend_y <= last_given_y + 40:  # Less than 40px gap
+                    warnings.append(f"Legend overlaps with given info (legend at y={legend_y}, last item at y={last_given_y})")
+
+        # Check 7: No garbage extraction (invalid unit combinations like "μFC", "μFSC")
+        garbage_pattern = r'= \d+(?:\.\d+)? [a-zμ]+[A-Z]{2,}'  # Units like "μFC", "mJSC"
+        if re.search(garbage_pattern, svg_content):
+            issues.append("Detected garbage extraction with invalid units")
+
         success = len(issues) == 0
 
         return {

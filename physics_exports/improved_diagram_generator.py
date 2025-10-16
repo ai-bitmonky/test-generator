@@ -121,15 +121,49 @@ class ImprovedPhysicsDiagramGenerator:
 
         # Enhanced extraction patterns
 
-        # 1. Numeric values with units: "x = 5.0 cm", "R = 64.0 cm"
-        value_pattern = r'([A-Za-z][A-Za-z₁₂₃]*)\s*=\s*([0-9.]+(?:\s*×\s*10\^[−\-0-9]+)?)\s*([a-zA-Zμ°]+)'
+        # 1. Numeric values with units: "x = 5.0 cm", "R = 64.0 cm", "7.0 kV", "200 pF", "150 mJ"
+        # Enhanced to capture more unit types: kV, pF, mJ, etc.
+        # Require space before '=' to avoid matching ASCII art like "PC₁=8μFC"
+        value_pattern = r'([A-Za-z][A-Za-z₁₂₃]*)\s+=\s+([0-9.]+(?:\s*×\s*10\^[−\-0-9]+)?)\s+([a-zA-Zμ°]+)'
         for match in re.finditer(value_pattern, question_text):
             var_name = match.group(1)
             var_value = match.group(2)
             var_unit = match.group(3)
-            key = f"{var_name}"
-            if key not in values:  # Don't duplicate if already in values dict
-                values[key] = f"{var_value} {var_unit}"
+            # Filter out garbage: unit should be valid (not contain multiple consecutive capitals like "μFC")
+            if len(var_unit) <= 4 and not re.match(r'[A-Z]{3,}', var_unit):  # Valid units are short
+                key = f"{var_name}"
+                if key not in values:  # Don't duplicate if already in values dict
+                    values[key] = f"{var_value} {var_unit}"
+
+        # 1b. Also capture standalone values with units (without variable names): "7.0 kV", "200 pF"
+        standalone_pattern = r'([0-9.]+)\s+(kV|mV|pF|nF|mJ|μJ|MeV|keV|eV|GeV|MW|kW|mA|μA|nA|pA|kΩ|MΩ|mΩ)'
+        for match in re.finditer(standalone_pattern, question_text):
+            value = match.group(1)
+            unit = match.group(2)
+            # Create descriptive key based on unit type
+            if 'V' in unit:
+                key = "Voltage"
+            elif 'F' in unit:
+                key = "Capacitance"
+            elif 'J' in unit:
+                key = "Energy"
+            elif 'W' in unit:
+                key = "Power"
+            elif 'A' in unit:
+                key = "Current"
+            elif 'Ω' in unit:
+                key = "Resistance"
+            else:
+                key = f"Value_{len(values)}"
+
+            # Avoid duplicate keys by appending number if needed
+            original_key = key
+            counter = 1
+            while key in values:
+                key = f"{original_key}_{counter}"
+                counter += 1
+
+            values[key] = f"{value} {unit}"
 
         # 2. Variables without specific values: "charge q", "plate area A", "radius R"
         # These are mentioned but don't have numeric values
@@ -522,7 +556,7 @@ class ImprovedPhysicsDiagramGenerator:
 </defs>'''
 
     def _generate_given_info(self, spec: DiagramSpec) -> str:
-        """Generate given information section"""
+        """Generate given information section - returns (info_svg, final_y_position)"""
         info = f'''
   <text x="1000" y="250" font-size="32" font-weight="bold" fill="{self.colors['section_header']}">Given Information:</text>
 '''
@@ -532,15 +566,21 @@ class ImprovedPhysicsDiagramGenerator:
             info += f'  <text x="1020" y="{y_offset}" font-size="26" fill="{self.colors['secondary_text']}">• {key} = {self._escape_xml(value)}</text>\n'
             y_offset += 40
 
+        # Store final y position for legend placement
+        self._given_info_end_y = y_offset
+
         return info
 
     def _generate_legend_capacitor(self) -> str:
         """Generate legend for capacitor diagrams"""
+        # Calculate legend start position with padding after given info
+        legend_y_start = max(500, getattr(self, '_given_info_end_y', 300) + 60)
+
         return f'''
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="{self.colors['section_header']}">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="{self.colors['secondary_text']}">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="{self.colors['secondary_text']}">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="{self.colors['secondary_text']}">• Battery symbol: thick line is positive terminal</text>
+  <text x="1000" y="{legend_y_start}" font-size="32" font-weight="bold" fill="{self.colors['section_header']}">Legend:</text>
+  <text x="1020" y="{legend_y_start + 50}" font-size="26" fill="{self.colors['secondary_text']}">• Capacitor plates shown as parallel lines</text>
+  <text x="1020" y="{legend_y_start + 90}" font-size="26" fill="{self.colors['secondary_text']}">• +q and −q represent charge on plates</text>
+  <text x="1020" y="{legend_y_start + 130}" font-size="26" fill="{self.colors['secondary_text']}">• Battery symbol: thick line is positive terminal</text>
 '''
 
     def _generate_legend_electric_field(self) -> str:

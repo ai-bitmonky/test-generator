@@ -49,6 +49,9 @@
 <g id="given-info">
 
   <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+  <text x="1020" y="300" font-size="26" fill="#34495e">• Voltage = 7.0 kV</text>
+  <text x="1020" y="340" font-size="26" fill="#34495e">• Capacitance = 200 pF</text>
+  <text x="1020" y="380" font-size="26" fill="#34495e">• Energy = 150 mJ</text>
 
 </g>
 

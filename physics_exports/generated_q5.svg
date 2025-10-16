@@ -68,18 +68,16 @@
   <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 6 μF</text>
   <text x="1020" y="380" font-size="26" fill="#34495e">• C₃ = 8 μF</text>
   <text x="1020" y="420" font-size="26" fill="#34495e">• V = 12.0 V</text>
-  <text x="1020" y="460" font-size="26" fill="#34495e">• PC₁ = 8 μFC</text>
-  <text x="1020" y="500" font-size="26" fill="#34495e">• FC₂ = 6 μFSC</text>
 
 </g>
 
 <!-- Legend -->
 <g id="legend">
 
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
+  <text x="1000" y="520" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
+  <text x="1020" y="570" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
+  <text x="1020" y="610" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
+  <text x="1020" y="650" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
 
 </g>
 
