@@ -119,13 +119,62 @@ class ImprovedPhysicsDiagramGenerator:
         # Extract given information (values, constants)
         given_info = []
 
-        # Find numeric values with units
-        value_pattern = r'([A-Za-z][A-Za-z₁₂₃]*)\s*=\s*([0-9.]+(?:\s*×\s*10\^[−\-0-9]+)?)\s*([a-zA-Zμ]+)'
+        # Enhanced extraction patterns
+
+        # 1. Numeric values with units: "x = 5.0 cm", "R = 64.0 cm"
+        value_pattern = r'([A-Za-z][A-Za-z₁₂₃]*)\s*=\s*([0-9.]+(?:\s*×\s*10\^[−\-0-9]+)?)\s*([a-zA-Zμ°]+)'
         for match in re.finditer(value_pattern, question_text):
             var_name = match.group(1)
             var_value = match.group(2)
             var_unit = match.group(3)
-            given_info.append(f"{var_name} = {var_value} {var_unit}")
+            key = f"{var_name}"
+            if key not in values:  # Don't duplicate if already in values dict
+                values[key] = f"{var_value} {var_unit}"
+
+        # 2. Variables without specific values: "charge q", "plate area A", "radius R"
+        # These are mentioned but don't have numeric values
+        symbolic_patterns = [
+            r'charge\s+([qQ])',
+            r'plate\s+area\s+([A-Z])',
+            r'radius\s+([rR])',
+            r'distance\s+([dDrR])',
+            r'mass\s+([mM])',
+            r'velocity\s+([vV])',
+            r'separation\s+([dD])',
+        ]
+
+        for pattern in symbolic_patterns:
+            matches = re.finditer(pattern, question_text, re.IGNORECASE)
+            for match in matches:
+                var = match.group(1)
+                # Extract the context (what it represents)
+                full_match = match.group(0)
+                description = full_match.split(var)[0].strip()
+                if var not in values and len(description) > 0:
+                    values[var] = f"({description})"
+
+        # 3. Scientific notation values: "1.6 × 10⁻¹⁵ C"
+        sci_pattern = r'([0-9.]+)\s*×\s*10[⁻\-]?([0-9]+)\s*([a-zA-Zμ°]+)'
+        for match in re.finditer(sci_pattern, question_text):
+            value_str = f"{match.group(1)} × 10^-{match.group(2)} {match.group(3)}"
+            # Try to associate with a variable if mentioned nearby
+            # For now, just note it exists
+            pass
+
+        # 4. Phrases like "of radius R = 8.20 cm"
+        radius_pattern = r'radius\s+([A-Z])\s*=\s*([0-9.]+)\s*([a-z]+)'
+        for match in re.finditer(radius_pattern, question_text, re.IGNORECASE):
+            var = match.group(1)
+            val = match.group(2)
+            unit = match.group(3)
+            values[var] = f"{val} {unit}"
+
+        # 5. Density patterns: "density λ = 5.0 C/m", "density ρ"
+        density_pattern = r'density\s+([λρσ])'
+        for match in re.finditer(density_pattern, question_text):
+            var = match.group(1)
+            if var not in values:
+                values[var] = "(charge density)"
 
         # Determine layout
         layout = "standard"  # Can be: standard, wide, tall, split
