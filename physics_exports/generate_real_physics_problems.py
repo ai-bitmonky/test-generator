@@ -456,7 +456,8 @@ class SmartPhysicsSVGRenderer:
             f'font-size="22" fill="#7f8c8d">(test point)</text>'
         )
 
-        # Add legend only (no questions or formulas)
+        # Add given information and legend
+        svg_parts.append(self._add_given_information())
         svg_parts.append(self._add_legend())
 
         svg_parts.append('</svg>')
@@ -618,34 +619,19 @@ class SmartPhysicsSVGRenderer:
   <text x="{x_start + 20}" y="{y_start + 360}" font-size="19" fill="#34495e">(b) What is magnitude of net electrostatic force on grain due to stigma at 1.000 mm distance?</text>
 </g>'''
 
-    def _add_sphere_cavity_questions(self) -> str:
-        """Add questions for sphere/cavity problem (NO ANSWERS/SOLUTIONS)"""
-        return '''<g id="questions">
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#e74c3c">Questions to Answer:</text>
+    def _add_given_information(self) -> str:
+        """Add given information for sphere/cavity problem"""
+        return '''<g id="given-info">
+  <text x="1000" y="250" font-size="28" font-weight="bold" fill="#16a085">Given Information:</text>
 
-  <text x="1020" y="310" font-size="22" fill="#34495e">
-    <tspan font-weight="bold">(a)</tspan> Show that the electric field at point P (inside the sphere) is given by
-  </text>
-  <text x="1020" y="340" font-size="22" fill="#34495e">
-    E⃗ = ρr⃗/(3ε₀), where r⃗ is the position vector from O to P.
-  </text>
-
-  <line x1="1000" y1="390" x2="1550" y2="390" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
-
-  <text x="1020" y="450" font-size="22" fill="#34495e">
-    <tspan font-weight="bold">(b)</tspan> Show that the electric field at all points within the cavity is uniform
-  </text>
-  <text x="1020" y="480" font-size="22" fill="#34495e">
-    and equal to E⃗ = ρa⃗/(3ε₀), where a⃗ is the displacement from O to C.
-  </text>
-
-  <line x1="1000" y1="530" x2="1550" y2="530" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
-
-  <text x="1000" y="590" font-size="24" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="630" font-size="20" fill="#34495e">• Sphere has uniform volume charge density ρ</text>
-  <text x="1020" y="660" font-size="20" fill="#34495e">• Spherical cavity is located within the sphere</text>
-  <text x="1020" y="690" font-size="20" fill="#34495e">• O = center of sphere, C = center of cavity</text>
-  <text x="1020" y="720" font-size="20" fill="#34495e">• P = test point inside sphere</text>
+  <text x="1020" y="300" font-size="22" fill="#34495e">• Sphere has uniform volume charge density ρ</text>
+  <text x="1020" y="335" font-size="22" fill="#34495e">• Spherical cavity is located within the sphere</text>
+  <text x="1020" y="370" font-size="22" fill="#34495e">• O = center of sphere</text>
+  <text x="1020" y="405" font-size="22" fill="#34495e">• C = center of cavity</text>
+  <text x="1020" y="440" font-size="22" fill="#34495e">• P = test point inside cavity</text>
+  <text x="1020" y="475" font-size="22" fill="#34495e">• a⃗ = displacement vector from O to C</text>
+  <text x="1020" y="510" font-size="22" fill="#34495e">• r⃗ = position vector from O to P</text>
+  <text x="1020" y="545" font-size="22" fill="#34495e">• E⃗ = electric field (shown as green arrows)</text>
 </g>'''
 
     def _add_legend(self) -> str:

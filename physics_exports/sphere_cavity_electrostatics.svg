@@ -42,6 +42,18 @@
 <text x="555" y="596" font-size="22" fill="#7f8c8d">(cavity center)</text>
 <text x="598" y="653" font-size="44" font-weight="bold" fill="#9b59b6">P</text>
 <text x="588" y="681" font-size="22" fill="#7f8c8d">(test point)</text>
+<g id="given-info">
+  <text x="1000" y="250" font-size="28" font-weight="bold" fill="#16a085">Given Information:</text>
+
+  <text x="1020" y="300" font-size="22" fill="#34495e">• Sphere has uniform volume charge density ρ</text>
+  <text x="1020" y="335" font-size="22" fill="#34495e">• Spherical cavity is located within the sphere</text>
+  <text x="1020" y="370" font-size="22" fill="#34495e">• O = center of sphere</text>
+  <text x="1020" y="405" font-size="22" fill="#34495e">• C = center of cavity</text>
+  <text x="1020" y="440" font-size="22" fill="#34495e">• P = test point inside cavity</text>
+  <text x="1020" y="475" font-size="22" fill="#34495e">• a⃗ = displacement vector from O to C</text>
+  <text x="1020" y="510" font-size="22" fill="#34495e">• r⃗ = position vector from O to P</text>
+  <text x="1020" y="545" font-size="22" fill="#34495e">• E⃗ = electric field (shown as green arrows)</text>
+</g>
 <g id="legend">
   <text x="120" y="875" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
 
