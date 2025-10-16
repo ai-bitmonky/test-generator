@@ -73,8 +73,13 @@ class ImprovedPhysicsDiagramGenerator:
         elements = []
         values = {}
 
+        # Sphere with cavity (check FIRST - more specific than generic electric field)
+        if 'sphere' in text_lower and 'cavity' in text_lower:
+            diagram_type = "sphere_cavity"
+            elements.extend(['sphere', 'cavity'])
+
         # Capacitor detection
-        if 'capacitor' in text_lower:
+        elif 'capacitor' in text_lower:
             diagram_type = "capacitor"
 
             # Check for series/parallel
@@ -98,7 +103,7 @@ class ImprovedPhysicsDiagramGenerator:
             if volt_match:
                 values['V'] = volt_match.group(1) + ' V'
 
-        # Electric field detection
+        # Electric field detection (more generic - check AFTER specific types)
         elif 'electric field' in text_lower or 'field lines' in text_lower:
             diagram_type = "electric_field"
 
@@ -110,11 +115,6 @@ class ImprovedPhysicsDiagramGenerator:
             # Check for multiple charges
             if re.search(r'(two|three|multiple|several)\s+charge', text_lower):
                 diagram_type = "electric_field_multiple_charges"
-
-        # Sphere with cavity
-        elif 'sphere' in text_lower and 'cavity' in text_lower:
-            diagram_type = "sphere_cavity"
-            elements.extend(['sphere', 'cavity'])
 
         # Extract given information (values, constants)
         given_info = []
@@ -468,9 +468,9 @@ class ImprovedPhysicsDiagramGenerator:
     def _generate_sphere_cavity_diagram(self, spec: DiagramSpec) -> str:
         """Generate sphere with cavity diagram"""
         # Use the existing proven implementation
-        from generate_real_physics_problems import PhysicsProblemGenerator
-        gen = PhysicsProblemGenerator()
-        return gen.generate_sphere_cavity_diagram()
+        from generate_real_physics_problems import SmartPhysicsSVGRenderer
+        renderer = SmartPhysicsSVGRenderer()
+        return renderer.render_sphere_cavity_problem()
 
     def _generate_generic_diagram(self, spec: DiagramSpec) -> str:
         """Fallback for unrecognized diagram types"""
