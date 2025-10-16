@@ -11,9 +11,6 @@
   <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
   </marker>
-  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
-    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
-  </marker>
   <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
@@ -25,63 +22,79 @@
   </marker>
 </defs>
 
-<!-- Main Diagram Area -->
+<!-- Main Diagram -->
 <g id="main-diagram">
 
   <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
+  <line x1="150" y1="560" x2="150" y2="640" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="165" y1="580" x2="165" y2="620" stroke="#2c3e50" stroke-width="6"/>
+  <text x="120" y="550" font-size="26" fill="#2c3e50">+</text>
+  <text x="120" y="665" font-size="26" fill="#2c3e50">−</text>
+  <text x="190" y="610" font-size="24" fill="#34495e">V</text>
 
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">8 μF</text>
+  <!-- Capacitor C₁ -->
+  <line x1="370" y1="450" x2="370" y2="550" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="430" y1="450" x2="430" y2="550" stroke="#2c3e50" stroke-width="4"/>
+  <text x="400" y="430" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">C₁</text>
+  <text x="400" y="600" text-anchor="middle" font-size="22" fill="#34495e">1.00 μF</text>
 
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">6 μF</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
+  <!-- Capacitor C₂ -->
+  <line x1="620" y1="450" x2="620" y2="550" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="680" y1="450" x2="680" y2="550" stroke="#2c3e50" stroke-width="4"/>
+  <text x="650" y="430" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">C₂</text>
+  <text x="650" y="600" text-anchor="middle" font-size="22" fill="#34495e">2.00 μF</text>
 
-  <!-- Capacitor 3 -->
-  <line x1="870" y1="550" x2="870" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="930" y1="550" x2="930" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="900" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_3</text>
-  <text x="900" y="700" text-anchor="middle" font-size="26" fill="#34495e">8 μF</text>
-  <line x1="680" y1="600" x2="870" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
+  <!-- Capacitor C₃ -->
+  <line x1="370" y1="650" x2="370" y2="750" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="430" y1="650" x2="430" y2="750" stroke="#2c3e50" stroke-width="4"/>
+  <text x="400" y="630" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">C₃</text>
+  <text x="400" y="800" text-anchor="middle" font-size="22" fill="#34495e">3.00 μF</text>
 
-  <line x1="930" y1="600" x2="1000" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="1000" y1="600" x2="1000" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="1000" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">12.0 V</text>
+  <!-- Capacitor C₄ -->
+  <line x1="620" y1="650" x2="620" y2="750" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="680" y1="650" x2="680" y2="750" stroke="#2c3e50" stroke-width="4"/>
+  <text x="650" y="630" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">C₄</text>
+  <text x="650" y="800" text-anchor="middle" font-size="22" fill="#34495e">4.00 μF</text>
 
+  <!-- Switch S -->
+  <circle cx="700" cy="600" r="8" fill="#2c3e50"/>
+  <circle cx="760" cy="600" r="8" fill="#2c3e50"/>
+  <line x1="700" y1="600" x2="760.0" y2="600.0" stroke="#2c3e50" stroke-width="4"/>
+  <text x="730" y="570" text-anchor="middle" font-size="24" fill="#34495e">S (closed)</text>
+  <line x1="165" y1="600" x2="350" y2="600" stroke="#2c3e50" stroke-width="3"/>
 </g>
 
 <!-- Given Information -->
 <g id="given-info">
-
   <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• C₁ = 8 μF</text>
-  <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 6 μF</text>
-  <text x="1020" y="380" font-size="26" fill="#34495e">• C₃ = 8 μF</text>
-  <text x="1020" y="420" font-size="26" fill="#34495e">• V = 12.0 V</text>
-
+  <text x="1020" y="300" font-size="26" fill="#34495e">• C₁ = 1.00 μF</text>
+  <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 2.00 μF</text>
+  <text x="1020" y="380" font-size="26" fill="#34495e">• C₃ = 3.00 μF</text>
+  <text x="1020" y="420" font-size="26" fill="#34495e">• C₄ = 4.00 μF</text>
+  <text x="1020" y="460" font-size="26" fill="#34495e">• q₁ = 8.57 μC</text>
+  <text x="1020" y="500" font-size="26" fill="#34495e">• q₃ = 8.57 μC</text>
+  <text x="1020" y="540" font-size="26" fill="#34495e">• q₁ = 4.8 μC</text>
+  <text x="1020" y="580" font-size="26" fill="#34495e">• q₂ = 9.6 μC</text>
+  <text x="1020" y="620" font-size="26" fill="#34495e">• q₃ = 7.2 μC</text>
+  <text x="1020" y="660" font-size="26" fill="#34495e">• q₄ = 9.6 μC</text>
+  <text x="1020" y="700" font-size="26" fill="#34495e">• q₁ = 9.0 μC</text>
+  <text x="1020" y="740" font-size="26" fill="#34495e">• q₃ = 9.0 μC</text>
+  <text x="1020" y="780" font-size="26" fill="#34495e">• q₁ = 4.0 μC</text>
+  <text x="1020" y="820" font-size="26" fill="#34495e">• q₂ = 8.0 μC</text>
+  <text x="1020" y="860" font-size="26" fill="#34495e">• q₃ = 8.0 μC</text>
+  <text x="1020" y="900" font-size="26" fill="#34495e">• q₄ = 10.0 μC</text>
+  <text x="1020" y="940" font-size="26" fill="#34495e">• q₁ = 10.0 μC</text>
+  <text x="1020" y="980" font-size="26" fill="#34495e">• q₃ = 10.0 μC</text>
+  <text x="1020" y="1020" font-size="26" fill="#34495e">• q₁ = 5.0 μC</text>
+  <text x="1020" y="1060" font-size="26" fill="#34495e">• q₂ = 10.0 μC</text>
+  <text x="1020" y="1100" font-size="26" fill="#34495e">• q₃ = 6.0 μC</text>
+  <text x="1020" y="1140" font-size="26" fill="#34495e">• q₄ = 8.0 μC</text>
+  <text x="1020" y="1180" font-size="26" fill="#34495e">• q₁ = 7.5 μC</text>
+  <text x="1020" y="1220" font-size="26" fill="#34495e">• q₃ = 7.5 μC</text>
+  <text x="1020" y="1260" font-size="26" fill="#34495e">• q₁ = 6.0 μC</text>
+  <text x="1020" y="1300" font-size="26" fill="#34495e">• q₂ = 7.2 μC</text>
+  <text x="1020" y="1340" font-size="26" fill="#34495e">• q₃ = 9.0 μC</text>
+  <text x="1020" y="1380" font-size="26" fill="#34495e">• q₄ = 10.8 μC</text>
+  <text x="1020" y="1420" font-size="26" fill="#34495e">• V = 12.0 V</text>
 </g>
-
-<!-- Legend -->
-<g id="legend">
-
-  <text x="1000" y="520" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="570" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="610" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="650" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
-</g>
-
 </svg>

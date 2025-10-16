@@ -11,9 +11,6 @@
   <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
   </marker>
-  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
-    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
-  </marker>
   <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
@@ -25,51 +22,16 @@
   </marker>
 </defs>
 
-<!-- Main Diagram Area -->
+<!-- Main Diagram -->
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">C_1</text>
-
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">C_2</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="680" y1="600" x2="750" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="600" x2="750" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-
+<circle cx="600" cy="600" r="40" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="4"/>
+<text x="600" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">−e</text>
+<circle cx="800" cy="600" r="40" fill="#e74c3c" fill-opacity="0.3" stroke="#e74c3c" stroke-width="4"/>
+<text x="800" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+e</text>
 </g>
 
 <!-- Given Information -->
 <g id="given-info">
-
   <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
 </g>
-
-<!-- Legend -->
-<g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
-</g>
-
 </svg>

@@ -2,7 +2,6 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
-  <!-- Arrow markers (small) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -12,82 +11,63 @@
   <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
   </marker>
-  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
-    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
+  <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
-
-  <!-- Charge pattern for sphere -->
-  <pattern id="chargePattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-    <circle cx="12" cy="12" r="2.5" fill="#3498db" opacity="0.2"/>
-    <circle cx="28" cy="12" r="2.5" fill="#3498db" opacity="0.2"/>
-    <circle cx="20" cy="28" r="2.5" fill="#3498db" opacity="0.2"/>
-    <text x="20" y="22" font-size="13" fill="#2980b9" text-anchor="middle" opacity="0.3">+</text>
-  </pattern>
+  <marker id="arrowBlueReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowOrangeReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#e67e22"/>
+  </marker>
 </defs>
 
-<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Uniformly Charged Sphere with Spherical Cavity</text>
-<circle cx="450" cy="600" r="220" fill="url(#chargePattern)" stroke="#2980b9" stroke-width="4"/>
-<circle cx="555" cy="663" r="85" fill="white" stroke="#e67e22" stroke-width="4" stroke-dasharray="18,9"/>
-<circle cx="450" cy="600" r="6" fill="#2c3e50"/>
-<circle cx="555" cy="663" r="6" fill="#e74c3c"/>
-<circle cx="573" cy="648" r="6" fill="#9b59b6"/>
-<g><line x1="450" y1="600" x2="480" y2="618" stroke="#e74c3c" stroke-width="4"  marker-end="url(#arrowRed)"/><text x="500" y="658" font-size="36" font-weight="bold" font-style="italic" fill="#e74c3c">a</text><path d="M 498 630 L 522 630 L 520 628 M 522 630 L 520 632" stroke="#e74c3c" stroke-width="2" fill="none"/></g>
-<g><line x1="450" y1="600" x2="563" y2="653" stroke="#9b59b6" stroke-width="4" stroke-dasharray="18,9" marker-end="url(#arrowPurple)"/><text x="583" y="693" font-size="36" font-weight="bold" font-style="italic" fill="#9b59b6">r</text><path d="M 581 665 L 605 665 L 603 663 M 605 665 L 603 667" stroke="#9b59b6" stroke-width="2" fill="none"/></g>
-<line x1="515" y1="623" x2="595" y2="623" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-<line x1="515" y1="663" x2="595" y2="663" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-<line x1="515" y1="703" x2="595" y2="703" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-<text x="400" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-<text x="580" y="568" font-size="44" font-weight="bold" fill="#e74c3c">C</text>
-<text x="598" y="653" font-size="44" font-weight="bold" fill="#9b59b6">P</text>
+<!-- Main Diagram -->
+<g id="main-diagram">
+
+  <!-- Battery -->
+  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
+  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
+  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
+  <text x="240" y="610" font-size="24" fill="#34495e">V</text>
+
+  <!-- Capacitor C -->
+  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
+  <text x="400" y="530" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">C</text>
+  <text x="400" y="700" text-anchor="middle" font-size="22" fill="#34495e">41.6 pF</text>
+
+  <!-- Capacitor C -->
+  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
+  <text x="650" y="530" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">C</text>
+  <text x="650" y="700" text-anchor="middle" font-size="22" fill="#34495e">38.2 pF</text>
+
+  <!-- Capacitor C -->
+  <line x1="870" y1="550" x2="870" y2="650" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="930" y1="550" x2="930" y2="650" stroke="#2c3e50" stroke-width="4"/>
+  <text x="900" y="530" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">C</text>
+  <text x="900" y="700" text-anchor="middle" font-size="22" fill="#34495e">45.8 pF</text>
+
+  <!-- Capacitor C -->
+  <line x1="1120" y1="550" x2="1120" y2="650" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="1180" y1="550" x2="1180" y2="650" stroke="#2c3e50" stroke-width="4"/>
+  <text x="1150" y="530" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">C</text>
+  <text x="1150" y="700" text-anchor="middle" font-size="22" fill="#34495e">35.4 pF</text>
+</g>
+
+<!-- Given Information -->
 <g id="given-info">
   <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-  <text x="1020" y="300" font-size="26" fill="#34495e">• Sphere has uniform volume charge density ρ</text>
-  <text x="1020" y="340" font-size="26" fill="#34495e">• Spherical cavity is located within the sphere</text>
-  <text x="1020" y="380" font-size="26" fill="#34495e">• O = center of sphere</text>
-  <text x="1020" y="420" font-size="26" fill="#34495e">• C = center of cavity</text>
-  <text x="1020" y="460" font-size="26" fill="#34495e">• P = test point inside cavity</text>
-
-  <!-- Vector a with overhead arrow -->
-  <text x="1020" y="500" font-size="26" fill="#34495e">• </text>
-  <text x="1035" y="500" font-size="26" font-style="italic" fill="#34495e">a</text>
-  <path d="M 1033 483 L 1045 483 L 1043 481 M 1045 483 L 1043 485" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1048" y="500" font-size="26" fill="#34495e"> = displacement vector from O to C</text>
-
-  <!-- Vector r with overhead arrow -->
-  <text x="1020" y="540" font-size="26" fill="#34495e">• </text>
-  <text x="1035" y="540" font-size="26" font-style="italic" fill="#34495e">r</text>
-  <path d="M 1033 523 L 1043 523 L 1041 521 M 1043 523 L 1041 525" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1046" y="540" font-size="26" fill="#34495e"> = position vector from O to P</text>
-
-  <!-- Vector E with overhead arrow -->
-  <text x="1020" y="580" font-size="26" fill="#34495e">• </text>
-  <text x="1035" y="580" font-size="26" font-style="italic" fill="#34495e">E</text>
-  <path d="M 1033 563 L 1047 563 L 1045 561 M 1047 563 L 1045 565" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1050" y="580" font-size="26" fill="#34495e"> = electric field (shown as green arrows)</text>
-</g>
-<g id="legend">
-  <text x="1000" y="660" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
-
-  <line x1="1020" y1="705" x2="1110" y2="705" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
-  <g>
-    <text x="1125" y="713" font-size="26" fill="#2c3e50" font-style="italic">a</text>
-    <path d="M 1121 696 L 1135 696 L 1133 694 M 1135 696 L 1133 698" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="1140" y="713" font-size="26" fill="#2c3e50"> = O to C (displacement)</text>
-  </g>
-
-  <line x1="1020" y1="750" x2="1110" y2="750" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
-  <g>
-    <text x="1125" y="758" font-size="26" fill="#2c3e50" font-style="italic">r</text>
-    <path d="M 1121 741 L 1133 741 L 1131 739 M 1133 741 L 1131 743" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="1138" y="758" font-size="26" fill="#2c3e50"> = O to P (position)</text>
-  </g>
-
-  <line x1="1020" y1="795" x2="1110" y2="795" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
-  <g>
-    <text x="1125" y="803" font-size="26" fill="#2c3e50" font-style="italic">E</text>
-    <path d="M 1121 786 L 1135 786 L 1133 784 M 1135 786 L 1133 788" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="1140" y="803" font-size="26" fill="#2c3e50"> = Electric field</text>
-  </g>
+  <text x="1020" y="300" font-size="26" fill="#34495e">• C = 41.6 pF</text>
+  <text x="1020" y="340" font-size="26" fill="#34495e">• C = 38.2 pF</text>
+  <text x="1020" y="380" font-size="26" fill="#34495e">• C = 45.8 pF</text>
+  <text x="1020" y="420" font-size="26" fill="#34495e">• C = 35.4 pF</text>
+  <text x="1020" y="460" font-size="26" fill="#34495e">• κ₁ = 21.0.</text>
+  <text x="1020" y="500" font-size="26" fill="#34495e">• κ₂ = 42.0</text>
+  <text x="1020" y="540" font-size="26" fill="#34495e">• κ₃ = 58.0.</text>
+  <text x="1020" y="580" font-size="26" fill="#34495e">• d = 7.12 mm</text>
+  <text x="1020" y="620" font-size="26" fill="#34495e">• A = 10.5 cm²</text>
 </g>
 </svg>
