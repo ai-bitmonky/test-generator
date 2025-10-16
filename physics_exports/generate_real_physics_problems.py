@@ -428,32 +428,20 @@ class SmartPhysicsSVGRenderer:
                 f'stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>'
             )
 
-        # Labels
+        # Labels (without descriptions)
         svg_parts.append(
             f'<text x="{center_x - 50}" y="{center_y + 10}" '
             f'font-size="44" font-weight="bold" fill="#2c3e50">O</text>'
-        )
-        svg_parts.append(
-            f'<text x="{center_x - 80}" y="{center_y + 38}" '
-            f'font-size="22" fill="#7f8c8d">(sphere center)</text>'
         )
 
         svg_parts.append(
             f'<text x="{cavity_center_x + 25}" y="{cavity_center_y - 95}" '
             f'font-size="44" font-weight="bold" fill="#e74c3c">C</text>'
         )
-        svg_parts.append(
-            f'<text x="{cavity_center_x}" y="{cavity_center_y - 67}" '
-            f'font-size="22" fill="#7f8c8d">(cavity center)</text>'
-        )
 
         svg_parts.append(
             f'<text x="{p_x + 25}" y="{p_y + 5}" '
             f'font-size="44" font-weight="bold" fill="#9b59b6">P</text>'
-        )
-        svg_parts.append(
-            f'<text x="{p_x + 15}" y="{p_y + 33}" '
-            f'font-size="22" fill="#7f8c8d">(test point)</text>'
         )
 
         # Add given information and legend

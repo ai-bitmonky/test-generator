@@ -37,11 +37,8 @@
 <line x1="515" y1="663" x2="595" y2="663" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
 <line x1="515" y1="703" x2="595" y2="703" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
 <text x="400" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-<text x="370" y="638" font-size="22" fill="#7f8c8d">(sphere center)</text>
 <text x="580" y="568" font-size="44" font-weight="bold" fill="#e74c3c">C</text>
-<text x="555" y="596" font-size="22" fill="#7f8c8d">(cavity center)</text>
 <text x="598" y="653" font-size="44" font-weight="bold" fill="#9b59b6">P</text>
-<text x="588" y="681" font-size="22" fill="#7f8c8d">(test point)</text>
 <g id="given-info">
   <text x="1000" y="250" font-size="28" font-weight="bold" fill="#16a085">Given Information:</text>
 
