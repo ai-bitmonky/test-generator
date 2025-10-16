@@ -49,7 +49,6 @@
   <line x1="750" y1="600" x2="750" y2="800" stroke="#2c3e50" stroke-width="3"/>
   <line x1="750" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
   <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">. V</text>
 
 </g>
 
@@ -57,7 +56,6 @@
 <g id="given-info">
 
   <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• V = . V</text>
 
 </g>
 

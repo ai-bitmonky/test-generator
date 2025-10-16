@@ -101,7 +101,10 @@ class ImprovedPhysicsDiagramGenerator:
             volt_pattern = r'([0-9.]+)\s*V(?!\w)'
             volt_match = re.search(volt_pattern, question_text)
             if volt_match:
-                values['V'] = volt_match.group(1) + ' V'
+                volt_value = volt_match.group(1)
+                # Only add if it's a valid number (not just ".")
+                if volt_value != '.' and len(volt_value) > 0 and volt_value.replace('.', '').isdigit():
+                    values['V'] = volt_value + ' V'
 
         # Electric field detection (more generic - check AFTER specific types)
         elif 'electric field' in text_lower or 'field lines' in text_lower:
@@ -129,41 +132,67 @@ class ImprovedPhysicsDiagramGenerator:
             var_name = match.group(1)
             var_value = match.group(2)
             var_unit = match.group(3)
-            # Filter out garbage: unit should be valid (not contain multiple consecutive capitals like "μFC")
-            if len(var_unit) <= 4 and not re.match(r'[A-Z]{3,}', var_unit):  # Valid units are short
+
+            # Filter out garbage and invalid patterns
+            # Skip if: unit is too long, contains multiple caps, var name is invalid (like "min"), value is just "."
+            if (len(var_unit) <= 4 and
+                not re.match(r'[A-Z]{3,}', var_unit) and
+                var_name not in ['min', 'max', 'avg', 'Full'] and  # Skip common garbage words
+                var_value != '.' and len(var_value) > 0):  # Skip invalid values
+
                 key = f"{var_name}"
-                if key not in values:  # Don't duplicate if already in values dict
-                    values[key] = f"{var_value} {var_unit}"
+                value_str = f"{var_value} {var_unit}"
+
+                # Deduplicate: don't add if same value already exists under different key
+                if key not in values:
+                    # Check if this exact value already exists
+                    duplicate = False
+                    for existing_val in values.values():
+                        if existing_val == value_str:
+                            duplicate = True
+                            break
+                    if not duplicate:
+                        values[key] = value_str
 
         # 1b. Also capture standalone values with units (without variable names): "7.0 kV", "200 pF"
         standalone_pattern = r'([0-9.]+)\s+(kV|mV|pF|nF|mJ|μJ|MeV|keV|eV|GeV|MW|kW|mA|μA|nA|pA|kΩ|MΩ|mΩ)'
         for match in re.finditer(standalone_pattern, question_text):
             value = match.group(1)
             unit = match.group(2)
-            # Create descriptive key based on unit type
-            if 'V' in unit:
-                key = "Voltage"
-            elif 'F' in unit:
-                key = "Capacitance"
-            elif 'J' in unit:
-                key = "Energy"
-            elif 'W' in unit:
-                key = "Power"
-            elif 'A' in unit:
-                key = "Current"
-            elif 'Ω' in unit:
-                key = "Resistance"
-            else:
-                key = f"Value_{len(values)}"
+            value_str = f"{value} {unit}"
 
-            # Avoid duplicate keys by appending number if needed
-            original_key = key
-            counter = 1
-            while key in values:
-                key = f"{original_key}_{counter}"
-                counter += 1
+            # Skip if this value already exists in values dict
+            duplicate = False
+            for existing_val in values.values():
+                if existing_val == value_str:
+                    duplicate = True
+                    break
 
-            values[key] = f"{value} {unit}"
+            if not duplicate:
+                # Create descriptive key based on unit type
+                if 'V' in unit and 'eV' not in unit:  # Voltage (but not electron volts)
+                    key = "Voltage"
+                elif 'F' in unit:
+                    key = "Capacitance"
+                elif 'J' in unit:
+                    key = "Energy"
+                elif 'W' in unit and 'eV' not in unit:  # Power (but not electron volts)
+                    key = "Power"
+                elif 'A' in unit and 'pA' not in unit:  # Current (but not pico-amperes)
+                    key = "Current"
+                elif 'Ω' in unit:
+                    key = "Resistance"
+                else:
+                    key = f"Value_{len(values)}"
+
+                # Avoid duplicate keys by appending number if needed
+                original_key = key
+                counter = 1
+                while key in values:
+                    key = f"{original_key}_{counter}"
+                    counter += 1
+
+                values[key] = value_str
 
         # 2. Variables without specific values: "charge q", "plate area A", "radius R"
         # These are mentioned but don't have numeric values
