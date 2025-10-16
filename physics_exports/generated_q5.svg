@@ -68,6 +68,8 @@
   <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 6 μF</text>
   <text x="1020" y="380" font-size="26" fill="#34495e">• C₃ = 8 μF</text>
   <text x="1020" y="420" font-size="26" fill="#34495e">• V = 12.0 V</text>
+  <text x="1020" y="460" font-size="26" fill="#34495e">• PC₁ = 8 μFC</text>
+  <text x="1020" y="500" font-size="26" fill="#34495e">• FC₂ = 6 μFSC</text>
 
 </g>
 
