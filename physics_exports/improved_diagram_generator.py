@@ -82,13 +82,16 @@ class ImprovedPhysicsDiagramGenerator:
         elif 'capacitor' in text_lower:
             diagram_type = "capacitor"
 
-            # Check for series/parallel
-            if 'series' in text_lower and 'parallel' in text_lower:
+            # Check for series/parallel CONNECTIONS (not parallel-plate capacitor)
+            # Look for "in series" or "connected in series" patterns
+            if ('series' in text_lower and 'parallel' in text_lower and
+                ('connection' in text_lower or 'connected' in text_lower)):
                 diagram_type = "capacitor_series_parallel"
-            elif 'series' in text_lower:
+            elif 'in series' in text_lower or 'connected in series' in text_lower or 'series connection' in text_lower:
                 diagram_type = "capacitor_series"
-            elif 'parallel' in text_lower:
+            elif ('in parallel' in text_lower or 'connected in parallel' in text_lower or 'parallel connection' in text_lower) and 'parallel-plate' not in text_lower:
                 diagram_type = "capacitor_parallel"
+            # "parallel-plate capacitor" → single basic capacitor (not multiple in parallel)
 
             # Extract capacitor values
             cap_pattern = r'C[₁₂₃]?\s*=\s*([0-9.]+)\s*(μF|pF|nF)'
@@ -154,8 +157,9 @@ class ImprovedPhysicsDiagramGenerator:
                     if not duplicate:
                         values[key] = value_str
 
-        # 1b. Also capture standalone values with units (without variable names): "7.0 kV", "200 pF"
-        standalone_pattern = r'([0-9.]+)\s+(kV|mV|pF|nF|mJ|μJ|MeV|keV|eV|GeV|MW|kW|mA|μA|nA|pA|kΩ|MΩ|mΩ)'
+        # 1b. Also capture standalone values with units (without variable names): "7.0 kV", "200 pF", "10.5 cm²"
+        # Enhanced pattern to include length units (cm, mm, m, km), area units (cm², m²), and more
+        standalone_pattern = r'([0-9.]+)\s+(kV|mV|pF|nF|mJ|μJ|MeV|keV|eV|GeV|MW|kW|mA|μA|nA|pA|kΩ|MΩ|mΩ|cm²|m²|mm²|cm|mm|km|μm|nm)'
         for match in re.finditer(standalone_pattern, question_text):
             value = match.group(1)
             unit = match.group(2)
@@ -170,6 +174,10 @@ class ImprovedPhysicsDiagramGenerator:
 
             if not duplicate:
                 # Create descriptive key based on unit type
+                # Special case: if "A" already exists and this is an area unit, skip (it's the same thing)
+                if '²' in unit and 'A' in values:
+                    continue  # Skip, "A" already captured
+
                 if 'V' in unit and 'eV' not in unit:  # Voltage (but not electron volts)
                     key = "Voltage"
                 elif 'F' in unit:
@@ -182,6 +190,10 @@ class ImprovedPhysicsDiagramGenerator:
                     key = "Current"
                 elif 'Ω' in unit:
                     key = "Resistance"
+                elif '²' in unit:  # Area units - skip if "A" exists
+                    key = "Area"
+                elif unit in ['cm', 'mm', 'm', 'km', 'μm', 'nm']:  # Length units
+                    key = "Length"
                 else:
                     key = f"Value_{len(values)}"
 
@@ -254,16 +266,11 @@ class ImprovedPhysicsDiagramGenerator:
     def _generate_capacitor_diagram(self, spec: DiagramSpec) -> str:
         """Generate capacitor circuit diagram"""
 
-        # Get title (first 60 chars of question)
-        title = spec.question_text[:80] + "..." if len(spec.question_text) > 80 else spec.question_text
-
+        # No title - remove truncated heading
         svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.canvas_width} {self.canvas_height}">
 <rect width="{self.canvas_width}" height="{self.canvas_height}" fill="#ffffff"/>
 
 {self._generate_defs()}
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="{self.colors['primary_text']}">{self._escape_xml(title)}</text>
 
 <!-- Main Diagram Area -->
 <g id="main-diagram">
@@ -435,7 +442,7 @@ class ImprovedPhysicsDiagramGenerator:
   <rect x="400" y="400" width="400" height="20" fill="{self.colors['gold']}" stroke="{self.colors['primary_text']}" stroke-width="3"/>
   <rect x="400" y="680" width="400" height="20" fill="{self.colors['silver']}" stroke="{self.colors['primary_text']}" stroke-width="3"/>
 
-  <!-- Labels -->
+  <!-- Charge labels (+q, -q) -->
   <text x="350" y="420" text-anchor="end" font-size="32" fill="{self.colors['primary_text']}">+q</text>
   <text x="350" y="700" text-anchor="end" font-size="32" fill="{self.colors['primary_text']}">−q</text>
 
@@ -452,20 +459,33 @@ class ImprovedPhysicsDiagramGenerator:
 '''
         diagram += self._draw_overhead_arrow(850, 533, self.colors['green'])
 
+        # Add dimension labels if in given info
+        if 'A' in spec.values:
+            # Area label with double-headed arrow
+            diagram += f'''
+  <!-- Area dimension -->
+  <line x1="420" y1="380" x2="780" y2="380" stroke="{self.colors['blue']}" stroke-width="2" marker-start="url(#arrowBlueReverse)" marker-end="url(#arrowBlue)"/>
+  <text x="600" y="370" text-anchor="middle" font-size="28" font-weight="bold" fill="{self.colors['blue']}">A</text>
+'''
+
+        if 'd' in spec.values:
+            # Separation distance label
+            diagram += f'''
+  <!-- Separation distance -->
+  <line x1="380" y1="420" x2="380" y2="680" stroke="{self.colors['orange']}" stroke-width="2" marker-start="url(#arrowOrangeReverse)" marker-end="url(#arrowOrange)"/>
+  <text x="365" y="555" text-anchor="end" font-size="28" font-weight="bold" fill="{self.colors['orange']}">d</text>
+'''
+
         return diagram
 
     def _generate_electric_field_diagram(self, spec: DiagramSpec) -> str:
         """Generate electric field diagram"""
 
-        title = spec.question_text[:80] + "..." if len(spec.question_text) > 80 else spec.question_text
-
+        # No title - remove truncated heading
         svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.canvas_width} {self.canvas_height}">
 <rect width="{self.canvas_width}" height="{self.canvas_height}" fill="#ffffff"/>
 
 {self._generate_defs()}
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="{self.colors['primary_text']}">{self._escape_xml(title)}</text>
 
 <g id="main-diagram">
 '''
@@ -545,14 +565,11 @@ class ImprovedPhysicsDiagramGenerator:
 
     def _generate_basic_placeholder(self, spec: DiagramSpec) -> str:
         """Basic placeholder when type unknown"""
-        title = spec.question_text[:80] + "..." if len(spec.question_text) > 80 else spec.question_text
-
+        # No title - remove truncated heading
         return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.canvas_width} {self.canvas_height}">
 <rect width="{self.canvas_width}" height="{self.canvas_height}" fill="#ffffff"/>
 
 {self._generate_defs()}
-
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="{self.colors['primary_text']}">{self._escape_xml(title)}</text>
 
 <g id="main-diagram">
   <text x="400" y="600" font-size="32" fill="{self.colors['secondary_text']}">Diagram for this question type is under development</text>
@@ -581,6 +598,12 @@ class ImprovedPhysicsDiagramGenerator:
   </marker>
   <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
+  </marker>
+  <marker id="arrowBlueReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowOrangeReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#e67e22"/>
   </marker>
 </defs>'''
 
