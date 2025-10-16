@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1400">
+<rect width="2000" height="1400" fill="#ffffff"/>
+
+<defs>
+  <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
+  </marker>
+  <marker id="arrowBlue" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
+  </marker>
+  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
+  </marker>
+  <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
+  </marker>
+  <marker id="arrowBlueReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowOrangeReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#e67e22"/>
+  </marker>
+</defs>
+
+<!-- Main Diagram Area -->
+<g id="main-diagram">
+
+  <!-- Parallel-plate capacitor -->
+  <rect x="400" y="400" width="400" height="20" fill="#FFD700" stroke="#2c3e50" stroke-width="3"/>
+  <rect x="400" y="680" width="400" height="20" fill="#C0C0C0" stroke="#2c3e50" stroke-width="3"/>
+
+  <!-- Charge labels (+q, -q) -->
+  <text x="350" y="420" text-anchor="end" font-size="32" fill="#2c3e50">+q</text>
+  <text x="350" y="700" text-anchor="end" font-size="32" fill="#2c3e50">−q</text>
+
+  <!-- Electric field lines -->
+  <line x1="450" y1="420" x2="450" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="530" y1="420" x2="530" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="610" y1="420" x2="610" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="690" y1="420" x2="690" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="770" y1="420" x2="770" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- Field label -->
+  <text x="850" y="550" font-size="32" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
+<path d="M 848 533 L 864 533 L 862 531 M 864 533 L 862 535" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Area dimension -->
+  <line x1="420" y1="380" x2="780" y2="380" stroke="#3498db" stroke-width="2" marker-start="url(#arrowBlueReverse)" marker-end="url(#arrowBlue)"/>
+  <text x="600" y="370" text-anchor="middle" font-size="28" font-weight="bold" fill="#3498db">A</text>
+
+  <!-- Separation distance -->
+  <line x1="380" y1="420" x2="380" y2="680" stroke="#e67e22" stroke-width="2" marker-start="url(#arrowOrangeReverse)" marker-end="url(#arrowOrange)"/>
+  <text x="365" y="555" text-anchor="end" font-size="28" font-weight="bold" fill="#e67e22">d</text>
+
+</g>
+
+<!-- Given Information -->
+<g id="given-info">
+
+  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+  <text x="1020" y="300" font-size="26" fill="#34495e">• A = 10.5 cm</text>
+  <text x="1020" y="340" font-size="26" fill="#34495e">• d = 7.12 mm</text>
+
+</g>
+
+<!-- Legend -->
+<g id="legend">
+
+  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
+  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
+  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
+  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
+
+</g>
+
+</svg>
