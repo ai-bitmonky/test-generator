@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1400">
+<rect width="2000" height="1400" fill="#ffffff"/>
+
+<defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
+  <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
+  </marker>
+  <marker id="arrowBlue" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
+  </marker>
+  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
+  </marker>
+  <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
+  </marker>
+</defs>
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A projectile is launched with velocity v at angle θ from hor...</text>
+<g id="main-diagram">
+<line x1="100" y1="900" x2="800" y2="900" stroke="#2c3e50" stroke-width="3"/>
+<circle cx="150" cy="900" r="15" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="3"/>
+<text x="110" y="900" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
+<polyline points="150,900.0 180,875.625 210,852.5 240,830.625 270,810.0 300,790.625 330,772.5 360,755.625 390,740.0 420,725.625 450,712.5 480,700.625 510,690.0 540,680.625 570,672.5 600,665.625 630,660.0 660,655.625 690,652.5 720,650.625 750,650.0" fill="none" stroke="#3498db" stroke-width="2" stroke-dasharray="8,4"/>
+<g><line x1="150" y1="900" x2="270" y2="820" stroke="#e74c3c" stroke-width="4"  marker-end="url(#arrowRed)"/><text x="290" y="830" font-size="36" font-weight="bold" font-style="italic" fill="#e74c3c">v</text><path d="M 288 813 L 302 813 L 300 811 M 302 813 L 300 815" stroke="#e74c3c" stroke-width="2" fill="none" stroke-linecap="round"/></g>
+</g>
+<g id="legend">
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
+<line x1="1020" y1="710" x2="1110" y2="710" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+<text x="1125" y="718" font-size="26" font-style="italic" fill="#2c3e50">v</text>
+<path d="M 1123 701 L 1137 701 L 1135 699 M 1137 701 L 1135 703" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1140" y="718" font-size="26" fill="#2c3e50"> = velocity v</text>
+</g>
+</svg>

@@ -1,34 +1,57 @@
-# Unified Physics SVG Generator for IIT JEE
+# Universal Physics Diagram Generator for IIT JEE
 
-> **Professional, collision-free physics diagrams generated in seconds**
+> **Generate professional diagrams from ANY physics question in seconds!**
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://python.org)
 [![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen.svg)]()
 [![Quality](https://img.shields.io/badge/Quality-IIT%20JEE%20Standard-orange.svg)]()
+[![Guidelines](https://img.shields.io/badge/Compliance-DIAGRAM__GUIDELINES-brightgreen.svg)](DIAGRAM_GUIDELINES.md)
 
 ---
 
 ## 🚀 Quick Start
 
-```bash
-# Generate your first diagram
-python3 unified_physics_svg_generator.py
+### NEW: Universal Generator (Generate from ANY Question!)
 
-# View the output
-open unified_physics_diagram.svg
+```bash
+# Method 1: From command line
+python3 generate_diagram.py "A block of mass 5kg is on an inclined plane at 30 degrees"
+
+# Method 2: From file
+python3 generate_diagram.py -f question.txt -o my_diagram.svg
+
+# Method 3: Interactive mode
+python3 generate_diagram.py --interactive
 ```
 
-**That's it!** You now have a professional physics diagram with:
-- ✅ Zero overlaps (guaranteed)
-- ✅ Overhead arrow notation (a⃗, r⃗, E⃗)
-- ✅ Smart label placement
-- ✅ IIT JEE quality
+### Original: Pre-built Templates
+
+```bash
+# Generate specific physics problems
+python3 generate_real_physics_problems.py
+
+# View the outputs
+open bee_pollen_electrostatics.svg
+open sphere_cavity_electrostatics.svg
+```
+
+**Features:**
+- ✅ **Automatic question understanding** - Detects topic and diagram type
+- ✅ **Zero solution content** - Never includes answers or hints
+- ✅ **Proper overhead arrows** - All vectors use SVG notation (not Unicode)
+- ✅ **Professional quality** - IIT JEE examination standard
+- ✅ **Guideline compliance** - Follows DIAGRAM_GUIDELINES.md strictly
 
 ---
 
 ## 📖 What Is This?
 
-A **comprehensive Python framework** for generating mathematically precise, collision-free physics diagrams specifically designed for **IIT JEE Advanced** examinations.
+A **universal AI-powered system** for generating physics diagrams from ANY IIT JEE question. The system:
+
+1. **Understands your question** - Automatically detects physics topic and diagram type
+2. **Generates appropriate diagram** - Force diagrams, electric fields, ray diagrams, etc.
+3. **Never includes solutions** - Only problem setup, strictly following DIAGRAM_GUIDELINES.md
+4. **Professional quality** - IIT JEE examination standard with proper notation
 
 ### Problem It Solves
 
@@ -87,26 +110,30 @@ Pre-built templates for common problems:
 ```
 physics_exports/
 │
-├── 🔧 Core Scripts (Python)
-│   ├── unified_physics_svg_generator.py    [Main] (764 lines)
-│   ├── generate_advanced_collision_free.py [Advanced] (1126 lines)
-│   ├── generate_overhead_arrows.py         [Utilities]
-│   └── update_with_advanced_diagram.py     [HTML Updater]
+├── 🎯 Universal Generator (NEW!)
+│   ├── universal_physics_diagram_generator.py  [Main Engine] (~1100 lines)
+│   ├── generate_diagram.py                    [CLI Tool]
+│   ├── UNIVERSAL_GENERATOR_GUIDE.md          [Complete Guide]
+│   └── USAGE_EXAMPLES.md                      [15+ Examples]
 │
-├── 📚 Documentation
-│   ├── README.md                           [This file]
-│   ├── QUICK_START_GUIDE.md               [User guide]
-│   ├── UNIFIED_SYSTEM_DOCUMENTATION.md    [Technical docs]
-│   ├── ADVANCED_DIAGRAM_SUMMARY.md        [Algorithms]
-│   └── PROJECT_SUMMARY.md                 [Overview]
+├── 🔧 Template-Based Generators
+│   ├── generate_real_physics_problems.py      [Pre-built Templates]
+│   ├── unified_physics_svg_generator.py       [Advanced Features]
+│   └── generate_advanced_collision_free.py    [Collision System]
 │
-├── 🎨 Generated Diagrams (SVG)
-│   ├── unified_physics_diagram.svg
-│   ├── advanced_collision_free_diagram.svg
-│   └── overhead_arrows_diagram.svg
+├── 📚 Documentation & Guidelines
+│   ├── README.md                              [This file]
+│   ├── DIAGRAM_GUIDELINES.md                  [Mandatory Standards]
+│   ├── UNIVERSAL_GENERATOR_GUIDE.md          [Universal Gen Guide]
+│   ├── USAGE_EXAMPLES.md                      [Practical Examples]
+│   ├── QUICK_START_GUIDE.md                  [Getting Started]
+│   └── UNIFIED_SYSTEM_DOCUMENTATION.md       [Technical Docs]
 │
-└── 📄 Updated Files
-    └── physics_questions_01_of_05.html    [Question 50 updated]
+└── 🎨 Generated Diagrams (SVG)
+    ├── bee_pollen_electrostatics.svg          [Template output]
+    ├── sphere_cavity_electrostatics.svg       [Template output]
+    ├── generated_diagram.svg                  [Universal output]
+    └── example_*.svg                          [Test outputs]
 ```
 
 ---
@@ -133,58 +160,52 @@ python3 unified_physics_svg_generator.py
 
 ## 💻 Usage Examples
 
-### Example 1: Generate Question 50
-```python
-from unified_physics_svg_generator import UnifiedPhysicsSVGGenerator
+### Universal Generator (Recommended)
 
-# Create generator
-gen = UnifiedPhysicsSVGGenerator()
+```bash
+# Example 1: Mechanics - Inclined Plane
+python3 generate_diagram.py "A block of mass 5kg is on an inclined plane at 30 degrees"
 
-# Generate diagram
-svg = gen.generate_charged_sphere_cavity()
+# Example 2: Electrostatics - Point Charge
+python3 generate_diagram.py "A point charge Q = +5μC is at origin. Find electric field at r = 10cm"
 
-# Save to file
-with open('output.svg', 'w') as f:
-    f.write(svg)
+# Example 3: Optics - Convex Lens
+python3 generate_diagram.py "A convex lens of focal length 10cm has object at 15cm"
+
+# Example 4: From file
+echo "A projectile is launched with velocity 20 m/s at 45 degrees" > question.txt
+python3 generate_diagram.py -f question.txt -o projectile.svg
 ```
 
-### Example 2: Add Custom Vectors
+### Python API
+
 ```python
-from unified_physics_svg_generator import Point
+from universal_physics_diagram_generator import generate_diagram_from_question
 
-gen = UnifiedPhysicsSVGGenerator()
+# Simple one-liner
+question = "A block slides down an incline at angle θ"
+generate_diagram_from_question(question, "incline.svg")
 
-# Add force vector with automatic label placement
-gen.add_vector(
-    start=Point(400, 500),
-    end=Point(500, 400),
-    label="F",
-    color="red",
-    width=4
-)
+# With question parsing
+from universal_physics_diagram_generator import QuestionParser
 
-# Generate complete SVG
-svg = gen.generate_svg_header()
-svg += '\n'.join(gen.svg_elements)
-svg += gen.generate_svg_footer()
-
-with open('custom.svg', 'w') as f:
-    f.write(svg)
+parsed = QuestionParser.parse_question(question)
+print(f"Topic: {parsed['topic']}")
+print(f"Diagram type: {parsed['diagram_type']}")
 ```
 
-### Example 3: Smart Label Placement
+### Template-Based (Specific Problems)
+
 ```python
-from unified_physics_svg_generator import LabelPosition
+# For pre-built physics problems
+python3 generate_real_physics_problems.py
 
-# Place label with collision avoidance
-label_pos = gen.label_placer.place_label(
-    anchor=Point(500, 400),
-    text="Test Point P",
-    preferred_direction=LabelPosition.N  # Try north first
-)
-
-print(f"Label optimally placed at: {label_pos}")
+# Outputs:
+# - bee_pollen_electrostatics.svg
+# - sphere_cavity_electrostatics.svg
 ```
+
+**📖 For detailed examples, see [USAGE_EXAMPLES.md](USAGE_EXAMPLES.md)**
 
 ---
 
@@ -319,29 +340,33 @@ Memory: ~350 KB per diagram
 
 ### Complete Guides Available
 
-1. **QUICK_START_GUIDE.md**
+1. **🌟 UNIVERSAL_GENERATOR_GUIDE.md** (NEW!)
+   - Complete guide for universal generator
+   - Usage patterns and examples
+   - All physics topics covered
+   - Troubleshooting guide
+
+2. **📖 USAGE_EXAMPLES.md** (NEW!)
+   - 15+ practical examples
+   - Mechanics, Electrostatics, Optics
+   - Command-line and Python API
+   - Quality assurance tips
+
+3. **⚠️ DIAGRAM_GUIDELINES.md** (MANDATORY)
+   - Strict standards for ALL diagrams
+   - Font sizes, colors, layout
+   - Overhead arrow notation
+   - Pre-commit checklist
+
+4. **QUICK_START_GUIDE.md**
    - 5-minute quickstart
    - Common patterns
    - Code examples
-   - Troubleshooting
 
-2. **UNIFIED_SYSTEM_DOCUMENTATION.md**
+5. **UNIFIED_SYSTEM_DOCUMENTATION.md**
    - Complete API reference
    - Mathematical framework
    - Algorithm explanations
-   - Performance analysis
-
-3. **ADVANCED_DIAGRAM_SUMMARY.md**
-   - Collision detection math
-   - Layout algorithms
-   - Complexity analysis
-   - Implementation details
-
-4. **PROJECT_SUMMARY.md**
-   - Project overview
-   - Architecture
-   - Comparisons
-   - Future roadmap
 
 ---
 

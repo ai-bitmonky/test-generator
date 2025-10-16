@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1400">
+<rect width="2000" height="1400" fill="#ffffff"/>
+
+<defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
+  <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
+  </marker>
+  <marker id="arrowBlue" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
+  </marker>
+  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
+  </marker>
+  <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
+  </marker>
+</defs>
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A block of mass m is placed on an inclined plane at angle θ</text>
+<g id="main-diagram">
+<polygon points="350,600 659.8076211353316,450.0 700,600" fill="#7f8c8d" fill-opacity="0.2" stroke="#2c3e50" stroke-width="3"/>
+<rect x="480" y="500" width="60" height="60" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="3"/>
+<text x="510" y="530" font-size="44" font-weight="bold" fill="#2c3e50">A</text>
+<g><line x1="480" y1="500" x2="430" y2="430" stroke="#27ae60" stroke-width="4"  marker-end="url(#arrowGreen)"/><text x="450" y="440" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">N</text><path d="M 448 423 L 462 423 L 460 421 M 462 423 L 460 425" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/></g>
+<g><line x1="480" y1="500" x2="480" y2="580" stroke="#e74c3c" stroke-width="4"  marker-end="url(#arrowRed)"/><text x="500" y="590" font-size="36" font-weight="bold" font-style="italic" fill="#e74c3c">W</text><path d="M 498 573 L 512 573 L 510 571 M 512 573 L 510 575" stroke="#e74c3c" stroke-width="2" fill="none" stroke-linecap="round"/></g>
+<g><line x1="480" y1="500" x2="410" y2="520" stroke="#e67e22" stroke-width="4"  marker-end="url(#arrowOrange)"/><text x="430" y="530" font-size="36" font-weight="bold" font-style="italic" fill="#e67e22">f</text><path d="M 428 513 L 442 513 L 440 511 M 442 513 L 440 515" stroke="#e67e22" stroke-width="2" fill="none" stroke-linecap="round"/></g>
+</g>
+<g id="given-info">
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• A block of mass m is placed on an inclined plane at angle θ</text>
+</g>
+<g id="legend">
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
+</g>
+</svg>
