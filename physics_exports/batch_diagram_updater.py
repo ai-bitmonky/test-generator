@@ -113,15 +113,15 @@ class BatchDiagramUpdater:
         print()
 
     def generate_diagram(self, question: Question) -> str:
-        """Generate diagram for a question using universal generator"""
-        from universal_physics_diagram_generator import generate_diagram_from_question
+        """Generate diagram for a question using improved generator"""
+        from improved_diagram_generator import generate_diagram_from_question
 
         # Create temp file for output
         temp_svg = f"temp_q{question.number}.svg"
 
         try:
-            # Generate diagram
-            generate_diagram_from_question(question.text, temp_svg)
+            # Generate diagram with topic information
+            generate_diagram_from_question(question.text, temp_svg, question.topic)
 
             # Read generated SVG
             with open(temp_svg, 'r') as f:
@@ -134,6 +134,8 @@ class BatchDiagramUpdater:
 
         except Exception as e:
             print(f"    ⚠️  Error generating diagram: {e}")
+            import traceback
+            traceback.print_exc()
             return None
 
     def process_batch(self, start_idx: int, batch_size: int = 5) -> int:

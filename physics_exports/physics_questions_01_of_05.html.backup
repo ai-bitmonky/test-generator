@@ -703,6 +703,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -719,69 +720,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Three capacitors with capacitances C₁ = 10.0 μF, C₂ = 5.00 μF, and C₃ = 4.00 μF ...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Three capacitors with capacitances C₁ = 10</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">10.0 μF</text>
-
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">5.00 μF</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Capacitor 3 -->
-  <line x1="870" y1="550" x2="870" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="930" y1="550" x2="930" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="900" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_3</text>
-  <text x="900" y="700" text-anchor="middle" font-size="26" fill="#34495e">4.00 μF</text>
-  <line x1="680" y1="600" x2="870" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="930" y1="600" x2="1000" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="1000" y1="600" x2="1000" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="1000" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">100.0 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• C₁ = 10.0 μF</text>
-  <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 5.00 μF</text>
-  <text x="1020" y="380" font-size="26" fill="#34495e">• C₃ = 4.00 μF</text>
-  <text x="1020" y="420" font-size="26" fill="#34495e">• V = 100.0 V</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -903,6 +858,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -919,50 +875,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The chocolate crumb mystery: Workers at a biscuit factory have an electric poten...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The chocolate crumb mystery: Workers at a biscuit factory ha...</text>
 <g id="main-diagram">
-
-  <!-- Parallel-plate capacitor -->
-  <rect x="400" y="400" width="400" height="20" fill="#FFD700" stroke="#2c3e50" stroke-width="3"/>
-  <rect x="400" y="680" width="400" height="20" fill="#C0C0C0" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Labels -->
-  <text x="350" y="420" text-anchor="end" font-size="32" fill="#2c3e50">+q</text>
-  <text x="350" y="700" text-anchor="end" font-size="32" fill="#2c3e50">−q</text>
-
-  <!-- Electric field lines -->
-  <line x1="450" y1="420" x2="450" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="530" y1="420" x2="530" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="610" y1="420" x2="610" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="690" y1="420" x2="690" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="770" y1="420" x2="770" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <!-- Field label -->
-  <text x="850" y="550" font-size="32" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 848 533 L 864 533 L 862 531 M 864 533 L 862 535" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
 
@@ -1224,6 +1153,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -1240,69 +1170,27 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 1: Problem 61 (Modified):The figure shows capacitor 1 (C₁ = 8.00 μF), c...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 1: Problem 61 (Modified):The figure shows capacitor...</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">8 μF</text>
-
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">6 μF</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Capacitor 3 -->
-  <line x1="870" y1="550" x2="870" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="930" y1="550" x2="930" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="900" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_3</text>
-  <text x="900" y="700" text-anchor="middle" font-size="26" fill="#34495e">8 μF</text>
-  <line x1="680" y1="600" x2="870" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="930" y1="600" x2="1000" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="1000" y1="600" x2="1000" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="1000" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">12.0 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• C₁ = 8 μF</text>
-  <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 6 μF</text>
-  <text x="1020" y="380" font-size="26" fill="#34495e">• C₃ = 8 μF</text>
-  <text x="1020" y="420" font-size="26" fill="#34495e">• V = 12.0 V</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• 12V+−PC₁=8μFC₃=8μFC₂=6μFSC₄=6μF(uncharged)Switch S is initially open, then closedInitial Configuration:With switch S open, capacitors C₁ and C₃ are in series, and this series combination is in parallel with C₂</text>
 </g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -1591,6 +1479,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -1607,72 +1496,28 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A parallel-plate capacitor has plates of area 0.12 m² and a separation of 1.2 cm...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A parallel-plate capacitor has plates of area 0</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-  <circle cx="400" cy="600" r="8" fill="#2c3e50"/>
-  <circle cx="700" cy="600" r="8" fill="#2c3e50"/>
-
-  <!-- Capacitor 1 -->
-  <line x1="520" y1="490" x2="520" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="490" x2="580" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="470" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="650" y="550" text-anchor="start" font-size="26" fill="#34495e">C_1</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="540" x2="520" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="540" x2="700" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="540" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Capacitor 2 -->
-  <line x1="520" y1="610" x2="520" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="610" x2="580" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="590" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="670" text-anchor="start" font-size="26" fill="#34495e">C_2</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="660" x2="520" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="660" x2="700" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="660" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="215" y1="600" x2="400" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="600" x2="800" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="600" x2="800" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">120 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• V = 120 V</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• A battery charges the plates to a potential difference of 120 V and is then disconnected</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• 8 is then placed symmetrically between the plates</text>
 </g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
 
@@ -1817,6 +1662,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -1833,61 +1679,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A potential difference of 300 V is applied to a series connection of two capacit...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A potential difference of 300 V is applied to a series conne...</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">2.00 μF</text>
-
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">8.00 μF</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="680" y1="600" x2="750" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="600" x2="750" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">300 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• C₁ = 2.00 μF</text>
-  <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 8.00 μF</text>
-  <text x="1020" y="380" font-size="26" fill="#34495e">• V = 300 V</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
 
@@ -2030,6 +1838,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -2046,70 +1855,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 4: A parallel-plate capacitor of plate area A = 10.5 cm² and plate sepa...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 4: A parallel-plate capacitor of plate area A = 10</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-  <circle cx="400" cy="600" r="8" fill="#2c3e50"/>
-  <circle cx="700" cy="600" r="8" fill="#2c3e50"/>
-
-  <!-- Capacitor 1 -->
-  <line x1="520" y1="490" x2="520" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="490" x2="580" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="470" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="650" y="550" text-anchor="start" font-size="26" fill="#34495e">C_1</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="540" x2="520" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="540" x2="700" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="540" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Capacitor 2 -->
-  <line x1="520" y1="610" x2="520" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="610" x2="580" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="590" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="670" text-anchor="start" font-size="26" fill="#34495e">C_2</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="660" x2="520" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="660" x2="700" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="660" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="215" y1="600" x2="400" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="600" x2="800" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="600" x2="800" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -2260,6 +2022,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -2276,59 +2039,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 2: Problem 26 (Modified):Capacitor 3 in the circuit shown below is a va...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 2: Problem 26 (Modified):Capacitor 3 in the circuit...</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">C_1</text>
-
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">C_2</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="680" y1="600" x2="750" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="600" x2="750" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">. V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• V = . V</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -2898,6 +2625,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -2914,50 +2642,28 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A flammable conducting liquid is stored in a nonconducting cylindrical plastic c...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A flammable conducting liquid is stored in a nonconducting c...</text>
 <g id="main-diagram">
-
-  <!-- Parallel-plate capacitor -->
-  <rect x="400" y="400" width="400" height="20" fill="#FFD700" stroke="#2c3e50" stroke-width="3"/>
-  <rect x="400" y="680" width="400" height="20" fill="#C0C0C0" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Labels -->
-  <text x="350" y="420" text-anchor="end" font-size="32" fill="#2c3e50">+q</text>
-  <text x="350" y="700" text-anchor="end" font-size="32" fill="#2c3e50">−q</text>
-
-  <!-- Electric field lines -->
-  <line x1="450" y1="420" x2="450" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="530" y1="420" x2="530" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="610" y1="420" x2="610" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="690" y1="420" x2="690" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="770" y1="420" x2="770" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <!-- Field label -->
-  <text x="850" y="550" font-size="32" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 848 533 L 864 533 L 862 531 M 864 533 L 862 535" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• During handling, the exterior surface commonly acquires a negative charge density of magnitude 2</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• How much negative charge is induced in the center of the liquid's bulk, and can a spark from the grounded venting port ignite the liquid</text>
 </g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
 
@@ -3087,6 +2793,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -3103,70 +2810,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 3: A parallel-plate capacitor has plate area A = 10.5 cm² and plate sep...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 3: A parallel-plate capacitor has plate area A = 10</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-  <circle cx="400" cy="600" r="8" fill="#2c3e50"/>
-  <circle cx="700" cy="600" r="8" fill="#2c3e50"/>
-
-  <!-- Capacitor 1 -->
-  <line x1="520" y1="490" x2="520" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="490" x2="580" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="470" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="650" y="550" text-anchor="start" font-size="26" fill="#34495e">C_1</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="540" x2="520" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="540" x2="700" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="540" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Capacitor 2 -->
-  <line x1="520" y1="610" x2="520" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="610" x2="580" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="590" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="670" text-anchor="start" font-size="26" fill="#34495e">C_2</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="660" x2="520" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="660" x2="700" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="660" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="215" y1="600" x2="400" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="600" x2="800" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="600" x2="800" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -3368,6 +3028,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -3384,59 +3045,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Six capacitors are connected to a 20.0 V battery with capacitances C₁ = C₆ = 3.0...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Six capacitors are connected to a 20</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">C_1</text>
-
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">C_2</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="680" y1="600" x2="750" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="600" x2="750" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">20.0 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• V = 20.0 V</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -3586,6 +3211,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -3602,69 +3228,27 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 6: Figure shows a 12.0 V battery and four uncharged capacitors of capac...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 6: Figure shows a 12</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">1.00 μF</text>
-
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">2.00 μF</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Capacitor 3 -->
-  <line x1="870" y1="550" x2="870" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="930" y1="550" x2="930" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="900" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_3</text>
-  <text x="900" y="700" text-anchor="middle" font-size="26" fill="#34495e">3.00 μF</text>
-  <line x1="680" y1="600" x2="870" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="930" y1="600" x2="1000" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="1000" y1="600" x2="1000" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="1000" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">12.0 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• C₁ = 1.00 μF</text>
-  <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 2.00 μF</text>
-  <text x="1020" y="380" font-size="26" fill="#34495e">• C₃ = 3.00 μF</text>
-  <text x="1020" y="420" font-size="26" fill="#34495e">• V = 12.0 V</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• 0 V battery and four uncharged capacitors of capacitances C₁ = 1</text>
 </g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -3801,6 +3385,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -3817,53 +3402,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 5: Capacitor 3 in a circuit is a variable capacitor (its capacitance C₃...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 5: Capacitor 3 in a circuit is a variable capacitor...</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">C_1</text>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="430" y1="600" x2="500" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="500" y1="600" x2="500" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="500" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">10 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• C₃ = 6.0 μF</text>
-  <text x="1020" y="340" font-size="26" fill="#34495e">• V = 10 V</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -4005,6 +3560,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -4021,61 +3577,23 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A potential difference of 300 V is applied to series-connected capacitors C₁ = 2...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A potential difference of 300 V is applied to series-connect...</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-
-  <!-- Capacitor 1 -->
-  <line x1="370" y1="550" x2="370" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="430" y1="550" x2="430" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="400" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="400" y="700" text-anchor="middle" font-size="26" fill="#34495e">2.00 μF</text>
-
-  <!-- Capacitor 2 -->
-  <line x1="620" y1="550" x2="620" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="680" y1="550" x2="680" y2="650" stroke="#2c3e50" stroke-width="4"/>
-  <text x="650" y="530" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="700" text-anchor="middle" font-size="26" fill="#34495e">8.00 μF</text>
-  <line x1="430" y1="600" x2="620" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="215" y1="600" x2="370" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="680" y1="600" x2="750" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="600" x2="750" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="750" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">300 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• C₁ = 2.00 μF</text>
-  <text x="1020" y="340" font-size="26" fill="#34495e">• C₂ = 8.00 μF</text>
-  <text x="1020" y="380" font-size="26" fill="#34495e">• V = 300 V</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
 
@@ -4581,6 +4099,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -4597,72 +4116,28 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A parallel-plate capacitor has plates of area 0.12 m² and a separation of 1.2 cm...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A parallel-plate capacitor has plates of area 0</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-  <circle cx="400" cy="600" r="8" fill="#2c3e50"/>
-  <circle cx="700" cy="600" r="8" fill="#2c3e50"/>
-
-  <!-- Capacitor 1 -->
-  <line x1="520" y1="490" x2="520" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="490" x2="580" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="470" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="650" y="550" text-anchor="start" font-size="26" fill="#34495e">C_1</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="540" x2="520" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="540" x2="700" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="540" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Capacitor 2 -->
-  <line x1="520" y1="610" x2="520" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="610" x2="580" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="590" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="670" text-anchor="start" font-size="26" fill="#34495e">C_2</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="660" x2="520" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="660" x2="700" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="660" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="215" y1="600" x2="400" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="600" x2="800" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="600" x2="800" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-  <text x="250" y="600" font-size="28" font-weight="bold" fill="#e74c3c">120 V</text>
-
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<!-- Given Information -->
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-  <text x="1020" y="300" font-size="26" fill="#34495e">• V = 120 V</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• A battery charges the plates to a potential difference of 120 V and is then disconnected</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• 8 is then placed symmetrically between the plates</text>
 </g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
 
@@ -4793,6 +4268,7 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -4809,70 +4285,14 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A parallel-plate capacitor has charge q and plate area A. By finding the work ne...</text>
-
-<!-- Main Diagram Area -->
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A parallel-plate capacitor has charge q and plate area A</text>
 <g id="main-diagram">
-
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-  <circle cx="400" cy="600" r="8" fill="#2c3e50"/>
-  <circle cx="700" cy="600" r="8" fill="#2c3e50"/>
-
-  <!-- Capacitor 1 -->
-  <line x1="520" y1="490" x2="520" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="490" x2="580" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="470" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="650" y="550" text-anchor="start" font-size="26" fill="#34495e">C_1</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="540" x2="520" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="540" x2="700" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="540" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <!-- Capacitor 2 -->
-  <line x1="520" y1="610" x2="520" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="610" x2="580" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="590" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="670" text-anchor="start" font-size="26" fill="#34495e">C_2</text>
-
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="660" x2="520" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="660" x2="700" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="660" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="215" y1="600" x2="400" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="600" x2="800" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="600" x2="800" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
-
+<circle cx="400" cy="600" r="40" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="3"/>
+<text x="400" y="600" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
 </g>
-
-<!-- Given Information -->
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
-<!-- Legend -->
 <g id="legend">
-
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
 
@@ -5066,6 +4486,7 @@ The key steps to solve this problem are:
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -5082,51 +4503,29 @@ The key steps to solve this problem are:
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 8: Two charged particles (particle 1 with charge q₁ = +5.0 μC and parti...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 8: Two charged particles (particle 1 with charge q₁...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• Question 8: Two charged particles (particle 1 with charge q₁ = +5</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• Given: - Charge of particle 1, q₁ = +5</text>
+<text x="1020" y="380" font-size="26" fill="#34495e">• 0 μC - Charge of particle 2, q₂ = -3</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -5309,6 +4708,7 @@ The key steps to solve this problem are:
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -5325,51 +4725,39 @@ The key steps to solve this problem are:
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">[Figure shows: A semi-infinite rod of uniform charge density λ (in C/m) lies alo...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">[Figure shows: A semi-infinite rod of uniform charge density...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• Point P is located at a perpendicular distance R (in m) from the origin on the y-axis</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• </text>
+<text x="1035" y="340" font-size="26" font-style="italic" fill="#34495e">R</text>
+<path d="M 1033 323 L 1045 323 L 1043 321 M 1045 323 L 1043 325" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1048" y="340" font-size="26" fill="#34495e">Given: Charge density of the rod, λ = 2 × 10 -9 C/m Perpendicular distance of point P from the origin, R = 0</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
+<line x1="1020" y1="710" x2="1110" y2="710" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+<text x="1125" y="718" font-size="26" font-style="italic" fill="#2c3e50">E</text>
+<path d="M 1123 701 L 1137 701 L 1135 699 M 1137 701 L 1135 703" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1140" y="718" font-size="26" fill="#2c3e50"> = field E</text>
+<line x1="1020" y1="755" x2="1110" y2="755" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+<text x="1125" y="763" font-size="26" font-style="italic" fill="#2c3e50">E</text>
+<path d="M 1123 746 L 1137 746 L 1135 744 M 1137 746 L 1135 748" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1140" y="763" font-size="26" fill="#2c3e50"> = field E</text>
 </g>
-
 </svg>
         </div>
       
@@ -5588,6 +4976,7 @@ The key steps to solve this problem are:
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -5604,51 +4993,35 @@ The key steps to solve this problem are:
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">In Fig. 22-56, a &quot;semi-infinite&quot; nonconducting rod (that is, infinite in one dir...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">In Fig</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• x Semi-infinite rod (charge λ per unit length) y O P R dx x r E_x E_y E 45° Figure 22-56: Semi-infinite charged rod along positive x-axis with uniform charge density λ</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
+<line x1="1020" y1="710" x2="1110" y2="710" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+<text x="1125" y="718" font-size="26" font-style="italic" fill="#2c3e50">E</text>
+<path d="M 1123 701 L 1137 701 L 1135 699 M 1137 701 L 1135 703" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1140" y="718" font-size="26" fill="#2c3e50"> = field E</text>
+<line x1="1020" y1="755" x2="1110" y2="755" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+<text x="1125" y="763" font-size="26" font-style="italic" fill="#2c3e50">E</text>
+<path d="M 1123 746 L 1137 746 L 1135 744 M 1137 746 L 1135 748" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1140" y="763" font-size="26" fill="#2c3e50"> = field E</text>
 </g>
-
 </svg>
         </div>
       
@@ -5816,6 +5189,7 @@ This universal strategy can be applied to all similar problems involving the ele
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -5832,51 +5206,27 @@ This universal strategy can be applied to all similar problems involving the ele
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 17: Two charged particles (particle 1 with charge q₁ = +5.0 μC and part...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 17: Two charged particles (particle 1 with charge q...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• Question 17: Two charged particles (particle 1 with charge q₁ = +5</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -6167,6 +5517,7 @@ This approach can be applied to a wide range of electric field problems, includi
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -6183,51 +5534,23 @@ This approach can be applied to a wide range of electric field problems, includi
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 12: An electron is released from rest on the axis of an electric dipole...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 12: An electron is released from rest on the axis o...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -6401,6 +5724,7 @@ This approach can be applied to a wide range of electric field problems, includi
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -6417,51 +5741,23 @@ This approach can be applied to a wide range of electric field problems, includi
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 16: [Figure shows: Two fixed charges q₁ = +4e and q₂ = -2e, and a third...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 16: [Figure shows: Two fixed charges q₁ = +4e and q...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -6669,6 +5965,7 @@ This approach can be applied to a wide range of electric field problems, includi
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -6685,51 +5982,23 @@ This approach can be applied to a wide range of electric field problems, includi
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Two isolated conducting spheres have radii R₁ = 0.500 m and R₂ = 1.00 m with ini...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Two isolated conducting spheres have radii R₁ = 0</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -6845,6 +6114,7 @@ This approach can be applied to a wide range of electric field problems, includi
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -6861,51 +6131,23 @@ This approach can be applied to a wide range of electric field problems, includi
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 14: Assume that a honeybee is a sphere of diameter 1.000 cm with a char...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 14: Assume that a honeybee is a sphere of diameter ...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="40" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="3"/>
+<text x="400" y="600" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• Question 14: Assume that a honeybee is a sphere of diameter 1</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• 000 cm with a charge of +45</text>
+<text x="1020" y="380" font-size="26" fill="#34495e">• 0 μm is electrically held on the surface of the bee because the bee's charge induces a charge of −1</text>
+<text x="1020" y="420" font-size="26" fill="#34495e">• 00 pC on the near side of the grain and a charge of +1</text>
+<text x="1020" y="460" font-size="26" fill="#34495e">• +Bee (sphere)diameter = 1</text>
+<text x="1020" y="500" font-size="26" fill="#34495e">• 000 cmcharge = +45</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -7390,6 +6632,7 @@ This approach can be applied to a wide range of electric field problems, includi
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -7406,51 +6649,27 @@ This approach can be applied to a wide range of electric field problems, includi
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 7: Two isolated conducting spheres have radii R₁ = 0.500 m and R₂ = 1.0...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 7: Two isolated conducting spheres have radii R₁ = ...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• [Figure shows two spheres of different radii connected by a wire]</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -7616,6 +6835,7 @@ This approach can be applied to a wide range of electric field problems, includi
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -7632,51 +6852,30 @@ This approach can be applied to a wide range of electric field problems, includi
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 15: A uniformly charged plastic disk of radius R = 64.0 cm with surface...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 15: A uniformly charged plastic disk of radius R = ...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• </text>
+<text x="1035" y="300" font-size="26" font-style="italic" fill="#34495e">R</text>
+<path d="M 1033 283 L 1045 283 L 1043 281 M 1045 283 L 1043 285" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1048" y="300" font-size="26" fill="#34495e">Question 15: A uniformly charged plastic disk of radius R = 64</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -7851,6 +7050,7 @@ This approach can be applied to a wide range of electric field problems, includi
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -7867,19 +7067,23 @@ This approach can be applied to a wide range of electric field problems, includi
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The electric potential in a region of space is given by V = 2.00xyz² volts, wher...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The electric potential in a region of space is given by V = ...</text>
 <g id="main-diagram">
-  <text x="400" y="600" font-size="32" fill="#34495e">Diagram for this question type is under development</text>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<g id="legend">
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -8022,6 +7226,7 @@ This approach can be applied to a wide range of electric field problems, includi
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -8038,51 +7243,23 @@ This approach can be applied to a wide range of electric field problems, includi
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A thin ring of radius R = 8.20 cm has a non-uniform linear charge density λ = λ₀...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A thin ring of radius R = 8</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -8386,6 +7563,7 @@ The key is to focus on the conceptual framework and apply it systematically, reg
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -8402,51 +7580,30 @@ The key is to focus on the conceptual framework and apply it systematically, reg
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 10: In the figure shown, two charges q₁ = +4e and q₂ = -2e are fixed in...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 10: In the figure shown, two charges q₁ = +4e and q...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• </text>
+<text x="1035" y="300" font-size="26" font-style="italic" fill="#34495e">Q</text>
+<path d="M 1033 283 L 1045 283 L 1043 281 M 1045 283 L 1043 285" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1048" y="300" font-size="26" fill="#34495e">[Figure shows: Two fixed charges, q₁ = +4e and q₂ = -2e, with a third charge Q = +16e being brought from infinity to point P along the dashed line</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -8561,6 +7718,7 @@ The key is to focus on the conceptual framework and apply it systematically, reg
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -8577,51 +7735,32 @@ The key is to focus on the conceptual framework and apply it systematically, reg
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A conducting sphere of radius r = 1.0 cm has a uniformly distributed charge of 1...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A conducting sphere of radius r = 1</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• </text>
+<text x="1035" y="300" font-size="26" font-style="italic" fill="#34495e">r</text>
+<path d="M 1033 283 L 1045 283 L 1043 281 M 1045 283 L 1043 285" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1048" y="300" font-size="26" fill="#34495e">A conducting sphere of radius r = 1</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• 0 cm has a uniformly distributed charge of 1</text>
+<text x="1020" y="380" font-size="26" fill="#34495e">• [Charged sphere with electron on surface escaping to infinity]</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -8769,6 +7908,7 @@ The key is to focus on the conceptual framework and apply it systematically, reg
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -8785,51 +7925,30 @@ The key is to focus on the conceptual framework and apply it systematically, reg
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 11: A rectangular array of charged particles is fixed in place with dis...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 11: A rectangular array of charged particles is fix...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• </text>
+<text x="1035" y="300" font-size="26" font-style="italic" fill="#34495e">a</text>
+<path d="M 1033 283 L 1045 283 L 1043 281 M 1045 283 L 1043 285" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1048" y="300" font-size="26" fill="#34495e">Question 11: A rectangular array of charged particles is fixed in place with distance a = 39</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -9391,6 +8510,7 @@ The key is to focus on the conceptual framework and apply it systematically, reg
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -9407,51 +8527,27 @@ The key is to focus on the conceptual framework and apply it systematically, reg
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">z Inner ring radius R, charge +Q Outer ring radius R&apos; = 3R, charge Q&apos; O P D = 2R...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">z Inner ring radius R, charge +Q Outer ring radius R' = 3R, ...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• Inner ring has radius R with charge +Q, outer ring has radius R' = 3R with unknown charge Q'</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
             </div>
@@ -9615,6 +8711,7 @@ The key is to focus on the conceptual framework and apply it systematically, reg
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -9631,19 +8728,18 @@ The key is to focus on the conceptual framework and apply it systematically, reg
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 13: −Negative plate+Positive plateE (uniform)e⁻Electronp⁺Protond = 5.0 ...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 13: −Negative plate+Positive plateE (uniform)e⁻Elec...</text>
 <g id="main-diagram">
-  <text x="400" y="600" font-size="32" fill="#34495e">Diagram for this question type is under development</text>
+<circle cx="400" cy="600" r="40" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="3"/>
+<text x="400" y="600" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
 </g>
-
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<g id="legend">
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
+<line x1="1020" y1="710" x2="1110" y2="710" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+<text x="1125" y="718" font-size="26" font-style="italic" fill="#2c3e50">E</text>
+<path d="M 1123 701 L 1137 701 L 1135 699 M 1137 701 L 1135 703" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1140" y="718" font-size="26" fill="#2c3e50"> = field E</text>
 </g>
-
 </svg>
         </div>
       
@@ -9823,6 +8919,7 @@ The key is to focus on the conceptual framework and apply it systematically, reg
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -9839,51 +8936,31 @@ The key is to focus on the conceptual framework and apply it systematically, reg
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A conducting sphere of radius r = 1.0 cm has a uniformly distributed charge of 1...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A conducting sphere of radius r = 1</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• </text>
+<text x="1035" y="300" font-size="26" font-style="italic" fill="#34495e">r</text>
+<path d="M 1033 283 L 1045 283 L 1043 281 M 1045 283 L 1043 285" stroke="#34495e" stroke-width="2" fill="none" stroke-linecap="round"/>
+<text x="1048" y="300" font-size="26" fill="#34495e">A conducting sphere of radius r = 1</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• 0 cm has a uniformly distributed charge of 1</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -10075,6 +9152,7 @@ The key is to focus on the conceptual framework and apply it systematically, reg
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -10091,51 +9169,23 @@ The key is to focus on the conceptual framework and apply it systematically, reg
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A thin ring of radius R = 8.20 cm has a non-uniform linear charge density λ = λ₀...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A thin ring of radius R = 8</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
-</g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -10463,6 +9513,7 @@ This systematic approach can be applied to any similar problem involving the ele
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -10479,19 +9530,23 @@ This systematic approach can be applied to any similar problem involving the ele
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The electric potential in a region of space is given by V = 2.00xyz² volts, wher...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The electric potential in a region of space is given by V = ...</text>
 <g id="main-diagram">
-  <text x="400" y="600" font-size="32" fill="#34495e">Diagram for this question type is under development</text>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
-<g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<g id="legend">
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -11329,6 +10384,7 @@ This systematic approach can be applied to any similar problem involving the ele
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -11345,51 +10401,19 @@ This systematic approach can be applied to any similar problem involving the ele
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Two tiny conducting balls of identical mass m and identical charge q hang from n...</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Two tiny conducting balls of identical mass m and identical ...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="40" fill="#3498db" fill-opacity="0.3" stroke="#3498db" stroke-width="3"/>
+<text x="400" y="600" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• Two tiny conducting balls of identical mass m and identical charge q hang from nonconducting threads of length L</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• Assume that θ is so small that tan θ can be replaced by its approximate equal, sin θ</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
       
@@ -11603,6 +10627,7 @@ This systematic approach can be applied to any similar problem involving the ele
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
+  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -11619,51 +10644,28 @@ This systematic approach can be applied to any similar problem involving the ele
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 19: A nonconducting solid sphere has a uniform volume charge density ρ....</text>
-
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Question 19: A nonconducting solid sphere has a uniform volu...</text>
 <g id="main-diagram">
-
-  <!-- Point charge -->
-  <circle cx="400" cy="600" r="40" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="4"/>
-  <text x="400" y="610" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">+Q</text>
-  <text x="340" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-
-  <!-- Radial field lines -->
-  <line x1="450.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="635.4" x2="506.1" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="650.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="635.4" x2="293.9" y2="706.1" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="350.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="364.6" y1="564.6" x2="293.9" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="400.0" y1="550.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-  <line x1="435.4" y1="564.6" x2="506.1" y2="493.9" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-
-  <text x="570" y="610" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 568 593 L 584 593 L 582 591 M 584 593 L 582 595" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
+<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
+<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
+<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 </g>
-
 <g id="given-info">
-
-  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
-
+<text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+<text x="1020" y="300" font-size="26" fill="#34495e">• Question 19: A nonconducting solid sphere has a uniform volume charge density ρ</text>
+<text x="1020" y="340" font-size="26" fill="#34495e">• OC a → P r → Sphere with Spherical CavityUniform volume charge density: ρCavity: hollow region (no charge) E → (uniform)Key Result: Electric field inside cavity is uniform</text>
 </g>
-
 <g id="legend">
-
-  <text x="1000" y="900" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-
-  <line x1="1020" y1="950" x2="1110" y2="950" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-  <text x="1125" y="958" font-size="36" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
-<path d="M 1123 941 L 1139 941 L 1137 939 M 1139 941 L 1137 943" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <text x="1160" y="958" font-size="26" fill="#34495e"> = Electric field</text>
-
-  <circle cx="1050" cy="1010" r="20" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-  <text x="1080" y="1018" font-size="26" fill="#34495e">= Positive charge</text>
-
+<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
 </g>
-
 </svg>
         </div>
         </div>
