@@ -2,7 +2,6 @@
 <rect width="2000" height="1400" fill="#ffffff"/>
 
 <defs>
-  <!-- Arrow markers (5x5 per guidelines) -->
   <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
   </marker>
@@ -19,21 +18,48 @@
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
 </defs>
-<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The chocolate crumb mystery: Workers at a biscuit factory ha...</text>
+
+<!-- Title -->
+<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The chocolate crumb mystery: Workers at a biscuit factory have an electric poten...</text>
+
+<!-- Main Diagram Area -->
 <g id="main-diagram">
-<circle cx="400" cy="600" r="30" fill="#FFD700" fill-opacity="0.3" stroke="#FFD700" stroke-width="3"/>
-<text x="400" y="605" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">+</text>
-<text x="350" y="600" font-size="44" font-weight="bold" fill="#2c3e50">Q</text>
-<line x1="440.0" y1="600.0" x2="550.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-<line x1="428.2842712474619" y1="628.2842712474619" x2="506.06601717798213" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-<line x1="400.0" y1="640.0" x2="400.0" y2="750.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-<line x1="371.7157287525381" y1="628.2842712474619" x2="293.93398282201787" y2="706.0660171779821" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-<line x1="360.0" y1="600.0" x2="250.0" y2="600.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-<line x1="371.7157287525381" y1="571.7157287525381" x2="293.93398282201787" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-<line x1="400.0" y1="560.0" x2="400.0" y2="450.0" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
-<line x1="428.2842712474619" y1="571.7157287525381" x2="506.0660171779821" y2="493.93398282201787" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- Parallel-plate capacitor -->
+  <rect x="400" y="400" width="400" height="20" fill="#FFD700" stroke="#2c3e50" stroke-width="3"/>
+  <rect x="400" y="680" width="400" height="20" fill="#C0C0C0" stroke="#2c3e50" stroke-width="3"/>
+
+  <!-- Labels -->
+  <text x="350" y="420" text-anchor="end" font-size="32" fill="#2c3e50">+q</text>
+  <text x="350" y="700" text-anchor="end" font-size="32" fill="#2c3e50">−q</text>
+
+  <!-- Electric field lines -->
+  <line x1="450" y1="420" x2="450" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="530" y1="420" x2="530" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="610" y1="420" x2="610" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="690" y1="420" x2="690" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="770" y1="420" x2="770" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- Field label -->
+  <text x="850" y="550" font-size="32" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
+<path d="M 848 533 L 864 533 L 862 531 M 864 533 L 862 535" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
 </g>
+
+<!-- Given Information -->
+<g id="given-info">
+
+  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+
+</g>
+
+<!-- Legend -->
 <g id="legend">
-<text x="1000" y="660" font-size="32" font-weight="bold" fill="#2c3e50">Legend:</text>
+
+  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
+  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
+  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
+  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
+
 </g>
+
 </svg>
