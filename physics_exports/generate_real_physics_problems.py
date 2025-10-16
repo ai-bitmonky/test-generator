@@ -456,10 +456,7 @@ class SmartPhysicsSVGRenderer:
             f'font-size="22" fill="#7f8c8d">(test point)</text>'
         )
 
-        # Add questions (NO ANSWERS)
-        svg_parts.append(self._add_sphere_cavity_questions())
-
-        # Add legend
+        # Add legend only (no questions or formulas)
         svg_parts.append(self._add_legend())
 
         svg_parts.append('</svg>')
