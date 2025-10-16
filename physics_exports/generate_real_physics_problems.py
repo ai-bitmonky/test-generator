@@ -179,7 +179,7 @@ class ProblemParser:
 class SmartPhysicsSVGRenderer:
     """Renders physics problems with intelligent scaling and layout"""
 
-    def __init__(self, width: int = 2000, height: int = 1400):
+    def __init__(self, width: int = 2400, height: int = 1800):
         self.width = width
         self.height = height
         self.margin = 150
@@ -213,8 +213,8 @@ class SmartPhysicsSVGRenderer:
         )
 
         # Bee (scaled for visibility)
-        bee_radius = 140  # pixels (increased from 100)
-        bee_center_x = left_view_x + 200
+        bee_radius = 180  # pixels (scaled up from 140)
+        bee_center_x = left_view_x + 250
         bee_center_y = view_y
 
         # Bee sphere with surface charges
@@ -236,7 +236,7 @@ class SmartPhysicsSVGRenderer:
         # Bee label removed - information in legend only
 
         # Pollen grain on bee surface (enlarged for visibility)
-        pollen_radius = 35  # pixels (exaggerated for visibility, increased from 25)
+        pollen_radius = 45  # pixels (scaled up from 35)
         pollen_x = bee_center_x + bee_radius + pollen_radius - 5
         pollen_y = bee_center_y
 
@@ -287,9 +287,9 @@ class SmartPhysicsSVGRenderer:
         )
 
         # Pollen grain (center of view)
-        pollen2_x = right_view_x + 150
+        pollen2_x = right_view_x + 200
         pollen2_y = view_y
-        pollen2_radius = 42  # pixels (increased from 30)
+        pollen2_radius = 55  # pixels (scaled up from 42)
 
         svg_parts.append(
             f'<circle cx="{pollen2_x}" cy="{pollen2_y}" r="{pollen2_radius}" '
@@ -319,11 +319,11 @@ class SmartPhysicsSVGRenderer:
         # Pollen label removed - information in legend only
 
         # Stigma (to the right)
-        stigma_x = right_view_x + 450
+        stigma_x = right_view_x + 550
         stigma_y = view_y
 
         svg_parts.append(
-            f'<circle cx="{stigma_x}" cy="{stigma_y}" r="20" fill="#FF1493"/>'  # Increased radius from 15 to 20
+            f'<circle cx="{stigma_x}" cy="{stigma_y}" r="25" fill="#FF1493"/>'  # Scaled up from 20 to 25
         )
         svg_parts.append(
             f'<text x="{stigma_x}" y="{stigma_y + 4}" text-anchor="middle" '
@@ -362,20 +362,20 @@ class SmartPhysicsSVGRenderer:
         )
 
         # Diagram center
-        center_x = 450
-        center_y = 600
+        center_x = 550
+        center_y = 750
 
         # Main sphere with volume charge
-        sphere_radius = 220  # Increased from 180
+        sphere_radius = 280  # Scaled up from 220
         svg_parts.append(
             f'<circle cx="{center_x}" cy="{center_y}" r="{sphere_radius}" '
             f'fill="url(#chargePattern)" stroke="#2980b9" stroke-width="4"/>'
         )
 
         # Cavity (offset from center)
-        cavity_center_x = center_x + 105
-        cavity_center_y = center_y + 63
-        cavity_radius = 85  # Increased from 70
+        cavity_center_x = center_x + 130
+        cavity_center_y = center_y + 80
+        cavity_radius = 110  # Scaled up from 85
 
         svg_parts.append(
             f'<circle cx="{cavity_center_x}" cy="{cavity_center_y}" r="{cavity_radius}" '

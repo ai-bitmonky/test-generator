@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1400">
-<rect width="2000" height="1400" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1800">
+<rect width="2400" height="1800" fill="#ffffff"/>
 
 <defs>
   <!-- Arrow markers (small) -->
@@ -25,39 +25,39 @@
   </pattern>
 </defs>
 
-<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Honeybee and Pollen Grain Electrostatics</text>
+<text x="1200.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Honeybee and Pollen Grain Electrostatics</text>
 <g id="bee-pollen-view">
 <text x="350" y="150" text-anchor="middle" font-size="34" font-weight="bold" fill="#34495e">(a) Pollen on Bee Surface</text>
-<circle cx="350" cy="700.0" r="140" fill="#FFD700" fill-opacity="0.3" stroke="#DAA520" stroke-width="3"/>
-<text x="480.0" y="705.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="462.58330249197707" y="770.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="415.0" y="817.5833024919771" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="350.0" y="835.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="285.0" y="817.5833024919771" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="237.41669750802296" y="770.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="220.0" y="705.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="237.416697508023" y="640.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="284.99999999999994" y="592.416697508023" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="350.0" y="575.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="415.0" y="592.4166975080229" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<text x="462.583302491977" y="640.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
-<circle cx="520" cy="700.0" r="35" fill="#8B4513" fill-opacity="0.4" stroke="#654321" stroke-width="2"/>
-<circle cx="502.5" cy="700.0" r="8" fill="#FF0000"/>
-<text x="502.5" y="704.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">−</text>
-<circle cx="537.5" cy="700.0" r="8" fill="#0000FF"/>
-<text x="537.5" y="704.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">+</text>
-<g><line x1="520" y1="700.0" x2="440" y2="700.0" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="480.0" y="680.0" text-anchor="middle" font-size="26" font-weight="bold" font-style="italic" fill="#e74c3c">F_bee</text><path d="M 465.0 652.0 L 495.0 652.0 L 492.0 649.0 M 495.0 652.0 L 492.0 655.0" stroke="#e74c3c" stroke-width="2" fill="none"/></g>
+<circle cx="400" cy="900.0" r="180" fill="#FFD700" fill-opacity="0.3" stroke="#DAA520" stroke-width="3"/>
+<text x="570.0" y="905.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="547.2243186433545" y="990.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="485.0" y="1052.2243186433545" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="400.0" y="1075.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="315.0" y="1052.2243186433545" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="252.7756813566454" y="990.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="230.0" y="905.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="252.77568135664544" y="820.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="314.99999999999994" y="757.7756813566455" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="399.99999999999994" y="735.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="485.0" y="757.7756813566455" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="547.2243186433545" y="819.9999999999999" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<circle cx="620" cy="900.0" r="45" fill="#8B4513" fill-opacity="0.4" stroke="#654321" stroke-width="2"/>
+<circle cx="597.5" cy="900.0" r="8" fill="#FF0000"/>
+<text x="597.5" y="904.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">−</text>
+<circle cx="642.5" cy="900.0" r="8" fill="#0000FF"/>
+<text x="642.5" y="904.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">+</text>
+<g><line x1="620" y1="900.0" x2="540" y2="900.0" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="580.0" y="880.0" text-anchor="middle" font-size="26" font-weight="bold" font-style="italic" fill="#e74c3c">F_bee</text><path d="M 565.0 852.0 L 595.0 852.0 L 592.0 849.0 M 595.0 852.0 L 592.0 855.0" stroke="#e74c3c" stroke-width="2" fill="none"/></g>
 </g>
 <g id="pollen-stigma-view">
-<text x="1350.0" y="150" text-anchor="middle" font-size="34" font-weight="bold" fill="#34495e">(b) Pollen Near Stigma (1.000 mm)</text>
-<circle cx="1200.0" cy="700.0" r="42" fill="#8B4513" fill-opacity="0.4" stroke="#654321" stroke-width="2"/>
-<circle cx="1221.0" cy="700.0" r="8" fill="#FF0000"/>
-<text x="1221.0" y="704.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">−</text>
-<circle cx="1179.0" cy="700.0" r="8" fill="#0000FF"/>
-<text x="1179.0" y="704.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">+</text>
-<circle cx="1500.0" cy="700.0" r="20" fill="#FF1493"/>
-<text x="1500.0" y="704.0" text-anchor="middle" font-size="22" font-weight="bold" fill="white">−</text>
-<g><line x1="1242.0" y1="700.0" x2="1322.0" y2="700.0" stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="1282.0" y="680.0" text-anchor="middle" font-size="26" font-weight="bold" font-style="italic" fill="#3498db">F_stigma</text><path d="M 1267.0 652.0 L 1297.0 652.0 L 1294.0 649.0 M 1297.0 652.0 L 1294.0 655.0" stroke="#3498db" stroke-width="2" fill="none"/></g>
+<text x="1550.0" y="150" text-anchor="middle" font-size="34" font-weight="bold" fill="#34495e">(b) Pollen Near Stigma (1.000 mm)</text>
+<circle cx="1450.0" cy="900.0" r="55" fill="#8B4513" fill-opacity="0.4" stroke="#654321" stroke-width="2"/>
+<circle cx="1477.5" cy="900.0" r="8" fill="#FF0000"/>
+<text x="1477.5" y="904.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">−</text>
+<circle cx="1422.5" cy="900.0" r="8" fill="#0000FF"/>
+<text x="1422.5" y="904.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">+</text>
+<circle cx="1800.0" cy="900.0" r="25" fill="#FF1493"/>
+<text x="1800.0" y="904.0" text-anchor="middle" font-size="22" font-weight="bold" fill="white">−</text>
+<g><line x1="1505.0" y1="900.0" x2="1585.0" y2="900.0" stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="1545.0" y="880.0" text-anchor="middle" font-size="26" font-weight="bold" font-style="italic" fill="#3498db">F_stigma</text><path d="M 1530.0 852.0 L 1560.0 852.0 L 1557.0 849.0 M 1560.0 852.0 L 1557.0 855.0" stroke="#3498db" stroke-width="2" fill="none"/></g>
 </g>
 <g id="legend">
   <rect x="80" y="910" width="1800" height="380"

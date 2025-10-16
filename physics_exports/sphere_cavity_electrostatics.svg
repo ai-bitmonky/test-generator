@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1400">
-<rect width="2000" height="1400" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1800">
+<rect width="2400" height="1800" fill="#ffffff"/>
 
 <defs>
   <!-- Arrow markers (small) -->
@@ -25,20 +25,20 @@
   </pattern>
 </defs>
 
-<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Uniformly Charged Sphere with Spherical Cavity</text>
-<circle cx="450" cy="600" r="220" fill="url(#chargePattern)" stroke="#2980b9" stroke-width="4"/>
-<circle cx="555" cy="663" r="85" fill="white" stroke="#e67e22" stroke-width="4" stroke-dasharray="18,9"/>
-<circle cx="450" cy="600" r="6" fill="#2c3e50"/>
-<circle cx="555" cy="663" r="6" fill="#e74c3c"/>
-<circle cx="573" cy="648" r="6" fill="#9b59b6"/>
-<g><line x1="450" y1="600" x2="480" y2="618" stroke="#e74c3c" stroke-width="4"  marker-end="url(#arrowRed)"/><text x="500" y="658" font-size="36" font-weight="bold" font-style="italic" fill="#e74c3c">a</text><path d="M 498 630 L 522 630 L 520 628 M 522 630 L 520 632" stroke="#e74c3c" stroke-width="2" fill="none"/></g>
-<g><line x1="450" y1="600" x2="563" y2="653" stroke="#9b59b6" stroke-width="4" stroke-dasharray="18,9" marker-end="url(#arrowPurple)"/><text x="583" y="693" font-size="36" font-weight="bold" font-style="italic" fill="#9b59b6">r</text><path d="M 581 665 L 605 665 L 603 663 M 605 665 L 603 667" stroke="#9b59b6" stroke-width="2" fill="none"/></g>
-<line x1="515" y1="623" x2="595" y2="623" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-<line x1="515" y1="663" x2="595" y2="663" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-<line x1="515" y1="703" x2="595" y2="703" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-<text x="400" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
-<text x="580" y="568" font-size="44" font-weight="bold" fill="#e74c3c">C</text>
-<text x="598" y="653" font-size="44" font-weight="bold" fill="#9b59b6">P</text>
+<text x="1200.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Uniformly Charged Sphere with Spherical Cavity</text>
+<circle cx="550" cy="750" r="280" fill="url(#chargePattern)" stroke="#2980b9" stroke-width="4"/>
+<circle cx="680" cy="830" r="110" fill="white" stroke="#e67e22" stroke-width="4" stroke-dasharray="18,9"/>
+<circle cx="550" cy="750" r="6" fill="#2c3e50"/>
+<circle cx="680" cy="830" r="6" fill="#e74c3c"/>
+<circle cx="698" cy="815" r="6" fill="#9b59b6"/>
+<g><line x1="550" y1="750" x2="580" y2="768" stroke="#e74c3c" stroke-width="4"  marker-end="url(#arrowRed)"/><text x="600" y="808" font-size="36" font-weight="bold" font-style="italic" fill="#e74c3c">a</text><path d="M 598 780 L 622 780 L 620 778 M 622 780 L 620 782" stroke="#e74c3c" stroke-width="2" fill="none"/></g>
+<g><line x1="550" y1="750" x2="688" y2="820" stroke="#9b59b6" stroke-width="4" stroke-dasharray="18,9" marker-end="url(#arrowPurple)"/><text x="708" y="860" font-size="36" font-weight="bold" font-style="italic" fill="#9b59b6">r</text><path d="M 706 832 L 730 832 L 728 830 M 730 832 L 728 834" stroke="#9b59b6" stroke-width="2" fill="none"/></g>
+<line x1="640" y1="790" x2="720" y2="790" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+<line x1="640" y1="830" x2="720" y2="830" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+<line x1="640" y1="870" x2="720" y2="870" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+<text x="500" y="760" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
+<text x="705" y="735" font-size="44" font-weight="bold" fill="#e74c3c">C</text>
+<text x="723" y="820" font-size="44" font-weight="bold" fill="#9b59b6">P</text>
 <g id="given-info">
   <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
 
