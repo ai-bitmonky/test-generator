@@ -640,27 +640,27 @@ class SmartPhysicsSVGRenderer:
     def _add_legend(self) -> str:
         """Add legend for sphere/cavity diagram"""
         return '''<g id="legend">
-  <text x="120" y="875" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
+  <text x="1000" y="620" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
 
-  <line x1="120" y1="920" x2="210" y2="920" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <line x1="1020" y1="665" x2="1110" y2="665" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
   <g>
-    <text x="225" y="928" font-size="26" fill="#2c3e50" font-style="italic">a</text>
-    <path d="M 221 911 L 235 911 L 233 909 M 235 911 L 233 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="240" y="928" font-size="26" fill="#2c3e50"> = O to C (displacement)</text>
+    <text x="1125" y="673" font-size="26" fill="#2c3e50" font-style="italic">a</text>
+    <path d="M 1121 656 L 1135 656 L 1133 654 M 1135 656 L 1133 658" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="1140" y="673" font-size="26" fill="#2c3e50"> = O to C (displacement)</text>
   </g>
 
-  <line x1="450" y1="920" x2="540" y2="920" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
+  <line x1="1020" y1="710" x2="1110" y2="710" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
   <g>
-    <text x="555" y="928" font-size="26" fill="#2c3e50" font-style="italic">r</text>
-    <path d="M 552 911 L 564 911 L 562 909 M 564 911 L 562 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="568" y="928" font-size="26" fill="#2c3e50"> = O to P (position)</text>
+    <text x="1125" y="718" font-size="26" fill="#2c3e50" font-style="italic">r</text>
+    <path d="M 1121 701 L 1133 701 L 1131 699 M 1133 701 L 1131 703" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="1138" y="718" font-size="26" fill="#2c3e50"> = O to P (position)</text>
   </g>
 
-  <line x1="780" y1="920" x2="870" y2="920" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <line x1="1020" y1="755" x2="1110" y2="755" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
   <g>
-    <text x="885" y="928" font-size="26" fill="#2c3e50" font-style="italic">E</text>
-    <path d="M 881 911 L 896 911 L 894 909 M 896 911 L 894 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <text x="900" y="928" font-size="26" fill="#2c3e50"> = Electric field</text>
+    <text x="1125" y="763" font-size="26" fill="#2c3e50" font-style="italic">E</text>
+    <path d="M 1121 746 L 1135 746 L 1133 744 M 1135 746 L 1133 748" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="1140" y="763" font-size="26" fill="#2c3e50"> = Electric field</text>
   </g>
 </g>'''
 
