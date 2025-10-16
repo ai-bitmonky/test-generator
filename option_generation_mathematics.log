@@ -1,0 +1,46 @@
+⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217
+[dotenv@17.2.3] injecting env (4) from .env.local -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+🚀 Automated Option Generation Pipeline
+
+📚 Subject: Mathematics
+⏱️  Delay: 8000ms between calls
+🤖 Using: claude-3-5-sonnet-20241022
+
+✨ FEATURES:
+   • Detects questions with missing options
+   • Generates 4 plausible options using AI
+   • Ensures correct answer matches solution
+   • Creates realistic distractors
+   • Verifies generated options
+   • Fully automated - no manual intervention
+
+======================================================================
+
+📥 Fetching questions with missing options...
+
+   Total Mathematics questions: 433
+   Missing options: 433 (100.0%)
+
+
+[1/433] Processing question 00d8d67d...
+   Topic: Circles
+   Current correct answer: B
+   🎯 Generating 4 options using AI...
+      ⚠️  Attempt 1 failed, retrying...
+      ⚠️  Attempt 2 failed, retrying...
+   ❌ Error: API error: Not Found
+
+[2/433] Processing question 00ff0097...
+   Topic: Integration
+   Current correct answer: C
+   🎯 Generating 4 options using AI...
+      ⚠️  Attempt 1 failed, retrying...
+      ⚠️  Attempt 2 failed, retrying...
+   ❌ Error: API error: Not Found
+
+[3/433] Processing question 010b1be6...
+   Topic: Integration
+   Current correct answer: C
+   🎯 Generating 4 options using AI...
+      ⚠️  Attempt 1 failed, retrying...
+      ⚠️  Attempt 2 failed, retrying...

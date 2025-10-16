@@ -1,0 +1,113 @@
+====================================================================================================
+DETAILED SVG CONTENT CHECK - MANUAL INSPECTION
+====================================================================================================
+
+
+####################################################################################################
+CHECKING: Q5 - Capacitor circuit with values
+####################################################################################################
+
+QUESTION 5 TEXT (first 500 chars):
+A slab of copper of thickness b = 2.00 mm is thrust into a parallel-plate capacitor of plate area A = 2.40 cm² and plate separation d = 5.00 mm. The slab is positioned exactly halfway between the plates. If a charge q = 3.40 μC is maintained on the plates, what is the ratio of the stored energy before to that after the slab is inserted? A. 1.250 B. 1.500 C. 1.667 D. 2.000 Correct Answer c Solution Solution: Strategy: For conducting slab insertion problems: (1) Recognize that conductor creates tw
+...
+
+
+SVG LABELS FOUND (20 total):
+  1. Circuit with Switch S (Initially Open)
+  2. +
+  3. 12V
+  4. P
+  5. C₁
+  6. 8.00 μF
+  7. C₃
+  8. 8.00 μF
+  9. S
+  10. (open)
+  11. C₄
+  12. 6.00 μF
+  13. (uncharged)
+  14. C₂
+  15. 6.00 μF
+  16. Initial: S open
+  17. C₁ and C₃ in series
+  18. Series combo || with C₂
+  19. Event: S closes
+  20. C₄ connects || with C₃
+
+
+VALUES MENTIONED IN QUESTION:
+  Capacitances: [('8.00', 'μF'), ('6.00', 'μF'), ('8.00', 'μF'), ('8', 'μF'), ('8', 'μF'), ('6', 'μF'), ('6', 'μF'), ('6.00', 'μF')]
+  Voltages: ['12.0', '12', '12.0']
+    ⚠️  WARNING: 12.0 V NOT FOUND in SVG
+    ⚠️  WARNING: 12.0 V NOT FOUND in SVG
+  Dimensions: ['2.00', '5.00', '3.00', '1.00', '0.001']
+  Charges: ['3.40']
+
+
+####################################################################################################
+CHECKING: Q6 - Parallel-plate with dimensions
+####################################################################################################
+Could not extract data
+
+
+####################################################################################################
+CHECKING: Q8 - Capacitor with dielectric
+####################################################################################################
+
+QUESTION 9 TEXT (first 500 chars):
+Question 2: Problem 26 (Modified):Capacitor 3 in the circuit shown below is a variable capacitor (its capacitance C₃ can be varied). The figure shows the electric potential V₁ across capacitor 1 versus C₃.V+−C₁C₂C₃C₃ (μF)V₁ (V)02468100C₃ₛ=12.0Asymptote: V₁→10VThe horizontal scale is set by C₃ₛ = 12.0 μF. Electric potential V₁ approaches an asymptote of 10 V as C₃ → ∞.Circuit Configuration:C₁ is in series with the parallel combination of C₂ and C₃.Determine:(a) The electric potential V across the
+...
+
+
+SVG LABELS FOUND (10 total):
+  1. C₁
+  2. C₂
+  3. C₃
+  4. C₃
+  5. V₁
+  6. V₁ (V)
+  7. C₃ (μF)
+  8. 0
+  9. 10
+  10. Question 2
+
+
+VALUES MENTIONED IN QUESTION:
+  Voltages: ['10']
+
+
+####################################################################################################
+CHECKING: Q10 - Cylinder with dimensions
+####################################################################################################
+
+QUESTION 11 TEXT (first 500 chars):
+A flammable conducting liquid is stored in a nonconducting cylindrical plastic container of radius r = 0.20 m, filled to height h = 10 cm. During handling, the exterior surface commonly acquires a negative charge density of magnitude 2.0 μC/m² (approximately uniform). The capacitance of the central portion of the liquid relative to ground is 35 pF. The minimum spark energy needed to ignite the liquid is 10 mJ. How much negative charge is induced in the center of the liquid's bulk, and can a spar
+...
+
+
+SVG LABELS FOUND (27 total):
+  1. Charged Conducting Liquid in Nonconducting Container
+  2. Plastic
+  3. (nonconducting)
+  4. Conducting Liquid
+  5. −
+  6. −
+  7. −
+  8. −
+  9. −
+  10. −
+  11. −
+  12. −
+  13. −
+  14. −
+  15. −
+  16. −
+  17. −
+  18. −
+  19. Surface charge: σ = -2.0 μC/m²
+  20. +
+  ... and 7 more
+
+
+VALUES MENTIONED IN QUESTION:
+  Dimensions: ['0.20', '10']

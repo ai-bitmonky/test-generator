@@ -1,0 +1,1257 @@
+====================================================================================================
+COMPREHENSIVE SVG DIAGRAM ISSUES REPORT
+====================================================================================================
+
+This report identifies SVG diagrams that are missing values, labels, or dimensions
+mentioned in the question text.
+====================================================================================================
+
+
+####################################################################################################
+FILE: physics_questions_01_of_05.html
+####################################################################################################
+
+Found 43 questions with SVG diagrams
+
+==========================================================================================
+⚠️  QUESTION 2 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Three capacitors with capacitances C₁ = 10.0 μF, C₂ = 5.00 μF, and C₃ = 4.00 μF are connected in a circuit arrangement where C₁, C₂, and C₃ are initially all in series across a potential difference V = 100.0 V. If capacitor 3 undergoes electrical breakdown so that it becomes equivalent to conducting...
+
+SVG Labels (12 total):
+  • Three Capacitors in Series Circuit
+  • Initial: All Three Capacitors in Series Connected to Battery
+  • V = 100 V
+  • −
+  • +
+  ... and 7 more
+
+❌ ISSUES DETECTED:
+  1. Voltage 100.0 V mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 5 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 1: Problem 61 (Modified):The figure shows capacitor 1 (C₁ = 8.00 μF), capacitor 2 (C₂ = 6.00 μF), and capacitor 3 (C₃ = 8.00 μF) connected to a 12.0 V battery with a switch S initially open.12V+−PC₁=8μFC₃=8μFC₂=6μFSC₄=6μF(uncharged)Switch S is initially open, then closedInitial Configuratio...
+
+SVG Labels (20 total):
+  • Circuit with Switch S (Initially Open)
+  • +
+  • 12V
+  • P
+  • C₁
+  ... and 15 more
+
+❌ ISSUES DETECTED:
+  1. Voltage 12.0 V mentioned in question but not found in SVG
+  2. Voltage 12.0 V mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 10 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem 36 (Modified): As a safety engineer, you must evaluate the practice of storing flammable conducting liquids in nonconducting containers. The company supplying a certain liquid has been using a squat, cylindrical plastic container of radius r = 0.20 m and filling it to height h = 10 cm, which...
+
+SVG Labels (20 total):
+  • −
+  • −
+  • −
+  • −
+  • −
+  ... and 15 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=0.20 mentioned in question but not found in SVG
+  2. Radius r=0.20 mentioned in question but not found in SVG
+  3. Height h=10 mentioned in question but not found in SVG
+  4. Height h=10 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 11 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A flammable conducting liquid is stored in a nonconducting cylindrical plastic container of radius r = 0.20 m, filled to height h = 10 cm. During handling, the exterior surface commonly acquires a negative charge density of magnitude 2.0 μC/m² (approximately uniform). The capacitance of the central ...
+
+SVG Labels (27 total):
+  • Charged Conducting Liquid in Nonconducting Container
+  • Plastic
+  • (nonconducting)
+  • Conducting Liquid
+  • −
+  ... and 22 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=0.20 mentioned in question but not found in SVG
+  2. Height h=10 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 12 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 3: A parallel-plate capacitor has plate area A = 10.5 cm² and plate separation d = 7.12 mm. The region between the plates is filled with dielectrics in a specific configuration:Left half:Uniformly filled with dielectric κ₁ = 21.0Right half:Divided into two equal parts:Top section: dielectri...
+
+SVG Labels (16 total):
+  • Question 3
+  • Top Plate (+)
+  • κ₁ = 21.0
+  • Left Half
+  • κ₂ = 42.0
+  ... and 11 more
+
+❌ ISSUES DETECTED:
+  1. Distance/separation d=7.12 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 14 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 6: Figure shows a 12.0 V battery and four uncharged capacitors of capacitances C₁ = 1.00 μF, C₂ = 2.00 μF, C₃ = 3.00 μF, and C₄ = 4.00 μF. The circuit has two switches S₁ and S₂.[Circuit: Battery connected to C₁ and C₃ in series through S₁, and C₂ and C₄ in series through S₂, with the two b...
+
+SVG Labels (4 total):
+  • 12.0 V
+  • S₁
+  • S₂
+  • Question 6:
+
+❌ ISSUES DETECTED:
+  1. Capacitor value C=1.00 μF mentioned in question but not found in SVG
+  2. Capacitor value C=2.00 μF mentioned in question but not found in SVG
+  3. Capacitor value C=3.00 μF mentioned in question but not found in SVG
+  4. Capacitor value C=4.00 μF mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 16 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A potential difference of 300 V is applied to series-connected capacitors C₁ = 2.00 μF and C₂ = 8.00 μF. After charging, they are disconnected and reconnected with: (a) same-sign plates together, then (b) opposite-sign plates together. Find the charges and voltages in each configuration....
+
+SVG Labels (26 total):
+  • Capacitor Reconnection: Same-Sign vs Opposite-Sign
+  • 300 V
+  • +
+  • −
+  • +
+  ... and 21 more
+
+❌ ISSUES DETECTED:
+  1. Capacitor value C=2.00 μF mentioned in question but not found in SVG
+  2. Capacitor value C=8.00 μF mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 20 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 8: Two charged particles (particle 1 with charge q₁ = +5.0 μC and particle 2 with charge q₂ = -3.0 μC) are fixed at separation d = 4.0 cm on the x-axis. Particle 3 can be moved along the x-axis. [Figure shows: A graph of the electric potential energy U of the three-particle system as a func...
+
+SVG Labels (24 total):
+  • Three-Particle System on x-axis
+  • Physical Setup
+  • x
+  • +
+  • q₁ = +5.0 μC
+  ... and 19 more
+
+❌ ISSUES DETECTED:
+  1. Distance/separation d=4.0 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 23 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 17: Two charged particles (particle 1 with charge q₁ = +5.0 μC and particle 2 with charge q₂ = -3.0 μC) are fixed at separation d = 4.0 cm on the x-axis. Particle 3 can be moved along the x-axis. The electric potential energy U of the three-particle system varies with position x of particle...
+
+SVG Labels (11 total):
+  • x
+  • U (J)
+  • U→-∞
+  • U→+∞
+  • U₀ ≈ -3.37 J
+  ... and 6 more
+
+❌ ISSUES DETECTED:
+  1. Distance/separation d=4.0 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 26 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 16: [Figure shows: Two fixed charges q₁ = +4e and q₂ = -2e, and a third charge Q = +16e to be brought from infinity to point P. Point P is at a distance d = 1.40 cm from q₁ at an angle θ₁ = 43°, and at a distance 2.00d from q₂ at an angle θ₂ = 60°.] In the figure shown, two charges q₁ = +4e...
+
+SVG Labels (9 total):
+  • x (cm)
+  • y (cm)
+  • q1 = +4e
+  • q2 = -2e
+  • Q = +16e
+  ... and 4 more
+
+❌ ISSUES DETECTED:
+  1. Distance/separation d=1.40 mentioned in question but not found in SVG
+  2. Distance/separation d=1.40 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 31 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 15: A uniformly charged plastic disk of radius R = 64.0 cm with surface charge density σ = 7.73 fC/m² has three quadrants removed, leaving only one quadrant. Find the electric potential at point P on the central axis of the original disk at distance D = 25.9 cm from the center. (Take V = 0 ...
+
+SVG Labels (4 total):
+  • P
+  • Question 15:
+  • R₁ = 0.500 m
+  • R₂ = 1.00 m
+
+❌ ISSUES DETECTED:
+  1. Radius r=64.0 mentioned in question but not found in SVG
+  2. Distance/separation d=25.9 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 35 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 10: In the figure shown, two charges q₁ = +4e and q₂ = -2e are fixed in place. A third charge Q = +16e is to be brought from infinity to point P along the dashed line. Point P is at distance d = 1.40 cm from q₁ and at distance 2.00d from q₂. [Figure shows: Two fixed charges, q₁ = +4e and q₂...
+
+SVG Labels (9 total):
+  • Question 10:
+  • q₁
+  • +4e
+  • q₂
+  • -2e
+  ... and 4 more
+
+❌ ISSUES DETECTED:
+  1. Distance/separation d=1.40 mentioned in question but not found in SVG
+  2. Distance/separation d=1.40 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 36 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A conducting sphere of radius r = 1.0 cm has a uniformly distributed charge of 1.6 × 10⁻¹⁵ C. An electron initially at rest on the surface needs to escape to infinity. Calculate the minimum initial speed required for the electron to escape. [Charged sphere with electron on surface escaping to infini...
+
+SVG Labels (6 total):
+  • e⁻
+  • Escape to infinity
+  • r = 0.20 m
+  • h = 10 cm
+  • r = 0.20 m
+  ... and 1 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=1.0 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 37 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 11: A rectangular array of charged particles is fixed in place with distance a = 39.0 cm. The charges are: corner 1: -q₁, corner 2: +4q₂, corner 3: +2q₁, corner 4: +2q₁, corner 5: +4q₂, corner 6: -3q₁, where q₁ = 3.40 pC and q₂ = 6.00 pC. Find the net electric potential at the rectangle's c...
+
+SVG Labels (7 total):
+  • -q₁
+  • +4q₂
+  • +2q₁
+  • +2q₁
+  • +4q₂
+  ... and 2 more
+
+❌ ISSUES DETECTED:
+  1. Charge value q=3.40 mentioned in question but not found in SVG
+  2. Charge value q=6.00 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 41 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A conducting sphere of radius r = 1.0 cm has a uniformly distributed charge of 1.6 × 10⁻¹⁵ C. An electron initially at rest on the surface needs to escape to infinity. Calculate the minimum initial speed required for the electron to escape....
+
+SVG Labels (28 total):
+  • Electron Escaping from Charged Conducting Sphere
+  • +
+  • +
+  • +
+  • +
+  ... and 23 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=1.0 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 42 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A thin ring of radius R = 8.20 cm has a non-uniform linear charge density λ = λ₀cos(θ), where λ₀ = 43.6 fC/m and θ is the angle measured from the positive x-axis. Find the electric potential at point P on the ring's axis at distance z = 6.20 cm from the center. (V = 0 at infinity)...
+
+SVG Labels (31 total):
+  • Ring with Non-uniform Charge Distribution
+  • O
+  • z
+  • P
+  • x
+  ... and 26 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=8.20 mentioned in question but not found in SVG
+
+
+####################################################################################################
+FILE: physics_questions_02_of_05.html
+####################################################################################################
+
+Found 26 questions with SVG diagrams
+
+==========================================================================================
+⚠️  QUESTION 72 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 28: Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m², b = 0.30 GN/m², and c = 0.80 GN/m².Assume that the thread has an initial length of 0.80 cm, an ini...
+
+SVG Labels (19 total):
+  • 0
+  • 0.5
+  • 1.0
+  • 1.5
+  • 2.0
+  ... and 14 more
+
+❌ ISSUES DETECTED:
+  1. Mass m=0.388 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 73 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Here is the COMPLETE question in HTML format: A rock climber of mass 55 kg is in a lie-back climb along a fissure. The climber's hands pull on one side of the fissure while the feet press against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is at a horiz...
+
+SVG Labels (5 total):
+  • Left Wall
+  • Right Wall
+  • COM
+  • Hands
+  • Feet
+
+❌ ISSUES DETECTED:
+  1. Mass m=55 mentioned in question but not found in SVG
+  2. Distance/separation d=0.40 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 79 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 27: Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m², b = 0.30 GN/m², and c = 0.80 GN/m².Assume that the thread has an initial length of 0.80 cm, an ini...
+
+SVG Labels (15 total):
+  • 0.0
+  • 0.5
+  • 1.0
+  • 1.5
+  • 2.0
+  ... and 10 more
+
+❌ ISSUES DETECTED:
+  1. Mass m=0.388 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 82 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A rock climber of mass 55 kg is in a lie-back climb along a fissure. The climber's hands pull on one side of the fissure while the feet press against the opposite side. The fissure has width w = 0.20 m, and the center of mass of the climber is at a horizontal distance d = 0.40 m from the fissure.The...
+
+SVG Labels (9 total):
+  • 0.20 m
+  • 0.40 m
+  • Left Wall
+  • Right Wall
+  • COM
+  ... and 4 more
+
+❌ ISSUES DETECTED:
+  1. Mass m=55 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 83 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 22: Figure shows an approximate plot of stress versus strain for a spider-web thread, out to the point of breaking at a strain of 2.00. The vertical axis scale is set by values a = 0.12 GN/m², b = 0.30 GN/m², and c = 0.80 GN/m².Assume that the thread has an initial length of 0.80 cm, an ini...
+
+SVG Labels (11 total):
+  • 0
+  • Strain (ε)
+  • Stress (GN/m²)
+  • a = 0.12 GN/m²
+  • b = 0.30 GN/m²
+  ... and 6 more
+
+❌ ISSUES DETECTED:
+  1. Mass m=0.388 mentioned in question but not found in SVG
+
+
+####################################################################################################
+FILE: physics_questions_03_of_05.html
+####################################################################################################
+
+Found 25 questions with SVG diagrams
+
+==========================================================================================
+⚠️  QUESTION 103 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A stone is projected at a cliff of height h with an initial speed of 42.0 m/s directed at angle θ₀ = 60.0° above the horizontal. The stone strikes at point A, 5.50 s after launching. Find: (a) The height h of the cliff (b) The speed of the stone just before impact at A (c) The maximum height H reach...
+
+SVG Labels (6 total):
+  • Launch
+  • 60°
+  • A
+  • Max H
+  • h
+  ... and 1 more
+
+❌ ISSUES DETECTED:
+  1. Angle θ=60.0° mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 108 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Vector a⃗ lies in the yz plane 63.0° from the positive direction of the y axis, has a positive z component, and has magnitude 3.20 units. Vector b⃗ lies in the xz plane 48.0° from the positive direction of the x axis, has a positive z component, and has magnitude 1.40 units. Find: (a) a⃗ · b⃗ (dot p...
+
+SVG Labels (22 total):
+  • 3D Vector Configuration
+  • O
+  • z
+  • x
+  • y
+  ... and 17 more
+
+❌ ISSUES DETECTED:
+  1. Angle θ=63.0° mentioned in question but not found in SVG
+  2. Angle θ=48.0° mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 109 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: A non-uniform cylindrical object of mass M and radius R rolls smoothly from rest down a ramp and onto a horizontal section. From there it rolls off the ramp and onto the floor, landing a horizontal distance d = 0.506 m from the end of the ramp. The initial height of the object is ...
+
+SVG Labels (5 total):
+  • Cylinder Rolling and Projectile Motion
+  • Start
+  • v = 0
+  • v
+  • Ground Level
+
+❌ ISSUES DETECTED:
+  1. Height h=0.10 mentioned in question but not found in SVG
+  2. Distance/separation d=0.506 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 119 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: A uniform thin rod of length 0.500 m and mass 4.00 kg can rotate in a horizontal plane about a vertical axis through its center. The rod is at rest when a 3.00 g bullet traveling in the rotation plane is fired into one end of the rod. In the view from above, the bullet's path make...
+
+SVG Labels (11 total):
+  • Top View: Bullet Hitting Rod
+  • Before Collision:
+  • Pivot (center)
+  • v
+  • m = 3.00 g
+  ... and 6 more
+
+❌ ISSUES DETECTED:
+  1. Length L=0.500 mentioned in question but not found in SVG
+  2. Mass m=4.00 mentioned in question but not found in SVG
+  3. Angle θ=60.0° mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 121 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  In the overhead view, Jeeps P and B race along straight lines, across flat terrain, past stationary border guard A. Relative to the guard, B travels at constant speed 20.0 m/s at angle θ₂ = 30.0°. Relative to the guard, P has accelerated from rest at constant rate 0.400 m/s² at angle θ₁ = 60.0°. Whe...
+
+SVG Labels (7 total):
+  • N
+  • E
+  • A
+  • P
+  • θ₁
+  ... and 2 more
+
+❌ ISSUES DETECTED:
+  1. Angle θ=30.0° mentioned in question but not found in SVG
+  2. Angle θ=60.0° mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 132 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: An overhead view of a thin uniform rod of length 0.600 m and mass M is shown rotating horizontally at 80.0 rad/s counterclockwise about an axis through its center. A particle of mass M/3.00 and traveling horizontally at speed 40.0 m/s hits the rod and sticks. The particle's path i...
+
+SVG Labels (11 total):
+  • Overhead View: Particle Hitting Rotating Rod
+  • Before Collision:
+  • Axis (center)
+  • ω₀ = 80 rad/s
+  • (counterclockwise)
+  ... and 6 more
+
+❌ ISSUES DETECTED:
+  1. Length L=0.600 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 138 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A skilled skier knows to jump upward before reaching a downward slope. Consider a jump where launch speed v₀ = 10 m/s at angle θ₀ = 11.3°. The initial course is approximately flat, and the steeper track has slope 9.0°. In a prejump scenario, the skier lands at approximately launch level. When jumpin...
+
+SVG Labels (4 total):
+  • Flat section
+  • 9.0° slope
+  • Prejump
+  • Edge jump
+
+❌ ISSUES DETECTED:
+  1. Angle θ=11.3° mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 149 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Three astronauts, propelled by jet backpacks, push and guide a 120 kg asteroid toward a processing dock, exerting forces F₁ = 32 N at θ₁ = 30°, F₂ = 55 N at θ₂ = 180°, and F₃ = 41 N at θ₃ = 60° (all angles measured counterclockwise from the positive x-axis). Simultaneously, the processing dock is ac...
+
+SVG Labels (13 total):
+  • x (m)
+  • y (m)
+  • 0
+  • 50
+  • 100
+  ... and 8 more
+
+❌ ISSUES DETECTED:
+  1. Angle θ=30° mentioned in question but not found in SVG
+  2. Angle θ=180° mentioned in question but not found in SVG
+  3. Angle θ=60° mentioned in question but not found in SVG
+
+
+####################################################################################################
+FILE: physics_questions_04_of_05.html
+####################################################################################################
+
+Found 24 questions with SVG diagrams
+
+==========================================================================================
+⚠️  QUESTION 152 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: A small 50 g block slides down a frictionless surface through height h = 20 cm and then sticks to a uniform rod of mass 100 g and length 40 cm. The rod pivots about point O through angle θ before momentarily stopping....
+
+SVG Labels (9 total):
+  • Block Sliding and Colliding with Pivoting Rod
+  • m = 50 g
+  • v₀ = 0
+  • v
+  • M = 100 g
+  ... and 4 more
+
+❌ ISSUES DETECTED:
+  1. Length L=40 mentioned in question but not found in SVG
+  2. Height h=20 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 155 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Displacement d⃗₁ is in the yz plane 63.0° from the positive direction of the y axis, has a positive z component, and has a magnitude of 4.50 m. Displacement d⃗₂ is in the xz plane 30.0° from the positive direction of the x axis, has a positive z component, and has magnitude 1.40 m. What is the angle...
+
+SVG Labels (7 total):
+  • x
+  • y
+  • z
+  • d⃗₁
+  • 63°
+  ... and 2 more
+
+❌ ISSUES DETECTED:
+  1. Angle θ=63.0° mentioned in question but not found in SVG
+  2. Angle θ=30.0° mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 171 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A uniform spherical shell of mass M = 4.5 kg and radius R = 8.5 cm can rotate about a vertical axis on frictionless bearings. A massless cord passes around the equator of the shell, over a pulley of rotational inertia I = 3.0 × 10⁻³ kg·m² and radius r = 5.0 cm, and is attached to a small object of m...
+
+SVG Labels (9 total):
+  • ω₁
+  • ω₂
+  • m
+  • v
+  • Pulley:
+  ... and 4 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=8.5 mentioned in question but not found in SVG
+  2. Radius r=5.0 mentioned in question but not found in SVG
+  3. Mass m=4.5 mentioned in question but not found in SVG
+  4. Mass m=0.60 mentioned in question but not found in SVG
+  5. Mass m=0.60 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 173 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A bowler throws a bowling ball of radius R = 11 cm along a lane. The ball slides on the lane with initial speed v_com,0 = 8.5 m/s and initial angular speed ω₀ = 0. The coefficient of kinetic friction between the ball and the lane is μ_k = 0.21. Bowling ball transitioning from sliding (ω=0) to smooth...
+
+SVG Labels (8 total):
+  • Bowling Lane (μ_k = 0.21)
+  • Initially Sliding
+  • ω₀ = 0
+  • v
+  • f_k
+  ... and 3 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=11 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 175 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 54: A solid brass ball of mass 0.280 g will roll smoothly along a loop-the-loop track when released from rest along the straight section. The circular loop has radius R = 14.0 cm, and the ball has radius r ≪ R.TopPoint QReleasehRFigure: Ball rolling down a ramp into a vertical circular loop...
+
+SVG Labels (8 total):
+  • TopPoint Q
+  • Release
+  • h
+  • R
+  • Question 54:
+  ... and 3 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=14.0 mentioned in question but not found in SVG
+  2. Mass m=0.280 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 178 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: A small 50 g block slides down a frictionless surface through height h = 20 cm and then sticks to a uniform rod of mass 100 g and length 40 cm. The rod pivots about point O through angle θ before momentarily stopping....
+
+SVG Labels (6 total):
+  • m
+  • = 50 g
+  • M = 100 g
+  • O
+  • θ
+  ... and 1 more
+
+❌ ISSUES DETECTED:
+  1. Length L=40 mentioned in question but not found in SVG
+  2. Height h=20 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 180 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A disk, with a radius of 0.25 m, is to be rotated like a merry-go-round through 800 rad, starting from rest, gaining angular speed at the constant rate α₁ through the first 400 rad and then losing angular speed at the constant rate −α₁ until it is again at rest. The magnitude of the centripetal acce...
+
+SVG Labels (6 total):
+  • ω
+  • Phase 1: θ = 0 to 400 rad
+  • Angular acceleration: +α₁
+  • Phase 2: θ = 400 to 800 rad
+  • Angular acceleration: −α₁
+  ... and 1 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=0.25 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 182 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A uniform spherical shell of mass M = 4.5 kg and radius R = 8.5 cm can rotate about a vertical axis on frictionless bearings. A massless cord passes around the equator of the shell, over a pulley of rotational inertia I = 3.0 × 10⁻³ kg·m² and radius r = 5.0 cm, and is attached to a small object of m...
+
+SVG Labels (13 total):
+  • ω₁
+  • ω₂
+  • m
+  • v
+  • Pulley:
+  ... and 8 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=8.5 mentioned in question but not found in SVG
+  2. Radius r=5.0 mentioned in question but not found in SVG
+  3. Mass m=4.5 mentioned in question but not found in SVG
+  4. Mass m=0.60 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 183 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A tall, cylindrical chimney falls over when its base is ruptured. Treat the chimney as a thin rod of length 55.0 m. At the instant it makes an angle of 35.0° with the vertical as it falls, what are the radial and tangential accelerations at the top? 🎮 Interactive: Click "Start Fall" to watch the chi...
+
+SVG Labels (13 total):
+  • COM
+  • Top
+  • aᵣ
+  • aₜ
+  • mg
+  ... and 8 more
+
+❌ ISSUES DETECTED:
+  1. Angle θ=35.0° mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 187 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A rigid assembly consists of a thin hoop (of mass m and radius R = 0.150 m) and a thin radial rod (of mass m and length L = 2.00R). The assembly is upright, but if we give it a slight nudge, it will rotate around a horizontal axis in the plane of the rod and hoop, through the lower end of the rod. A...
+
+SVG Labels (18 total):
+  • Initial (Upright)
+  • O
+  • Rod (L=2R)
+  • Hoop (R)
+  • Rod COM
+  ... and 13 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=0.150 mentioned in question but not found in SVG
+  2. Radius r=0.150 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 188 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: A uniform thin rod of length 0.500 m and mass 4.00 kg can rotate in a horizontal plane about a vertical axis through its center. The rod is at rest when a 3.00 g bullet traveling in the rotation plane is fired into one end of the rod. In the view from above, the bullet's path make...
+
+SVG Labels (5 total):
+  • θ = 60.0°
+  • Problem 53 Diagram
+  • L = 0.500 m
+  • ω = 10 rad/s
+  • Rod initially at rest
+
+❌ ISSUES DETECTED:
+  1. Mass m=4.00 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 190 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 51: The figure shows a rigid assembly of a thin hoop (of mass m and radius R = 0.150 m) and a thin radial rod (of mass m and length L = 2.00R). The assembly is upright, but if we give it a slight nudge, it will rotate around a horizontal axis in the plane of the rod and hoop, through the lo...
+
+SVG Labels (6 total):
+  • L = 2.00R
+  • R
+  • R
+  • L
+  • Rotation axis
+  ... and 1 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=0.150 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 192 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A rigid assembly consists of a thin hoop (of mass m and radius R = 0.150 m) and a thin radial rod (of mass m and length L = 2.00R). The assembly is upright, but if we give it a slight nudge, it will rotate around a horizontal axis in the plane of the rod and hoop, through the lower end of the rod. W...
+
+SVG Labels (14 total):
+  • Rod COM
+  • Hoop COM
+  • O
+  • θ = 0°
+  • Real-time Data:
+  ... and 9 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=0.150 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 194 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: A non-uniform ball of mass M and radius R rolls smoothly from rest down a ramp and onto a circular loop of radius 0.48 m. The initial height of the ball is h = 0.36 m. At the loop bottom, the magnitude of the normal force on the ball is 2.00 Mg . The ball consists of an outer sphe...
+
+SVG Labels (4 total):
+  • M, R
+  • Mg
+  • Ball Rolling on Loop-the-Loop
+  • Initial: v = 0, at height h
+
+❌ ISSUES DETECTED:
+  1. Radius r=0.48 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 197 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: A small 50 g block slides down a frictionless surface through height h = 20 cm and then sticks to a uniform rod of mass 100 g and length 40 cm. The rod pivots about point O through angle θ before momentarily stopping....
+
+SVG Labels (8 total):
+  • Block Sliding and Colliding with Pivoting Rod
+  • m = 50 g
+  • v
+  • Pivot O
+  • θ
+  ... and 3 more
+
+❌ ISSUES DETECTED:
+  1. Length L=40 mentioned in question but not found in SVG
+  2. Height h=20 mentioned in question but not found in SVG
+  3. Mass m=100 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 198 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A non-uniform cylindrical object of mass M and radius R rolls smoothly from rest down a ramp and onto a horizontal section. From there it rolls off the ramp and onto the floor, landing a horizontal distance d = 0.506 m from the end of the ramp. Non-uniform cylindrical object rolling from height H, l...
+
+SVG Labels (3 total):
+  • Non-uniform
+  • I = βMR²
+  • v
+
+❌ ISSUES DETECTED:
+  1. Distance/separation d=0.506 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 199 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: A bowler throws a bowling ball of radius R = 11 cm along a lane. The ball (initially) slides on the lane with initial speed v com,0 = 8.5 m/s and initial angular speed ω 0 = 0. The coefficient of kinetic friction between the ball and the lane is 0.21. The kinetic frictional force ...
+
+SVG Labels (8 total):
+  • Bowling Ball: Sliding to Rolling Transition
+  • Initial State (Sliding):
+  • ω₀ = 0
+  • f = μₖMg
+  • Final State (Rolling):
+  ... and 3 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=11 mentioned in question but not found in SVG
+
+
+####################################################################################################
+FILE: physics_questions_05_of_05.html
+####################################################################################################
+
+Found 18 questions with SVG diagrams
+
+==========================================================================================
+⚠️  QUESTION 201 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  A tall, cylindrical chimney falls over when its base is ruptured. Treat the chimney as a thin rod of length 55.0 m. At the instant it makes an angle of 35.0° with the vertical as it falls, what are: r a t mg Given: L = 55.0 m θ = 35.0° Released from rest Given Data: Length of chimney: L = 55.0 m Mod...
+
+SVG Labels (6 total):
+  • θ = 35°
+  • O (Pivot)
+  • COM
+  • Top
+  • L = 55.0 m
+  ... and 1 more
+
+❌ ISSUES DETECTED:
+  1. Angle θ=35.0° mentioned in question but not found in SVG
+  2. Angle θ=35.0° mentioned in question but not found in SVG
+  3. Angle θ=35.0° mentioned in question but not found in SVG
+  4. Angle θ=35.0° mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 206 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 52: In a judo foot-sweep move, you sweep your opponent's left foot out from under him while pulling on his gi (uniform) toward that side. As a result, your opponent rotates around his right foot and onto the mat. The figure shows a simplified diagram of your opponent as you face him, with h...
+
+SVG Labels (6 total):
+  • O
+  • COM
+  • F₃ = mg
+  • Rotation
+  • Question 52:
+  ... and 1 more
+
+❌ ISSUES DETECTED:
+  1. Distance/separation d=28 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 208 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Problem Statement: Two 2.00 kg balls are attached to the ends of a thin rod of length 50.0 cm and negligible mass. The rod is free to rotate in a vertical plane without friction about a horizontal axis through its center. With the rod initially horizontal, a 50.0 g wad of wet putty drops onto one of...
+
+SVG Labels (11 total):
+  • Putty Collision with Rotating Rod System
+  • Before Collision:
+  • Pivot
+  • m = 50 g
+  • After Collision:
+  ... and 6 more
+
+❌ ISSUES DETECTED:
+  1. Length L=50.0 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 213 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Here is the complete question with the missing information added: Question 48: In the figure below, a non-uniform cylindrical object of mass M and radius R rolls smoothly from rest down a ramp and onto a horizontal section. From there it rolls off the ramp and onto the floor, landing a horizontal di...
+
+SVG Labels (4 total):
+  • Question 48:
+  • The object consists of an outer cylindrical shell (of a certain uniform density) that is glued to a central cylinder (of a different uniform density).
+  • The rotational inertia of the object can be expressed in the general form I = βMR2, but β is not 0.5 as it is for a cylinder of uniform density.
+  • Determine the value of β.
+
+❌ ISSUES DETECTED:
+  1. Height h=0.90 mentioned in question but not found in SVG
+  2. Height h=0.10 mentioned in question but not found in SVG
+  3. Height h=0.10 mentioned in question but not found in SVG
+  4. Distance/separation d=0.506 mentioned in question but not found in SVG
+  5. Distance/separation d=0.506 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 215 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 49: A bowler throws a bowling ball of radius R = 11 cm along a lane. The ball (shown in the figure below) slides on the lane with initial speed v_com,0 = 8.5 m/s and initial angular speed ω₀ = 0. The coefficient of kinetic friction between the ball and the lane is μ_k = 0.21. [Figure shows:...
+
+SVG Labels (10 total):
+  • ω0 = 0 rad/s
+  • vcom = ωR
+  • Question 49:
+  • Find the following quantities:
+  • (a) What is vcom in terms of ω when smooth rolling begins?
+  ... and 5 more
+
+❌ ISSUES DETECTED:
+  1. Radius r=11 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 238 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 57: [Figure shows: Two strings, string 1 and string 2, are connected to a pulley, and a block of mass M = 500 g is hanging from the strings.] In the figure, string 1 has a linear density of 3.00 g/m, and string 2 has a linear density of 5.00 g/m. They are under tension due to the hanging bl...
+
+SVG Labels (7 total):
+  • M
+  • String 1
+  • 3.00 g/m
+  • String 2
+  • 5.00 g/m
+  ... and 2 more
+
+❌ ISSUES DETECTED:
+  1. Mass m=500 mentioned in question but not found in SVG
+  2. Mass m=500 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 243 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Physical Process: Longitudinal pulse: Travels at v_L = 2000 m/s, causes fiber thinning and stretching Transverse pulse: Travels slower (v_T &lt; v_L), creates the visible dent Energy distributed over area much larger than dent, preventing penetration Given Data: Bullet mass: m = 10.2 g = 0.0102 kg I...
+
+SVG Labels (14 total):
+  • Dent Formation Mechanism
+  • Fabric
+  • Bullet
+  • θ
+  • θ = 60°
+  ... and 9 more
+
+❌ ISSUES DETECTED:
+  1. Mass m=10.2 mentioned in question but not found in SVG
+
+==========================================================================================
+⚠️  QUESTION 246 - ISSUES FOUND
+==========================================================================================
+
+Question Text (first 300 chars):
+  Question 58: Body Armor Physics:When a high-speed projectile such as a bullet or bomb fragment strikes modern body armor, the fabric of the armor stops the projectile and prevents penetration by quickly spreading the projectile's energy over a large area.This spreading is done by longitudinal and tr...
+
+SVG Labels (4 total):
+  • Radius reached byl pulse
+  • Radius reached byt pulse
+  • θ = 60°
+  • Question 58:
+
+❌ ISSUES DETECTED:
+  1. Mass m=10.2 mentioned in question but not found in SVG
+
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+Total SVG diagrams analyzed: 136
+Diagrams with potential issues: 54
+Percentage with issues: 39.7%
+====================================================================================================
+
+
+QUICK REFERENCE - ALL ISSUES BY QUESTION:
+====================================================================================================
+
+physics_questions_01_of_05.html - Q2:
+  • Voltage 100.0 V mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q5:
+  • Voltage 12.0 V mentioned in question but not found in SVG
+  • Voltage 12.0 V mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q10:
+  • Radius r=0.20 mentioned in question but not found in SVG
+  • Radius r=0.20 mentioned in question but not found in SVG
+  • Height h=10 mentioned in question but not found in SVG
+  • Height h=10 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q11:
+  • Radius r=0.20 mentioned in question but not found in SVG
+  • Height h=10 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q12:
+  • Distance/separation d=7.12 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q14:
+  • Capacitor value C=1.00 μF mentioned in question but not found in SVG
+  • Capacitor value C=2.00 μF mentioned in question but not found in SVG
+  • Capacitor value C=3.00 μF mentioned in question but not found in SVG
+  • Capacitor value C=4.00 μF mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q16:
+  • Capacitor value C=2.00 μF mentioned in question but not found in SVG
+  • Capacitor value C=8.00 μF mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q20:
+  • Distance/separation d=4.0 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q23:
+  • Distance/separation d=4.0 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q26:
+  • Distance/separation d=1.40 mentioned in question but not found in SVG
+  • Distance/separation d=1.40 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q31:
+  • Radius r=64.0 mentioned in question but not found in SVG
+  • Distance/separation d=25.9 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q35:
+  • Distance/separation d=1.40 mentioned in question but not found in SVG
+  • Distance/separation d=1.40 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q36:
+  • Radius r=1.0 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q37:
+  • Charge value q=3.40 mentioned in question but not found in SVG
+  • Charge value q=6.00 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q41:
+  • Radius r=1.0 mentioned in question but not found in SVG
+
+physics_questions_01_of_05.html - Q42:
+  • Radius r=8.20 mentioned in question but not found in SVG
+
+physics_questions_02_of_05.html - Q72:
+  • Mass m=0.388 mentioned in question but not found in SVG
+
+physics_questions_02_of_05.html - Q73:
+  • Mass m=55 mentioned in question but not found in SVG
+  • Distance/separation d=0.40 mentioned in question but not found in SVG
+
+physics_questions_02_of_05.html - Q79:
+  • Mass m=0.388 mentioned in question but not found in SVG
+
+physics_questions_02_of_05.html - Q82:
+  • Mass m=55 mentioned in question but not found in SVG
+
+physics_questions_02_of_05.html - Q83:
+  • Mass m=0.388 mentioned in question but not found in SVG
+
+physics_questions_03_of_05.html - Q103:
+  • Angle θ=60.0° mentioned in question but not found in SVG
+
+physics_questions_03_of_05.html - Q108:
+  • Angle θ=63.0° mentioned in question but not found in SVG
+  • Angle θ=48.0° mentioned in question but not found in SVG
+
+physics_questions_03_of_05.html - Q109:
+  • Height h=0.10 mentioned in question but not found in SVG
+  • Distance/separation d=0.506 mentioned in question but not found in SVG
+
+physics_questions_03_of_05.html - Q119:
+  • Length L=0.500 mentioned in question but not found in SVG
+  • Mass m=4.00 mentioned in question but not found in SVG
+  • Angle θ=60.0° mentioned in question but not found in SVG
+
+physics_questions_03_of_05.html - Q121:
+  • Angle θ=30.0° mentioned in question but not found in SVG
+  • Angle θ=60.0° mentioned in question but not found in SVG
+
+physics_questions_03_of_05.html - Q132:
+  • Length L=0.600 mentioned in question but not found in SVG
+
+physics_questions_03_of_05.html - Q138:
+  • Angle θ=11.3° mentioned in question but not found in SVG
+
+physics_questions_03_of_05.html - Q149:
+  • Angle θ=30° mentioned in question but not found in SVG
+  • Angle θ=180° mentioned in question but not found in SVG
+  • Angle θ=60° mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q152:
+  • Length L=40 mentioned in question but not found in SVG
+  • Height h=20 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q155:
+  • Angle θ=63.0° mentioned in question but not found in SVG
+  • Angle θ=30.0° mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q171:
+  • Radius r=8.5 mentioned in question but not found in SVG
+  • Radius r=5.0 mentioned in question but not found in SVG
+  • Mass m=4.5 mentioned in question but not found in SVG
+  • Mass m=0.60 mentioned in question but not found in SVG
+  • Mass m=0.60 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q173:
+  • Radius r=11 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q175:
+  • Radius r=14.0 mentioned in question but not found in SVG
+  • Mass m=0.280 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q178:
+  • Length L=40 mentioned in question but not found in SVG
+  • Height h=20 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q180:
+  • Radius r=0.25 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q182:
+  • Radius r=8.5 mentioned in question but not found in SVG
+  • Radius r=5.0 mentioned in question but not found in SVG
+  • Mass m=4.5 mentioned in question but not found in SVG
+  • Mass m=0.60 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q183:
+  • Angle θ=35.0° mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q187:
+  • Radius r=0.150 mentioned in question but not found in SVG
+  • Radius r=0.150 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q188:
+  • Mass m=4.00 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q190:
+  • Radius r=0.150 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q192:
+  • Radius r=0.150 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q194:
+  • Radius r=0.48 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q197:
+  • Length L=40 mentioned in question but not found in SVG
+  • Height h=20 mentioned in question but not found in SVG
+  • Mass m=100 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q198:
+  • Distance/separation d=0.506 mentioned in question but not found in SVG
+
+physics_questions_04_of_05.html - Q199:
+  • Radius r=11 mentioned in question but not found in SVG
+
+physics_questions_05_of_05.html - Q201:
+  • Angle θ=35.0° mentioned in question but not found in SVG
+  • Angle θ=35.0° mentioned in question but not found in SVG
+  • Angle θ=35.0° mentioned in question but not found in SVG
+  • Angle θ=35.0° mentioned in question but not found in SVG
+
+physics_questions_05_of_05.html - Q206:
+  • Distance/separation d=28 mentioned in question but not found in SVG
+
+physics_questions_05_of_05.html - Q208:
+  • Length L=50.0 mentioned in question but not found in SVG
+
+physics_questions_05_of_05.html - Q213:
+  • Height h=0.90 mentioned in question but not found in SVG
+  • Height h=0.10 mentioned in question but not found in SVG
+  • Height h=0.10 mentioned in question but not found in SVG
+  • Distance/separation d=0.506 mentioned in question but not found in SVG
+  • Distance/separation d=0.506 mentioned in question but not found in SVG
+
+physics_questions_05_of_05.html - Q215:
+  • Radius r=11 mentioned in question but not found in SVG
+
+physics_questions_05_of_05.html - Q238:
+  • Mass m=500 mentioned in question but not found in SVG
+  • Mass m=500 mentioned in question but not found in SVG
+
+physics_questions_05_of_05.html - Q243:
+  • Mass m=10.2 mentioned in question but not found in SVG
+
+physics_questions_05_of_05.html - Q246:
+  • Mass m=10.2 mentioned in question but not found in SVG

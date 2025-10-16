@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#ffffff"/>
+
+<defs>
+  <!-- Small sharp arrows (5x5 pixels) -->
+  <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
+  </marker>
+  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
+  </marker>
+  <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
+  </marker>
+
+  <!-- Charge pattern -->
+  <pattern id="chargePattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="12" cy="12" r="2.5" fill="#3498db" opacity="0.2"/>
+    <circle cx="28" cy="12" r="2.5" fill="#3498db" opacity="0.2"/>
+    <circle cx="20" cy="28" r="2.5" fill="#3498db" opacity="0.2"/>
+    <text x="20" y="22" font-size="13" fill="#2980b9" text-anchor="middle" opacity="0.3">+</text>
+  </pattern>
+</defs>
+
+<!-- Title -->
+<text x="800.0" y="65" text-anchor="middle" font-size="36" font-weight="600" fill="#2c3e50">
+  Uniformly Charged Sphere with Spherical Cavity
+</text>
+
+<!-- ============ DIAGRAM ============ -->
+
+<!-- Sphere -->
+<circle cx="400.0" cy="500.0" r="180"
+        fill="url(#chargePattern)" stroke="#2980b9" stroke-width="4"/>
+
+<!-- Cavity -->
+<circle cx="486.93332436601617" cy="523.2937140592269" r="70"
+        fill="white" stroke="#e67e22" stroke-width="4" stroke-dasharray="18,9"/>
+
+<!-- Points -->
+<circle cx="400.0" cy="500.0" r="6" fill="#2c3e50"/>
+<circle cx="486.93332436601617" cy="523.2937140592269" r="6" fill="#e74c3c"/>
+<circle cx="511.93332436601617" cy="506.2937140592269" r="6" fill="#9b59b6"/>
+
+<!-- Vector a (O to C) -->
+<line x1="406.7614807840235" y1="501.8117333157177" x2="417.38666487320324" y2="504.6587428118454"
+      stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+
+<!-- Vector r (O to P) -->
+<line x1="406.9889608668088" y1="500.3929707396431" x2="499.952248594344" y2="505.6200499341245"
+      stroke="#9b59b6" stroke-width="4" stroke-dasharray="18,9" marker-end="url(#arrowPurple)"/>
+
+<!-- Electric field lines -->
+<line x1="441.93332436601617" y1="483.2937140592269" x2="521.9333243660162" y2="483.2937140592269"
+      stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+<line x1="441.93332436601617" y1="523.2937140592269" x2="521.9333243660162" y2="523.2937140592269"
+      stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+<line x1="441.93332436601617" y1="563.2937140592269" x2="521.9333243660162" y2="563.2937140592269"
+      stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+
+<!-- ============ LABELS WITH OVERHEAD ARROWS ============ -->
+
+<!-- Point labels -->
+<text x="350.0" y="510.0" font-size="32" font-weight="bold" fill="#2c3e50">O</text>
+<text x="320.0" y="538.0" font-size="15" fill="#7f8c8d">(sphere center)</text>
+
+<text x="511.93332436601617" y="428.2937140592269" font-size="32" font-weight="bold" fill="#e74c3c">C</text>
+<text x="486.93332436601617" y="456.2937140592269" font-size="15" fill="#7f8c8d">(cavity center)</text>
+
+<text x="536.9333243660162" y="511.2937140592269" font-size="32" font-weight="bold" fill="#9b59b6">P</text>
+<text x="526.9333243660162" y="539.2937140592269" font-size="15" fill="#7f8c8d">(test point)</text>
+
+<!-- Vector a with OVERHEAD arrow -->
+<g>
+  <text x="433.11390037890726" y="550.2838900811762" font-size="36" font-weight="bold" fill="#e74c3c" font-style="italic">a</text>
+  <!-- Arrow overhead: horizontal line with arrowhead -->
+  <path d="M 431.11390037890726 522.2838900811762 L 453.11390037890726 522.2838900811762 L 451.11390037890726 520.2838900811762 M 453.11390037890726 522.2838900811762 L 451.11390037890726 524.2838900811762"
+        stroke="#e74c3c" stroke-width="2" fill="none" stroke-linecap="round"/>
+</g>
+
+<!-- Vector r with OVERHEAD arrow -->
+<g>
+  <text x="453.15972832841476" y="553.0680060782475" font-size="36" font-weight="bold" fill="#9b59b6" font-style="italic">r</text>
+  <!-- Arrow overhead: horizontal line with arrowhead -->
+  <path d="M 451.15972832841476 525.0680060782475 L 471.15972832841476 525.0680060782475 L 469.15972832841476 523.0680060782475 M 471.15972832841476 525.0680060782475 L 469.15972832841476 527.0680060782475"
+        stroke="#9b59b6" stroke-width="2" fill="none" stroke-linecap="round"/>
+</g>
+
+<!-- Vector E with OVERHEAD arrow -->
+<g>
+  <text x="486.93332436601617" y="398.2937140592269" font-size="34" font-weight="bold" fill="#27ae60" font-style="italic">E</text>
+  <!-- Arrow overhead: horizontal line with arrowhead -->
+  <path d="M 484.93332436601617 370.2937140592269 L 506.93332436601617 370.2937140592269 L 504.93332436601617 368.2937140592269 M 506.93332436601617 370.2937140592269 L 504.93332436601617 372.2937140592269"
+        stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <text x="534.9333243660162" y="398.2937140592269" font-size="19" fill="#27ae60">(uniform)</text>
+</g>
+
+<!-- Diagram labels -->
+<text x="250.0" y="280.0" font-size="23" font-weight="bold" fill="#2980b9">Uniformly Charged</text>
+<text x="290.0" y="305.0" font-size="23" font-weight="bold" fill="#2980b9">Sphere (ρ)</text>
+
+<text x="576.9333243660162" y="598.2937140592269" font-size="22" font-weight="bold" fill="#e67e22">Spherical Cavity</text>
+<text x="598.9333243660162" y="623.2937140592269" font-size="17" fill="#7f8c8d">(hollow region)</text>
+
+<!-- ============ FORMULAS WITH OVERHEAD ARROWS ============ -->
+
+<text x="1000" y="210" font-size="27" font-weight="bold" fill="#16a085">Part (a): Field at P in sphere</text>
+
+<!-- Formula: E⃗ = ρr⃗/(3ε₀) -->
+<g>
+  <text x="1150" y="295" text-anchor="middle" font-size="50" font-weight="bold" fill="#16a085" font-style="italic">E</text>
+  <path d="M 1141 262 L 1167 262 L 1165 260 M 1167 262 L 1165 264"
+        stroke="#16a085" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="1175" y="295" font-size="50" font-weight="bold" fill="#16a085"> = ρ</text>
+  <text x="1246" y="295" font-size="50" font-weight="bold" fill="#16a085" font-style="italic">r</text>
+  <path d="M 1239 262 L 1260 262 L 1258 260 M 1260 262 L 1258 264"
+        stroke="#16a085" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="1268" y="295" font-size="50" font-weight="bold" fill="#16a085">/(3ε₀)</text>
+</g>
+
+<text x="1000" y="370" font-size="20" fill="#34495e">• Independent of R</text>
+<text x="1000" y="400" font-size="20" fill="#34495e">• Proportional to r</text>
+<text x="1000" y="430" font-size="20" fill="#34495e">• Radial direction</text>
+
+<line x1="1000" y1="480" x2="1550" y2="480" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
+
+<text x="1000" y="555" font-size="27" font-weight="bold" fill="#c0392b">Part (b): Field in cavity (UNIFORM)</text>
+
+<!-- Formula: E⃗ = ρa⃗/(3ε₀) -->
+<g>
+  <text x="1150" y="640" text-anchor="middle" font-size="50" font-weight="bold" fill="#c0392b" font-style="italic">E</text>
+  <path d="M 1141 607 L 1167 607 L 1165 605 M 1167 607 L 1165 609"
+        stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="1175" y="640" font-size="50" font-weight="bold" fill="#c0392b"> = ρ</text>
+  <text x="1246" y="640" font-size="50" font-weight="bold" fill="#c0392b" font-style="italic">a</text>
+  <path d="M 1238 607 L 1260 607 L 1258 605 M 1260 607 L 1258 609"
+        stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="1268" y="640" font-size="50" font-weight="bold" fill="#c0392b">/(3ε₀)</text>
+</g>
+
+<text x="1000" y="715" font-size="21" font-weight="bold" fill="#8e44ad">★ Key Result:</text>
+<text x="1000" y="750" font-size="20" fill="#34495e">• UNIFORM field everywhere</text>
+<text x="1000" y="780" font-size="20" fill="#34495e">• Independent of cavity size</text>
+<text x="1000" y="810" font-size="20" fill="#34495e">• Parallel to </text>
+<text x="1168" y="810" font-size="20" fill="#34495e" font-style="italic">a</text>
+<path d="M 1164 795 L 1178 795 L 1176 793 M 1178 795 L 1176 797"
+      stroke="#34495e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+<text x="1000" y="865" font-size="20" fill="#7f8c8d" font-style="italic">Superposition principle</text>
+
+<!-- ============ LEGEND WITH OVERHEAD ARROWS ============ -->
+
+<text x="120" y="875" font-size="24" font-weight="bold" fill="#34495e">Legend:</text>
+
+<!-- Legend a -->
+<line x1="120" y1="920" x2="210" y2="920" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
+<g>
+  <text x="225" y="928" font-size="20" fill="#2c3e50" font-style="italic">a</text>
+  <path d="M 221 911 L 235 911 L 233 909 M 235 911 L 233 913"
+        stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <text x="240" y="928" font-size="20" fill="#2c3e50"> = O to C</text>
+</g>
+
+<!-- Legend r -->
+<line x1="450" y1="920" x2="540" y2="920" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
+<g>
+  <text x="555" y="928" font-size="20" fill="#2c3e50" font-style="italic">r</text>
+  <path d="M 552 911 L 564 911 L 562 909 M 564 911 L 562 913"
+        stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <text x="568" y="928" font-size="20" fill="#2c3e50"> = O to P</text>
+</g>
+
+<!-- Legend E -->
+<line x1="780" y1="920" x2="870" y2="920" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
+<g>
+  <text x="885" y="928" font-size="20" fill="#2c3e50" font-style="italic">E</text>
+  <path d="M 881 911 L 896 911 L 894 909 M 896 911 L 894 913"
+        stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <text x="900" y="928" font-size="20" fill="#2c3e50"> = Electric field</text>
+</g>
+
+</svg>

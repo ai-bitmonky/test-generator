@@ -1,0 +1,3502 @@
+
+======================================================================
+DATABASE ENRICHMENT MONITORING REPORT
+Started: 13/10/2025, 9:56:55 am
+======================================================================
+
+Monitoring database enrichment progress every 60 seconds...
+Press Ctrl+C to stop monitoring.
+
+
+======================================================================
+CHECK #1 - 13/10/2025, 9:56:55 am (0 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 13 (3.0%)
+  Remaining: 420
+
+  Partial enrichment:
+    - With strategy: 13 (3.0%)
+    - With expert_insight: 13 (3.0%)
+    - With key_facts: 13 (3.0%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 57 (22.9%)
+  Remaining: 192
+
+  Partial enrichment:
+    - With strategy: 84 (33.7%)
+    - With expert_insight: 70 (28.1%)
+    - With key_facts: 57 (22.9%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 194/806 (24.1%)
+Total remaining: 612
+Estimated time remaining: 204 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #2 - 13/10/2025, 9:57:55 am (1 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 15 (3.5%)
+  Remaining: 418
+
+  Partial enrichment:
+    - With strategy: 15 (3.5%)
+    - With expert_insight: 15 (3.5%)
+    - With key_facts: 15 (3.5%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 60 (24.1%)
+  Remaining: 189
+
+  Partial enrichment:
+    - With strategy: 87 (34.9%)
+    - With expert_insight: 73 (29.3%)
+    - With key_facts: 60 (24.1%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 199/806 (24.7%)
+Total remaining: 607
+Estimated time remaining: 203 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #3 - 13/10/2025, 9:58:55 am (2 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 17 (3.9%)
+  Remaining: 416
+
+  Partial enrichment:
+    - With strategy: 17 (3.9%)
+    - With expert_insight: 17 (3.9%)
+    - With key_facts: 17 (3.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 63 (25.3%)
+  Remaining: 186
+
+  Partial enrichment:
+    - With strategy: 89 (35.7%)
+    - With expert_insight: 75 (30.1%)
+    - With key_facts: 63 (25.3%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 204/806 (25.3%)
+Total remaining: 602
+Estimated time remaining: 201 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #4 - 13/10/2025, 9:59:55 am (3 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 19 (4.4%)
+  Remaining: 414
+
+  Partial enrichment:
+    - With strategy: 19 (4.4%)
+    - With expert_insight: 19 (4.4%)
+    - With key_facts: 19 (4.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 66 (26.5%)
+  Remaining: 183
+
+  Partial enrichment:
+    - With strategy: 92 (36.9%)
+    - With expert_insight: 78 (31.3%)
+    - With key_facts: 66 (26.5%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 209/806 (25.9%)
+Total remaining: 597
+Estimated time remaining: 199 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #5 - 13/10/2025, 10:00:55 am (4 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 22 (5.1%)
+  Remaining: 411
+
+  Partial enrichment:
+    - With strategy: 22 (5.1%)
+    - With expert_insight: 22 (5.1%)
+    - With key_facts: 22 (5.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 68 (27.3%)
+  Remaining: 181
+
+  Partial enrichment:
+    - With strategy: 94 (37.8%)
+    - With expert_insight: 80 (32.1%)
+    - With key_facts: 68 (27.3%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 214/806 (26.6%)
+Total remaining: 592
+Estimated time remaining: 198 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #6 - 13/10/2025, 10:01:55 am (5 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 24 (5.5%)
+  Remaining: 409
+
+  Partial enrichment:
+    - With strategy: 24 (5.5%)
+    - With expert_insight: 24 (5.5%)
+    - With key_facts: 24 (5.5%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 71 (28.5%)
+  Remaining: 178
+
+  Partial enrichment:
+    - With strategy: 97 (39.0%)
+    - With expert_insight: 83 (33.3%)
+    - With key_facts: 71 (28.5%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 219/806 (27.2%)
+Total remaining: 587
+Estimated time remaining: 196 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #7 - 13/10/2025, 10:02:55 am (6 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 27 (6.2%)
+  Remaining: 406
+
+  Partial enrichment:
+    - With strategy: 27 (6.2%)
+    - With expert_insight: 27 (6.2%)
+    - With key_facts: 27 (6.2%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 74 (29.7%)
+  Remaining: 175
+
+  Partial enrichment:
+    - With strategy: 100 (40.2%)
+    - With expert_insight: 86 (34.5%)
+    - With key_facts: 74 (29.7%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 225/806 (27.9%)
+Total remaining: 581
+Estimated time remaining: 194 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #8 - 13/10/2025, 10:03:55 am (7 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 30 (6.9%)
+  Remaining: 403
+
+  Partial enrichment:
+    - With strategy: 30 (6.9%)
+    - With expert_insight: 30 (6.9%)
+    - With key_facts: 30 (6.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 77 (30.9%)
+  Remaining: 172
+
+  Partial enrichment:
+    - With strategy: 102 (41.0%)
+    - With expert_insight: 89 (35.7%)
+    - With key_facts: 77 (30.9%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 231/806 (28.7%)
+Total remaining: 575
+Estimated time remaining: 192 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #9 - 13/10/2025, 10:04:55 am (8 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 32 (7.4%)
+  Remaining: 401
+
+  Partial enrichment:
+    - With strategy: 32 (7.4%)
+    - With expert_insight: 32 (7.4%)
+    - With key_facts: 32 (7.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 79 (31.7%)
+  Remaining: 170
+
+  Partial enrichment:
+    - With strategy: 104 (41.8%)
+    - With expert_insight: 91 (36.5%)
+    - With key_facts: 79 (31.7%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 235/806 (29.2%)
+Total remaining: 571
+Estimated time remaining: 191 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #10 - 13/10/2025, 10:05:55 am (9 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 35 (8.1%)
+  Remaining: 398
+
+  Partial enrichment:
+    - With strategy: 35 (8.1%)
+    - With expert_insight: 35 (8.1%)
+    - With key_facts: 35 (8.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 82 (32.9%)
+  Remaining: 167
+
+  Partial enrichment:
+    - With strategy: 107 (43.0%)
+    - With expert_insight: 94 (37.8%)
+    - With key_facts: 82 (32.9%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 241/806 (29.9%)
+Total remaining: 565
+Estimated time remaining: 189 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #11 - 13/10/2025, 10:06:55 am (10 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 35 (8.1%)
+  Remaining: 398
+
+  Partial enrichment:
+    - With strategy: 35 (8.1%)
+    - With expert_insight: 35 (8.1%)
+    - With key_facts: 35 (8.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 82 (32.9%)
+  Remaining: 167
+
+  Partial enrichment:
+    - With strategy: 107 (43.0%)
+    - With expert_insight: 94 (37.8%)
+    - With key_facts: 82 (32.9%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+Physics:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 241/806 (29.9%)
+Total remaining: 565
+Estimated time remaining: 189 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #12 - 13/10/2025, 10:07:55 am (11 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 37 (8.5%)
+  Remaining: 396
+
+  Partial enrichment:
+    - With strategy: 37 (8.5%)
+    - With expert_insight: 37 (8.5%)
+    - With key_facts: 37 (8.5%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 84 (33.7%)
+  Remaining: 165
+
+  Partial enrichment:
+    - With strategy: 109 (43.8%)
+    - With expert_insight: 96 (38.6%)
+    - With key_facts: 84 (33.7%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 245/806 (30.4%)
+Total remaining: 561
+Estimated time remaining: 187 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #13 - 13/10/2025, 10:08:55 am (12 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 40 (9.2%)
+  Remaining: 393
+
+  Partial enrichment:
+    - With strategy: 40 (9.2%)
+    - With expert_insight: 40 (9.2%)
+    - With key_facts: 40 (9.2%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 87 (34.9%)
+  Remaining: 162
+
+  Partial enrichment:
+    - With strategy: 111 (44.6%)
+    - With expert_insight: 99 (39.8%)
+    - With key_facts: 87 (34.9%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 251/806 (31.1%)
+Total remaining: 555
+Estimated time remaining: 185 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #14 - 13/10/2025, 10:09:55 am (13 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 43 (9.9%)
+  Remaining: 390
+
+  Partial enrichment:
+    - With strategy: 43 (9.9%)
+    - With expert_insight: 43 (9.9%)
+    - With key_facts: 43 (9.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 90 (36.1%)
+  Remaining: 159
+
+  Partial enrichment:
+    - With strategy: 114 (45.8%)
+    - With expert_insight: 102 (41.0%)
+    - With key_facts: 90 (36.1%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 257/806 (31.9%)
+Total remaining: 549
+Estimated time remaining: 183 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #15 - 13/10/2025, 10:10:55 am (14 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 45 (10.4%)
+  Remaining: 388
+
+  Partial enrichment:
+    - With strategy: 45 (10.4%)
+    - With expert_insight: 45 (10.4%)
+    - With key_facts: 45 (10.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 92 (36.9%)
+  Remaining: 157
+
+  Partial enrichment:
+    - With strategy: 116 (46.6%)
+    - With expert_insight: 104 (41.8%)
+    - With key_facts: 92 (36.9%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 261/806 (32.4%)
+Total remaining: 545
+Estimated time remaining: 182 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #16 - 13/10/2025, 10:11:55 am (15 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 48 (11.1%)
+  Remaining: 385
+
+  Partial enrichment:
+    - With strategy: 48 (11.1%)
+    - With expert_insight: 48 (11.1%)
+    - With key_facts: 48 (11.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 95 (38.2%)
+  Remaining: 154
+
+  Partial enrichment:
+    - With strategy: 119 (47.8%)
+    - With expert_insight: 107 (43.0%)
+    - With key_facts: 95 (38.2%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 267/806 (33.1%)
+Total remaining: 539
+Estimated time remaining: 180 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #17 - 13/10/2025, 10:12:55 am (16 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 51 (11.8%)
+  Remaining: 382
+
+  Partial enrichment:
+    - With strategy: 51 (11.8%)
+    - With expert_insight: 51 (11.8%)
+    - With key_facts: 51 (11.8%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 98 (39.4%)
+  Remaining: 151
+
+  Partial enrichment:
+    - With strategy: 121 (48.6%)
+    - With expert_insight: 109 (43.8%)
+    - With key_facts: 98 (39.4%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 273/806 (33.9%)
+Total remaining: 533
+Estimated time remaining: 178 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #18 - 13/10/2025, 10:13:55 am (17 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 53 (12.2%)
+  Remaining: 380
+
+  Partial enrichment:
+    - With strategy: 53 (12.2%)
+    - With expert_insight: 53 (12.2%)
+    - With key_facts: 53 (12.2%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 101 (40.6%)
+  Remaining: 148
+
+  Partial enrichment:
+    - With strategy: 124 (49.8%)
+    - With expert_insight: 112 (45.0%)
+    - With key_facts: 101 (40.6%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 278/806 (34.5%)
+Total remaining: 528
+Estimated time remaining: 176 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #19 - 13/10/2025, 10:14:55 am (18 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 55 (12.7%)
+  Remaining: 378
+
+  Partial enrichment:
+    - With strategy: 55 (12.7%)
+    - With expert_insight: 55 (12.7%)
+    - With key_facts: 55 (12.7%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 103 (41.4%)
+  Remaining: 146
+
+  Partial enrichment:
+    - With strategy: 126 (50.6%)
+    - With expert_insight: 114 (45.8%)
+    - With key_facts: 103 (41.4%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 282/806 (35.0%)
+Total remaining: 524
+Estimated time remaining: 175 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #20 - 13/10/2025, 10:15:55 am (19 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 58 (13.4%)
+  Remaining: 375
+
+  Partial enrichment:
+    - With strategy: 58 (13.4%)
+    - With expert_insight: 58 (13.4%)
+    - With key_facts: 58 (13.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 106 (42.6%)
+  Remaining: 143
+
+  Partial enrichment:
+    - With strategy: 128 (51.4%)
+    - With expert_insight: 116 (46.6%)
+    - With key_facts: 106 (42.6%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 288/806 (35.7%)
+Total remaining: 518
+Estimated time remaining: 173 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #21 - 13/10/2025, 10:16:55 am (20 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 60 (13.9%)
+  Remaining: 373
+
+  Partial enrichment:
+    - With strategy: 60 (13.9%)
+    - With expert_insight: 60 (13.9%)
+    - With key_facts: 60 (13.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 110 (44.2%)
+  Remaining: 139
+
+  Partial enrichment:
+    - With strategy: 131 (52.6%)
+    - With expert_insight: 119 (47.8%)
+    - With key_facts: 110 (44.2%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +4
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +4
+  Progress rate: 4.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 294/806 (36.5%)
+Total remaining: 512
+Estimated time remaining: 171 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #22 - 13/10/2025, 10:17:55 am (21 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 63 (14.5%)
+  Remaining: 370
+
+  Partial enrichment:
+    - With strategy: 63 (14.5%)
+    - With expert_insight: 63 (14.5%)
+    - With key_facts: 63 (14.5%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 113 (45.4%)
+  Remaining: 136
+
+  Partial enrichment:
+    - With strategy: 133 (53.4%)
+    - With expert_insight: 122 (49.0%)
+    - With key_facts: 113 (45.4%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 300/806 (37.2%)
+Total remaining: 506
+Estimated time remaining: 169 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #23 - 13/10/2025, 10:18:55 am (22 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 66 (15.2%)
+  Remaining: 367
+
+  Partial enrichment:
+    - With strategy: 66 (15.2%)
+    - With expert_insight: 66 (15.2%)
+    - With key_facts: 66 (15.2%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 115 (46.2%)
+  Remaining: 134
+
+  Partial enrichment:
+    - With strategy: 135 (54.2%)
+    - With expert_insight: 124 (49.8%)
+    - With key_facts: 115 (46.2%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 305/806 (37.8%)
+Total remaining: 501
+Estimated time remaining: 167 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #24 - 13/10/2025, 10:19:55 am (23 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 68 (15.7%)
+  Remaining: 365
+
+  Partial enrichment:
+    - With strategy: 68 (15.7%)
+    - With expert_insight: 68 (15.7%)
+    - With key_facts: 68 (15.7%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 117 (47.0%)
+  Remaining: 132
+
+  Partial enrichment:
+    - With strategy: 137 (55.0%)
+    - With expert_insight: 126 (50.6%)
+    - With key_facts: 117 (47.0%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 309/806 (38.3%)
+Total remaining: 497
+Estimated time remaining: 166 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #25 - 13/10/2025, 10:20:55 am (24 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 71 (16.4%)
+  Remaining: 362
+
+  Partial enrichment:
+    - With strategy: 71 (16.4%)
+    - With expert_insight: 71 (16.4%)
+    - With key_facts: 71 (16.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 120 (48.2%)
+  Remaining: 129
+
+  Partial enrichment:
+    - With strategy: 140 (56.2%)
+    - With expert_insight: 129 (51.8%)
+    - With key_facts: 120 (48.2%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 315/806 (39.1%)
+Total remaining: 491
+Estimated time remaining: 164 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #26 - 13/10/2025, 10:21:55 am (25 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 73 (16.9%)
+  Remaining: 360
+
+  Partial enrichment:
+    - With strategy: 73 (16.9%)
+    - With expert_insight: 73 (16.9%)
+    - With key_facts: 73 (16.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 123 (49.4%)
+  Remaining: 126
+
+  Partial enrichment:
+    - With strategy: 143 (57.4%)
+    - With expert_insight: 132 (53.0%)
+    - With key_facts: 123 (49.4%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 320/806 (39.7%)
+Total remaining: 486
+Estimated time remaining: 162 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #27 - 13/10/2025, 10:22:55 am (26 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 76 (17.6%)
+  Remaining: 357
+
+  Partial enrichment:
+    - With strategy: 76 (17.6%)
+    - With expert_insight: 76 (17.6%)
+    - With key_facts: 76 (17.6%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 125 (50.2%)
+  Remaining: 124
+
+  Partial enrichment:
+    - With strategy: 145 (58.2%)
+    - With expert_insight: 134 (53.8%)
+    - With key_facts: 125 (50.2%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 325/806 (40.3%)
+Total remaining: 481
+Estimated time remaining: 161 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #28 - 13/10/2025, 10:23:55 am (27 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 79 (18.2%)
+  Remaining: 354
+
+  Partial enrichment:
+    - With strategy: 79 (18.2%)
+    - With expert_insight: 79 (18.2%)
+    - With key_facts: 79 (18.2%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 128 (51.4%)
+  Remaining: 121
+
+  Partial enrichment:
+    - With strategy: 148 (59.4%)
+    - With expert_insight: 137 (55.0%)
+    - With key_facts: 128 (51.4%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 331/806 (41.1%)
+Total remaining: 475
+Estimated time remaining: 159 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #29 - 13/10/2025, 10:24:55 am (28 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 81 (18.7%)
+  Remaining: 352
+
+  Partial enrichment:
+    - With strategy: 81 (18.7%)
+    - With expert_insight: 81 (18.7%)
+    - With key_facts: 81 (18.7%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 131 (52.6%)
+  Remaining: 118
+
+  Partial enrichment:
+    - With strategy: 151 (60.6%)
+    - With expert_insight: 140 (56.2%)
+    - With key_facts: 131 (52.6%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 336/806 (41.7%)
+Total remaining: 470
+Estimated time remaining: 157 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #30 - 13/10/2025, 10:25:55 am (29 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 84 (19.4%)
+  Remaining: 349
+
+  Partial enrichment:
+    - With strategy: 84 (19.4%)
+    - With expert_insight: 84 (19.4%)
+    - With key_facts: 84 (19.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 134 (53.8%)
+  Remaining: 115
+
+  Partial enrichment:
+    - With strategy: 153 (61.4%)
+    - With expert_insight: 143 (57.4%)
+    - With key_facts: 134 (53.8%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 342/806 (42.4%)
+Total remaining: 464
+Estimated time remaining: 155 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #31 - 13/10/2025, 10:26:55 am (30 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 87 (20.1%)
+  Remaining: 346
+
+  Partial enrichment:
+    - With strategy: 87 (20.1%)
+    - With expert_insight: 87 (20.1%)
+    - With key_facts: 87 (20.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 136 (54.6%)
+  Remaining: 113
+
+  Partial enrichment:
+    - With strategy: 155 (62.2%)
+    - With expert_insight: 145 (58.2%)
+    - With key_facts: 136 (54.6%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 347/806 (43.1%)
+Total remaining: 459
+Estimated time remaining: 153 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #32 - 13/10/2025, 10:27:55 am (31 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 89 (20.6%)
+  Remaining: 344
+
+  Partial enrichment:
+    - With strategy: 89 (20.6%)
+    - With expert_insight: 89 (20.6%)
+    - With key_facts: 89 (20.6%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 139 (55.8%)
+  Remaining: 110
+
+  Partial enrichment:
+    - With strategy: 158 (63.5%)
+    - With expert_insight: 148 (59.4%)
+    - With key_facts: 139 (55.8%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 352/806 (43.7%)
+Total remaining: 454
+Estimated time remaining: 152 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #33 - 13/10/2025, 10:28:55 am (32 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 92 (21.2%)
+  Remaining: 341
+
+  Partial enrichment:
+    - With strategy: 92 (21.2%)
+    - With expert_insight: 92 (21.2%)
+    - With key_facts: 92 (21.2%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 142 (57.0%)
+  Remaining: 107
+
+  Partial enrichment:
+    - With strategy: 160 (64.3%)
+    - With expert_insight: 150 (60.2%)
+    - With key_facts: 142 (57.0%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 358/806 (44.4%)
+Total remaining: 448
+Estimated time remaining: 150 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #34 - 13/10/2025, 10:29:55 am (33 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 95 (21.9%)
+  Remaining: 338
+
+  Partial enrichment:
+    - With strategy: 95 (21.9%)
+    - With expert_insight: 95 (21.9%)
+    - With key_facts: 95 (21.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 146 (58.6%)
+  Remaining: 103
+
+  Partial enrichment:
+    - With strategy: 162 (65.1%)
+    - With expert_insight: 153 (61.4%)
+    - With key_facts: 146 (58.6%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +4
+  Strategy added: +2
+  Expert insight added: +3
+  Key facts added: +4
+  Progress rate: 4.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 365/806 (45.3%)
+Total remaining: 441
+Estimated time remaining: 147 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #35 - 13/10/2025, 10:30:55 am (34 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 97 (22.4%)
+  Remaining: 336
+
+  Partial enrichment:
+    - With strategy: 97 (22.4%)
+    - With expert_insight: 97 (22.4%)
+    - With key_facts: 97 (22.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 149 (59.8%)
+  Remaining: 100
+
+  Partial enrichment:
+    - With strategy: 164 (65.9%)
+    - With expert_insight: 155 (62.2%)
+    - With key_facts: 149 (59.8%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 370/806 (45.9%)
+Total remaining: 436
+Estimated time remaining: 146 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #36 - 13/10/2025, 10:31:55 am (35 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 100 (23.1%)
+  Remaining: 333
+
+  Partial enrichment:
+    - With strategy: 100 (23.1%)
+    - With expert_insight: 100 (23.1%)
+    - With key_facts: 100 (23.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 152 (61.0%)
+  Remaining: 97
+
+  Partial enrichment:
+    - With strategy: 167 (67.1%)
+    - With expert_insight: 158 (63.5%)
+    - With key_facts: 152 (61.0%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 376/806 (46.7%)
+Total remaining: 430
+Estimated time remaining: 144 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #37 - 13/10/2025, 10:32:55 am (36 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 102 (23.6%)
+  Remaining: 331
+
+  Partial enrichment:
+    - With strategy: 102 (23.6%)
+    - With expert_insight: 102 (23.6%)
+    - With key_facts: 102 (23.6%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 154 (61.8%)
+  Remaining: 95
+
+  Partial enrichment:
+    - With strategy: 169 (67.9%)
+    - With expert_insight: 160 (64.3%)
+    - With key_facts: 154 (61.8%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 380/806 (47.1%)
+Total remaining: 426
+Estimated time remaining: 142 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #38 - 13/10/2025, 10:33:55 am (37 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 105 (24.2%)
+  Remaining: 328
+
+  Partial enrichment:
+    - With strategy: 105 (24.2%)
+    - With expert_insight: 105 (24.2%)
+    - With key_facts: 105 (24.2%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 157 (63.1%)
+  Remaining: 92
+
+  Partial enrichment:
+    - With strategy: 171 (68.7%)
+    - With expert_insight: 162 (65.1%)
+    - With key_facts: 157 (63.1%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 386/806 (47.9%)
+Total remaining: 420
+Estimated time remaining: 140 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #39 - 13/10/2025, 10:34:55 am (38 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 108 (24.9%)
+  Remaining: 325
+
+  Partial enrichment:
+    - With strategy: 108 (24.9%)
+    - With expert_insight: 108 (24.9%)
+    - With key_facts: 108 (24.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 160 (64.3%)
+  Remaining: 89
+
+  Partial enrichment:
+    - With strategy: 173 (69.5%)
+    - With expert_insight: 165 (66.3%)
+    - With key_facts: 160 (64.3%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 392/806 (48.6%)
+Total remaining: 414
+Estimated time remaining: 138 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #40 - 13/10/2025, 10:35:55 am (39 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 110 (25.4%)
+  Remaining: 323
+
+  Partial enrichment:
+    - With strategy: 110 (25.4%)
+    - With expert_insight: 110 (25.4%)
+    - With key_facts: 110 (25.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 163 (65.5%)
+  Remaining: 86
+
+  Partial enrichment:
+    - With strategy: 176 (70.7%)
+    - With expert_insight: 168 (67.5%)
+    - With key_facts: 163 (65.5%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 397/806 (49.3%)
+Total remaining: 409
+Estimated time remaining: 137 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #41 - 13/10/2025, 10:36:55 am (40 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 113 (26.1%)
+  Remaining: 320
+
+  Partial enrichment:
+    - With strategy: 113 (26.1%)
+    - With expert_insight: 113 (26.1%)
+    - With key_facts: 113 (26.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 165 (66.3%)
+  Remaining: 84
+
+  Partial enrichment:
+    - With strategy: 178 (71.5%)
+    - With expert_insight: 170 (68.3%)
+    - With key_facts: 165 (66.3%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 402/806 (49.9%)
+Total remaining: 404
+Estimated time remaining: 135 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #42 - 13/10/2025, 10:37:56 am (41 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 115 (26.6%)
+  Remaining: 318
+
+  Partial enrichment:
+    - With strategy: 115 (26.6%)
+    - With expert_insight: 115 (26.6%)
+    - With key_facts: 115 (26.6%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 168 (67.5%)
+  Remaining: 81
+
+  Partial enrichment:
+    - With strategy: 181 (72.7%)
+    - With expert_insight: 173 (69.5%)
+    - With key_facts: 168 (67.5%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 407/806 (50.5%)
+Total remaining: 399
+Estimated time remaining: 133 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #43 - 13/10/2025, 10:38:56 am (42 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 118 (27.3%)
+  Remaining: 315
+
+  Partial enrichment:
+    - With strategy: 118 (27.3%)
+    - With expert_insight: 118 (27.3%)
+    - With key_facts: 118 (27.3%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 171 (68.7%)
+  Remaining: 78
+
+  Partial enrichment:
+    - With strategy: 183 (73.5%)
+    - With expert_insight: 176 (70.7%)
+    - With key_facts: 171 (68.7%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 413/806 (51.2%)
+Total remaining: 393
+Estimated time remaining: 131 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #44 - 13/10/2025, 10:39:56 am (43 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 121 (27.9%)
+  Remaining: 312
+
+  Partial enrichment:
+    - With strategy: 121 (27.9%)
+    - With expert_insight: 121 (27.9%)
+    - With key_facts: 121 (27.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 174 (69.9%)
+  Remaining: 75
+
+  Partial enrichment:
+    - With strategy: 186 (74.7%)
+    - With expert_insight: 179 (71.9%)
+    - With key_facts: 174 (69.9%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 419/806 (52.0%)
+Total remaining: 387
+Estimated time remaining: 129 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #45 - 13/10/2025, 10:40:56 am (44 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 123 (28.4%)
+  Remaining: 310
+
+  Partial enrichment:
+    - With strategy: 123 (28.4%)
+    - With expert_insight: 123 (28.4%)
+    - With key_facts: 123 (28.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 176 (70.7%)
+  Remaining: 73
+
+  Partial enrichment:
+    - With strategy: 188 (75.5%)
+    - With expert_insight: 181 (72.7%)
+    - With key_facts: 176 (70.7%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 423/806 (52.5%)
+Total remaining: 383
+Estimated time remaining: 128 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #46 - 13/10/2025, 10:41:56 am (45 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 126 (29.1%)
+  Remaining: 307
+
+  Partial enrichment:
+    - With strategy: 126 (29.1%)
+    - With expert_insight: 126 (29.1%)
+    - With key_facts: 126 (29.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 179 (71.9%)
+  Remaining: 70
+
+  Partial enrichment:
+    - With strategy: 190 (76.3%)
+    - With expert_insight: 184 (73.9%)
+    - With key_facts: 179 (71.9%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 429/806 (53.2%)
+Total remaining: 377
+Estimated time remaining: 126 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #47 - 13/10/2025, 10:42:56 am (46 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 128 (29.6%)
+  Remaining: 305
+
+  Partial enrichment:
+    - With strategy: 128 (29.6%)
+    - With expert_insight: 128 (29.6%)
+    - With key_facts: 128 (29.6%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 182 (73.1%)
+  Remaining: 67
+
+  Partial enrichment:
+    - With strategy: 193 (77.5%)
+    - With expert_insight: 187 (75.1%)
+    - With key_facts: 182 (73.1%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 434/806 (53.8%)
+Total remaining: 372
+Estimated time remaining: 124 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #48 - 13/10/2025, 10:43:56 am (47 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 131 (30.3%)
+  Remaining: 302
+
+  Partial enrichment:
+    - With strategy: 131 (30.3%)
+    - With expert_insight: 131 (30.3%)
+    - With key_facts: 131 (30.3%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 185 (74.3%)
+  Remaining: 64
+
+  Partial enrichment:
+    - With strategy: 195 (78.3%)
+    - With expert_insight: 189 (75.9%)
+    - With key_facts: 185 (74.3%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 440/806 (54.6%)
+Total remaining: 366
+Estimated time remaining: 122 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #49 - 13/10/2025, 10:44:56 am (48 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 134 (30.9%)
+  Remaining: 299
+
+  Partial enrichment:
+    - With strategy: 134 (30.9%)
+    - With expert_insight: 134 (30.9%)
+    - With key_facts: 134 (30.9%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 188 (75.5%)
+  Remaining: 61
+
+  Partial enrichment:
+    - With strategy: 198 (79.5%)
+    - With expert_insight: 192 (77.1%)
+    - With key_facts: 188 (75.5%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 446/806 (55.3%)
+Total remaining: 360
+Estimated time remaining: 120 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #50 - 13/10/2025, 10:45:56 am (49 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 136 (31.4%)
+  Remaining: 297
+
+  Partial enrichment:
+    - With strategy: 136 (31.4%)
+    - With expert_insight: 136 (31.4%)
+    - With key_facts: 136 (31.4%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 191 (76.7%)
+  Remaining: 58
+
+  Partial enrichment:
+    - With strategy: 200 (80.3%)
+    - With expert_insight: 194 (77.9%)
+    - With key_facts: 191 (76.7%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +2
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +2
+  Progress rate: 2.0 questions/minute
+
+Physics:
+  Fully enriched: +3
+  Strategy added: +2
+  Expert insight added: +2
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 451/806 (56.0%)
+Total remaining: 355
+Estimated time remaining: 119 minutes (at 3 q/min)
+
+
+======================================================================
+CHECK #51 - 13/10/2025, 10:46:56 am (50 min elapsed)
+======================================================================
+
+Mathematics:
+  Total questions: 433
+  Fully enriched: 139 (32.1%)
+  Remaining: 294
+
+  Partial enrichment:
+    - With strategy: 139 (32.1%)
+    - With expert_insight: 139 (32.1%)
+    - With key_facts: 139 (32.1%)
+
+Physics:
+  Total questions: 249
+  Fully enriched: 195 (78.3%)
+  Remaining: 54
+
+  Partial enrichment:
+    - With strategy: 203 (81.5%)
+    - With expert_insight: 197 (79.1%)
+    - With key_facts: 195 (78.3%)
+
+Chemistry:
+  Total questions: 124
+  Fully enriched: 124 (100.0%)
+  Remaining: 0
+
+  Partial enrichment:
+    - With strategy: 124 (100.0%)
+    - With expert_insight: 124 (100.0%)
+    - With key_facts: 124 (100.0%)
+
+
+----------------------------------------------------------------------
+CHANGES SINCE LAST CHECK (1 minute ago):
+----------------------------------------------------------------------
+
+Mathematics:
+  Fully enriched: +3
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +3
+  Progress rate: 3.0 questions/minute
+
+Physics:
+  Fully enriched: +4
+  Strategy added: +3
+  Expert insight added: +3
+  Key facts added: +4
+  Progress rate: 4.0 questions/minute
+
+Chemistry:
+  Fully enriched: 0
+  Strategy added: 0
+  Expert insight added: 0
+  Key facts added: 0
+  Progress rate: 0.0 questions/minute
+
+
+======================================================================
+OVERALL SUMMARY:
+======================================================================
+Total enriched: 458/806 (56.8%)
+Total remaining: 348
+Estimated time remaining: 116 minutes (at 3 q/min)
+

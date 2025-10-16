@@ -1,0 +1,61 @@
+⚠️  Node.js 18 and below are deprecated and will no longer be supported in future versions of @supabase/supabase-js. Please upgrade to Node.js 20 or later. For more information, visit: https://github.com/orgs/supabase/discussions/37217
+[dotenv@17.2.3] injecting env (4) from .env.local -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+🚀 Complete Enrichment Pipeline for Existing Questions
+
+📚 Subject: Physics
+⏱️  Delay: 6000ms between calls
+📊 Max words per field: 100
+
+✨ ALL FEATURES ACTIVE:
+   • Question validation (options, answer key, multi-part questions)
+   • Completeness verification (no ambiguity, all data provided)
+   • Auto-fixing (incomplete questions, ambiguous wording, multi-part options)
+   • Solution verification & generation (matches correct answer)
+   • Text enrichment (strategy, expert_insight, key_facts)
+   • SVG generation for missing figures
+   • 100-word limits with auto-condensing
+   • HTML entity cleanup in options
+   • Combined word separation
+   • Figure warning removal
+
+======================================================================
+
+📥 Fetching questions needing enrichment...
+
+   Total Physics questions: 249
+   Need enrichment: 1 (0.4%)
+
+
+[1/1] Processing question 59f3a057...
+   🔍 Validating question format...
+      ⚠️  Found 1 format issue(s):
+         - Multi-part question but options don't address all parts
+      🤖 Auto-fixing multi-part options...
+         ✅ Fixed multi-part options generated
+            Option A: Part (a): 1.00 μC, Part (b): 2.0...
+            Option B: Part (a): 2.00 μC, Part (b): 0.5...
+            Option C: Part (a): 1.50 μC, Part (b): 1.0...
+            Option D: Part (a): 1.00 μC, Part (b): 1.5...
+         ✅ Fixed options saved to database
+   🔍 Checking question completeness...
+      ✅ Question complete
+   🔍 Verifying solution matches answer key...
+      ✅ Solution matches answer key
+   🎨 Checking for missing figures...
+      ✅ SVG generated (geometric)
+   ✅ Updated with 1 fields
+
+======================================================================
+
+✅ Enrichment Complete!
+
+📊 Final Statistics:
+   Total processed: 1
+   Successfully enriched: 1 (100.0%)
+   Text enrichments: 0
+   SVGs generated: 1
+   Solutions generated: 0
+   Questions auto-fixed: 0
+   Multi-part options fixed: 1
+   Failed: 0 (0.0%)
+   Skipped: 0 (0.0%)

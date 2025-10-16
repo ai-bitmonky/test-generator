@@ -1,0 +1,29 @@
+{
+  "chapters": [
+    {
+      "name": "Chapter 1: Mechanics - Kinematics",
+      "startPage": 1,
+      "endPage": 32
+    },
+    {
+      "name": "Chapter 2: Mechanics - Laws of Motion",
+      "startPage": 33,
+      "endPage": 68
+    },
+    {
+      "name": "Chapter 3: Work, Energy and Power",
+      "startPage": 69,
+      "endPage": 98
+    },
+    {
+      "name": "Chapter 4: Rotational Motion",
+      "startPage": 99,
+      "endPage": 135
+    },
+    {
+      "name": "Chapter 5: Gravitation",
+      "startPage": 136,
+      "endPage": 165
+    }
+  ]
+}
