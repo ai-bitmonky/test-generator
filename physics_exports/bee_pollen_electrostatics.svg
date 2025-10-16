@@ -25,62 +25,113 @@
   </pattern>
 </defs>
 
-<text x="1000.0" y="50" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">Honeybee and Pollen Grain Electrostatics</text>
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Honeybee and Pollen Grain Electrostatics</text>
 <g id="bee-pollen-view">
-<text x="350" y="150" text-anchor="middle" font-size="26" font-weight="bold" fill="#34495e">(a) Pollen on Bee Surface</text>
+<text x="350" y="150" text-anchor="middle" font-size="34" font-weight="bold" fill="#34495e">(a) Pollen on Bee Surface</text>
 <circle cx="350" cy="700.0" r="140" fill="#FFD700" fill-opacity="0.3" stroke="#DAA520" stroke-width="3"/>
-<text x="480.0" y="705.0" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="462.58330249197707" y="770.0" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="415.0" y="817.5833024919771" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="350.0" y="835.0" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="285.0" y="817.5833024919771" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="237.41669750802296" y="770.0" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="220.0" y="705.0" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="237.416697508023" y="640.0" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="284.99999999999994" y="592.416697508023" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="350.0" y="575.0" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="415.0" y="592.4166975080229" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="462.583302491977" y="640.0" text-anchor="middle" font-size="16" font-weight="bold" fill="#B8860B">+</text>
-<text x="350" y="700.0" text-anchor="middle" font-size="14" font-weight="bold" fill="#8B4513">Bee</text>
-<text x="350" y="720.0" text-anchor="middle" font-size="12" fill="#8B4513">d=1.000 cm</text>
-<text x="350" y="735.0" text-anchor="middle" font-size="12" fill="#8B4513">Q=+45.0 pC</text>
+<text x="480.0" y="705.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="462.58330249197707" y="770.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="415.0" y="817.5833024919771" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="350.0" y="835.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="285.0" y="817.5833024919771" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="237.41669750802296" y="770.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="220.0" y="705.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="237.416697508023" y="640.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="284.99999999999994" y="592.416697508023" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="350.0" y="575.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="415.0" y="592.4166975080229" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="462.583302491977" y="640.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#B8860B">+</text>
+<text x="350" y="705.0" text-anchor="middle" font-size="28" font-weight="bold" fill="#2c3e50">Bee</text>
 <circle cx="520" cy="700.0" r="35" fill="#8B4513" fill-opacity="0.4" stroke="#654321" stroke-width="2"/>
 <circle cx="502.5" cy="700.0" r="8" fill="#FF0000"/>
-<text x="502.5" y="704.0" text-anchor="middle" font-size="12" font-weight="bold" fill="white">−</text>
-<text x="502.5" y="680.0" text-anchor="middle" font-size="10" fill="#FF0000">−1.00 pC</text>
+<text x="502.5" y="704.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">−</text>
 <circle cx="537.5" cy="700.0" r="8" fill="#0000FF"/>
-<text x="537.5" y="704.0" text-anchor="middle" font-size="12" font-weight="bold" fill="white">+</text>
-<text x="537.5" y="680.0" text-anchor="middle" font-size="10" fill="#0000FF">+1.00 pC</text>
-<text x="520" y="750.0" text-anchor="middle" font-size="12" fill="#654321">Pollen</text>
-<text x="520" y="765.0" text-anchor="middle" font-size="10" fill="#654321">d=40.0 μm</text>
-<g><line x1="520" y1="700.0" x2="440" y2="700.0" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="480.0" y="680.0" text-anchor="middle" font-size="18" font-weight="bold" font-style="italic" fill="#e74c3c">F_bee</text><path d="M 470.0 658.0 L 490.0 658.0 L 488.0 656.0 M 490.0 658.0 L 488.0 660.0" stroke="#e74c3c" stroke-width="1.5" fill="none"/></g>
+<text x="537.5" y="704.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">+</text>
+<text x="520" y="750.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">Pollen</text>
+<g><line x1="520" y1="700.0" x2="440" y2="700.0" stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="480.0" y="680.0" text-anchor="middle" font-size="26" font-weight="bold" font-style="italic" fill="#e74c3c">F_bee</text><path d="M 465.0 652.0 L 495.0 652.0 L 492.0 649.0 M 495.0 652.0 L 492.0 655.0" stroke="#e74c3c" stroke-width="2" fill="none"/></g>
 </g>
 <g id="pollen-stigma-view">
-<text x="1350.0" y="150" text-anchor="middle" font-size="26" font-weight="bold" fill="#34495e">(b) Pollen Near Stigma (1.000 mm)</text>
+<text x="1350.0" y="150" text-anchor="middle" font-size="34" font-weight="bold" fill="#34495e">(b) Pollen Near Stigma (1.000 mm)</text>
 <circle cx="1200.0" cy="700.0" r="42" fill="#8B4513" fill-opacity="0.4" stroke="#654321" stroke-width="2"/>
 <circle cx="1221.0" cy="700.0" r="8" fill="#FF0000"/>
-<text x="1221.0" y="704.0" text-anchor="middle" font-size="12" font-weight="bold" fill="white">−</text>
+<text x="1221.0" y="704.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">−</text>
 <circle cx="1179.0" cy="700.0" r="8" fill="#0000FF"/>
-<text x="1179.0" y="704.0" text-anchor="middle" font-size="12" font-weight="bold" fill="white">+</text>
-<text x="1200.0" y="750.0" text-anchor="middle" font-size="12" fill="#654321">Pollen</text>
+<text x="1179.0" y="704.0" text-anchor="middle" font-size="18" font-weight="bold" fill="white">+</text>
+<text x="1200.0" y="750.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">Pollen</text>
 <circle cx="1500.0" cy="700.0" r="20" fill="#FF1493"/>
-<text x="1500.0" y="704.0" text-anchor="middle" font-size="16" font-weight="bold" fill="white">−</text>
-<text x="1500.0" y="735.0" text-anchor="middle" font-size="12" fill="#C71585">Stigma</text>
-<text x="1500.0" y="750.0" text-anchor="middle" font-size="10" fill="#C71585">Q=−45.0 pC</text>
-<line x1="1200.0" y1="620.0" x2="1500.0" y2="620.0" stroke="#7f8c8d" stroke-width="1" stroke-dasharray="5,5"/>
-<text x="1350.0" y="610.0" text-anchor="middle" font-size="12" fill="#7f8c8d">1.000 mm</text>
-<g><line x1="1242.0" y1="700.0" x2="1322.0" y2="700.0" stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="1282.0" y="680.0" text-anchor="middle" font-size="18" font-weight="bold" font-style="italic" fill="#3498db">F_stigma</text><path d="M 1272.0 658.0 L 1292.0 658.0 L 1290.0 656.0 M 1292.0 658.0 L 1290.0 660.0" stroke="#3498db" stroke-width="1.5" fill="none"/></g>
+<text x="1500.0" y="704.0" text-anchor="middle" font-size="22" font-weight="bold" fill="white">−</text>
+<text x="1500.0" y="735.0" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">Stigma</text>
+<g><line x1="1242.0" y1="700.0" x2="1322.0" y2="700.0" stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/><text x="1282.0" y="680.0" text-anchor="middle" font-size="26" font-weight="bold" font-style="italic" fill="#3498db">F_stigma</text><path d="M 1267.0 652.0 L 1297.0 652.0 L 1294.0 649.0 M 1297.0 652.0 L 1294.0 655.0" stroke="#3498db" stroke-width="2" fill="none"/></g>
 </g>
-<g id="annotations">
-  <text x="100" y="750" font-size="18" font-weight="bold" fill="#2c3e50">Key Information:</text>
-  <text x="100" y="780" font-size="14" fill="#34495e">• Bee: diameter = 1.000 cm, charge = +45.0 pC (surface)</text>
-  <text x="100" y="800" font-size="14" fill="#34495e">• Pollen: diameter = 40.0 μm (40.0 × 10⁻⁶ m)</text>
-  <text x="100" y="820" font-size="14" fill="#34495e">• Induced charges: −1.00 pC (near bee) and +1.00 pC (far from bee)</text>
-  <text x="100" y="840" font-size="14" fill="#34495e">• Stigma: charge = −45.0 pC, distance = 1.000 mm from pollen</text>
+<g id="legend">
+  <rect x="80" y="910" width="1800" height="380"
+        fill="white" stroke="#95a5a6" stroke-width="2" rx="10"/>
 
-  <text x="100" y="870" font-size="16" font-weight="bold" fill="#e74c3c">Questions:</text>
-  <text x="100" y="895" font-size="13" fill="#34495e">(a) Net electrostatic force on grain due to bee?</text>
-  <text x="100" y="915" font-size="13" fill="#34495e">(b) Net electrostatic force on grain due to stigma?</text>
-  <text x="100" y="935" font-size="13" fill="#34495e">(c) Does grain remain on bee or move to stigma?</text>
+  <text x="100" y="950" font-size="32" font-weight="bold" fill="#2c3e50">Legend</text>
+
+  <!-- Column 1: Object Properties -->
+  <text x="100" y="990" font-size="24" font-weight="bold" fill="#16a085">Object Properties:</text>
+
+  <circle cx="120" cy="1020" r="8" fill="#FFD700" stroke="#DAA520" stroke-width="2"/>
+  <text x="140" y="1025" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Bee:</tspan> diameter = 1.000 cm, charge Q = +45.0 pC (uniformly distributed on surface)
+  </text>
+
+  <circle cx="120" cy="1055" r="6" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <text x="140" y="1060" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Pollen grain:</tspan> diameter = 40.0 μm = 40.0 × 10⁻⁶ m (electrically neutral, net charge = 0)
+  </text>
+
+  <circle cx="120" cy="1090" r="5" fill="#FF1493"/>
+  <text x="140" y="1095" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Stigma tip:</tspan> charge Q = −45.0 pC (treated as point charge)
+  </text>
+
+  <!-- Column 2: Induced Charges -->
+  <text x="100" y="1135" font-size="24" font-weight="bold" fill="#16a085">Induced Charges on Pollen:</text>
+
+  <circle cx="120" cy="1165" r="6" fill="#FF0000"/>
+  <text x="135" cy="1169" font-size="16" font-weight="bold" fill="white">−</text>
+  <text x="150" y="1170" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Near side:</tspan> q₁ = −1.00 pC (closer to bee/stigma, attracts positive charge)
+  </text>
+
+  <circle cx="120" cy="1200" r="6" fill="#0000FF"/>
+  <text x="135" cy="1204" font-size="16" font-weight="bold" fill="white">+</text>
+  <text x="150" y="1205" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Far side:</tspan> q₂ = +1.00 pC (farther from bee/stigma, repelled)
+  </text>
+
+  <!-- Column 3: Distances and Forces -->
+  <text x="1000" y="990" font-size="24" font-weight="bold" fill="#16a085">Key Distances:</text>
+
+  <text x="1000" y="1025" font-size="20" fill="#34495e">
+    • Bee radius: r_bee = 0.500 cm = 5.00 × 10⁻³ m
+  </text>
+  <text x="1000" y="1055" font-size="20" fill="#34495e">
+    • Pollen radius: r_pollen = 20.0 μm = 2.00 × 10⁻⁵ m
+  </text>
+  <text x="1000" y="1085" font-size="20" fill="#34495e">
+    • Pollen to stigma distance: d = 1.000 mm = 1.00 × 10⁻³ m
+  </text>
+
+  <text x="1000" y="1130" font-size="24" font-weight="bold" fill="#16a085">Forces:</text>
+
+  <line x1="1020" y1="1155" x2="1070" y2="1155"
+        stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="1080" y="1160" font-size="20" fill="#34495e">
+    <tspan font-weight="bold" fill="#e74c3c">F_bee:</tspan> Net force on pollen due to bee (question a)
+  </text>
+
+  <line x1="1020" y1="1190" x2="1070" y2="1190"
+        stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="1080" y="1195" font-size="20" fill="#34495e">
+    <tspan font-weight="bold" fill="#3498db">F_stigma:</tspan> Net force on pollen due to stigma (question b)
+  </text>
+
+  <!-- Questions -->
+  <text x="100" y="1255" font-size="24" font-weight="bold" fill="#e74c3c">Questions to Answer:</text>
+  <text x="120" y="1285" font-size="19" fill="#34495e">(a) What is the magnitude of net electrostatic force on grain due to bee?</text>
+  <text x="120" y="1310" font-size="19" fill="#34495e">(b) What is magnitude of net electrostatic force on grain due to stigma at 1.000 mm distance?</text>
 </g>
 </svg>

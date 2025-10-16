@@ -25,7 +25,7 @@
   </pattern>
 </defs>
 
-<text x="1000.0" y="50" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">Uniformly Charged Sphere with Spherical Cavity</text>
+<text x="1000.0" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Uniformly Charged Sphere with Spherical Cavity</text>
 <circle cx="450" cy="600" r="220" fill="url(#chargePattern)" stroke="#2980b9" stroke-width="4"/>
 <circle cx="555" cy="663" r="85" fill="white" stroke="#e67e22" stroke-width="4" stroke-dasharray="18,9"/>
 <circle cx="450" cy="600" r="6" fill="#2c3e50"/>
@@ -36,70 +36,70 @@
 <line x1="515" y1="623" x2="595" y2="623" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
 <line x1="515" y1="663" x2="595" y2="663" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
 <line x1="515" y1="703" x2="595" y2="703" stroke="#27ae60" stroke-width="3" marker-end="url(#arrowGreen)"/>
-<text x="400" y="610" font-size="32" font-weight="bold" fill="#2c3e50">O</text>
-<text x="370" y="638" font-size="15" fill="#7f8c8d">(sphere center)</text>
-<text x="580" y="568" font-size="32" font-weight="bold" fill="#e74c3c">C</text>
-<text x="555" y="596" font-size="15" fill="#7f8c8d">(cavity center)</text>
-<text x="598" y="653" font-size="32" font-weight="bold" fill="#9b59b6">P</text>
-<text x="588" y="681" font-size="15" fill="#7f8c8d">(test point)</text>
+<text x="400" y="610" font-size="44" font-weight="bold" fill="#2c3e50">O</text>
+<text x="370" y="638" font-size="22" fill="#7f8c8d">(sphere center)</text>
+<text x="580" y="568" font-size="44" font-weight="bold" fill="#e74c3c">C</text>
+<text x="555" y="596" font-size="22" fill="#7f8c8d">(cavity center)</text>
+<text x="598" y="653" font-size="44" font-weight="bold" fill="#9b59b6">P</text>
+<text x="588" y="681" font-size="22" fill="#7f8c8d">(test point)</text>
 <g id="formulas">
-  <text x="1000" y="210" font-size="27" font-weight="bold" fill="#16a085">Part (a): Field at P in sphere</text>
+  <text x="1000" y="210" font-size="36" font-weight="bold" fill="#16a085">Part (a): Field at P in sphere</text>
 
   <g>
-    <text x="1150" y="295" text-anchor="middle" font-size="50" font-weight="bold" fill="#16a085" font-style="italic">E</text>
-    <path d="M 1141 262 L 1167 262 L 1165 260 M 1167 262 L 1165 264" stroke="#16a085" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <text x="1175" y="295" font-size="50" font-weight="bold" fill="#16a085"> = ρ</text>
-    <text x="1246" y="295" font-size="50" font-weight="bold" fill="#16a085" font-style="italic">r</text>
-    <path d="M 1239 262 L 1260 262 L 1258 260 M 1260 262 L 1258 264" stroke="#16a085" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <text x="1268" y="295" font-size="50" font-weight="bold" fill="#16a085">/(3ε₀)</text>
+    <text x="1150" y="295" text-anchor="middle" font-size="58" font-weight="bold" fill="#16a085" font-style="italic">E</text>
+    <path d="M 1141 262 L 1167 262 L 1165 260 M 1167 262 L 1165 264" stroke="#16a085" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="1175" y="295" font-size="58" font-weight="bold" fill="#16a085"> = ρ</text>
+    <text x="1246" y="295" font-size="58" font-weight="bold" fill="#16a085" font-style="italic">r</text>
+    <path d="M 1239 262 L 1260 262 L 1258 260 M 1260 262 L 1258 264" stroke="#16a085" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="1268" y="295" font-size="58" font-weight="bold" fill="#16a085">/(3ε₀)</text>
   </g>
 
-  <text x="1000" y="370" font-size="20" fill="#34495e">• Independent of R (sphere radius)</text>
-  <text x="1000" y="400" font-size="20" fill="#34495e">• Proportional to r (distance from O)</text>
-  <text x="1000" y="430" font-size="20" fill="#34495e">• Radial direction from O</text>
+  <text x="1000" y="370" font-size="24" fill="#34495e">• Independent of R (sphere radius)</text>
+  <text x="1000" y="400" font-size="24" fill="#34495e">• Proportional to r (distance from O)</text>
+  <text x="1000" y="430" font-size="24" fill="#34495e">• Radial direction from O</text>
 
   <line x1="1000" y1="480" x2="1550" y2="480" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
 
-  <text x="1000" y="555" font-size="27" font-weight="bold" fill="#c0392b">Part (b): Field in cavity (UNIFORM)</text>
+  <text x="1000" y="555" font-size="36" font-weight="bold" fill="#c0392b">Part (b): Field in cavity (UNIFORM)</text>
 
   <g>
-    <text x="1150" y="640" text-anchor="middle" font-size="50" font-weight="bold" fill="#c0392b" font-style="italic">E</text>
-    <path d="M 1141 607 L 1167 607 L 1165 605 M 1167 607 L 1165 609" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <text x="1175" y="640" font-size="50" font-weight="bold" fill="#c0392b"> = ρ</text>
-    <text x="1246" y="640" font-size="50" font-weight="bold" fill="#c0392b" font-style="italic">a</text>
-    <path d="M 1238 607 L 1260 607 L 1258 605 M 1260 607 L 1258 609" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <text x="1268" y="640" font-size="50" font-weight="bold" fill="#c0392b">/(3ε₀)</text>
+    <text x="1150" y="640" text-anchor="middle" font-size="58" font-weight="bold" fill="#c0392b" font-style="italic">E</text>
+    <path d="M 1141 607 L 1167 607 L 1165 605 M 1167 607 L 1165 609" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="1175" y="640" font-size="58" font-weight="bold" fill="#c0392b"> = ρ</text>
+    <text x="1246" y="640" font-size="58" font-weight="bold" fill="#c0392b" font-style="italic">a</text>
+    <path d="M 1238 607 L 1260 607 L 1258 605 M 1260 607 L 1258 609" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="1268" y="640" font-size="58" font-weight="bold" fill="#c0392b">/(3ε₀)</text>
   </g>
 
-  <text x="1000" y="715" font-size="21" font-weight="bold" fill="#8e44ad">★ Key Result:</text>
-  <text x="1000" y="750" font-size="20" fill="#34495e">• UNIFORM field everywhere in cavity</text>
-  <text x="1000" y="780" font-size="20" fill="#34495e">• Independent of cavity size</text>
-  <text x="1000" y="810" font-size="20" fill="#34495e">• Direction parallel to vector a</text>
+  <text x="1000" y="715" font-size="26" font-weight="bold" fill="#8e44ad">★ Key Result:</text>
+  <text x="1000" y="750" font-size="24" fill="#34495e">• UNIFORM field everywhere in cavity</text>
+  <text x="1000" y="780" font-size="24" fill="#34495e">• Independent of cavity size</text>
+  <text x="1000" y="810" font-size="24" fill="#34495e">• Direction parallel to vector a</text>
 
-  <text x="1000" y="865" font-size="20" fill="#7f8c8d" font-style="italic">Uses superposition principle</text>
+  <text x="1000" y="865" font-size="24" fill="#7f8c8d" font-style="italic">Uses superposition principle</text>
 </g>
 <g id="legend">
-  <text x="120" y="875" font-size="24" font-weight="bold" fill="#34495e">Legend:</text>
+  <text x="120" y="875" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
 
   <line x1="120" y1="920" x2="210" y2="920" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
   <g>
-    <text x="225" y="928" font-size="20" fill="#2c3e50" font-style="italic">a</text>
-    <path d="M 221 911 L 235 911 L 233 909 M 235 911 L 233 913" stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <text x="240" y="928" font-size="20" fill="#2c3e50"> = O to C (displacement)</text>
+    <text x="225" y="928" font-size="26" fill="#2c3e50" font-style="italic">a</text>
+    <path d="M 221 911 L 235 911 L 233 909 M 235 911 L 233 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="240" y="928" font-size="26" fill="#2c3e50"> = O to C (displacement)</text>
   </g>
 
   <line x1="450" y1="920" x2="540" y2="920" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
   <g>
-    <text x="555" y="928" font-size="20" fill="#2c3e50" font-style="italic">r</text>
-    <path d="M 552 911 L 564 911 L 562 909 M 564 911 L 562 913" stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <text x="568" y="928" font-size="20" fill="#2c3e50"> = O to P (position)</text>
+    <text x="555" y="928" font-size="26" fill="#2c3e50" font-style="italic">r</text>
+    <path d="M 552 911 L 564 911 L 562 909 M 564 911 L 562 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="568" y="928" font-size="26" fill="#2c3e50"> = O to P (position)</text>
   </g>
 
   <line x1="780" y1="920" x2="870" y2="920" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
   <g>
-    <text x="885" y="928" font-size="20" fill="#2c3e50" font-style="italic">E</text>
-    <path d="M 881 911 L 896 911 L 894 909 M 896 911 L 894 913" stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <text x="900" y="928" font-size="20" fill="#2c3e50"> = Electric field</text>
+    <text x="885" y="928" font-size="26" fill="#2c3e50" font-style="italic">E</text>
+    <path d="M 881 911 L 896 911 L 894 909 M 896 911 L 894 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="900" y="928" font-size="26" fill="#2c3e50"> = Electric field</text>
   </g>
 </g>
 </svg>

@@ -200,7 +200,7 @@ class SmartPhysicsSVGRenderer:
         # Title
         svg_parts.append(
             f'<text x="{self.width/2}" y="50" text-anchor="middle" '
-            f'font-size="32" font-weight="bold" fill="#2c3e50">'
+            f'font-size="42" font-weight="bold" fill="#2c3e50">'
             f'{problem["title"]}</text>'
         )
 
@@ -208,7 +208,7 @@ class SmartPhysicsSVGRenderer:
         svg_parts.append('<g id="bee-pollen-view">')
         svg_parts.append(
             f'<text x="{left_view_x + 200}" y="150" text-anchor="middle" '
-            f'font-size="26" font-weight="bold" fill="#34495e">'
+            f'font-size="34" font-weight="bold" fill="#34495e">'
             f'(a) Pollen on Bee Surface</text>'
         )
 
@@ -230,21 +230,13 @@ class SmartPhysicsSVGRenderer:
             cy = bee_center_y + (bee_radius - 10) * math.sin(rad)
             svg_parts.append(
                 f'<text x="{cx}" y="{cy + 5}" text-anchor="middle" '
-                f'font-size="16" font-weight="bold" fill="#B8860B">+</text>'
+                f'font-size="22" font-weight="bold" fill="#B8860B">+</text>'
             )
 
-        # Bee label
+        # Bee label (simple)
         svg_parts.append(
-            f'<text x="{bee_center_x}" y="{bee_center_y}" text-anchor="middle" '
-            f'font-size="14" font-weight="bold" fill="#8B4513">Bee</text>'
-        )
-        svg_parts.append(
-            f'<text x="{bee_center_x}" y="{bee_center_y + 20}" text-anchor="middle" '
-            f'font-size="12" fill="#8B4513">d=1.000 cm</text>'
-        )
-        svg_parts.append(
-            f'<text x="{bee_center_x}" y="{bee_center_y + 35}" text-anchor="middle" '
-            f'font-size="12" fill="#8B4513">Q=+45.0 pC</text>'
+            f'<text x="{bee_center_x}" y="{bee_center_y + 5}" text-anchor="middle" '
+            f'font-size="28" font-weight="bold" fill="#2c3e50">Bee</text>'
         )
 
         # Pollen grain on bee surface (enlarged for visibility)
@@ -266,11 +258,7 @@ class SmartPhysicsSVGRenderer:
         )
         svg_parts.append(
             f'<text x="{near_x}" y="{pollen_y + 4}" text-anchor="middle" '
-            f'font-size="12" font-weight="bold" fill="white">−</text>'
-        )
-        svg_parts.append(
-            f'<text x="{near_x}" y="{pollen_y - 20}" text-anchor="middle" '
-            f'font-size="10" fill="#FF0000">−1.00 pC</text>'
+            f'font-size="18" font-weight="bold" fill="white">−</text>'
         )
 
         # Far side (positive)
@@ -280,21 +268,13 @@ class SmartPhysicsSVGRenderer:
         )
         svg_parts.append(
             f'<text x="{far_x}" y="{pollen_y + 4}" text-anchor="middle" '
-            f'font-size="12" font-weight="bold" fill="white">+</text>'
-        )
-        svg_parts.append(
-            f'<text x="{far_x}" y="{pollen_y - 20}" text-anchor="middle" '
-            f'font-size="10" fill="#0000FF">+1.00 pC</text>'
+            f'font-size="18" font-weight="bold" fill="white">+</text>'
         )
 
-        # Pollen label
+        # Pollen label (simple)
         svg_parts.append(
             f'<text x="{pollen_x}" y="{pollen_y + 50}" text-anchor="middle" '
-            f'font-size="12" fill="#654321">Pollen</text>'
-        )
-        svg_parts.append(
-            f'<text x="{pollen_x}" y="{pollen_y + 65}" text-anchor="middle" '
-            f'font-size="10" fill="#654321">d=40.0 μm</text>'
+            f'font-size="22" font-weight="bold" fill="#2c3e50">Pollen</text>'
         )
 
         # Force arrow F_bee
@@ -310,7 +290,7 @@ class SmartPhysicsSVGRenderer:
         svg_parts.append('<g id="pollen-stigma-view">')
         svg_parts.append(
             f'<text x="{right_view_x + 300}" y="150" text-anchor="middle" '
-            f'font-size="26" font-weight="bold" fill="#34495e">'
+            f'font-size="34" font-weight="bold" fill="#34495e">'
             f'(b) Pollen Near Stigma (1.000 mm)</text>'
         )
 
@@ -333,7 +313,7 @@ class SmartPhysicsSVGRenderer:
         )
         svg_parts.append(
             f'<text x="{near2_x}" y="{pollen2_y + 4}" text-anchor="middle" '
-            f'font-size="12" font-weight="bold" fill="white">−</text>'
+            f'font-size="18" font-weight="bold" fill="white">−</text>'
         )
 
         svg_parts.append(
@@ -341,12 +321,12 @@ class SmartPhysicsSVGRenderer:
         )
         svg_parts.append(
             f'<text x="{far2_x}" y="{pollen2_y + 4}" text-anchor="middle" '
-            f'font-size="12" font-weight="bold" fill="white">+</text>'
+            f'font-size="18" font-weight="bold" fill="white">+</text>'
         )
 
         svg_parts.append(
             f'<text x="{pollen2_x}" y="{pollen2_y + 50}" text-anchor="middle" '
-            f'font-size="12" fill="#654321">Pollen</text>'
+            f'font-size="22" font-weight="bold" fill="#2c3e50">Pollen</text>'
         )
 
         # Stigma (to the right)
@@ -358,27 +338,14 @@ class SmartPhysicsSVGRenderer:
         )
         svg_parts.append(
             f'<text x="{stigma_x}" y="{stigma_y + 4}" text-anchor="middle" '
-            f'font-size="16" font-weight="bold" fill="white">−</text>'
+            f'font-size="22" font-weight="bold" fill="white">−</text>'
         )
         svg_parts.append(
             f'<text x="{stigma_x}" y="{stigma_y + 35}" text-anchor="middle" '
-            f'font-size="12" fill="#C71585">Stigma</text>'
-        )
-        svg_parts.append(
-            f'<text x="{stigma_x}" y="{stigma_y + 50}" text-anchor="middle" '
-            f'font-size="10" fill="#C71585">Q=−45.0 pC</text>'
+            f'font-size="22" font-weight="bold" fill="#2c3e50">Stigma</text>'
         )
 
-        # Distance indicator
-        dist_y = view_y - 80
-        svg_parts.append(
-            f'<line x1="{pollen2_x}" y1="{dist_y}" x2="{stigma_x}" y2="{dist_y}" '
-            f'stroke="#7f8c8d" stroke-width="1" stroke-dasharray="5,5"/>'
-        )
-        svg_parts.append(
-            f'<text x="{(pollen2_x + stigma_x)/2}" y="{dist_y - 10}" '
-            f'text-anchor="middle" font-size="12" fill="#7f8c8d">1.000 mm</text>'
-        )
+        # Distance indicator (removed - will be in legend)
 
         # Force arrow F_stigma
         svg_parts.append(self._draw_force_arrow(
@@ -404,7 +371,7 @@ class SmartPhysicsSVGRenderer:
         # Title
         svg_parts.append(
             f'<text x="{self.width/2}" y="50" text-anchor="middle" '
-            f'font-size="32" font-weight="bold" fill="#2c3e50">'
+            f'font-size="42" font-weight="bold" fill="#2c3e50">'
             f'{problem["title"]}</text>'
         )
 
@@ -464,29 +431,29 @@ class SmartPhysicsSVGRenderer:
         # Labels
         svg_parts.append(
             f'<text x="{center_x - 50}" y="{center_y + 10}" '
-            f'font-size="32" font-weight="bold" fill="#2c3e50">O</text>'
+            f'font-size="44" font-weight="bold" fill="#2c3e50">O</text>'
         )
         svg_parts.append(
             f'<text x="{center_x - 80}" y="{center_y + 38}" '
-            f'font-size="15" fill="#7f8c8d">(sphere center)</text>'
+            f'font-size="22" fill="#7f8c8d">(sphere center)</text>'
         )
 
         svg_parts.append(
             f'<text x="{cavity_center_x + 25}" y="{cavity_center_y - 95}" '
-            f'font-size="32" font-weight="bold" fill="#e74c3c">C</text>'
+            f'font-size="44" font-weight="bold" fill="#e74c3c">C</text>'
         )
         svg_parts.append(
             f'<text x="{cavity_center_x}" y="{cavity_center_y - 67}" '
-            f'font-size="15" fill="#7f8c8d">(cavity center)</text>'
+            f'font-size="22" fill="#7f8c8d">(cavity center)</text>'
         )
 
         svg_parts.append(
             f'<text x="{p_x + 25}" y="{p_y + 5}" '
-            f'font-size="32" font-weight="bold" fill="#9b59b6">P</text>'
+            f'font-size="44" font-weight="bold" fill="#9b59b6">P</text>'
         )
         svg_parts.append(
             f'<text x="{p_x + 15}" y="{p_y + 33}" '
-            f'font-size="15" fill="#7f8c8d">(test point)</text>'
+            f'font-size="22" fill="#7f8c8d">(test point)</text>'
         )
 
         # Add formulas and annotations
@@ -542,12 +509,12 @@ class SmartPhysicsSVGRenderer:
         mid_y = (y1 + y2) / 2 - 20
 
         label_svg = f'<text x="{mid_x}" y="{mid_y}" text-anchor="middle" ' \
-                   f'font-size="18" font-weight="bold" font-style="italic" fill="{color}">{label}</text>'
+                   f'font-size="26" font-weight="bold" font-style="italic" fill="{color}">{label}</text>'
 
         # Overhead arrow
-        overhead = f'<path d="M {mid_x-10} {mid_y-22} L {mid_x+10} {mid_y-22} ' \
-                  f'L {mid_x+8} {mid_y-24} M {mid_x+10} {mid_y-22} L {mid_x+8} {mid_y-20}" ' \
-                  f'stroke="{color}" stroke-width="1.5" fill="none"/>'
+        overhead = f'<path d="M {mid_x-15} {mid_y-28} L {mid_x+15} {mid_y-28} ' \
+                  f'L {mid_x+12} {mid_y-31} M {mid_x+15} {mid_y-28} L {mid_x+12} {mid_y-25}" ' \
+                  f'stroke="{color}" stroke-width="2" fill="none"/>'
 
         return f'<g>{arrow}{label_svg}{overhead}</g>'
 
@@ -578,85 +545,145 @@ class SmartPhysicsSVGRenderer:
         return f'<g>{arrow}{label_svg}{overhead}</g>'
 
     def _add_bee_pollen_annotations(self) -> str:
-        """Add annotations for bee/pollen problem"""
-        y_start = 750
+        """Add legend for bee/pollen problem"""
+        y_start = 950
+        x_start = 100
 
-        return f'''<g id="annotations">
-  <text x="100" y="{y_start}" font-size="18" font-weight="bold" fill="#2c3e50">Key Information:</text>
-  <text x="100" y="{y_start + 30}" font-size="14" fill="#34495e">• Bee: diameter = 1.000 cm, charge = +45.0 pC (surface)</text>
-  <text x="100" y="{y_start + 50}" font-size="14" fill="#34495e">• Pollen: diameter = 40.0 μm (40.0 × 10⁻⁶ m)</text>
-  <text x="100" y="{y_start + 70}" font-size="14" fill="#34495e">• Induced charges: −1.00 pC (near bee) and +1.00 pC (far from bee)</text>
-  <text x="100" y="{y_start + 90}" font-size="14" fill="#34495e">• Stigma: charge = −45.0 pC, distance = 1.000 mm from pollen</text>
+        return f'''<g id="legend">
+  <rect x="{x_start - 20}" y="{y_start - 40}" width="1800" height="380"
+        fill="white" stroke="#95a5a6" stroke-width="2" rx="10"/>
 
-  <text x="100" y="{y_start + 120}" font-size="16" font-weight="bold" fill="#e74c3c">Questions:</text>
-  <text x="100" y="{y_start + 145}" font-size="13" fill="#34495e">(a) Net electrostatic force on grain due to bee?</text>
-  <text x="100" y="{y_start + 165}" font-size="13" fill="#34495e">(b) Net electrostatic force on grain due to stigma?</text>
-  <text x="100" y="{y_start + 185}" font-size="13" fill="#34495e">(c) Does grain remain on bee or move to stigma?</text>
+  <text x="{x_start}" y="{y_start}" font-size="32" font-weight="bold" fill="#2c3e50">Legend</text>
+
+  <!-- Column 1: Object Properties -->
+  <text x="{x_start}" y="{y_start + 40}" font-size="24" font-weight="bold" fill="#16a085">Object Properties:</text>
+
+  <circle cx="{x_start + 20}" cy="{y_start + 70}" r="8" fill="#FFD700" stroke="#DAA520" stroke-width="2"/>
+  <text x="{x_start + 40}" y="{y_start + 75}" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Bee:</tspan> diameter = 1.000 cm, charge Q = +45.0 pC (uniformly distributed on surface)
+  </text>
+
+  <circle cx="{x_start + 20}" cy="{y_start + 105}" r="6" fill="#8B4513" stroke="#654321" stroke-width="1"/>
+  <text x="{x_start + 40}" y="{y_start + 110}" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Pollen grain:</tspan> diameter = 40.0 μm = 40.0 × 10⁻⁶ m (electrically neutral, net charge = 0)
+  </text>
+
+  <circle cx="{x_start + 20}" cy="{y_start + 140}" r="5" fill="#FF1493"/>
+  <text x="{x_start + 40}" y="{y_start + 145}" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Stigma tip:</tspan> charge Q = −45.0 pC (treated as point charge)
+  </text>
+
+  <!-- Column 2: Induced Charges -->
+  <text x="{x_start}" y="{y_start + 185}" font-size="24" font-weight="bold" fill="#16a085">Induced Charges on Pollen:</text>
+
+  <circle cx="{x_start + 20}" cy="{y_start + 215}" r="6" fill="#FF0000"/>
+  <text x="{x_start + 35}" cy="{y_start + 219}" font-size="16" font-weight="bold" fill="white">−</text>
+  <text x="{x_start + 50}" y="{y_start + 220}" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Near side:</tspan> q₁ = −1.00 pC (closer to bee/stigma, attracts positive charge)
+  </text>
+
+  <circle cx="{x_start + 20}" cy="{y_start + 250}" r="6" fill="#0000FF"/>
+  <text x="{x_start + 35}" cy="{y_start + 254}" font-size="16" font-weight="bold" fill="white">+</text>
+  <text x="{x_start + 50}" y="{y_start + 255}" font-size="20" fill="#34495e">
+    <tspan font-weight="bold">Far side:</tspan> q₂ = +1.00 pC (farther from bee/stigma, repelled)
+  </text>
+
+  <!-- Column 3: Distances and Forces -->
+  <text x="{x_start + 900}" y="{y_start + 40}" font-size="24" font-weight="bold" fill="#16a085">Key Distances:</text>
+
+  <text x="{x_start + 900}" y="{y_start + 75}" font-size="20" fill="#34495e">
+    • Bee radius: r_bee = 0.500 cm = 5.00 × 10⁻³ m
+  </text>
+  <text x="{x_start + 900}" y="{y_start + 105}" font-size="20" fill="#34495e">
+    • Pollen radius: r_pollen = 20.0 μm = 2.00 × 10⁻⁵ m
+  </text>
+  <text x="{x_start + 900}" y="{y_start + 135}" font-size="20" fill="#34495e">
+    • Pollen to stigma distance: d = 1.000 mm = 1.00 × 10⁻³ m
+  </text>
+
+  <text x="{x_start + 900}" y="{y_start + 180}" font-size="24" font-weight="bold" fill="#16a085">Forces:</text>
+
+  <line x1="{x_start + 920}" y1="{y_start + 205}" x2="{x_start + 970}" y2="{y_start + 205}"
+        stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="{x_start + 980}" y="{y_start + 210}" font-size="20" fill="#34495e">
+    <tspan font-weight="bold" fill="#e74c3c">F_bee:</tspan> Net force on pollen due to bee (question a)
+  </text>
+
+  <line x1="{x_start + 920}" y1="{y_start + 240}" x2="{x_start + 970}" y2="{y_start + 240}"
+        stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/>
+  <text x="{x_start + 980}" y="{y_start + 245}" font-size="20" fill="#34495e">
+    <tspan font-weight="bold" fill="#3498db">F_stigma:</tspan> Net force on pollen due to stigma (question b)
+  </text>
+
+  <!-- Questions -->
+  <text x="{x_start}" y="{y_start + 305}" font-size="24" font-weight="bold" fill="#e74c3c">Questions to Answer:</text>
+  <text x="{x_start + 20}" y="{y_start + 335}" font-size="19" fill="#34495e">(a) What is the magnitude of net electrostatic force on grain due to bee?</text>
+  <text x="{x_start + 20}" y="{y_start + 360}" font-size="19" fill="#34495e">(b) What is magnitude of net electrostatic force on grain due to stigma at 1.000 mm distance?</text>
 </g>'''
 
     def _add_sphere_cavity_formulas(self) -> str:
         """Add formula boxes for sphere/cavity problem"""
         return '''<g id="formulas">
-  <text x="1000" y="210" font-size="27" font-weight="bold" fill="#16a085">Part (a): Field at P in sphere</text>
+  <text x="1000" y="210" font-size="36" font-weight="bold" fill="#16a085">Part (a): Field at P in sphere</text>
 
   <g>
-    <text x="1150" y="295" text-anchor="middle" font-size="50" font-weight="bold" fill="#16a085" font-style="italic">E</text>
-    <path d="M 1141 262 L 1167 262 L 1165 260 M 1167 262 L 1165 264" stroke="#16a085" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <text x="1175" y="295" font-size="50" font-weight="bold" fill="#16a085"> = ρ</text>
-    <text x="1246" y="295" font-size="50" font-weight="bold" fill="#16a085" font-style="italic">r</text>
-    <path d="M 1239 262 L 1260 262 L 1258 260 M 1260 262 L 1258 264" stroke="#16a085" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <text x="1268" y="295" font-size="50" font-weight="bold" fill="#16a085">/(3ε₀)</text>
+    <text x="1150" y="295" text-anchor="middle" font-size="58" font-weight="bold" fill="#16a085" font-style="italic">E</text>
+    <path d="M 1141 262 L 1167 262 L 1165 260 M 1167 262 L 1165 264" stroke="#16a085" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="1175" y="295" font-size="58" font-weight="bold" fill="#16a085"> = ρ</text>
+    <text x="1246" y="295" font-size="58" font-weight="bold" fill="#16a085" font-style="italic">r</text>
+    <path d="M 1239 262 L 1260 262 L 1258 260 M 1260 262 L 1258 264" stroke="#16a085" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="1268" y="295" font-size="58" font-weight="bold" fill="#16a085">/(3ε₀)</text>
   </g>
 
-  <text x="1000" y="370" font-size="20" fill="#34495e">• Independent of R (sphere radius)</text>
-  <text x="1000" y="400" font-size="20" fill="#34495e">• Proportional to r (distance from O)</text>
-  <text x="1000" y="430" font-size="20" fill="#34495e">• Radial direction from O</text>
+  <text x="1000" y="370" font-size="24" fill="#34495e">• Independent of R (sphere radius)</text>
+  <text x="1000" y="400" font-size="24" fill="#34495e">• Proportional to r (distance from O)</text>
+  <text x="1000" y="430" font-size="24" fill="#34495e">• Radial direction from O</text>
 
   <line x1="1000" y1="480" x2="1550" y2="480" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
 
-  <text x="1000" y="555" font-size="27" font-weight="bold" fill="#c0392b">Part (b): Field in cavity (UNIFORM)</text>
+  <text x="1000" y="555" font-size="36" font-weight="bold" fill="#c0392b">Part (b): Field in cavity (UNIFORM)</text>
 
   <g>
-    <text x="1150" y="640" text-anchor="middle" font-size="50" font-weight="bold" fill="#c0392b" font-style="italic">E</text>
-    <path d="M 1141 607 L 1167 607 L 1165 605 M 1167 607 L 1165 609" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <text x="1175" y="640" font-size="50" font-weight="bold" fill="#c0392b"> = ρ</text>
-    <text x="1246" y="640" font-size="50" font-weight="bold" fill="#c0392b" font-style="italic">a</text>
-    <path d="M 1238 607 L 1260 607 L 1258 605 M 1260 607 L 1258 609" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <text x="1268" y="640" font-size="50" font-weight="bold" fill="#c0392b">/(3ε₀)</text>
+    <text x="1150" y="640" text-anchor="middle" font-size="58" font-weight="bold" fill="#c0392b" font-style="italic">E</text>
+    <path d="M 1141 607 L 1167 607 L 1165 605 M 1167 607 L 1165 609" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="1175" y="640" font-size="58" font-weight="bold" fill="#c0392b"> = ρ</text>
+    <text x="1246" y="640" font-size="58" font-weight="bold" fill="#c0392b" font-style="italic">a</text>
+    <path d="M 1238 607 L 1260 607 L 1258 605 M 1260 607 L 1258 609" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="1268" y="640" font-size="58" font-weight="bold" fill="#c0392b">/(3ε₀)</text>
   </g>
 
-  <text x="1000" y="715" font-size="21" font-weight="bold" fill="#8e44ad">★ Key Result:</text>
-  <text x="1000" y="750" font-size="20" fill="#34495e">• UNIFORM field everywhere in cavity</text>
-  <text x="1000" y="780" font-size="20" fill="#34495e">• Independent of cavity size</text>
-  <text x="1000" y="810" font-size="20" fill="#34495e">• Direction parallel to vector a</text>
+  <text x="1000" y="715" font-size="26" font-weight="bold" fill="#8e44ad">★ Key Result:</text>
+  <text x="1000" y="750" font-size="24" fill="#34495e">• UNIFORM field everywhere in cavity</text>
+  <text x="1000" y="780" font-size="24" fill="#34495e">• Independent of cavity size</text>
+  <text x="1000" y="810" font-size="24" fill="#34495e">• Direction parallel to vector a</text>
 
-  <text x="1000" y="865" font-size="20" fill="#7f8c8d" font-style="italic">Uses superposition principle</text>
+  <text x="1000" y="865" font-size="24" fill="#7f8c8d" font-style="italic">Uses superposition principle</text>
 </g>'''
 
     def _add_legend(self) -> str:
         """Add legend for sphere/cavity diagram"""
         return '''<g id="legend">
-  <text x="120" y="875" font-size="24" font-weight="bold" fill="#34495e">Legend:</text>
+  <text x="120" y="875" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
 
   <line x1="120" y1="920" x2="210" y2="920" stroke="#e74c3c" stroke-width="4" marker-end="url(#arrowRed)"/>
   <g>
-    <text x="225" y="928" font-size="20" fill="#2c3e50" font-style="italic">a</text>
-    <path d="M 221 911 L 235 911 L 233 909 M 235 911 L 233 913" stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <text x="240" y="928" font-size="20" fill="#2c3e50"> = O to C (displacement)</text>
+    <text x="225" y="928" font-size="26" fill="#2c3e50" font-style="italic">a</text>
+    <path d="M 221 911 L 235 911 L 233 909 M 235 911 L 233 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="240" y="928" font-size="26" fill="#2c3e50"> = O to C (displacement)</text>
   </g>
 
   <line x1="450" y1="920" x2="540" y2="920" stroke="#9b59b6" stroke-width="4" stroke-dasharray="16,8" marker-end="url(#arrowPurple)"/>
   <g>
-    <text x="555" y="928" font-size="20" fill="#2c3e50" font-style="italic">r</text>
-    <path d="M 552 911 L 564 911 L 562 909 M 564 911 L 562 913" stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <text x="568" y="928" font-size="20" fill="#2c3e50"> = O to P (position)</text>
+    <text x="555" y="928" font-size="26" fill="#2c3e50" font-style="italic">r</text>
+    <path d="M 552 911 L 564 911 L 562 909 M 564 911 L 562 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="568" y="928" font-size="26" fill="#2c3e50"> = O to P (position)</text>
   </g>
 
   <line x1="780" y1="920" x2="870" y2="920" stroke="#27ae60" stroke-width="4" marker-end="url(#arrowGreen)"/>
   <g>
-    <text x="885" y="928" font-size="20" fill="#2c3e50" font-style="italic">E</text>
-    <path d="M 881 911 L 896 911 L 894 909 M 896 911 L 894 913" stroke="#2c3e50" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <text x="900" y="928" font-size="20" fill="#2c3e50"> = Electric field</text>
+    <text x="885" y="928" font-size="26" fill="#2c3e50" font-style="italic">E</text>
+    <path d="M 881 911 L 896 911 L 894 909 M 896 911 L 894 913" stroke="#2c3e50" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="900" y="928" font-size="26" fill="#2c3e50"> = Electric field</text>
   </g>
 </g>'''
 
