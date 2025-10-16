@@ -93,13 +93,13 @@
   <circle cx="120" cy="1165" r="6" fill="#FF0000"/>
   <text x="135" cy="1169" font-size="16" font-weight="bold" fill="white">−</text>
   <text x="150" y="1170" font-size="20" fill="#34495e">
-    <tspan font-weight="bold">Near side:</tspan> q₁ = −1.00 pC (closer to bee/stigma, attracts positive charge)
+    <tspan font-weight="bold">Near side:</tspan> q₁ = −1.00 pC (closer to bee/stigma)
   </text>
 
   <circle cx="120" cy="1200" r="6" fill="#0000FF"/>
   <text x="135" cy="1204" font-size="16" font-weight="bold" fill="white">+</text>
   <text x="150" y="1205" font-size="20" fill="#34495e">
-    <tspan font-weight="bold">Far side:</tspan> q₂ = +1.00 pC (farther from bee/stigma, repelled)
+    <tspan font-weight="bold">Far side:</tspan> q₂ = +1.00 pC (farther from bee/stigma)
   </text>
 
   <!-- Column 3: Distances and Forces -->

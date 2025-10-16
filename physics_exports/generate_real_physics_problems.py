@@ -456,8 +456,8 @@ class SmartPhysicsSVGRenderer:
             f'font-size="22" fill="#7f8c8d">(test point)</text>'
         )
 
-        # Add formulas and annotations
-        svg_parts.append(self._add_sphere_cavity_formulas())
+        # Add questions (NO ANSWERS)
+        svg_parts.append(self._add_sphere_cavity_questions())
 
         # Add legend
         svg_parts.append(self._add_legend())
@@ -579,13 +579,13 @@ class SmartPhysicsSVGRenderer:
   <circle cx="{x_start + 20}" cy="{y_start + 215}" r="6" fill="#FF0000"/>
   <text x="{x_start + 35}" cy="{y_start + 219}" font-size="16" font-weight="bold" fill="white">−</text>
   <text x="{x_start + 50}" y="{y_start + 220}" font-size="20" fill="#34495e">
-    <tspan font-weight="bold">Near side:</tspan> q₁ = −1.00 pC (closer to bee/stigma, attracts positive charge)
+    <tspan font-weight="bold">Near side:</tspan> q₁ = −1.00 pC (closer to bee/stigma)
   </text>
 
   <circle cx="{x_start + 20}" cy="{y_start + 250}" r="6" fill="#0000FF"/>
   <text x="{x_start + 35}" cy="{y_start + 254}" font-size="16" font-weight="bold" fill="white">+</text>
   <text x="{x_start + 50}" y="{y_start + 255}" font-size="20" fill="#34495e">
-    <tspan font-weight="bold">Far side:</tspan> q₂ = +1.00 pC (farther from bee/stigma, repelled)
+    <tspan font-weight="bold">Far side:</tspan> q₂ = +1.00 pC (farther from bee/stigma)
   </text>
 
   <!-- Column 3: Distances and Forces -->
@@ -621,43 +621,34 @@ class SmartPhysicsSVGRenderer:
   <text x="{x_start + 20}" y="{y_start + 360}" font-size="19" fill="#34495e">(b) What is magnitude of net electrostatic force on grain due to stigma at 1.000 mm distance?</text>
 </g>'''
 
-    def _add_sphere_cavity_formulas(self) -> str:
-        """Add formula boxes for sphere/cavity problem"""
-        return '''<g id="formulas">
-  <text x="1000" y="210" font-size="36" font-weight="bold" fill="#16a085">Part (a): Field at P in sphere</text>
+    def _add_sphere_cavity_questions(self) -> str:
+        """Add questions for sphere/cavity problem (NO ANSWERS/SOLUTIONS)"""
+        return '''<g id="questions">
+  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#e74c3c">Questions to Answer:</text>
 
-  <g>
-    <text x="1150" y="295" text-anchor="middle" font-size="58" font-weight="bold" fill="#16a085" font-style="italic">E</text>
-    <path d="M 1141 262 L 1167 262 L 1165 260 M 1167 262 L 1165 264" stroke="#16a085" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="1175" y="295" font-size="58" font-weight="bold" fill="#16a085"> = ρ</text>
-    <text x="1246" y="295" font-size="58" font-weight="bold" fill="#16a085" font-style="italic">r</text>
-    <path d="M 1239 262 L 1260 262 L 1258 260 M 1260 262 L 1258 264" stroke="#16a085" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="1268" y="295" font-size="58" font-weight="bold" fill="#16a085">/(3ε₀)</text>
-  </g>
+  <text x="1020" y="310" font-size="22" fill="#34495e">
+    <tspan font-weight="bold">(a)</tspan> Show that the electric field at point P (inside the sphere) is given by
+  </text>
+  <text x="1020" y="340" font-size="22" fill="#34495e">
+    E⃗ = ρr⃗/(3ε₀), where r⃗ is the position vector from O to P.
+  </text>
 
-  <text x="1000" y="370" font-size="24" fill="#34495e">• Independent of R (sphere radius)</text>
-  <text x="1000" y="400" font-size="24" fill="#34495e">• Proportional to r (distance from O)</text>
-  <text x="1000" y="430" font-size="24" fill="#34495e">• Radial direction from O</text>
+  <line x1="1000" y1="390" x2="1550" y2="390" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
 
-  <line x1="1000" y1="480" x2="1550" y2="480" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
+  <text x="1020" y="450" font-size="22" fill="#34495e">
+    <tspan font-weight="bold">(b)</tspan> Show that the electric field at all points within the cavity is uniform
+  </text>
+  <text x="1020" y="480" font-size="22" fill="#34495e">
+    and equal to E⃗ = ρa⃗/(3ε₀), where a⃗ is the displacement from O to C.
+  </text>
 
-  <text x="1000" y="555" font-size="36" font-weight="bold" fill="#c0392b">Part (b): Field in cavity (UNIFORM)</text>
+  <line x1="1000" y1="530" x2="1550" y2="530" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
 
-  <g>
-    <text x="1150" y="640" text-anchor="middle" font-size="58" font-weight="bold" fill="#c0392b" font-style="italic">E</text>
-    <path d="M 1141 607 L 1167 607 L 1165 605 M 1167 607 L 1165 609" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="1175" y="640" font-size="58" font-weight="bold" fill="#c0392b"> = ρ</text>
-    <text x="1246" y="640" font-size="58" font-weight="bold" fill="#c0392b" font-style="italic">a</text>
-    <path d="M 1238 607 L 1260 607 L 1258 605 M 1260 607 L 1258 609" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="1268" y="640" font-size="58" font-weight="bold" fill="#c0392b">/(3ε₀)</text>
-  </g>
-
-  <text x="1000" y="715" font-size="26" font-weight="bold" fill="#8e44ad">★ Key Result:</text>
-  <text x="1000" y="750" font-size="24" fill="#34495e">• UNIFORM field everywhere in cavity</text>
-  <text x="1000" y="780" font-size="24" fill="#34495e">• Independent of cavity size</text>
-  <text x="1000" y="810" font-size="24" fill="#34495e">• Direction parallel to vector a</text>
-
-  <text x="1000" y="865" font-size="24" fill="#7f8c8d" font-style="italic">Uses superposition principle</text>
+  <text x="1000" y="590" font-size="24" font-weight="bold" fill="#16a085">Given Information:</text>
+  <text x="1020" y="630" font-size="20" fill="#34495e">• Sphere has uniform volume charge density ρ</text>
+  <text x="1020" y="660" font-size="20" fill="#34495e">• Spherical cavity is located within the sphere</text>
+  <text x="1020" y="690" font-size="20" fill="#34495e">• O = center of sphere, C = center of cavity</text>
+  <text x="1020" y="720" font-size="20" fill="#34495e">• P = test point inside sphere</text>
 </g>'''
 
     def _add_legend(self) -> str:

@@ -42,41 +42,32 @@
 <text x="555" y="596" font-size="22" fill="#7f8c8d">(cavity center)</text>
 <text x="598" y="653" font-size="44" font-weight="bold" fill="#9b59b6">P</text>
 <text x="588" y="681" font-size="22" fill="#7f8c8d">(test point)</text>
-<g id="formulas">
-  <text x="1000" y="210" font-size="36" font-weight="bold" fill="#16a085">Part (a): Field at P in sphere</text>
+<g id="questions">
+  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#e74c3c">Questions to Answer:</text>
 
-  <g>
-    <text x="1150" y="295" text-anchor="middle" font-size="58" font-weight="bold" fill="#16a085" font-style="italic">E</text>
-    <path d="M 1141 262 L 1167 262 L 1165 260 M 1167 262 L 1165 264" stroke="#16a085" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="1175" y="295" font-size="58" font-weight="bold" fill="#16a085"> = ρ</text>
-    <text x="1246" y="295" font-size="58" font-weight="bold" fill="#16a085" font-style="italic">r</text>
-    <path d="M 1239 262 L 1260 262 L 1258 260 M 1260 262 L 1258 264" stroke="#16a085" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="1268" y="295" font-size="58" font-weight="bold" fill="#16a085">/(3ε₀)</text>
-  </g>
+  <text x="1020" y="310" font-size="22" fill="#34495e">
+    <tspan font-weight="bold">(a)</tspan> Show that the electric field at point P (inside the sphere) is given by
+  </text>
+  <text x="1020" y="340" font-size="22" fill="#34495e">
+    E⃗ = ρr⃗/(3ε₀), where r⃗ is the position vector from O to P.
+  </text>
 
-  <text x="1000" y="370" font-size="24" fill="#34495e">• Independent of R (sphere radius)</text>
-  <text x="1000" y="400" font-size="24" fill="#34495e">• Proportional to r (distance from O)</text>
-  <text x="1000" y="430" font-size="24" fill="#34495e">• Radial direction from O</text>
+  <line x1="1000" y1="390" x2="1550" y2="390" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
 
-  <line x1="1000" y1="480" x2="1550" y2="480" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
+  <text x="1020" y="450" font-size="22" fill="#34495e">
+    <tspan font-weight="bold">(b)</tspan> Show that the electric field at all points within the cavity is uniform
+  </text>
+  <text x="1020" y="480" font-size="22" fill="#34495e">
+    and equal to E⃗ = ρa⃗/(3ε₀), where a⃗ is the displacement from O to C.
+  </text>
 
-  <text x="1000" y="555" font-size="36" font-weight="bold" fill="#c0392b">Part (b): Field in cavity (UNIFORM)</text>
+  <line x1="1000" y1="530" x2="1550" y2="530" stroke="#95a5a6" stroke-width="2" stroke-dasharray="14,7"/>
 
-  <g>
-    <text x="1150" y="640" text-anchor="middle" font-size="58" font-weight="bold" fill="#c0392b" font-style="italic">E</text>
-    <path d="M 1141 607 L 1167 607 L 1165 605 M 1167 607 L 1165 609" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="1175" y="640" font-size="58" font-weight="bold" fill="#c0392b"> = ρ</text>
-    <text x="1246" y="640" font-size="58" font-weight="bold" fill="#c0392b" font-style="italic">a</text>
-    <path d="M 1238 607 L 1260 607 L 1258 605 M 1260 607 L 1258 609" stroke="#c0392b" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <text x="1268" y="640" font-size="58" font-weight="bold" fill="#c0392b">/(3ε₀)</text>
-  </g>
-
-  <text x="1000" y="715" font-size="26" font-weight="bold" fill="#8e44ad">★ Key Result:</text>
-  <text x="1000" y="750" font-size="24" fill="#34495e">• UNIFORM field everywhere in cavity</text>
-  <text x="1000" y="780" font-size="24" fill="#34495e">• Independent of cavity size</text>
-  <text x="1000" y="810" font-size="24" fill="#34495e">• Direction parallel to vector a</text>
-
-  <text x="1000" y="865" font-size="24" fill="#7f8c8d" font-style="italic">Uses superposition principle</text>
+  <text x="1000" y="590" font-size="24" font-weight="bold" fill="#16a085">Given Information:</text>
+  <text x="1020" y="630" font-size="20" fill="#34495e">• Sphere has uniform volume charge density ρ</text>
+  <text x="1020" y="660" font-size="20" fill="#34495e">• Spherical cavity is located within the sphere</text>
+  <text x="1020" y="690" font-size="20" fill="#34495e">• O = center of sphere, C = center of cavity</text>
+  <text x="1020" y="720" font-size="20" fill="#34495e">• P = test point inside sphere</text>
 </g>
 <g id="legend">
   <text x="120" y="875" font-size="32" font-weight="bold" fill="#34495e">Legend:</text>
