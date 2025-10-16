@@ -17,10 +17,13 @@
   <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
+  <marker id="arrowBlueReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowOrangeReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#e67e22"/>
+  </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">The chocolate crumb mystery: Workers at a biscuit factory have an electric poten...</text>
 
 <!-- Main Diagram Area -->
 <g id="main-diagram">
@@ -29,7 +32,7 @@
   <rect x="400" y="400" width="400" height="20" fill="#FFD700" stroke="#2c3e50" stroke-width="3"/>
   <rect x="400" y="680" width="400" height="20" fill="#C0C0C0" stroke="#2c3e50" stroke-width="3"/>
 
-  <!-- Labels -->
+  <!-- Charge labels (+q, -q) -->
   <text x="350" y="420" text-anchor="end" font-size="32" fill="#2c3e50">+q</text>
   <text x="350" y="700" text-anchor="end" font-size="32" fill="#2c3e50">−q</text>
 

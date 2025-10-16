@@ -17,51 +17,42 @@
   <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
     <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
   </marker>
+  <marker id="arrowBlueReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowOrangeReverse" markerWidth="5" markerHeight="5" refX="0" refY="2.5" orient="auto">
+    <path d="M 5 0 L 0 2.5 L 5 5 z" fill="#e67e22"/>
+  </marker>
 </defs>
-
-<!-- Title -->
-<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">A slab of copper of thickness b = 2.00 mm is thrust into a parallel-plate capaci...</text>
 
 <!-- Main Diagram Area -->
 <g id="main-diagram">
 
-  <!-- Battery -->
-  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
-  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
-  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
-  <circle cx="400" cy="600" r="8" fill="#2c3e50"/>
-  <circle cx="700" cy="600" r="8" fill="#2c3e50"/>
+  <!-- Parallel-plate capacitor -->
+  <rect x="400" y="400" width="400" height="20" fill="#FFD700" stroke="#2c3e50" stroke-width="3"/>
+  <rect x="400" y="680" width="400" height="20" fill="#C0C0C0" stroke="#2c3e50" stroke-width="3"/>
 
-  <!-- Capacitor 1 -->
-  <line x1="520" y1="490" x2="520" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="490" x2="580" y2="590" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="470" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
-  <text x="650" y="550" text-anchor="start" font-size="26" fill="#34495e">C_1</text>
+  <!-- Charge labels (+q, -q) -->
+  <text x="350" y="420" text-anchor="end" font-size="32" fill="#2c3e50">+q</text>
+  <text x="350" y="700" text-anchor="end" font-size="32" fill="#2c3e50">−q</text>
 
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="540" x2="520" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="540" x2="700" y2="540" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="540" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
+  <!-- Electric field lines -->
+  <line x1="450" y1="420" x2="450" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="530" y1="420" x2="530" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="610" y1="420" x2="610" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="690" y1="420" x2="690" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="770" y1="420" x2="770" y2="680" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowGreen)"/>
 
-  <!-- Capacitor 2 -->
-  <line x1="520" y1="610" x2="520" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <line x1="580" y1="610" x2="580" y2="710" stroke="#2c3e50" stroke-width="4"/>
-  <text x="550" y="590" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
-  <text x="650" y="670" text-anchor="start" font-size="26" fill="#34495e">C_2</text>
+  <!-- Field label -->
+  <text x="850" y="550" font-size="32" font-weight="bold" font-style="italic" fill="#27ae60">E</text>
+<path d="M 848 533 L 864 533 L 862 531 M 864 533 L 862 535" stroke="#27ae60" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Area dimension -->
+  <line x1="420" y1="380" x2="780" y2="380" stroke="#3498db" stroke-width="2" marker-start="url(#arrowBlueReverse)" marker-end="url(#arrowBlue)"/>
+  <text x="600" y="370" text-anchor="middle" font-size="28" font-weight="bold" fill="#3498db">A</text>
 
-  <!-- Connecting wires -->
-  <line x1="400" y1="600" x2="400" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="400" y1="660" x2="520" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="580" y1="660" x2="700" y2="660" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="660" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
-
-  <line x1="215" y1="600" x2="400" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="700" y1="600" x2="800" y2="600" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="600" x2="800" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="800" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
-  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
+  <!-- Separation distance -->
+  <line x1="380" y1="420" x2="380" y2="680" stroke="#e67e22" stroke-width="2" marker-start="url(#arrowOrangeReverse)" marker-end="url(#arrowOrange)"/>
+  <text x="365" y="555" text-anchor="end" font-size="28" font-weight="bold" fill="#e67e22">d</text>
 
 </g>
 
@@ -79,10 +70,10 @@
 <!-- Legend -->
 <g id="legend">
 
-  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
-  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
-  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
-  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
+  <text x="1000" y="520" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
+  <text x="1020" y="570" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
+  <text x="1020" y="610" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
+  <text x="1020" y="650" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
 
 </g>
 
