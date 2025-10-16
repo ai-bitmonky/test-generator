@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1400">
+<rect width="2000" height="1400" fill="#ffffff"/>
+
+<defs>
+  <marker id="arrowRed" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e74c3c"/>
+  </marker>
+  <marker id="arrowBlue" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#3498db"/>
+  </marker>
+  <marker id="arrowGreen" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#27ae60"/>
+  </marker>
+  <marker id="arrowPurple" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#9b59b6"/>
+  </marker>
+  <marker id="arrowOrange" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
+    <path d="M 0 0 L 5 2.5 L 0 5 z" fill="#e67e22"/>
+  </marker>
+</defs>
+
+<!-- Title -->
+<text x="1000" y="50" text-anchor="middle" font-size="42" font-weight="bold" fill="#2c3e50">Problem 79 (Modified): A parallel-plate capacitor has charge q and plate area A....</text>
+
+<!-- Main Diagram Area -->
+<g id="main-diagram">
+
+  <!-- Battery -->
+  <line x1="200" y1="560" x2="200" y2="640" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="215" y1="580" x2="215" y2="620" stroke="#2c3e50" stroke-width="6"/>
+  <text x="170" y="550" font-size="26" fill="#2c3e50">+</text>
+  <text x="170" y="665" font-size="26" fill="#2c3e50">−</text>
+  <circle cx="400" cy="600" r="8" fill="#2c3e50"/>
+  <circle cx="700" cy="600" r="8" fill="#2c3e50"/>
+
+  <!-- Capacitor 1 -->
+  <line x1="520" y1="490" x2="520" y2="590" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="580" y1="490" x2="580" y2="590" stroke="#2c3e50" stroke-width="4"/>
+  <text x="550" y="470" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_1</text>
+  <text x="650" y="550" text-anchor="start" font-size="26" fill="#34495e">C_1</text>
+
+  <!-- Connecting wires -->
+  <line x1="400" y1="600" x2="400" y2="540" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="400" y1="540" x2="520" y2="540" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="580" y1="540" x2="700" y2="540" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="700" y1="540" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
+
+  <!-- Capacitor 2 -->
+  <line x1="520" y1="610" x2="520" y2="710" stroke="#2c3e50" stroke-width="4"/>
+  <line x1="580" y1="610" x2="580" y2="710" stroke="#2c3e50" stroke-width="4"/>
+  <text x="550" y="590" text-anchor="middle" font-size="32" font-weight="bold" fill="#2c3e50">C_2</text>
+  <text x="650" y="670" text-anchor="start" font-size="26" fill="#34495e">C_2</text>
+
+  <!-- Connecting wires -->
+  <line x1="400" y1="600" x2="400" y2="660" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="400" y1="660" x2="520" y2="660" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="580" y1="660" x2="700" y2="660" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="700" y1="660" x2="700" y2="600" stroke="#2c3e50" stroke-width="3"/>
+
+  <line x1="215" y1="600" x2="400" y2="600" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="700" y1="600" x2="800" y2="600" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="800" y1="600" x2="800" y2="800" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="800" y1="800" x2="200" y2="800" stroke="#2c3e50" stroke-width="3"/>
+  <line x1="200" y1="800" x2="200" y2="640" stroke="#2c3e50" stroke-width="3"/>
+
+</g>
+
+<!-- Given Information -->
+<g id="given-info">
+
+  <text x="1000" y="250" font-size="32" font-weight="bold" fill="#16a085">Given Information:</text>
+  <text x="1020" y="300" font-size="26" fill="#34495e">• q = (charge)</text>
+  <text x="1020" y="340" font-size="26" fill="#34495e">• A = (plate area)</text>
+
+</g>
+
+<!-- Legend -->
+<g id="legend">
+
+  <text x="1000" y="500" font-size="32" font-weight="bold" fill="#16a085">Legend:</text>
+  <text x="1020" y="550" font-size="26" fill="#34495e">• Capacitor plates shown as parallel lines</text>
+  <text x="1020" y="590" font-size="26" fill="#34495e">• +q and −q represent charge on plates</text>
+  <text x="1020" y="630" font-size="26" fill="#34495e">• Battery symbol: thick line is positive terminal</text>
+
+</g>
+
+</svg>
