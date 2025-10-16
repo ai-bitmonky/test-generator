@@ -233,11 +233,7 @@ class SmartPhysicsSVGRenderer:
                 f'font-size="22" font-weight="bold" fill="#B8860B">+</text>'
             )
 
-        # Bee label (simple)
-        svg_parts.append(
-            f'<text x="{bee_center_x}" y="{bee_center_y + 5}" text-anchor="middle" '
-            f'font-size="28" font-weight="bold" fill="#2c3e50">Bee</text>'
-        )
+        # Bee label removed - information in legend only
 
         # Pollen grain on bee surface (enlarged for visibility)
         pollen_radius = 35  # pixels (exaggerated for visibility, increased from 25)
@@ -271,11 +267,7 @@ class SmartPhysicsSVGRenderer:
             f'font-size="18" font-weight="bold" fill="white">+</text>'
         )
 
-        # Pollen label (simple)
-        svg_parts.append(
-            f'<text x="{pollen_x}" y="{pollen_y + 50}" text-anchor="middle" '
-            f'font-size="22" font-weight="bold" fill="#2c3e50">Pollen</text>'
-        )
+        # Pollen label removed - information in legend only
 
         # Force arrow F_bee
         svg_parts.append(self._draw_force_arrow(
@@ -324,10 +316,7 @@ class SmartPhysicsSVGRenderer:
             f'font-size="18" font-weight="bold" fill="white">+</text>'
         )
 
-        svg_parts.append(
-            f'<text x="{pollen2_x}" y="{pollen2_y + 50}" text-anchor="middle" '
-            f'font-size="22" font-weight="bold" fill="#2c3e50">Pollen</text>'
-        )
+        # Pollen label removed - information in legend only
 
         # Stigma (to the right)
         stigma_x = right_view_x + 450
@@ -340,10 +329,7 @@ class SmartPhysicsSVGRenderer:
             f'<text x="{stigma_x}" y="{stigma_y + 4}" text-anchor="middle" '
             f'font-size="22" font-weight="bold" fill="white">−</text>'
         )
-        svg_parts.append(
-            f'<text x="{stigma_x}" y="{stigma_y + 35}" text-anchor="middle" '
-            f'font-size="22" font-weight="bold" fill="#2c3e50">Stigma</text>'
-        )
+        # Stigma label removed - information in legend only
 
         # Distance indicator (removed - will be in legend)
 
