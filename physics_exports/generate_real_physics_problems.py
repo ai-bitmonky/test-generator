@@ -578,19 +578,14 @@ class SmartPhysicsSVGRenderer:
   <line x1="{x_start + 920}" y1="{y_start + 205}" x2="{x_start + 970}" y2="{y_start + 205}"
         stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowBlue)"/>
   <text x="{x_start + 980}" y="{y_start + 210}" font-size="20" fill="#34495e">
-    <tspan font-weight="bold" fill="#e74c3c">F_bee:</tspan> Net force on pollen due to bee (question a)
+    <tspan font-weight="bold" fill="#e74c3c">F_bee:</tspan> Net force on pollen due to bee
   </text>
 
   <line x1="{x_start + 920}" y1="{y_start + 240}" x2="{x_start + 970}" y2="{y_start + 240}"
         stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/>
   <text x="{x_start + 980}" y="{y_start + 245}" font-size="20" fill="#34495e">
-    <tspan font-weight="bold" fill="#3498db">F_stigma:</tspan> Net force on pollen due to stigma (question b)
+    <tspan font-weight="bold" fill="#3498db">F_stigma:</tspan> Net force on pollen due to stigma
   </text>
-
-  <!-- Questions -->
-  <text x="{x_start}" y="{y_start + 305}" font-size="24" font-weight="bold" fill="#e74c3c">Questions to Answer:</text>
-  <text x="{x_start + 20}" y="{y_start + 335}" font-size="19" fill="#34495e">(a) What is the magnitude of net electrostatic force on grain due to bee?</text>
-  <text x="{x_start + 20}" y="{y_start + 360}" font-size="19" fill="#34495e">(b) What is magnitude of net electrostatic force on grain due to stigma at 1.000 mm distance?</text>
 </g>'''
 
     def _add_given_information(self) -> str:

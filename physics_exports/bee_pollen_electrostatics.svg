@@ -116,18 +116,13 @@
   <line x1="1020" y1="1155" x2="1070" y2="1155"
         stroke="#e74c3c" stroke-width="3" marker-end="url(#arrowBlue)"/>
   <text x="1080" y="1160" font-size="20" fill="#34495e">
-    <tspan font-weight="bold" fill="#e74c3c">F_bee:</tspan> Net force on pollen due to bee (question a)
+    <tspan font-weight="bold" fill="#e74c3c">F_bee:</tspan> Net force on pollen due to bee
   </text>
 
   <line x1="1020" y1="1190" x2="1070" y2="1190"
         stroke="#3498db" stroke-width="3" marker-end="url(#arrowBlue)"/>
   <text x="1080" y="1195" font-size="20" fill="#34495e">
-    <tspan font-weight="bold" fill="#3498db">F_stigma:</tspan> Net force on pollen due to stigma (question b)
+    <tspan font-weight="bold" fill="#3498db">F_stigma:</tspan> Net force on pollen due to stigma
   </text>
-
-  <!-- Questions -->
-  <text x="100" y="1255" font-size="24" font-weight="bold" fill="#e74c3c">Questions to Answer:</text>
-  <text x="120" y="1285" font-size="19" fill="#34495e">(a) What is the magnitude of net electrostatic force on grain due to bee?</text>
-  <text x="120" y="1310" font-size="19" fill="#34495e">(b) What is magnitude of net electrostatic force on grain due to stigma at 1.000 mm distance?</text>
 </g>
 </svg>
